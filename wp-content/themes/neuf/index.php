@@ -8,6 +8,7 @@ if (have_posts()) :
    endwhile;
 endif;
 
+lol();
 get_sidebar();
 get_footer(); 
 ?>
