@@ -1,6 +1,6 @@
 [submodule "wp-content/plugins/neuf-events"]
 	path = wp-content/plugins/neuf-events
-	url = git@github.com:neuf/neuf-events.git
+	url = git://github.com/neuf/neuf-events.git
 [submodule "wp-content/plugins/wpdirauth"]
 	path = wp-content/plugins/wpdirauth
-	url = git@github.com:neuf/wpdirauth.git
+	url = git://github.com/neuf/wpdirauth.git
