@@ -3,4 +3,4 @@
 	url = git@git.neuf.no:neuf-events.git
 [submodule "wp-content/plugins/wpdirauth"]
 	path = wp-content/plugins/wpdirauth
-	url = git@.git.neuf.no:wpdirauth.git
+	url = git@git.neuf.no:wpdirauth.git
