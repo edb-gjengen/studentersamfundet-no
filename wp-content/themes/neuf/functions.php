@@ -9,7 +9,4 @@
 add_image_size('slider-image', 652, 245, true);
 add_image_size('event-image', 300, 180, true);
 
-function lol() {
-    echo "<h1>LOL</h1>\n";
-}
 ?>
