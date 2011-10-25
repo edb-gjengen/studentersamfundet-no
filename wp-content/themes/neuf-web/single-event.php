@@ -3,6 +3,10 @@
 ?>
 <?php
 get_header();
+?>
+<article id="content">
+        <section id="main_content">
+<?php 
 if (have_posts()) :
     while (have_posts()) : the_post();
         ?>
@@ -13,8 +17,6 @@ if (have_posts()) :
                 $price = get_post_meta(get_the_ID(), 'neuf_events_price',true); 
                 echo ($price != "" ? $price : "Gratis");
             ?></div>
-            </div>
-
         </div>
         <?php
     endwhile;
@@ -30,6 +32,14 @@ if (have_posts()) :
    endwhile;
 endif;
 
-get_sidebar();
+?>
+        </section>
+        <section id="sidebar">
+        <?php
+        get_sidebar();
+        ?>
+    </section>
+</article>
+<?php
 get_footer(); 
 ?>
