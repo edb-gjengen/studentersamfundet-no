@@ -1,0 +1,6 @@
+$content-column-left-width: 70%;
+$content-column-right-width: 30%;
+$page-width-desktop: 960px;
+$page-width-pad: 640px;
+$logo-banner-height: 50px;
+$logo-banner-width: 432px;

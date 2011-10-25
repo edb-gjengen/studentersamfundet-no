@@ -1,0 +1,307 @@
+/* line 14, ../../../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+/* line 17, ../../../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+body {
+  line-height: 1;
+  color: black;
+  background: white;
+}
+
+/* line 19, ../../../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 21, ../../../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+
+/* line 23, ../../../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 25, ../../../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: "" "";
+}
+/* line 96, ../../../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+}
+
+/* line 27, ../../../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 2, ../src/skin.scss */
+form input {
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  -o-border-radius: 1em;
+  -ms-border-radius: 1em;
+  -khtml-border-radius: 1em;
+  border-radius: 1em;
+  background-color: white;
+  border: 0;
+  padding: 0.25em 0.5em;
+}
+
+/* line 10, ../../../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+html, body {
+  height: 100%;
+}
+
+/* line 12, ../../../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+#root {
+  clear: both;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin-bottom: -86px;
+}
+/* line 18, ../../../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+#root #root_footer {
+  height: 86px;
+}
+
+/* line 20, ../../../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+#footer {
+  clear: both;
+  position: relative;
+  height: 86px;
+}
+
+/* line 14, ../src/main.scss */
+body,
+html {
+  background-color: #dadadc;
+}
+
+/* line 18, ../src/main.scss */
+#content {
+  overflow: hidden;
+  *zoom: 1;
+}
+
+/* line 22, ../src/main.scss */
+#footer {
+  -moz-border-radius: 0.5em 0.5em 0 0;
+  -webkit-border-radius: 0.5em 0.5em 0 0;
+  -o-border-radius: 0.5em 0.5em 0 0;
+  -ms-border-radius: 0.5em 0.5em 0 0;
+  -khtml-border-radius: 0.5em 0.5em 0 0;
+  border-radius: 0.5em 0.5em 0 0;
+  background-color: #efefef;
+}
+/* line 25, ../src/main.scss */
+#footer #supporters {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 56, ../../../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+#footer #supporters li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0px;
+  white-space: nowrap;
+  display: inline;
+  float: left;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+/* line 45, ../../../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+#footer #supporters li:first-child, #footer #supporters li.first {
+  padding-left: 0;
+}
+/* line 46, ../../../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+#footer #supporters li:last-child, #footer #supporters li.last {
+  padding-right: 0;
+}
+
+/* line 30, ../src/main.scss */
+header {
+  overflow: hidden;
+  *zoom: 1;
+  padding-top: 2em;
+}
+/* line 33, ../src/main.scss */
+header h1 {
+  float: left;
+  padding-bottom: 2em;
+  width: 70%;
+}
+/* line 37, ../src/main.scss */
+header h1 a {
+  background-image: url("../images/logo/DNSlogo.png");
+  background-position: left top;
+  background-repeat: no-repeat;
+  min-height: 50px;
+  min-width: 432px;
+  display: block;
+  text-decoration: none;
+}
+/* line 47, ../src/main.scss */
+header #meta {
+  float: right;
+  width: 30%;
+}
+/* line 51, ../src/main.scss */
+header #meta form input {
+  margin: 0.5em 0;
+}
+/* line 53, ../src/main.scss */
+header #meta form input:first-child {
+  margin-top: 0;
+}
+/* line 56, ../src/main.scss */
+header #meta form input[name='search'] {
+  margin-top: 1.5em;
+}
+/* line 62, ../src/main.scss */
+header nav {
+  float: left;
+  width: 70%;
+}
+/* line 65, ../src/main.scss */
+header nav ul {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 56, ../../../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+header nav ul li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0px;
+  white-space: nowrap;
+  display: inline;
+  float: left;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+/* line 45, ../../../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+header nav ul li:first-child, header nav ul li.first {
+  padding-left: 0;
+}
+/* line 46, ../../../../../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
+header nav ul li:last-child, header nav ul li.last {
+  padding-right: 0;
+}
+/* line 68, ../src/main.scss */
+header nav ul li a {
+  -moz-border-radius: 0.5em 0.5em 0 0;
+  -webkit-border-radius: 0.5em 0.5em 0 0;
+  -o-border-radius: 0.5em 0.5em 0 0;
+  -ms-border-radius: 0.5em 0.5em 0 0;
+  -khtml-border-radius: 0.5em 0.5em 0 0;
+  border-radius: 0.5em 0.5em 0 0;
+  -moz-box-shadow: 0.5em 0.25em 0 rgba(0, 0, 0, 0.14);
+  -webkit-box-shadow: 0.5em 0.25em 0 rgba(0, 0, 0, 0.14);
+  box-shadow: 0.5em 0.25em 0 rgba(0, 0, 0, 0.14);
+  background-color: white;
+  color: #f09321;
+  display: block;
+  padding: 0.5em 2em;
+  text-decoration: none;
+}
+/* line 76, ../src/main.scss */
+header nav ul li a:hover {
+  background-color: #d37a28;
+  color: white;
+}
+/* line 81, ../src/main.scss */
+header nav ul li.current-menu-item a {
+  background-color: #f09321;
+  color: white;
+}
+
+/* line 90, ../src/main.scss */
+#main_content {
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  -o-border-radius: 1em;
+  -ms-border-radius: 1em;
+  -khtml-border-radius: 1em;
+  border-radius: 1em;
+  -moz-box-shadow: 0.5em 0.25em 0 rgba(0, 0, 0, 0.14);
+  -webkit-box-shadow: 0.5em 0.25em 0 rgba(0, 0, 0, 0.14);
+  box-shadow: 0.5em 0.25em 0 rgba(0, 0, 0, 0.14);
+  background-color: white;
+  float: left;
+  margin: 0 1% 1% 0;
+  min-height: 300px;
+  width: 69%;
+  -moz-border-radius-topleft: 0;
+  -webkit-border-top-left-radius: 0;
+  -o-border-top-left-radius: 0;
+  -ms-border-top-left-radius: 0;
+  -khtml-border-top-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+/* line 95, ../src/main.scss */
+#sidebar {
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  -o-border-radius: 1em;
+  -ms-border-radius: 1em;
+  -khtml-border-radius: 1em;
+  border-radius: 1em;
+  -moz-box-shadow: 0.5em 0.25em 0 rgba(0, 0, 0, 0.14);
+  -webkit-box-shadow: 0.5em 0.25em 0 rgba(0, 0, 0, 0.14);
+  box-shadow: 0.5em 0.25em 0 rgba(0, 0, 0, 0.14);
+  background-color: white;
+  float: left;
+  margin: 0 1% 1% 0;
+  min-height: 300px;
+  width: 29%;
+}
+
+@media screen and (min-width: 640) {
+  /* line 4, ../src/main-pad.scss */
+  #footer,
+  #root {
+    margin: 0 auto -86px;
+    width: 640px;
+  }
+}
+
+@media screen and (min-width: 960) {
+  /* line 4, ../src/main-desktop.scss */
+  #footer,
+  #root {
+    width: 960px;
+  }
+}

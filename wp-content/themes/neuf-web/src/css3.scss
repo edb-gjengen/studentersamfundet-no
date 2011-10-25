@@ -1,0 +1,5 @@
+@mixin box-shadow($color: #888, $hoff: 10px, $voff: 10px, $blur: 5px) {
+	-moz-box-shadow: $hoff $voff $blur $color;
+	-webkit-box-shadow: $hoff $voff $blur $color;
+	box-shadow: $hoff $voff $blur $color;
+}

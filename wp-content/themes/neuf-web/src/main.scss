@@ -1,0 +1,100 @@
+@import "compass/reset";
+@import "compass/layout/sticky-footer";
+@import "compass/css3/border-radius";
+@import "compass/utilities/general/clearfix";
+@import "compass/utilities/lists/horizontal-list";
+@import "color";
+@import "dimensions";
+@import "css3";
+@import "skin";
+
+@include sticky-footer($footer-height);
+
+body,
+html {
+	background-color: $page-background-color;
+}
+
+#content {
+	@include clearfix;
+}
+
+#footer {
+	@include border-radius(0.5em 0.5em 0 0);
+	background-color: $footer-background-color;
+	#supporters {
+		@include horizontal_list;
+	}
+}
+
+header {
+	@include clearfix;
+	padding-top: 2em;
+	h1 {
+		float: left;
+		padding-bottom: 2em;
+		width: $content-column-left-width;
+		a {
+			background-image: url('../images/logo/DNSlogo.png');
+			background-position: left top;
+			background-repeat: no-repeat;
+			min-height: $logo-banner-height;
+			min-width: $logo-banner-width;
+			display: block;
+			text-decoration: none;
+		}
+	}
+	#meta {
+		float: right;
+		width: $content-column-right-width;
+		form {
+			input {
+				margin: 0.5em 0;
+				&:first-child {
+					margin-top: 0;
+				}
+				&[name='search'] {
+					margin-top: 1.5em;
+				}
+			}
+		}
+	}
+	nav {
+		float: left;
+		width: $content-column-left-width;
+		ul {
+			@include horizontal-list;
+			li {
+				a {
+					@include border-radius(0.5em 0.5em 0 0);
+					@include box-shadow($page-shadow-color, 0.5em, 0.25em, 0);
+					background-color: $content-background-color;
+					color: $base-off-color-light;
+					display: block;
+					padding: 0.5em 2em;
+					text-decoration: none;
+					&:hover {
+						background-color: $base-off-color-dark;
+						color: $content-background-color;
+					}
+				}
+				&.current-menu-item a {
+					background-color: $base-off-color-light;
+					color: $content-background-color;
+				}
+			}
+		}
+	}
+}
+
+#main_content {
+	@include content-box($content-column-left-width);
+	@include border-top-left-radius(0);
+}
+
+#sidebar {
+	@include content-box($content-column-right-width);
+}
+
+@import "main-pad";
+@import "main-desktop";
