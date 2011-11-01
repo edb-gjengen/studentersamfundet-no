@@ -105,19 +105,33 @@ html, body {
 article[role="main_content"] {
   background-color: white;
 }
+/* line 16, ../src/main.scss */
+article[role="main_content"] div[role="main_page"],
+article[role="main_content"] div[role="post_content"] {
+  padding: 2em;
+}
+/* line 11, ../src/skin.scss */
+article[role="main_content"] div[role="post_content"] p {
+  margin: 1em 0;
+}
+/* line 21, ../src/main.scss */
+article[role="main_content"] div[role="post_content"] h1 {
+  color: #f09321;
+  font-size: 2em;
+}
 
-/* line 17, ../src/main.scss */
-aside {
+/* line 28, ../src/main.scss */
+aside[role="support_main_content"] {
   background-color: white;
 }
 
-/* line 22, ../src/main.scss */
+/* line 33, ../src/main.scss */
 body,
 html {
   background-color: #dadadc;
 }
 
-/* line 26, ../src/main.scss */
+/* line 37, ../src/main.scss */
 #footer {
   -moz-border-radius: 0.5em 0.5em 0 0;
   -webkit-border-radius: 0.5em 0.5em 0 0;
@@ -127,7 +141,7 @@ html {
   border-radius: 0.5em 0.5em 0 0;
   background-color: #efefef;
 }
-/* line 29, ../src/main.scss */
+/* line 40, ../src/main.scss */
 #footer #supporters {
   margin: 0;
   padding: 0;
@@ -159,20 +173,22 @@ html {
   padding-right: 0;
 }
 
-/* line 34, ../src/main.scss */
+/* line 45, ../src/main.scss */
 header {
   overflow: hidden;
   *zoom: 1;
   padding-top: 2em;
 }
-/* line 37, ../src/main.scss */
-header h1 {
+/* line 49, ../src/main.scss */
+header h1,
+header h2 {
   float: left;
   padding-bottom: 2em;
   width: 70%;
 }
-/* line 41, ../src/main.scss */
-header h1 a {
+/* line 53, ../src/main.scss */
+header h1 a,
+header h2 a {
   background-image: url("../images/logo/DNSlogo.png");
   background-position: left top;
   background-repeat: no-repeat;
@@ -181,29 +197,29 @@ header h1 a {
   display: block;
   text-decoration: none;
 }
-/* line 51, ../src/main.scss */
+/* line 63, ../src/main.scss */
 header #meta {
   float: right;
   width: 30%;
 }
-/* line 55, ../src/main.scss */
+/* line 67, ../src/main.scss */
 header #meta form input {
   margin: 0.5em 0;
 }
-/* line 57, ../src/main.scss */
+/* line 69, ../src/main.scss */
 header #meta form input:first-child {
   margin-top: 0;
 }
-/* line 60, ../src/main.scss */
+/* line 72, ../src/main.scss */
 header #meta form input[name='search'] {
   margin-top: 1.5em;
 }
-/* line 66, ../src/main.scss */
+/* line 78, ../src/main.scss */
 header nav {
   float: left;
   width: 70%;
 }
-/* line 69, ../src/main.scss */
+/* line 81, ../src/main.scss */
 header nav ul {
   margin: 0;
   padding: 0;
@@ -234,7 +250,7 @@ header nav ul li:last-child {
 header nav ul li.last {
   padding-right: 0;
 }
-/* line 72, ../src/main.scss */
+/* line 84, ../src/main.scss */
 header nav ul li a {
   -moz-border-radius: 0.5em 0.5em 0 0;
   -webkit-border-radius: 0.5em 0.5em 0 0;
@@ -251,12 +267,12 @@ header nav ul li a {
   padding: 0.5em 2em;
   text-decoration: none;
 }
-/* line 80, ../src/main.scss */
+/* line 92, ../src/main.scss */
 header nav ul li a:hover {
   background-color: #d37a28;
   color: white;
 }
-/* line 85, ../src/main.scss */
+/* line 97, ../src/main.scss */
 header nav ul li.current-menu-item a {
   background-color: #f09321;
   color: white;
@@ -340,7 +356,7 @@ form input {
   padding: 0.25em 0.5em;
 }
 
-@media screen and (min-width: 640) {
+@media screen and (min-width: 640px) {
   /* line 13, ../src/main-pad.scss */
   article[role="main_content"] {
     -moz-border-radius: 1em;
@@ -390,7 +406,7 @@ form input {
     width: 640px;
   }
 }
-@media screen and (min-width: 960) {
+@media screen and (min-width: 960px) {
   /* line 4, ../src/main-desktop.scss */
   #footer,
   #root {

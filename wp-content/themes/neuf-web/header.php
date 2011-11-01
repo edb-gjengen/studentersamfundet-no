@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title><?php wp_title(); ?> <?php bloginfo('name');?></title>
+	<?php wp_head();?>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" media="all" href="<?= bloginfo('stylesheet_directory'); ?>/stylesheets/main.css" />
@@ -10,9 +11,9 @@
 
 <div id="root">
 	<header>
-		<h1>
+		<h<?php echo is_home() ? "1" : "2"; ?>>
 			<a href="<?php bloginfo('url'); ?>">&nbsp;</a>
-		</h1>
+		</h<?php echo is_home() ? "1" : "2"; ?>>
 		
 		<section id="meta">
 			<form>
