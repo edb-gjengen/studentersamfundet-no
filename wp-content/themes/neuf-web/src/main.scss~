@@ -8,15 +8,11 @@
 @import "css3";
 @import "skin";
 
-@include sticky-footer(86px);
+@include sticky-footer($footer-height);
 
 body,
 html {
 	background-color: $page-background-color;
-}
-
-#content {
-	@include clearfix;
 }
 
 #footer {
@@ -85,15 +81,6 @@ header {
 			}
 		}
 	}
-}
-
-#main_content {
-	@include content-box($content-column-left-width);
-	@include border-top-left-radius(0);
-}
-
-#sidebar {
-	@include content-box($content-column-right-width);
 }
 
 @import "main-pad";

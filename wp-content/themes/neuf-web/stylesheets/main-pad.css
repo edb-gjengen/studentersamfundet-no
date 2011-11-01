@@ -1,84 +1,128 @@
-/*
-Syntax error: Undefined variable: "$footer-height".
-        on line 5 of /home/megoth/Documents/public_html/neuf-web/wp-content/themes/neuf-web/src/main-pad.scss
+/* line 17, ../../../../../../../../../var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
 
-1: /home/megoth/Documents/public_html/neuf-web/wp-content/themes/neuf-web/src/main-pad.scss
+/* line 20, ../../../../../../../../../var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+body {
+  line-height: 1;
+}
 
-Backtrace:
-/home/megoth/Documents/public_html/neuf-web/wp-content/themes/neuf-web/src/main-pad.scss:5
-/usr/lib/ruby/1.8/sass/script/variable.rb:39:in `_perform'
-/usr/lib/ruby/1.8/sass/script/node.rb:61:in `perform'
-/usr/lib/ruby/1.8/sass/script/operation.rb:66:in `_perform'
-/usr/lib/ruby/1.8/sass/script/node.rb:61:in `perform'
-/usr/lib/ruby/1.8/sass/script/operation.rb:67:in `_perform'
-/usr/lib/ruby/1.8/sass/script/node.rb:61:in `perform'
-/usr/lib/ruby/1.8/sass/tree/prop_node.rb:132:in `perform!'
-/usr/lib/ruby/1.8/sass/tree/node.rb:305:in `_perform'
-/usr/lib/ruby/1.8/sass/tree/node.rb:213:in `perform'
-/usr/lib/ruby/1.8/sass/tree/node.rb:327:in `perform_children'
-/usr/lib/ruby/1.8/sass/tree/node.rb:327:in `map'
-/usr/lib/ruby/1.8/sass/tree/node.rb:327:in `perform_children'
-/usr/lib/ruby/1.8/sass/tree/node.rb:317:in `perform!'
-/usr/lib/ruby/1.8/sass/tree/rule_node.rb:191:in `perform!'
-/usr/lib/ruby/1.8/sass/tree/node.rb:305:in `_perform'
-/usr/lib/ruby/1.8/sass/tree/node.rb:213:in `perform'
-/usr/lib/ruby/1.8/sass/tree/node.rb:327:in `perform_children'
-/usr/lib/ruby/1.8/sass/tree/node.rb:327:in `map'
-/usr/lib/ruby/1.8/sass/tree/node.rb:327:in `perform_children'
-/usr/lib/ruby/1.8/sass/tree/node.rb:317:in `perform!'
-/usr/lib/ruby/1.8/sass/tree/node.rb:305:in `_perform'
-/usr/lib/ruby/1.8/sass/tree/node.rb:213:in `perform'
-/usr/lib/ruby/1.8/sass/tree/node.rb:327:in `perform_children'
-/usr/lib/ruby/1.8/sass/tree/node.rb:327:in `map'
-/usr/lib/ruby/1.8/sass/tree/node.rb:327:in `perform_children'
-/usr/lib/ruby/1.8/sass/tree/node.rb:317:in `perform!'
-/usr/lib/ruby/1.8/sass/tree/root_node.rb:59:in `perform!'
-/usr/lib/ruby/1.8/sass/tree/node.rb:305:in `_perform'
-/usr/lib/ruby/1.8/sass/tree/node.rb:213:in `perform'
-/usr/lib/ruby/1.8/sass/tree/root_node.rb:37:in `perform'
-/usr/lib/ruby/1.8/sass/tree/root_node.rb:29:in `render'
-/usr/lib/ruby/1.8/sass/engine.rb:197:in `_render'
-/usr/lib/ruby/1.8/sass/engine.rb:169:in `render'
-/usr/lib/ruby/1.8/haml/util.rb:294:in `silence_haml_warnings'
-/usr/lib/ruby/1.8/sass/engine.rb:169:in `render'
-/usr/lib/ruby/1.8/compass/compiler.rb:103:in `compile'
-/usr/lib/ruby/1.8/compass/logger.rb:43:in `red'
-/usr/lib/ruby/1.8/compass/compiler.rb:102:in `compile'
-/usr/lib/ruby/1.8/compass/compiler.rb:93:in `compile_if_required'
-/usr/lib/ruby/1.8/compass/compiler.rb:84:in `run'
-/usr/lib/ruby/1.8/compass/compiler.rb:82:in `each'
-/usr/lib/ruby/1.8/compass/compiler.rb:82:in `run'
-/usr/lib/ruby/1.8/compass/commands/watch_project.rb:92:in `recompile'
-/usr/lib/ruby/1.8/compass/commands/watch_project.rb:4:in `to_proc'
-/usr/lib/ruby/1.8/fssm/path.rb:71:in `call'
-/usr/lib/ruby/1.8/fssm/path.rb:71:in `run_callback'
-/usr/lib/ruby/1.8/fssm/path.rb:54:in `callback_action'
-/usr/lib/ruby/1.8/fssm/path.rb:34:in `update'
-/usr/lib/ruby/1.8/fssm/state/directory.rb:32:in `modified'
-/usr/lib/ruby/1.8/fssm/state/directory.rb:31:in `each'
-/usr/lib/ruby/1.8/fssm/state/directory.rb:31:in `modified'
-/usr/lib/ruby/1.8/fssm/state/directory.rb:16:in `refresh'
-/usr/lib/ruby/1.8/fssm/backends/inotify.rb:12:in `add_handler'
-/usr/lib/ruby/1.8/rb-inotify/notifier.rb:182:in `call'
-/usr/lib/ruby/1.8/rb-inotify/notifier.rb:182:in `watch'
-/usr/lib/ruby/1.8/rb-inotify/watcher.rb:41:in `[]'
-/usr/lib/ruby/1.8/rb-inotify/watcher.rb:41:in `callback!'
-/usr/lib/ruby/1.8/rb-inotify/event.rb:128:in `callback!'
-/usr/lib/ruby/1.8/rb-inotify/notifier.rb:211:in `process'
-/usr/lib/ruby/1.8/rb-inotify/notifier.rb:211:in `each'
-/usr/lib/ruby/1.8/rb-inotify/notifier.rb:211:in `process'
-/usr/lib/ruby/1.8/rb-inotify/notifier.rb:194:in `run'
-/usr/lib/ruby/1.8/fssm/backends/inotify.rb:20:in `run'
-/usr/lib/ruby/1.8/fssm/monitor.rb:24:in `run'
-/usr/lib/ruby/1.8/fssm.rb:17:in `monitor'
-/usr/lib/ruby/1.8/compass/commands/watch_project.rb:61:in `perform'
-/usr/lib/ruby/1.8/compass/commands/base.rb:18:in `execute'
-/usr/lib/ruby/1.8/compass/commands/project_base.rb:19:in `execute'
-/usr/lib/ruby/1.8/compass/exec/sub_command_ui.rb:38:in `perform!'
-/usr/lib/ruby/1.8/compass/exec/sub_command_ui.rb:15:in `run!'
-/usr/bin/compass:26
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$footer-height\".\A         on line 5 of /home/megoth/Documents/public_html/neuf-web/wp-content/themes/neuf-web/src/main-pad.scss\A \A 1: /home/megoth/Documents/public_html/neuf-web/wp-content/themes/neuf-web/src/main-pad.scss"; }
+/* line 22, ../../../../../../../../../var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 24, ../../../../../../../../../var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 26, ../../../../../../../../../var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 28, ../../../../../../../../../var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 101, ../../../../../../../../../var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 30, ../../../../../../../../../var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 114, ../../../../../../../../../var/lib/gems/1.8/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 2, ../src/skin.scss */
+form input {
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  -o-border-radius: 1em;
+  -ms-border-radius: 1em;
+  -khtml-border-radius: 1em;
+  border-radius: 1em;
+  background-color: white;
+  border: 0;
+  padding: 0.25em 0.5em;
+}
+
+@media screen and (min-width: 640) {
+  /* line 13, ../src/main-pad.scss */
+  article[role="main_content"] {
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    -o-border-radius: 1em;
+    -ms-border-radius: 1em;
+    -khtml-border-radius: 1em;
+    border-radius: 1em;
+    -moz-box-shadow: 0.5em 0.25em 0 rgba(0, 0, 0, 0.14);
+    -webkit-box-shadow: 0.5em 0.25em 0 rgba(0, 0, 0, 0.14);
+    box-shadow: 0.5em 0.25em 0 rgba(0, 0, 0, 0.14);
+    background-color: white;
+    float: left;
+    margin: 0 2% 1% 0;
+    min-height: 300px;
+    width: 68%;
+    -moz-border-radius-topleft: 0;
+    -webkit-border-top-left-radius: 0;
+    -o-border-top-left-radius: 0;
+    -ms-border-top-left-radius: 0;
+    -khtml-border-top-left-radius: 0;
+    border-top-left-radius: 0;
+  }
+
+  /* line 18, ../src/main-pad.scss */
+  aside {
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    -o-border-radius: 1em;
+    -ms-border-radius: 1em;
+    -khtml-border-radius: 1em;
+    border-radius: 1em;
+    -moz-box-shadow: 0.5em 0.25em 0 rgba(0, 0, 0, 0.14);
+    -webkit-box-shadow: 0.5em 0.25em 0 rgba(0, 0, 0, 0.14);
+    box-shadow: 0.5em 0.25em 0 rgba(0, 0, 0, 0.14);
+    background-color: white;
+    float: left;
+    margin: 0 2% 1% 0;
+    min-height: 300px;
+    width: 28%;
+  }
+
+  /* line 23, ../src/main-pad.scss */
+  #footer,
+  #root {
+    margin: 0 auto -86px;
+    width: 640px;
+  }
+}

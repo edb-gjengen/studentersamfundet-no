@@ -1,8 +1,21 @@
 
+@import "compass/css3/border-radius";
+@import "skin";
+
 @media screen and (min-width: 640) {
+
+	article[role="main_content"] {
+		@include content-box($content-column-left-width);
+		@include border-top-left-radius(0);
+	}
+
+	aside {
+		@include content-box($content-column-right-width);
+	}
+	
 	#footer,
 	#root {
-		margin: 0 auto -$footer-height;
+		margin: 0 auto $footer-height * -1;
 		width: $page-width-pad;
 	}
 }

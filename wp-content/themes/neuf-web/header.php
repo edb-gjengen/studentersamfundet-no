@@ -1,12 +1,10 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title><?php wp_title(); ?> <?php bloginfo('name');?></title>
-
-<?php
-wp_head();
-?>
-<link rel="stylesheet" href="<?= bloginfo('stylesheet_directory'); ?>/stylesheets/main.css" />
-
+	<title><?php wp_title(); ?> <?php bloginfo('name');?></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" media="all" href="<?= bloginfo('stylesheet_directory'); ?>/stylesheets/main.css" />
 </head>
 <body <?php body_class(); ?>>
 

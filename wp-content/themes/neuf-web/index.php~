@@ -25,36 +25,35 @@ $args = array(
       'order' => 'ASC'
       );
 ?>
-<article id="content">
-	<?php
-	$loop = new WP_Query( $args );
+<article role="main_content">
+<?php
+$loop = new WP_Query( $args );
 
-	if ($loop->have_posts()) :
-		  while ($loop->have_posts()) : $loop->the_post();
-		      ?>
-		      <div class="event">
-		          <a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_post_thumbnail('event-image'); ?><br /><?php the_title(); ?></a>
-		      </div>
-		      <?php
-		  endwhile;
-	else:
-		  echo "No events";
-	endif;
+if ($loop->have_posts()) :
+	  while ($loop->have_posts()) : $loop->the_post();
+	      ?>
+	      <div class="event">
+	          <a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_post_thumbnail('event-image'); ?><br /><?php the_title(); ?></a>
+	      </div>
+	      <?php
+	  endwhile;
+else:
+	  echo "No events";
+endif;
 
 
-	if (have_posts()) :
-		 while (have_posts()) :
-		    the_post();
-		    the_content();
-		 endwhile;
-	endif;
-	?>
-
-	<section id="sidebar">
-	<?php
-	get_sidebar();
-	?>
-</section>
+if (have_posts()) :
+	 while (have_posts()) :
+	    the_post();
+	    the_content();
+	 endwhile;
+endif;
+?>
+<aside>
+<?php
+get_sidebar();
+?>
+</aside>
 </article>
 <?php
 get_footer(); 
