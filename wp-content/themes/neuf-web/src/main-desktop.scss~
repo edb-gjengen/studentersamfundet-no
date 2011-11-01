@@ -1,7 +1,0 @@
-
-@media screen and (min-width: 960) {
-	footer,
-	#root {
-		width: $page-width-desktop;
-	}
-}
