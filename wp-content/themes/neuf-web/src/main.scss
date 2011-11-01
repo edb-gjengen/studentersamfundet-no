@@ -12,9 +12,20 @@
 
 article[role="main_content"] {
 	background-color: $content-background-color;
+	div[role="main_page"],
+	div[role="post_content"] {
+		padding: $content-padding;
+	}
+	div[role="post_content"] {
+		@include content;
+		h1 {
+			color: $base-off-color-light;
+			font-size: 2em;
+		}
+	}
 }
 
-aside {
+aside[role="support_main_content"] {
 	background-color: $content-background-color;
 }
 
@@ -34,7 +45,8 @@ html {
 header {
 	@include clearfix;
 	padding-top: 2em;
-	h1 {
+	h1,
+	h2 {
 		float: left;
 		padding-bottom: 2em;
 		width: $content-column-left-width;
