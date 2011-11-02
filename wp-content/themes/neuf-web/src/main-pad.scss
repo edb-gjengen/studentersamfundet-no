@@ -10,7 +10,8 @@
 
 @media screen and (min-width: 640px) {
 
-	article[role="main_content"] {
+	article[role="main"],
+	section[role="main"] {
 		@include content-box($content-column-left-width);
 		@include border-top-left-radius(0);
 	}

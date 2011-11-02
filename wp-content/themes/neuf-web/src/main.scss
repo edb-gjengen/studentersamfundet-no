@@ -10,7 +10,8 @@
 
 @include sticky-footer($footer-height);
 
-article[role="main_content"] {
+article[role="main"],
+section[role="main"] {
 	background-color: $content-background-color;
 	div[role="main_page"],
 	div[role="post_content"] {
@@ -25,7 +26,7 @@ article[role="main_content"] {
 	}
 }
 
-aside[role="support_main_content"] {
+aside[role="complementary"] {
 	background-color: $content-background-color;
 }
 
