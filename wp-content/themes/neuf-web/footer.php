@@ -1,4 +1,4 @@
-<footer>
+<footer id="footer">
 	<ul id="supporters">
 		<li>
 			<a href="#">
