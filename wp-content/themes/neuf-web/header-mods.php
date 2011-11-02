@@ -103,14 +103,14 @@ add_action('init','neuf_remove_blogdescription');
  * Displays the login form in the header.
  */
 function neuf_display_login() { ?>
-		<section id="meta">
+		<section id="meta-header">
 			<form>
 				<input name="username" type="text" placeholder="BRUKERNAVN" />
 				<input name="password" type="password" placeholder="PASSORD" />
 
 				<input name="search" type="text" placeholder="SØK" />
 			</form>
-		</section> <!-- #meta -->
+		</section> <!-- #meta-header -->
 <?php }
 add_action('thematic_header','neuf_display_login',8);
 
@@ -154,5 +154,27 @@ function neuf_primary_menu_name($name) {
 	return $name;
 }
 add_filter('thematic_primary_menu_name','neuf_primary_menu_name');
+
+/**
+ * Do not create wrapper element.
+ *
+ * Don't clutter our HTML.
+ */
+function neuf_open_wrapper($boolean) {
+	$boolean = false;
+	return $boolean;
+}
+add_filter('thematic_open_wrapper','neuf_open_wrapper');
+
+/**
+ * Do not create wrapper element.
+ *
+ * Don't clutter our HTML.
+ */
+function neuf_close_wrapper($boolean) {
+	$boolean = false;
+	return $boolean;
+}
+add_filter('thematic_close_wrapper','neuf_close_wrapper');
 
 ?>

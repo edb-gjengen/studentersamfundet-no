@@ -77,5 +77,4 @@ if (apply_filters('thematic_open_wrapper', true)) {
     thematic_belowheader();
     
     ?>
-    <div id="main">
-    
+

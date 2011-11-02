@@ -1,33 +1,33 @@
-<div id="footer">
+<footer>
 	<ul id="supporters">
 		<li>
 			<a href="#">
-				<img src="<?= bloginfo('stylesheet_directory'); ?>/images/logo/uio.png">
+				<img src="<?= bloginfo('stylesheet_directory'); ?>/images/logo/uio.png" alt="Universitetet i Oslo">
 			</a>
 		</li>
 		<li>
 			<a href="#">
-				<img src="<?= bloginfo('stylesheet_directory'); ?>/images/logo/studio.png">
+				<img src="<?= bloginfo('stylesheet_directory'); ?>/images/logo/studio.png" alt="Studentfestivalen i Oslo">
 			</a>
 		</li>
 		<li>
 			<a href="#">
-				<img src="<?= bloginfo('stylesheet_directory'); ?>/images/logo/logo_sh86.png">
+				<img src="<?= bloginfo('stylesheet_directory'); ?>/images/logo/logo_sh86.png" alt="Studenthovedstaden">
 			</a>
 		</li>
 		<li>
 			<a href="#">
-				<img src="<?= bloginfo('stylesheet_directory'); ?>/images/logo/toro.png">
+				<img src="<?= bloginfo('stylesheet_directory'); ?>/images/logo/toro.png" alt="Toro">
 			</a>
 		</li>
 		<li>
 			<a href="#">
-				<img src="<?= bloginfo('stylesheet_directory'); ?>/images/logo/akademika.png">
+				<img src="<?= bloginfo('stylesheet_directory'); ?>/images/logo/akademika.png" alt="Akademika">
 			</a>
 		</li>
 		<li>
 			<a href="#">
-				<img src="<?= bloginfo('stylesheet_directory'); ?>/images/logo/nrf.png">
+				<img src="<?= bloginfo('stylesheet_directory'); ?>/images/logo/nrf.png" alt="Norsk Rockforbund">
 			</a>
 		</li>
 	</ul>

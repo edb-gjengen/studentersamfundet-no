@@ -41,7 +41,7 @@ $args = array(
 		echo '<div id="posts" class="hfeed">';
 		if (have_posts()) :
 			 while (have_posts()) :
-				              echo '<article class="post"';
+				              echo '<article class="post">';
 					the_post();
 					the_content();
 				              echo '</article> <!-- .post -->';

@@ -203,20 +203,20 @@ header #site-title a {
   text-indent: -9999px;
 }
 /* line 65, ../src/main.scss */
-header #meta {
+header #meta-header {
   float: right;
   width: 30%;
 }
 /* line 69, ../src/main.scss */
-header #meta form input {
+header #meta-header form input {
   margin: 0.5em 0;
 }
 /* line 71, ../src/main.scss */
-header #meta form input:first-child {
+header #meta-header form input:first-child {
   margin-top: 0;
 }
 /* line 74, ../src/main.scss */
-header #meta form input[name='search'] {
+header #meta-header form input[name='search'] {
   margin-top: 1.5em;
 }
 /* line 80, ../src/main.scss */
