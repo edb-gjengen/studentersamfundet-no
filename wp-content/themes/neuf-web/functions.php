@@ -9,4 +9,8 @@
 add_image_size('slider-image', 652, 245, true);
 add_image_size('event-image', 300, 180, true);
 
+add_theme_support('menus');
+
+require('header-mods.php');
+
 ?>

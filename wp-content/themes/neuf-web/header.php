@@ -1,29 +1,81 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title><?php wp_title(); ?> <?php bloginfo('name');?></title>
-	<?php wp_head();?>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" media="all" href="<?= bloginfo('stylesheet_directory'); ?>/stylesheets/main.css" />
+<?php
+
+    // Creating the doctype
+    thematic_create_doctype();
+    
+    // Creating the head profile
+    thematic_head_profile();
+
+    // Creating the doc title
+    thematic_doctitle();
+    
+    // Creating the content type
+    thematic_create_contenttype();
+    
+    // Creating the description
+    thematic_show_description();
+    
+    // Creating the robots tags
+    thematic_show_robots();
+    
+    // Creating the canonical URL
+    thematic_canonical_url();
+    
+    // Loading the stylesheet
+    thematic_create_stylesheet();
+
+	if (THEMATIC_COMPATIBLE_FEEDLINKS) {    
+    	// Creating the internal RSS links
+    	thematic_show_rss();
+    
+    	// Creating the comments RSS links
+    	thematic_show_commentsrss();
+   	}
+    
+    // Creating the pingback adress
+    thematic_show_pingback();
+    
+    // Enables comment threading
+    thematic_show_commentreply();
+
+    // Calling WordPress' header action hook
+    wp_head();
+    
+?>
+
 </head>
-<body <?php body_class(); ?>>
 
-<div id="root">
+<?php 
+
+thematic_body();
+
+// action hook for placing content before opening #wrapper
+thematic_before(); 
+
+if (apply_filters('thematic_open_wrapper', true)) {
+	echo '<div id="wrapper" class="hfeed">';
+}
+    
+    // action hook for placing content above the theme header
+    thematic_aboveheader(); 
+    
+    ?>   
+
 	<header>
-		<h<?php echo is_home() ? "1" : "2"; ?>>
-			<a href="<?php bloginfo('url'); ?>">&nbsp;</a>
-		</h<?php echo is_home() ? "1" : "2"; ?>>
-		
-		<section id="meta">
-			<form>
-				<input name="username" type="text" placeholder="BRUKERNAVN" />
-				<input name="password" type="password" placeholder="PASSORD" />
-				
-				<input name="search" type="text" placeholder="SØK" />
-			</form>
-		</section>
+    
+        <?php 
+        
+        // action hook creating the theme header
+        thematic_header();
+        
+        ?>
 
-		<nav id="menu"><?php wp_nav_menu(); ?></nav>
 	</header>
-
+    <?php
+    
+    // action hook for placing content below the theme header
+    thematic_belowheader();
+    
+    ?>
+    <div id="main">
+    

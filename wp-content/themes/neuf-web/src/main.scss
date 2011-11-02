@@ -45,8 +45,7 @@ html {
 header {
 	@include clearfix;
 	padding-top: 2em;
-	h1,
-	h2 {
+	#site-title {
 		float: left;
 		padding-bottom: 2em;
 		width: $content-column-left-width;
@@ -58,6 +57,8 @@ header {
 			min-width: $logo-banner-width;
 			display: block;
 			text-decoration: none;
+			overflow:hidden;
+			text-indent:-9999px;
 		}
 	}
 	#meta {
@@ -74,6 +75,9 @@ header {
 				}
 			}
 		}
+	}
+	#skip-link {
+		display: none;
 	}
 	nav {
 		float: left;
