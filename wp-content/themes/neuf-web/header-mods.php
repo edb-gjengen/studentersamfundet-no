@@ -5,10 +5,21 @@
  * Overrides Thematic's old html4 doctype, and replace it with a new and fancy html5 doctype.
  */
 function neuf_doctype($html) {
-	$html = "<!doctype html>\n";
+	$html = "<!DOCTYPE html>\n";
 	return $html;
 }
 add_filter('thematic_create_doctype','neuf_doctype');
+
+/**
+ * Constructs the head element.
+ *
+ * Overriding Thematic's head element, because it references a profile which is not relevant for us. More than this, the profile attribute is not defined for HTML5 either.
+ */
+function neuf_remove_head_profile($html) {
+	$html = "<head>";
+	return $html;
+}
+add_filter('thematic_head_profile','neuf_remove_head_profile');
 
 /**
  * Adds viewport meta tag.

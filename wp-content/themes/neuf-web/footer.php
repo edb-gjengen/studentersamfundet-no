@@ -1,8 +1,4 @@
-
-	<div id="root_footer"></div>
-</div>
 <div id="footer">
-	<?php wp_footer(); ?>
 	<ul id="supporters">
 		<li>
 			<a href="#">
@@ -35,6 +31,8 @@
 			</a>
 		</li>
 	</ul>
+	<?php wp_footer(); ?>
 </footer>
+
 </body>
 </html>
