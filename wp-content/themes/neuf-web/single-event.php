@@ -12,7 +12,7 @@ if (have_posts()) :
         ?>
         <div class="event">
             <h2><?php the_title(); ?></h2>
-            <div class="event datetime"><?php echo date_i18n(get_option('date_format') . " k\l. " .get_option('time_format'), get_post_meta(get_the_ID(), '_neuf_events_starttime',true) ); ?></div>
+            <div class="event datetime"><?php echo format_datetime(get_post_meta(get_the_ID(), '_neuf_events_starttime',true)); ?></div>
                 <div class="event price"><?php
                 $price = get_post_meta(get_the_ID(), '_neuf_events_price',true); 
                 echo ($price != "" ? $price : "Gratis");

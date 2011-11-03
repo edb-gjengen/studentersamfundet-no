@@ -13,4 +13,11 @@ add_theme_support('menus');
 
 require('header-mods.php');
 
+/* Format a unix timestamp respecting the options set in Settings->General. */
+if(!function_exists('format_datetime')) {
+	function format_datetime($timestamp) {
+		return date_i18n(get_option('date_format')." ".get_option('time_format'), intval($timestamp));
+	}
+}
+
 ?>
