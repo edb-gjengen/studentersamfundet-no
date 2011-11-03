@@ -1,45 +1,32 @@
 <?php
 /* TODO: Customize display of custom post type event */
 ?>
-<?php
-get_header();
-?>
-<article id="content">
-        <section id="main_content">
+<?php get_header(); ?>
+
+        <section id="content" role="main">
 <?php 
 if (have_posts()) :
     while (have_posts()) : the_post();
         ?>
-        <div class="event">
-            <h2><?php the_title(); ?></h2>
-            <div class="event datetime"><?php echo format_datetime(get_post_meta(get_the_ID(), '_neuf_events_starttime',true)); ?></div>
-                <div class="event price"><?php
-                $price = get_post_meta(get_the_ID(), '_neuf_events_price',true); 
-                echo ($price != "" ? $price : "Gratis");
-            ?></div>
-        </div>
-        <?php
-    endwhile;
-else:
-    echo "No events";
-endif;
-
-
-if (have_posts()) :
-   while (have_posts()) :
-      the_post();
-      the_content();
-   endwhile;
-endif;
-
+		<article class="event">
+			<header class="event-header">
+				<h1><?php the_title(); ?></h1>
+				<div class="event datetime"><?php echo format_datetime(get_post_meta(get_the_ID(), '_neuf_events_starttime',true)); ?></div>
+				<div class="event price"><?php
+					$price = get_post_meta(get_the_ID(), '_neuf_events_price',true); 
+					echo ($price != "" ? $price : "Gratis");
 ?>
-        </section>
-        <section id="sidebar">
-        <?php
-        get_sidebar();
-        ?>
-    </section>
-</article>
+				</div>
+			</header> <!-- .event-header -->
+<?php the_content(); ?>
+	        </article> <!-- .event -->
 <?php
-get_footer(); 
+    endwhile; endif;
 ?>
+        </section> <!-- #main_content -->
+
+	<aside id="sidebar">
+<?php get_sidebar(); ?>
+	</aside> <!-- #sidebar -->
+
+<?php get_footer(); ?>
