@@ -3,12 +3,18 @@
 <section role="main">
 
 <?php
+/* Events in the next 7 days, including today.
+ * Ref: http://codex.wordpress.org/Class_Reference/WP_Query#Custom_Field_Parameters
+ */
+$meta_query = array(
+	'key' => '_neuf_events_starttime',
+	'value' => array( date('U',strtotime('-8 hours')), date('U',strtotime('+1 week'))), 
+	'compare' => 'BETWEEN',
+	'type' => 'numeric',
+);
 $args = array(
       'post_type' => 'event',
-      'posts_per_page' => -1,
-      'meta_key' => '_neuf_events_starttime',
-      'orderby' => 'meta_value',
-      'order' => 'ASC'
+	  'meta_query' => array($meta_query),
       );
 $events = new WP_Query( $args );
 
@@ -42,11 +48,13 @@ if ($events->have_posts()) : ?>
 
 	        <article class="event">
 			<header>
-				<?php the_title(); ?></a>
+			<a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a>
 				<div class="event datetime"><?php echo format_datetime(get_post_meta(get_the_ID(), '_neuf_events_starttime',true)); ?></div>
 				<div class="event price"><?php $price = get_post_meta(get_the_ID(), '_neuf_events_price',true); echo ($price != "" ? $price : "Gratis"); ?></div>
+				<div class="event venue"><?php echo get_post_meta(get_the_ID(), '_neuf_events_venue',true);?></div>
+				<div class="event type"><?php echo get_post_meta(get_the_ID(), '_neuf_events_type',true); ?></div>
 			</header>
-			<a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_post_thumbnail('event-image'); ?>
+			<a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_post_thumbnail('event-image'); ?></a>
 	        </article> <!-- .event -->
 
 <?php endwhile;?>
