@@ -101,6 +101,7 @@ add_action('init','neuf_remove_blogdescription');
 
 /**
  * Displays the login form in the header.
+ * Put this somewhere.
  */
 function neuf_display_login() { ?>
 		<section id="meta-header">
@@ -108,11 +109,9 @@ function neuf_display_login() { ?>
 				<input name="username" type="text" placeholder="BRUKERNAVN" />
 				<input name="password" type="password" placeholder="PASSORD" />
 
-				<input name="search" type="text" placeholder="SØK" />
 			</form>
 		</section> <!-- #meta-header -->
 <?php }
-add_action('thematic_header','neuf_display_login',8);
 
 
 /**

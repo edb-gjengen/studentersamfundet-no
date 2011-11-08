@@ -1,5 +1,4 @@
 <?php
-/* TODO: Customize display of custom post type event */
 ?>
 <?php get_header(); ?>
 
