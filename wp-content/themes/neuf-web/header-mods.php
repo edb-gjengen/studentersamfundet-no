@@ -100,8 +100,8 @@ function neuf_remove_blogdescription() {
 add_action('init','neuf_remove_blogdescription');
 
 /**
- * Displays the login form in the header.
- * Put this somewhere.
+ * Displays the login form.
+ * TODO: Put this somewhere.
  */
 function neuf_display_login() { ?>
 		<section id="meta-header">

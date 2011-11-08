@@ -10,7 +10,7 @@ if (have_posts()) :
 				<h1><?php the_title(); ?></h1>
 			</header> <!-- .page-header -->
 <?php the_content(); ?>
-	        </article> <!-- .event -->
+	        </article> <!-- .page -->
 <?php
     endwhile; endif;
 ?>
