@@ -8,8 +8,6 @@ add_theme_support( 'menus' );
 add_theme_support( 'post-thumbnails' );
 add_theme_support( 'automatic-feed-links' );
 
-require( 'header-mods.php' );
-
 /* Format a unix timestamp respecting the options set in Settings->General. */
 if(!function_exists('format_datetime')) {
 	function format_datetime( $timestamp ) {
