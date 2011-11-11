@@ -5,7 +5,7 @@
 if ( have_posts() ) :
 	while (have_posts()) : the_post();
 		?>
-		<article <?php post_class(); ?>>
+		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<header>
 				<h1><?php the_title(); ?></h1>
 				<div class="thumbnail"><?php the_post_thumbnail('post-header-image'); ?></div>
