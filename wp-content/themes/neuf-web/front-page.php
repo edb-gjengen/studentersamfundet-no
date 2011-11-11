@@ -7,15 +7,17 @@
  * Ref: http://codex.wordpress.org/Class_Reference/WP_Query#Custom_Field_Parameters
  */
 $meta_query = array(
-	'key' => '_neuf_events_starttime',
-	'value' => array( date('U',strtotime('-8 hours')), date('U',strtotime('+1 week'))), 
-	'compare' => 'BETWEEN',
-	'type' => 'numeric',
+	'key'     => '_neuf_events_starttime',
+	'value'   => array( date( 'U' , strtotime( '-8 hours' ) ) ), 
+	'compare' => '>',
+	'type'    => 'numeric'
 );
+
 $args = array(
-      'post_type' => 'event',
-	  'meta_query' => array($meta_query),
-      );
+	'post_type'  => 'event',
+	'meta_query' => array( $meta_query )
+);
+
 $events = new WP_Query( $args );
 
 if ($events->have_posts()) : ?>
