@@ -22,9 +22,7 @@
 		</form>
 	</section> <!-- #meta-header -->
 
-        <nav>
-            <?php wp_nav_menu(); ?>
-        </nav>
+	<?php wp_nav_menu( array( 'theme_location' => 'main', 'container' => 'nav' ) ); ?>
 
 
 	<section id="skip-link">
