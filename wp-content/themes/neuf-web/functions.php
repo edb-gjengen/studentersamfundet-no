@@ -4,7 +4,9 @@
 add_image_size( 'slider-image' , 652 , 245 , true );
 add_image_size( 'event-image' , 300 , 180 , true );
 
-add_theme_support( 'menus' , 'post_thumbnails');
+add_theme_support( 'menus' );
+add_theme_support( 'post-thumbnails' );
+add_theme_support( 'automatic-feed-links' );
 
 require( 'header-mods.php' );
 
