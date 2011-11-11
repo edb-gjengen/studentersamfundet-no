@@ -5,10 +5,10 @@
 if ( have_posts() ) :
 	while (have_posts()) : the_post();
 		?>
-		<article class="<?php echo get_post_type(); ?>">
+		<article <?php post_class(); ?>>
 			<header>
 				<h1><?php the_title(); ?></h1>
-				<?php the_post_thumbnail(); ?>
+				<div class="thumbnail"><?php the_post_thumbnail('post-header-image'); ?></div>
 				<?php if ( get_post_type() == "event" ): ?>
 				    <div class="datetime"><?php echo format_datetime( get_post_meta( get_the_ID(), '_neuf_events_starttime',  true) ); ?></div>
 				    <div class="price"><?php
@@ -24,6 +24,12 @@ if ( have_posts() ) :
 		</article> <!-- .event -->
 	<?php
 	endwhile;
+else:
+    ?>
+    <p>
+    Nothing to display.
+    </p>
+    <?php
 endif;
 ?>
 </section> <!-- #main_content -->
