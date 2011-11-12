@@ -46,7 +46,7 @@ if ($events->have_posts()) : ?>
 		<header>
 			<h1>Program</h1>
 		</header>
-<?php while ($events->have_posts()) : $events->the_post(); ?>
+		<?php while ($events->have_posts()) : $events->the_post(); ?>
 
 	        <article class="event">
 			<header>
