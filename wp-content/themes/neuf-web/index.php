@@ -7,17 +7,22 @@ if ( have_posts() ) :
 		?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<header>
+				<?php the_post_thumbnail('post-header-image'); ?>
 				<h1><?php the_title(); ?></h1>
-				<div class="thumbnail"><?php the_post_thumbnail('post-header-image'); ?></div>
 				<?php if ( get_post_type() == "event" ): ?>
 				    <div class="datetime"><?php echo format_datetime( get_post_meta( get_the_ID(), '_neuf_events_starttime',  true) ); ?></div>
 				    <div class="price"><?php
 					$price = get_post_meta(get_the_ID(), '_neuf_events_price',true); 
-					echo ($price ? $price : "Gratis");
+					echo ($price ? $price . ',-' : "Gratis");
 				    ?>
 				    </div>
 				    <div class="venue"><?php echo get_post_meta( get_the_ID(), '_neuf_events_venue', true ); ?></div>
 				    <div class="type"><?php echo get_post_meta( get_the_ID(), '_neuf_events_type', true ); ?></div>
+				<?php elseif (get_post_type() == "post"): ?>
+				    <span>
+				    Tekst: <?php the_author_posts_link(); ?>
+				    </span>
+
 				<?php endif;?>
 			</header> <!-- .event-header -->
 			<?php the_content(); ?>

@@ -423,10 +423,49 @@ form input {
   }
 }
 @media screen and (min-width: 960px) {
-  /* line 4, ../src/main-desktop.scss */
+  /* line 3, ../src/main-desktop.scss */
   #footer,
   #root {
     width: 90%;
     max-width: 1200px;
   }
+}
+/**
+ * Typography
+ */
+/* line 13, ../src/main-desktop.scss */
+p {
+  font-size: 16px;
+  font-family: "Times New Roman", Times, serif;
+  line-height: 1.5em;
+  color: #333;
+  margin: 1.5em 0;
+}
+
+/* line 22, ../src/main-desktop.scss */
+.single section#content > article.hentry {
+  padding: 2em 0;
+}
+/* line 26, ../src/main-desktop.scss */
+.single section#content > article.hentry * {
+  padding: 0 2em;
+}
+/* line 30, ../src/main-desktop.scss */
+.single section#content > article.hentry header {
+  padding: 0;
+}
+/* line 33, ../src/main-desktop.scss */
+.single section#content > article.hentry header * {
+  padding: 0 2em;
+}
+/* line 37, ../src/main-desktop.scss */
+.single section#content > article.hentry header img.attachment-post-header-image {
+  width: 100%;
+  padding: 0;
+}
+/* line 42, ../src/main-desktop.scss */
+.single section#content > article.hentry header h1 {
+  padding: 0 1em;
+  color: #f09321;
+  font-size: 2em;
 }
