@@ -37,13 +37,23 @@ $args = array(
 	'meta_query' => array( $meta_query )
 );
 
-$events = new WP_Query( $args ); ?>
+$events = new WP_Query( $args );
+
+$news = new WP_Query( 'type=post' );
+?>
 <section role="main">
 <?php if ($events->have_posts()) : ?>
 	<section id="featured">
 	<a href="#" id="sprev">Prev</a>
 	<a href="#" id="snext">Next</a>
 	    <div id="slider" style="height:332px;"> 
+		<?php
+		 if ($news->have_posts()) : $news->the_post(); ?>
+			<article id="post-<?php the_ID(); ?>" <?php post_class();?>  style="height:332px;">
+			    <a href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_title(); ?><?php the_post_thumbnail('slider-image'); ?></a>
+			    <?php the_excerpt(); ?>
+			</article>
+		<?php endif; ?>
 		<?php $counter = 0;
 		while ($events->have_posts() && $counter < 4) : $events->the_post(); ?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class();?> style="height:332px;">
@@ -57,13 +67,6 @@ $events = new WP_Query( $args ); ?>
 		<?php $counter++;
 		endwhile;?>
 
-		<?php
-		 if (have_posts()) : the_post(); ?>
-			<article id="post-<?php the_ID(); ?>" <?php post_class();?>  style="height:332px;">
-			    <a href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_title(); ?><?php the_post_thumbnail('slider-image'); ?></a>
-			    <?php the_excerpt(); ?>
-			</article>
-	<?php endif; ?>
 	    </div>
 	    
 	</section>
@@ -98,7 +101,7 @@ $events = new WP_Query( $args ); ?>
 			<h1>Nyheter</h1>
 		</header>
 
-<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+<?php if ($news->have_posts()) : while ($news->have_posts()) : $news->the_post(); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<header>
 			<h1><a href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_title(); ?></a></h1>
