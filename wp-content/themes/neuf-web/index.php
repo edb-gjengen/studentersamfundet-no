@@ -18,6 +18,11 @@ if ( have_posts() ) :
 				    </div>
 				    <div class="venue"><?php echo get_post_meta( get_the_ID(), '_neuf_events_venue', true ); ?></div>
 				    <div class="type"><?php echo get_post_meta( get_the_ID(), '_neuf_events_type', true ); ?></div>
+				<?php else: ?>
+				    <span>
+				    Tekst: <?php the_author_posts_link(); ?>
+				    </span>
+
 				<?php endif;?>
 			</header> <!-- .event-header -->
 			<?php the_content(); ?>
