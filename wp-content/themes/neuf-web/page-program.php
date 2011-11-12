@@ -16,7 +16,6 @@ if ( $events->have_posts() ) :
 	$last_week = -1;
 	$last_day = -1;
 	$new_day = false;
-	$alt = false;
 	ob_start();
 
 
@@ -33,10 +32,6 @@ if ( $events->have_posts() ) :
 		<?php
 		if ( $day != $last_day && $new_day ):
 			$new_day = false;
-			if ( $alt )
-				$alt = false;
-			else
-				$alt = true;
 			?>
 			</div>
 			<?php
@@ -53,7 +48,7 @@ if ( $events->have_posts() ) :
 			$last_day = $day;
 			$new_day = true;
 			?>
-			<div class="day <?php if ( $alt ) echo 'alt'; ?>">
+			<div class="day">
 				<h1><?php echo strftime( "%A %e. %B", $time ); ?></h1>
 		<?php
 		endif;
