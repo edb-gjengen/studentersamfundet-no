@@ -3,6 +3,22 @@
 .hidden {
 	display:none;
 }
+
+.week {
+	display:block;
+	float:center;
+	width:100%;
+}
+
+.day {
+	width:50%;
+	display:block;
+	float:left;
+}
+
+.alt {
+	float:right;
+}
 </style>
 
 <aside id="primary" class="widget-area" role="complementary">

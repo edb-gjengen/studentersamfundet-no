@@ -47,15 +47,17 @@ function events_toggle( type ) {
 }
 
 $(function() {
-	var sizeLeft = 0;
-	var sizeRight = 0;
-	$('.day').each(function(index) {
-		if (sizeLeft <= sizeRight) {
-			$(this).removeClass('alt');
-			sizeLeft += $(this).height();
-		} else {
-			$(this).addClass('alt');
-			sizeRight += $(this).height();
-		}
+	$('.week').each(function(index) {
+		var sizeLeft = 0;
+		var sizeRight = 0;
+		$(this).nextUntil(function('.day') {
+			if (sizeLeft <= sizeRight) {
+				$(this).removeClass('alt');
+				sizeLeft += $(this).height();
+			} else {
+				$(this).addClass('alt');
+				sizeRight += $(this).height();
+			}
+		});
 	});
 });
