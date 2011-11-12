@@ -57,7 +57,7 @@ $(function() {
 	$('.week').each(function(index) {
 		var sizeLeft = 0;
 		var sizeRight = 0;
-		$(this).nextUntil(function('.day') {
+		$(this).nextUntil('.day', function(index) {
 			if (sizeLeft <= sizeRight) {
 				$(this).removeClass('alt');
 				sizeLeft += $(this).height();

@@ -48,7 +48,7 @@
 					foreach ( $types as $type ):
 						?>
 						<li>
-							<a onclick="events_toggle('<?php echo $type->name ?>')"><?php echo $type->name; ?></a>
+							<a href='#' onclick="events_toggle('<?php echo $type->name ?>')"><?php echo $type->name; ?></a>
 						</li>
 						<?php
 					endforeach;
