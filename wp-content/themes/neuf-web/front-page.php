@@ -100,20 +100,22 @@ $news = new WP_Query( 'type=post' );
 <?php endif; ?>
 
 	<section id="posts" class="hfeed">
-		<header>
-			<h1>Nyheter</h1>
-		</header>
+	    <header>
+		<h1>Nyheter</h1>
+	    </header>
 
-<?php if ($news->have_posts()) : while ($news->have_posts()) : $news->the_post(); ?>
-		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<header>
-			<h1><a href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_title(); ?></a></h1>
-			</header>
-<?php the_excerpt(); ?>
-		</article> <!-- .post -->
-<?php endwhile;?>
-    <p>Nothing to display.</p>
-<?php endif; ?>
+		<?php if ($news->have_posts()) :
+			while ($news->have_posts()) : $news->the_post(); ?>
+				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+					<header>
+					<h1><a href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_title(); ?></a></h1>
+					</header>
+					<?php the_excerpt(); ?>
+				</article> <!-- .post -->
+			<?php endwhile;?>
+		<?php else: ?>
+			<p>Nothing to display.</p>
+		<?php endif; ?>
 
 	</section> <!-- #posts.hfeed -->
 
