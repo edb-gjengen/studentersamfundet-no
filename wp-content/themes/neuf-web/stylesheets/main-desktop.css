@@ -18,30 +18,43 @@ p {
   margin: 1.5em 0;
 }
 
-/* line 22, ../src/main-desktop.scss */
+/* line 25, ../src/main-desktop.scss */
+.home section#content section#featured #slider article {
+  width: 100%;
+}
+/* line 28, ../src/main-desktop.scss */
+.home section#content section#featured #slider article img.attachment-slider-image {
+  text-align: center;
+}
+
+/* line 38, ../src/main-desktop.scss */
 .single section#content > article.hentry {
   padding: 2em 0;
 }
-/* line 26, ../src/main-desktop.scss */
+/* line 42, ../src/main-desktop.scss */
 .single section#content > article.hentry * {
   padding: 0 2em;
 }
-/* line 30, ../src/main-desktop.scss */
+/* line 46, ../src/main-desktop.scss */
 .single section#content > article.hentry header {
   padding: 0;
 }
-/* line 33, ../src/main-desktop.scss */
-.single section#content > article.hentry header * {
-  padding: 0 2em;
-}
-/* line 37, ../src/main-desktop.scss */
+/* line 49, ../src/main-desktop.scss */
 .single section#content > article.hentry header img.attachment-post-header-image {
   width: 100%;
   padding: 0;
 }
-/* line 42, ../src/main-desktop.scss */
+/* line 54, ../src/main-desktop.scss */
 .single section#content > article.hentry header h1 {
   padding: 0 1em;
   color: #f09321;
   font-size: 2em;
+}
+/* line 60, ../src/main-desktop.scss */
+.single section#content > article.hentry header * {
+  padding: 0;
+}
+/* line 65, ../src/main-desktop.scss */
+.single section#content > article.hentry header > * {
+  padding: 0 2em;
 }

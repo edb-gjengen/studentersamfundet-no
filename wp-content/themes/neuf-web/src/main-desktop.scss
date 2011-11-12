@@ -18,6 +18,22 @@ p {
 	margin:1.5em 0;
 }
 
+.home {
+	section#content {
+		section#featured {
+			#slider {
+				article {
+					width:100%;
+
+					img.attachment-slider-image {
+						text-align:center;
+					}
+				}
+			}
+		}
+	}
+}
+
 .single {
 	section#content > article.hentry {
 
@@ -30,10 +46,6 @@ p {
 		header {
 			padding: 0;
 
-			*  {
-				padding:0 2em;
-			}
-
 			img.attachment-post-header-image {
 				width:100%;
 				padding:0;
@@ -44,6 +56,15 @@ p {
 				color:#f09321;
 				font-size:2em;
 			}
+
+			* {
+				padding: 0;
+			}
 		}
-	}
+
+		header > *  {
+			padding:0 2em;
+		}
+
+}
 }

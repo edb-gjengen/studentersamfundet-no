@@ -448,7 +448,7 @@ p {
 }
 /* line 28, ../src/main-desktop.scss */
 .home section#content section#featured #slider article img.attachment-slider-image {
-  width: 100%;
+  text-align: center;
 }
 
 /* line 38, ../src/main-desktop.scss */
@@ -464,17 +464,21 @@ p {
   padding: 0;
 }
 /* line 49, ../src/main-desktop.scss */
-.single section#content > article.hentry header * {
-  padding: 0 2em;
-}
-/* line 53, ../src/main-desktop.scss */
 .single section#content > article.hentry header img.attachment-post-header-image {
   width: 100%;
   padding: 0;
 }
-/* line 58, ../src/main-desktop.scss */
+/* line 54, ../src/main-desktop.scss */
 .single section#content > article.hentry header h1 {
   padding: 0 1em;
   color: #f09321;
   font-size: 2em;
+}
+/* line 60, ../src/main-desktop.scss */
+.single section#content > article.hentry header * {
+  padding: 0;
+}
+/* line 65, ../src/main-desktop.scss */
+.single section#content > article.hentry header > * {
+  padding: 0 2em;
 }
