@@ -1,29 +1,7 @@
-<?php 
-add_action('wp_enqueue_scripts', function() { wp_enqueue_script( 'front-page' ); } );
-get_header();
-?>
+<?php add_action('wp_enqueue_scripts', function() { wp_enqueue_script( 'front-page' ); } ); ?>
 
-<style>
-/**
- * TODO Move styles to appropriate stylesheet
- * TODO Make beauty of it
- *
- * Preferably the other way around?
- * Alternatively, throw them completely away.
- */
-.home #events article {
-       width:300px;
-       height:150px;
-       position:relative;
-       overflow:hidden;
-}
-.home #events article > header {
-       width:100%;
-       position:absolute;
-       bottom:0;
-       background:rgba(255,255,255,0.5);
-}
-</style>
+<?php get_header(); ?>
+
 <?php
 /**
  * Events from today.
@@ -52,14 +30,14 @@ $news = new WP_Query( 'type=post' );
 	<section id="featured">
 	<a href="#" id="sprev">Prev</a>
 	<a href="#" id="snext">Next</a>
-	    <div id="slider" style="height:332px;"> 
+	    <div id="slider"> 
 		<?php
 		if ($news->have_posts()) : $news->the_post();
 
 			$thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ) , 'post-header-image' );
 			$thumb_uri = $thumb[0];
 			?>
-			<article id="post-<?php the_ID(); ?>" <?php post_class();?>  style="height:332px; background-image:url('<?php echo $thumb_uri; ?>');">
+			<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>  style="background-image:url('<?php echo $thumb_uri; ?>');">
 				<div class="info">
 					<h1><?php the_title(); ?></h1>
 					<?php the_excerpt(); ?>
@@ -74,14 +52,14 @@ $news = new WP_Query( 'type=post' );
 			$thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ) , 'post-header-image' );
 			$thumb_uri = $thumb[0];
 			?>
-			<article id="post-<?php the_ID(); ?>" <?php post_class();?> style="height:332px; background-image:url('<?php echo $thumb_uri; ?>');">
-				<div class="info">
+			<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?> style="background-image:url('<?php echo $thumb_uri; ?>');">
+				<header class="info">
 					<h1><?php the_title(); ?></h1>
 					<div class="datetime"><?php echo format_datetime(get_post_meta(get_the_ID(), '_neuf_events_starttime',true)); ?></div>
 					<div class="price"><?php $price = get_post_meta(get_the_ID(), '_neuf_events_price',true); echo ($price != "" ? $price : "Gratis"); ?></div>
 					<div class="venue"><?php echo get_post_meta(get_the_ID(), '_neuf_events_venue',true);?></div>
 					<div class="type"><?php echo get_post_meta(get_the_ID(), '_neuf_events_type',true); ?></div>
-				</div> <!-- .info -->
+				</header> <!-- .info -->
 				<a class="permalink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">Les hele <?php the_title(); ?></a>
 			</article> <!-- #post-<?php the_ID(); ?> -->
 
@@ -117,20 +95,21 @@ $args = array(
 $events2 = new WP_Query( $args );
 ?>
 	<section id="events" class="hfeed">
-		<header>
-			<h1>Program</h1>
-		</header>
 		<?php while ($events2->have_posts()) : $events2->the_post(); ?>
 
-		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<header>
-			<a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+		<?php
+		$thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ) , 'event-image' );
+		$thumb_uri = $thumb[0];
+		?>
+		<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?> style="background-image:url('<?php echo $thumb_uri; ?>');">
+			<header class="info">
+				<h1><?php the_title(); ?></h1>
 				<div class="datetime"><?php echo format_datetime(get_post_meta(get_the_ID(), '_neuf_events_starttime',true)); ?></div>
 				<div class="price"><?php $price = get_post_meta(get_the_ID(), '_neuf_events_price',true); echo ($price != "" ? $price : "Gratis"); ?></div>
 				<div class="venue"><?php echo get_post_meta(get_the_ID(), '_neuf_events_venue',true);?></div>
 				<div class="type"><?php echo get_post_meta(get_the_ID(), '_neuf_events_type',true); ?></div>
-			</header>
-			<a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_post_thumbnail('event-image'); ?></a>
+			</header> <!-- .info -->
+			<a class="permalink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">Les hele <?php the_title(); ?></a>
 	        </article> <!-- .event -->
 
 <?php endwhile; ?>
@@ -141,14 +120,10 @@ $events2 = new WP_Query( $args );
 
 <?php endif; ?>
 
-	<section id="posts" class="hfeed">
-	    <header>
-		<h1>Nyheter</h1>
-	    </header>
-
+	<section id="news" class="hfeed">
 		<?php if ($news->have_posts()) :
 			while ($news->have_posts()) : $news->the_post(); ?>
-				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+				<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
 					<header>
 					<h1><a href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_title(); ?></a></h1>
 					</header>

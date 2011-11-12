@@ -3,7 +3,7 @@
 add_action('wp_enqueue_scripts', 'get_scripts');
 
 // name of the thumbnail, width, height, crop mode
-add_image_size( 'event-image' , 300 , 180 , true );
+add_image_size( 'event-image' , 346 , 214 , true );
 add_image_size( 'post-header-image' , 816, 450, true );
 
 add_theme_support( 'menus' );
@@ -83,4 +83,27 @@ function neuf_handle_upload_prefilter( $file ) {
 		return $file; 
 }
 add_filter( 'wp_handle_upload_prefilter' , 'neuf_handle_upload_prefilter' );
+
+/**
+ * Adds more semantic classes to WP's post_class.
+ *
+ * Adds these classes:
+ * i) a class with a page-wide post count. The first post on this page is named .p1, the second p2 and so forth.
+ * ii) a class 'alt' to every other post.
+ */
+function neuf_post_class( $classes = '' ) {
+	global $neuf_pagewide_post_count;
+
+	if ( $classes )
+		$classes = array ( $classes );
+
+	$classes[] = 'p' . ++$neuf_pagewide_post_count;
+
+	if ( 0 == $neuf_pagewide_post_count % 2 )
+		$classes[] = 'alt';
+
+	$classes =  join( ' ' , $classes );
+
+	post_class( $classes );
+}
 ?>
