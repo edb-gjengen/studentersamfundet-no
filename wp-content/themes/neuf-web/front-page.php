@@ -121,18 +121,15 @@ $events2 = new WP_Query( $args );
 <?php endif; ?>
 
 	<section id="news" class="hfeed">
-		<?php if ($news->have_posts()) :
-			while ($news->have_posts()) : $news->the_post(); ?>
-				<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
-					<header>
-					<h1><a href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_title(); ?></a></h1>
-					</header>
-					<?php the_excerpt(); ?>
-				</article> <!-- .post -->
-			<?php endwhile;?>
-		<?php else: ?>
-			<p>Nothing to display.</p>
-		<?php endif; ?>
+		<?php if ($news->have_posts()) : while ($news->have_posts()) : $news->the_post(); ?>
+		<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
+			<header>
+				<?php the_post_thumbnail( 'event-image' ); ?>
+				<h1><a href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_title(); ?></a></h1>
+			</header>
+			<?php the_excerpt(); ?>
+		</article> <!-- .post -->
+		<?php endwhile; endif; ?>
 
 	</section> <!-- #posts.hfeed -->
 
