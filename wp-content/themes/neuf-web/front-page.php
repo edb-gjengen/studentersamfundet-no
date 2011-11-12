@@ -25,7 +25,9 @@ get_header();
 }
 </style>
 <?php
-/* Events in the next 7 days, including today.
+/**
+ * Events from today.
+ *
  * Ref: http://codex.wordpress.org/Class_Reference/WP_Query#Custom_Field_Parameters
  */
 $meta_query = array(
@@ -36,15 +38,16 @@ $meta_query = array(
 );
 
 $args = array(
-	'post_type'  => 'event',
-	'meta_query' => array( $meta_query )
+	'post_type'      => 'event',
+	'meta_query'     => array( $meta_query ),
+	'posts_per_page' => 4
 );
 
 $events = new WP_Query( $args );
 
 $news = new WP_Query( 'type=post' );
 ?>
-<section role="main">
+<section id="content" role="main">
 <?php if ($events->have_posts()) : ?>
 	<section id="featured">
 	<a href="#" id="sprev">Prev</a>
@@ -53,7 +56,7 @@ $news = new WP_Query( 'type=post' );
 		<?php
 		 if ($news->have_posts()) : $news->the_post(); ?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class();?>  style="height:332px;">
-			    <a href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_title(); ?><?php the_post_thumbnail('slider-image'); ?></a>
+			    <a href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_title(); ?><?php the_post_thumbnail('post-header-image'); ?></a>
 			    <?php the_excerpt(); ?>
 			</article>
 		<?php endif; ?>
@@ -74,11 +77,33 @@ $news = new WP_Query( 'type=post' );
 	    
 	</section>
 
+<?php
+/**
+ * Events from today.
+ *
+ * Ref: http://codex.wordpress.org/Class_Reference/WP_Query#Custom_Field_Parameters
+ */
+$meta_query = array(
+	'key'     => '_neuf_events_starttime',
+	'value'   => date( 'U' , strtotime( '-8 hours' ) ), 
+	'compare' => '>',
+	'type'    => 'numeric'
+);
+
+$args = array(
+	'post_type'      => 'event',
+	'meta_query'     => array( $meta_query ),
+	'posts_per_page' => 4,
+	'offset'         => 4
+);
+
+$events2 = new WP_Query( $args );
+?>
 	<section id="events" class="hfeed">
 		<header>
 			<h1>Program</h1>
 		</header>
-		<?php while ($events->have_posts()) : $events->the_post(); ?>
+		<?php while ($events2->have_posts()) : $events2->the_post(); ?>
 
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<header>
