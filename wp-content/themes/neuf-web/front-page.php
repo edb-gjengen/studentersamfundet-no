@@ -84,10 +84,7 @@ if ($events->have_posts()) : ?>
 	</section> <!-- #posts.hfeed -->
 
 </section> <!--[role=main] -->
-<aside role="complementary">
 
 <?php get_sidebar(); ?>
-
-</aside>
 
 <?php get_footer(); ?>

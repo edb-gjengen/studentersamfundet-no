@@ -72,9 +72,7 @@ endif;
 ?>
 		</section> <!-- #main_content -->
 
-	<aside id="sidebar">
 <?php get_sidebar(); ?>
-	</aside> <!-- #sidebar -->
 
 <?php get_footer(); ?>
 

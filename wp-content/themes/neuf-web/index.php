@@ -32,10 +32,8 @@ else:
     <?php
 endif;
 ?>
-</section> <!-- #main_content -->
+</section> <!-- #content -->
 
-<aside id="sidebar">
-	<?php get_sidebar(); ?>
-</aside> <!-- #sidebar -->
+<?php get_sidebar(); ?>
 
 <?php get_footer(); ?>
