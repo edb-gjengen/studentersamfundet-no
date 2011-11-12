@@ -45,3 +45,26 @@ function events_toggle( type ) {
 		}
 	});
 }
+$(function() {
+	$("#slider").cycle({
+		fx:     'fade', 
+		speed:  'fast', 
+		timeout: 4000, 
+		next:   '#snext', 
+		prev:   '#sprev' 
+	});
+
+	$('.week').each(function(index) {
+		var sizeLeft = 0;
+		var sizeRight = 0;
+		$(this).nextUntil('.day', function(index) {
+			if (sizeLeft <= sizeRight) {
+				$(this).removeClass('alt');
+				sizeLeft += $(this).height();
+			} else {
+				$(this).addClass('alt');
+				sizeRight += $(this).height();
+			}
+		});
+	});
+});

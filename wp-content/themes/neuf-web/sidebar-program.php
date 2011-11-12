@@ -3,6 +3,22 @@
 .hidden {
 	display:none;
 }
+
+.week {
+	display:block;
+	float:center;
+	width:100%;
+}
+
+.day {
+	width:50%;
+	display:block;
+	float:left;
+}
+
+.alt {
+	float:right;
+}
 </style>
 
 <aside id="primary" class="widget-area" role="complementary">
@@ -16,26 +32,32 @@
 	?>
 
 	<?php
-	$types = array(
-		'Annet' ,'Debatt','Fest','Film','Foredag',
-		'Forfatteraften','Klubb','Konsert','Quiz',
-		'Teater','Upop','Stand-up'
-	);
+	$types = get_terms( 'event_type', array(
+		'hide_empty' => 0
+	) );
 	?>
 	
-	<?php if ( !function_exists( 'program_sidebar' ) || !dynamic_sidebar( 'program-sidebar' ) ) : // if no 'program-sidebar' ?>
-		<ul id="type-filter" class="widget">
-			<?php
-				foreach ( $types as $type ):
-					?>
-					<li>
-						<a onclick="events_toggle('<?php echo $type ?>')"><?php echo $type; ?></a>
-					</li>
-					<?php
-				endforeach;
-			?>
-		</ul>
-	<?php endif; ?>
+	<?php 
+	if ( !function_exists( 'program_sidebar' ) || !dynamic_sidebar( 'program-sidebar' ) ): 
+		$count = count($types);
+		if ($count > 0):
+	?>
+	
+			<ul id="type-filter" class="widget">
+				<?php
+					foreach ( $types as $type ):
+						?>
+						<li>
+							<a href='#' onclick="events_toggle('<?php echo $type->name ?>')"><?php echo $type->name; ?></a>
+						</li>
+						<?php
+					endforeach;
+				?>
+			</ul>
+			<?php 
+		endif;
+	endif; 
+	?>
 
 
 	<ul>

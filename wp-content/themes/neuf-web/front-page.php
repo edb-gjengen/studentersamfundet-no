@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php get_header();?>
 
 <style>
 /**
@@ -9,16 +9,16 @@
  * Alternatively, throw them completely away.
  */
 .home #events article {
-	width:300px;
-	height:150px;
-	position:relative;
-	overflow:hidden;
+       width:300px;
+       height:150px;
+       position:relative;
+       overflow:hidden;
 }
 .home #events article > header {
-	width:100%;
-	position:absolute;
-	bottom:0;
-	background:rgba(255,255,255,0.5);
+       width:100%;
+       position:absolute;
+       bottom:0;
+       background:rgba(255,255,255,0.5);
 }
 </style>
 <?php
@@ -40,31 +40,31 @@ $args = array(
 $events = new WP_Query( $args ); ?>
 <section role="main">
 <?php if ($events->have_posts()) : ?>
-	<section id="slider">
+	<section id="featured">
+	<a href="#" id="sprev">Prev</a>
+	<a href="#" id="snext">Next</a>
+	    <div id="slider" style="height:332px;"> 
 		<?php $counter = 0;
 		while ($events->have_posts() && $counter < 4) : $events->the_post(); ?>
-		    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			    <header>
-			    <a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a>
-				    <div class="datetime"><?php echo format_datetime(get_post_meta(get_the_ID(), '_neuf_events_starttime',true)); ?></div>
-				    <div class="price"><?php $price = get_post_meta(get_the_ID(), '_neuf_events_price',true); echo ($price != "" ? $price : "Gratis"); ?></div>
-				    <div class="venue"><?php echo get_post_meta(get_the_ID(), '_neuf_events_venue',true);?></div>
-				    <div class="type"><?php echo get_post_meta(get_the_ID(), '_neuf_events_type',true); ?></div>
-			    </header>
-			    <a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_post_thumbnail('slider-image'); ?></a>
-		    </article> <!-- .event -->
+			<article id="post-<?php the_ID(); ?>" <?php post_class();?> style="height:332px;">
+				<a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_post_thumbnail('slider-image'); ?></a><br />
+				<a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+				<div class="datetime"><?php echo format_datetime(get_post_meta(get_the_ID(), '_neuf_events_starttime',true)); ?></div>
+				<div class="price"><?php $price = get_post_meta(get_the_ID(), '_neuf_events_price',true); echo ($price != "" ? $price : "Gratis"); ?></div>
+				<div class="venue"><?php echo get_post_meta(get_the_ID(), '_neuf_events_venue',true);?></div>
+				<div class="type"><?php echo get_post_meta(get_the_ID(), '_neuf_events_type',true); ?></div>
+			</article>
 		<?php $counter++;
 		endwhile;?>
 
-		<?php if (have_posts()) : the_post(); ?>
-		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<header>
-			<h1><a href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_title(); ?></a></h1>
-			</header>
-			    <a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_post_thumbnail('slider-image'); ?></a>
-			<?php the_excerpt(); ?>
-		</article> <!-- .post -->
+		<?php
+		 if (have_posts()) : the_post(); ?>
+			<article id="post-<?php the_ID(); ?>" <?php post_class();?>  style="height:332px;">
+			    <a href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_title(); ?><?php the_post_thumbnail('slider-image'); ?></a>
+			    <?php the_excerpt(); ?>
+			</article>
 	<?php endif; ?>
+	    </div>
 	    
 	</section>
 
