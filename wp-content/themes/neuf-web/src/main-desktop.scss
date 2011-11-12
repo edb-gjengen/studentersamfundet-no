@@ -1,8 +1,49 @@
-
 @media screen and (min-width: 960px) {
 	#footer,
 	#root {
-		width: $page-width-desktop;
-		max-width: $max-page-width-desktop;
+		width: 90%;
+		max-width: 1200px;
+	}
+}
+
+/**
+ * Typography
+ */
+
+p {
+	font-size:16px;
+	font-family:"Times New Roman", Times, serif;
+	line-height:1.5em;
+	color:#333;
+	margin:1.5em 0;
+}
+
+.single {
+	section#content > article.hentry {
+
+		padding: 2em 0;
+
+		* {
+			padding: 0 2em;
+		}
+
+		header {
+			padding: 0;
+
+			*  {
+				padding:0 2em;
+			}
+
+			img.attachment-post-header-image {
+				width:100%;
+				padding:0;
+			}
+
+			h1 {
+				padding:0 1em;
+				color:#f09321;
+				font-size:2em;
+			}
+		}
 	}
 }
