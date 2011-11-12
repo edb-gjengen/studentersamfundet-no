@@ -1,4 +1,29 @@
-<?php get_header(); ?>
+<?php 
+add_action('wp_enqueue_scripts', function() { wp_enqueue_script( 'program' ); } );
+get_header(); 
+?>
+<!-- TODO: Move this to a better place: -->
+<style>
+.week {
+	display:block;
+	float:center;
+	width:100%;
+}
+
+.day {
+	width:50%;
+	display:block;
+	float:left;
+}
+
+.alt {
+	float:right;
+}
+
+.hidden {
+	display:none;
+}
+</style>
 
 <section id="content" role="main">
 
@@ -21,9 +46,9 @@ if ( $events->have_posts() ) :
 
 	while ( $events->have_posts() ) : $events->the_post();
 		$venue = get_post_meta( $post->ID, '_neuf_events_venue', true );
-		$type  = get_post_meta( $post->ID, '_neuf_events_type', true );
 		$price = get_post_meta( $post->ID, '_neuf_events_price', true );
 		$time = get_post_meta( $post->ID, '_neuf_events_starttime', true );
+		$types  = get_the_terms( $post->ID, 'event_type' );
 		
 		$day = ( int ) strftime("%Y%m%d", $time);
 		$week = ( int ) strftime("%W", $time);
@@ -51,10 +76,10 @@ if ( $events->have_posts() ) :
 			<div class="day">
 				<h1><?php echo strftime( "%A %e. %B", $time ); ?></h1>
 		<?php
-		endif;
+		endif;	
 		?>
 		
-		<article id="<?php the_ID(); ?>" class="type-<?php echo $type; ?>">
+		<article id="<?php the_ID(); ?>" class="<?php foreach($types as $type) echo ' type-'.$type->name; ?>">
 			<h1 class="page-header">
 				<a href="<?php echo the_permalink(); ?>"><?php the_post_thumbnail('event-image')?></a>
 				<p><?php echo strftime( "%H:%M", $time ); ?> i <?php echo $venue ?></p>
