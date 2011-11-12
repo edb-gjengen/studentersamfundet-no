@@ -54,24 +54,37 @@ $news = new WP_Query( 'type=post' );
 	<a href="#" id="snext">Next</a>
 	    <div id="slider" style="height:332px;"> 
 		<?php
-		 if ($news->have_posts()) : $news->the_post(); ?>
-			<article id="post-<?php the_ID(); ?>" <?php post_class();?>  style="height:332px;">
-			    <a href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_title(); ?><?php the_post_thumbnail('post-header-image'); ?></a>
+		if ($news->have_posts()) : $news->the_post();
+
+			$thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ) , 'post-header-image' );
+			$thumb_uri = $thumb[0];
+			?>
+			<article id="post-<?php the_ID(); ?>" <?php post_class();?>  style="height:332px; background-image:url('<?php echo $thumb_uri; ?>');">
+				<a href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_title(); ?></a>
 			    <?php the_excerpt(); ?>
 			</article>
+
 		<?php endif; ?>
 		<?php $counter = 0;
-		while ($events->have_posts() && $counter < 4) : $events->the_post(); ?>
-			<article id="post-<?php the_ID(); ?>" <?php post_class();?> style="height:332px;">
-				<a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_post_thumbnail('slider-image'); ?></a><br />
-				<a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a>
-				<div class="datetime"><?php echo format_datetime(get_post_meta(get_the_ID(), '_neuf_events_starttime',true)); ?></div>
-				<div class="price"><?php $price = get_post_meta(get_the_ID(), '_neuf_events_price',true); echo ($price != "" ? $price : "Gratis"); ?></div>
-				<div class="venue"><?php echo get_post_meta(get_the_ID(), '_neuf_events_venue',true);?></div>
-				<div class="type"><?php echo get_post_meta(get_the_ID(), '_neuf_events_type',true); ?></div>
-			</article>
-		<?php $counter++;
-		endwhile;?>
+		while ($events->have_posts() && $counter < 4) : $events->the_post();
+
+			$thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ) , 'post-header-image' );
+			$thumb_uri = $thumb[0];
+			?>
+			<article id="post-<?php the_ID(); ?>" <?php post_class();?> style="height:332px; background-image:url('<?php echo $thumb_uri; ?>');">
+				<div class="info">
+					<div class="datetime"><?php echo format_datetime(get_post_meta(get_the_ID(), '_neuf_events_starttime',true)); ?></div>
+					<div class="price"><?php $price = get_post_meta(get_the_ID(), '_neuf_events_price',true); echo ($price != "" ? $price : "Gratis"); ?></div>
+					<div class="venue"><?php echo get_post_meta(get_the_ID(), '_neuf_events_venue',true);?></div>
+					<div class="type"><?php echo get_post_meta(get_the_ID(), '_neuf_events_type',true); ?></div>
+				</div> <!-- .info -->
+				<a class="permalink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">Les hele <?php the_title(); ?></a>
+			</article> <!-- #post-<?php the_ID(); ?> -->
+
+		<?php
+		$counter++;
+		endwhile;
+		?>
 
 	    </div>
 	    
@@ -79,7 +92,7 @@ $news = new WP_Query( 'type=post' );
 
 <?php
 /**
- * Events from today.
+ * Events from today, skipping the 4 events in the slider.
  *
  * Ref: http://codex.wordpress.org/Class_Reference/WP_Query#Custom_Field_Parameters
  */

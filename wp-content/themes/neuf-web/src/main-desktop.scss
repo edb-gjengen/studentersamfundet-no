@@ -21,13 +21,53 @@ p {
 .home {
 	section#content {
 		section#featured {
+			margin-top:1em;
+			position:relative;
+
+			#sprev, #snext {
+				position:absolute;
+				display:block;
+				width:45px;
+				height:34px;
+				top:150px;
+				z-index:9;
+				overflow:hidden;
+				text-indent:-99999px;
+			}
+			#sprev {
+				left:2em;
+				background: transparent url('../img/slider_arrow_left.png') center;
+			}
+			#snext {
+				right:2em;
+				background: transparent url('../img/slider_arrow_right.png') center;
+			}
+
 			#slider {
 				article {
 					width:100%;
+					background: #000 no-repeat center;
 
-					img.attachment-slider-image {
-						text-align:center;
+					.info {
+						width:100%;
+						background:rgba(255,255,255,0.5);
+						position:absolute;
+						bottom:0;
+						z-index:1;
+
+						* {
+							z-index:1;
+						}
 					}
+				}
+
+				.permalink {
+					display:block;
+					width:100%;
+					height:100%;
+					overflow:hidden;
+					text-indent:-9999px;
+					z-index:8;
 				}
 			}
 		}
