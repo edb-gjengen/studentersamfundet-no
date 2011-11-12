@@ -3,7 +3,6 @@
 add_action('wp_enqueue_scripts', 'get_scripts');
 
 // name of the thumbnail, width, height, crop mode
-add_image_size( 'slider-image' , 652 , 245 , true );
 add_image_size( 'event-image' , 300 , 180 , true );
 add_image_size( 'post-header-image' , 816, 450, true );
 
@@ -61,4 +60,27 @@ function get_scripts() {
 	wp_enqueue_script( 'cycle' );
 }
 
+/**
+ * Force large uploaded images.
+ *
+ * Denies uploads of images smaller (in pixels) than given width and height values.
+ */
+function neuf_handle_upload_prefilter( $file ) {
+	$width = 1024;
+	$height = 512;
+
+	$img = getimagesize( $file['tmp_name'] );
+	$minimum = array( 'width' => $width , 'height' => $height );
+	$width = $img[0];
+	$height =$img[1];
+
+	if ( $width < $minimum['width'] )
+		return array( "error" => "Image dimensions are too small. Minimum width is {$minimum['width']}px. Uploaded image width is $width px" );
+
+	elseif ($height <  $minimum['height'])
+		return array( "error" => "Image dimensions are too small. Minimum height is {$minimum['height']}px. Uploaded image width is $width px" );
+	else
+		return $file; 
+}
+add_filter( 'wp_handle_upload_prefilter' , 'neuf_handle_upload_prefilter' );
 ?>
