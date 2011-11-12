@@ -60,9 +60,12 @@ $news = new WP_Query( 'type=post' );
 			$thumb_uri = $thumb[0];
 			?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class();?>  style="height:332px; background-image:url('<?php echo $thumb_uri; ?>');">
-				<a href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_title(); ?></a>
-			    <?php the_excerpt(); ?>
-			</article>
+				<div class="info">
+					<h1><?php the_title(); ?></h1>
+					<?php the_excerpt(); ?>
+				</div> <!-- .info -->
+				<a class="permalink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">Les hele <?php the_title(); ?></a>
+			</article> <!-- #post-<?php the_ID(); ?> -->
 
 		<?php endif; ?>
 		<?php $counter = 0;
@@ -73,6 +76,7 @@ $news = new WP_Query( 'type=post' );
 			?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class();?> style="height:332px; background-image:url('<?php echo $thumb_uri; ?>');">
 				<div class="info">
+					<h1><?php the_title(); ?></h1>
 					<div class="datetime"><?php echo format_datetime(get_post_meta(get_the_ID(), '_neuf_events_starttime',true)); ?></div>
 					<div class="price"><?php $price = get_post_meta(get_the_ID(), '_neuf_events_price',true); echo ($price != "" ? $price : "Gratis"); ?></div>
 					<div class="venue"><?php echo get_post_meta(get_the_ID(), '_neuf_events_venue',true);?></div>

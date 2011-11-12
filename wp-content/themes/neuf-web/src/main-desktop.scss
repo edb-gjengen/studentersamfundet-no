@@ -37,10 +37,12 @@ p {
 			#sprev {
 				left:2em;
 				background: transparent url('../img/slider_arrow_left.png') center;
+				cursor:w-resize;
 			}
 			#snext {
 				right:2em;
 				background: transparent url('../img/slider_arrow_right.png') center;
+				cursor:e-resize;
 			}
 
 			#slider {
@@ -59,15 +61,16 @@ p {
 							z-index:1;
 						}
 					}
-				}
 
-				.permalink {
-					display:block;
-					width:100%;
-					height:100%;
-					overflow:hidden;
-					text-indent:-9999px;
-					z-index:8;
+					.permalink {
+						display:block;
+						width:100%;
+						height:100%;
+						position:absolute;
+						overflow:hidden;
+						text-indent:-9999px;
+						z-index:8;
+					}
 				}
 			}
 		}

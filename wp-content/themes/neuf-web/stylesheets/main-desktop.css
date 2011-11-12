@@ -38,18 +38,20 @@ p {
 .home section#content section#featured #sprev {
   left: 2em;
   background: transparent url("../img/slider_arrow_left.png") center;
+  cursor: w-resize;
 }
-/* line 41, ../src/main-desktop.scss */
+/* line 42, ../src/main-desktop.scss */
 .home section#content section#featured #snext {
   right: 2em;
   background: transparent url("../img/slider_arrow_right.png") center;
+  cursor: e-resize;
 }
-/* line 47, ../src/main-desktop.scss */
+/* line 49, ../src/main-desktop.scss */
 .home section#content section#featured #slider article {
   width: 100%;
   background: #000 no-repeat center;
 }
-/* line 51, ../src/main-desktop.scss */
+/* line 53, ../src/main-desktop.scss */
 .home section#content section#featured #slider article .info {
   width: 100%;
   background: rgba(255, 255, 255, 0.5);
@@ -57,48 +59,49 @@ p {
   bottom: 0;
   z-index: 1;
 }
-/* line 58, ../src/main-desktop.scss */
+/* line 60, ../src/main-desktop.scss */
 .home section#content section#featured #slider article .info * {
   z-index: 1;
 }
-/* line 64, ../src/main-desktop.scss */
-.home section#content section#featured #slider .permalink {
+/* line 65, ../src/main-desktop.scss */
+.home section#content section#featured #slider article .permalink {
   display: block;
   width: 100%;
   height: 100%;
+  position: absolute;
   overflow: hidden;
   text-indent: -9999px;
   z-index: 8;
 }
 
-/* line 78, ../src/main-desktop.scss */
+/* line 81, ../src/main-desktop.scss */
 .single section#content > article.hentry {
   padding: 2em 0;
 }
-/* line 82, ../src/main-desktop.scss */
+/* line 85, ../src/main-desktop.scss */
 .single section#content > article.hentry * {
   padding: 0 2em;
 }
-/* line 86, ../src/main-desktop.scss */
+/* line 89, ../src/main-desktop.scss */
 .single section#content > article.hentry header {
   padding: 0;
 }
-/* line 89, ../src/main-desktop.scss */
+/* line 92, ../src/main-desktop.scss */
 .single section#content > article.hentry header img.attachment-post-header-image {
   width: 100%;
   padding: 0;
 }
-/* line 94, ../src/main-desktop.scss */
+/* line 97, ../src/main-desktop.scss */
 .single section#content > article.hentry header h1 {
   padding: 0 1em;
   color: #f09321;
   font-size: 2em;
 }
-/* line 100, ../src/main-desktop.scss */
+/* line 103, ../src/main-desktop.scss */
 .single section#content > article.hentry header * {
   padding: 0;
 }
-/* line 105, ../src/main-desktop.scss */
+/* line 108, ../src/main-desktop.scss */
 .single section#content > article.hentry header > * {
   padding: 0 2em;
 }
