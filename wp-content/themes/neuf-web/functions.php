@@ -22,6 +22,15 @@ if ( function_exists( 'register_sidebar') ) {
 		'before_title'  => '<header><h1>',
 		'after_title'   => '</h1></header>'
 	) );
+	
+	register_sidebar( array(
+		'name'          => 'Program sidebar',
+		'id'            => 'program-sidebar',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<header><h1>',
+		'after_title'   => '</h1></header>'
+	) );
 }
 
 /* Format a unix timestamp respecting the options set in Settings->General. */

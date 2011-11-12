@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
-	<section id="content" role="main">
+<section id="content" role="main">
+
 <?php 
 $events = new WP_Query( array(
 	'post_type' => 'event',
@@ -70,7 +71,7 @@ if ( $events->have_posts() ) :
 	endwhile;
 endif;
 ?>
-		</section> <!-- #main_content -->
+</section> <!-- #main_content -->
 
 <?php get_sidebar( 'program' ); ?>
 
