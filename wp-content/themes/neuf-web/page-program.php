@@ -44,7 +44,7 @@ if ( $events->have_posts() ) :
 		if ( $week != $last_week ):
 			$last_week = $week;
 			?>
-			<h1 class="week-number">Uke <?php echo $week; ?></h1>
+			<h1 class="week">Uke <?php echo $week; ?></h1>
 			<?php
 		endif;
 				
@@ -58,7 +58,7 @@ if ( $events->have_posts() ) :
 		endif;
 		?>
 		
-		<article id="<?php the_ID(); ?>">
+		<article id="<?php the_ID(); ?>" class="type-<?php echo $type; ?>">
 			<h1 class="page-header">
 				<a href="<?php echo the_permalink(); ?>"><?php the_post_thumbnail('event-image')?></a>
 				<p><?php echo strftime( "%H:%M", $time ); ?> i <?php echo $venue ?></p>
@@ -72,7 +72,7 @@ endif;
 ?>
 		</section> <!-- #main_content -->
 
-<?php get_sidebar(); ?>
+<?php get_sidebar( 'program' ); ?>
 
 <?php get_footer(); ?>
 
