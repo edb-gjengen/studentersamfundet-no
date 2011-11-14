@@ -146,10 +146,16 @@ p {
 		section#news {
 			clear:both;
 			overflow:hidden;
-			margin:2.5% 0 5%;
+			margin:0 0 2.5%;
 
 			header {
 display:inline;
+			}
+
+			article {
+				margin:2.5% 0;
+				clear:both;
+				overflow:hidden;
 			}
 
 			article img,

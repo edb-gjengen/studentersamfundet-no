@@ -568,13 +568,19 @@ p {
 .home section#content section#news {
   clear: both;
   overflow: hidden;
-  margin: 2.5% 0 5%;
+  margin: 0 0 2.5%;
 }
 /* line 151, ../src/main-desktop.scss */
 .home section#content section#news header {
   display: inline;
 }
-/* line 157, ../src/main-desktop.scss */
+/* line 155, ../src/main-desktop.scss */
+.home section#content section#news article {
+  margin: 2.5% 0;
+  clear: both;
+  overflow: hidden;
+}
+/* line 163, ../src/main-desktop.scss */
 .home section#content section#news article img,
 .home section#content section#news article h1,
 .home section#content section#news article p {
@@ -582,18 +588,18 @@ p {
   margin: 0 2.5% 0 5%;
   float: left;
 }
-/* line 163, ../src/main-desktop.scss */
+/* line 169, ../src/main-desktop.scss */
 .home section#content section#news article h1,
 .home section#content section#news article p {
   margin: 0 5% 0 2.5%;
   float: right;
 }
-/* line 168, ../src/main-desktop.scss */
+/* line 174, ../src/main-desktop.scss */
 .home section#content section#news article.alt img {
   margin: 0 5% 0 2.5%;
   float: right;
 }
-/* line 173, ../src/main-desktop.scss */
+/* line 179, ../src/main-desktop.scss */
 .home section#content section#news article.alt h1,
 .home section#content section#news article.alt p {
   margin: 0 2.5% 0 5%;
