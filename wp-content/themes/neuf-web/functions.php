@@ -82,7 +82,8 @@ function neuf_handle_upload_prefilter( $file ) {
 	else
 		return $file; 
 }
-add_filter( 'wp_handle_upload_prefilter' , 'neuf_handle_upload_prefilter' );
+// Commenting out for testing purposes
+// add_filter( 'wp_handle_upload_prefilter' , 'neuf_handle_upload_prefilter' );
 
 /**
  * Adds more semantic classes to WP's post_class.
