@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="no">
 <head>
-	<title><?php bloginfo('blog_title'); ?></title>
+	<?php neuf_doctitle(); ?>
 	
 	<meta charset="utf-8" />
 
