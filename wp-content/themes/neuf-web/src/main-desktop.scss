@@ -42,9 +42,16 @@ p {
 			margin: 0;
 
 			img.attachment-post-header-image {
-				width:100%;
+				//width:100%;
+				max-height:450px;
 				margin:0;
+				display:block;
+				margin:0 auto;
 			}
+
+			/* object {
+				margin: 0;
+			} */
 
 			h1 {
 				color:#f09321;

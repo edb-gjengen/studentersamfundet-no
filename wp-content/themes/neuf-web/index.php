@@ -7,7 +7,13 @@ if ( have_posts() ) :
 		?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<header>
-				<?php the_post_thumbnail('post-header-image'); ?>
+				<?php if ( get_post_meta( get_the_ID() , 'featured-video' ) ) {
+					//echo get_post_meta( get_the_ID() , 'featured-video' , true ) ;
+					echo wp_oembed_get( get_post_meta( get_the_ID() , 'featured-video' , true ) );
+				} else { ?>
+				<?php the_post_thumbnail( 'post-header-image' ); ?>
+				<?php } ?>
+
 				<h1><?php the_title(); ?></h1>
 				<?php if ( get_post_type() == "event" ): ?>
 				    <div class="datetime"><?php echo format_datetime( get_post_meta( get_the_ID(), '_neuf_events_starttime',  true) ); ?></div>

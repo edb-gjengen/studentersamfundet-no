@@ -108,8 +108,10 @@ header {
 	}
 }
 
-img {
-	max-width:100%;
+img,
+object,
+iframe {
+	max-width:100% !important;
 	height:auto;
 }
 
