@@ -152,24 +152,25 @@ p {
   margin: 2.5% 0;
   clear: both;
   overflow: hidden;
+  display: inline-block;
 }
-/* line 163, ../src/main-desktop.scss */
+/* line 164, ../src/main-desktop.scss */
 .home section#content section#news article img, .home section#content section#news article h1, .home section#content section#news article p {
   width: 42.5%;
   margin: 0 2.5% 0 5%;
   float: left;
 }
-/* line 169, ../src/main-desktop.scss */
+/* line 170, ../src/main-desktop.scss */
 .home section#content section#news article h1, .home section#content section#news article p {
   margin: 0 5% 0 2.5%;
   float: right;
 }
-/* line 174, ../src/main-desktop.scss */
+/* line 175, ../src/main-desktop.scss */
 .home section#content section#news article.alt img {
   margin: 0 5% 0 2.5%;
   float: right;
 }
-/* line 179, ../src/main-desktop.scss */
+/* line 180, ../src/main-desktop.scss */
 .home section#content section#news article.alt h1, .home section#content section#news article.alt p {
   margin: 0 2.5% 0 5%;
   float: left;
