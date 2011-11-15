@@ -10,6 +10,8 @@ add_theme_support( 'menus' );
 add_theme_support( 'post-thumbnails' );
 add_theme_support( 'automatic-feed-links' );
 
+$content_width = 736;
+
 register_nav_menu( 'main' , 'Hovedmeny' );
 
 if ( function_exists( 'register_sidebar') ) {
