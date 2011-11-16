@@ -37,7 +37,7 @@ $news = new WP_Query( 'type=post' );
 			$thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ) , 'post-header-image' );
 			$thumb_uri = $thumb[0];
 			?>
-			<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>  style="background-image:url('<?php echo $thumb_uri; ?>');">
+			<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?> style="background-image:url('<?php echo $thumb_uri; ?>');">
 				<div class="info">
 					<h1><?php the_title(); ?></h1>
 					<?php the_excerpt(); ?>
@@ -124,7 +124,7 @@ $events2 = new WP_Query( $args );
 		<?php if ($news->have_posts()) : while ($news->have_posts()) : $news->the_post(); ?>
 		<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
 			<header>
-				<a href="<?php the_permalink(); ?> title="Permalenke til <?php the_title(); ?>"><?php the_post_thumbnail( 'event-image' ); ?></a>
+				<a href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_post_thumbnail( 'event-image' ); ?></a>
 				<h1><a href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_title(); ?></a></h1>
 			</header>
 			<?php the_excerpt(); ?>
