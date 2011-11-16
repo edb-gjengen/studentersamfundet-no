@@ -180,3 +180,29 @@ p {
   margin: 0 2.5% 0 5%;
   float: left;
 }
+
+/* line 197, ../src/main-desktop.scss */
+.page-program h1.week {
+  display: block;
+  clear: both;
+  color: white;
+  background: black;
+  margin: 1em 0 0;
+  padding: 0.5em 5%;
+}
+/* line 206, ../src/main-desktop.scss */
+.page-program .day {
+  width: 42.5%;
+  margin: 2.5% 2.5% 2.5% 5%;
+  display: block;
+  float: left;
+}
+/* line 213, ../src/main-desktop.scss */
+.page-program .day.alt {
+  margin: 2.5% 5% 2.5% 2.5%;
+  float: right;
+}
+/* line 218, ../src/main-desktop.scss */
+.page-program .hidden {
+  display: none;
+}

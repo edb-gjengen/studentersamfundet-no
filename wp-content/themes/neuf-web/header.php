@@ -10,7 +10,7 @@
 	<?php wp_head(); ?>
 </head>
 
-<body id="root" <?php body_class(); ?>>
+<body id="root" <?php neuf_body_class(); ?>>
 
 <header id="branding">
 	<h1 id="site-title"><a href="<?php bloginfo('url') ?>/" title="<?php bloginfo('name') ?>" rel="home"><?php bloginfo('name') ?></a></h1>

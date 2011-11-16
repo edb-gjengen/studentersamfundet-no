@@ -5,7 +5,7 @@
 if ( have_posts() ) :
 	while (have_posts()) : the_post();
 		?>
-		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
 			<header>
 				<?php if ( get_post_meta( get_the_ID() , 'featured-video' ) ) {
 					//echo get_post_meta( get_the_ID() , 'featured-video' , true ) ;

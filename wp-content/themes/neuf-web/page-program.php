@@ -1,29 +1,8 @@
 <?php 
 add_action('wp_enqueue_scripts', function() { wp_enqueue_script( 'program' ); } );
+
 get_header(); 
 ?>
-<!-- TODO: Move this to a better place: -->
-<style>
-.week {
-	display:block;
-	float:center;
-	width:100%;
-}
-
-.day {
-	width:50%;
-	display:block;
-	float:left;
-}
-
-.alt {
-	float:right;
-}
-
-.hidden {
-	display:none;
-}
-</style>
 
 <section id="content" role="main">
 
@@ -37,60 +16,73 @@ $events = new WP_Query( array(
 ) );
 
 if ( $events->have_posts() ) : 
-	$date = "";
-	$last_week = -1;
-	$last_day = -1;
-	$new_day = false;
+	$date         = "";
+	$last_week    = -1;
+	$last_day     = -1;
+	$new_day      = false;
+	$week_counter = 0; // for adding alt class to every other week
+	$day_counter  = 0; // for adding alt class to every other day
 	ob_start();
 
 
 	while ( $events->have_posts() ) : $events->the_post();
-		$venue = get_post_meta( $post->ID, '_neuf_events_venue', true );
-		$price = get_post_meta( $post->ID, '_neuf_events_price', true );
-		$time = get_post_meta( $post->ID, '_neuf_events_starttime', true );
+		$venue  = get_post_meta( $post->ID, '_neuf_events_venue', true );
+		$price  = get_post_meta( $post->ID, '_neuf_events_price', true );
+		$time   = get_post_meta( $post->ID, '_neuf_events_starttime', true );
 		$types  = get_the_terms( $post->ID, 'event_type' );
 		
 		$day = ( int ) strftime("%Y%m%d", $time);
 		$week = ( int ) strftime("%W", $time);
+
+		if ( $day != $last_day && $new_day ) {
+			$new_day = false;
 		?>
 
-		<?php
-		if ( $day != $last_day && $new_day ):
-			$new_day = false;
-			?>
-			</div>
-			<?php
-		endif;
+		</div> <!-- .day -->
 		
-		if ( $week != $last_week ):
+		<?php
+		}
+		
+		if ( $week != $last_week ) { // New week, new possibilities :)
 			$last_week = $week;
-			?>
-			<h1 class="week">Uke <?php echo $week; ?></h1>
-			<?php
-		endif;
+			$day_counter = 0;    // Reset day counter, so that the first day in a week never will be an alt day
+		?>
+
+	<h1 class="week<?php if ( 0 == ++$week_counter % 2 ) echo ' alt'; ?>">Uke <?php echo $week; ?></h1>
+		<?php
+		}
 				
-		if ( $day != $last_day ):
+		if ( $day != $last_day ) {   // New day, don't forget your morning coffee.
 			$last_day = $day;
 			$new_day = true;
-			?>
-			<div class="day">
-				<h1><?php echo strftime( "%A %e. %B", $time ); ?></h1>
-		<?php
-		endif;	
 		?>
-		
-		<article id="<?php the_ID(); ?>" class="<?php foreach($types as $type) echo ' type-'.$type->name; ?>">
-			<h1 class="page-header">
-				<a href="<?php echo the_permalink(); ?>"><?php the_post_thumbnail('event-image')?></a>
-				<p><?php echo strftime( "%H:%M", $time ); ?> i <?php echo $venue ?></p>
-				<a href="<?php echo the_permalink(); ?>"><?php echo the_title(); ?></a>
-			</h1> <!-- .page-header -->
-		</article> <!-- .page -->
+
+		<div class="day<?php if ( 0 == ++$day_counter % 2 ) echo ' alt'; ?>">
+			<h1><?php echo strftime( "%A %e. %B", $time ); ?></h1>
+
+		<?php } ?>
 
 		<?php
-	endwhile;
-endif;
-?>
+		$event_types = array();
+		if ( $types )
+			foreach($types as $type)
+				$event_types[] = 'event-type-'.$type->name;
+		$event_types = join( ' ' , $event_types );
+		?>	
+			<article id="post-<?php the_ID(); ?>" <?php neuf_post_class( $event_types ); ?>>
+				<header>
+					<a href="<?php echo the_permalink(); ?>"><?php the_post_thumbnail('event-image')?></a>
+					<p><?php echo strftime( "%H.%M", $time ); ?> <a href="<?php echo the_permalink(); ?>"><?php echo the_title(); ?></a> <?php echo $venue ?></p>
+			
+				</header>
+			</article> <!-- #post-<?php the_ID(); ?> -->
+
+	<?php endwhile; ?>
+
+			</div> <!-- .day -->
+
+<?php endif; ?>
+
 </section> <!-- #main_content -->
 
 <?php get_sidebar( 'program' ); ?>

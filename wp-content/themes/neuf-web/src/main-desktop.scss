@@ -192,3 +192,30 @@ display:inline;
 		}
 	}
 }
+
+.page-program {
+	h1.week {
+		display:block;
+		clear:both;
+		color:white;
+		background:black;
+		margin:1em 0 0;
+		padding:0.5em 5%;
+	}
+
+	.day {
+		width:42.5%;
+		margin:2.5% 2.5% 2.5% 5%;
+		display:block;
+		float:left;
+	}
+
+	.day.alt {
+		margin:2.5% 5% 2.5% 2.5%;
+		float:right;
+	}
+
+	.hidden {
+		display:none;
+	}
+}

@@ -111,6 +111,27 @@ function neuf_post_class( $classes = '' ) {
 }
 
 /**
+ * Adds more semantic classes to WP's body_class.
+ *
+ * Adds these classes:
+ * i) For pages, adds 'page-slug'
+ */
+function neuf_body_class( $classes = '' ) {
+	global $post;
+
+	if ( $classes )
+		$classes = array ( $classes );
+
+	if ( is_page() )
+		$classes[] = 'page-' . $post->post_name ;
+
+	$classes =  join( ' ' , $classes );
+
+	post_class( $classes );
+}
+
+
+/**
  * Determines what to display in our title element.
  *
  * Most of this borrowed from the Thematic theme framework.
