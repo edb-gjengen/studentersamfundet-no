@@ -119,10 +119,13 @@ function neuf_post_class( $classes = '' ) {
 function neuf_body_class( $classes = '' ) {
 	global $post;
 
+	if ( $classes )
+		$classes .= ' ';
+
 	if ( is_page() )
 		$classes .= 'page-' . $post->post_name ;
 
-	post_class( $classes );
+	body_class( $classes );
 }
 
 
