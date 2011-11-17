@@ -87,42 +87,4 @@ if ( $events->have_posts() ) :
 
 <?php get_sidebar( 'program' ); ?>
 
-<script type="text/javascript">
-function neufAdjustProgram() {
-	var body = document.getElementById("content");
-	var left = right = column = 0;
-
-	for ( var i = 0 ; i < body.childNodes.length ; i++ ) {
-		var tmp = body.childNodes[i];
-		//console.log('processing a childNode: ' + tmp.nodeName);
-
-		// If a new week starts, reset height counters
-		if ( tmp.nodeName == "H1" ) {
-			left = right = column = 0;
-			console.log('New week starts');
-
-		} else if ( tmp.nodeName == "DIV" && tmp.className.match(/day/) ) {
-			var height = tmp.offsetHeight;
-
-			if ( column == 0 ) {
-				console.log('putting an element in the left column');
-				left += height + 14;
-				//tmp.style.cssFloat = "left";
-				if ( left < right )
-					column = 1;
-			} else {
-				console.log('putting an element in the right column');
-				right += height + 14;
-				//tmp.style.cssFloat = "right";
-				tmp.className += " alt";
-				if ( right > left )
-					column = 0;
-			}
-		}
-	}
-}
-neufAdjustProgram();
-</script>
-
 <?php get_footer(); ?>
-
