@@ -4,12 +4,6 @@ add_action('wp_enqueue_scripts', function() { wp_enqueue_script( 'program' ); } 
 get_header(); 
 ?>
 
-<style type="text/css">
-.hidden {
-	display:none;
-}
-</style>
-
 <section id="content" role="main">
 
 <?php 
