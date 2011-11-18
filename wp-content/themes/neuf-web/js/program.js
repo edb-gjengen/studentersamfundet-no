@@ -1,32 +1,21 @@
-var programVisibleCategories = new Object();
+var lastCategory = '';
 
-function events_toggle( type ) {
-	var className = ('type-'+type).trim();
+function events_toggle(type) {
+	var selector = ('.event-type-'+type).trim();
 
-	if (programVisibleCategories[className] != false) {
-		programVisibleCategories[className] = false;
-	} else {
-		programVisibleCategories[className] = true;
-	}
-
-	var selector = "."+className;
-	$(selector).each(function(index) {
-		var hide = true;
-		var classes = $(this).attr('class').split(' ');
-		
-		for (cl in classes) {
-			var classN = classes[cl].trim();
-			if (programVisibleCategories[classN] == true) {
-				hide = false;
-				break;
-			}
-		}
-		
-		if (hide) {
-			$(this).addClass('hidden');
-		} else {
+	$('article').each(function(index) {
+		if (lastCategory == type) {	
 			$(this).removeClass('hidden');
+		} else {
+			$(this).addClass('hidden');
 		}
+	});
+
+	lastCategory = (lastCategory == type) ? '' : type;
+
+	$(selector).each(function(index) {
+		var classes = $(this).attr('class').split(' ');	
+		$(this).removeClass('hidden');
 	});
 	
 	$('.day').each(function(index) {
@@ -36,7 +25,6 @@ function events_toggle( type ) {
 		events.each(function(index) {
 			if (! $(this).hasClass('hidden')) {
 				hide = false;
-				return;
 			}
 		});
 		
@@ -54,7 +42,6 @@ function events_toggle( type ) {
 		days.each(function(index) {
 			if (! $(this).hasClass('hidden')) {
 				hide = false;
-				return;
 			}
 		});
 		
@@ -65,28 +52,3 @@ function events_toggle( type ) {
 		}
 	});
 }
-$(function() {
-	$('.week').each(function(index) {
-		var sizeLeft = 0;
-		var sizeRight = 0;
-		$(this).nextUntil('.day', function(index) {	
-			if (sizeLeft <= sizeRight) {
-				$(this).removeClass('alt');
-				sizeLeft += $(this).height();
-			} else {
-				$(this).addClass('alt');
-				sizeRight += $(this).height();
-			}
-		});
-	});
-	
-	$('.day').each(function(index) {
-		var classes = $(this).children('article').attr('class').split(' ');
-		
-		for (var cl in classes) {
-			if (classes[cl] != "") {
-				programVisibleCategories[classes[cl].trim()] = true;
-			}
-		}
-	});
-});

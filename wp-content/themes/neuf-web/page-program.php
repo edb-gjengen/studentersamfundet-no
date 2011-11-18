@@ -4,6 +4,12 @@ add_action('wp_enqueue_scripts', function() { wp_enqueue_script( 'program' ); } 
 get_header(); 
 ?>
 
+<style type="text/css">
+.hidden {
+	display:none;
+}
+</style>
+
 <section id="content" role="main">
 
 <?php 
@@ -20,8 +26,6 @@ if ( $events->have_posts() ) :
 	$last_week    = -1;
 	$last_day     = -1;
 	$new_day      = false;
-	$week_counter = 0; // for adding alt class to every other week
-	$day_counter  = 0; // for adding alt class to every other day
 	ob_start();
 
 
@@ -45,10 +49,9 @@ if ( $events->have_posts() ) :
 		
 		if ( $week != $last_week ) { // New week, new possibilities :)
 			$last_week = $week;
-			$day_counter = 0;    // Reset day counter, so that the first day in a week never will be an alt day
 		?>
 
-	<h1 class="week<?php if ( 0 == ++$week_counter % 2 ) echo ' alt'; ?>">Uke <?php echo $week; ?></h1>
+	<h1 class="week">Uke <?php echo $week; ?></h1>
 		<?php
 		}
 				
@@ -57,7 +60,7 @@ if ( $events->have_posts() ) :
 			$new_day = true;
 		?>
 
-		<div class="day<?php if ( 0 == ++$day_counter % 2 ) echo ' alt'; ?>">
+		<div class="day">
 			<h1><?php echo strftime( "%A %e. %B", $time ); ?></h1>
 
 		<?php } ?>
@@ -75,7 +78,8 @@ if ( $events->have_posts() ) :
 					<p><?php echo strftime( "%H.%M", $time ); ?> <a href="<?php echo the_permalink(); ?>"><?php echo the_title(); ?></a> <?php echo $venue ?></p>
 			
 				</header>
-			</article> <!-- #post-<?php the_ID(); ?> -->
+			</artic:w
+			le> <!-- #post-<?php the_ID(); ?> -->
 
 	<?php endwhile; ?>
 
