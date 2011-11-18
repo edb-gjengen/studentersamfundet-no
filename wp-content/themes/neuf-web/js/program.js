@@ -35,6 +35,7 @@ function events_toggle(type) {
 		}
 	});
 	
+	/* TODO: This doesn't work :( */
 	$('.week').each(function(index) {
 		var hide = true;
 		var days = $(this).nextUntil('.week');
