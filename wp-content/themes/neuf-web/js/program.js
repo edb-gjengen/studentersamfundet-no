@@ -56,3 +56,19 @@ function events_toggle(type) {
 		}
 	});
 }
+
+function showList() {
+	selectorImg = "img.attachment-event-image";
+	selectorDay = ".day";
+
+	$(selectorImg).addClass('hidden');
+	$(selectorDay).width('92.5%');
+}
+
+function showTiles() {
+	selectorImg = "img.attachment-event-image";
+	selectorDay = ".day";
+
+	$(selectorImg).removeClass('hidden');
+	$(selectorDay).width('42.5%');
+}

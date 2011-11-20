@@ -5,7 +5,10 @@ get_header();
 ?>
 
 <section id="content" role="main">
-
+	<ul id="view-selector">
+		<li><a href="#" onclick="showTiles()">Tiles</a></li>
+		<li><a href="#" onclick="showList()">List</a></li>
+	</ul>
 <?php 
 $events = new WP_Query( array(
 	'post_type' => 'event',
