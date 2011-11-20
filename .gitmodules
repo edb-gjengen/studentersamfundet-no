@@ -4,6 +4,3 @@
 [submodule "wp-content/plugins/wpdirauth"]
 	path = wp-content/plugins/wpdirauth
 	url = git://git.neuf.no/wpdirauth.git
-[submodule "wp-content/plugins/neuf-societies"]
-	path = wp-content/plugins/neuf-societies
-	url = git://git.neuf.no/neuf-societies
