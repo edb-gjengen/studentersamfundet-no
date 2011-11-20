@@ -5,7 +5,10 @@ get_header();
 ?>
 
 <section id="content" role="main">
-
+	<ul id="view-selector">
+		<li><a href="#" onclick="showTiles()">Tiles</a></li>
+		<li><a href="#" onclick="showList()">List</a></li>
+	</ul>
 <?php 
 $events = new WP_Query( array(
 	'post_type' => 'event',
@@ -72,8 +75,7 @@ if ( $events->have_posts() ) :
 					<p><?php echo strftime( "%H.%M", $time ); ?> <a href="<?php echo the_permalink(); ?>"><?php echo the_title(); ?></a> <?php echo $venue ?></p>
 			
 				</header>
-			</artic:w
-			le> <!-- #post-<?php the_ID(); ?> -->
+			</article> <!-- #post-<?php the_ID(); ?> -->
 
 	<?php endwhile; ?>
 
