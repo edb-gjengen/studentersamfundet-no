@@ -72,8 +72,7 @@ if ( $events->have_posts() ) :
 					<p><?php echo strftime( "%H.%M", $time ); ?> <a href="<?php echo the_permalink(); ?>"><?php echo the_title(); ?></a> <?php echo $venue ?></p>
 			
 				</header>
-			</artic:w
-			le> <!-- #post-<?php the_ID(); ?> -->
+			</article> <!-- #post-<?php the_ID(); ?> -->
 
 	<?php endwhile; ?>
 
