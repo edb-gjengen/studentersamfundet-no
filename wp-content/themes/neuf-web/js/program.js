@@ -57,6 +57,9 @@ function events_toggle(type) {
 	});
 }
 
+/* TODO: Add a new CSS tag for tile-days and list-days?
+ * and change following 2 functions accordingly. */
+
 function showList() {
 	selectorImg = "img.attachment-event-image";
 	selectorDay = ".day";
