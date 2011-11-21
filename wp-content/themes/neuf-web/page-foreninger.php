@@ -7,10 +7,9 @@ get_header();
 $associations = new WP_Query( array(
 	'post_type' => 'association',
 	'posts_per_page' => -1,
-	'meta_key' => '_neuf_associations_type',
-	'orderby' => 'meta_value title',
-	'order' => 'DESC'
-) );
+	'orderby' => 'title',
+	'order' => 'ASC')
+);
 
 if ( $associations->have_posts() ) : 
 	while ( $associations->have_posts() ) : $associations->the_post();
