@@ -105,9 +105,9 @@ $events2 = new WP_Query( $args );
 			<header class="info">
 				<h1><?php the_title(); ?></h1>
 				<div class="datetime"><?php echo format_datetime(get_post_meta(get_the_ID(), '_neuf_events_starttime',true)); ?></div>
-				<div class="price"><?php $price = get_post_meta(get_the_ID(), '_neuf_events_price',true); echo ($price != "" ? $price : "Gratis"); ?></div>
-				<div class="venue"><?php echo get_post_meta(get_the_ID(), '_neuf_events_venue',true);?></div>
-				<div class="type"><?php echo get_post_meta(get_the_ID(), '_neuf_events_type',true); ?></div>
+				<div class="price" style="display: none;"><?php $price = get_post_meta(get_the_ID(), '_neuf_events_price',true); echo ($price != "" ? $price : "Gratis"); ?></div>
+				<div class="venue" style="display: none;"><?php echo get_post_meta(get_the_ID(), '_neuf_events_venue',true);?></div>
+				<div class="type" style="display: none;"><?php echo get_post_meta(get_the_ID(), '_neuf_events_type',true); ?></div>
 			</header> <!-- .info -->
 			<a class="permalink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">Les hele <?php the_title(); ?></a>
 	        </article> <!-- .event -->
