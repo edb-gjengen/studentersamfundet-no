@@ -2,6 +2,8 @@
 
 get_header();
 
+get_template_part( 'eventslider' );
+
 /* Include campaigns here */
 ?>
 <div id="content">
@@ -10,7 +12,7 @@ get_header();
         <a href="<?php bloginfo('url'); ?>/medlemmer.php">Bli medlem!</a>
     </div>
 
-    <div class="column">
+    <div class="first column">
 
         <div id="lead-text">
             <img src="http://studentersamfundet.no/bilder/neuf.jpg" alt="Fasaden av Chateau Neuf" />
@@ -37,8 +39,8 @@ get_header();
         </div>
 -->
 	<?php include 'kampanje/kampanje.php' ?>
-    </div> <!-- .column -->
-    <div class="column">
+    </div> <!-- .first.column -->
+    <div class="last column">
 
         <div id="calendar" class="info">
         <h3><a href="<?php bloginfo('url'); ?>/prog.php">Program</a></h3>
@@ -67,7 +69,7 @@ get_header();
             if ( have_posts() ) : while ( have_posts() ) : the_post();
 ?>
 
-            <div id="post-<?php the_ID(); ?>" class="hentry post">
+            <div id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
                 <?php if ( has_post_thumbnail() ) : ?>
 		<a href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_post_thumbnail(); ?></a>
                 <?php else : ?>
@@ -93,7 +95,7 @@ get_header();
             </div>
         </div-->
 
-    </div> <!-- .column -->
+    </div> <!-- .last.column -->
 
 </div> <!-- #content -->
 

@@ -5,39 +5,24 @@
 	<meta charset="utf-8" />
         <meta name="robots" content="index,follow" />
 
-        <title><?php
-				if($posts)
-					echo $posts[0]->title . ' | ';
-				bloginfo('name');
-			?></title>
+	<?php neuf_doctitle(); ?>
 
         <link rel="icon" type="image/png" href="favicon.png" />
+
+<?php // @todo Make sure our feeds work properly :) ?>
         <link rel="alternate" type="application/rss+xml" href="<?php bloginfo('url'); ?>/rss/nyheter_feed.php" title="Det Norske Studentersamfund (nyheter)" />
         <link rel="alternate" type="application/rss+xml" href="<?php bloginfo('url'); ?>/rss/program_feed.php" title="Det Norske Studentersamfund (program)" />
 	<link href="<?php bloginfo( 'stylesheet_url' ); ?>" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="<?php bloginfo('url'); ?>/css/lightbox.css" type="text/css" media="screen" />
-
-        <script type="text/javascript" src="js/prototype.js"></script>
-        <script type="text/javascript" src="js/scriptaculous.js?load=effects,builder"></script>
-        <script type="text/javascript" src="js/lightbox.js"></script>
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.js"></script>
-		<script type="text/javascript">
-			$(document).ready(function(){ // when the DOM is ready
-				var loc = document.location; // store the location in a string
-				$('.sub-menu ul li a').each(function(){ // select every a, inside a li, inside an ul, inside .sub-menu and iterate over the a's
-					if( loc == $(this).attr('href') ) { // if THIS current elements href-attribute equals the current location do:
-						$(this).addClass('current'); // add the class .activePage (note: no dots in the addClass-function!) to THIS current element
-					}
-				});
-			});
-		</script>
 
         <script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/nb_NO" type="text/javascript"></script><script type="text/javascript">FB.init("9f0d4e4f84f00af0249f45aa48fb0efb");</script>
+
+	<?php wp_head(); ?>
     </head>
-    <body class="<?php neuf_body_classes(); ?>">
+
+    <body <?php neuf_body_class(); ?>>
         <div id="header">
 
-            <div id="access"><a href="#main">Gå direkte til innholdet</a></div>
+            <div id="access"><a href="#content">Gå direkte til innholdet</a></div>
 
             <div class="site-title">
                 <span><a href="<?php bloginfo('url') ?>/" title="<?php bloginfo('name') ?>" rel="home"><?php bloginfo('name') ?></a></span>
@@ -108,6 +93,4 @@ echo '</a>';
         </div> <!-- #header -->
 
 	<?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'container_id' => 'menu' ) ); ?>
-
-        <div id="main">
 
