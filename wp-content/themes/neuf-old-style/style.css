@@ -197,19 +197,21 @@ body.dns {
 }
 #header {
     height:55px;
-    overflow:hidden;
     position:relative;
 }
-.site-title {
-    z-index:999
+#header .site-title {
+    z-index:999;
+    width:400px;
+    height:50px;
+    left:-304px;
 }
-.site-title a {
+#header .site-title a {
     background: url('img/bannerindex-400.png') no-repeat -10px 0;
     display:block;
-    height:50px;
+    width:100%;
+    height:100%;
     margin-top:0px;
     text-indent:-9999px;
-    width:400px;
 }
 
 #quick-menu {
@@ -324,13 +326,29 @@ body.dns {
     top:30px;
 }
 
-#bokkafeen_tider a
-{
-	color:#CCCCCC;
-}
 #header .aapningstider table {
     text-align:left;
     width:175px;
+}
+
+#header .aapningstider th {
+	background:transparent url('img/arrow-down.png') no-repeat center right;
+	padding-right:15px;
+}
+
+#header .aapningstider td {
+	background:black;
+	display:none;
+}
+
+#header .aapningstider:hover td {
+	display:table-cell;
+	z-index:99999;
+}
+
+.aapningstider #bokkafeen_tider a
+{
+	color:#CCCCCC;
 }
 
 /* Header slutt */
