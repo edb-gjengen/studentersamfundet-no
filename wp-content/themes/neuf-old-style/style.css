@@ -72,16 +72,16 @@
 }
 #content {
     float:left;
-    margin:50px 0 20px;
-    width:950px;
-    background: #ffffff;
+    margin:0;
+    width:1000px;
+    background: transparent;
     position:relative;
-    padding:0 25px;
+    padding:0;
 }
 
 .page-medlemmer .column,
 .home .column {
-    width:425px;
+    width:450px;
     margin:0;
     padding:50px 25px;
     float:left;
@@ -91,7 +91,7 @@
     margin:0;
     width: 518px;
 /*    overflow:hidden; */
-    background:#ffffff;
+    background:transparent;
     margin-bottom: 30px;
     clear:both;
 }
@@ -185,10 +185,10 @@ body.dns {
 }
 /*body.dns */
 #header {
-    background:#191919 url('img/header-210x.png') repeat-x bottom;
+    background:#191919 url('img/header-210x.png') repeat-x top;
 }
 #header {
-    height:70px;
+    height:55px;
     overflow:hidden;
     position:relative;
 }
@@ -196,10 +196,10 @@ body.dns {
     z-index:999
 }
 .site-title a {
-    background: url('img/bannerindex-400.png') no-repeat -20px 0;
+    background: url('img/bannerindex-400.png') no-repeat -10px 0;
     display:block;
-    height:63px;
-    margin-top:20px;
+    height:50px;
+    margin-top:0px;
     text-indent:-9999px;
     width:400px;
 }
@@ -515,7 +515,6 @@ ul#program,
 ul#program li.alt,
 #internal-ad-sidebar-insert a,
 #internal-ad-content-top a,
-#content,
 .join a
 {
     display:inline-block;
@@ -534,8 +533,7 @@ ul#program li.alt,
 }
 .small.fancybox,
 .info ul li.alt,
-ul#program li.alt,
-#content {
+ul#program li.alt {
     background-image:none;
 }
 .small.fancybox,
@@ -545,14 +543,6 @@ ul#program li.alt
     -webkit-border-radius:7px;
     -moz-border-radius:7px;
     border-radius:7px;
-}
-#content {
-    -webkit-border-radius:4px;
-    -moz-border-radius:4px;
-    border-radius:4px;
-    -moz-box-shadow:0 1px 15px rgba(0, 0, 0, 0.25);
-    -webkit-box-shadow:0 1px 15px rgba(0, 0, 0, 0.25);
-    box-shadow:0 1px 15px rgba(0, 0, 0, 0.25);
 }
 .fancybox:hover,
 .fancybox:focus,
