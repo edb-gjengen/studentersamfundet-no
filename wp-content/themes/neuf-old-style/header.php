@@ -103,11 +103,11 @@ echo '</a>';
         </div> <!-- .search -->
 			*/ ?>
 	
-	<?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'container_id' => 'menu' ) ); ?>
-	
 	<?php // display_menu(); // defined in functions.php ?>
 
         </div> <!-- #header -->
+
+	<?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'container_id' => 'menu' ) ); ?>
 
         <div id="main">
 

@@ -188,8 +188,7 @@ body.dns {
     background:#191919 url('img/header-210x.png') repeat-x bottom;
 }
 #header {
-    height:206px;
-    margin-bottom:10px;
+    height:70px;
     overflow:hidden;
     position:relative;
 }
@@ -220,15 +219,12 @@ body.dns {
 }
 
 #menu {
-	position:absolute;
 	width:100%;
 	height:25px;
 	background:#2c69a6 url('img/gradient-200x.png') repeat-x 0 top;
 	/*background:#2c69a6 url('img/gradient-200x.png')url('img/gradient-transparent-to-black-x100.png') repeat-x 0 top;*/
 	padding:15px 0;
 	font-size: 20px;
-	bottom:0px;
-	left:0px;
 }
 #menu a {
 	color:rgb(256,256,256);
