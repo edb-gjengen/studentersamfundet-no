@@ -71,6 +71,9 @@
                     </li>
 
 <?php // Let's display some news ?>
+
+<?php // TODO upgrade this widget to WordPress
+/*
                     <li class="widget news">
                         <h3>Nyheter</h3>
                         <ul>
@@ -88,6 +91,7 @@
                             <?php endforeach; ?>
                         </ul>
                     </li>
+ */ ?>
 
 
 
