@@ -44,7 +44,7 @@ if ( $events->have_posts() ) :
 
 		<div id="weekly-program" class="grid_12">
 
-			<div class="day grid_2">
+			<div class="day">
 
 		<?php while ( $events->have_posts() ) : $events->the_post(); ?>
 
@@ -61,7 +61,7 @@ if ( $events->have_posts() ) :
 	?>
 			</div> <!-- .day -->
 
-			<div class="day grid_2">
+			<div class="day">
 		<?php } ?>
 
 			<?php
