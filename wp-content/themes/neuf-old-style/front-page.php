@@ -89,7 +89,7 @@ if ( $events->have_posts() ) :
 <?php endif; // $events->have_posts() ?>
 
 
-		<div class="container-12 grid_6">
+		<div class="container-12 grid_5">
 
 			<div id="lead-text">
 				<img src="http://studentersamfundet.no/bilder/neuf.jpg" alt="Fasaden av Chateau Neuf" />
@@ -117,7 +117,7 @@ if ( $events->have_posts() ) :
 	-->
 		<?php include 'kampanje/kampanje.php' ?>
 		</div> <!-- .first.column -->
-		<div class="container_12 grid_6">
+		<div class="container_12 grid_5">
 
 			<div id="calendar" class="info">
 			<h3><a href="<?php bloginfo('url'); ?>/prog.php">Program</a></h3>
