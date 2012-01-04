@@ -88,6 +88,7 @@ if ( $events->have_posts() ) :
 
 <?php endif; // $events->have_posts() ?>
 
+		<div class="clearfix"></div>
 
 		<div class="grid_5">
 
