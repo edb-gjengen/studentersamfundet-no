@@ -1,0 +1,31 @@
+#  
+# Rewriting old permalinks.
+# By prefixing the old news ID, we can separate them from event IDs
+# which overlapped in the old DB.
+#
+# Ref: http://stackoverflow.com/questions/3063548/can-mod-rewrite-do-math
+#
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    # LOL syntax
+    RewriteCond %{QUERY_STRING} ID=(\d{1})$
+    RewriteRule nyhet.php$ /?p=1000%1 [R=301,L]
+    RewriteCond %{QUERY_STRING} ID=(\d{2})$
+    RewriteRule nyhet.php$ /?p=100%1 [R=301,L]
+    RewriteCond %{QUERY_STRING} ID=(\d{3})$
+    RewriteRule nyhet.php$ /?p=10%1 [R=301,L]
+    RewriteCond %{QUERY_STRING} ID=(\d{4})$
+    RewriteRule nyhet.php$ /?p=1%1 [R=301,L]
+</IfModule>
+# Wordpress stuff
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+
