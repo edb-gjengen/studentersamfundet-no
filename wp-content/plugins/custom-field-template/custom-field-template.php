@@ -482,7 +482,7 @@ class custom_field_template {
 			endif;
 		endif;
 		
-		echo $output;
+		echo @$output;
 	}
 	
 	function add_manage_posts_columns($columns) {
