@@ -132,6 +132,8 @@ var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
 </script>
 	<!-- end Get Satisfaction -->
 
+<?php wp_footer(); ?>
+
 </div> <!-- #footer -->
 
 </body>
