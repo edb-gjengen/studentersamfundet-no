@@ -279,4 +279,38 @@ function make_utf8_encoding($text) {
 	return $text;
 }
 
+/**
+ * Count attachments to a post.
+ *
+ * Stolen from misund's blog theme.
+ *
+ * @author misund
+ */
+function neuf_get_attachment_count() {
+	global $post;
+
+	$attachments = get_children( array(
+		'post_parent' => $post->ID,
+		'post_type'   => 'any',
+		'numberposts' => -1,
+		'post_status' => 'any'
+	) );
+
+	return count( $attachments );
+}
+
+/**
+ * Displays a gallery if suitable (Template Tag).
+ *
+ * If a post has more than two attachments, we should probably display them in
+ * single view. This particularly applies to events. Photos of concerts etc.
+ * can this way easily be added after the event, without much hassle.
+ *
+ * @author misund
+ */
+function neuf_maybe_display_gallery() {
+	if ( 2 < neuf_get_attachment_count() )
+		echo do_shortcode( '[gallery]' );
+}
+
 ?>
