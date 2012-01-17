@@ -8,85 +8,13 @@ get_header();
 
 	<div class="container_12">
 
-<?php get_template_part( 'eventslider' ); ?>
+<?php // get_template_part( 'eventslider' ); ?>
 
 		<div class="join">
 			<a href="<?php bloginfo('url'); ?>/medlemmer.php">Bli medlem!</a>
 		</div>
 
-<?php
-/**
- * Events from today.
- *
- * Ref: http://codex.wordpress.org/Class_Reference/WP_Query#Custom_Field_Parameters
- */
-$meta_query = array(
-	'key'     => '_neuf_events_starttime',
-	'value'   => date( 'U' , strtotime( '-8 hours' ) ), 
-	'compare' => '>',
-	'type'    => 'numeric'
-);
-
-$args = array(
-	'post_type'      => 'event',
-	'meta_query'     => array( $meta_query ),
-	'posts_per_page' => 50,
-	'orderby'        => 'meta_value_num',
-	'meta_key'       => '_neuf_events_starttime',
-	'order'          => 'ASC'
-);
-
-$events = new WP_Query( $args );
-
-if ( $events->have_posts() ) :
-	$event_daycounter = 0;
-?>
-
-		<div id="weekly-program">
-
-			<div class="day grid_2">
-
-		<?php while ( $events->have_posts() ) : $events->the_post(); ?>
-
-	<?php
-		if ( isset( $event_current_day ) )
-			$event_previous_day = $event_current_day;
-
-		$event_current_day = date( 'Y-m-d' , get_post_meta( $post->ID , '_neuf_events_starttime' , true ) );
-
-		if ( isset( $event_previous_day ) &&  $event_previous_day != $event_current_day ) {
-			// New day
-			if ( $event_daycounter >= 6 )
-				break;
-	?>
-			</div> <!-- .day -->
-
-			<div class="day grid_2">
-		<?php } ?>
-
-			<?php
-				if ( !isset( $event_previous_day ) || $event_previous_day != $event_current_day ) {
-					$event_daycounter++;
-			?>
-
-				<p><?php echo date( 'l j/n Y' , get_post_meta( $post->ID , '_neuf_events_starttime' , true ) ); ?></p>
-
-			<?php } ?>
-
-				<?php
-				if( has_post_thumbnail() )
-					the_post_thumbnail(); 
-				?>
-				<h2><a href="<?php the_permalink(); ?>" title="Permanent lenke til <?php the_title(); ?>"><?php echo the_title(); ?></a></h2>
-
-
-		<?php endwhile; // $events->have_posts(); ?>
-
-			</div> <!-- .day -->
-
-		</div> <!-- #weekly_program -->
-
-<?php endif; // $events->have_posts() ?>
+<?php get_template_part( 'calendar' , 'weekly' ); ?>
 
 		<div class="clearfix"></div>
 
