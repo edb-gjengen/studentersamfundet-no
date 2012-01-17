@@ -14,7 +14,7 @@ get_header();
 			<a href="<?php bloginfo('url'); ?>/medlemmer.php">Bli medlem!</a>
 		</div>
 
-<?php get_template_part( 'calendar' , 'weekly' ); ?>
+<?php get_template_part( 'calendar' , '3days' ); ?>
 
 		<div class="clearfix"></div>
 

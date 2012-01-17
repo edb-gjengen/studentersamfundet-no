@@ -34,7 +34,6 @@ body {
 .column,
 #featured,
 .sidebar .event,
-.home #weekly-program .day,
 .grid_1,
 .grid_2,
 .grid_3,
@@ -91,7 +90,6 @@ body {
 	width:70px;
 }
 
-.home #weekly-program .day,
 .container_12 .grid_2 {
 	width:170px;
 }
