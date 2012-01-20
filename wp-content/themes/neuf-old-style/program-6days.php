@@ -27,7 +27,7 @@ if ( $events->have_posts() ) :
 	$newday = true;
 ?>
 
-		<div id="weekly-program">
+		<div id="program-6days" class="program">
 
 			<div class="day grid_2">
 
@@ -56,14 +56,14 @@ if ( $events->have_posts() ) :
 					$event_daycounter++;
 			?>
 
+				<h2><?php echo date( 'l j/n' , get_post_meta( $post->ID , '_neuf_events_starttime' , true ) ); ?></h2>
+
 				<?php
 				if( $newday && has_post_thumbnail() ) {
-					the_post_thumbnail();
+					the_post_thumbnail ('two-column-thumb' );
 					$newday = false;
 				}
 				?>
-
-				<p><?php echo date( 'l j/n Y' , get_post_meta( $post->ID , '_neuf_events_starttime' , true ) ); ?></p>
 
 			<?php } ?>
 
@@ -74,6 +74,6 @@ if ( $events->have_posts() ) :
 
 			</div> <!-- .day -->
 
-		</div> <!-- #weekly_program -->
+		</div> <!-- #program-6days -->
 
 <?php endif; // $events->have_posts() ?>

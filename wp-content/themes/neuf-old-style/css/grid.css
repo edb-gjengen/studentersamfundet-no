@@ -360,6 +360,10 @@ body {
 
 /* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */
 
+#program-3days:before,
+#program-3days:after,
+#program-6days:before,
+#program-6days:after,
 .clearfix:before,
 .clearfix:after {
   content: '\0020';
@@ -370,6 +374,8 @@ body {
   height: 0;
 }
 
+#program-3days:after,
+#program-6days:after,
 .clearfix:after {
   clear: both;
 }

@@ -92,19 +92,6 @@ section#featured {
 	float:left;
 }
 
-.program span.event-name {
-	width:338px;
-}
-.program span.event-type {
-	width:64px;
-}
-.program span.event-date {
-	width:64px;
-}
-.program span.event-place {
-	width:64px;
-}
-
 /* end layout */
 
 /* Header */

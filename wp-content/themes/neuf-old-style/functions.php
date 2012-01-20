@@ -5,6 +5,9 @@ add_theme_support( 'automatic-feed-links' );
 
 $content_width = 770;
 
+add_image_size( 'two-column-thumb'  , 170 ,  69 , true );
+add_image_size( 'four-column-thumb' , 370 , 150 , true );
+
 /**
  * Register navigation menus.
  */

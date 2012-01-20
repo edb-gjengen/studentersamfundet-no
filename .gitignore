@@ -4,3 +4,4 @@ wp-config.php
 *.swp
 .sass-cache
 .htaccess
+stuff/
