@@ -13,11 +13,12 @@ $(document).ready(function(){
 });
 
 $(function() {
-	$("#slider").cycle({
+	$("#slider").before('<div id="slidernav">').cycle({
 		fx:     'fade', 
 		speed:  'fast', 
 		timeout: 8000, 
 		next:   '#snext', 
-		prev:   '#sprev' 
+		prev:   '#sprev',
+		pager:  '#slidernav'
 	});
 });

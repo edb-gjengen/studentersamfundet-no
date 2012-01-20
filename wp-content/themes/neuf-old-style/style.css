@@ -62,7 +62,9 @@
 }
 
 section#featured {
-	height:200px;
+	height:240px;
+	margin-top:30px;
+	margin-bottom:30px;
 }
 
 #content {
@@ -261,6 +263,7 @@ body.dns {
 /* Header slutt */
 
 /* Hoveddel */
+
 
 .home .hentry {
 	width:100%;
@@ -604,6 +607,13 @@ a:hover, a:focus {
 }
 a:focus { outline:thin dotted; }
 a:hover, a:active { outline: none; }
+
+a.blocklink, a.blocklink:visited,
+a.blocklink:focus, a.blocklink:active,
+a.blocklink:hover {
+	color:inherit;
+	text-decoration:none;
+}
 
 abbr {
 	border-bottom: 1px dotted;

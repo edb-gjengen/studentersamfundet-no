@@ -32,7 +32,6 @@ body {
 ----------------------------------------------------------------------------------------------------*/
 
 .column,
-#featured,
 .sidebar .event,
 .grid_1,
 .grid_2,
@@ -133,7 +132,6 @@ body {
 	width:1070px;
 }
 
-#featured,
 .container_12 .grid_12 {
 	width:1170px;
 }
