@@ -46,6 +46,13 @@ $news = new WP_Query( 'type=post' );
 			<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
 				<a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">
 					<header class="grid_7">
+						<?php
+							$event_array = get_the_terms( $post->ID , 'event_type' );
+							foreach ( $event_array as $event_type )
+								$post->event_types[] = $event_type->name;
+							$html = '<span class="event-type">' . implode( ', ' , $post->event_types ) . '</span>';
+							echo $html;
+						?>
 						<h1><?php the_title(); ?></h1>
 						<div class="datetime"><?php echo format_datetime(get_post_meta(get_the_ID(), '_neuf_events_starttime',true)); ?></div>
 						<div class="price"><?php $price = get_post_meta(get_the_ID(), '_neuf_events_price',true); echo ($price != "" ? $price : "Gratis"); ?></div>
