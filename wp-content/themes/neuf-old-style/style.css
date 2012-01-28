@@ -268,7 +268,6 @@ body.dns {
 .home .hentry {
 	width:100%;
 	padding:0;
-	margin:0 0 40px;
 	border:none;
 	clear:both;
 	overflow:hidden;
@@ -713,6 +712,14 @@ h6 {
 }
 .entry-content ol ol ol ol ol ol {
 	list-style: lower-roman inside;
+}
+.big_bullet {
+	display:inline-block;
+	width: 16px;
+	height: 16px;
+	background-color: #ff9e29;
+	border-radius:8px;
+	vertical-align:middle;
 }
 
 /* Quotes */
