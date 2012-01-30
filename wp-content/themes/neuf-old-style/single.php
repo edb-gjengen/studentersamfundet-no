@@ -27,7 +27,9 @@
 
 		<?php endwhile; endif; ?>
 
-<?php get_sidebar(); ?>
+<?php get_template_part( 'program' , '3days' ); ?>
+
+<?php // get_sidebar(); ?>
 
 			</div> <!-- .container_12 -->
 
