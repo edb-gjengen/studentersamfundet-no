@@ -115,7 +115,6 @@ body {
 	width:670px;
 }
 
-.single .container_12 .hentry,
 .container_12 .grid_8 {
 	width:770px;
 }
@@ -147,7 +146,6 @@ body {
 	padding-left:100px;
 }
 
-.single .container_12 .hentry,
 .container_12 .prefix_2 {
 	padding-left:200px;
 }
@@ -198,7 +196,6 @@ body {
 	padding-right:100px;
 }
 
-.single .container_12 .hentry,
 .container_12 .suffix_2 {
 	padding-right:200px;
 }
@@ -358,6 +355,8 @@ body {
 
 /* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */
 
+.hentry:before,
+.hentry:after,
 #program-3days:before,
 #program-3days:after,
 #program-6days:before,
@@ -372,6 +371,7 @@ body {
   height: 0;
 }
 
+.hentry:after,
 #program-3days:after,
 #program-6days:after,
 .clearfix:after {

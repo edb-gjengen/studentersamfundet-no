@@ -23,13 +23,13 @@ $args = array(
 $events = new WP_Query( $args );
 
 if ( $events->have_posts() ) :
-	$event_daycounter = 0;
+	$event_daycounter = 1;
 	$newday = true;
 ?>
 
-		<div id="program-3days" class="program">
+		<div id="program-3days" class="program grid_12">
 
-			<div class="day grid_4">
+		<div class="day day-<?php echo $event_daycounter; ?> grid_4 alpha">
 
 		<?php while ( $events->have_posts() ) : $events->the_post(); ?>
 
@@ -42,12 +42,14 @@ if ( $events->have_posts() ) :
 		if ( isset( $event_previous_day ) &&  $event_previous_day != $event_current_day ) {
 			// New day
 			$newday = true;
-			if ( $event_daycounter >= 3 )
+
+			// We only want the first three days
+			if ( $event_daycounter >= 4 )
 				break;
 ?>
 			</div> <!-- .day -->
 
-			<div class="day grid_4">
+			<div class="day day-<?php echo $event_daycounter; ?> grid_4<?php if ( 3 == $event_daycounter ) echo " omega" ?>">
 
 		<?php } ?>
 

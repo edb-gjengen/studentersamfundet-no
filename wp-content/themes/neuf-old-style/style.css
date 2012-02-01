@@ -264,215 +264,6 @@ body.dns {
 
 /* Hoveddel */
 
-
-.home .hentry {
-	width:100%;
-	padding:0;
-	border:none;
-	clear:both;
-	overflow:hidden;
-}
-
-.home #more {
-	height:0;
-	text-align:right;
-}
-.home #more a {
-	position:relative;
-	top:-66px;
-}
-
-.info ul {
-	background:none repeat scroll 0 0 #9AC9F7 !important;
-	list-style-type:none;
-	margin:0 0 3em;
-	padding-bottom:10px;
-	width:100%;
-}
-.info ul li {
-	padding:10px;
-}
-.info ul li.alt,
-.program #program li.alt
-{
-	background:url("http://studentersamfundet.no/img/gradient-transparent-to-black-x100.png") repeat-x scroll 0 0 #66A8E9 !important;
-	left:-10px;
-	padding:10px 20px 10px;
-	position:relative;
-	width:459px;
-}
-.program #program li.alt {
-	width:548px;
-}
-.single .info ul li.alt {
-	width:280px;
-}
-.info ul .term {
-	float:left;
-	font-weight:bold;
-}
-.home .info ul .term {
-	width:50px;
-}
-.home .info ul .definition {
-	padding-left:50px;
-}
-.single .info ul .term {
-	width:60px;
-}
-.single .info ul .definition {
-	padding-left:60px;
-}
-
-.entry-meta {
-	margin: -12px 0 12px;
-}
-.vedlegg {
-	float:right;
-	margin:0 0 3px 10px;
-	max-width:300px;
-}
-.caption {
-	color:#333333;
-	font-size:14px;
-	line-height:1;
-	margin-bottom:2em;
-	text-align:center;
-}
-#vedlegg-2 .caption {
-	margin-bottom:0.5em;
-}
-
-.campaign {
-	width:425px;
-	height:160px;
-	background:black;
-	margin: 40px 0;
-}
-.campaign a {
-	display:block;
-	width:100%;
-	height:100%;
-	text-indent:-99999px;
-}
-#campaign1 a {
-	background: url('http://studentersamfundet.no/imageResize.php?pic=bilder/program/3960.jpg&maxwidth=425&maxheight=160&crop=1');
-}
-#campaign2 a {
-	background: url('http://studentersamfundet.no/imageResize.php?pic=bilder/program/3705.jpg&maxwidth=425&maxheight=160&crop=1');
-}
-#campaign3 a {
-	background: url('http://studentersamfundet.no/imageResize.php?pic=bilder/program/3693.JPG&maxwidth=425&maxheight=160&crop=1');
-}
-
-#internal-ad-single-bottom {
-	width:540px;
-	height:150px;
-	background:black;
-	margin-bottom:30px;
-}
-
-#external-ad-single-bottom {
-	width:540px;
-	height:300px;
-	background:black;
-}
-
-.section-program .entry-content {
-	margin-bottom: 1.5em;
-}
-.section-program #facebook-comments {
-	clear:left;
-}
-.section-program .hentry .internal-ad {
-	float:left;
-	width:250px;
-}
-.section-program .hentry #newsletter.internal-ad {
-	margin-right:40px;
-	clear:both;
-}
-.section-program .hentry .internal-ad .fancybox {
-	max-width:198px;
-}
-
-#internal-ad-sidebar-insert a,
-#internal-ad-content-top a,
-.fancybox
-{
-	padding: 14px 25px 16px;
-	color:#fff !important;
-	font-family:Georgia,serif;
-	font-size:25px;
-	font-weight:bold;
-	font-style:italic;
-	line-height:1;
-	text-decoration:none;
-	text-align:center;
-	text-shadow:0 -1px 1px rgba(0,0,0,0.45);
-	cursor:pointer;
-	overflow:visible;
-	width:250px;
-	background-color: #23905B;
-}
-a.callToAction:hover,
-a.callToAction:focus
-{
-	background-color:#111;
-	color:#fff
-}
-a.callToAction:active {
-	top:1px
-}
-.page-vis .internal-ad .fancybox {
-	background-color: #6B43A2;
-}
-.page-foreninger #internal-ad-content-top a {
-	background-color: #23905B;
-}
-
-.fancybox,
-.info ul,
-.info ul li.alt,
-ul#program,
-ul#program li.alt,
-#internal-ad-sidebar-insert a,
-#internal-ad-content-top a,
-.join a
-{
-	display:inline-block;
-	background-image: url(img/gradient-transparent-to-black-x100.png);
-	background-repeat: repeat-x;
-	background-position: center bottom;
-	-webkit-border-radius:15px;
-	-moz-border-radius:15px;
-	border-radius:15px;
-	-moz-box-shadow:5px 5px 5px rgba(0, 0, 0, 0.25);
-	-webkit-box-shadow:5px 5px 5px rgba(0, 0, 0, 0.25);
-	box-shadow:5px 5px 5px rgba(0, 0, 0, 0.25);
-	border: 1px solid rgba(0,0,0,.25);
-	border-bottom-color: rgba(0,0,0,.35);
-	position:relative;
-}
-.small.fancybox,
-.info ul li.alt,
-ul#program li.alt {
-	background-image:none;
-}
-.small.fancybox,
-.info ul li.alt,
-ul#program li.alt
-{
-	-webkit-border-radius:7px;
-	-moz-border-radius:7px;
-	border-radius:7px;
-}
-.fancybox:hover,
-.fancybox:focus,
-#internal-ad-sidebar-insert a:hover,
-#internal-ad-sidebar-insert a:focus,
-#internal-ad-content-top a:hover,
-#internal-ad-content-top a:focus,
 .join a
 {
 	background-image: url(img/gradient-white-to-transparent-x100.png);
@@ -511,7 +302,19 @@ ul#program li.alt
 	background-color:#9ac9f7;
 }
 
+#digest_news,
+#digest_events,
+#program-3days,
+#program-6days
+{
+	padding-top:30px;
+	border-top:1px solid #ff9e29;
+}
 
+.single #content > .hentry {
+	margin-top:30px;
+	margin-bottom:30px;
+}
 
 /* Hoveddel slutt */
 
@@ -817,12 +620,7 @@ img {
 	font-weight:normal;
 }
 
-.home #program-3days {
-	padding-top:30px;
-	border-top:1px solid #ff9e29;
-}
-
-.home #articles .post > a > img {
+.home #digest_news .post > a > img {
 	float:left;
 	margin:2px 10px 0 0;
 	width:93px;
