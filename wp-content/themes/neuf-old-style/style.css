@@ -305,7 +305,8 @@ body.dns {
 #digest_news,
 #digest_events,
 #program-3days,
-#program-6days
+#program-6days,
+.program-6days
 {
 	padding-top:30px;
 	border-top:1px solid #ff9e29;

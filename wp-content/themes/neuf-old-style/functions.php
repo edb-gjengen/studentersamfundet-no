@@ -320,4 +320,13 @@ function neuf_maybe_display_gallery() {
 function neuf_event_format_date($timestamp) {
 	return date_i18n('d/m', intval($timestamp));
 }
+
+function neuf_event_day_gap_size($current_day,$previous_day) {
+	$format = '%Y-%m-%d';
+	$prev = new DateTime($previous_day);
+	$cur = new DateTime($current_day);
+	$diff = $prev->diff($cur)->d;
+	return ($diff - 1) * 2;
+}
+
 ?>
