@@ -2,7 +2,7 @@
 
 			<div class="hentry">
 
-				<div class="grid_7">
+				<div class="grid_6">
 					<?php
 						$event_array = get_the_terms( $post->ID , 'event_type' );
 						foreach ( $event_array as $event_type )
@@ -21,7 +21,7 @@
 
 				</div>
 
-				<div class="grid_5">
+				<div class="grid_6">
 
 					<?php the_post_thumbnail( 'large' , array( 'style' => 'display:block;margin:auto;' ) ); ?>
 
