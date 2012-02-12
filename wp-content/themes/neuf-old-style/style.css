@@ -426,7 +426,8 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 a,a:visited,
-h1,h2,h3,h4,h5,h6
+h1,h2,h3,h4,h5,h6,
+.single-event .time-price
 {
 	color: #ff9e29;
 	text-decoration:none;
@@ -450,7 +451,11 @@ h1 {
 	font-weight:bold;
 	font-style:normal;
 }
-h2 {
+h2,
+.home #featured article h1,
+.single-event h1, 
+.single-event .time-price
+{
 	font-size:20px;
 	letter-spacing:2px;
 	font-style:italic;
@@ -590,18 +595,12 @@ img {
 	height:300px !important;
 }
 
-/*******************************
- * Styles for individual pages *
- ******************************/
-.home #featured article .event-type {
-	font-family:Arvo,Georgia,serif;
-	text-transform:uppercase;
-	font-weight:bold;
-	font-size:35px;
-	line-height:60px;
-	color:#ff9e29;
-}
-.home #featured article .event-type:before {
+/***********************************
+ * Styles for individual templates *
+ ***********************************/
+.single-event .event-type:before,
+.home #featured article .event-type:before,
+.home #featured article.type-post h1:before {
 	content:'';
 	background:#ff9e29;
 	border-radius:50%;
@@ -611,6 +610,17 @@ img {
 	position:relative;
 	top:10px;
 	margin-right:15px;
+}
+.single-event .event-type,
+.home #featured article .event-type,
+.home #featured article.type-post h1 {
+	font-family:Arvo,Georgia,serif;
+	text-transform:uppercase;
+	font-weight:bold;
+	font-style:normal;
+	font-size:35px;
+	line-height:60px;
+	color:#ff9e29;
 }
 
 .home #featured article h1 {
@@ -655,6 +665,13 @@ h2.jobb {
 .page-kontakt .entry-content > ul {
 	list-style-type:none;
 	margin:0;
+}
+
+.single-event .time-price {
+	margin:1em 0;
+}
+.single-event .meta-prep-event-time {
+	clear:left;
 }
 
 /* Fordeler.php */
