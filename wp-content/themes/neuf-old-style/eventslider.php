@@ -23,9 +23,9 @@ $news = new WP_Query( 'type=post' );
 ?>
 <?php if ($events->have_posts()) : ?>
 	<section id="featured" class="clearfix">
-	<a href="#" id="sprev" style="position:absolute;">Prev</a>
-	<a href="#" id="snext" style="position:absolute;">Next</a>
-	    <div id="slider"> 
+		<a href="#" id="prevLink">Prev</a>
+		<a href="#" id="nextLink">Next</a>
+		<div id="slider"> 
 		<?php
 		if ($news->have_posts()) : $news->the_post(); ?>
 			<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
