@@ -58,6 +58,7 @@ if ( $events->have_posts() ) :
 		$date = get_post_meta( $post->ID , '_neuf_events_starttime' , true );
 		/* event type class */
 		$event_array = get_the_terms( $post->ID , 'event_type' );
+		$event_types = array();
 		foreach ( $event_array as $event_type )
 			$event_types[] = $event_type->name;
 		$event_type_class = $event_type ? "class=\"".implode(" ", $event_types)."\"" : "";
@@ -126,7 +127,7 @@ if ( $events->have_posts() ) :
 			} ?>
 		<?php } else { ?>
 		<?php } ?>	
-		<p><?php echo date_i18n( 'H.i:' , get_post_meta( $post->ID , '_neuf_events_starttime' , true ) ); ?> <a href="<?php the_permalink(); ?>" title="Permanent lenke til <?php the_title(); ?>"><?php echo the_title(); ?></a></p>
+		<p <?php echo $event_type_class;?>><?php echo date_i18n( 'H.i:' , get_post_meta( $post->ID , '_neuf_events_starttime' , true ) ); ?> <a href="<?php the_permalink(); ?>" title="Permanent lenke til <?php the_title(); ?>"><?php echo the_title(); ?></a></p>
 		<?php
 		$first_week = false;
 		?>
