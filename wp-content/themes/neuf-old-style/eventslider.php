@@ -38,11 +38,11 @@ $news = new WP_Query( 'type=post' );
 		if ($news->have_posts()) : $news->the_post(); ?>
 			<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
 				<a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">
-					<header class="grid_6">
+					<header class="grid_4">
 						<h1><?php the_title(); ?></h1>
 						<?php the_excerpt(); ?>
 					</header>
-					<div class="grid_6">
+					<div class="grid_5">
 						<?php the_post_thumbnail( 'six-column-promo' ); ?>
 					</div>
 				</a>
@@ -53,7 +53,7 @@ $news = new WP_Query( 'type=post' );
 		while ($events->have_posts() && $counter < 4) : $events->the_post(); ?>
 			<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
 				<a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">
-					<header class="grid_6">
+					<header class="grid_4">
 						<?php
 							$event_array = get_the_terms( $post->ID , 'event_type' );
 							foreach ( $event_array as $event_type )
@@ -69,7 +69,7 @@ $news = new WP_Query( 'type=post' );
 						<div><?php echo get_post_meta(get_the_ID() , '_neuf_events_promo_period', true); ?></div>
 						<?php the_excerpt(); ?>
 					</header>
-					<div class="grid_6">
+					<div class="grid_5">
 						<?php the_post_thumbnail( 'six-column-promo' ); ?>
 					</div>
 				</a>
@@ -81,7 +81,10 @@ $news = new WP_Query( 'type=post' );
 		?>
 
 	    </div>
-	    
+
+            <div id="facebook-followers" class="grid_3">
+                    <div class="fb-like-box" data-href="https://www.facebook.com/studentersamfundet" data-width="270" data-height="240" data-show-faces="true" data-stream="false" data-header="false"></div>
+            </div> <!-- #facebook-followers -->
 	</section>
 
 <?php endif; // $events->have_posts()

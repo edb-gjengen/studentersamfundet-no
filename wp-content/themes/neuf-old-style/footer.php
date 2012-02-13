@@ -102,9 +102,6 @@ neuf_flickr_images('limit=15&type=group&groupid=1292860@N21');
 ?>
 	</div>
 
-	<div id="facebook-followers" class="grid_4">
-		<fb:fan profile_id="23664032291" stream="0" connections="10" width="370"></fb:fan>
-	</div> <!-- #facebook-followers -->
 	</div> <!-- #kolofon -->
 
 	<span class="credits grid_12">Det Norske Studentersamfund | Slemdalsveien 15, 0369 Oslo | <a href="<?php bloginfo('url'); ?>/kart.php">Kart</a> | <a href="<?php bloginfo('url'); ?>/kontakt.php">Kontakt</a> | Webdesign av <a href="http://elefantzonen.com/butikk/">Binka</a> og <a href="http://hemmeligadresse.com/bloggdesign/">Thomas Misund</a></span>
