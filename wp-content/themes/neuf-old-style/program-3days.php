@@ -61,15 +61,14 @@ if ( $events->have_posts() ) :
 				<h2><?php echo ucfirst( date_i18n( 'l j/n' , get_post_meta( $post->ID , '_neuf_events_starttime' , true ) ) ); ?></h2>
 
 				<?php
-				if( $newday && has_post_thumbnail() ) {
-					the_post_thumbnail( 'four-column-thumb' );
-					$newday = false;
-				}
-				?>
+				if( $newday && has_post_thumbnail() ) { ?>
+                                    <a href="<?php the_permalink(); ?>" title="permanent lenke til <?php the_title(); ?>"><?php the_post_thumbnail( 'four-column-thumb' ); ?></a>
+                                    <?php
+                                    $newday = false;
+                                }
+                            } ?>
 
-			<?php } ?>
-
-				<p><?php echo date_i18n( 'H.i:' , get_post_meta( $post->ID , '_neuf_events_starttime' , true ) ); ?> <a href="<?php the_permalink(); ?>" title="Permanent lenke til <?php the_title(); ?>"><?php echo the_title(); ?></a></p>
+				<p><?php echo date_i18n( 'H.i:' , get_post_meta( $post->ID , '_neuf_events_starttime' , true ) ); ?> <a href="<?php the_permalink(); ?>" title="permanent lenke til <?php the_title(); ?>"><?php echo the_title(); ?></a></p>
 
 
 		<?php endwhile; // $events->have_posts(); ?>
