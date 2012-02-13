@@ -7,11 +7,12 @@ function intersection(a1, a2) {
 }
 
 function events_update(checkboxes) {
+	var month_selector = ".month";
 	var week_selector = ".program-6days";
 	var day_selector = ".day";
 	var days = $(day_selector);
 
-	days.children("p").each(function() {
+	days.children("p, td:nth-child(4)").each(function() {
 		var classes = $(this).attr('class').replace('hidden', '').split(' ');	
 		var visible_classes = intersection(checkboxes, classes);
 		
@@ -21,11 +22,11 @@ function events_update(checkboxes) {
 			$(this).removeClass('hidden');
 		}
 	});
-	
+
 	/* Hide all days that don't have visible events. Show those that have. */
 	days.each(function(index) {
 		var hide = true;
-		var events = $(this).children("p");
+		var events = $(this).children("p, td:nth-child(4)");
 		
 		events.each(function(index) {
 			if (! $(this).hasClass('hidden')) {
@@ -40,7 +41,7 @@ function events_update(checkboxes) {
 		}
 	});
 	
-	/* Hide all weeks that don't have visible days, show those that have. */
+	/* Hide all weeks that don't have visible days, show those that have: */
 	$(week_selector).each(function(index) {
 		var hide = true;
 		var days = $(this).children("div .day");
@@ -57,6 +58,27 @@ function events_update(checkboxes) {
 			$(this).removeClass('hidden');
 		}
 	});
+
+	/* Hide all months that don't have visible days, show those that have: */
+	$(month_selector).each(function(index) {
+		var hide = true;
+		var days = $(this).nextUntil(month_selector);
+		
+		days.each(function(index) {
+			if ($(this).hasClass('day') && ! $(this).hasClass('hidden')) {
+				hide = false;
+			}
+		});
+		
+		if (hide) {
+			$(this).addClass('hidden');
+			$(this).next().addClass('hidden');
+		} else {
+			$(this).removeClass('hidden');
+			$(this).next().removeClass('hidden');
+		}
+	});
+	
 }
 
 function find_checked_boxes(parent) {
