@@ -2,9 +2,9 @@
  * Theme Name:  Neuf Old Style
  * Theme URI:   http://studentersamfundet.no/
  * Description: Horisontal outline.
- * Author:	  Just Thomas Misund
+ * Author:	Just Thomas Misund,Robert Kolner,Nikolai Kristiansen
  * Author URI:  http://hemmeligadresse.com/
- * Version:	 0.1
+ * Version:	0.2
  */
 
 @import 'css/reset.css';
@@ -83,7 +83,7 @@ body.dns {
 	text-indent:-9999px;
 }
 #facebook-followers {
-    float:right;
+	float:right;
 }
 
 #menu {
@@ -118,8 +118,10 @@ body.dns {
 }
 #menu .aapningstider li ul {
 	overflow:hidden;
-	width:101%;
-	margin-left:-1px;
+	width:100%;
+	border-left:1px solid rgb(88,89,91);
+	position:absolute;
+	right:0;
 }
 #menu .aapningstider li ul li {
 	padding:0 5%;
