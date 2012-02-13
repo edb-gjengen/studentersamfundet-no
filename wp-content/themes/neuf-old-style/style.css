@@ -121,6 +121,9 @@ body.dns {
 	margin-top:0px;
 	text-indent:-9999px;
 }
+#facebook-followers {
+    float:right;
+}
 
 #menu {
 	height:25px;
@@ -481,37 +484,14 @@ img {
 /************
  * Social *
  ***********/
+#facebook-followers {
+    float:right;
 
-#facebook-comments iframe {
-	width:550px !important;
 }
-#facebook-comments .wallkit_form div.connect_area div.or {
-	position:absolute;
-	right:170px;
-}
-#facebook-comments .wallkit_form div.connect_area div.connect_button_text {
-	position:absolute;
-	right:16px;
-}
-
-#social-content-top {
-	width:100%;
-	margin-bottom:10px;
-	overflow:hidden;
-}
-
-#facebook-share-content-top,
-#tweetmeme-content-top {
-	float:right;
-}
-
-#tweetmeme-content-top {
-	padding:0 10px;
-}
-
 #facebook-followers iframe {
-	height:300px !important;
+    height:260px !important;
 }
+
 
 /***********************************
  * Styles for individual templates *

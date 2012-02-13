@@ -14,13 +14,18 @@
 		<link rel="alternate" type="application/rss+xml" href="<?php bloginfo('url'); ?>/rss/program_feed.php" title="Det Norske Studentersamfund (program)" />
 		<link href="<?php bloginfo( 'stylesheet_url' ); ?>" rel="stylesheet" type="text/css" />
 		<link href='http://fonts.googleapis.com/css?family=Arvo:700,400italic' rel='stylesheet' type='text/css'>
-
-		<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/nb_NO" type="text/javascript"></script><script type="text/javascript">FB.init("9f0d4e4f84f00af0249f45aa48fb0efb");</script>
-
 	<?php wp_head(); ?>
 	</head>
 
 	<body <?php neuf_body_class(); ?>>
+            <div id="fb-root"></div>
+                <script>(function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) return;
+                    js = d.createElement(s); js.id = id;
+                    js.src = "//connect.facebook.net/nb_NO/all.js#xfbml=1&appId=220213643760";
+                    fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));</script>
 		<div id="header" class="container_12">
 
 				<div id="access"><a href="#content">Gå direkte til innholdet</a></div>
