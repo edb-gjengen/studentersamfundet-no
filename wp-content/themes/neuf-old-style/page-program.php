@@ -172,7 +172,7 @@ if ( $events->have_posts() ) :
 	/* All posts */
 
 ?>
-<div class="program grid_12 program-6days">
+<div class="program grid_12">
 	<table class="table-program">
 		<tbody>
 		<?php while ( $events->have_posts() ) : $events->the_post();
@@ -214,11 +214,11 @@ if ( $events->have_posts() ) :
 				  <th>Sted</th>
 			</tr>
 		<?php }	?>
-			<tr class="<?php echo $newday ? 'day' : '' ;?><?php echo $alt; ?>">
+			<tr class="day<?php echo $alt; ?>">
 				<td><?php echo $datel; ?></td>
 				<td><a href="<?php the_permalink(); ?>" title="Permanent lenke til <?php the_title(); ?>"><?php echo the_title(); ?></a></td>
 				<td><?php echo $cc; ?></td>
-				<td><?php echo $types; ?></td>
+				<td class="<?php echo $types; ?>"><?php echo $types; ?></td>
 				<td><?php echo $venue; ?></td>
 			</tr>
 		<?php endwhile; ?>
