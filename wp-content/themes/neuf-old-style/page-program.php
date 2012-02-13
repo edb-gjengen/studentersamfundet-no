@@ -12,7 +12,11 @@ wp_enqueue_script('program');
 
 <section id="content" class="container_12" role="main">
 
-	<form id="program-category-chooser" class="grid_12"></form>
+	<form id="program-category-chooser" class="grid_10"></form>
+	<div class="grid_2">
+		<button onclick='showTiles()'>Tiles</button>
+		<button onclick='showList()'>List</button>
+	</div>
 
 <?php 
 /* Events with starttime including 8 hours up until 30 days from now. */
@@ -36,7 +40,6 @@ $args = array(
 
 $events = new WP_Query( $args );
 ?>
-			<div class="program grid_12 program-6days">
 
 <?php
 if ( $events->have_posts() ) :
@@ -49,7 +52,10 @@ if ( $events->have_posts() ) :
 ?>
 <?php
 	/* All posts */
-	while ( $events->have_posts() ) : $events->the_post();
+	?>
+	<div id="program_tiles" class="grid_12">
+		<div class="program-6days">
+	<?php while ( $events->have_posts() ) : $events->the_post();
 		/* set previous day */
 		$previous_day = $current_day;
 		$previous_week = $current_week;
@@ -131,8 +137,9 @@ if ( $events->have_posts() ) :
 		$first_week = false;
 		?>
     <?php endwhile; ?>
-<?php endif; ?>
+		</div>
 	</div>
+<?php endif; ?>
 </div>
 <?php 
 $meta_query = array(
@@ -161,7 +168,7 @@ if ( $events->have_posts() ) :
 	/* All posts */
 
 ?>
-<div class="program grid_12">
+<div id="program_list" class="program grid_12">
 	<table class="table-program">
 		<tbody>
 		<?php while ( $events->have_posts() ) : $events->the_post();

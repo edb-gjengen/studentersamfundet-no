@@ -6,6 +6,23 @@ function intersection(a1, a2) {
 	});
 }
 
+function showTiles() {
+	tiles = $("#program_tiles");
+	list = $("#program_list");
+
+	tiles.removeClass("hidden");
+	list.addClass("hidden");
+}
+
+function showList() {
+	tiles = $("#program_tiles");
+	list = $("#program_list");
+
+	tiles.addClass("hidden");
+	list.removeClass("hidden");
+
+}
+
 function events_update(checkboxes) {
 	var month_selector = ".month";
 	var week_selector = ".program-6days";
