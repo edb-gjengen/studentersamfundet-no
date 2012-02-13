@@ -13,45 +13,6 @@
 @import 'css/wp.css';
 
 /**
- * Midlertidig
- */
-
-/* Midlertidig fiks */
-#external-ad-single-bottom,
-#internal-ad-single-bottom {
-	display:none;
-}
-
-/* Keeping rocky-reklame for future reference */
-/* Rocky-reklame */
-#studio_rocky {
-	background:transparent url(kampanje/studio_rocky.png) no-repeat;
-/*	text-indent:-9999px;*/
-/*	overflow:hidden;*/
-	width:185px;
-	height:155px;
-	position:absolute;
-	top:5px;
-	left: 50%;
-	z-index:9999;
-		margin-left: 120px;
-	display:block;
-	color:red;
-}
-
-#studio_rocky span{
-	display:block;
-/*	width:100%;
-	height:100%;*/
-	position:absolute;
-	left:85px;
-	bottom:10px;
-	font-size:120%;
-	color:red;
-	font-weight:bolder;
-}
-
-/**
  * Structure
  */
 
@@ -516,6 +477,10 @@ img {
 /***********************************
  * Styles for individual templates *
  ***********************************/
+.home #featured {
+	position:relative;
+}
+
 .single-event .event-type:before,
 .home #featured article .event-type:before,
 .home #featured article.type-post h1:before {
@@ -548,6 +513,8 @@ img {
 	font-weight:normal;
 }
 
+.home #featured #prevLink,
+.home #featured #nextLink,
 .home #featured article .datetime,
 .home #featured article .price,
 .home #featured article .venue {
@@ -565,6 +532,18 @@ img {
 .home #featured article:hover .datetime,
 .home #featured article:hover .price,
 .home #featured article:hover .venue {
+	display:block;
+}
+.home #featured #prevLink {
+	left:-20px;
+	top:115px;
+}
+.home #featured #nextLink {
+	left:-20px;
+	top:135px;
+}
+.home #featured:hover #prevLink,
+.home #featured:hover #nextLink {
 	display:block;
 }
 
