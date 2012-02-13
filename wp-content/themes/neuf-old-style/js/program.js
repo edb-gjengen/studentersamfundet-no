@@ -78,7 +78,20 @@ function events_update(checkboxes) {
 			$(this).next().removeClass('hidden');
 		}
 	});
-	
+}
+
+function fix_alternating_rows() {
+	var alt_status = false;
+	$(".table-program").find("tbody").children(".day").each(function() {
+		if (!$(this).hasClass('hidden')) {
+			if (alt_status) {
+				$(this).addClass('alt');
+			} else {
+				$(this).removeClass('alt');
+			}
+			alt_status = !alt_status;
+		}
+	});
 }
 
 function find_checked_boxes(parent) {
@@ -147,9 +160,11 @@ $(window).load(function(){
 	checkboxes.each(function(){
 		$(this).change(function(){
 			events_update(find_checked_boxes(form));	
+			fix_alternating_rows();
 		});
 	});
 	events_update(find_checked_boxes(form));	
+	fix_alternating_rows();
 });
 
 /* When user leaves the page: */
