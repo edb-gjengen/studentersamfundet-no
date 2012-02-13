@@ -83,14 +83,21 @@ function events_update(checkboxes) {
 
 function find_checked_boxes(parent) {
 	var checked_boxes = new Array();
+	var unchecked_boxes = new Array();
 
 	parent.children(":checkbox").each(function() {
 		if ($(this).is(":checked")) {
 			checked_boxes.push($(this).val());
+		} else {
+			unchecked_boxes.push($(this).val());
 		}
 	});
 
-	return checked_boxes;
+	if (checked_boxes.length > 0) {
+		return checked_boxes;
+	} else {
+		return unchecked_boxes;
+	}
 }
 
 /* Create and register the checkboxes: */
@@ -110,7 +117,7 @@ $(window).load(function(){
 
 	/* Create checkboxes: */
 	for (var category in categories) {
-		element = '<input id="'+category+'" type="checkbox" name="category" checked="true" value="'+category+'" /><label for="'+category+'">'+category+'</label>';
+		element = '<input id="'+category+'" type="checkbox" name="category" value="'+category+'" /><label for="'+category+'">'+category+'</label>';
 		$(form_id).append(element);
 	}
 

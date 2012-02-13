@@ -143,7 +143,7 @@ if ( $events->have_posts() ) :
 		?>
     <?php endwhile; ?>
 <?php endif; ?>
-
+	</div>
 </div>
 <?php 
 $meta_query = array(
