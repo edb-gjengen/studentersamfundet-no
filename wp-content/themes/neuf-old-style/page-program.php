@@ -16,18 +16,25 @@ wp_enqueue_script('program');
 
 <?php 
 /* Events with starttime including 8 hours up until 30 days from now. */
+//$meta_query = array(
+//	'key'     => '_neuf_events_starttime',
+//	'value'   => array(
+//		date( 'U' , strtotime( '-8 hours' )),  // start
+//		date( 'U' , strtotime( '+1 month' ))),  // end
+//	'type'    => 'numeric',
+//	'compare' => 'between'
+//);
+/* From now and into the future */
 $meta_query = array(
 	'key'     => '_neuf_events_starttime',
-	'value'   => array(
-		date( 'U' , strtotime( '-8 hours' )),  // start
-		date( 'U' , strtotime( '+1 month' ))),  // end
+	'value'   => date( 'U' , strtotime( '-8 hours' )),  // start
 	'type'    => 'numeric',
-	'compare' => 'between'
+	'compare' => '>'
 );
 
 $args = array(
 	'post_type'      => 'event',
-	'meta_query'     => $meta_query,
+	'meta_query'     => array($meta_query),
 	'posts_per_page' => 50,
 	'orderby'        => 'meta_value_num',
 	'meta_key'       => '_neuf_events_starttime',
@@ -137,14 +144,14 @@ if ( $events->have_posts() ) :
 <?php 
 $meta_query = array(
 	'key'     => '_neuf_events_starttime',
-	'value'   => date( 'U' , strtotime( '+1 month' )),  // start
+	'value'   => date( 'U' , strtotime( '-8 hours' )),  // start
 	'type' => 'numeric',
-	'compare' => '<'
+	'compare' => '>'
 );
 
 $args = array(
 	'post_type'      => 'event',
-	'meta_query'     => $meta_query,
+	'meta_query'     => array($meta_query),
 	'posts_per_page' => 50,
 	'orderby'        => 'meta_value_num',
 	'meta_key'       => '_neuf_events_starttime',
