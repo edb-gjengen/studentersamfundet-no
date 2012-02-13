@@ -1,6 +1,4 @@
-var lastCategory = '';
-
-function events_toggle(type) {
+function events_update(checkboxes) {
 	var selector = ('.event-type-'+type).trim();
 
 	/* If user clicks on the category which was chosen before, all categories
@@ -57,18 +55,27 @@ function events_toggle(type) {
 	});
 }
 
-function showList() {
-	selectorImg = "img.attachment-event-image";
-	selectorDay = ".day";
+function find_checked_boxes(parent) {
+	var checked_boxes = new Array();
 
-	$(selectorImg).addClass('hidden');
-	$(selectorDay).width('92.5%');
+	parent.children(":checkbox").each(function() {
+		if ($(this).is(":checked")) {
+			checked_boxes.push($(this).val());
+		}
+	});
+
+	return checked_boxes;
 }
 
-function showTiles() {
-	selectorImg = "img.attachment-event-image";
-	selectorDay = ".day";
+/* Register the checkboxes: */
+$(window).load(function(){
+	form_id = "program-category-chooser";
+	form = $("#"+form_id).first();
 
-	$(selectorImg).removeClass('hidden');
-	$(selectorDay).width('42.5%');
-}
+	checkboxes = form.children();
+	checkboxes.each(function(){
+		$(this).change(function(){
+			alert(find_checked_boxes(form));	
+		});
+	});
+});

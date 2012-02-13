@@ -1,6 +1,13 @@
 <?php 
 get_header(); 
+wp_enqueue_script('program');
 ?>
+
+<!-- Category chooser: -->
+<form id="program-category-chooser">
+	<input type="checkbox" name="category" checked="true" value="Konsert">Konsert</input>
+	<input type="checkbox" name="category" checked="true" value="Debatt">Debatt</input>
+</form>
 
 <section id="content" role="main">
 <?php 
