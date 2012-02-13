@@ -507,6 +507,11 @@ h6 {
 	font-style:italic;
 }
 
+/* Forms */
+label {
+	cursor:pointer;
+}
+
 /* Images */
 img {
 	max-width:100%;

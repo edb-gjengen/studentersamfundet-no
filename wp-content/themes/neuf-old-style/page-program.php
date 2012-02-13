@@ -10,10 +10,10 @@ wp_enqueue_script('program');
 }
 </style>
 
-<form id="program-category-chooser">
-</form>
+<section id="content" class="container_12" role="main">
 
-<section id="content" role="main">
+	<form id="program-category-chooser" class="grid_12"></form>
+
 <?php 
 /* Events with starttime including 8 hours up until 30 days from now. */
 //$meta_query = array(
@@ -47,7 +47,6 @@ $args = array(
 
 $events = new WP_Query( $args );
 ?>
-<div class="container_12">
 			<div class="program grid_12 program-6days">
 
 <?php
@@ -225,7 +224,6 @@ if ( $events->have_posts() ) :
 		<?php endwhile; ?>
 		</tbody>
 	</table>
-</div>
 <?php endif; ?>
 </section> <!-- #main_content -->
 
