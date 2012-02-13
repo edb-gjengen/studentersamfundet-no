@@ -156,5 +156,7 @@ $(window).unload(function() {
 
 	if (checked_boxes.length > 0) {
 		sessionStorage.setItem('checked_boxes', checked_boxes);
+	} else {
+		sessionStorage.setItem('checked_boxes', null);
 	}
 });
