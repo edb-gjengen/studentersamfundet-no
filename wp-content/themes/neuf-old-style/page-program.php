@@ -16,24 +16,13 @@ wp_enqueue_script('program');
 
 <?php 
 /* Events with starttime including 8 hours up until 30 days from now. */
-//$meta_query = array(
-//	'relation' => 'AND',
-//	array('key'     => '_neuf_events_starttime',
-//		'value'   => intval(date( 'U' , strtotime( '+30 days' )) ), 
-//		'compare' => '<=',
-//		'type'    => 'numeric'
-//	),
-//	array('key'     => '_neuf_events_starttime',
-//		'value'   => intval(date( 'U' , strtotime( '-8 hours' )) ), 
-//		'compare' => '>',
-//		'type'    => 'numeric'
-//	)
-//);
 $meta_query = array(
 	'key'     => '_neuf_events_starttime',
-	'value'   => date( 'U' , strtotime( '-8 hours' )),  // end
+	'value'   => array(
+		date( 'U' , strtotime( '-8 hours' )),  // start
+		date( 'U' , strtotime( '+1 month' ))),  // end
 	'type'    => 'numeric',
-	'compare' => '>'
+	'compare' => 'between'
 );
 
 $args = array(
@@ -148,8 +137,8 @@ if ( $events->have_posts() ) :
 <?php 
 $meta_query = array(
 	'key'     => '_neuf_events_starttime',
-	'value'   => date( 'U' , strtotime( '-8 hours' )),  // end
-	'type'    => 'numeric',
+	'value'   => date( 'U' , strtotime( '+1 month' )),  // start
+	'compare' => 'numeric',
 	'compare' => '>'
 );
 
@@ -217,7 +206,7 @@ if ( $events->have_posts() ) :
 			<tr class="day<?php echo $alt; ?>">
 				<td><?php echo $datel; ?></td>
 				<td><a href="<?php the_permalink(); ?>" title="Permanent lenke til <?php the_title(); ?>"><?php echo the_title(); ?></a></td>
-				<td><?php echo $cc; ?></td>
+				<td><?php echo $cc == "0/0" ? "-": $cc; ?></td>
 				<td class="<?php echo $types; ?>"><?php echo $types; ?></td>
 				<td><?php echo $venue; ?></td>
 			</tr>
