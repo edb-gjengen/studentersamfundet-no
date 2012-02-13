@@ -102,30 +102,30 @@ neuf_flickr_images('limit=15&type=group&groupid=1292860@N21');
 ?>
 	</div>
         <div class="grid_4">
-        <h2>Fra Twitter</h2>
-        <div id="twitter_feed"></div>
-        <script>
-$(document).ready(function() {
-    var feed = 'https://twitter.com/statuses/user_timeline/dns1813.json?count=1&callback=?';
-    $.getJSON(feed, function(results) {
-        console.log(results[0]);
-     $('#twitter_feed').html(results[0].text + ' <a href="http://twitter.com/dns1813/status/'+ results[0].id_str + '">*</a>');
-    });
-});
-</script>
-        </div>
+            <h2>Fra Twitter</h2>
+            <div id="twitter_feed"></div>
+            <script>
+            $(document).ready(function() {
+                var feed = 'https://twitter.com/statuses/user_timeline/dns1813.json?count=1&callback=?';
+                $.getJSON(feed, function(results) {
+                    console.log(results[0]);
+                    $('#twitter_feed').html(results[0].text + ' <a href="http://twitter.com/dns1813/status/'+ results[0].id_str + '">*</a>');
+                });
+            });
+            </script>
+        </div> <!-- #twitter_feed -->
 
 	</div> <!-- #kolofon -->
 
-	<span class="credits grid_4">Det Norske Studentersamfund | Slemdalsveien 15, 0369 Oslo | <a href="<?php bloginfo('url'); ?>/kart/">Kart</a> | <a href="<?php bloginfo('url'); ?>/kontakt/">Kontakt</a> | Webdesign av <a href="http://edb.neuf.no">EDB-gjengen</a> i KAK</span>
+	<span class="credits grid_4">Det Norske Studentersamfund | Slemdalsveien 15, 0369 Oslo | <a href="<?php bloginfo('url'); ?>/kart/">Kart</a> | <a href="<?php bloginfo('url'); ?>/kontakt/">Kontakt</a> | Webdesign av <a href="http://edb.neuf.no">EDB-gjengen</a> og <a href="#">Designerne</a> i KAK</span>
 
 	<!-- Google Analytics -->
 	<script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www."); document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script><script type="text/javascript">try {var pageTracker = _gat._getTracker("UA-52914-1");pageTracker._trackPageview();} catch(err) {}</script>
 	<!-- end Google Analytics -->
 
-<?php wp_footer(); ?>
-
 </div> <!-- #footer -->
+
+<?php wp_footer(); ?>
 
 </body>
 </html>

@@ -13,10 +13,12 @@ $(document).ready(function(){
 });
 
 $(function() {
-	$("#slider").before('<div id="slidernav">').cycle({
+        /*fixme pager js does not work */
+	$("#slider")
+        .before('<div id="slidernav">')
+        .cycle({
 		fx:     'fade', 
 		speed:  'fast', 
-		timeout: 8000, 
 		next:   '#nextLink', 
 		prev:   '#prevLink',
 		pager:  '#slidernav'
