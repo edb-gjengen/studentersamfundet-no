@@ -5,15 +5,23 @@
  * Ref: http://codex.wordpress.org/Class_Reference/WP_Query#Custom_Field_Parameters
  */
 $meta_query = array(
-	'key'     => '_neuf_events_starttime',
-	'value'   => date( 'U' , strtotime( '-8 hours' ) ), 
-	'compare' => '>',
-	'type'    => 'numeric'
+	'relation' => 'AND',
+	array(
+		'key'     => '_neuf_events_starttime',
+		'value'   => date( 'U' , strtotime( '-8 hours' ) ), 
+		'compare' => '>',
+		'type'    => 'numeric'
+	), 
+	array(
+		'key'     => '_neuf_events_promo_period',
+		'value'   => array( 'Month' , 'semester' ),
+		'compare' => 'IN',
+	)
 );
 
 $args = array(
 	'post_type'      => 'event',
-	'meta_query'     => array( $meta_query ),
+	'meta_query'     => $meta_query,
 	'posts_per_page' => 4
 );
 
@@ -58,6 +66,7 @@ $news = new WP_Query( 'type=post' );
 						<div class="price"><?php $price = get_post_meta(get_the_ID(), '_neuf_events_price',true); echo ($price != "" ? $price : "Gratis"); ?></div>
 						<div class="venue"><?php echo get_post_meta(get_the_ID(), '_neuf_events_venue',true);?></div>
 						<div class="type"><?php echo get_post_meta(get_the_ID(), '_neuf_events_type',true); ?></div>
+						<div><?php echo get_post_meta(get_the_ID() , '_neuf_events_promo_period', true); ?></div>
 						<?php the_excerpt(); ?>
 					</header>
 					<div class="grid_5">
