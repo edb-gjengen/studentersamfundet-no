@@ -1,29 +1,31 @@
-var lastCategory = '';
-
-function events_toggle(type) {
-	var selector = ('.event-type-'+type).trim();
-
-	/* If user clicks on the category which was chosen before, all categories
-	 * will be shown again. */
-	$('article').each(function(index) {
-		if (lastCategory == type) {	
-			$(this).removeClass('hidden');
-		} else {
-			$(this).addClass('hidden');
-		}
+function intersection(a1, a2) {
+	return a1.filter(function(n) {
+		if (a2.indexOf(n) == -1)
+			return false;
+		return true;
 	});
+}
 
-	lastCategory = (lastCategory == type) ? '' : type;
+function events_update(checkboxes) {
+	var week_selector = ".program-6days";
+	var day_selector = ".day";
+	var days = $(day_selector);
 
-	$(selector).each(function(index) {
-		var classes = $(this).attr('class').split(' ');	
-		$(this).removeClass('hidden');
+	days.children("p").each(function() {
+		var classes = $(this).attr('class').replace('hidden', '').split(' ');	
+		var visible_classes = intersection(checkboxes, classes);
+		
+		if (visible_classes.length < 1) {
+			$(this).addClass('hidden');
+		} else {
+			$(this).removeClass('hidden');
+		}
 	});
 	
 	/* Hide all days that don't have visible events. Show those that have. */
-	$('.day').each(function(index) {
+	days.each(function(index) {
 		var hide = true;
-		var events = $(this).children("article");
+		var events = $(this).children("p");
 		
 		events.each(function(index) {
 			if (! $(this).hasClass('hidden')) {
@@ -39,9 +41,9 @@ function events_toggle(type) {
 	});
 	
 	/* Hide all weeks that don't have visible days, show those that have. */
-	$('.week').each(function(index) {
+	$(week_selector).each(function(index) {
 		var hide = true;
-		var days = $(this).nextUntil('.week');
+		var days = $(this).children("div .day");
 		
 		days.each(function(index) {
 			if (! $(this).hasClass('hidden')) {
@@ -57,18 +59,46 @@ function events_toggle(type) {
 	});
 }
 
-function showList() {
-	selectorImg = "img.attachment-event-image";
-	selectorDay = ".day";
+function find_checked_boxes(parent) {
+	var checked_boxes = new Array();
 
-	$(selectorImg).addClass('hidden');
-	$(selectorDay).width('92.5%');
+	parent.children(":checkbox").each(function() {
+		if ($(this).is(":checked")) {
+			checked_boxes.push($(this).val());
+		}
+	});
+
+	return checked_boxes;
 }
 
-function showTiles() {
-	selectorImg = "img.attachment-event-image";
-	selectorDay = ".day";
+/* Create and register the checkboxes: */
+$(window).load(function(){
+	form_id = "#program-category-chooser";
 
-	$(selectorImg).removeClass('hidden');
-	$(selectorDay).width('42.5%');
-}
+	/* Find all categories used by events: */
+	var categories = {};
+	
+	$(".day p").each(function() {
+		var classes = $(this).attr("class").split(" ");
+		
+		for (var id in classes) {
+			categories[classes[id]] = true;
+		}
+	});
+
+	/* Create checkboxes: */
+	for (var category in categories) {
+		element = '<input type="checkbox" name="category" checked="true" value="'+category +'">'+category +'</input>';
+		$(form_id).append(element);
+	}
+
+	/* Register checkboxes: */
+	form = $(form_id).first();
+
+	checkboxes = form.children();
+	checkboxes.each(function(){
+		$(this).change(function(){
+			events_update(find_checked_boxes(form));	
+		});
+	});
+});
