@@ -146,8 +146,87 @@ if ( $events->have_posts() ) :
 <?php endif; ?>
 
 </div>
-</section> <!-- #main_content -->
+<?php 
+$meta_query = array(
+	'key'     => '_neuf_events_starttime',
+	'value'   => date( 'U' , strtotime( '-8 hours' )),  // end
+	'type'    => 'numeric',
+	'compare' => '>'
+);
 
-<?php get_sidebar( 'program' ); ?>
+$args = array(
+	'post_type'      => 'event',
+	'meta_query'     => array( $meta_query ),
+	'posts_per_page' => 50,
+	'orderby'        => 'meta_value_num',
+	'meta_key'       => '_neuf_events_starttime',
+	'order'          => 'ASC'
+);
+
+$events = new WP_Query( $args );
+
+if ( $events->have_posts() ) :
+	$first = true;
+	$current_month = "";
+	$current_day = "";
+	$alt = "";
+	/* All posts */
+
+?>
+<div class="program grid_12 program-6days">
+	<table class="table-program">
+		<tbody>
+		<?php while ( $events->have_posts() ) : $events->the_post();
+		$date = get_post_meta( $post->ID , '_neuf_events_starttime' , true );
+
+		$previous_month = $current_month;
+		$current_month = date_i18n( 'F' , $date);
+		$newmonth = $previous_month != $current_month;
+
+		$datel = date_i18n( 'l j.' , $date);
+		$cc = get_post_meta( $post->ID , '_neuf_events_price' , true );
+		$venue = get_post_meta( $post->ID , '_neuf_events_venue' , true );
+		/* event type class */
+		$event_types = get_the_terms( $post->ID , 'event_type' );
+		$types = array();
+		foreach ( $event_types as $event_type ) { $types[] = $event_type->name; }
+		$types = $event_type ? implode(", ", $types) : "";
+		
+		/* set current day */
+		$previous_day = $current_day;
+		$current_day = date_i18n( 'Y-m-d' , $date);
+		$newday = $previous_day != $current_day;
+
+		/* everything is everything is not everything if everything is nothing */
+		$alt = $alt == " alt" ? "" : " alt";
+
+		if($newmonth) { ?>
+			<tr class="month">
+				<td ><h1><?php echo $current_month; ?></h1><td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				  <th class="date">Dato</th>
+				  <th>Arrangement</th>
+				  <th>CC</th>
+				  <th>Type</th>
+				  <th>Sted</th>
+			</tr>
+		<?php }	?>
+			<tr class="<?php echo $newday ? 'day' : '' ;?><?php echo $alt; ?>">
+				<td><?php echo $datel; ?></td>
+				<td><a href="<?php the_permalink(); ?>" title="Permanent lenke til <?php the_title(); ?>"><?php echo the_title(); ?></a></td>
+				<td><?php echo $cc; ?></td>
+				<td><?php echo $types; ?></td>
+				<td><?php echo $venue; ?></td>
+			</tr>
+		<?php endwhile; ?>
+		</tbody>
+	</table>
+</div>
+<?php endif; ?>
+</section> <!-- #main_content -->
 
 <?php get_footer(); ?>
