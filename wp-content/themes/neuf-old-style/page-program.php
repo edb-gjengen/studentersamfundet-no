@@ -225,6 +225,7 @@ if ( $events->have_posts() ) :
 		</tbody>
 	</table>
 <?php endif; ?>
+</div>
 </section> <!-- #main_content -->
 
 <?php get_footer(); ?>
