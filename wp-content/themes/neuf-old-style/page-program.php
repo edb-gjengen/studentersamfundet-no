@@ -53,7 +53,7 @@ if ( $events->have_posts() ) :
 <?php
 	/* All posts */
 	?>
-	<div id="program_tiles" class="grid_12">
+	<div id="program_tiles" class="grid_12" style="display:none;">
 		<div class="program-6days">
 	<?php while ( $events->have_posts() ) : $events->the_post();
 		/* set previous day */
@@ -168,7 +168,7 @@ if ( $events->have_posts() ) :
 	/* All posts */
 
 ?>
-<div id="program_list" class="program grid_12">
+<div id="program_list" class="program grid_12" style="display:none;">
 	<table class="table-program">
 		<tbody>
 		<?php while ( $events->have_posts() ) : $events->the_post();

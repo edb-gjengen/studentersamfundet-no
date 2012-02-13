@@ -184,11 +184,16 @@ $(window).load(function(){
 	fix_alternating_rows();
 
 	/* Shall we use tiles or list? */
-	if (sessionStorage.useList) {
+	var list = "true" === sessionStorage.useList;
+	if (list) {
 		showList();
 	} else {
 		showTiles();
 	}
+
+	/* Only now can we really show them*/
+	$("#program_tiles").removeAttr('style');
+	$("#program_list").removeAttr('style');
 });
 
 /* When user leaves the page: */
@@ -210,7 +215,7 @@ $(window).unload(function() {
 	}
 
 	/* Find what view the user was using last (tiles/list): */
-	tiles = $("#program_tiles");
-	hasUsedList = tiles.hasClass('hidden');
+	var tiles = $("#program_tiles");
+	var hasUsedList = tiles.hasClass('hidden');
 	sessionStorage.setItem('useList', hasUsedList);
 });
