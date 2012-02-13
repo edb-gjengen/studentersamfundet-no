@@ -1,8 +1,5 @@
 <?php
-/*
-Template name: Vimeo player nova
-*/
-$username = 'user3461524';
+$username = 'ostv';
 $url = 'http://vimeo.com/api/v2/'.$username.'/videos.php';
 $v = unserialize(file_get_contents($url));
 $video_id = $v[0]['id'];

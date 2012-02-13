@@ -1,7 +1,4 @@
 <?php
-/*
-Template name: Vimeo player ostv
-*/
 $username = 'ostv';
 $url = 'http://vimeo.com/api/v2/'.$username.'/videos.php';
 $v = unserialize(file_get_contents($url));
