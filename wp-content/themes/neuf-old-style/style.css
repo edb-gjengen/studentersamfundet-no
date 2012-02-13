@@ -23,7 +23,7 @@
 }
 
 section#featured {
-	height:240px;
+	height:322px;
 	margin-top:30px;
 	margin-bottom:30px;
 }
@@ -169,6 +169,11 @@ body.dns {
 #header .aapningstider > li:hover ul table {
 	border-top:1px solid white;
 }
+
+/* Slider nav */
+#slidernav a { border: 1px solid #ccc; background: #fc0; text-decoration: none; margin: 0 5px; padding: 3px 5px;  }
+#slidernav a.activeSlide { background: #ea0 }
+#slidernav a:focus { outline: none; }
 
 /* Header slutt */
 
@@ -541,7 +546,7 @@ img {
 }
 
 .home #featured article header {
-	height:240px;
+	height:322px;
 }
 
 .home #digest_news .post > a > img {
@@ -549,6 +554,15 @@ img {
 	margin:2px 10px 0 0;
 	width:93px;
 	height:auto;
+}
+.home #digest_news .post a:before {
+    content: '';
+    background: #FF9E29;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    margin-right:7px;
 }
 
 .home #frontpage-ads .ads-container {
