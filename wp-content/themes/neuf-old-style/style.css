@@ -204,16 +204,23 @@ body.dns {
 }
 
 #footer {
-	color:#eeeeee;
+        color: #58595B;
 	clear:both;
 	padding-top:20px;
 	overflow:auto;
-	background:black;
-	background: -webkit-radial-gradient(center, ellipse cover, #222 0%, black 70%);
-	background:    -moz-radial-gradient(center, ellipse cover, #222 0%, black 70%);
-	background:     -ms-radial-gradient(center, ellipse cover, #222 0%, black 70%);
-	background:      -o-radial-gradient(center, ellipse cover, #222 0%, black 70%);
-	background:	    radial-gradient(center, ellipse cover, #222 0%, black 70%);
+        background-color: #BCBEC0;
+}
+#footer h2 {
+        color: #58595B;
+	font-family:Arvo,Georgia,serif;
+	font-weight:bold;
+	font-size:18px;
+	text-transform:uppercase;
+}
+#footer a {
+	font-family:Arvo,Georgia,serif;
+	font-weight:bold;
+        color: #58595B;
 }
 
 #flickr-images > ul {
@@ -442,9 +449,9 @@ img {
 	margin: 0 10px 10px 0;
 }
 
-/************
+/**********
  * Social *
- ***********/
+ **********/
 #facebook-followers {
     float:right;
 

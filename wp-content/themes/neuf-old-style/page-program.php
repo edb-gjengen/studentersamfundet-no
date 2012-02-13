@@ -27,7 +27,7 @@ $meta_query = array(
 
 $args = array(
 	'post_type'      => 'event',
-	'meta_query'     => array( $meta_query ),
+	'meta_query'     => $meta_query,
 	'posts_per_page' => 50,
 	'orderby'        => 'meta_value_num',
 	'meta_key'       => '_neuf_events_starttime',
@@ -138,13 +138,13 @@ if ( $events->have_posts() ) :
 $meta_query = array(
 	'key'     => '_neuf_events_starttime',
 	'value'   => date( 'U' , strtotime( '+1 month' )),  // start
-	'compare' => 'numeric',
-	'compare' => '>'
+	'type' => 'numeric',
+	'compare' => '<'
 );
 
 $args = array(
 	'post_type'      => 'event',
-	'meta_query'     => array( $meta_query ),
+	'meta_query'     => $meta_query,
 	'posts_per_page' => 50,
 	'orderby'        => 'meta_value_num',
 	'meta_key'       => '_neuf_events_starttime',
