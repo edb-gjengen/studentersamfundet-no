@@ -2,7 +2,7 @@
 get_header(); 
 ?>
 
-<section id="content" class="container_12" role="main">
+<section id="content" class="container_12 associations" role="main">
 <?php 
 $args = array(
 	'post_type'      => 'association',
@@ -11,7 +11,6 @@ $args = array(
 
 $associations = new WP_Query( $args );
 ?>
-	<div class="associations grid_12">
 <?php
 if ( $associations->have_posts() ) :
 ?>
@@ -26,12 +25,11 @@ if ( $associations->have_posts() ) :
 				$additional_class = ' omega';
 			}?>
 		<div class="grid_4<?php echo $additional_class?>">
-			<p><?php echo $post->post_title; ?></p>
+                        <a href="<?php the_permalink(); ?>"><?php echo has_post_thumbnail() ? get_the_post_thumbnail() : "<h2>".$post->post_title."</h2>"; ?></a>
 		</div>
 		<?php $counter++; ?>
     <?php endwhile; ?>
 <?php endif; ?>
-	</div>
 </section> <!-- #main_content -->
 
 <?php get_footer(); ?>
