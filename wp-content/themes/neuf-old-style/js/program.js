@@ -182,10 +182,19 @@ $(window).load(function(){
 	});
 	events_update(find_checked_boxes(form));	
 	fix_alternating_rows();
+
+	/* Shall we use tiles or list? */
+	if (sessionStorage.useList) {
+		showList();
+	} else {
+		showTiles();
+	}
 });
 
 /* When user leaves the page: */
 $(window).unload(function() {
+
+	/* Find out what categories were chosen when user left the page: */
 	var checked_boxes = new Array();
 
 	$('#program-category-chooser').children(":checkbox").each(function() {
@@ -199,4 +208,9 @@ $(window).unload(function() {
 	} else {
 		sessionStorage.setItem('checked_boxes', null);
 	}
+
+	/* Find what view the user was using last (tiles/list): */
+	tiles = $("#program_tiles");
+	hasUsedList = tiles.hasClass('hidden');
+	sessionStorage.setItem('useList', hasUsedList);
 });
