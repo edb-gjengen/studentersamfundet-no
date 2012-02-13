@@ -54,7 +54,7 @@ $news = new WP_Query( 'type=post' );
 							echo $html;
 						?>
 						<h1><?php the_title(); ?></h1>
-						<div class="datetime"><?php echo format_datetime(get_post_meta(get_the_ID(), '_neuf_events_starttime',true)); ?></div>
+						<div class="datetime"><?php echo ucfirst( date_i18n( 'l j. F' , get_post_meta(get_the_ID() , '_neuf_events_starttime' , true ) ) ); ?></div>
 						<div class="price"><?php $price = get_post_meta(get_the_ID(), '_neuf_events_price',true); echo ($price != "" ? $price : "Gratis"); ?></div>
 						<div class="venue"><?php echo get_post_meta(get_the_ID(), '_neuf_events_venue',true);?></div>
 						<div class="type"><?php echo get_post_meta(get_the_ID(), '_neuf_events_type',true); ?></div>

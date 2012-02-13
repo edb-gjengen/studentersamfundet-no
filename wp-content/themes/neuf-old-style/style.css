@@ -216,7 +216,7 @@ body.dns {
 #program-6days,
 .program-6days
 {
-	padding-top:30px;
+	padding-top:15px;
 	border-top:1px solid #ff9e29;
 }
 
@@ -546,6 +546,36 @@ img {
 	letter-spacing:2px;
 	font-style:italic;
 	font-weight:normal;
+}
+
+.home #featured article .datetime,
+.home #featured article .price,
+.home #featured article .venue {
+	position:absolute;
+	display:none;
+	bottom:0;
+	right:0;
+}
+.home #featured article .price {
+	left:0;
+}
+.home #featured article .venue {
+	top:0;
+}
+.home #featured article:hover .datetime,
+.home #featured article:hover .price,
+.home #featured article:hover .venue {
+	display:block;
+}
+
+.home #featured article a.blocklink {
+	width:100%;
+	height:100%;
+	display:block;
+}
+
+.home #featured article header {
+	height:240px;
 }
 
 .home #digest_news .post > a > img {
