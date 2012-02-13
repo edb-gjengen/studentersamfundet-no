@@ -28,7 +28,6 @@
 					$digest_news_counter++;
 					endwhile;
 					?>
-			<div class="post"><p><a href="<?php bloginfo('url'); ?>/nyheter/">Les mer aktuelt</a></p></div>
 			<?php endif; ?>
 				</div>
 
