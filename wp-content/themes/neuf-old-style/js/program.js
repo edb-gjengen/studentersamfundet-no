@@ -100,7 +100,7 @@ function find_checked_boxes(parent) {
 	}
 }
 
-/* Create and register the checkboxes: */
+/* When page is loaded: */
 $(window).load(function(){
 	form_id = "#program-category-chooser";
 
@@ -115,9 +115,20 @@ $(window).load(function(){
 		}
 	});
 
+	/* Restore checkbox status from cache: */
+	var cached_checked_boxes = sessionStorage.checked_boxes;
+
 	/* Create checkboxes: */
 	for (var category in categories) {
-		element = '<input id="'+category+'" type="checkbox" name="category" value="'+category+'" /><label for="'+category+'">'+category+'</label>';
+		isChecked = cached_checked_boxes != null ?
+						(cached_checked_boxes.indexOf(category) != -1) : 
+						false;
+		element = ('<input id="'+category+'" ' 
+					+'type="checkbox" ' 
+					+'name="category" ' 
+					+(isChecked ? ' checked="true" ' : '')
+					+'value="'+category+'" />' 
+					+'<label for="'+category+'">'+category+'</label>');
 		$(form_id).append(element);
 	}
 
@@ -130,4 +141,20 @@ $(window).load(function(){
 			events_update(find_checked_boxes(form));	
 		});
 	});
+	events_update(find_checked_boxes(form));	
+});
+
+/* When user leaves the page: */
+$(window).unload(function() {
+	var checked_boxes = new Array();
+
+	$('#program-category-chooser').children(":checkbox").each(function() {
+		if ($(this).is(":checked")) {
+			checked_boxes.push($(this).val());
+		}
+	});
+
+	if (checked_boxes.length > 0) {
+		sessionStorage.setItem('checked_boxes', checked_boxes);
+	}
 });
