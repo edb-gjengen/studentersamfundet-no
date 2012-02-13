@@ -88,7 +88,7 @@ $(window).load(function(){
 
 	/* Create checkboxes: */
 	for (var category in categories) {
-		element = '<input type="checkbox" name="category" checked="true" value="'+category +'">'+category +'</input>';
+		element = '<input id="'+category+'" type="checkbox" name="category" checked="true" value="'+category+'" /><label for="'+category+'">'+category+'</label>';
 		$(form_id).append(element);
 	}
 
