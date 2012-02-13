@@ -9,10 +9,6 @@ get_header();
 
 <?php get_template_part( 'eventslider' ); ?>
 
-		<div class="join">
-			<a href="<?php bloginfo('url'); ?>/medlemmer.php">Bli medlem!</a>
-		</div>
-
 <?php get_template_part( 'program' , '3days' ); ?>
 
 <?php get_template_part( 'program' , '6days' ); ?>

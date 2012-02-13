@@ -262,17 +262,6 @@ function display_social_sharing_buttons() { ?>
 <?php }
 
 /**
- * Displays our wonderful wuick menu.
- *
- * @todo Should be replaced with a WordPress menu. misund 2012-12-18
- */
-function display_quick_menu() { ?>
-	<div id="quick-menu">
-	    <a href="<?php bloginfo('url'); ?>/om-studentersamfundet.php">Om Studentersamfundet</a> | <a href="<?php bloginfo('url'); ?>/kart.php">Kart</a> | <a href="<?php bloginfo('url'); ?>/kontakt.php">Kontakt</a><a href="/english.php" style="margin-right:-30px;margin-left:5px;"><img src="/images/english.png" style="border:0px;" alt="english" title="english" /></a>
-	</div>
-<?php }
-
-/**
  * Encode text to utf-8, used in rss feeds.
  *
  * @todo find out if WordPress does this on it's own. misund 2012-12-18

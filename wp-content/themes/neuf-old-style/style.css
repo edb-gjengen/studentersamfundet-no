@@ -100,22 +100,21 @@ section#featured {
 body.dns {
 	background:#efefef;
 }
-/*body.dns */
 #header {
-	background:#191919 url('img/header-210x.png') repeat-x top;
+	background:rgb(188,190,192);
 }
 #header {
-	height:55px;
+	height:90px;
 	position:relative;
 }
 #header .site-title {
 	z-index:999;
-	width:400px;
-	height:50px;
-	left:-304px;
+	width:565px;
+	height:67px;
+	margin-top:11px;
 }
 #header .site-title a {
-	background: url('img/bannerindex-400.png') no-repeat -10px 0;
+	background: url('img/logo-web.png') no-repeat;
 	display:block;
 	width:100%;
 	height:100%;
@@ -123,36 +122,23 @@ body.dns {
 	text-indent:-9999px;
 }
 
-#quick-menu {
-	color:#cccccc;
-	font-size:13px;
-	left:50%;
-	margin-left:97px;
-	position:absolute;
-	text-align:right;
-	top:5px;
-	width:375px;
-}
-#quick-menu a {
-	color:#ffffff;
-}
-
 #menu {
-	width:100%;
 	height:25px;
-	background:#2c69a6 url('img/gradient-200x.png') repeat-x 0 top;
-	/*background:#2c69a6 url('img/gradient-200x.png')url('img/gradient-transparent-to-black-x100.png') repeat-x 0 top;*/
-	padding:15px 0;
-	font-size: 20px;
+	margin-top:35px;
 }
 #menu a {
-	color:rgb(256,256,256);
-	color:rgba(256,256,256,0.7);
+	color:rgb(88,89,91);
 }
 
 #menu a.current,
-#menu a:hover {
+#menu a:hover,
+#menu li:hover a {
 	color:rgba(256,256,256,1);
+}
+
+#menu > ul {
+	display:inline-block;
+	float:right;
 }
 
 #menu ul,#menu li {
@@ -160,104 +146,64 @@ body.dns {
 }
 #menu li {
 	float:left;
-	margin-right:10px;
+	border-right:1px solid rgb(88,89,91);
+	position:relative;
 }
+#menu .aapningstider li {
+	border-right:none;
+}
+#menu .aapningstider li ul {
+	overflow:hidden;
+	width:101%;
+	margin-left:-1px;
+}
+#menu .aapningstider li ul li {
+	padding:0 5%;
+}
+
 #menu li a {
 	display:block;
 	height:22px;
-	padding:5px 13px 3px;
+	padding:5px 4px 3px;
 	text-decoration:none;
 }
 
 #menu ul ul {
 	position:absolute;
 	display:none;
+	margin:0;
 }
 #menu ul:hover ul,
 #menu ul:focus ul
 {
 	display:block;
-	background:url('img/gradient-200x.png') repeat-x 0 -204px;
 	z-index:9;
-}
-/*
-#menu li ul {
-	background-image: url(img/fade-to-black.png) !important;
-}*/
-/*
-#menu > ul > li,
-#menu li ul {
-	background-color:#999999;
-}
-	*/
-/*
-.section-forside #menu li#forside-meny,
-#menu li#forside-meny:hover,
-#menu li#forside-meny div {
-	background:#2c69a6 url(img/gradient-white-to-transparent-x30.png) repeat-x 0 top;
-}
-	*/
-.section-program #menu li#program-meny,
-#menu li#program-meny:hover,
-#menu li#program-meny div {
-	background:#b64484 url(img/gradient-white-to-transparent-x30.png) repeat-x 0 top;
-}
-.section-foreninger #menu li#foreninger-meny,
-#menu li#foreninger-meny:hover,
-#menu li#foreninger-meny div {
-	background:#23905b url(img/gradient-white-to-transparent-x30.png) repeat-x 0 top;
-}
-.section-forum #menu li#forum-meny,
-#menu li#forum-meny:hover,
-#menu li#forum-meny div {
-	background:#ba3939 url(img/gradient-white-to-transparent-x30.png) repeat-x 0 top;
-}
-.section-inside #menu li#inside-meny,
-#menu li#inside-meny:hover,
-#menu li#inside-meny div {
-	background: #6b43a2 url(img/gradient-white-to-transparent-x30.png) repeat-x 0 top;
-}
-.section-nyheter #menu li#nyheter-meny,
-#menu li#nyheter-meny:hover,
-#menu li#nyheter-meny div {
-	background: #1c8a8e url(img/gradient-white-to-transparent-x30.png) repeat-x 0 top;
 }
 
 #header .aapningstider {
-	color:#CCCCCC;
-	font-size:12px;
-	left:50%;
-	margin-left:327px;
-	overflow:hidden;
-	position:absolute;
-	text-align:right;
-	line-height:1.4em;
-	top:30px;
+	margin:0;
 }
 
 #header .aapningstider table {
 	text-align:left;
-	width:175px;
 }
 
-#header .aapningstider th {
+/*
+#header .aapningstider > li {
 	background:transparent url('img/arrow-down.png') no-repeat center right;
 	padding-right:15px;
 }
+*/
 
-#header .aapningstider td {
-	background:black;
-	display:none;
+#header .aapningstider > li:hover {
+	background:rgb(88,89,91);
+}
+#header .aapningstider > li:hover ul {
+	background:rgb(88,89,91);
 }
 
-#header .aapningstider:hover td {
-	display:table-cell;
-	z-index:99999;
-}
-
-.aapningstider #bokkafeen_tider a
-{
-	color:#CCCCCC;
+#header .aapningstider > li:hover ul table {
+	border-top:1px solid white;
 }
 
 /* Header slutt */
@@ -472,6 +418,21 @@ h5 {
 }
 h6 {
 	font-size:16px;
+}
+
+/* Menus */
+#menu {
+	font-family:Arvo,Georgia,serif;
+	font-weight:bold;
+	font-size:18px;
+	text-transform:uppercase;
+}
+#menu ul ul {
+	font-family:Arial,sans-serif;
+	font-size:12px;
+	font-weight:normal;
+	text-transform:none;
+	color:#fff;
 }
 
 /* Lists */
