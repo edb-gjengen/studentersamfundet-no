@@ -115,11 +115,19 @@ $(window).load(function(){
 		}
 	});
 
+	/* Sort categories alphabetically: */
+	var sorted_categories = new Array();
+	for (var category in categories) {
+		sorted_categories.push(category);
+	}
+	sorted_categories.sort();
+
 	/* Restore checkbox status from cache: */
 	var cached_checked_boxes = sessionStorage.checked_boxes;
 
 	/* Create checkboxes: */
-	for (var category in categories) {
+	for (var index in sorted_categories) {
+		category = sorted_categories[index];
 		isChecked = cached_checked_boxes != null ?
 						(cached_checked_boxes.indexOf(category) != -1) : 
 						false;
