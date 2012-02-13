@@ -10,11 +10,6 @@
 				?>
 
 					<div id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
-						<?php if ( has_post_thumbnail() ) : ?>
-				<a href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_post_thumbnail('two-column-thumb'); ?></a>
-						<?php else : ?>
-						<a href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/placeholder.png" alt="" /></a>
-						<?php endif; ?>
 				<a href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_title(); ?></a>
 						<div class="entry-summary"><?php the_excerpt(); ?></div>
 					</div>
@@ -46,7 +41,7 @@
 				$args = array(
 					'post_type'      => 'event',
 					'meta_query'     => array( $meta_query ),
-					'posts_per_page' => 10,
+					'posts_per_page' => 15,
 					'orderby'        => 'meta_value_num',
 					'meta_key'       => '_neuf_events_starttime',
 					'order'          => 'ASC'
