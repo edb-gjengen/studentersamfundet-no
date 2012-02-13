@@ -635,6 +635,30 @@ h2.jobb {
 .single-event .meta-prep-event-time {
 	clear:left;
 }
+/* Table program */
+.table-program {
+	width:100%;
+	border-collapse:collapse;
+	border-spacing: 0;
+}
+.table-program th {
+	text-align: left;
+ }
+.table-program .date {
+	width:100px;
+ }
+.table-program tr.alt td {
+	background-color: #F9F9F9;
+}
+.table-program th, .table-program td {
+	padding: 8px;
+	line-height: 18px;
+	text-align: left;
+	border-top: 1px solid #DDD;
+}
+.table-program tr.month, .table-program tr.month td {
+	border: none;
+}
 
 /* Fordeler.php */
 .fordel {
