@@ -78,7 +78,20 @@ function events_update(checkboxes) {
 			$(this).next().removeClass('hidden');
 		}
 	});
-	
+}
+
+function fix_alternating_rows() {
+	var alt_status = false;
+	$(".table-program").find("tbody").children(".day").each(function() {
+		if (!$(this).hasClass('hidden')) {
+			if (alt_status) {
+				$(this).addClass('alt');
+			} else {
+				$(this).removeClass('alt');
+			}
+			alt_status = !alt_status;
+		}
+	});
 }
 
 function find_checked_boxes(parent) {
@@ -100,7 +113,7 @@ function find_checked_boxes(parent) {
 	}
 }
 
-/* Create and register the checkboxes: */
+/* When page is loaded: */
 $(window).load(function(){
 	form_id = "#program-category-chooser";
 
@@ -115,9 +128,28 @@ $(window).load(function(){
 		}
 	});
 
-	/* Create checkboxes: */
+	/* Sort categories alphabetically: */
+	var sorted_categories = new Array();
 	for (var category in categories) {
-		element = '<input id="'+category+'" type="checkbox" name="category" value="'+category+'" /><label for="'+category+'">'+category+'</label>';
+		sorted_categories.push(category);
+	}
+	sorted_categories.sort();
+
+	/* Restore checkbox status from cache: */
+	var cached_checked_boxes = sessionStorage.checked_boxes;
+
+	/* Create checkboxes: */
+	for (var index in sorted_categories) {
+		category = sorted_categories[index];
+		isChecked = cached_checked_boxes != null ?
+						(cached_checked_boxes.indexOf(category) != -1) : 
+						false;
+		element = ('<input id="'+category+'" ' 
+					+'type="checkbox" ' 
+					+'name="category" ' 
+					+(isChecked ? ' checked="true" ' : '')
+					+'value="'+category+'" />' 
+					+'<label for="'+category+'">'+category+'</label>');
 		$(form_id).append(element);
 	}
 
@@ -128,6 +160,26 @@ $(window).load(function(){
 	checkboxes.each(function(){
 		$(this).change(function(){
 			events_update(find_checked_boxes(form));	
+			fix_alternating_rows();
 		});
 	});
+	events_update(find_checked_boxes(form));	
+	fix_alternating_rows();
+});
+
+/* When user leaves the page: */
+$(window).unload(function() {
+	var checked_boxes = new Array();
+
+	$('#program-category-chooser').children(":checkbox").each(function() {
+		if ($(this).is(":checked")) {
+			checked_boxes.push($(this).val());
+		}
+	});
+
+	if (checked_boxes.length > 0) {
+		sessionStorage.setItem('checked_boxes', checked_boxes);
+	} else {
+		sessionStorage.setItem('checked_boxes', null);
+	}
 });

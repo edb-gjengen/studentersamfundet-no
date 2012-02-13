@@ -11,7 +11,7 @@ get_header();
 
 <?php get_template_part( 'program' , '3days' ); ?>
 
-<?php get_template_part( 'program' , '6days' ); ?>
+<?php //get_template_part( 'program' , '6days' ); ?>
 
 <?php get_template_part ( 'digest' ); ?>
 
