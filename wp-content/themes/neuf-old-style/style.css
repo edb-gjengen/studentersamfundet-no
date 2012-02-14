@@ -185,7 +185,8 @@ body.dns {
 #digest_events,
 #program-3days,
 #program-6days,
-.program-6days
+.program-6days,
+#student-media > *
 {
 	padding-top:15px;
 	border-top:1px solid #ff9e29;
@@ -558,13 +559,13 @@ img {
 	height:auto;
 }
 .home #digest_news .post a:before {
-    content: '';
-    background: #FF9E29;
-    border-radius: 50%;
-    width: 12px;
-    height: 12px;
-    display: inline-block;
-    margin-right:7px;
+	content: '';
+	background: #FF9E29;
+	border-radius: 50%;
+	width: 12px;
+	height: 12px;
+	display: inline-block;
+	margin-right:7px;
 }
 
 .home #frontpage-ads .ads-container {
