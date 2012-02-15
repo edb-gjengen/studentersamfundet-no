@@ -1,6 +1,6 @@
 				<nav id="menu" class="grid_6">
 					<ul class="aapningstider">
-						<li><a href="#">Åpningstider</a>
+						<li><a href="#">Åpningstider &#9662;</a>
 							<ul>
 								<li>
 									<table>
