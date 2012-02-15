@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	/**/
 	var events = $('#events');
 	var articles = events.find('article').each(function(){
 		$(this).hover(function(){
@@ -10,17 +11,28 @@ $(document).ready(function(){
 			$(this).find('header.info').find('.type').slideUp('fast');
 		});
 	});
-});
 
-$(function() {
-        /*fixme pager js does not work */
-	$("#slider")
-        .before('<div id="slidernav">')
-        .cycle({
+	/* 
+	 * Eventslider in header.
+	 * Doc: http://jquery.malsup.com/cycle/options.html
+	 */
+	$('#slider') 
+	.cycle({ 
 		fx:     'fade', 
 		speed:  'fast', 
+		timeout: 8000, 
 		next:   '#nextLink', 
 		prev:   '#prevLink',
-		pager:  '#slidernav'
+		pager:  '#slidernav', 
+                pagerAnchorBuilder: function(index, DOMelement) {
+                    return '<a href="#" class="element' + index + '"><span class="circle"></span></a>';
+                },
 	});
+
+	/* Twitter feed in footer. */
+	var feed = 'https://twitter.com/statuses/user_timeline/dns1813.json?count=1&callback=?';
+	$.getJSON(feed, function(results) {
+		$('#twitter_feed').html(results[0].text + ' <a href="http://twitter.com/dns1813/status/'+ results[0].id_str + '">*</a>');
+	});
+
 });

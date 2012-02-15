@@ -173,9 +173,35 @@ body.dns {
 }
 
 /* Slider nav */
-#slidernav a { border: 1px solid #ccc; background: #fc0; text-decoration: none; margin: 0 5px; padding: 3px 5px;  }
-#slidernav a.activeSlide { background: #ea0 }
-#slidernav a:focus { outline: none; }
+#slidernav {
+	margin-left: 15px;
+}
+#slidernav a span.circle {
+	content:'';
+	background:#ff9e29;
+	border-radius:50%;
+	width:15px;
+	height:15px;
+	display:inline-block;
+	
+}
+#slidernav a {
+	content:'';
+	width:15px;
+	height:15px;
+	display:inline-block;
+	position:relative;
+	top:322px;
+	padding:4px;
+	z-index:10;
+	
+}
+#slidernav a.activeSlide span.circle {
+	background: #BCBEC0;
+}
+#slidernav a:focus {
+	outline: none;
+}
 
 /* Header slutt */
 
@@ -435,13 +461,6 @@ label {
 	cursor:pointer;
 }
 
-/* Tables */
-td a {
-	display:block;
-	width:100%;
-	height:100%;
-}
-
 /* Images */
 img {
 	max-width:100%;
@@ -627,6 +646,12 @@ h2.jobb {
 	line-height: 18px;
 	text-align: left;
 	border-top: 1px solid #DDD;
+}
+#digest_events .table-program td {
+	padding-left:0px;
+	padding-right:0px;
+	padding-top: 8px;
+	padding-bottom: 8px;
 }
 .table-program tr.month, .table-program tr.month td {
 	border: none;
