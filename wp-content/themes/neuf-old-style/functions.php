@@ -307,7 +307,7 @@ function neuf_maybe_display_gallery() {
 }
 
 function neuf_event_format_date($timestamp) {
-	return date_i18n('d/m', intval($timestamp));
+	return date_i18n('d/n', intval($timestamp));
 }
 
 function neuf_event_day_gap_size($current_day,$previous_day) {

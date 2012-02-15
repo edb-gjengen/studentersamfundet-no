@@ -185,7 +185,7 @@ if ( $events->have_posts() ) :
 		$current_month = date_i18n( 'F' , $date);
 		$newmonth = $previous_month != $current_month;
 
-		$datel = date_i18n( 'l j.' , $date);
+		$datel = date_i18n( 'l j/n' , $date);
 		$cc = get_post_meta( $post->ID , '_neuf_events_price' , true );
 		$venue = get_post_meta( $post->ID , '_neuf_events_venue' , true );
 		/* event type class */
