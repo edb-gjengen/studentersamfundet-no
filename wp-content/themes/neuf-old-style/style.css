@@ -173,9 +173,35 @@ body.dns {
 }
 
 /* Slider nav */
-#slidernav a { border: 1px solid #ccc; background: #fc0; text-decoration: none; margin: 0 5px; padding: 3px 5px;  }
-#slidernav a.activeSlide { background: #ea0 }
-#slidernav a:focus { outline: none; }
+#slidernav {
+	margin-left: 15px;
+}
+#slidernav a span.circle {
+	content:'';
+	background:#ff9e29;
+	border-radius:50%;
+	width:15px;
+	height:15px;
+	display:inline-block;
+	
+}
+#slidernav a {
+	content:'';
+	width:15px;
+	height:15px;
+	display:inline-block;
+	position:relative;
+	top:322px;
+	padding:4px;
+	z-index:10;
+	
+}
+#slidernav a.activeSlide span.circle {
+	background: #BCBEC0;
+}
+#slidernav a:focus {
+	outline: none;
+}
 
 /* Header slutt */
 
