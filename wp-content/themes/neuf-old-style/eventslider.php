@@ -67,7 +67,6 @@ $news = new WP_Query( 'type=post' );
 						<div class="price"><?php $price = get_post_meta(get_the_ID(), '_neuf_events_price',true); echo ($price != "" ? $price : "Gratis"); ?></div>
 						<div class="venue"><?php echo get_post_meta(get_the_ID(), '_neuf_events_venue',true);?></div>
 						<div class="type"><?php echo get_post_meta(get_the_ID(), '_neuf_events_type',true); ?></div>
-						<div><?php echo get_post_meta(get_the_ID() , '_neuf_events_promo_period', true); ?></div>
 						<?php the_excerpt(); ?>
 					</header>
 					<div class="grid_6">
