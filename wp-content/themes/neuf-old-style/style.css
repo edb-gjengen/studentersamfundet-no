@@ -66,6 +66,8 @@ body.dns {
 }
 #header {
 	height:90px;
+        padding-left: 15px;
+        padding-right: 15px;
 	position:relative;
 }
 #header .site-title {
