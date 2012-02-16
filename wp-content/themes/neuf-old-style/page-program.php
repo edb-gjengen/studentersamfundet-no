@@ -69,7 +69,7 @@ if ( $events->have_posts() ) :
 
 		$date = get_post_meta( $post->ID , '_neuf_events_starttime' , true );
 		/* event type class */
-		$event_array = get_the_terms( $post->ID , 'event_type' );
+		$event_array = get_the_terms( $post->ID , 'event_type', $parent=0 );
 		$event_types = array();
 		foreach ( $event_array as $event_type )
 			$event_types[] = $event_type->name;
