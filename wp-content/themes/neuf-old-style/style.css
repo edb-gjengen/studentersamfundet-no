@@ -112,17 +112,6 @@ body.dns {
 #menu .aapningstider li {
 	border-right:none;
 }
-#menu .aapningstider li ul {
-	overflow:hidden;
-	width:100%;
-	border-left:1px solid rgb(88,89,91);
-	position:absolute;
-	right:0;
-}
-#menu .aapningstider li ul li {
-	padding:0 5%;
-}
-
 #menu li a {
 	display:block;
 	height:22px;
@@ -135,36 +124,51 @@ body.dns {
 	display:none;
 	margin:0;
 }
-#menu ul:hover ul,
-#menu ul:focus ul
+#menu ul li:hover ul,
+#menu ul li:focus ul
 {
 	display:block;
 	z-index:9;
 }
+#menu li ul {
+	overflow:hidden;
+	width:100%;
+	border-left:1px solid rgb(88,89,91);
+	border-right:1px solid rgb(88,89,91);
+	position:absolute;
+	right:-1px;
+}
+#menu .aapningstider li ul {
+	border-right:none;
+	right:0;
+}
 
-#header .aapningstider {
+#menu li ul li {
+	padding:0 5%;
+}
+
+
+#menu .aapningstider {
 	margin:0;
 }
 
-#header .aapningstider table {
+#menu .aapningstider table {
 	text-align:left;
 }
 
 /*
-#header .aapningstider > li {
+#menu .aapningstider > li {
 	background:transparent url('img/arrow-down.png') no-repeat center right;
 	padding-right:15px;
 }
 */
 
-#header .aapningstider > li:hover {
-	background:rgb(88,89,91);
-}
-#header .aapningstider > li:hover ul {
+#menu .aapningstider > li:hover,
+#menu li:hover ul {
 	background:rgb(88,89,91);
 }
 
-#header .aapningstider > li:hover ul table {
+#menu .aapningstider > li:hover ul table {
 	border-top:1px solid white;
 }
 
