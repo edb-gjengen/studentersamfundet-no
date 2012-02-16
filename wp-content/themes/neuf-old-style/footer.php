@@ -104,15 +104,6 @@ neuf_flickr_images('limit=15&type=group&groupid=1292860@N21');
         <div class="grid_4">
             <h2>Fra Twitter</h2>
             <div id="twitter_feed"></div>
-            <script>
-            $(document).ready(function() {
-                var feed = 'https://twitter.com/statuses/user_timeline/dns1813.json?count=1&callback=?';
-                $.getJSON(feed, function(results) {
-                    console.log(results[0]);
-                    $('#twitter_feed').html(results[0].text + ' <a href="http://twitter.com/dns1813/status/'+ results[0].id_str + '">*</a>');
-                });
-            });
-            </script>
         </div> <!-- #twitter_feed -->
 
 	</div> <!-- #kolofon -->

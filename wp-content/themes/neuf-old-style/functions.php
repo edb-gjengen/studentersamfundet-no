@@ -28,7 +28,7 @@ function neuf_enqueue_scripts() {
 	// register your script location, dependencies and version
 	wp_register_script( 'jquery'    , 'http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js' );
 	wp_register_script( 'program'   , get_template_directory_uri() . '/js/program.js', array( 'jquery' ) );
-	wp_register_script( 'cycle'     , get_template_directory_uri() . '/js/jquery.cycle.lite.js', array( 'jquery' ), '0.9.8' );
+	wp_register_script( 'cycle'     , get_template_directory_uri() . '/js/jquery.cycle.all.js', array( 'jquery' ), '0.9.8' );
 	wp_register_script( 'front-page', get_template_directory_uri() . '/js/front-page.js', array('cycle') );
 
 	// enqueue the scripts
@@ -307,7 +307,7 @@ function neuf_maybe_display_gallery() {
 }
 
 function neuf_event_format_date($timestamp) {
-	return date_i18n('d/m', intval($timestamp));
+	return date_i18n('d/n', intval($timestamp));
 }
 
 function neuf_event_day_gap_size($current_day,$previous_day) {

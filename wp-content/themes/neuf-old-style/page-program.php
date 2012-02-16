@@ -159,7 +159,7 @@ $meta_query = array(
 $args = array(
 	'post_type'      => 'event',
 	'meta_query'     => array($meta_query),
-	'posts_per_page' => 50,
+	'posts_per_page' => 150,
 	'orderby'        => 'meta_value_num',
 	'meta_key'       => '_neuf_events_starttime',
 	'order'          => 'ASC'
@@ -185,7 +185,7 @@ if ( $events->have_posts() ) :
 		$current_month = date_i18n( 'F' , $date);
 		$newmonth = $previous_month != $current_month;
 
-		$datel = date_i18n( 'l j.' , $date);
+		$datel = date_i18n( 'l j/n' , $date);
 		$cc = get_post_meta( $post->ID , '_neuf_events_price' , true );
 		$venue = get_post_meta( $post->ID , '_neuf_events_venue' , true );
 		/* event type class */
