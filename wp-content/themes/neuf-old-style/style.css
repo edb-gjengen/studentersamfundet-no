@@ -193,6 +193,13 @@ body.dns {
 	margin-bottom:30px;
 }
 
+.single-event .entry-meta {
+	display:inline-block;
+	border-bottom:1px solid #ff9e29;
+	padding-bottom:15px;
+	margin-top:40px;
+}
+
 /* Hoveddel slutt */
 
 /* Footer */
@@ -286,18 +293,20 @@ h1 {
 	font-style:normal;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,h2,h3,h4,h5,h6,
+.single-event .entry-meta {
 	font-family: Arvo, Georgia, serif;
+	line-height:1.2;
+}
+h1,h2,h3,h4,h5,h6 {
 	margin-bottom:0.5em;
 }
 
 a,a:visited,
-h1,h2,h3,h4,h5,h6,
-.single-event .time-price
+h1,h2,h3,h4,h5,h6
 {
 	color: #ff9e29;
 	text-decoration:none;
-	line-height:1;
 }
 
 .sidebar h1 a,
@@ -320,7 +329,7 @@ h1 {
 h2,
 #featured article h1,
 .single-event h1, 
-.single-event .time-price
+.single-event .entry-meta
 {
 	font-size:20px;
 	letter-spacing:2px;
@@ -444,6 +453,10 @@ img {
 }
 .entry-content img.alignleft {
 	margin: 0 10px 10px 0;
+}
+
+.single-event .entry-title {
+	margin-bottom:0;
 }
 
 /**********
@@ -621,13 +634,6 @@ h2.jobb {
 .page-kontakt .entry-content > ul {
 	list-style-type:none;
 	margin:0;
-}
-
-.single-event .time-price {
-	margin:1em 0;
-}
-.single-event .meta-prep-event-time {
-	clear:left;
 }
 
 /* Program */
