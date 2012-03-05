@@ -554,8 +554,6 @@ img {
 	font-weight:normal;
 }
 
-#featured #prevLink,
-#featured #nextLink,
 #featured article .datetime,
 #featured article .price,
 #featured article .venue {
@@ -582,12 +580,14 @@ img {
 	display:block;
 }
 #featured #prevLink {
-	left:-20px;
-	top:115px;
+	position:absolute;
+	top: 324px;
+	left: 70px;
 }
 #featured #nextLink {
-	left:-20px;
-	top:135px;
+	position:absolute;
+	top: 324px;
+	left: 125px;
 }
 #featured:hover #prevLink,
 #featured:hover #nextLink {
