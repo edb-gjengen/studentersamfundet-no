@@ -11,6 +11,7 @@ wp_enqueue_script('program');
 </style>
 
 <section id="content" class="container_12" role="main">
+        <h1><?php the_title(); ?></h1>
 
 	<form id="program-category-chooser" class="grid_10"></form>
 	<div class="grid_2">

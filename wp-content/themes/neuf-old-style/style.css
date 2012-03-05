@@ -245,6 +245,8 @@ body.dns {
 	overflow:auto;
 }
 #footer {
+        clear: both;
+        overflow: auto;
         color: #58595B;
 }
 #footer h2 {
@@ -709,4 +711,10 @@ h2.jobb {
 }
 .table-program tr.month, .table-program tr.month td {
 	border: none;
+}
+
+/* Foreningene/Associations */
+
+#content .association {
+    margin-top: 20px;
 }

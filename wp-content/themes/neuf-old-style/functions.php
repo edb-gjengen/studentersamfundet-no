@@ -357,7 +357,6 @@ function neuf_flickr_images( $args = '' ) {
         }
 
 
-        echo "<h2><a href='http://www.flickr.com/groups/neuf/pool/'>Bilder fra flickr</a></h2>";
         echo "<ul>";
         $image_count = 1;
         foreach ($rss->items as $item) {

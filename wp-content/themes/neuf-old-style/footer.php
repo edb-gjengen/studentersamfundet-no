@@ -12,11 +12,12 @@
             </div> <!-- #footer-about -->
 
             <div id="fb-like-box" class="grid_4">
-                <div class="fb-like-box" data-href="https://www.facebook.com/studentersamfundet" data-width="315" data-show-faces="true" data-stream="false" data-header="false"></div>
+                <div class="fb-like-box" data-href="https://www.facebook.com/studentersamfundet" data-width="315" data-height="285" data-show-faces="true" data-stream="false" data-header="false"></div>
             </div>
             <div class="grid_4">
-                <h2>Fra Twitter</h2>
+                <h2><a href="https://twitter.com/dns1813">Fra Twitter</a></h2>
                 <div id="twitter_feed"></div> <!-- #twitter_feed -->
+                <h2><a href='http://www.flickr.com/groups/neuf/pool/'>Bilder fra flickr</a></h2>
                 <div id="flickr-images">
                     <?php neuf_flickr_images('limit=10&type=group&groupid=1292860@N21'); ?>
                 </div>
