@@ -31,8 +31,6 @@ $news = new WP_Query( 'type=post' );
 ?>
 <?php if ($events->have_posts()) : ?>
 	<section id="featured" class="clearfix">
-		<a href="#" id="prevLink">Prev</a>
-		<a href="#" id="nextLink">Next</a>
 		<div id="slidernav"></div>
 		<div id="slider"> 
 		<?php

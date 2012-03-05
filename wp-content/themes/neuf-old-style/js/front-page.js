@@ -32,8 +32,6 @@ $(document).ready(function(){
             fx:     'fade', 
             speed:  'fast', 
             timeout: 8000, 
-            next:   '#nextLink', 
-            prev:   '#prevLink',
             pager:  '#slidernav', 
             pagerAnchorBuilder: function(index, DOMelement) {
                 return '<a href="#" class="element' + index + '"><span class="circle"></span></a>';
