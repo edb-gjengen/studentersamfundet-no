@@ -582,12 +582,12 @@ img {
 #featured #prevLink {
 	position:absolute;
 	top: 324px;
-	left: 70px;
+	left: 500px;
 }
 #featured #nextLink {
 	position:absolute;
 	top: 324px;
-	left: 125px;
+	left: 555px;
 }
 #featured:hover #prevLink,
 #featured:hover #nextLink {

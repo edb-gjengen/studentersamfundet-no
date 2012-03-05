@@ -47,7 +47,6 @@ $(document).ready(function(){
     var reply_url = 'http://twitter.com/intent/tweet?in_reply_to=';
     var tweet_url = 'https://twitter.com/dns1813/status/';
     $.getJSON(feed, function(results) {
-        console.log(results);
         jQuery.each(results, function(i) {
             var id = results[i].id_str;
             /* relative tweet time */
