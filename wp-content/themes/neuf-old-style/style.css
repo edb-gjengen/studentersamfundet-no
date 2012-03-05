@@ -193,6 +193,11 @@ body.dns {
 	margin-bottom:30px;
 }
 
+.single-event #content > .hentry .entry-content {
+	margin-top:15px;
+	margin-bottom:15px;
+}
+
 .single-event .entry-meta {
 	display:inline-block;
 	border-bottom:1px solid #ff9e29;
