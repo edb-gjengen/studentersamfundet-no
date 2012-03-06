@@ -522,6 +522,7 @@ img {
 	position:relative;
 }
 
+/* Icons */
 .single-event .event-type:before,
 #featured article .event-type:before,
 #featured article.type-post h1:before {
@@ -535,6 +536,12 @@ img {
 	top:10px;
 	margin-right:15px;
 }
+.single-event .event-type-fest .event-type:before {
+	background:url('img/ikon_fest-50x50.png');
+}
+
+/* End icons */
+
 .single-event .event-type,
 #featured article .event-type,
 #featured article.type-post h1 {
