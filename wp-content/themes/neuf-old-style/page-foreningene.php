@@ -3,6 +3,7 @@ get_header();
 ?>
 
 <section id="content" class="container_12 associations" role="main">
+<div class="grid_12"><h1><?php the_title(); ?></h1></div>
 <?php 
 $args = array(
 	'post_type'      => 'association',
@@ -18,13 +19,7 @@ if ( $associations->have_posts() ) :
 	/* All posts */
 	$counter = 0;
 	while ( $associations->have_posts() ) : $associations->the_post(); ?>
-		<?php $additional_class = '';
-			if ($counter % 3 == 0) {
-				$additional_class = ' alpha';
-			} else if ($counter % 3 == 2) {
-				$additional_class = ' omega';
-			}?>
-		<div class="grid_4<?php echo $additional_class?>">
+		<div class="grid_4 association">
                         <a href="<?php the_permalink(); ?>"><?php echo has_post_thumbnail() ? get_the_post_thumbnail() : "<h2>".$post->post_title."</h2>"; ?></a>
 		</div>
 		<?php $counter++; ?>

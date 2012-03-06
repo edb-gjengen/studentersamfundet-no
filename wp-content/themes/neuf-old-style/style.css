@@ -216,27 +216,60 @@ body.dns {
 #sponsors .sponsor {
 	float:left;
 	text-align:center;
-	width: 16.666%;
+	width: 20%;
 }
 
-#footer {
-        color: #58595B;
-	clear:both;
+#footer-row1 {
 	padding-top:20px;
-	overflow:auto;
+        padding-left: 15px;
+        padding-right: 15px;
         background-color: #BCBEC0;
+	clear:both;
+	overflow:auto;
+}
+#footer-row2 {
+	padding-top:20px;
+        padding-left: 15px;
+        padding-right: 15px;
+        background-color: #BCBEC0;
+	clear:both;
+	overflow:auto;
+}
+#kolofon {
+	padding-top: 20px;
+	padding-bottom: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        background-color: #BCBEC0;
+	clear:both;
+	overflow:auto;
+}
+#footer {
+        clear: both;
+        overflow: auto;
+        color: #58595B;
 }
 #footer h2 {
         color: #58595B;
 	font-family:Arvo,Georgia,serif;
 	font-weight:bold;
-	font-size:18px;
+	font-size:16px;
+        font-style:normal;
+	text-transform:uppercase;
+}
+#footer .links {
+	font-weight:bold;
+	font-size:16px;
+        font-style:normal;
 	text-transform:uppercase;
 }
 #footer a {
 	font-family:Arvo,Georgia,serif;
 	font-weight:bold;
         color: #58595B;
+}
+#footer p {
+    color: #000;
 }
 
 #flickr-images > ul {
@@ -247,6 +280,12 @@ body.dns {
 	display:block;
 	float:left;
 	width:74px;
+}
+#fb-like-box {
+    text-align: center;
+}
+.fb-like-box {
+    background-color: #ffffff;
 }
 
 /* Footer slutt */
@@ -515,34 +554,40 @@ img {
 	font-weight:normal;
 }
 
-#featured #prevLink,
-#featured #nextLink,
 #featured article .datetime,
 #featured article .price,
 #featured article .venue {
 	position:absolute;
 	display:none;
-	bottom:0;
-	right:0;
+	bottom: 20px;
+	left: 0px;
+	right:0px;
 }
 #featured article .price {
-	left:0;
+        text-align: left;
 }
+#featured article .datetime {
+        text-align: center;
+}
+
 #featured article .venue {
-	top:0;
+        text-align: right;
 }
+
 #featured article:hover .datetime,
 #featured article:hover .price,
 #featured article:hover .venue {
 	display:block;
 }
 #featured #prevLink {
-	left:-20px;
-	top:115px;
+	position:absolute;
+	top: 324px;
+	left: 500px;
 }
 #featured #nextLink {
-	left:-20px;
-	top:135px;
+	position:absolute;
+	top: 324px;
+	left: 555px;
 }
 #featured:hover #prevLink,
 #featured:hover #nextLink {
@@ -672,4 +717,10 @@ h2.jobb {
 }
 .table-program tr.month, .table-program tr.month td {
 	border: none;
+}
+
+/* Foreningene/Associations */
+
+#content .association {
+    margin-top: 20px;
 }
