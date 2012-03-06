@@ -1,4 +1,8 @@
-<?php 
+<script type="text/javascript" src="127.0.0.1/neuf/wp-content/themes/neuf-web/js/util.js" />
+<script type="text/javascript" src="127.0.0.1/neuf/wp-content/themes/neuf-web/js/date-nb-NO.js" />
+<script type="text/javascript" src="127.0.0.1/neuf/wp-content/themes/neuf-web/js/eventCalendar.js" />
+
+<?php
 add_action('wp_enqueue_scripts', function() { wp_enqueue_script( 'program' ); } );
 
 get_header(); 
@@ -83,6 +87,7 @@ if ( $events->have_posts() ) :
 
 <?php endif; ?>
 
+    <div id="event-calendar"></div>
 </section> <!-- #main_content -->
 
 <?php get_sidebar( 'program' ); ?>
