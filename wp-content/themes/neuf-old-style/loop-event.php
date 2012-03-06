@@ -1,12 +1,17 @@
 		<?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 
-			<div <?php post_class(); ?>>
+<?php
+	$event_array = get_the_terms( $post->ID , 'event_type' );
+	foreach ( $event_array as $event_type ) {
+		$post->event_types[] = $event_type->name;
+		$post->post_classes[] = 'event-type-' . $event_type->slug;
+	}
+?>
+
+			<div <?php post_class( implode( ' ' , $post->post_classes ) ); ?>>
 
 				<div class="grid_6">
 					<?php
-						$event_array = get_the_terms( $post->ID , 'event_type' );
-						foreach ( $event_array as $event_type )
-							$post->event_types[] = $event_type->name;
 						$html = '<div class="event-type">' . implode( ', ' , $post->event_types ) . '</div>';
 						echo $html;
 					?>
