@@ -230,7 +230,7 @@ if ( $events->have_posts() ) :
 	</table>
 <?php endif; ?>
 </div>
-<div id="event-calendar"></div>
+<table id="event-calendar"></table>
 </section> <!-- #main_content -->
 
 <?php get_footer(); ?>

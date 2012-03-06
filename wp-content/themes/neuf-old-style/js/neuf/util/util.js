@@ -6,6 +6,13 @@ if (typeof Object.create !== 'function') {
     };
 }
 
+neuf = {};
+
+neuf.util = {
+    capitalize: function (string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+}
 /*
 neuf.util.extend = function(o1, o2) {
     for(var key in o2) {

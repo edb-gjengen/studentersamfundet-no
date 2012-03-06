@@ -386,3 +386,7 @@ body {
 .clearfix {
   zoom: 1;
 }
+
+.pig-bg {
+    background-image:url('../img/pig.png');
+}

@@ -3,7 +3,6 @@
         var eventCalendarView = Object.create(neuf.eventCalendar).init();
     })
 }())
-neuf = {};
 
 neuf.eventCalendar = {
     pageObject: $("#event-calendar"),
@@ -49,6 +48,7 @@ neuf.eventCalendar = {
         });
 
         neuf.eventCalendar.createDOMElements(events);
+        neuf.eventCalendar.fillCalendar(events);
     },
 
     parseEvent: function (rawEvent) {
@@ -72,21 +72,48 @@ neuf.eventCalendar = {
         for (var i = 0; i < NUMBER_OF_WEEKS_TO_RENDER; i++) {
             //week
             var weekDOMId = neuf.eventCalendar.dateAsWeekDOMId(monday);
-            anchor.append('<div id="' + weekDOMId + '"></div>');
+            anchor.append('<div id="' + weekDOMId + '" class="week"></div>');
             //days
             for (var j = 0; j < 7; j++) {
                 var day = monday.clone().addDays(j);
-                $("#" + weekDOMId).append('<div id="' + neuf.eventCalendar.dateAsDOMId(day) + '"></div>')
+                var dayDOMId = neuf.eventCalendar.dayAsDOMId(day);
+                $("#" + weekDOMId).append('<div id="' + dayDOMId + '" class="day"></div>')
+                $("#" + dayDOMId).append("<h2>" + neuf.util.capitalize(day.toString("dddd d/M")) + "</h2>");
+
+                if (day.getDay() === 0) {
+                    $("#" + dayDOMId).addClass("alpha");
+                }
+                if (day.getDay() === 6) {
+                    $("#" + dayDOMId).addClass("omega");
+                }
             }
             monday.addWeeks(1);
         }
+
+
+        
     },
 
-    dateAsDOMId: function (date) {
-        return "date-" + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
+    dayAsDOMId: function (date) {
+        return "cal-day-" + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
     },
 
     dateAsWeekDOMId: function (date) {
-        return "week-" + date.getFullYear() + "-" + date.getWeek();
+        return "cal-week-" + date.getFullYear() + "-" + date.getWeek();
+    },
+
+    fillCalendar: function (events) {
+        //Style every week
+        $(".week").addClass("program-6days");
+        
+        //FOr every day, style a bit
+        $(".day").addClass("grid_2");
+
+        for (var i = 0; i < events.length; i++) {
+            //Empty background
+            var event = events[i];
+            var day = event.startTime;
+            var dayDiv = $("#" + neuf.eventCalendar.dayAsDOMId(day));
+        }
     }
 }
