@@ -7,11 +7,9 @@
 						$event_array = get_the_terms( $post->ID , 'event_type' );
 						foreach ( $event_array as $event_type )
 							$post->event_types[] = $event_type->name;
-						$html = '<span class="event-type">' . implode( ', ' , $post->event_types ) . '</span>';
+						$html = '<div class="event-type">' . implode( ', ' , $post->event_types ) . '</div>';
 						echo $html;
 					?>
-
-					<h1 class="entry-title"><?php the_title(); ?></h1>
 
 <?php get_template_part( 'eventmeta' , 'single' ); ?>
 

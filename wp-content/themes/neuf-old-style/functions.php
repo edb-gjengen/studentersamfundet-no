@@ -321,4 +321,66 @@ function neuf_event_day_gap_size($current_day,$previous_day) {
 	return ($diff - 1) * 2;
 }
 
+function neuf_flickr_images( $args = '' ) {
+        $defaults = array(
+                'type' => 'tag', // 'tag' or 'group' or 'feed'
+                'tag' => 'detnorskestudentersamfund',
+                'groupid' => 'Teater Neuf',
+                'feed' => 'http://api.flickr.com/services/feeds/groups_pool.gne?id=1130028@N25&format=atom',
+                'limit' => 10 // Max 20
+        );
+
+        $r = wp_parse_args( $args, $defaults );
+        extract( $r, EXTR_SKIP );
+
+        if ( 1 > $limit )
+                $limit = 1;
+        if ( 20 < $limit )
+                $limit = 20;
+
+        // Using WordPress-included SimplePie instead // include_once('includes/magpierss-0.72/rss_fetch.inc');
+
+        switch ( $type ) {
+        case 'tag':
+                $url = "http://api.flickr.com/services/feeds/photos_public.gne?tags=" . $tag;
+                break;
+        case 'group':
+                $url = "http://api.flickr.com/services/feeds/groups_pool.gne?format=atom&id=" . $groupid;
+                break;
+        case 'feed':
+                $url = "http://api.flickr.com/services/feeds/groups_pool.gne?id=1292860@N21&lang=en-us&format=atom";
+                break;
+        }
+
+        $rss = fetch_feed( $url );
+        
+        if (!is_wp_error($rss)) {
+                $maxitems = $rss->get_item_quantity(15);
+                $rss->items = $rss->get_items(0,$maxitems);
+        }
+
+
+        echo "<ul>";
+        $image_count = 1;
+        foreach ($rss->items as $item) {
+                if(!preg_match('<img src="([^"]*)" [^/]*/>', $item->get_content(), $imgUrlMatches)) {
+                        continue;
+                }
+                $baseurl = str_replace("_m.jpg", "", $imgUrlMatches[1]);
+                $thumbnails = array(
+                        'small' => $baseurl . "_m.jpg",
+                        'square' => $baseurl . "_s.jpg",
+                        'thumbnail' => $baseurl . "_t.jpg",
+                        'medium' => $baseurl . ".jpg",
+                        'large' => $baseurl . "_b.jpg"
+                );
+                $byline = '"' . $item->get_title() . '" av ' . $item->get_author() ;
+                echo('<li><a href="' . $item->get_permalink() . '"><img src="'.$thumbnails['square'].'"'." alt='".$byline."' title='".$byline."' /></a></li>");
+                $image_count++;
+                if ($image_count > $limit)
+                        break;
+        }
+        echo "</ul>";
+}
+
 ?>
