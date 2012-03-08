@@ -26,15 +26,17 @@
                     js.src = "//connect.facebook.net/nb_NO/all.js#xfbml=1&appId=220213643760";
                     fjs.parentNode.insertBefore(js, fjs);
                     }(document, 'script', 'facebook-jssdk'));</script>
-		<div id="header" class="container_12">
-
-				<div id="access"><a href="#content">Gå direkte til innholdet</a></div>
-
-				<div class="site-title grid_6">
-					<span><a href="<?php bloginfo('url') ?>/" title="<?php bloginfo('name') ?>" rel="home"><?php bloginfo('name') ?></a></span>
-				</div>
+		<div id="header">
+			<div class="container_12" style="margin-left:auto;margin-right:auto">
+	
+					<div id="access"><a href="#content">Gå direkte til innholdet</a></div>
+	
+					<div class="site-title grid_6">
+						<span><a href="<?php bloginfo('url') ?>/" title="<?php bloginfo('name') ?>" rel="home"><?php bloginfo('name') ?></a></span>
+					</div>
 
 <?php get_template_part( 'menu' ); ?>
 
-		</div> <!--  header -->
+			</div> 
+		</div><!--  header -->
 
