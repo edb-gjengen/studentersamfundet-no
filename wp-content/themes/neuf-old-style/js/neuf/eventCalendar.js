@@ -54,12 +54,15 @@ neuf.eventCalendar = {
     parseEvent: function (rawEvent) {
         var event = {};
 
+        event.id = rawEvent.id;
         event.title = rawEvent.title;
         event.author = rawEvent.author;
         event.content = rawEvent.content;
+        event.uri = rawEvent.uri;
         event.startTime = new Date(parseInt(rawEvent.custom_fields._neuf_events_starttime[0]) * 1000);
         event.endTime = new Date(parseInt(rawEvent.custom_fields._neuf_events_endtime[0]) * 1000);
         event.venue = rawEvent.custom_fields._neuf_events_venue[0];
+        event.thumbnailURI = rawEvent.attachments.length > 0 ? rawEvent.attachments[0].images["two-column-thumb"].uri : undefined;
 
         return event;
     },
@@ -72,26 +75,24 @@ neuf.eventCalendar = {
         for (var i = 0; i < NUMBER_OF_WEEKS_TO_RENDER; i++) {
             //week
             var weekDOMId = neuf.eventCalendar.dateAsWeekDOMId(monday);
-            anchor.append('<div id="' + weekDOMId + '" class="week"></div>');
-            //days
+
+            //weekday header row
+            anchor.append('<tr id="heading-' + weekDOMId + '"></tr>');
             for (var j = 0; j < 7; j++) {
                 var day = monday.clone().addDays(j);
                 var dayDOMId = neuf.eventCalendar.dayAsDOMId(day);
-                $("#" + weekDOMId).append('<div id="' + dayDOMId + '" class="day"></div>')
-                $("#" + dayDOMId).append("<h2>" + neuf.util.capitalize(day.toString("dddd d/M")) + "</h2>");
+                $("#heading-" + weekDOMId).append("<th><h2>" + neuf.util.capitalize(day.toString("dddd d/M")) + "</h2></th>");
+            }
 
-                if (day.getDay() === 0) {
-                    $("#" + dayDOMId).addClass("alpha");
-                }
-                if (day.getDay() === 6) {
-                    $("#" + dayDOMId).addClass("omega");
-                }
+            //Content cells
+            anchor.append('<tr id="' + weekDOMId + '"></tr>');
+            for (var j = 0; j < 7; j++) {
+                var day = monday.clone().addDays(j);
+                var dayDOMId = neuf.eventCalendar.dayAsDOMId(day);
+                //$("#" + weekDOMId).append('<td id="' + dayDOMId + '" class="day"><img src="/neuf/wp-content/themes/neuf-old-style/img/pig.png"></td>')
             }
             monday.addWeeks(1);
         }
-
-
-        
     },
 
     dayAsDOMId: function (date) {
@@ -103,17 +104,17 @@ neuf.eventCalendar = {
     },
 
     fillCalendar: function (events) {
-        //Style every week
-        $(".week").addClass("program-6days");
-        
-        //FOr every day, style a bit
-        $(".day").addClass("grid_2");
-
         for (var i = 0; i < events.length; i++) {
-            //Empty background
             var event = events[i];
             var day = event.startTime;
-            var dayDiv = $("#" + neuf.eventCalendar.dayAsDOMId(day));
+            var dayAsDOMId = neuf.eventCalendar.dayAsDOMId(day);
+            var dayCell = $("#" + dayAsDOMId);
+            var dayDiv = dayCell.append('<div id="event-"' + event.id + '"></div>')
+
+            dayDiv.append('<img src="event.thumbnailURI">'); //TODO: what if undefined?
+            var content = event.startTime.toString("H.mm") + " ";
+            content = content + '<a title="Permanent lenke til ' + event.title + '" href="' + event.uri + '">' + event.title + '</a>';
+            dayDiv.append("<p>" + content + "</p>");
         }
     }
 }
