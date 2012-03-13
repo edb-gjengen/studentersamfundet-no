@@ -97,7 +97,7 @@ function neuf_get_price( $neuf_event ) {
 			else
 				$cc = $price_regular;
 		} else
-			$cc = '-';
+			$cc = '';
 
 		return $cc;
 }
