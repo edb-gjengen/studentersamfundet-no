@@ -1,8 +1,19 @@
-(function () {
+/*(function () {
     $(document).ready(function () {
         var eventCalendarView = Object.create(neuf.eventCalendar).init();
     })
-}())
+}())*/
+
+//Backbone app
+$document.ready(function () {
+    window.CalendarEvent = Backbone.Model.extend({
+
+    });
+
+    window.CalendarView = Backbone.View.extend({
+        el: $("#event-program");
+    })
+});
 
 neuf.eventCalendar = {
     pageObject: $("#event-calendar"),
