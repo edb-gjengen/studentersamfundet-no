@@ -1,6 +1,6 @@
 		<?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 
-			<div <?php post_class(); ?>>
+			<div <?php neuf_post_class(); ?>>
 
 				<div class="grid_6">
 
