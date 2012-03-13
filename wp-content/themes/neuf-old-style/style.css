@@ -561,6 +561,10 @@ img {
 #content .event-type-konsert .event-type:before {
 	background:url('img/ikon_konsert-50x50.png');
 }
+#content .event-type-film .event-type:before,
+#content .event-type-filmrulltorsdag .event-type:before {
+	background:url('img/ikon_film-50x50.png');
+}
 
 #content .event-type-fest .event-type:before {
 	background:url('img/ikon_fest-50x50.png');
