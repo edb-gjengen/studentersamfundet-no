@@ -87,6 +87,21 @@ function neuf_post_class( $classes = '' ) {
 	post_class( $classes );
 }
 
+/* Gets nicely the regular and member price nicely formated */
+function neuf_get_price( $neuf_event ) {
+		$price_regular = get_post_meta( $neuf_event->ID , '_neuf_events_price_regular' , true );
+		$price_member = get_post_meta( $neuf_event->ID , '_neuf_events_price_member' , true );
+		if ( $price_regular ) {
+			if ( $price_member )
+				$cc = "$price_regular/$price_member";
+			else
+				$cc = $price_regular;
+		} else
+			$cc = '-';
+
+		return $cc;
+}
+
 /**
  * Adds more semantic classes to WP's body_class.
  *

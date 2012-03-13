@@ -12,7 +12,7 @@ if ( 'Annet' != $post->neuf_event_venue ) {
 							<span class="event-time"><?php echo date_i18n( 'G.i' , get_post_meta( get_the_ID() , '_neuf_events_starttime' , true ) ); ?></span> 
 							<span class="meta-sep meta-sep-event-price"> - </span>
 							<span class="meta-prep meta-prep-price">CC: </span>
-							<span class="price"><?php $price = get_post_meta(get_the_ID(), '_neuf_events_price',true); echo ($price != "" ? $price : "Gratis"); ?></span>
+							<span class="price"><?php echo ($price = neuf_get_price( $post )) ? $price : "Gratis"; ?></span>
 						</div> <!-- .time-price -->
 					</div> <!-- .entry-meta-->
 
