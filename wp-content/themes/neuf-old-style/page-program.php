@@ -187,7 +187,7 @@ if ( $events->have_posts() ) :
 		$newmonth = $previous_month != $current_month;
 
 		$datel = date_i18n( 'l j/n' , $date);
-		$cc = get_post_meta( $post->ID , '_neuf_events_price' , true );
+		$price = neuf_get_price( $post );
 		$venue = get_post_meta( $post->ID , '_neuf_events_venue' , true );
 		/* event type class */
 		$event_types = get_the_terms( $post->ID , 'event_type' );
@@ -205,10 +205,7 @@ if ( $events->have_posts() ) :
 
 		if($newmonth) { ?>
 			<tr class="month">
-				<td ><h1><?php echo $current_month; ?></h1><td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
+				<td colspan="5"><h1><?php echo $current_month; ?></h1></td>
 			</tr>
 			<tr>
 				  <th class="date">Dato</th>
@@ -221,7 +218,7 @@ if ( $events->have_posts() ) :
 			<tr class="day<?php echo $alt; ?>">
 				<td><?php echo $datel; ?></td>
 				<td><a href="<?php the_permalink(); ?>" title="Permanent lenke til <?php the_title(); ?>"><?php echo the_title(); ?></a></td>
-				<td><?php echo $cc == "0/0" ? "-": $cc; ?></td>
+				<td><?php echo $price; ?></td>
 				<td class="<?php echo $types; ?>"><?php echo $types; ?></td>
 				<td><?php echo $venue; ?></td>
 			</tr>
