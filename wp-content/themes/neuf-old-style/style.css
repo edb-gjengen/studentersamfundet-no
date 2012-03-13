@@ -56,12 +56,12 @@ body.dns {
 	background:#efefef;
 }
 #header {
-	background:rgb(188,190,192);
+	background-color:hsl(33,80%,56%);
 }
 #header {
 	height:90px;
-        padding-left: 15px;
-        padding-right: 15px;
+	padding-top:25px;
+	padding-bottom:25px;
 	position:relative;
 }
 #header .site-title {
@@ -87,7 +87,8 @@ body.dns {
 	margin-top:35px;
 }
 #menu a {
-	color:rgb(88,89,91);
+	/* color:rgb(88,89,91); */
+	color:white;
 }
 
 #menu a.current,

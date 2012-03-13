@@ -8,7 +8,7 @@
 	}
 ?>
 
-			<div <?php post_class( implode( ' ' , $post->post_classes ) ); ?>>
+			<article <?php neuf_post_class(); ?>>
 
 				<div class="grid_6">
 					<?php
@@ -32,6 +32,6 @@
 
 				<?php neuf_maybe_display_gallery(); ?>
 
-			</div> <!-- .hentry -->
+			</article> <!-- .post -->
 
 		<?php endwhile; endif; ?>
