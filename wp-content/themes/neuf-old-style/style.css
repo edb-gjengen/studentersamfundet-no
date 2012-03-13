@@ -538,10 +538,30 @@ img {
 	top:10px;
 	margin-right:15px;
 }
+#content .event-type-quiz .event-type:before {
+	background:url('img/ikon_quiz-50x50.png');
+}
 #content .event-type-debatt .event-type:before,
 #content .event-type-onsdagsdebatten .event-type:before {
 	background:url('img/ikon_debatt-50x50.png');
 }
+#content .event-type-foredrag .event-type:before,
+#content .event-type-upop .event-type:before,
+#content .event-type-akademisk-vorspiel .event-type:before {
+	background:url('img/ikon_foredrag-50x50.png');
+}
+#content .event-type-konsert .event-type:before,
+#content .event-type-pungrock .event-type:before,
+#content .event-type-south-of-heaven .event-type:before,
+#content .event-type-smalt-som-faen .event-type:before,
+#content .event-type-lillesalen-konsertserie .event-type:before,
+#content .event-type-konsert .event-type:before,
+#content .event-type-konsert .event-type:before,
+#content .event-type-konsert .event-type:before,
+#content .event-type-konsert .event-type:before {
+	background:url('img/ikon_konsert-50x50.png');
+}
+
 #content .event-type-fest .event-type:before {
 	background:url('img/ikon_fest-50x50.png');
 }
