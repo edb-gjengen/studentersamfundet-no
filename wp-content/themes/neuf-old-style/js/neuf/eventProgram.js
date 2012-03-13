@@ -5,15 +5,73 @@
 }())*/
 
 //Backbone app
-$document.ready(function () {
-    window.CalendarEvent = Backbone.Model.extend({
+$(document).ready(function () {
 
+    window.Day = Backbone.Model.extend();
+
+    window.DayCollection = Backbone.Collection.extend({
+        model: Day
     });
 
-    window.CalendarView = Backbone.View.extend({
-        el: $("#event-program");
-    })
+    window.WeekView = Backbone.View.extend({
+        tagName: "tr",
+
+        render: function () {
+            _.each(this.model.models, function (day) {
+                $(this.el).append(new DayView({model:day}).render().el);
+            }, this);
+
+            return this;
+        }
+    });
+
+    window.DayView = Backbone.View.extend({
+        tagName: "td",
+
+        initialize: function () {
+            this.template = "{{content}}";
+        },
+
+        render: function () {
+            $(this.el).html(Mustache.render(this.template, this.model.toJSON));
+            return this;
+        }
+    });
+
+    var week = new window.DayCollection;
+    week.add([
+        {content: "test"},
+        {content: "lololo"}
+    ]);
+
+    var weekView = new window.WeekView({model: week});
+    
+    $("#event-program").html(weekView.render().el);
+    console.log("test");
 });
+
+
+function nestCollection(model, attributeName, nestedCollection) {
+    //setup nested references
+    for (var i = 0; i < nestedCollection.length; i++) {
+        model.attributes[attributeName][i] = nestedCollection.at(i).attributes;
+    }
+    //create empty arrays if none
+
+    nestedCollection.bind('add', function (initiative) {
+        if (!model.get(attributeName)) {
+            model.attributes[attributeName] = [];
+        }
+        model.get(attributeName).push(initiative.attributes);
+    });
+
+    nestedCollection.bind('remove', function (initiative) {
+        var updateObj = {};
+        updateObj[attributeName] = _.without(model.get(attributeName), initiative.attributes);
+        model.set(updateObj);
+    });
+    return nestedCollection;
+}
 
 neuf.eventCalendar = {
     pageObject: $("#event-calendar"),

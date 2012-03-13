@@ -1,6 +1,6 @@
 <?php 
 get_header(); 
-wp_enqueue_script('eventCalendar');
+wp_enqueue_script('eventProgram');
 ?>
 
 <!-- Category chooser: -->
@@ -230,7 +230,7 @@ if ( $events->have_posts() ) :
 	</table>
 <?php endif; ?>
 </div>
-<table id="event-calendar" width="100%"></table>
+<table id="event-program" width="100%"></table>
 </section> <!-- #main_content -->
 
 <?php get_footer(); ?>

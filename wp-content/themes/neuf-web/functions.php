@@ -51,7 +51,6 @@ function get_scripts() {
 	wp_register_script( 'front-page', get_template_directory_uri() . '/js/front-page.js', array('cycle') );
     wp_register_script( 'util', get_template_directory_uri() . '/js/neuf/util/util.js' );
     wp_register_script( 'date.js', get_template_directory_uri() . '/js/neuf/util/date-nb-NO.js');
-    wp_register_script( 'eventCalendar', get_template_directory_uri() . '/js/neuf/eventCalendar.js', array('jquery', 'date.js', 'util') );
 
 	// enqueue the scripts
 	
