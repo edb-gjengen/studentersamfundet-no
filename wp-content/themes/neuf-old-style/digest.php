@@ -10,7 +10,7 @@
 				?>
 
 					<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
-				<a href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_title(); ?></a>
+				<a class="permalink" href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_title(); ?></a>
 						<div class="entry-summary"><?php the_excerpt(); ?></div>
 					</article>
 					<?php
