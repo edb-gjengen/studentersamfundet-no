@@ -355,15 +355,6 @@ h1,h2,h3,h4,h5,h6
 	text-decoration:none;
 }
 
-.sidebar h1 a,
-.sidebar h2 a,
-.sidebar h3 a,
-.sidebar h4 a,
-.sidebar h5 a,
-.sidebar h6 a {
-	color:#D83E00;
-}
-
 .entry-title {
 	font-size: 34px;
 }
@@ -644,6 +635,12 @@ img {
 	height:322px;
 	margin-top:30px;
 	margin-bottom:30px;
+}
+
+/* Fixes weird js bug on 1024x screens. */
+#featured #slider,
+#featured #slider article {
+	width:1200px !important;
 }
 
 #featured #slidernav {
