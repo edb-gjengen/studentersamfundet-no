@@ -1,15 +1,5 @@
 <?php get_header(); ?>
 
-		<div id="content" class="single">
-
-			<div class="hentry warning">
-				<h1 class="entry-title"><?php _e('Sprelsk visning'); ?></h1>
-				<div class="entry-meta byline"><?php _e('Du er gæren, altså.'); ?></div>
-
-				<div class="entry-content"><?php _e('Du har funnet en måte å se på innholdet vårt på som vi ikke har tatt høyde for. Godt jobba! Vi skal prøve å vise deg ting slik likevel, men hvis noe feiler grovt, la oss gjerne få vite om det. Du finner oss på kak-edb-web (at) studentersamfundet (dot) no. Lykke til!'); ?></div>
-
-			</div> <!-- .hentry -->
-
 		<?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 
 			<article <?php neuf_post_class(); ?>>
@@ -47,8 +37,6 @@
 			</article> <!-- .post -->
 
 		<?php endwhile; endif; ?>
-
-<?php include("tips.php"); ?>
 
 <?php get_sidebar(); ?>
 
