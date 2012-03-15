@@ -12,11 +12,11 @@ wp_enqueue_script('program');
 
 <section id="content" class="container_12" role="main">
         <h1><?php the_title(); ?></h1>
-
+	
 	<form id="program-category-chooser" class="grid_10"></form>
 	<div class="grid_2">
-		<button onclick='showTiles()'>Tiles</button>
-		<button onclick='showList()'>List</button>
+		<img style="height:35px;width=35px;margin:3px" src="<?php bloginfo('template_directory');?>/img/tilesvisning.png" onclick='showTiles()'></img>
+		<img style="height:35px;width=35px;margin:3px;" src="<?php bloginfo('template_directory');?>/img/listevisning.png" onclick='showList()'></img>
 	</div>
 
 <?php 
