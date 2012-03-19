@@ -55,23 +55,24 @@
 body.dns {
 	background:#efefef;
 }
-#header {
+header#site-header,
+footer#site-footer {
 	background-color:hsl(33,80%,56%);
 }
-#header {
+header#site-header {
 	height:90px;
 	padding-top:25px;
 	padding-bottom:25px;
 	position:relative;
 	margin-bottom:50px;
 }
-#header .site-title {
+header#site-header .site-title {
 	z-index:999;
 	width:570px;
 	height:67px;
 	margin-top:11px;
 }
-#header .site-title a {
+header#site-header .site-title a {
 	background: url('img/logo-web.png') no-repeat;
 	display:block;
 	width:100%;
@@ -221,19 +222,17 @@ body.dns {
 	width: 20%;
 }
 
-#footer-row1 {
+#site-footer #footer-row1 {
 	padding-top:20px;
         padding-left: 15px;
         padding-right: 15px;
-        background-color: #BCBEC0;
 	clear:both;
 	overflow:auto;
 }
-#footer-row2 {
+#site-footer #footer-row2 {
 	padding-top:20px;
         padding-left: 15px;
         padding-right: 15px;
-        background-color: #BCBEC0;
 	clear:both;
 	overflow:auto;
 }
@@ -242,16 +241,15 @@ body.dns {
 	padding-bottom: 10px;
         padding-left: 15px;
         padding-right: 15px;
-        background-color: #BCBEC0;
 	clear:both;
 	overflow:auto;
 }
-#footer {
+#site-footer {
         clear: both;
         overflow: auto;
         color: #58595B;
 }
-#footer h2 {
+#site-footer h2 {
         color: #58595B;
 	font-family:Arvo,Georgia,serif;
 	font-weight:bold;
@@ -259,18 +257,18 @@ body.dns {
         font-style:normal;
 	text-transform:uppercase;
 }
-#footer .links {
+#site-footer .links {
 	font-weight:bold;
 	font-size:16px;
         font-style:normal;
 	text-transform:uppercase;
 }
-#footer a {
+#site-footer a {
 	font-family:Arvo,Georgia,serif;
 	font-weight:bold;
         color: #58595B;
 }
-#footer p {
+#site-footer p {
     color: #000;
 }
 

@@ -1,5 +1,5 @@
 
-<div id="footer">
+<footer id="site-footer">
         <div id="footer-row1" class="container_12">
 
             <div id="footer-about" class="grid_4">
@@ -61,7 +61,7 @@
 	<script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www."); document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script><script type="text/javascript">try {var pageTracker = _gat._getTracker("UA-52914-1");pageTracker._trackPageview();} catch(err) {}</script>
 	<!-- end Google Analytics -->
 
-</div> <!-- #footer -->
+</footer> <!-- #site-footer -->
 
 <?php wp_footer(); ?>
 
