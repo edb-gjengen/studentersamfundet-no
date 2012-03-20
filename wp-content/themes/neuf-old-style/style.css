@@ -191,7 +191,8 @@ header#site-header .site-title a {
 	border-top:1px solid #ff9e29;
 }
 
-.single #content > .hentry {
+.single #content > .hentry,
+.page #content > .hentry {
 	margin-top:30px;
 	margin-bottom:30px;
 }
@@ -224,30 +225,31 @@ header#site-header .site-title a {
 
 #site-footer #footer-row1 {
 	padding-top:20px;
-        padding-left: 15px;
-        padding-right: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
 	clear:both;
 	overflow:auto;
 }
 #site-footer #footer-row2 {
 	padding-top:20px;
-        padding-left: 15px;
-        padding-right: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
 	clear:both;
 	overflow:auto;
 }
 #kolofon {
 	padding-top: 20px;
 	padding-bottom: 10px;
-        padding-left: 15px;
-        padding-right: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
 	clear:both;
 	overflow:auto;
 }
 #site-footer {
-        clear: both;
-        overflow: auto;
-        color: #58595B;
+	margin-top: 20px;
+	clear: both;
+	overflow: auto;
+	color: #58595B;
 }
 #site-footer h2 {
         color: #58595B;
