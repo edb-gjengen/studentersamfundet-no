@@ -261,19 +261,15 @@ if (!function_exists('prepareOutput')) {
  * Display social sharing buttons
  */
 function display_social_sharing_buttons() { ?>
-		    <div id="social-content-top">
-			<div id="facebook-share-content-top" class="facebook-share">
-			    <fb:share-button class="url" href="<?php echo("".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']); ?>" type="box_count"></fb:share-button>
-			</div> <!-- .facebook-share -->
-
-			<div id="tweetmeme-content-top" class="tweetmeme">
-	<script type="text/javascript">
-	tweetmeme_source = 'DNS1813';
-</script>
-			    <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
-			</div> <!-- .tweetmeme -->
-		    </div> <!-- #social-content-top -->
-
+		<div id="social-sharing">
+			<div class="share-twitter">
+				<a href="https://twitter.com/share" class="twitter-share-button" data-lang="no">Tweet</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</div> <!-- .share-twitter -->
+			<div class="share-facebook">
+				<div class="fb-like" data-send="true" data-layout="button_count" data-width="450" data-show-faces="true" data-action="recommend"></div>
+			</div> <!-- .share-facebook -->
+		</div> <!-- #social-sharing -->
 <?php }
 
 /**

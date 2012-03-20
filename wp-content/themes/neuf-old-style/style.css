@@ -497,6 +497,16 @@ img {
 /**********
  * Social *
  **********/
+#social-sharing .share-facebook,
+#social-sharing .share-twitter
+{
+	display: inline-block;
+}
+
+#social-sharing .share-facebook {
+	position: relative;
+	bottom: 3px;
+}
 #facebook-followers {
     float:right;
 
