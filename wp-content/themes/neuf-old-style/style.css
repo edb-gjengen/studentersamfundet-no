@@ -354,10 +354,10 @@ h1,h2,h3,h4,h5,h6
 }
 
 .entry-title {
-	font-size: 34px;
+	font-size: 35px;
 }
 h1 {
-	font-size:40px;
+	font-size: 35px;
 	font-weight:bold;
 	font-style:normal;
 }
@@ -699,6 +699,20 @@ img {
 }
 
 /* Program */
+
+/* Icons */
+.view-mode:hover {
+    cursor: pointer;
+    opacity:0.8;
+    filter:alpha(opacity=80); /* For IE8 and earlier */
+}
+.view-mode.marked {
+    opacity:0.4;
+    filter:alpha(opacity=40); /* For IE8 and earlier */
+}
+.view-mode.list {
+    margin-left: 5px;
+}
 
 /* table-program */
 .table-program {

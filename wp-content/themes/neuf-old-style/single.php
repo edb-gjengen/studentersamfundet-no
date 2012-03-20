@@ -11,4 +11,4 @@
 
 		</div> <!-- #content -->
 
-<?php include("footer.php"); ?>
+<?php get_footer(); ?>

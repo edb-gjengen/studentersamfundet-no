@@ -228,34 +228,6 @@ function is_in_section($section) {
 	}
 }
 
-/**
- * WTF.
- *
- * Why do we do this in this way, and do we need it in WordPress? misund 2012-12-18
- */
-if (!function_exists('prepareOutput')) {
-	function prepareOutput( $tekst ){
-		$tekst = StripSlashes($tekst);
-		//    $tekst = nl2br($tekst);
-
-		$tekst = preg_replace(array("/\r\n\r\n/", "/\r\n \r\n/", "/\n\n/", "/\n \n/"), "</p>\n\n<p>", $tekst);
-		$tekst = preg_replace(array("/\r\n/", "/\n/"), "<br />\n", $tekst);
-		$tekst = '<p>' . $tekst . '</p>';
-
-		// Listebehandling
-		$tekst = str_replace("[ul]", "</p><ul>", $tekst);
-		$tekst = str_replace("[/ul]", "</ul><p>", $tekst);
-		$tekst = str_replace("[li]", "<li>", $tekst);
-		$tekst = str_replace("[/li]", "</li>", $tekst);
-
-		$tekst = str_replace("[b]", "<strong>", $tekst);
-		$tekst = str_replace("[/b]", "</strong>", $tekst);
-		$tekst = str_replace("[i]", "<em>", $tekst);
-		$tekst = str_replace("[/i]", "</em>", $tekst);
-
-		return $tekst;
-	}
-}
 
 /**
  * Display social sharing buttons
@@ -271,17 +243,6 @@ function display_social_sharing_buttons() { ?>
 			</div> <!-- .share-facebook -->
 		</div> <!-- #social-sharing -->
 <?php }
-
-/**
- * Encode text to utf-8, used in rss feeds.
- *
- * @todo find out if WordPress does this on it's own. misund 2012-12-18
- */
-function make_utf8_encoding($text) {
-	$current_encoding = mb_detect_encoding($text, 'auto');
-	$text = iconv($current_encoding, 'UTF-8', $text);
-	return $text;
-}
 
 /**
  * Count attachments to a post.
@@ -330,6 +291,7 @@ function neuf_event_day_gap_size($current_day,$previous_day) {
 }
 
 function neuf_flickr_images( $args = '' ) {
+        /* @TODO rewrite in javascript with jquery */
         $defaults = array(
                 'type' => 'tag', // 'tag' or 'group' or 'feed'
                 'tag' => 'detnorskestudentersamfund',

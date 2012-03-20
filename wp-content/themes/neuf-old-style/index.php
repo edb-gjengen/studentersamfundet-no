@@ -1,5 +1,7 @@
 <?php get_header(); ?>
 
+		<div id="content" class="container_12">
+
 		<?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 
 			<article <?php neuf_post_class(); ?>>
@@ -30,16 +32,12 @@
 
 				<?php display_social_sharing_buttons(); ?>
 
-				<div id="facebook-comments">
-					<fb:comments> </fb:comments>
-				</div> <!-- #facebook-comments -->
-
 			</article> <!-- .post -->
 
 		<?php endwhile; endif; ?>
 
-<?php get_sidebar(); ?>
+<?php //get_sidebar(); ?>
 
 </div> <!-- #content -->
 
-<?php include("footer.php"); ?>
+<?php get_footer(); ?>

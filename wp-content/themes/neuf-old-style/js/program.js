@@ -5,6 +5,17 @@ function intersection(a1, a2) {
 		return true;
 	});
 }
+function toggleActive(mode) {
+    tiles = $(".view-mode.tiles");
+    list = $(".view-mode.list");
+    if(mode == "list") {
+        list.addClass('marked');
+        tiles.removeClass('marked');
+    } else if(mode == "tiles") {
+        tiles.addClass('marked');
+        list.removeClass('marked');
+    }
+}
 
 function showTiles() {
 	tiles = $("#program_tiles");
@@ -136,10 +147,10 @@ $(window).load(function(){
 
 	/* Find all categories used by events: */
 	var categories = {};
-	
+
 	$(".day p").each(function() {
 		var classes = $(this).attr("class").split(" ");
-		
+
 		for (var id in classes) {
 			categories[classes[id]] = true;
 		}
@@ -159,14 +170,14 @@ $(window).load(function(){
 	for (var index in sorted_categories) {
 		category = sorted_categories[index];
 		isChecked = cached_checked_boxes != null ?
-						(cached_checked_boxes.indexOf(category) != -1) : 
-						false;
+			(cached_checked_boxes.indexOf(category) != -1) : 
+			false;
 		element = ('<input id="'+category+'" ' 
-					+'type="checkbox" ' 
-					+'name="category" ' 
-					+(isChecked ? ' checked="true" ' : '')
-					+'value="'+category+'" />' 
-					+'<label for="'+category+'">'+category+'</label>');
+				+'type="checkbox" ' 
+				+'name="category" ' 
+				+(isChecked ? ' checked="true" ' : '')
+				+'value="'+category+'" />' 
+				+'<label for="'+category+'">'+category+'</label>');
 		$(form_id).append(element);
 	}
 
@@ -187,8 +198,10 @@ $(window).load(function(){
 	var list = "true" === sessionStorage.useList;
 	if (list) {
 		showList();
+		toggleActive("list");
 	} else {
 		showTiles();
+		toggleActive("tiles");
 	}
 
 	/* Only now can we really show them*/

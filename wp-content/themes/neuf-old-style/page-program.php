@@ -11,12 +11,14 @@ wp_enqueue_script('program');
 </style>
 
 <section id="content" class="container_12" role="main">
-        <h1><?php the_title(); ?></h1>
+        <div class="grid_12">
+            <h1 class="entry-title"><?php the_title(); ?></h1>
+        </div>
 	
 	<form id="program-category-chooser" class="grid_10"></form>
 	<div class="grid_2">
-		<img style="height:35px;width=35px;margin:3px" src="<?php bloginfo('template_directory');?>/img/tilesvisning.png" onclick='showTiles()'></img>
-		<img style="height:35px;width=35px;margin:3px;" src="<?php bloginfo('template_directory');?>/img/listevisning.png" onclick='showList()'></img>
+		<img class="view-mode tiles" src="<?php bloginfo('template_directory');?>/img/tilesvisning.png" onclick='showTiles();toggleActive("tiles");' title="Vis program i et rutenett"/>
+		<img class="view-mode list" src="<?php bloginfo('template_directory');?>/img/listevisning.png" onclick='showList();toggleActive("list");' title="Vis programmet som en liste" />
 	</div>
 
 <?php 
@@ -205,7 +207,7 @@ if ( $events->have_posts() ) :
 
 		if($newmonth) { ?>
 			<tr class="month">
-				<td colspan="5"><h1><?php echo $current_month; ?></h1></td>
+				<td colspan="5"><h3><?php echo $current_month; ?></h3></td>
 			</tr>
 			<tr>
 				  <th class="date">Dato</th>
