@@ -230,7 +230,48 @@ if ( $events->have_posts() ) :
 	</table>
 <?php endif; ?>
 </div>
-<table id="event-program" width="100%"></table>
+<!--<table id="event-program" width="100%"></table>-->
+<div id="program-placeholder"></div>
 </section> <!-- #main_content -->
+
+<table>
+    <tbody data-bind="foreach: weeks">
+        <tr data-bind="foreach: days">
+            <td data-bind="if: events().length > 0">
+                <h2 data-bind="text: dateAsHeader"></h2>
+                <!-- ko foreach: events -->
+                <div>
+                    <!-- ko if: $parent.events().indexOf($data) === 0 -->
+                    <span>FIRST</span>
+                    <!-- /ko -->
+                    <span data-bind="text: content"></span>
+                </div>
+                <!-- /ko -->
+            </td>
+            <td data-bind="ifnot: events().length > 0">NOTHING HERE</td>
+        </tr>
+    </tbody>
+</table>
+<!--<script id="day-template" type="text/template">
+    <h2>{{date}}</h2>
+    {{content}}
+</script>
+<script id="program-template" type="text/x-handlebars-template">
+    <table width="100%">
+        {{#each weeks}}
+        <tr>
+            {{#each days}}
+            <td>
+                {{#event-list events}}
+                {{image}}
+                {{content}}
+                {{/event-list}}
+            </td>
+            {{/each}}
+        </tr>
+        {{/each}}
+    </table>
+</script>-->
+
 
 <?php get_footer(); ?>
