@@ -55,22 +55,24 @@
 body.dns {
 	background:#efefef;
 }
-#header {
-	background:rgb(188,190,192);
+header#site-header,
+footer#site-footer {
+	background-color:hsl(33,80%,56%);
 }
-#header {
+header#site-header {
 	height:90px;
-        padding-left: 15px;
-        padding-right: 15px;
+	padding-top:25px;
+	padding-bottom:25px;
 	position:relative;
+	margin-bottom:50px;
 }
-#header .site-title {
+header#site-header .site-title {
 	z-index:999;
 	width:570px;
 	height:67px;
 	margin-top:11px;
 }
-#header .site-title a {
+header#site-header .site-title a {
 	background: url('img/logo-web.png') no-repeat;
 	display:block;
 	width:100%;
@@ -87,7 +89,8 @@ body.dns {
 	margin-top:35px;
 }
 #menu a {
-	color:rgb(88,89,91);
+	/* color:rgb(88,89,91); */
+	color:white;
 }
 
 #menu a.current,
@@ -188,7 +191,8 @@ body.dns {
 	border-top:1px solid #ff9e29;
 }
 
-.single #content > .hentry {
+.single #content > .hentry,
+.page #content > .hentry {
 	margin-top:30px;
 	margin-bottom:30px;
 }
@@ -219,37 +223,35 @@ body.dns {
 	width: 20%;
 }
 
-#footer-row1 {
+#site-footer #footer-row1 {
 	padding-top:20px;
-        padding-left: 15px;
-        padding-right: 15px;
-        background-color: #BCBEC0;
+	padding-left: 15px;
+	padding-right: 15px;
 	clear:both;
 	overflow:auto;
 }
-#footer-row2 {
+#site-footer #footer-row2 {
 	padding-top:20px;
-        padding-left: 15px;
-        padding-right: 15px;
-        background-color: #BCBEC0;
+	padding-left: 15px;
+	padding-right: 15px;
 	clear:both;
 	overflow:auto;
 }
 #kolofon {
 	padding-top: 20px;
 	padding-bottom: 10px;
-        padding-left: 15px;
-        padding-right: 15px;
-        background-color: #BCBEC0;
+	padding-left: 15px;
+	padding-right: 15px;
 	clear:both;
 	overflow:auto;
 }
-#footer {
-        clear: both;
-        overflow: auto;
-        color: #58595B;
+#site-footer {
+	margin-top: 20px;
+	clear: both;
+	overflow: auto;
+	color: #58595B;
 }
-#footer h2 {
+#site-footer h2 {
         color: #58595B;
 	font-family:Arvo,Georgia,serif;
 	font-weight:bold;
@@ -257,18 +259,18 @@ body.dns {
         font-style:normal;
 	text-transform:uppercase;
 }
-#footer .links {
+#site-footer .links {
 	font-weight:bold;
 	font-size:16px;
         font-style:normal;
 	text-transform:uppercase;
 }
-#footer a {
+#site-footer a {
 	font-family:Arvo,Georgia,serif;
 	font-weight:bold;
         color: #58595B;
 }
-#footer p {
+#site-footer p {
     color: #000;
 }
 
@@ -353,20 +355,11 @@ h1,h2,h3,h4,h5,h6
 	text-decoration:none;
 }
 
-.sidebar h1 a,
-.sidebar h2 a,
-.sidebar h3 a,
-.sidebar h4 a,
-.sidebar h5 a,
-.sidebar h6 a {
-	color:#D83E00;
-}
-
 .entry-title {
-	font-size: 34px;
+	font-size: 35px;
 }
 h1 {
-	font-size:40px;
+	font-size: 35px;
 	font-weight:bold;
 	font-style:normal;
 }
@@ -506,6 +499,16 @@ img {
 /**********
  * Social *
  **********/
+#social-sharing .share-facebook,
+#social-sharing .share-twitter
+{
+	display: inline-block;
+}
+
+#social-sharing .share-facebook {
+	position: relative;
+	bottom: 3px;
+}
 #facebook-followers {
     float:right;
 
@@ -522,6 +525,7 @@ img {
 	position:relative;
 }
 
+/* Icons */
 .single-event .event-type:before,
 #featured article .event-type:before,
 #featured article.type-post h1:before {
@@ -535,6 +539,40 @@ img {
 	top:10px;
 	margin-right:15px;
 }
+#content .event-type-quiz .event-type:before {
+	background:url('img/ikon_quiz-50x50.png');
+}
+#content .event-type-debatt .event-type:before,
+#content .event-type-onsdagsdebatten .event-type:before {
+	background:url('img/ikon_debatt-50x50.png');
+}
+#content .event-type-foredrag .event-type:before,
+#content .event-type-upop .event-type:before,
+#content .event-type-akademisk-vorspiel .event-type:before {
+	background:url('img/ikon_foredrag-50x50.png');
+}
+#content .event-type-konsert .event-type:before,
+#content .event-type-pungrock .event-type:before,
+#content .event-type-south-of-heaven .event-type:before,
+#content .event-type-smalt-som-faen .event-type:before,
+#content .event-type-lillesalen-konsertserie .event-type:before,
+#content .event-type-konsert .event-type:before,
+#content .event-type-konsert .event-type:before,
+#content .event-type-konsert .event-type:before,
+#content .event-type-konsert .event-type:before {
+	background:url('img/ikon_konsert-50x50.png');
+}
+#content .event-type-film .event-type:before,
+#content .event-type-filmrulltorsdag .event-type:before {
+	background:url('img/ikon_film-50x50.png');
+}
+
+#content .event-type-fest .event-type:before {
+	background:url('img/ikon_fest-50x50.png');
+}
+
+/* End icons */
+
 .single-event .event-type,
 #featured article .event-type,
 #featured article.type-post h1 {
@@ -609,6 +647,12 @@ img {
 	margin-bottom:30px;
 }
 
+/* Fixes weird js bug on 1024x screens. */
+#featured #slider,
+#featured #slider article {
+	width:1200px !important;
+}
+
 #featured #slidernav {
 	position:absolute;
 	top:322px;
@@ -646,7 +690,7 @@ img {
 	width:93px;
 	height:auto;
 }
-.home #digest_news .post a:before {
+.home #digest_news .post a.permalink:before {
 	content: '';
 	background: #FF9E29;
 	border-radius: 50%;
@@ -656,37 +700,21 @@ img {
 	margin-right:7px;
 }
 
-.home #frontpage-ads .ads-container {
-	clear:both;
-	padding:20px;
-	margin:20px 0;
-	background:#eee;
-	overflow:hidden;
-}
-.home #frontpage-ads .ads-container .ad {
-	float:left;
-	margin:20px;
-}
-
-.home #lead-text h1 {
-	margin:0.5em 0;
-}
-
-h2.jobb {
-	background:#eeeeee;
-	margin-top:0.5em;
-	padding:10px 10px 5px;
-}
-.page-kontakt .entry-content h5 {
-	margin-bottom:0.2em;
-}
-
-.page-kontakt .entry-content > ul {
-	list-style-type:none;
-	margin:0;
-}
-
 /* Program */
+
+/* Icons */
+.view-mode:hover {
+    cursor: pointer;
+    opacity:0.8;
+    filter:alpha(opacity=80); /* For IE8 and earlier */
+}
+.view-mode.marked {
+    opacity:0.4;
+    filter:alpha(opacity=40); /* For IE8 and earlier */
+}
+.view-mode.list {
+    margin-left: 5px;
+}
 
 /* table-program */
 .table-program {

@@ -1,12 +1,17 @@
 		<?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 
-			<div class="hentry">
+<?php
+	$event_array = get_the_terms( $post->ID , 'event_type' );
+	foreach ( $event_array as $event_type ) {
+		$post->event_types[] = $event_type->name;
+		$post->post_classes[] = 'event-type-' . $event_type->slug;
+	}
+?>
+
+			<article <?php neuf_post_class(); ?>>
 
 				<div class="grid_6">
 					<?php
-						$event_array = get_the_terms( $post->ID , 'event_type' );
-						foreach ( $event_array as $event_type )
-							$post->event_types[] = $event_type->name;
 						$html = '<div class="event-type">' . implode( ', ' , $post->event_types ) . '</div>';
 						echo $html;
 					?>
@@ -27,6 +32,6 @@
 
 				<?php neuf_maybe_display_gallery(); ?>
 
-			</div> <!-- .hentry -->
+			</article> <!-- .post -->
 
 		<?php endwhile; endif; ?>

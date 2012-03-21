@@ -9,10 +9,10 @@
 					if ( $digest_news->have_posts() ) : while ( $digest_news->have_posts() ) : $digest_news->the_post();
 				?>
 
-					<div id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
-				<a href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_title(); ?></a>
+					<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
+				<a class="permalink" href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_title(); ?></a>
 						<div class="entry-summary"><?php the_excerpt(); ?></div>
-					</div>
+					</article>
 					<?php
 						if($digest_news_counter == 3) {
 					?>

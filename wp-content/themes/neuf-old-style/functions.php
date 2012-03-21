@@ -37,10 +37,12 @@ function neuf_enqueue_scripts() {
     wp_register_script( 'util', get_template_directory_uri() . '/js/neuf/util/util.js' );
     wp_register_script( 'date.js', get_template_directory_uri() . '/js/neuf/util/date-nb-NO.js');
     wp_register_script( 'eventProgram', get_template_directory_uri() . '/js/neuf/eventProgram.js', array('jquery', 'underscore', 'knockout', 'handlebars', 'date.js', 'util') );
+	wp_register_script( 'footer', get_template_directory_uri() . '/js/footer.js', array('jquery') );
 
 	// enqueue the scripts
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'cycle' );
+	wp_enqueue_script( 'footer' );
 	if ( is_front_page() )
 		wp_enqueue_script( 'front-page' );
 }
@@ -92,6 +94,21 @@ function neuf_post_class( $classes = '' ) {
 	$classes =  join( ' ' , $classes );
 
 	post_class( $classes );
+}
+
+/* Gets nicely the regular and member price nicely formated */
+function neuf_get_price( $neuf_event ) {
+		$price_regular = get_post_meta( $neuf_event->ID , '_neuf_events_price_regular' , true );
+		$price_member = get_post_meta( $neuf_event->ID , '_neuf_events_price_member' , true );
+		if ( $price_regular ) {
+			if ( $price_member )
+				$cc = "$price_regular/$price_member";
+			else
+				$cc = $price_regular;
+		} else
+			$cc = '';
+
+		return $cc;
 }
 
 /**
@@ -220,64 +237,21 @@ function is_in_section($section) {
 	}
 }
 
-/**
- * WTF.
- *
- * Why do we do this in this way, and do we need it in WordPress? misund 2012-12-18
- */
-if (!function_exists('prepareOutput')) {
-	function prepareOutput( $tekst ){
-		$tekst = StripSlashes($tekst);
-		//    $tekst = nl2br($tekst);
-
-		$tekst = preg_replace(array("/\r\n\r\n/", "/\r\n \r\n/", "/\n\n/", "/\n \n/"), "</p>\n\n<p>", $tekst);
-		$tekst = preg_replace(array("/\r\n/", "/\n/"), "<br />\n", $tekst);
-		$tekst = '<p>' . $tekst . '</p>';
-
-		// Listebehandling
-		$tekst = str_replace("[ul]", "</p><ul>", $tekst);
-		$tekst = str_replace("[/ul]", "</ul><p>", $tekst);
-		$tekst = str_replace("[li]", "<li>", $tekst);
-		$tekst = str_replace("[/li]", "</li>", $tekst);
-
-		$tekst = str_replace("[b]", "<strong>", $tekst);
-		$tekst = str_replace("[/b]", "</strong>", $tekst);
-		$tekst = str_replace("[i]", "<em>", $tekst);
-		$tekst = str_replace("[/i]", "</em>", $tekst);
-
-		return $tekst;
-	}
-}
 
 /**
  * Display social sharing buttons
  */
 function display_social_sharing_buttons() { ?>
-		    <div id="social-content-top">
-			<div id="facebook-share-content-top" class="facebook-share">
-			    <fb:share-button class="url" href="<?php echo("".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']); ?>" type="box_count"></fb:share-button>
-			</div> <!-- .facebook-share -->
-
-			<div id="tweetmeme-content-top" class="tweetmeme">
-	<script type="text/javascript">
-	tweetmeme_source = 'DNS1813';
-</script>
-			    <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
-			</div> <!-- .tweetmeme -->
-		    </div> <!-- #social-content-top -->
-
+		<div id="social-sharing">
+			<div class="share-twitter">
+				<a href="https://twitter.com/share" class="twitter-share-button" data-lang="no">Tweet</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</div> <!-- .share-twitter -->
+			<div class="share-facebook">
+				<div class="fb-like" data-send="true" data-layout="button_count" data-width="450" data-show-faces="true" data-action="recommend"></div>
+			</div> <!-- .share-facebook -->
+		</div> <!-- #social-sharing -->
 <?php }
-
-/**
- * Encode text to utf-8, used in rss feeds.
- *
- * @todo find out if WordPress does this on it's own. misund 2012-12-18
- */
-function make_utf8_encoding($text) {
-	$current_encoding = mb_detect_encoding($text, 'auto');
-	$text = iconv($current_encoding, 'UTF-8', $text);
-	return $text;
-}
 
 /**
  * Count attachments to a post.
@@ -326,6 +300,7 @@ function neuf_event_day_gap_size($current_day,$previous_day) {
 }
 
 function neuf_flickr_images( $args = '' ) {
+        /* @TODO rewrite in javascript with jquery */
         $defaults = array(
                 'type' => 'tag', // 'tag' or 'group' or 'feed'
                 'tag' => 'detnorskestudentersamfund',

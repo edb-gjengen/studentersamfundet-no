@@ -11,12 +11,14 @@ wp_enqueue_script('eventProgram');
 </style>
 
 <section id="content" class="container_12" role="main">
-        <h1><?php the_title(); ?></h1>
-
+        <div class="grid_12">
+            <h1 class="entry-title"><?php the_title(); ?></h1>
+        </div>
+	
 	<form id="program-category-chooser" class="grid_10"></form>
 	<div class="grid_2">
-		<button onclick='showTiles()'>Tiles</button>
-		<button onclick='showList()'>List</button>
+		<img class="view-mode tiles" src="<?php bloginfo('template_directory');?>/img/tilesvisning.png" onclick='showTiles();toggleActive("tiles");' title="Vis program i et rutenett"/>
+		<img class="view-mode list" src="<?php bloginfo('template_directory');?>/img/listevisning.png" onclick='showList();toggleActive("list");' title="Vis programmet som en liste" />
 	</div>
 
 <?php 
@@ -187,7 +189,7 @@ if ( $events->have_posts() ) :
 		$newmonth = $previous_month != $current_month;
 
 		$datel = date_i18n( 'l j/n' , $date);
-		$cc = get_post_meta( $post->ID , '_neuf_events_price' , true );
+		($price = neuf_get_price( $post )) ? : $price = '-';
 		$venue = get_post_meta( $post->ID , '_neuf_events_venue' , true );
 		/* event type class */
 		$event_types = get_the_terms( $post->ID , 'event_type' );
@@ -205,10 +207,7 @@ if ( $events->have_posts() ) :
 
 		if($newmonth) { ?>
 			<tr class="month">
-				<td ><h1><?php echo $current_month; ?></h1><td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
+				<td colspan="5"><h3><?php echo $current_month; ?></h3></td>
 			</tr>
 			<tr>
 				  <th class="date">Dato</th>
@@ -221,7 +220,7 @@ if ( $events->have_posts() ) :
 			<tr class="day<?php echo $alt; ?>">
 				<td><?php echo $datel; ?></td>
 				<td><a href="<?php the_permalink(); ?>" title="Permanent lenke til <?php the_title(); ?>"><?php echo the_title(); ?></a></td>
-				<td><?php echo $cc == "0/0" ? "-": $cc; ?></td>
+				<td><?php echo $price; ?></td>
 				<td class="<?php echo $types; ?>"><?php echo $types; ?></td>
 				<td><?php echo $venue; ?></td>
 			</tr>
