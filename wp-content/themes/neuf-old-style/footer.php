@@ -19,7 +19,7 @@
                 <div id="twitter_feed"></div> <!-- #twitter_feed -->
                 <h2><a href='http://www.flickr.com/groups/neuf/pool/'>Bilder fra flickr</a></h2>
                 <div id="flickr-images">
-                    <?php neuf_flickr_images('limit=10&type=group&groupid=1292860@N21'); ?>
+                    <ul id="flickr_feed"></ul>
                 </div>
             </div> 
 

@@ -30,12 +30,12 @@ function neuf_enqueue_scripts() {
 	wp_register_script( 'program'   , get_template_directory_uri() . '/js/program.js', array( 'jquery' ) );
 	wp_register_script( 'cycle'     , get_template_directory_uri() . '/js/jquery.cycle.all.js', array( 'jquery' ), '0.9.8' );
 	wp_register_script( 'front-page', get_template_directory_uri() . '/js/front-page.js', array('cycle') );
-	wp_register_script( 'footer', get_template_directory_uri() . '/js/footer.js', array('jquery') );
+	wp_register_script( 'application', get_template_directory_uri() . '/js/application.js', array('jquery') );
 
 	// enqueue the scripts
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'cycle' );
-	wp_enqueue_script( 'footer' );
+	wp_enqueue_script( 'application' );
 	if ( is_front_page() )
 		wp_enqueue_script( 'front-page' );
 }
@@ -290,69 +290,6 @@ function neuf_event_day_gap_size($current_day,$previous_day) {
 	$cur = new DateTime($current_day);
 	$diff = $prev->diff($cur)->d;
 	return ($diff - 1) * 2;
-}
-
-function neuf_flickr_images( $args = '' ) {
-        /* @TODO rewrite in javascript with jquery */
-        $defaults = array(
-                'type' => 'tag', // 'tag' or 'group' or 'feed'
-                'tag' => 'detnorskestudentersamfund',
-                'groupid' => 'Teater Neuf',
-                'feed' => 'http://api.flickr.com/services/feeds/groups_pool.gne?id=1130028@N25&format=atom',
-                'limit' => 10 // Max 20
-        );
-
-        $r = wp_parse_args( $args, $defaults );
-        extract( $r, EXTR_SKIP );
-
-        if ( 1 > $limit )
-                $limit = 1;
-        if ( 20 < $limit )
-                $limit = 20;
-
-        // Using WordPress-included SimplePie instead // include_once('includes/magpierss-0.72/rss_fetch.inc');
-
-        switch ( $type ) {
-        case 'tag':
-                $url = "http://api.flickr.com/services/feeds/photos_public.gne?tags=" . $tag;
-                break;
-        case 'group':
-                $url = "http://api.flickr.com/services/feeds/groups_pool.gne?format=atom&id=" . $groupid;
-                break;
-        case 'feed':
-                $url = "http://api.flickr.com/services/feeds/groups_pool.gne?id=1292860@N21&lang=en-us&format=atom";
-                break;
-        }
-
-        $rss = fetch_feed( $url );
-        
-        if (!is_wp_error($rss)) {
-                $maxitems = $rss->get_item_quantity(15);
-                $rss->items = $rss->get_items(0,$maxitems);
-        }
-
-
-        echo "<ul>";
-        $image_count = 1;
-        foreach ($rss->items as $item) {
-                if(!preg_match('<img src="([^"]*)" [^/]*/>', $item->get_content(), $imgUrlMatches)) {
-                        continue;
-                }
-                $baseurl = str_replace("_m.jpg", "", $imgUrlMatches[1]);
-                $thumbnails = array(
-                        'small' => $baseurl . "_m.jpg",
-                        'square' => $baseurl . "_s.jpg",
-                        'thumbnail' => $baseurl . "_t.jpg",
-                        'medium' => $baseurl . ".jpg",
-                        'large' => $baseurl . "_b.jpg"
-                );
-                $byline = '"' . $item->get_title() . '" av ' . $item->get_author() ;
-                echo('<li><a href="' . $item->get_permalink() . '"><img src="'.$thumbnails['square'].'"'." alt='".$byline."' title='".$byline."' /></a></li>");
-                $image_count++;
-                if ($image_count > $limit)
-                        break;
-        }
-        echo "</ul>";
 }
 
 ?>
