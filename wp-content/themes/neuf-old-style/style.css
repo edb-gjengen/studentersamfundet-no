@@ -25,6 +25,8 @@
 #content {
 	background: transparent;
 	padding:0;
+	clear:both;
+	overflow:auto;
 }
 
 .hentry.forsidesak
@@ -110,7 +112,7 @@ header#site-header .site-title a {
 }
 #menu li {
 	float:left;
-	border-right:1px solid rgb(88,89,91);
+	border-right:1px solid rgb(255,255,225);
 	position:relative;
 }
 #menu .aapningstider li {
@@ -144,13 +146,11 @@ header#site-header .site-title a {
 }
 #menu .aapningstider li ul {
 	border-right:none;
-	right:0;
 }
 
 #menu li ul li {
 	padding:0 5%;
 }
-
 
 #menu .aapningstider {
 	margin:0;
@@ -158,6 +158,15 @@ header#site-header .site-title a {
 
 #menu .aapningstider table {
 	text-align:left;
+	font-family:Arial,sans-serif;
+	font-size:12px;
+	font-weight:normal;
+	text-transform:none;
+	color:#fff;
+}
+#menu .aapningstider td.right {
+	padding-left: 10px;
+	text-align: right;
 }
 
 /*
@@ -175,10 +184,31 @@ header#site-header .site-title a {
 #menu .aapningstider > li:hover ul table {
 	border-top:1px solid white;
 }
+#menu .aapningstider #bokkafeen_tider a {
+	padding: 0px;
+}
 
 /* Header slutt */
 
 /* Hoveddel */
+
+#content > .hentry .entry-content {
+	margin-top:15px;
+	margin-bottom:15px;
+}
+
+.single #content > .hentry,
+.page #content > .hentry {
+	margin-top:30px;
+	margin-bottom:30px;
+}
+
+.single-event .entry-meta {
+	display:inline-block;
+	border-bottom:1px solid #ff9e29;
+	padding-bottom:15px;
+	margin-top:40px;
+}
 
 #digest_news,
 #digest_events,
@@ -189,24 +219,6 @@ header#site-header .site-title a {
 {
 	padding-top:15px;
 	border-top:1px solid #ff9e29;
-}
-
-.single #content > .hentry,
-.page #content > .hentry {
-	margin-top:30px;
-	margin-bottom:30px;
-}
-
-.single-event #content > .hentry .entry-content {
-	margin-top:15px;
-	margin-bottom:15px;
-}
-
-.single-event .entry-meta {
-	display:inline-block;
-	border-bottom:1px solid #ff9e29;
-	padding-bottom:15px;
-	margin-top:40px;
 }
 
 /* Hoveddel slutt */
@@ -251,24 +263,28 @@ header#site-header .site-title a {
 	overflow: auto;
 	color: #58595B;
 }
-#site-footer h2 {
-        color: #58595B;
-	font-family:Arvo,Georgia,serif;
-	font-weight:bold;
-	font-size:16px;
-        font-style:normal;
-	text-transform:uppercase;
+#site-footer h2,
+#site-footer h2 a,
+#site-footer span.links a {
+	color: #fff;
+	font-family: Arvo,Georgia,serif;
+	font-size: 16px;
+	font-style: normal;
+	text-transform: uppercase;
+} 
+#site-footer span.links {
+	font-family: Arvo,Georgia,serif;
+	color: #fff;
+	font-weight: normal;
 }
 #site-footer .links {
-	font-weight:bold;
-	font-size:16px;
-        font-style:normal;
-	text-transform:uppercase;
+	font-size: 16px;
+	font-style: normal;
+	text-transform: uppercase;
 }
 #site-footer a {
-	font-family:Arvo,Georgia,serif;
-	font-weight:bold;
-        color: #58595B;
+	font-weight: normal;
+	color: #000;
 }
 #site-footer p {
     color: #000;
@@ -392,13 +408,6 @@ h6 {
 	font-weight:bold;
 	font-size:18px;
 	text-transform:uppercase;
-}
-#menu ul ul {
-	font-family:Arial,sans-serif;
-	font-size:12px;
-	font-weight:normal;
-	text-transform:none;
-	color:#fff;
 }
 
 /* Lists */
@@ -684,6 +693,9 @@ img {
 }
 
 
+.home #digest_news article {
+	height: 130px;
+}
 .home #digest_news .post > a > img {
 	float:left;
 	margin:2px 10px 0 0;
