@@ -759,6 +759,14 @@ img {
 	border: none;
 }
 
+.table-program tr.month td {
+	padding-top:25px;
+}
+
+.table-program tr.month:first-child td {
+	padding-top:0px
+}
+
 /* Foreningene/Associations */
 
 #content .association {
