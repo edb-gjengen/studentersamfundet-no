@@ -48,7 +48,10 @@ $(document).ready(function () {
         };
 
         _.each(events, function (event) {
-            days[dateToId(event.startTime)].events.push(event);
+            var day = days[dateToId(event.startTime)];
+            if (day !== undefined) { //If the event date is past our program window we ignore it (or if it is a sunday)
+                day.events.push(event);
+            }
         });
     };
 
@@ -59,9 +62,10 @@ $(document).ready(function () {
         this.content = rawEvent.content;
         this.uri = rawEvent.uri;
         this.startTime = new Date(parseInt(rawEvent.custom_fields._neuf_events_starttime[0]) * 1000);
+        this.time = this.startTime.toString("HH:mm");
         this.endTime = new Date(parseInt(rawEvent.custom_fields._neuf_events_endtime[0]) * 1000);
         this.venue = rawEvent.custom_fields._neuf_events_venue[0];
-        this.thumbnailURI = rawEvent.attachments.length > 0 ? rawEvent.attachments[0].images["two-column-thumb"].uri : undefined;
+        this.thumbnailURI = rawEvent.attachments.length > 0 ? rawEvent.attachments[0].images["two-column-thumb"].url : undefined;
     };
 
     var Week = function(id, days) {
@@ -91,7 +95,7 @@ $(document).ready(function () {
         }
 
         var weekDays = [];
-        for (var j = 0; j < 7; j = j + 1) {
+        for (var j = 0; j < 6; j = j + 1) { //Ignore sundays
             var thisDay;
             if (Date.today().is().monday()) {
                 thisDay = Date.today().add(i).weeks().add(j).days();
@@ -110,10 +114,8 @@ $(document).ready(function () {
 
     programModel.weeks = nextWeeks;
 
-    console.log(programModel);
-
     ko.applyBindings(programModel);
     getEvents(days);
 
-    //TODO: use events to fill days, then wire up the filtering buttons
+    //TODO: wire up the filtering buttons
 });

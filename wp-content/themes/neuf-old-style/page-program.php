@@ -5,9 +5,16 @@ wp_enqueue_script('eventProgram');
 
 <!-- Category chooser: -->
 <style>
-.hidden {
-	display:none;
-}
+    .hidden {
+        display:none;
+    }
+
+    .cell {
+        vertical-align: top;
+        display: inline-block;
+        float: none;
+        margin: 15px;
+    }
 </style>
 
 <section id="content" class="container_12" role="main">
@@ -21,7 +28,26 @@ wp_enqueue_script('eventProgram');
 		<img class="view-mode list" src="<?php bloginfo('template_directory');?>/img/listevisning.png" onclick='showList();toggleActive("list");' title="Vis programmet som en liste" />
 	</div>
 
-<?php 
+<table class="grid_12">
+    <tbody data-bind="foreach: weeks">
+        <tr class="program-6days" data-bind="foreach: days">
+            <td data-bind="if: events().length > 0" class="day grid_2 cell">
+                <h2 data-bind="text: dateAsHeader"></h2>
+                <!-- ko foreach: events -->
+                <div>
+                    <!-- ko if: $parent.events().indexOf($data) === 0 -->
+                    <img data-bind="attr: { src: thumbnailURI }">
+                    <!-- /ko -->
+                    <span data-bind="text: time"></span>
+                    <a data-bind="attr: { href: uri, title: title }, text: title"></a>
+                </div>
+                <!-- /ko -->
+            </td>
+            <td data-bind="ifnot: events().length > 0"></td>
+        </tr>
+    </tbody>
+</table>
+<?php
 /* Events with starttime including 8 hours up until 30 days from now. */
 //$meta_query = array(
 //	'key'     => '_neuf_events_starttime',
@@ -229,48 +255,9 @@ if ( $events->have_posts() ) :
 	</table>
 <?php endif; ?>
 </div>
-<!--<table id="event-program" width="100%"></table>-->
-<div id="program-placeholder"></div>
+
 </section> <!-- #main_content -->
 
-<table>
-    <tbody data-bind="foreach: weeks">
-        <tr data-bind="foreach: days">
-            <td data-bind="if: events().length > 0">
-                <h2 data-bind="text: dateAsHeader"></h2>
-                <!-- ko foreach: events -->
-                <div>
-                    <!-- ko if: $parent.events().indexOf($data) === 0 -->
-                    <span>FIRST</span>
-                    <!-- /ko -->
-                    <span data-bind="text: content"></span>
-                </div>
-                <!-- /ko -->
-            </td>
-            <td data-bind="ifnot: events().length > 0">NOTHING HERE</td>
-        </tr>
-    </tbody>
-</table>
-<!--<script id="day-template" type="text/template">
-    <h2>{{date}}</h2>
-    {{content}}
-</script>
-<script id="program-template" type="text/x-handlebars-template">
-    <table width="100%">
-        {{#each weeks}}
-        <tr>
-            {{#each days}}
-            <td>
-                {{#event-list events}}
-                {{image}}
-                {{content}}
-                {{/event-list}}
-            </td>
-            {{/each}}
-        </tr>
-        {{/each}}
-    </table>
-</script>-->
 
 
 <?php get_footer(); ?>
