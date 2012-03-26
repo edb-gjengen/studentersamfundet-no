@@ -741,7 +741,8 @@ img {
 .table .date {
 	width:100px;
 }
-.table tr:nth-child(even) td {
+.table tr:nth-child(even) td,
+.table tr.alt td {
 	background-color: #F9F9F9;
 }
 .table th, .table td {

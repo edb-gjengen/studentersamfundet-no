@@ -110,7 +110,7 @@ function events_update(checkboxes) {
 
 function fix_alternating_rows() {
 	var alt_status = false;
-	$(".table-program").find("tbody").children(".day").each(function() {
+	$(".table").find("tbody").children(".day").each(function() {
 		if (!$(this).hasClass('hidden')) {
 			if (alt_status) {
 				$(this).addClass('alt');
