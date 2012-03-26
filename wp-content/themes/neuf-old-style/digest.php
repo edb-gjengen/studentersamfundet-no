@@ -11,7 +11,7 @@
 
 					<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
 				<a class="permalink" href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_title(); ?></a>
-						<div class="entry-summary"><?php the_excerpt(); ?></div>
+                                                <div class="entry-summary"><?php echo linkify(trim_excerpt(get_the_excerpt(), 30), '/\[\.\.\.\]/', get_permalink()); ?></div>
 					</article>
 					<?php
 						if($digest_news_counter == 3) {
@@ -49,11 +49,9 @@
 				);
 
 				$digest_events = new WP_Query( $args );
-				$alt = "";
 				if ( $digest_events->have_posts() ) : while ( $digest_events->have_posts() ) : $digest_events->the_post();
-			$alt = $alt == 'class="alt"' ? "" : 'class="alt"';
 			?>
-				<tr <?php echo $alt;?>>
+				<tr>
                                     <td id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
 					<?php $date = get_post_meta(get_the_ID(), '_neuf_events_starttime'); echo neuf_event_format_date($date[0]); ?> <a href="<?php the_permalink(); ?>" title="Permalenke til <?php the_title(); ?>"><?php the_title(); ?></a></td>
 				</tr>

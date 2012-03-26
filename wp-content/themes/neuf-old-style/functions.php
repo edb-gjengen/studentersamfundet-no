@@ -291,5 +291,18 @@ function neuf_event_day_gap_size($current_day,$previous_day) {
 	$diff = $prev->diff($cur)->d;
 	return ($diff - 1) * 2;
 }
+function trim_excerpt($text, $length) {
+    $org_length = strlen($text);
+    $text = explode(" ", $text);
+    $text = array_slice($text, 0, $length);
+    $text = implode(" ", $text);
+    $shorter = $org_length != strlen($text) ? " [...]" : "";
+    return $text . $shorter;
+}
+function linkify($subject, $pattern, $link) {
+    $replacement = '<a href="'.$link.'">[...]</a>';
+    $output = preg_replace($pattern, $replacement, $subject);
+    return $output;
+}
 
 ?>
