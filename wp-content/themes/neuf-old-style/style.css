@@ -745,6 +745,9 @@ img {
 .table tr.alt td {
 	background-color: #F9F9F9;
 }
+.table tr.month td {
+	background-color: #FFF;
+}
 .table th, .table td {
 	padding-left:0px;
 	padding-right:0px;
