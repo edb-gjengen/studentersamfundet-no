@@ -179,7 +179,7 @@ if ( $events->have_posts() ) :
 
 ?>
 <div id="program_list" class="program grid_12" style="display:none;">
-	<table class="table-program">
+	<table class="table">
 		<tbody>
 		<?php while ( $events->have_posts() ) : $events->the_post();
 		$date = get_post_meta( $post->ID , '_neuf_events_starttime' , true );

@@ -31,8 +31,6 @@
 
 					<div class="entry-content"><?php the_content(); ?></div> <!-- .entry-content -->
 
-					<?php display_social_sharing_buttons(); ?>
-
 				</div>
 
 			</article> <!-- .post -->

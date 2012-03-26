@@ -728,42 +728,40 @@ img {
     margin-left: 5px;
 }
 
-/* table-program */
-.table-program {
+/* table */
+.table {
 	width:100%;
 	border-collapse:collapse;
 	border-spacing: 0;
+        margin-bottom: 20px;
 }
-.table-program th {
+.table th {
 	text-align: left;
 }
-.table-program .date {
+.table .date {
 	width:100px;
 }
-.table-program tr.alt td {
+.table tr:nth-child(even) td {
 	background-color: #F9F9F9;
 }
-.table-program th, .table-program td {
-	padding: 8px;
-	line-height: 18px;
-	text-align: left;
-	border-top: 1px solid #DDD;
-}
-#digest_events .table-program td {
+.table th, .table td {
 	padding-left:0px;
 	padding-right:0px;
 	padding-top: 8px;
 	padding-bottom: 8px;
+	line-height: 18px;
+	text-align: left;
+	border-top: 1px solid #DDD;
 }
-.table-program tr.month, .table-program tr.month td {
+.table tr.month, .table tr.month td {
 	border: none;
 }
 
-.table-program tr.month td {
+.table tr.month td {
 	padding-top:25px;
 }
 
-.table-program tr.month:first-child td {
+.table tr.month:first-child td {
 	padding-top:0px
 }
 

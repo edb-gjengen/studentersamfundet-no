@@ -30,7 +30,7 @@
 
 		<div id="digest_events" class="grid_4">
 			<h2><a href="<?php bloginfo('url'); ?>/program/">Program</a></h2>
-                        <table class="table-program">
+                        <table class="table">
 			<?php 
 				$meta_query = array(
 					'key'     => '_neuf_events_starttime',
