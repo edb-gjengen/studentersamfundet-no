@@ -721,6 +721,10 @@ img {
     filter:alpha(opacity=80); /* For IE8 and earlier */
 }
 .view-mode.marked {
+    opacity:1;
+    filter:alpha(opacity=100); /* For IE8 and earlier */
+}
+.view-mode {
     opacity:0.4;
     filter:alpha(opacity=40); /* For IE8 and earlier */
 }
