@@ -225,14 +225,20 @@ header#site-header .site-title a {
 
 /* Footer */
 
-#sponsors {
-	clear:both;
-}
-
 #sponsors .sponsor {
-	float:left;
-	text-align:center;
-	width: 20%;
+	text-align: center;
+}
+#sponsors .sponsor img {
+    max-width: 86px;
+}
+#sponsor-akademika,
+#sponsor-studio {
+    position: relative;
+    top: 30px;
+    text-align: center;
+}
+#sponsors #sponsor-akademika img {
+    max-width: 200px;
 }
 
 #site-footer #footer-row1 {

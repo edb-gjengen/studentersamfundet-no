@@ -28,24 +28,20 @@
         <div id="footer-row2" class="container_12">
             <div id="sponsors">
 
-                <div id="sponsor-uio" class="sponsor">
-                        <a href="http://www.uio.no/" rel="nofollow"><img alt="Universitetet i Oslo eier Chateau Neuf" src="<?php bloginfo('stylesheet_directory'); ?>/img/sponsors/logo_uio86.png" /></a>
+                <div id="sponsor-uio" class="alpha grid_4 sponsor">
+                        <a href="http://www.uio.no/" rel="nofollow"><img alt="Universitetet i Oslo eier Chateau Neuf" src="<?php bloginfo('stylesheet_directory'); ?>/img/sponsors/logo_black_uio.png" /></a>
                 </div>
 
-                <div id="sponsor-studio" class="sponsor">
-                        <a href="http://studio.studentersamfundet.no/" rel="nofollow"><img alt="Studentfestivalen i Oslo har base på Chateau Neuf" src="<?php bloginfo('stylesheet_directory'); ?>/img/sponsors/studio_logo_gronn-122x86.png" /></a>
+                <!--<div id="sponsor-studio" class="sponsor">
+                        <a href="http://studio.studentersamfundet.no/" rel="nofollow">Studentfestivalen i Oslo</a>
+                </div>-->
+
+                <div id="sposor-nrf" class="grid_4 sponsor">
+                <a href="http://www.norskrockforbund.no/" rel="nofollow"><img alt="Norsk Rockforbund sponser Studentersamfundet" src="<?php bloginfo('stylesheet_directory'); ?>/img/sponsors/logo_black_nrf.png" /></a>
                 </div>
 
-                <div id="sponsor-studenthovedstaden" class="sponsor">
-                        <a href="http://www.studenthovedstaden.no/" rel="nofollow"><img alt="Studenthovedstaden sponser Studentersamfundet" src="<?php bloginfo('stylesheet_directory'); ?>/img/sponsors/logo_sh86.png" /></a>
-                </div>
-
-                <div id="sposor-nrf" class="sponsor">
-                <a href="http://www.norskrockforbund.no/" rel="nofollow"><img alt="Norsk Rockforbund sponser Studentersamfundet" src="<?php bloginfo('stylesheet_directory'); ?>/img/sponsors/nrf-86x86.png" /></a>
-                </div>
-
-                <div id="sponsor-akademika" class="sponsor">
-                        <a href="http://www.akademika.no/" rel="nofollow"><img alt="Akademika sponser Studentersamfundet" src="<?php bloginfo('stylesheet_directory'); ?>/img/sponsors/akademika.png" /></a>
+                <div id="sponsor-akademika" class="omega grid_4 akademika">
+                        <a href="http://www.akademika.no/" rel="nofollow"><img alt="Akademika sponser Studentersamfundet" src="<?php bloginfo('stylesheet_directory'); ?>/img/sponsors/logo_black_akademika.png" /></a>
                 </div>
 
             </div>
