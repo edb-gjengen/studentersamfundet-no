@@ -1,6 +1,7 @@
 					<header class="entry-meta">
 <?php
 $post->neuf_event_venue = get_post_meta(get_the_ID(), '_neuf_events_venue',true);
+$ticket = get_post_meta(get_the_id(), '_neuf_events_bs_url',true);
 if ( 'Annet' != $post->neuf_event_venue ) {
 ?>
 <?php } ?>
@@ -14,6 +15,7 @@ if ( 'Annet' != $post->neuf_event_venue ) {
 						<span class="meta-sep meta-sep-event-price"> - </span>
 						<span class="meta-prep meta-prep-price">CC: </span>
 						<span class="price"><?php echo ($price = neuf_get_price( $post )) ? $price : "Gratis"; ?></span>
+                                                <span class="meta-prep meta-prep-price"><?php echo $ticket ? ' <a href="'.$ticket.'">Kjøp billett</a>' : ""; ?></span>
 						<br />
 						<span class="venue"><?php echo $post->neuf_event_venue; ?></span>
 					</header> <!-- .entry-meta-->

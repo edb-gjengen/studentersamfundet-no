@@ -191,6 +191,8 @@ if ( $events->have_posts() ) :
 		$datel = date_i18n( 'l j/n' , $date);
 		($price = neuf_get_price( $post )) ? : $price = '-';
 		$venue = get_post_meta( $post->ID , '_neuf_events_venue' , true );
+		$ticket = get_post_meta( $post->ID , '_neuf_events_bs_url' , true );
+                $ticket = $ticket ? '<a href="'.$ticket.'">Kjøp billett</a>' : '';
 		/* event type class */
 		$event_types = get_the_terms( $post->ID , 'event_type' );
 		$types = array();
@@ -215,6 +217,7 @@ if ( $events->have_posts() ) :
 				  <th>CC</th>
 				  <th>Type</th>
 				  <th>Sted</th>
+				  <th>Billett</th>
 			</tr>
 		<?php }	?>
 			<tr class="day<?php echo $alt; ?>">
@@ -223,6 +226,7 @@ if ( $events->have_posts() ) :
 				<td><?php echo $price; ?></td>
 				<td class="<?php echo $types; ?>"><?php echo $types; ?></td>
 				<td><?php echo $venue; ?></td>
+				<td><?php echo $ticket; ?></td>
 			</tr>
 		<?php endwhile; ?>
 		</tbody>
