@@ -8,6 +8,7 @@ $content_width = 770;
 add_image_size( 'two-column-thumb'  , 170 ,  69 , true );
 add_image_size( 'four-column-thumb' , 370 , 150 , true );
 add_image_size( 'six-column-promo' , 570 , 322 , true );
+add_image_size( 'association-thumb' , 270 , 250, false );
 
 /**
  * Register navigation menus.

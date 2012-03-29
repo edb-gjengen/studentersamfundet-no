@@ -781,6 +781,16 @@ img {
 
 /* Foreningene/Associations */
 
-#content .association {
-    margin-top: 20px;
+.association {
+    display: table-cell;
+	height: 200px;
+	width: 300px; /* grid_3 width + 15*2px margin */
+	margin: 0 15px;
+	text-align: center;
+	vertical-align: middle;
+
+}
+.association-row {
+	display: table-row;
+	margin-bottom: 15px;
 }
