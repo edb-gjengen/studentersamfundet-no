@@ -1,4 +1,4 @@
-wp-content/uploads/
+wp/wp-content/uploads
 wp-config.php
 *~
 *.swp

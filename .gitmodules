@@ -1,12 +1,12 @@
-[submodule "wp-content/plugins/neuf-events"]
-	path = wp-content/plugins/neuf-events
+[submodule "wp/wp-content/plugins/neuf-events"]
+	path = wp/wp-content/plugins/neuf-events
 	url = git://git.neuf.no/neuf-events.git
-[submodule "wp-content/plugins/wpdirauth"]
-	path = wp-content/plugins/wpdirauth
+[submodule "wp/wp-content/plugins/wpdirauth"]
+	path = wp/wp-content/plugins/wpdirauth
 	url = git://git.neuf.no/wpdirauth.git
-[submodule "wp-content/plugins/neuf-associations"]
-	path = wp-content/plugins/neuf-associations
+[submodule "wp/wp-content/plugins/neuf-associations"]
+	path = wp/wp-content/plugins/neuf-associations
 	url = git://git.neuf.no/neuf-associations
-[submodule "wp-content/plugins/wp-json-api"]
-	path = wp-content/plugins/wp-json-api
+[submodule "wp/wp-content/plugins/wp-json-api"]
+	path = wp/wp-content/plugins/wp-json-api
 	url = git://git.neuf.no/wp-json-api
