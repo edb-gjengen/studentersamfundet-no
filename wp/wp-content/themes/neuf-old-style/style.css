@@ -781,7 +781,7 @@ img {
 
 /* Foreningene/Associations */
 
-.association {
+.page-foreningene .association {
     display: table-cell;
 	height: 200px;
 	width: 300px; /* grid_3 width + 15*2px margin */
@@ -790,7 +790,7 @@ img {
 	vertical-align: middle;
 
 }
-.association-row {
+.page-foreningene .association-row {
 	display: table-row;
 	margin-bottom: 15px;
 }
