@@ -32,18 +32,20 @@ wp_enqueue_script('eventProgram');
 </form>
 <table class="grid_12">
     <tbody data-bind="foreach: weeks">
-        <tr class="program-6days" data-bind="template: { foreach: days, fadeVisible: days }">
+        <tr class="program-6days" data-bind="foreach: days">
             <td data-bind="if: filteredEvents().length > 0" class="day grid_2 cell">
                 <h2 data-bind="text: dateAsHeader"></h2>
-                <div data-bind="template: { foreach: filteredEvents}">
-                    <!-- ko if: $parent.filteredEvents().indexOf($data) === 0 -->
-                    <img data-bind="attr: { src: thumbnailURI }">
-                    <!-- /ko -->
-                    <span data-bind="text: time"></span>
-                    <a data-bind="attr: { href: uri, title: title }, text: title"></a>
+                <div data-bind="foreach: filteredEvents">
+                     <div>
+                        <!-- ko if: $parent.filteredEvents().indexOf($data) === 0 -->
+                        <img data-bind="attr: { src: thumbnailURI }">
+                        <!-- /ko -->
+                        <span data-bind="text: time"></span>
+                        <a data-bind="attr: { href: uri, title: title }, text: title"></a>
+                    </div>
                 </div>
             </td>
-            <td data-bind="ifnot: events().length > 0"></td>
+            <td data-bind="ifnot: filteredEvents().length > 0"></td>
         </tr>
     </tbody>
 </table>

@@ -1,7 +1,7 @@
 $(document).ready(function () {
     function getEvents(programModel) {
         var params = {
-            targetURL: "http://127.0.0.1/neuf/?json=events/get_upcoming",
+            targetURL: "http://127.0.0.1/neuf/?json=events/get_upcoming", // http://new.neuf.no/api/events/get_upcoming
             successCallback: parseProgramData,
             errorCallback: function (jqXHR, textStatus, errorThrown) {
                 console.log("Could not fetch calendar data!");
