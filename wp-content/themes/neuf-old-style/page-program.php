@@ -27,21 +27,21 @@ wp_enqueue_script('eventProgram');
 		<img class="view-mode tiles" src="<?php bloginfo('template_directory');?>/img/tilesvisning.png" onclick='showTiles();toggleActive("tiles");' title="Vis program i et rutenett"/>
 		<img class="view-mode list" src="<?php bloginfo('template_directory');?>/img/listevisning.png" onclick='showList();toggleActive("list");' title="Vis programmet som en liste" />
 	</div>
-
+<form class="eventPicker" data-bind="foreach: eventTypes">
+    <span data-bind="text: name"></span><input type="checkbox" data-bind="value: name, checked: checked">
+</form>
 <table class="grid_12">
     <tbody data-bind="foreach: weeks">
-        <tr class="program-6days" data-bind="foreach: days">
-            <td data-bind="if: events().length > 0" class="day grid_2 cell">
+        <tr class="program-6days" data-bind="template: { foreach: days, fadeVisible: days }">
+            <td data-bind="if: filteredEvents().length > 0" class="day grid_2 cell">
                 <h2 data-bind="text: dateAsHeader"></h2>
-                <!-- ko foreach: events -->
-                <div>
-                    <!-- ko if: $parent.events().indexOf($data) === 0 -->
+                <div data-bind="template: { foreach: filteredEvents}">
+                    <!-- ko if: $parent.filteredEvents().indexOf($data) === 0 -->
                     <img data-bind="attr: { src: thumbnailURI }">
                     <!-- /ko -->
                     <span data-bind="text: time"></span>
                     <a data-bind="attr: { href: uri, title: title }, text: title"></a>
                 </div>
-                <!-- /ko -->
             </td>
             <td data-bind="ifnot: events().length > 0"></td>
         </tr>
