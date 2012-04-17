@@ -1,4 +1,14 @@
 $(document).ready(function () {
+    $('#content')
+        .ajaxStop(function() {
+            $(this).fadeIn();
+        })
+
+    $('#load-spinner')
+        .ajaxStop(function() {
+            $(this).hide();
+        })
+
     function getEvents(programModel) {
         var params = {
             targetURL: "http://127.0.0.1/neuf/?json=events/get_upcoming", // http://new.neuf.no/api/events/get_upcoming

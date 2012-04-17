@@ -13,42 +13,59 @@ wp_enqueue_script('eventProgram');
         vertical-align: top;
         display: inline-block;
         float: none;
-        margin: 15px;
+        margin: 10px;
+    }
+
+    .table-image {
+        opacity: 0.1;
     }
 </style>
 
-<section id="content" class="container_12" role="main">
-        <div class="grid_12">
-            <h1 class="entry-title"><?php the_title(); ?></h1>
-        </div>
+
+<div align="center" id="load-spinner">
+    <img style="margin: 10px 0px 10px 0px;"align="center" src="wp-content/themes/neuf-old-style/img/ajax-loader.gif">
+</div>
+
+<section id="content" class="container_12 hidden" role="main">
+    <div class="grid_12">
+        <h1 class="entry-title"><?php the_title(); ?></h1>
+    </div>
 	
 	<form id="program-category-chooser" class="grid_10"></form>
 	<div class="grid_2">
 		<img class="view-mode tiles" src="<?php bloginfo('template_directory');?>/img/tilesvisning.png" onclick='showTiles();toggleActive("tiles");' title="Vis program i et rutenett"/>
 		<img class="view-mode list" src="<?php bloginfo('template_directory');?>/img/listevisning.png" onclick='showList();toggleActive("list");' title="Vis programmet som en liste" />
 	</div>
-<form class="eventPicker" data-bind="foreach: eventTypes">
-    <span data-bind="text: name"></span><input type="checkbox" data-bind="value: name, checked: checked">
-</form>
-<table class="grid_12">
-    <tbody data-bind="foreach: weeks">
-        <tr class="program-6days" data-bind="foreach: days">
-            <td data-bind="if: filteredEvents().length > 0" class="day grid_2 cell">
-                <h2 data-bind="text: dateAsHeader"></h2>
-                <div data-bind="foreach: filteredEvents">
-                     <div>
-                        <!-- ko if: $parent.filteredEvents().indexOf($data) === 0 -->
-                        <img data-bind="attr: { src: thumbnailURI }">
+
+    <div id="program-calendar">
+        <form class="eventPicker" data-bind="foreach: eventTypes">
+            <span data-bind="text: name"></span><input type="checkbox" data-bind="value: name, checked: checked">
+        </form>
+
+        <table class="grid_12">
+            <tbody data-bind="foreach: weeks">
+                <tr class="program-6days" data-bind="foreach: days">
+                    <td class="cell day grid_2">
+                        <!-- ko if: filteredEvents().length > 0 -->
+                        <h2 data-bind="text: dateAsHeader"></h2>
+                        <div data-bind="foreach: filteredEvents">
+                             <div>
+                                <!-- ko if: $parent.filteredEvents().indexOf($data) === 0 -->
+                                <img data-bind="attr: { src: thumbnailURI }">
+                                <!-- /ko -->
+                                <span data-bind="text: time"></span>
+                                <a data-bind="attr: { href: uri, title: title }, text: title"></a>
+                            </div>
+                        </div>
                         <!-- /ko -->
-                        <span data-bind="text: time"></span>
-                        <a data-bind="attr: { href: uri, title: title }, text: title"></a>
-                    </div>
-                </div>
-            </td>
-            <td data-bind="ifnot: filteredEvents().length > 0"></td>
-        </tr>
-    </tbody>
-</table>
+                        <!-- ko ifnot: filteredEvents().length > 0 -->
+                        <img data-bind="attr: { src: 'wp-content/themes/neuf-old-style/img/pig.png' }" class="table-image">
+                        <!-- /ko -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 <?php
 /* Events with starttime including 8 hours up until 30 days from now. */
 //$meta_query = array(
