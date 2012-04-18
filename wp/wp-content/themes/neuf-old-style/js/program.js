@@ -173,13 +173,13 @@ $(window).load(function(){
 		isChecked = cached_checked_boxes != null ?
 			(cached_checked_boxes.indexOf(category) != -1) : 
 			false;
-		element = ('<div style="display:inline-block;margin:10px">'
-				+'<input style="display:block;margin:auto;" id="'+category+'" ' 
+		element = ('<div class="category-chooser-item">'
+				+'<input id="'+category+'" ' 
 					+'type="checkbox" ' 
 					+'name="category" ' 
 					+(isChecked ? ' checked="true" ' : '')
 					+'value="'+category+'" />' 
-				+'<label style="display:block;margin:auto;" for="'+category+'">'+category+'</label>'
+				+'<label for="'+category+'">'+category+'</label>'
 				+'</div>');
 		$(form_id).append(element);
 	}

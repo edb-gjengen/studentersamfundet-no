@@ -738,6 +738,21 @@ img {
     margin-left: 5px;
 }
 
+.category-chooser-item {
+	display:inline-block;
+	margin:10px;
+}
+
+.category-chooser-item > input {
+	display:block;
+	margin:auto;
+}
+
+.category-chooser-item > label {
+	display:block;
+	margin:auto;		
+}
+
 /* table */
 .table {
 	width:100%;
