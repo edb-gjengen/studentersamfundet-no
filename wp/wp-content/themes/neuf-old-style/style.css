@@ -743,14 +743,25 @@ img {
 	margin:10px;
 }
 
-.category-chooser-item > input {
+.category-chooser-item > label > span {
+	display:block;
+	margin:auto;
+	text-align:center;
+}
+
+.category-chooser-item > label > img {
 	display:block;
 	margin:auto;
 }
 
-.category-chooser-item > label {
-	display:block;
-	margin:auto;		
+.category-chooser-item > label > img.checked {
+    opacity:1.0;
+    filter:alpha(opacity=100); /* For IE8 and earlier */
+}
+
+.category-chooser-item > label > img.unchecked {
+    opacity:0.4;
+    filter:alpha(opacity=40); /* For IE8 and earlier */
 }
 
 /* table */
@@ -809,3 +820,4 @@ img {
 	display: table-row;
 	margin-bottom: 15px;
 }
+

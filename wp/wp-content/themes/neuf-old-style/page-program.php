@@ -14,7 +14,8 @@ wp_enqueue_script('program');
         <div class="grid_12">
             <h1 class="entry-title"><?php the_title(); ?></h1>
         </div>
-	
+
+	<a id='image-dir' style="display:none;"><?php bloginfo('template_directory'); ?>/img/</a>	
 	<form id="program-category-chooser" class="grid_10"></form>
 	<div id="program-style-selector" class="grid_2 hidden">
 		<img class="view-mode tiles" src="<?php bloginfo('template_directory');?>/img/tilesvisning.png" onclick='showTiles();toggleActive("tiles");' title="Vis program i et rutenett"/>

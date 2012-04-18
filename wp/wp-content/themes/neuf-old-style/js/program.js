@@ -122,15 +122,24 @@ function fix_alternating_rows() {
 	});
 }
 
-function find_checked_boxes(parent) {
+function find_checked_boxes() {
 	var checked_boxes = new Array();
 	var unchecked_boxes = new Array();
 
-	parent.children().each(function() {
-		var box = $(this).children(":checkbox").first();
+	var boxes = $(".category-chooser-item-input");
+	boxes.each(function() {
+		var box = $(this);
 		if (box.is(":checked")) {
+			$(this).siblings('img').each(function() {
+				$(this).removeClass('unchecked');
+				$(this).addClass('checked');
+			});
 			checked_boxes.push(box.val());
 		} else {
+			$(this).siblings('img').each(function() {
+				$(this).removeClass('checked');
+				$(this).addClass('unchecked');
+			});
 			unchecked_boxes.push(box.val());
 		}
 	});
@@ -173,27 +182,32 @@ $(window).load(function(){
 		isChecked = cached_checked_boxes != null ?
 			(cached_checked_boxes.indexOf(category) != -1) : 
 			false;
-		element = ('<div class="category-chooser-item">'
-				+'<input id="'+category+'" ' 
-					+'type="checkbox" ' 
-					+'name="category" ' 
-					+(isChecked ? ' checked="true" ' : '')
-					+'value="'+category+'" />' 
-				+'<label for="'+category+'">'+category+'</label>'
+		element = ('<div class="category-chooser-item '+category+'">'
+				+'<label for="'+category+'">'
+					+'<input class="category-chooser-item-input hidden" id="'+category+'" ' 
+						+'type="checkbox" ' 
+						+'name="category" ' 
+						+(isChecked ? ' checked="true" ' : '')
+						+'value="'+category
+					+'" />'
+					+'<img class="category-chooser-item-img unchecked" src="http://robertko.at.neuf.no/neuf-web/wp/wp-content/themes/neuf-old-style/img/tilesvisning.png"></img>'
+					+'<span class="category-chooser-item-label">'
+						+category
+					+'</span>'
+				+'</label>'
 				+'</div>');
 		$(form_id).append(element);
 	}
 
 	/* Register checkboxes: */
-	var form = $(form_id).first();
-	var checkboxes = form.children();
+	var checkboxes = $(".category-chooser-item-input");
 	checkboxes.each(function(){
-		$(this).children(":checkbox").first().change(function(){
-			events_update(find_checked_boxes(form));	
+		$(this).change(function(){
+			events_update(find_checked_boxes());	
 			fix_alternating_rows();
 		});
 	});
-	events_update(find_checked_boxes(form));	
+	events_update(find_checked_boxes());	
 	fix_alternating_rows();
 
 	/* Shall we use tiles or list? */
@@ -207,7 +221,6 @@ $(window).load(function(){
 	}
 
 	/* Only now can we really show them*/
-	var debuglol = $("#program-style-selector");
 	$("#program-style-selector").removeClass('hidden');
 	$("#program_tiles").removeAttr('style');
 	$("#program_list").removeAttr('style');
@@ -219,8 +232,8 @@ $(window).unload(function() {
 	/* Find out what categories were chosen when user left the page: */
 	var checked_boxes = new Array();
 
-	$('#program-category-chooser').children().each(function() {
-		if ($(this).children(":checkbox").first().is(":checked")) {
+	$('.category-chooser-item-input').children().each(function() {
+		if ($(this).is(":checked")) {
 			checked_boxes.push($(this).val());
 		}
 	});
