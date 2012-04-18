@@ -247,12 +247,18 @@ $(window).load(function(){
 
 	/* Shall we use tiles or list? */
 	var list = "true" === sessionStorage.useList;
+	var tiles = "true" === sessionStorage.useTiles;
+
 	if (list) {
 		showList();
 		toggleActive("list");
-	} else {
+	} else if (tiles) {
 		showTiles();
 		toggleActive("tiles");
+	} else {
+		/* default view:*/
+		showList();
+		toggleActive("list");
 	}
 
 	/* Only now can we really show them*/
@@ -283,4 +289,5 @@ $(window).unload(function() {
 	var tiles = $("#program_tiles");
 	var hasUsedList = tiles.hasClass('hidden');
 	sessionStorage.setItem('useList', hasUsedList);
+	sessionStorage.setItem('useTiles', !hasUsedList);
 });
