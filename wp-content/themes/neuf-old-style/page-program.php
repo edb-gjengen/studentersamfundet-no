@@ -46,21 +46,21 @@ wp_enqueue_script('eventProgram');
             <tbody data-bind="foreach: weeks">
                 <tr class="program-6days" data-bind="foreach: days">
                     <td class="cell day grid_2">
-                        <!-- ko if: filteredEvents().length > 0 -->
-                        <h2 data-bind="text: dateAsHeader"></h2>
-                        <div data-bind="foreach: filteredEvents">
-                             <div>
-                                <!-- ko if: $parent.filteredEvents().indexOf($data) === 0 -->
-                                <img data-bind="attr: { src: thumbnailURI }">
-                                <!-- /ko -->
-                                <span data-bind="text: time"></span>
-                                <a data-bind="attr: { href: uri, title: title }, text: title"></a>
+                        <div data-bind="visible: filteredEvents().length > 0">
+                            <h2 data-bind="text: dateAsHeader"></h2>
+                            <div data-bind="foreach: filteredEvents">
+                                 <div>
+                                    <!-- ko if: $parent.filteredEvents().indexOf($data) === 0 -->
+                                    <img data-bind="attr: { src: thumbnailURI }">
+                                    <!-- /ko -->
+                                    <span data-bind="text: time"></span>
+                                    <a data-bind="attr: { href: uri, title: title }, text: title"></a>
+                                </div>
                             </div>
                         </div>
-                        <!-- /ko -->
-                        <!-- ko ifnot: filteredEvents().length > 0 -->
-                        <img data-bind="attr: { src: 'wp-content/themes/neuf-old-style/img/pig.png' }" class="table-image">
-                        <!-- /ko -->
+                        <div data-bind="visible: filteredEvents().length === 0">
+                            <img data-bind="attr: { src: 'wp-content/themes/neuf-old-style/img/pig.png' }" class="table-image">
+                        </div>
                     </td>
                 </tr>
             </tbody>
