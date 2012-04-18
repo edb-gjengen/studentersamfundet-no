@@ -14,7 +14,7 @@ function getImageDir() {
 function getImages() {
 	var imageDir = getImageDir();
 	var imageMap = {
-		'default' : imageDir+'tilesvising.png',
+		'default' : imageDir+'tilesvisning.png',
 		'debatt' : imageDir+'ikon_debatt-50x50.png',
 		'fest' : imageDir+'ikon_fest-50x50.png',
 		'film' : imageDir+'ikon_film-50x50.png',
@@ -197,9 +197,15 @@ $(window).load(function(){
 	/* Restore checkbox status from cache: */
 	var cached_checked_boxes = sessionStorage.checked_boxes;
 
+	/* Get available images: */
+	var image_map = getImages();
+
 	/* Create checkboxes: */
 	for (var index in sorted_categories) {
-		category = sorted_categories[index];
+		var category = sorted_categories[index];
+		var img_source = image_map[category.toLowerCase()];
+		img_source = img_source ? img_source : image_map['default'];
+
 		isChecked = cached_checked_boxes != null ?
 			(cached_checked_boxes.indexOf(category) != -1) : 
 			false;
@@ -211,7 +217,9 @@ $(window).load(function(){
 						+(isChecked ? ' checked="true" ' : '')
 						+'value="'+category
 					+'" />'
-					+'<img class="category-chooser-item-img unchecked" src="http://robertko.at.neuf.no/neuf-web/wp/wp-content/themes/neuf-old-style/img/tilesvisning.png"></img>'
+					+'<img class="category-chooser-item-img unchecked"'
+						+'src="'+img_source+'">'
+					+'</img>'
 					+'<span class="category-chooser-item-label">'
 						+category
 					+'</span>'
