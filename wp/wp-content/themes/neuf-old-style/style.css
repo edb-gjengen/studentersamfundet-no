@@ -744,7 +744,7 @@ img {
 
 /* Icons */
 .view-mode:hover {
-    cursor: pointer;
+	cursor:pointer;
     opacity:0.8;
     filter:alpha(opacity=80); /* For IE8 and earlier */
 }
@@ -760,18 +760,20 @@ img {
     margin-left: 5px;
 }
 
-.category-chooser-item {
+.category-chooser-item, .program-style-selector-item {
 	display:inline-block;
 	margin:10px;
 }
 
-.category-chooser-item > label > span {
+.category-chooser-item > label > span, 
+.program-style-selector-item > span {
 	display:block;
 	margin:auto;
 	text-align:center;
 }
 
-.category-chooser-item > label > img {
+.category-chooser-item > label > img,
+.program-style-selector-item > img {
 	display:block;
 	margin:auto;
 }
@@ -784,6 +786,16 @@ img {
 .category-chooser-item > label > img.unchecked {
     opacity:0.4;
     filter:alpha(opacity=40); /* For IE8 and earlier */
+}
+
+.category-chooser-item > label > img.checked:hover {
+    opacity:0.8;
+    filter:alpha(opacity=80); /* For IE8 and earlier */
+}
+
+.category-chooser-item > label > img.unchecked:hover {
+    opacity:0.6;
+    filter:alpha(opacity=60); /* For IE8 and earlier */
 }
 
 /* table */
