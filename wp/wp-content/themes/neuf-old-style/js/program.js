@@ -11,6 +11,21 @@ function getImageDir() {
 	return a.attr('href');
 }
 
+function getImages() {
+	var imageDir = getImageDir();
+	var imageMap = {
+		'default' : imageDir+'tilesvising.png',
+		'debatt' : imageDir+'ikon_debatt-50x50.png',
+		'fest' : imageDir+'ikon_fest-50x50.png',
+		'film' : imageDir+'ikon_film-50x50.png',
+		'foredrag' : imageDir+'ikon_foredrag-50x50.png',
+		'konsert' : imageDir+'ikon_konsert-50x50.png',
+		'quiz' : imageDir+'ikon_quiz-50x50.png'
+	}
+
+	return imageMap;
+}
+
 function toggleActive(mode) {
     tiles = $(".view-mode.tiles");
     list = $(".view-mode.list");
