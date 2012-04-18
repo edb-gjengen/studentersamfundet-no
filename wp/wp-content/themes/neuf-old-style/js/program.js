@@ -5,6 +5,12 @@ function intersection(a1, a2) {
 		return true;
 	});
 }
+
+function getImageDir() {
+	var a = $("#image-dir");
+	return a.attr('href');
+}
+
 function toggleActive(mode) {
     tiles = $(".view-mode.tiles");
     list = $(".view-mode.list");

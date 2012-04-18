@@ -15,7 +15,7 @@ wp_enqueue_script('program');
             <h1 class="entry-title"><?php the_title(); ?></h1>
         </div>
 
-	<a id='image-dir' style="display:none;"><?php bloginfo('template_directory'); ?>/img/</a>	
+	<a id='image-dir' style="display:none;" href="<?php bloginfo('template_directory'); ?>/img/">You will hopefully not see this.</a>	
 	<form id="program-category-chooser" class="grid_10"></form>
 	<div id="program-style-selector" class="grid_2 hidden">
 		<img class="view-mode tiles" src="<?php bloginfo('template_directory');?>/img/tilesvisning.png" onclick='showTiles();toggleActive("tiles");' title="Vis program i et rutenett"/>
