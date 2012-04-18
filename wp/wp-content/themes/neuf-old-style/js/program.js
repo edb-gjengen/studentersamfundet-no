@@ -20,7 +20,8 @@ function getImages() {
 		'film' : imageDir+'ikon_film-50x50.png',
 		'foredrag' : imageDir+'ikon_foredrag-50x50.png',
 		'konsert' : imageDir+'ikon_konsert-50x50.png',
-		'quiz' : imageDir+'ikon_quiz-50x50.png'
+		'quiz' : imageDir+'ikon_quiz-50x50.png',
+		'teater' : imageDir+'ikon_teater-50x50.png'
 	}
 
 	return imageMap;
