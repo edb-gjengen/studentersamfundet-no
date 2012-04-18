@@ -742,7 +742,10 @@ img {
 
 /* Icons */
 .view-mode:hover {
-    cursor: pointer;
+    opacity:0.6;
+    filter:alpha(opacity=60); /* For IE8 and earlier */
+}
+.view-mode.marked:hover {
     opacity:0.8;
     filter:alpha(opacity=80); /* For IE8 and earlier */
 }
