@@ -126,11 +126,12 @@ function find_checked_boxes(parent) {
 	var checked_boxes = new Array();
 	var unchecked_boxes = new Array();
 
-	parent.children(":checkbox").each(function() {
-		if ($(this).is(":checked")) {
-			checked_boxes.push($(this).val());
+	parent.children().each(function() {
+		var box = $(this).children(":checkbox").first();
+		if (box.is(":checked")) {
+			checked_boxes.push(box.val());
 		} else {
-			unchecked_boxes.push($(this).val());
+			unchecked_boxes.push(box.val());
 		}
 	});
 
@@ -172,21 +173,20 @@ $(window).load(function(){
 		isChecked = cached_checked_boxes != null ?
 			(cached_checked_boxes.indexOf(category) != -1) : 
 			false;
-		element = ('<input id="'+category+'" ' 
+		element = ('<div><input id="'+category+'" ' 
 				+'type="checkbox" ' 
 				+'name="category" ' 
 				+(isChecked ? ' checked="true" ' : '')
 				+'value="'+category+'" />' 
-				+'<label for="'+category+'">'+category+'</label>');
+				+'<label for="'+category+'">'+category+'</label></div>');
 		$(form_id).append(element);
 	}
 
 	/* Register checkboxes: */
-	form = $(form_id).first();
-
-	checkboxes = form.children();
+	var form = $(form_id).first();
+	var checkboxes = form.children();
 	checkboxes.each(function(){
-		$(this).change(function(){
+		$(this).children(":checkbox").first().change(function(){
 			events_update(find_checked_boxes(form));	
 			fix_alternating_rows();
 		});
@@ -215,8 +215,8 @@ $(window).unload(function() {
 	/* Find out what categories were chosen when user left the page: */
 	var checked_boxes = new Array();
 
-	$('#program-category-chooser').children(":checkbox").each(function() {
-		if ($(this).is(":checked")) {
+	$('#program-category-chooser').children().each(function() {
+		if ($(this).children(":checkbox").first().is(":checked")) {
 			checked_boxes.push($(this).val());
 		}
 	});
