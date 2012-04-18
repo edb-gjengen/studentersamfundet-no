@@ -257,7 +257,7 @@ $(window).load(function(){
 		toggleActive("tiles");
 	} else {
 		/* default view:*/
-		showList();
+		showList(); 
 		toggleActive("list");
 	}
 
