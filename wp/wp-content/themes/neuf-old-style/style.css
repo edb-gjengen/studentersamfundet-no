@@ -274,20 +274,6 @@ header#site-header .site-title a {
 	max-height: 90px;
 }
 
-#site-footer #footer-row1 {
-	padding-top:20px;
-	padding-left: 15px;
-	padding-right: 15px;
-	clear:both;
-	overflow:auto;
-}
-#site-footer #footer-row2 {
-	padding-top:20px;
-	padding-left: 15px;
-	padding-right: 15px;
-	clear:both;
-	overflow:auto;
-}
 #kolofon {
 	padding-top: 20px;
 	padding-bottom: 10px;
@@ -298,9 +284,10 @@ header#site-header .site-title a {
 }
 #site-footer {
 	margin-top: 20px;
+	padding-top: 25px;
 	clear: both;
 	overflow: auto;
-	color: #58595B;
+	color: #000;
 }
 #site-footer h2,
 #site-footer h2 a,
@@ -323,10 +310,10 @@ header#site-header .site-title a {
 }
 #site-footer a {
 	font-weight: normal;
-	color: #000;
+	color: #fff;
 }
 #site-footer p {
-    color: #000;
+    /*color: #000;*/
 }
 
 #flickr-images > ul {
@@ -339,7 +326,7 @@ header#site-header .site-title a {
 	width:74px;
 }
 #fb-like-box {
-    text-align: center;
+    /*text-align: center;*/
 }
 .fb-like-box {
     background-color: #ffffff;
