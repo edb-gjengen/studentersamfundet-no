@@ -173,12 +173,14 @@ $(window).load(function(){
 		isChecked = cached_checked_boxes != null ?
 			(cached_checked_boxes.indexOf(category) != -1) : 
 			false;
-		element = ('<div><input id="'+category+'" ' 
-				+'type="checkbox" ' 
-				+'name="category" ' 
-				+(isChecked ? ' checked="true" ' : '')
-				+'value="'+category+'" />' 
-				+'<label for="'+category+'">'+category+'</label></div>');
+		element = ('<div style="display:inline-block;margin:10px">'
+				+'<input style="display:block;margin:auto;" id="'+category+'" ' 
+					+'type="checkbox" ' 
+					+'name="category" ' 
+					+(isChecked ? ' checked="true" ' : '')
+					+'value="'+category+'" />' 
+				+'<label style="display:block;margin:auto;" for="'+category+'">'+category+'</label>'
+				+'</div>');
 		$(form_id).append(element);
 	}
 
@@ -205,6 +207,8 @@ $(window).load(function(){
 	}
 
 	/* Only now can we really show them*/
+	var debuglol = $("#program-style-selector");
+	$("#program-style-selector").removeClass('hidden');
 	$("#program_tiles").removeAttr('style');
 	$("#program_list").removeAttr('style');
 });
