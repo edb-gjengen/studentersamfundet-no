@@ -13,7 +13,7 @@
             </div> <!-- #footer-about -->
 
             <div id="fb-like-box" class="grid_4">
-                <div class="fb-like-box" data-href="https://www.facebook.com/studentersamfundet" data-width="315" data-height="285" data-show-faces="true" data-stream="false" data-header="false"></div>
+                <div class="fb-like-box" data-href="https://www.facebook.com/studentersamfundet" data-width="315" data-height="285" data-show-faces="true" data-stream="false" data-header="false" data-border-color="#e89735"></div>
             </div>
             <div id="twitter-box" class="grid_4 omega">
                 <!--h2><a href="https://twitter.com/dns1813">Fra Twitter</a></h2>

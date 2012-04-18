@@ -329,7 +329,9 @@ header#site-header .site-title a {
     /*text-align: center;*/
 }
 .fb-like-box {
-    background-color: #ffffff;
+    /*background-color: #ffffff;*/
+    overflow:hidden;
+    height:177px;
 }
 
 /* Footer slutt */
