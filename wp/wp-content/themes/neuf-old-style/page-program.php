@@ -73,11 +73,18 @@ if ( $events->have_posts() ) :
 
 		$date = get_post_meta( $post->ID , '_neuf_events_starttime' , true );
 		/* event type class */
-		$event_array = get_the_terms( $post->ID , 'event_type', $parent=0 );
+		$event_array = get_the_terms( $post->ID , 'event_type' );
 		$event_types = array();
-		foreach ( $event_array as $event_type )
-			$event_types[] = $event_type->name;
-		$event_type_class = $event_type ? "class=\"".implode(" ", $event_types)."\"" : "";
+		foreach ( $event_array as $event_type ) {
+			if ($event_type->parent === "0") {
+				$event_types[] = $event_type->name;
+			} else {
+				$id = (int)$event_type->parent;
+				$parent = get_term( $id, 'event_type' );
+				$event_types[] = $parent->name;
+			}
+		}
+		$event_type_class = $event_types ? "class=\"".implode(" ", $event_types)."\"" : "";
 
 		/* set current day */
 		$current_day = date_i18n( 'Y-m-d' , $date);
@@ -195,10 +202,22 @@ if ( $events->have_posts() ) :
 		$ticket = get_post_meta( $post->ID , '_neuf_events_bs_url' , true );
                 $ticket = $ticket ? '<a href="'.$ticket.'">Kjøp billett</a>' : '';
 		/* event type class */
-		$event_types = get_the_terms( $post->ID , 'event_type' );
-		$types = array();
-		foreach ( $event_types as $event_type ) { $types[] = $event_type->name; }
-		$types = $event_type ? implode(", ", $types) : "";
+		/* event type class */
+		$event_array = get_the_terms( $post->ID , 'event_type' );
+		$event_types = array();
+		$event_types_real = array();
+		foreach ( $event_array as $event_type ) {
+			if ($event_type->parent === "0") {
+				$event_types[] = $event_type->name;
+			} else {
+				$id = (int)$event_type->parent;
+				$parent = get_term( $id, 'event_type' );
+				$event_types[] = $parent->name;
+			}
+			$event_types_real[] = $event_type->name;
+		}
+		$event_type_real = $event_types_real ? "".implode(", ", $event_types_real) : "";
+		$event_type_class = $event_types ? "class=\"".implode(" ", $event_types)."\"" : "";
 		
 		/* set current day */
 		$previous_day = $current_day;
@@ -225,7 +244,7 @@ if ( $events->have_posts() ) :
 				<td><?php echo $datel; ?></td>
 				<td><a href="<?php the_permalink(); ?>" title="Permanent lenke til <?php the_title(); ?>"><?php echo the_title(); ?></a></td>
 				<td><?php echo $price; ?></td>
-				<td class="<?php echo $types; ?>"><?php echo $types; ?></td>
+				<td <?php echo $event_type_class; ?>><?php echo $event_type_real; ?></td>
 				<td><?php echo $venue; ?></td>
 				<td><?php echo $ticket; ?></td>
 			</tr>
