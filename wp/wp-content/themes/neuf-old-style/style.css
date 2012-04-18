@@ -227,18 +227,14 @@ header#site-header .site-title a {
 
 #sponsors .sponsor {
 	text-align: center;
+	display: table-cell;
+	height: 120px;
+	width: 300px;
+	vertical-align: middle;
 }
 #sponsors .sponsor img {
-    max-width: 86px;
-}
-#sponsor-akademika,
-#sponsor-studio {
-    position: relative;
-    top: 30px;
-    text-align: center;
-}
-#sponsors #sponsor-akademika img {
-    max-width: 200px;
+    max-width: 290px;
+	max-height: 90px;
 }
 
 #site-footer #footer-row1 {
