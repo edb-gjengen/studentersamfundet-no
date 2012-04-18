@@ -169,6 +169,11 @@ function find_checked_boxes() {
 	if (checked_boxes.length > 0) {
 		return checked_boxes;
 	} else {
+		/* If none are checked, then all images are opaque: */
+		$(".category-chooser-item-img").each(function() {
+			$(this).removeClass('unchecked');
+			$(this).addClass('checked');
+		});
 		return unchecked_boxes;
 	}
 }
@@ -262,7 +267,7 @@ $(window).unload(function() {
 	/* Find out what categories were chosen when user left the page: */
 	var checked_boxes = new Array();
 
-	$('.category-chooser-item-input').children().each(function() {
+	$('.category-chooser-item-input').each(function() {
 		if ($(this).is(":checked")) {
 			checked_boxes.push($(this).val());
 		}

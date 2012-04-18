@@ -784,6 +784,16 @@ img {
     filter:alpha(opacity=40); /* For IE8 and earlier */
 }
 
+.category-chooser-item > label > img.checked:hover {
+    opacity:0.8;
+    filter:alpha(opacity=80); /* For IE8 and earlier */
+}
+
+.category-chooser-item > label > img.unchecked:hover {
+    opacity:0.6;
+    filter:alpha(opacity=60); /* For IE8 and earlier */
+}
+
 /* table */
 .table {
 	width:100%;
