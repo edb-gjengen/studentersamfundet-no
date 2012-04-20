@@ -33,7 +33,7 @@
                 </div>
 
                 <div id="sponsor-studio" class="sponsor">
-                        <a href="http://studio.studentersamfundet.no/" rel="nofollow"><img alt="Studentfestivalen i Oslo" src="<?php bloginfo('stylesheet_directory'); ?>/img/sponsors/studio2012_logo_grey.png" /></a>
+                        <a href="http://studio.studentersamfundet.no/" rel="nofollow"><img alt="Studentfestivalen i Oslo" src="<?php bloginfo('stylesheet_directory'); ?>/img/sponsors/studio2012_logo_black.png" /></a>
                 </div>
 
                 <div id="sposor-nrf" class="sponsor">
