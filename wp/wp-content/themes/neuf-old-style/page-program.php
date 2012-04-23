@@ -22,7 +22,7 @@ wp_enqueue_script('eventProgram');
 </style>
 
 <div align="center" id="load-spinner">
-    <img style="margin: 10px 0px 10px 0px;"align="center" src="wp-content/themes/neuf-old-style/img/ajax-loader.gif">
+    <img style="margin: 10px 0px 10px 0px;"align="center" src="wp/wp-content/themes/neuf-old-style/img/ajax-loader.gif">
 </div>
 
 <section id="content" class="container_12 hidden" role="main">
@@ -65,7 +65,7 @@ wp_enqueue_script('eventProgram');
                             </div>
                         </div>
                         <div data-bind="visible: filteredEvents().length === 0">
-                            <img data-bind="attr: { src: 'wp-content/themes/neuf-old-style/img/pig.png' }" class="table-image">
+                            <img data-bind="attr: { src: 'wp/wp-content/themes/neuf-old-style/img/pig.png' }" class="table-image">
                         </div>
                     </td>
                 </tr>
