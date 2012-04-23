@@ -6,7 +6,7 @@
 
 	<div id="nova-player" class="grid_4 omega">
 		<h2><a href="http://radionova.no/">Radio Nova</a></h2>
-		<p><a href="http://radionova.no/lytt!" onclick="window.open('http://spiller.radionova.no/lytt','novastream','height=460,width=460'); return false;">Lytt til Radio Nova</a></p>
+		<a id="nova-player-link" href="http://radionova.no/lytt!" onclick="window.open('http://spiller.radionova.no/lytt','novastream','height=460,width=460'); return false;">Lytt til Radio Nova (FM 99,3)</a>
 	</div>
 
 </div> <!-- #student-media -->

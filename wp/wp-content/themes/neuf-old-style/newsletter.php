@@ -13,7 +13,7 @@ $args = array(
 	'meta_query'     => array( $meta_query ),
 	'posts_per_page' => 4
 );
-$wp_events = new WP_Query( $args );
+$events = new WP_Query( $args );
 /*  */
 define('SITE_ROOT', 'http://studentersamfunnet.no/'); 
 ?>
@@ -30,7 +30,7 @@ define('SITE_ROOT', 'http://studentersamfunnet.no/');
     <div id="all" style="width: 600px; border: none; margin: 0 auto;">
 
 <?php
-/* TODO : edit mode with js */
+/* TODO : add edit mode with js */
 ?>
         <p>
             <img src="<?php echo SITE_ROOT;?>bilder/bannermail.png" alt="Det Norske Studentersamfund" border="0" />
@@ -41,8 +41,10 @@ define('SITE_ROOT', 'http://studentersamfunnet.no/');
 ?>
     <table class="top">
         <tr style="background: #fff;">
-            <?php for ($i = 0; $i < 3; $i++) { ?>
-            <td id="<?php //echo $gigno; ?>" style="vertical-align: center;">
+            <?php $counter = 0;
+            while ($events->have_posts() && $counter < 3) : $events->the_post(); ?>
+
+            <td id="<?php the_ID(); ?>" style="vertical-align: center;">
                 <div>
                     <h2 style="margin: 0px 3px; font-size: 14px;"><?php //echo $gig->name; ?></h2>
                     <p style="margin: 0px 3px; font-style: italic;">
@@ -59,11 +61,12 @@ define('SITE_ROOT', 'http://studentersamfunnet.no/');
                         <?php //echo $gig->intro; ?>
                     </p>
                     <p style="margin: 5px 3px;">
-                        <a href="<?php echo SITE_ROOT;?>vis.php?ID=<?php echo $gig->id; ?>">Les mer&raquo;</a>
+                        <a href="<?php the_permalink(); ?>">Les mer&raquo;</a>
                     </p>
                 </div>
             </td>
-            <?php } ?>
+            <?php $counter++; ?>
+            <?php endwhile; ?>
         </tr>
     </table>
 
@@ -98,8 +101,7 @@ define('SITE_ROOT', 'http://studentersamfunnet.no/');
 		</div>
 
 		<div id="sponsors" style="text-align: center; border-top: 1px solid black;">
-			<p>Våre samarbeidspartnere:</p>
-                        <a href="http://www.toro.no"><img style="margin: 12px; border: none;" src="<?php echo SITE_ROOT; ?>bilder/sponsorer/toro.jpg" alt="Toro" /></a>
+			<p>Vår samarbeidspartner:</p>
 			<a href="http://www.akademika.no"><img style="margin: 12px; border: none;" src="<?php echo SITE_ROOT; ?>bilder/sponsorer/akademika.png" alt="Akademika" /></a>
 		</div>
 		<div id="about" style="text-align: center; border-top: 1px solid black;">

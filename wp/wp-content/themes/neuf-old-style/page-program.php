@@ -21,7 +21,6 @@ wp_enqueue_script('eventProgram');
     }
 </style>
 
-
 <div align="center" id="load-spinner">
     <img style="margin: 10px 0px 10px 0px;"align="center" src="wp-content/themes/neuf-old-style/img/ajax-loader.gif">
 </div>
@@ -31,10 +30,17 @@ wp_enqueue_script('eventProgram');
         <h1 class="entry-title"><?php the_title(); ?></h1>
     </div>
 	
+	<a id='image-dir' style="display:none;" href="<?php bloginfo('template_directory'); ?>/img/">You will hopefully not see this.</a>
 	<form id="program-category-chooser" class="grid_10"></form>
-	<div class="grid_2">
-		<img class="view-mode tiles" src="<?php bloginfo('template_directory');?>/img/tilesvisning.png" onclick='showTiles();toggleActive("tiles");' title="Vis program i et rutenett"/>
-		<img class="view-mode list" src="<?php bloginfo('template_directory');?>/img/listevisning.png" onclick='showList();toggleActive("list");' title="Vis programmet som en liste" />
+	<div id="program-style-selector" class="grid_2 hidden">
+		<div class="program-style-selector-item">
+			<img class="view-mode tiles" src="<?php bloginfo('template_directory');?>/img/tilesvisning.png" onclick='showTiles();toggleActive("tiles");' title="Vis program i et rutenett"/>
+			<span>Rutenett</span>
+		</div>
+		<div class="program-style-selector-item">
+			<img class="view-mode list" src="<?php bloginfo('template_directory');?>/img/listevisning.png" onclick='showList();toggleActive("list");' title="Vis programmet som en liste" />
+			<span>Liste</span>
+		</div>
 	</div>
 
     <div id="program-calendar">
@@ -117,11 +123,18 @@ if ( $events->have_posts() ) :
 
 		$date = get_post_meta( $post->ID , '_neuf_events_starttime' , true );
 		/* event type class */
-		$event_array = get_the_terms( $post->ID , 'event_type', $parent=0 );
+		$event_array = get_the_terms( $post->ID , 'event_type' );
 		$event_types = array();
-		foreach ( $event_array as $event_type )
-			$event_types[] = $event_type->name;
-		$event_type_class = $event_type ? "class=\"".implode(" ", $event_types)."\"" : "";
+		foreach ( $event_array as $event_type ) {
+			if ($event_type->parent === "0") {
+				$event_types[] = $event_type->name;
+			} else {
+				$id = (int)$event_type->parent;
+				$parent = get_term( $id, 'event_type' );
+				$event_types[] = $parent->name;
+			}
+		}
+		$event_type_class = $event_types ? "class=\"".implode(" ", $event_types)."\"" : "";
 
 		/* set current day */
 		$current_day = date_i18n( 'Y-m-d' , $date);
@@ -239,11 +252,22 @@ if ( $events->have_posts() ) :
 		$ticket = get_post_meta( $post->ID , '_neuf_events_bs_url' , true );
                 $ticket = $ticket ? '<a href="'.$ticket.'">Kjøp billett</a>' : '';
 		/* event type class */
-		$event_types = get_the_terms( $post->ID , 'event_type' );
-		$types = array();
-		foreach ( $event_types as $event_type ) { $types[] = $event_type->name; }
-		$types = $event_type ? implode(", ", $types) : "";
-
+		$event_array = get_the_terms( $post->ID , 'event_type' );
+		$event_types = array();
+		$event_types_real = array();
+		foreach ( $event_array as $event_type ) {
+			if ($event_type->parent === "0") {
+				$event_types[] = $event_type->name;
+			} else {
+				$id = (int)$event_type->parent;
+				$parent = get_term( $id, 'event_type' );
+				$event_types[] = $parent->name;
+			}
+			$event_types_real[] = $event_type->name;
+		}
+		$event_type_real = $event_types_real ? "".implode(", ", $event_types_real) : "";
+		$event_type_class = $event_types ? "class=\"".implode(" ", $event_types)."\"" : "";
+		
 		/* set current day */
 		$previous_day = $current_day;
 		$current_day = date_i18n( 'Y-m-d' , $date);
@@ -269,7 +293,7 @@ if ( $events->have_posts() ) :
 				<td><?php echo $datel; ?></td>
 				<td><a href="<?php the_permalink(); ?>" title="Permanent lenke til <?php the_title(); ?>"><?php echo the_title(); ?></a></td>
 				<td><?php echo $price; ?></td>
-				<td class="<?php echo $types; ?>"><?php echo $types; ?></td>
+				<td <?php echo $event_type_class; ?>><?php echo $event_type_real; ?></td>
 				<td><?php echo $venue; ?></td>
 				<td><?php echo $ticket; ?></td>
 			</tr>
