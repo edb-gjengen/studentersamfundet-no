@@ -32,6 +32,12 @@ function neuf_enqueue_scripts() {
 	wp_register_script( 'cycle'     , get_template_directory_uri() . '/js/jquery.cycle.all.js', array( 'jquery' ), '0.9.8' );
 	wp_register_script( 'front-page', get_template_directory_uri() . '/js/front-page.js', array('cycle') );
 	wp_register_script( 'application', get_template_directory_uri() . '/js/application.js', array('jquery') );
+    wp_register_script( 'underscore', get_template_directory_uri() . '/js/underscore.js');
+    wp_register_script( 'knockout', get_template_directory_uri() . '/js/knockout-2.0.0.js');
+    wp_register_script( 'util', get_template_directory_uri() . '/js/neuf/util/util.js' );
+    wp_register_script( 'date.js', get_template_directory_uri() . '/js/neuf/util/date-nb-NO.js');
+    wp_register_script( 'eventProgram', get_template_directory_uri() . '/js/neuf/eventProgram.js', array('jquery', 'underscore', 'knockout', 'date.js', 'util') );
+	wp_register_script( 'footer', get_template_directory_uri() . '/js/footer.js', array('jquery') );
 
 	// enqueue the scripts
 	wp_enqueue_script( 'jquery' );

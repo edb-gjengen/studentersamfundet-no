@@ -1,19 +1,35 @@
 <?php 
 get_header(); 
-wp_enqueue_script('program');
+wp_enqueue_script('eventProgram');
 ?>
 
 <!-- Category chooser: -->
 <style>
-.hidden {
-	display:none;
-}
+    .hidden {
+        display:none;
+    }
+
+    .cell {
+        vertical-align: top;
+        display: inline-block;
+        float: none;
+        margin: 10px;
+    }
+
+    .table-image {
+        opacity: 0.1;
+    }
 </style>
 
-<section id="content" class="container_12" role="main">
-        <div class="grid_12">
-            <h1 class="entry-title"><?php the_title(); ?></h1>
-        </div>
+
+<div align="center" id="load-spinner">
+    <img style="margin: 10px 0px 10px 0px;"align="center" src="wp-content/themes/neuf-old-style/img/ajax-loader.gif">
+</div>
+
+<section id="content" class="container_12 hidden" role="main">
+    <div class="grid_12">
+        <h1 class="entry-title"><?php the_title(); ?></h1>
+    </div>
 	
 	<form id="program-category-chooser" class="grid_10"></form>
 	<div class="grid_2">
@@ -21,7 +37,36 @@ wp_enqueue_script('program');
 		<img class="view-mode list" src="<?php bloginfo('template_directory');?>/img/listevisning.png" onclick='showList();toggleActive("list");' title="Vis programmet som en liste" />
 	</div>
 
-<?php 
+    <div id="program-calendar">
+        <form class="eventPicker" data-bind="foreach: eventTypes">
+            <span data-bind="text: name"></span><input type="checkbox" data-bind="value: name, checked: checked">
+        </form>
+
+        <table class="grid_12">
+            <tbody data-bind="foreach: weeks">
+                <tr class="program-6days" data-bind="foreach: days">
+                    <td class="cell day grid_2">
+                        <div data-bind="visible: filteredEvents().length > 0">
+                            <h2 data-bind="text: dateAsHeader"></h2>
+                            <div data-bind="foreach: filteredEvents">
+                                 <div>
+                                    <!-- ko if: $parent.filteredEvents().indexOf($data) === 0 -->
+                                    <img data-bind="attr: { src: thumbnailURI }">
+                                    <!-- /ko -->
+                                    <span data-bind="text: time"></span>
+                                    <a data-bind="attr: { href: uri, title: title }, text: title"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-bind="visible: filteredEvents().length === 0">
+                            <img data-bind="attr: { src: 'wp-content/themes/neuf-old-style/img/pig.png' }" class="table-image">
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<?php
 /* Events with starttime including 8 hours up until 30 days from now. */
 //$meta_query = array(
 //	'key'     => '_neuf_events_starttime',
@@ -125,23 +170,23 @@ if ( $events->have_posts() ) :
 
 		if ( $newday ) { $daycounter++; ?>
 			</div> <!-- .day -->
-		<?php 
+		<?php
 
 		if ($newweek && !$first_week) {  ?>
 			</div><!-- .program-6days -->
 			<div class="program grid_12 program-6days">
 		<?php } else { ?>
 
-		<?php } 
+		<?php }
 		?>
 		<div class="day day-<?php echo $daycounter; ?> grid_2<?php echo $day_gap; echo $alpha_or_omega; ?>">
 			<h2><?php echo ucfirst( date_i18n( 'l j/n' , get_post_meta( $post->ID , '_neuf_events_starttime' , true ) ) ); ?></h2>
-			<?php 
+			<?php
 			if( has_post_thumbnail() ) {
 				the_post_thumbnail ('two-column-thumb' );
 			} ?>
 		<?php } else { ?>
-		<?php } ?>	
+		<?php } ?>
 		<p <?php echo $event_type_class;?>><?php echo date_i18n( 'H.i:' , get_post_meta( $post->ID , '_neuf_events_starttime' , true ) ); ?> <a href="<?php the_permalink(); ?>" title="Permanent lenke til <?php the_title(); ?>" <?php neuf_post_class(); ?>><?php echo the_title(); ?></a></p>
 		<?php
 		$first_week = false;
@@ -151,7 +196,7 @@ if ( $events->have_posts() ) :
 	</div>
 <?php endif; ?>
 </div>
-<?php 
+<?php
 $meta_query = array(
 	'key'     => '_neuf_events_starttime',
 	'value'   => date( 'U' , strtotime( '-8 hours' )),  // start
@@ -198,7 +243,7 @@ if ( $events->have_posts() ) :
 		$types = array();
 		foreach ( $event_types as $event_type ) { $types[] = $event_type->name; }
 		$types = $event_type ? implode(", ", $types) : "";
-		
+
 		/* set current day */
 		$previous_day = $current_day;
 		$current_day = date_i18n( 'Y-m-d' , $date);
@@ -233,6 +278,9 @@ if ( $events->have_posts() ) :
 	</table>
 <?php endif; ?>
 </div>
+
 </section> <!-- #main_content -->
+
+
 
 <?php get_footer(); ?>
