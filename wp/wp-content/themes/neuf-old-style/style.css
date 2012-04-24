@@ -767,6 +767,8 @@ img {
 	display:block;
 	margin:auto;
 	text-align:center;
+        font-size: 12px;
+        color: #666;
 }
 
 .category-chooser-item > label > img,
