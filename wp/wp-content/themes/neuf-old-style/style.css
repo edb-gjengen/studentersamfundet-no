@@ -138,13 +138,14 @@ header#site-header .site-title a {
 	z-index:9;
 }
 #menu li ul {
-	width:100%;
+	width: 150px;
 }
 #menu .aapningstider li ul {
 	border-right:none;
+	width: 166px;
 }
 
-#menu li ul li {
+#menu .aapningstider li ul li {
 	padding:0 5%;
 }
 
