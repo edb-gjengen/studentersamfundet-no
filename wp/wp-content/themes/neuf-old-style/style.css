@@ -791,6 +791,8 @@ img {
 	display:block;
 	margin:auto;
 	text-align:center;
+        font-size: 12px;
+        color: #666;
 }
 
 .category-chooser-item > label > img,
@@ -876,3 +878,45 @@ img {
 	margin-bottom: 15px;
 }
 
+/* Buttons */
+.btn {
+    font-family: Arial, sans-serif;
+    color: #666;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 8px 15px;
+    border: none;
+    background: #e6e6e6 url('img/gradient.png') repeat-x bottom left;
+    margin: 30px 5px 20px 0;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 1);
+    border: 1px solid #bfbfbf;
+    display: inline-block;
+    text-decoration: none;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    text-align: center;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    -moz-border-radius-topright: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -webkit-border-top-right-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+}
+
+a.btn :visited,
+a.btn {
+    color: #666666;
+}
+
+.btn:hover {
+    background-color: #FF9E29;
+}
+
+.btn:hover {
+    color: #ffffff;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+    border-color: #cc7f21;
+    border-bottom-color: #a6671b;
+}
