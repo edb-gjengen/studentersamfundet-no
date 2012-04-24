@@ -115,7 +115,8 @@ header#site-header .site-title a {
 	border-right:1px solid rgb(255,255,225);
 	position:relative;
 }
-#menu .aapningstider li {
+#menu .aapningstider li,
+#menu .sub-menu li {
 	border-right:none;
 }
 #menu li a {
@@ -137,12 +138,7 @@ header#site-header .site-title a {
 	z-index:9;
 }
 #menu li ul {
-	overflow:hidden;
 	width:100%;
-	border-left:1px solid rgb(88,89,91);
-	border-right:1px solid rgb(88,89,91);
-	position:absolute;
-	right:-1px;
 }
 #menu .aapningstider li ul {
 	border-right:none;
