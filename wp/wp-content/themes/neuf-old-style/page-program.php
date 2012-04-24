@@ -1,6 +1,7 @@
 <?php 
 get_header(); 
 wp_enqueue_script('eventProgram');
+wp_enqueue_script('program');
 ?>
 
 <!-- Category chooser: -->

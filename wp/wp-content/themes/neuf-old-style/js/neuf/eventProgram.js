@@ -51,7 +51,7 @@ $(document).ready(function () {
         });
 
         _.each(_.uniq(eventTypes), function(eventTypeName) {
-            var eventType = new EventType(eventTypeName);
+            /*var eventType = new EventType(eventTypeName);
 
             eventType.checked.subscribe(function (newValue) {
                 if (newValue) {
@@ -61,7 +61,7 @@ $(document).ready(function () {
                     programModel.checkedEvents.remove(eventTypeName);
                 }
             });
-            programModel.eventTypes.push(eventType);
+            programModel.eventTypes.push(eventType);*/
         });
         $('#load-spinner').hide();
         $('#content').fadeIn();
