@@ -1,6 +1,6 @@
 		<div id="digest_news" class="grid_8 hfeed">
 
-			<h2><a href="<?php bloginfo('url'); ?>/aktuelt/">Aktuelt</a></h2>
+			<h2>Aktuelt</h2>
 
 			<div class="grid_4 alpha">
 				<?php // The LOOP
