@@ -49,7 +49,7 @@
 
 	<div id="kolofon" class="grid_12">
 
-            <span class="">Det Norske Studentersamfund | Slemdalsveien 15, 0369 Oslo | Webdesign av <a href="http://edb.neuf.no">EDB-gjengen</a> og <a href="#">Designerne</a> i KAK</span>
+            <span class="">Det Norske Studentersamfund | Slemdalsveien 15, 0369 Oslo | Webdesign av <a href="http://edb.neuf.no">EDB-gjengen</a> og Designerne i <a href="http://studentersamfundet.no/association/kommunikasjonsavdelingen/">K</a>.</span>
 
 	</div> <!-- #kolofon -->
 
