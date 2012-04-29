@@ -63,6 +63,7 @@ $(document).ready(function () {
             });
             programModel.eventTypes.push(eventType);
         });
+
         $('#load-spinner').hide();
         $('#content').fadeIn();
     }
@@ -83,7 +84,7 @@ $(document).ready(function () {
 
     var Week = function(id, days) {
         this.id = id;
-        this.days = days
+        this.days = days;
     }
 
     var Day = function (id, dateAsHeader, events, programModel) {
@@ -113,6 +114,8 @@ $(document).ready(function () {
     var EventType = function(name) {
         this.name = name;
         this.checked = ko.observable(false);
+        this.icon = "../wp/wp-content/themes/neuf-old-style/img/ikon_" + name + "-50x50.png";
+        this.id = "event_type_" + name;
     }
 
     //Fill view model with empty days that will be filled as events are fetched from the server
@@ -156,21 +159,6 @@ $(document).ready(function () {
     programModel.weeks = nextWeeks;
     programModel.eventTypes = eventTypes;
     programModel.days = days;
-
-    ko.bindingHandlers.fadeVisible = {
-        init: function (element, valueAccessor) {
-            // Initially set the element to be instantly visible/hidden depending on the value
-            console.log("init");
-            var value = valueAccessor();
-            $(element).toggle(ko.utils.unwrapObservable(value)); // Use "unwrapObservable" so we can handle values that may or may not be observable
-        },
-        update: function (element, valueAccessor) {
-            // Whenever the value subsequently changes, slowly fade the element in or out
-            var value = valueAccessor();
-            ko.utils.unwrapObservable(value) ? $(element).fadeIn() : $(element).fadeOut();
-            console.log("teh");
-        }
-    }
 
     ko.applyBindings(programModel);
     getEvents(programModel);
