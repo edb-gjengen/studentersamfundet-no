@@ -18,7 +18,7 @@
 
 					<div class="vedlegg">
 						<div class="nyhetsbilde">
-							<img src="<?php bloginfo('stylesheet_uri'); ?>/images/piggies.jpg" alt="" />
+							<img src="<?php bloginfo('stylesheet_directory'); ?>/img/piggies.jpg" alt="" />
 						</div> <!-- .nyhetsbilde -->
 
 					</div> <!-- .vedlegg -->
