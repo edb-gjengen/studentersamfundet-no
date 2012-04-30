@@ -1,4 +1,3 @@
-<?php echo '<?xml version="1.0" encoding="utf-8">' . "\n"; ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="no" lang="no">
 	<head>
@@ -15,6 +14,9 @@
 		<link href="<?php bloginfo( 'stylesheet_url' ); ?>" rel="stylesheet" type="text/css" />
 		<link href='http://fonts.googleapis.com/css?family=Arvo:700,400italic' rel='stylesheet' type='text/css'>
 	<?php wp_head(); ?>
+                <!--[if lt IE 9]>
+                    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+                <![endif]-->
 	</head>
 
 	<body <?php neuf_body_class(); ?>>

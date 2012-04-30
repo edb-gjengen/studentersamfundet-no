@@ -59,6 +59,7 @@ body.dns {
 }
 header#site-header,
 footer#site-footer {
+	background-color:#E99835;
 	background-color:hsl(33,80%,56%);
 }
 header#site-header {
@@ -118,6 +119,7 @@ header#site-header .site-title a {
 #menu .aapningstider li,
 #menu .sub-menu li {
 	border-right:none;
+	position: relative;
 }
 #menu li a {
 	display:block;
@@ -138,11 +140,10 @@ header#site-header .site-title a {
 	z-index:9;
 }
 #menu li ul {
-	width: 150px;
 }
 #menu .aapningstider li ul {
 	border-right:none;
-	width: 166px;
+	min-width: 100%;
 }
 
 #menu .aapningstider li ul li {
