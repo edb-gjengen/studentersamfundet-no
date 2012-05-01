@@ -15,10 +15,8 @@
             <div id="fb-like-box" class="grid_4">
                 <div class="fb-like-box" data-href="https://www.facebook.com/studentersamfundet" data-width="315" data-height="285" data-show-faces="true" data-stream="false" data-header="false" data-border-color="#e89735"></div>
             </div>
-            <div id="twitter-box" class="grid_4 omega">
-                <!--h2><a href="https://twitter.com/dns1813">Fra Twitter</a></h2>
-                <div id="twitter_feed"></div> <!-- #twitter_feed -->
-                <h2><a href='http://www.flickr.com/groups/neuf/pool/'>Bilder fra flickr</a></h2--!>
+            <div id="flickr-box" class="grid_4 omega">
+                <h2><a href='http://www.flickr.com/groups/neuf/pool/'>Bilder fra flickr</a></h2>
                 <div id="flickr-images">
                     <ul id="flickr_feed"></ul>
                 </div>
@@ -49,7 +47,7 @@
 
 	<div id="kolofon" class="grid_12">
 
-            <span class="">Det Norske Studentersamfund | Slemdalsveien 15, 0369 Oslo | Webdesign av <a href="http://edb.neuf.no">EDB-gjengen</a> og Designerne i <a href="http://studentersamfundet.no/association/kommunikasjonsavdelingen/">KAK</a>.</span>
+            <span>Det Norske Studentersamfund | Slemdalsveien 15, 0369 Oslo | Webdesign av <a href="http://edb.neuf.no">EDB-gjengen</a> og Designerne i <a href="http://studentersamfundet.no/association/kommunikasjonsavdelingen/">KAK</a>.</span>
 
 	</div> <!-- #kolofon -->
 
