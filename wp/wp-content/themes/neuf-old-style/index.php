@@ -8,7 +8,7 @@
 
 				<div class="grid_10">
 
-					<h1 class="entry-title"><?php the_title(); ?></h1>
+					<h1 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 
 	<?php
 		$attachments = get_posts( array( 'post_type' => 'attachment' , 'numberposts' => -1 , 'post_status' => null , 'post_parent' => $post->ID ) );
@@ -37,7 +37,8 @@
 
 		<?php endwhile; endif; ?>
 
-<?php //get_sidebar(); ?>
+
+<?php posts_nav_link(); ?>
 
 </div> <!-- #content -->
 
