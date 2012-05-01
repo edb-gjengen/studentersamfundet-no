@@ -59,6 +59,7 @@ wp_enqueue_script('eventProgram');
 
     <div id="program-calendar">
         <form class="event-picker" data-bind="foreach: eventTypes">
+            <
             <input type="checkbox" data-bind="value: name, checked: checked, attr: { id: id }">
             <label data-bind="attr: { for: id }"><img data-bind="attr: { src: icon }"></label>
         </form>

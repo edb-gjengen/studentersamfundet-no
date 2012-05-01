@@ -105,17 +105,33 @@ $(document).ready(function () {
                 return _.contains(checkedEvents, event.eventType);
             });
         }, this);
-
-        this.hideElement = function(elem) {
-            if (elem.nodeType === 1) $(elem).slideUp(function() { $(elem).remove(); })
-        }
     }
 
     var EventType = function(name) {
         this.name = name;
         this.checked = ko.observable(false);
-        this.icon = "../wp/wp-content/themes/neuf-old-style/img/ikon_" + name + "-50x50.png";
+        this.icon = imagePath(name);
         this.id = "event_type_" + name;
+    }
+
+    function imagePath(eventTypeName) {
+        var imageDir = "../wp/wp-content/themes/neuf-old-style/img/";
+        var imageMap = {
+            default: imageDir+'tilesvisning.png',
+            debatt: imageDir+'ikon_debatt-50x50.png',
+            fest: imageDir+'ikon_fest-50x50.png',
+            film: imageDir+'ikon_film-50x50.png',
+            foredrag: imageDir+'ikon_foredrag-50x50.png',
+            konsert: imageDir+'ikon_konsert-50x50.png',
+            quiz: imageDir+'ikon_quiz-50x50.png',
+            teater: imageDir+'ikon_teater-50x50.png'
+        }
+
+        if (_.has(imageMap, eventTypeName.toLowerCase())) {
+            return imageMap[eventTypeName];
+        }
+
+        return imageMap["default"];
     }
 
     //Fill view model with empty days that will be filled as events are fetched from the server
