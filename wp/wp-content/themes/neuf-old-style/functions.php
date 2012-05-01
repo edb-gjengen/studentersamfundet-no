@@ -54,8 +54,8 @@ add_action( 'wp_enqueue_scripts' , 'neuf_enqueue_scripts' );
  * Denies uploads of images smaller (in pixels) than given width and height values.
  */
 function neuf_handle_upload_prefilter( $file ) {
-	$width = 1024;
-	$height = 512;
+	$width  = 640;
+	$height = 480;
 
 	$img = getimagesize( $file['tmp_name'] );
 	$minimum = array( 'width' => $width , 'height' => $height );
@@ -71,7 +71,7 @@ function neuf_handle_upload_prefilter( $file ) {
 		return $file; 
 }
 // Commenting out for testing purposes
-// add_filter( 'wp_handle_upload_prefilter' , 'neuf_handle_upload_prefilter' );
+add_filter( 'wp_handle_upload_prefilter' , 'neuf_handle_upload_prefilter' );
 
 /**
  * Adds more semantic classes to WP's post_class.
