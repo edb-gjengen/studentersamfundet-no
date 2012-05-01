@@ -18,7 +18,7 @@ $meta_query = array(
 $args = array(
 	'post_type'      => 'event',
 	'meta_query'     => array($meta_query),
-	'posts_per_page' => 50,
+	'posts_per_page' => 100,
 	'orderby'        => 'meta_value_num',
 	'meta_key'       => '_neuf_events_starttime',
 	'order'          => 'ASC'
@@ -38,7 +38,7 @@ print('<?xml version="1.0" encoding="UTF-8" ?>');
         <title>Program - Det Norske Studentersamfund</title>
         <description><![CDATA[Program på Det Norske Studentersamfund]]></description>
         <link>http://studentersamfundet.no/program/</link>
-        <atom:link href="http://studentersamfundet.no/rss/uio-program-feed/" rel="self" type="application/rss+xml" />
+        <atom:link href="http://studentersamfundet.no/syndikering/kommende-program/" rel="self" type="application/rss+xml" />
 
         <?php 
         if( $events->have_posts() ) : while ( $events->have_posts() ) : $events->the_post();
