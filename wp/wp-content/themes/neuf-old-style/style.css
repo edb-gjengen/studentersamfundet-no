@@ -315,31 +315,18 @@ header#site-header .site-title a {
 	overflow: auto;
 	color: #000;
 }
-#site-footer h2,
-#site-footer h2 a,
-#site-footer span.links a {
-	color: #fff;
-	font-family: Arvo,Georgia,serif;
-	font-size: 16px;
-	font-style: normal;
-	text-transform: uppercase;
-} 
-#site-footer span.links {
-	font-family: Arvo,Georgia,serif;
-	color: #fff;
-	font-weight: normal;
-}
-#site-footer .links {
-	font-size: 16px;
-	font-style: normal;
-	text-transform: uppercase;
-}
 #site-footer a {
-	font-weight: normal;
-	color: #fff;
+	color:#ffffff;
 }
-#site-footer p {
-	/*color: #000;*/
+#site-footer h2,
+#site-footer h2 a,
+#site-footer .links {
+	color:#ffffff;
+	font-family: Arvo,Georgia,serif;
+	font-weight: normal;
+	text-transform: uppercase;
+	font-style: normal;
+	font-size: 16px;
 }
 
 #flickr-images > ul {
@@ -351,11 +338,7 @@ header#site-header .site-title a {
 	float:left;
 	width:74px;
 }
-#fb-like-box {
-    /*text-align: center;*/
-}
 .fb-like-box {
-    /*background-color: #ffffff;*/
     overflow:hidden;
     height:170px;
 }
