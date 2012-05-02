@@ -288,15 +288,15 @@ function neuf_maybe_display_gallery() {
 		echo do_shortcode( '[gallery]' );
 }
 
-/**
- * @TODO Document this function.
- */
 function neuf_event_format_date($timestamp) {
 	return date_i18n('d/n', intval($timestamp));
 }
 
 /**
- * @TODO Document this function.
+ * Takes 2 date strings in $format.
+ * 
+ * Returns the difference in days * 2, for use in
+ * a grid based layout on the program page.
  */
 function neuf_event_day_gap_size($current_day,$previous_day) {
 	$format = '%Y-%m-%d';
@@ -307,7 +307,8 @@ function neuf_event_day_gap_size($current_day,$previous_day) {
 }
 
 /**
- * @TODO Document this function.
+ * Trims $text down to $length.
+ * If $text is truncated, then "[..]" is appended.
  */
 function trim_excerpt($text, $length) {
 	$org_length = strlen($text);
@@ -319,7 +320,7 @@ function trim_excerpt($text, $length) {
 }
 
 /**
- * @TODO Document this function.
+ * Replaces the matching $pattern with $replacement in the string $subject.
  */
 function linkify($subject, $pattern, $link) {
 	$replacement = '<a href="'.$link.'">[...]</a>';
