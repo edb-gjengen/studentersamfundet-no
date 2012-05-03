@@ -61,9 +61,10 @@ $(document).ready(function () {
                     programModel.checkedEvents.remove(eventTypeName);
                 }
 
-                programModel.eventTypeIsToggled(newValue, eventType);
+                console.log(programModel.checkedEvents())
             });
             programModel.eventTypes.push(eventType);
+            //programModel.checkedEvents.push(eventTypeName); //All checked as default
         });
 
         $('#load-spinner').hide();
@@ -114,6 +115,13 @@ $(document).ready(function () {
         this.checked = ko.observable(false);
         this.icon = imagePath(name);
         this.id = "event_type_" + name;
+        this.shouldDisplayAsChecked = ko.computed(function () {
+            if (programModel.checkedEvents().length === 0) {
+                return true;
+            }
+
+            return this.checked();
+        }, this);
     }
 
     function imagePath(eventTypeName) {
@@ -147,37 +155,7 @@ $(document).ready(function () {
 
     programModel.events = ko.observableArray();
     programModel.checkedEvents = ko.observableArray();
-
-    programModel.eventTypeIsToggled = function (newValue, eventType) {
-        console.log(newValue);
-        //This is ugly as shit
-        /*
-        var imgId = eventType.id  + "_img"
-        var imgSelector = "#" + imgId;
-        if ($(".category-chooser-item-img.checked").length === programModel.eventTypes().length) {
-            console.log($(".category-chooser-item-img.checked"));
-            console.log(programModel.eventTypes());
-            $(".category-chooser-item-img").each(function () {
-                if ($(this).attr("id") != imgId) {
-                    $(this).removeClass("checked");
-                    $(this).addClass("unchecked")
-                }
-            });
-        } else {
-            if (newValue) {
-                console.log("yeahhh");
-                console.log(imgSelector);
-                console.log($(imgSelector));
-                $(imgSelector).removeClass("unchecked");
-                $(imgSelector).addClass("checked");
-            } else {
-                $(imgSelector).removeClass("checked");
-                $(imgSelector).addClass("unchecked");
-            }
-        }
-        */
-
-    }
+    programModel.eventTypes = eventTypes;
 
     for (var i = 0; i < 5; i = i + 1) {
         var week = Date.today().add(i).weeks();
@@ -206,7 +184,6 @@ $(document).ready(function () {
     }
 
     programModel.weeks = nextWeeks;
-    programModel.eventTypes = eventTypes;
     programModel.days = days;
 
     ko.applyBindings(programModel);

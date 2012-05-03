@@ -780,7 +780,7 @@ img {
     filter:alpha(opacity=40); /* For IE8 and earlier */
 }
 
-.category-chooser-item label > img.hover {
+.category-chooser-item label > img:hover {
     opacity:0.6;
     filter:alpha(opacity=60); /* For IE8 and earlier */
 }

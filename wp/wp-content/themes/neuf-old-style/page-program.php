@@ -51,7 +51,7 @@ wp_enqueue_script('eventProgram');
                 <input class="program-category-chooser hidden" type="checkbox" data-bind="value: name, checked: checked, attr: { id: id }">
                 <label data-bind="attr: { for: id }">
                     <img class="category-chooser-item-img"
-                         data-bind="attr: { src: icon, id: id + '_img' }, css: { checked: checked }">
+                         data-bind="attr: { src: icon, id: id + '_img' }, css: { checked: shouldDisplayAsChecked }">
                     <span class="category-chooser-item-label" data-bind="text: name"></span>
                 </label>
             </div>
