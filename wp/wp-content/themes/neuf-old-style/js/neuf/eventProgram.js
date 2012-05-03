@@ -60,6 +60,8 @@ $(document).ready(function () {
                 else {
                     programModel.checkedEvents.remove(eventTypeName);
                 }
+
+                programModel.eventTypeIsToggled(newValue, eventType);
             });
             programModel.eventTypes.push(eventType);
         });
@@ -117,18 +119,18 @@ $(document).ready(function () {
     function imagePath(eventTypeName) {
         var imageDir = "../wp/wp-content/themes/neuf-old-style/img/";
         var imageMap = {
-            default: imageDir+'tilesvisning.png',
-            debatt: imageDir+'ikon_debatt-50x50.png',
-            fest: imageDir+'ikon_fest-50x50.png',
-            film: imageDir+'ikon_film-50x50.png',
-            foredrag: imageDir+'ikon_foredrag-50x50.png',
-            konsert: imageDir+'ikon_konsert-50x50.png',
-            quiz: imageDir+'ikon_quiz-50x50.png',
-            teater: imageDir+'ikon_teater-50x50.png'
+            "default": imageDir+'tilesvisning.png',
+            "debatt": imageDir+'ikon_debatt-50x50.png',
+            "fest": imageDir+'ikon_fest-50x50.png',
+            "film": imageDir+'ikon_film-50x50.png',
+            "foredrag": imageDir+'ikon_foredrag-50x50.png',
+            "konsert": imageDir+'ikon_konsert-50x50.png',
+            "quiz": imageDir+'ikon_quiz-50x50.png',
+            "teater": imageDir+'ikon_teater-50x50.png'
         }
 
         if (_.has(imageMap, eventTypeName.toLowerCase())) {
-            return imageMap[eventTypeName];
+            return imageMap[eventTypeName.toLowerCase()];
         }
 
         return imageMap["default"];
@@ -145,6 +147,37 @@ $(document).ready(function () {
 
     programModel.events = ko.observableArray();
     programModel.checkedEvents = ko.observableArray();
+
+    programModel.eventTypeIsToggled = function (newValue, eventType) {
+        console.log(newValue);
+        //This is ugly as shit
+        /*
+        var imgId = eventType.id  + "_img"
+        var imgSelector = "#" + imgId;
+        if ($(".category-chooser-item-img.checked").length === programModel.eventTypes().length) {
+            console.log($(".category-chooser-item-img.checked"));
+            console.log(programModel.eventTypes());
+            $(".category-chooser-item-img").each(function () {
+                if ($(this).attr("id") != imgId) {
+                    $(this).removeClass("checked");
+                    $(this).addClass("unchecked")
+                }
+            });
+        } else {
+            if (newValue) {
+                console.log("yeahhh");
+                console.log(imgSelector);
+                console.log($(imgSelector));
+                $(imgSelector).removeClass("unchecked");
+                $(imgSelector).addClass("checked");
+            } else {
+                $(imgSelector).removeClass("checked");
+                $(imgSelector).addClass("unchecked");
+            }
+        }
+        */
+
+    }
 
     for (var i = 0; i < 5; i = i + 1) {
         var week = Date.today().add(i).weeks();

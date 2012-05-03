@@ -21,18 +21,6 @@ wp_enqueue_script('eventProgram');
         opacity: 0.1;
     }
 
-    .event-picker > input[type=checkbox] {
-        display: none;
-    }
-
-    .event-picker input[type=checkbox] ~ label img {
-        opacity: 0.7;
-    }
-
-    .event-picker input[type=checkbox]:checked ~ label img {
-        opacity: 1;
-    }
-
 </style>
 
 <div align="center" id="load-spinner">
@@ -59,9 +47,14 @@ wp_enqueue_script('eventProgram');
 
     <div id="program-calendar">
         <form class="event-picker" data-bind="foreach: eventTypes">
-            <
-            <input type="checkbox" data-bind="value: name, checked: checked, attr: { id: id }">
-            <label data-bind="attr: { for: id }"><img data-bind="attr: { src: icon }"></label>
+            <div class="category-chooser-item">
+                <input class="program-category-chooser hidden" type="checkbox" data-bind="value: name, checked: checked, attr: { id: id }">
+                <label data-bind="attr: { for: id }">
+                    <img class="category-chooser-item-img"
+                         data-bind="attr: { src: icon, id: id + '_img' }, css: { checked: checked }">
+                    <span class="category-chooser-item-label" data-bind="text: name"></span>
+                </label>
+            </div>
         </form>
 
         <table class="grid_12">
