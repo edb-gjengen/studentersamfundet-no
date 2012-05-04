@@ -1,7 +1,8 @@
 <div id="student-media" class="grid_12">
 
 	<div id="ostv-latest" class="grid_8 alpha">
-		<?php get_template_part( 'latestvideo' , 'ostv' ); ?>
+		<div id="ostv-latest-video" class="grid_6 alpha"></div>
+		<div id="ostv-latest-description" class="grid_2 omega"></div>
 	</div> <!-- #ostv-latest -->
 
 	<div class="grid_4 omega">
