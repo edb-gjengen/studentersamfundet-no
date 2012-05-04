@@ -2,7 +2,7 @@
 
 		<div id="content" class="container_12">
 
-			<h1 class="page-title grid_12"><?php the_title(); ?></h1>
+			<h1 class="page-title grid_12"><?php neuf_page_title(); ?></h1>
 
 		<?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 			
@@ -17,8 +17,6 @@
 				</div> <!-- .grid_6 -->
 
 				<div class="grid_6">
-
-					<div class="vedlegg">
 
 					<?php the_post_thumbnail( 'six-column-slim' , array( 'style' => 'display:block;margin:auto;' ) ); ?>
 
