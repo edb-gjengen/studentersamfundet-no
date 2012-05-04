@@ -30,10 +30,6 @@
                         <a href="http://www.uio.no/" rel="nofollow"><img alt="Universitetet i Oslo eier Chateau Neuf" src="<?php bloginfo('stylesheet_directory'); ?>/img/sponsors/logo_black_uio.png" /></a>
                 </div>
 
-                <div id="sponsor-studio" class="sponsor">
-                        <a href="http://studio.studentersamfundet.no/" rel="nofollow"><img alt="Studentfestivalen i Oslo" src="<?php bloginfo('stylesheet_directory'); ?>/img/sponsors/studio2012_logo_black.png" /></a>
-                </div>
-
                 <div id="sposor-nrf" class="sponsor">
                 <a href="http://www.norskrockforbund.no/" rel="nofollow"><img alt="Norsk Rockforbund sponser Studentersamfundet" src="<?php bloginfo('stylesheet_directory'); ?>/img/sponsors/logo_black_nrf.png" /></a>
                 </div>
@@ -52,7 +48,18 @@
 	</div> <!-- #kolofon -->
 
 	<!-- Google Analytics -->
-	<script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www."); document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script><script type="text/javascript">try {var pageTracker = _gat._getTracker("UA-52914-1");pageTracker._trackPageview();} catch(err) {}</script>
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-52914-1']);
+          _gaq.push(['_setDomainName', 'studentersamfundet.no']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        </script>
 	<!-- end Google Analytics -->
 	</div>
 </footer> <!-- #site-footer -->
