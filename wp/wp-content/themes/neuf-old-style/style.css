@@ -261,6 +261,10 @@ header#site-header .site-title a {
 	border-left:26px solid #673337;
 }
 
+#student-media #twitter_feed {
+	overflow:hidden;
+}
+
 #student-media #twitter_feed_title img  {
 	display:inline-block;
 	width:80px;
@@ -404,9 +408,9 @@ h1,h2,h3,h4,h5,h6
 	text-decoration:none;
 }
 
-.entry-title {
+/*.entry-title {
 	font-size: 35px;
-}
+}*/
 h1 {
 	font-size: 35px;
 	font-weight:bold;
@@ -514,6 +518,47 @@ h6 {
 	font-style:italic;
 }
 
+/* table */
+.table {
+	width:100%;
+	border-collapse:collapse;
+	border-spacing: 0;
+        margin-bottom: 20px;
+}
+.table th {
+	text-align: left;
+}
+.table .date {
+	width:100px;
+}
+.table tr:nth-child(even) td,
+.table tr.alt td {
+	background-color: #F9F9F9;
+}
+.table tr.month td {
+	background-color: #FFF;
+}
+.table th, .table td {
+	padding-left:0px;
+	padding-right:0px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	line-height: 18px;
+	text-align: left;
+	border-top: 1px solid #DDD;
+}
+.table tr.month, .table tr.month td {
+	border: none;
+}
+
+.table tr.month td {
+	padding-top:25px;
+}
+
+.table tr.month:first-child td {
+	padding-top:0px
+}
+
 /* Forms */
 label {
 	cursor:pointer;
@@ -538,33 +583,47 @@ img {
 	margin-bottom:0;
 }
 
-/**********
- * Social *
- **********/
-#social-sharing .share-facebook,
-#social-sharing .share-twitter
-{
+/* Buttons */
+.btn {
+	font-family: Arial, sans-serif;
+	color: #666;
+	font-weight: bold;
+	font-size: 20px;
+	padding: 8px 15px;
+	border: none;
+	background: #e6e6e6 url('img/gradient.png') repeat-x bottom left;
+	margin: 30px 5px 20px 0;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 1);
+	border: 1px solid #bfbfbf;
 	display: inline-block;
+	text-decoration: none;
+	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+	-moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+	-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+	text-align: center;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	-moz-border-radius-topright: 3px;
+	-moz-border-radius-bottomright: 3px;
+	-webkit-border-top-right-radius: 3px;
+	-webkit-border-bottom-right-radius: 3px;
 }
 
-#social-sharing .share-facebook {
-	position: relative;
-	bottom: 3px;
-}
-#facebook-followers {
-    float:right;
-
-}
-#facebook-followers iframe {
-    height:260px !important;
+a.btn :visited,
+a.btn {
+	color: #666666;
 }
 
+.btn:hover {
+	background-color: #FF9E29;
+}
 
-/***********************************
- * Styles for individual templates *
- ***********************************/
-#featured {
-	position:relative;
+.btn:hover {
+	color: #ffffff;
+	text-decoration: none;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+	border-color: #cc7f21;
+	border-bottom-color: #a6671b;
 }
 
 /* Icons */
@@ -614,6 +673,35 @@ img {
 }
 
 /* End icons */
+
+/**********
+ * Social *
+ **********/
+#social-sharing .share-facebook,
+#social-sharing .share-twitter
+{
+	display: inline-block;
+}
+
+#social-sharing .share-facebook {
+	position: relative;
+	bottom: 3px;
+}
+#facebook-followers {
+	float:right;
+
+}
+#facebook-followers iframe {
+	height:260px !important;
+}
+
+
+/***********************************
+ * Styles for individual templates *
+ ***********************************/
+#featured {
+	position:relative;
+}
 
 .single-event .event-type,
 #featured article .event-type,
@@ -748,30 +836,30 @@ img {
 /* Program */
 
 /* Icons */
-.view-mode:hover {
+.page-program .view-mode:hover {
 	cursor:pointer;
-    opacity:0.8;
-    filter:alpha(opacity=80); /* For IE8 and earlier */
+	opacity:0.8;
+	filter:alpha(opacity=80); /* For IE8 and earlier */
 }
-.view-mode.marked {
-    opacity:1;
-    filter:alpha(opacity=100); /* For IE8 and earlier */
+.page-program .view-mode.marked {
+	opacity:1;
+	filter:alpha(opacity=100); /* For IE8 and earlier */
 }
-.view-mode {
-    opacity:0.4;
-    filter:alpha(opacity=40); /* For IE8 and earlier */
+.page-program .view-mode {
+	opacity:0.4;
+	filter:alpha(opacity=40); /* For IE8 and earlier */
 }
-.view-mode.list {
-    margin-left: 5px;
+.page-program .view-mode.list {
+	margin-left: 5px;
 }
 
-.category-chooser-item, .program-style-selector-item {
+.page-program .category-chooser-item, .program-style-selector-item {
 	display:inline-block;
 	margin:10px;
 }
 
-.category-chooser-item > label > span, 
-.program-style-selector-item > span {
+.page-program .category-chooser-item > label > span, 
+.page-program .program-style-selector-item > span {
 	display:block;
 	margin:auto;
 	text-align:center;
@@ -779,77 +867,44 @@ img {
         color: #666;
 }
 
-.category-chooser-item > label > img,
-.program-style-selector-item > img {
+.page-program .category-chooser-item > label > img,
+.page-program .program-style-selector-item > img {
 	display:block;
 	margin:auto;
 }
 
-.category-chooser-item > label > img.checked {
-    opacity:1.0;
-    filter:alpha(opacity=100); /* For IE8 and earlier */
+.page-program .category-chooser-item > label > img.checked {
+	opacity:1.0;
+	filter:alpha(opacity=100); /* For IE8 and earlier */
 }
 
-.category-chooser-item > label > img.unchecked {
-    opacity:0.4;
-    filter:alpha(opacity=40); /* For IE8 and earlier */
+.page-program .category-chooser-item > label > img.unchecked {
+	opacity:0.4;
+	filter:alpha(opacity=40); /* For IE8 and earlier */
 }
 
-.category-chooser-item > label > img.checked:hover {
-    opacity:0.8;
-    filter:alpha(opacity=80); /* For IE8 and earlier */
+.page-program .category-chooser-item > label > img.checked:hover {
+	opacity:0.8;
+	filter:alpha(opacity=80); /* For IE8 and earlier */
 }
 
-.category-chooser-item > label > img.unchecked:hover {
-    opacity:0.6;
-    filter:alpha(opacity=60); /* For IE8 and earlier */
+.page-program .category-chooser-item > label > img.unchecked:hover {
+	opacity:0.6;
+	filter:alpha(opacity=60); /* For IE8 and earlier */
 }
 
-/* table */
-.table {
-	width:100%;
-	border-collapse:collapse;
-	border-spacing: 0;
-        margin-bottom: 20px;
-}
-.table th {
-	text-align: left;
-}
-.table .date {
-	width:100px;
-}
-.table tr:nth-child(even) td,
-.table tr.alt td {
-	background-color: #F9F9F9;
-}
-.table tr.month td {
-	background-color: #FFF;
-}
-.table th, .table td {
-	padding-left:0px;
-	padding-right:0px;
-	padding-top: 8px;
-	padding-bottom: 8px;
-	line-height: 18px;
-	text-align: left;
-	border-top: 1px solid #DDD;
-}
-.table tr.month, .table tr.month td {
-	border: none;
-}
+/* Archives */
 
-.table tr.month td {
-	padding-top:25px;
-}
-
-.table tr.month:first-child td {
-	padding-top:0px
+.archive #content article {
+	padding-bottom:25px;
+	border-bottom:1px solid #E99835;
+	margin-bottom:25px;
 }
 
 /* Foreningene/Associations */
 
 .page-foreningene .association {
-    display: table-cell;
+	display: table-cell;
 	height: 200px;
 	width: 300px; /* grid_3 width + 15*2px margin */
 	margin: 0 15px;
@@ -862,45 +917,3 @@ img {
 	margin-bottom: 15px;
 }
 
-/* Buttons */
-.btn {
-    font-family: Arial, sans-serif;
-    color: #666;
-    font-weight: bold;
-    font-size: 20px;
-    padding: 8px 15px;
-    border: none;
-    background: #e6e6e6 url('img/gradient.png') repeat-x bottom left;
-    margin: 30px 5px 20px 0;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 1);
-    border: 1px solid #bfbfbf;
-    display: inline-block;
-    text-decoration: none;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
-    -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
-    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
-    text-align: center;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-    -moz-border-radius-topright: 3px;
-    -moz-border-radius-bottomright: 3px;
-    -webkit-border-top-right-radius: 3px;
-    -webkit-border-bottom-right-radius: 3px;
-}
-
-a.btn :visited,
-a.btn {
-    color: #666666;
-}
-
-.btn:hover {
-    background-color: #FF9E29;
-}
-
-.btn:hover {
-    color: #ffffff;
-    text-decoration: none;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-    border-color: #cc7f21;
-    border-bottom-color: #a6671b;
-}
