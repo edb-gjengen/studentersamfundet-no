@@ -292,11 +292,11 @@ header#site-header .site-title a {
 	text-align: center;
 	display: table-cell;
 	height: 120px;
-	width: 300px;
+	width: 400px;
 	vertical-align: middle;
 }
 #sponsors .sponsor img {
-	max-width: 290px;
+	max-width: 390px;
 	max-height: 90px;
 }
 

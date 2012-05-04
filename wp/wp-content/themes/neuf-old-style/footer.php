@@ -30,10 +30,6 @@
                         <a href="http://www.uio.no/" rel="nofollow"><img alt="Universitetet i Oslo eier Chateau Neuf" src="<?php bloginfo('stylesheet_directory'); ?>/img/sponsors/logo_black_uio.png" /></a>
                 </div>
 
-                <div id="sponsor-studio" class="sponsor">
-                        <a href="http://studio.studentersamfundet.no/" rel="nofollow"><img alt="Studentfestivalen i Oslo" src="<?php bloginfo('stylesheet_directory'); ?>/img/sponsors/studio2012_logo_black.png" /></a>
-                </div>
-
                 <div id="sposor-nrf" class="sponsor">
                 <a href="http://www.norskrockforbund.no/" rel="nofollow"><img alt="Norsk Rockforbund sponser Studentersamfundet" src="<?php bloginfo('stylesheet_directory'); ?>/img/sponsors/logo_black_nrf.png" /></a>
                 </div>
