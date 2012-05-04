@@ -307,12 +307,12 @@ function neuf_event_day_gap_size($current_day,$previous_day) {
 }
 
 /**
- * Trims $text down to $length.
+ * Trims $text down to $length words.
  * If $text is truncated, then "[..]" is appended.
  */
 function trim_excerpt($text, $length) {
 	$org_length = strlen($text);
-	$text = explode(" ", $text);
+	$text = explode(" ", $text); // word boundary
 	$text = array_slice($text, 0, $length);
 	$text = implode(" ", $text);
 	$shorter = $org_length != strlen($text) ? " [...]" : "";
