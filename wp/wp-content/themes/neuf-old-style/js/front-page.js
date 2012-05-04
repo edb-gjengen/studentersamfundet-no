@@ -27,6 +27,19 @@ function addTwitter() {
 
 }
 
+/*
+ *
+ *
+ *
+ * Dont min'd me. Just fcking with nikolark.
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
 $(document).ready(function(){
 	/* events */
     var events = $('#events');
