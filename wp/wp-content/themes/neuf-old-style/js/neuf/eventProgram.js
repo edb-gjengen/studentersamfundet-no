@@ -158,6 +158,7 @@ $(document).ready(function () {
     var programModel = {};
 
     var days = {};
+    
     //Next five weeks
     var nextWeeks = ko.observableArray();
 
@@ -176,12 +177,9 @@ $(document).ready(function () {
     for (var i = 0; i < 5; i = i + 1) {
         var week = new Date(startDate).add(i).weeks();
 
-        //Make sure the week Date object is set to the monday of the current week
         if (!week.is().monday()) {
             week = week.previous().monday();
         }
-
-        //...or to tomorrow if today is sunday
 
         var weekDays = ko.observableArray();
         for (var j = 0; j < 6; j = j + 1) { //Ignore sundays
