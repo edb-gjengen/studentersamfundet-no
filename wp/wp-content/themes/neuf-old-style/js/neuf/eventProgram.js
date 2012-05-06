@@ -64,6 +64,7 @@ $(document).ready(function () {
             programModel.eventTypes.push(eventType);
         });
 
+
         $('#load-spinner').hide();
         $('#content').fadeIn();
     }
@@ -103,17 +104,21 @@ $(document).ready(function () {
         this.events = ko.observableArray(events);
         this.programModel = programModel;
 
-        var that = this;
         this.filteredEvents = ko.computed(function () {
-            var checkedEvents = that.programModel.checkedEvents();
+            var checkedEvents = this.programModel.checkedEvents();
 
             if (checkedEvents.length == 0) {
-                return that.events();
+                return this.events();
             }
 
-            return ko.utils.arrayFilter(that.events(), function (event) {
+            return ko.utils.arrayFilter(this.events(), function (event) {
                 return _.contains(checkedEvents, event.eventType);
             });
+        }, this);
+
+        this.hasNoDisplayableEvents = ko.computed(function () {
+            console.log(this.filteredEvents().length === 0);
+            return this.filteredEvents().length === 0;
         }, this);
     }
 
@@ -164,6 +169,7 @@ $(document).ready(function () {
     programModel.checkedEvents = ko.observableArray();
     programModel.eventTypes = eventTypes;
 
+    
     for (var i = 0; i < 5; i = i + 1) {
         var week = Date.today().add(i).weeks();
 
@@ -171,6 +177,8 @@ $(document).ready(function () {
         if (!week.is().monday()) {
             week = week.previous().monday();
         }
+
+        //...or to tomorrow if today is sunday
 
         var weekDays = ko.observableArray();
         for (var j = 0; j < 6; j = j + 1) { //Ignore sundays
@@ -193,16 +201,25 @@ $(document).ready(function () {
     programModel.weeks = nextWeeks;
     programModel.days = days;
 
-    ko.bindingHandlers.fadeVisible = {
+    ko.bindingHandlers.fadeElement = {
         init: function(element, valueAccessor) {
-            // Initially set the element to be instantly visible/hidden depending on the value
             var value = valueAccessor();
-            $(element).toggle(ko.utils.unwrapObservable(value)); // Use "unwrapObservable" so we can handle values that may or may not be observable
+            $(element).toggle(ko.utils.unwrapObservable(value));
         },
         update: function(element, valueAccessor) {
-            // Whenever the value subsequently changes, slowly fade the element in or out
             var value = valueAccessor();
-            ko.utils.unwrapObservable(value) ? $(element).fadeIn() : $(element).fadeOut();
+            ko.utils.unwrapObservable(value) ? $(element).slideDown() : $(element).slideUp();
+        }
+    };
+
+        ko.bindingHandlers.fadePig = {
+        init: function(element, valueAccessor) {
+            var value = valueAccessor();
+            $(element).toggle(ko.utils.unwrapObservable(value));
+        },
+        update: function(element, valueAccessor) {
+            var value = valueAccessor();
+            ko.utils.unwrapObservable(value) ? $(element).slideDown() : $(element).slideUp();
         }
     };
 

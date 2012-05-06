@@ -65,17 +65,17 @@ wp_enqueue_script('eventProgram');
             <tbody data-bind="foreach: weeks">
                 <tr class="program-6days" data-bind="foreach: days">
                     <td class="cell day grid_2">
-                        <div><!--data-bind="visible: filteredEvents().length > 0">-->
+                        <div>
                             <h2 data-bind="text: dateAsHeader"></h2>
                             <div data-bind="foreach: events">
-                                 <div class="event" data-bind="fadeVisible: visible">
+                                 <div class="event" data-bind="fadeElement: visible">
                                     <img data-bind="attr: { src: thumbnailURI }">
                                     <span data-bind="text: time"></span>
                                     <a data-bind="attr: { href: uri, title: title }, text: title"></a>
                                 </div>
                             </div>
                         </div>
-                        <div data-bind="visible: filteredEvents().length === 0">
+                        <div data-bind="fadePig: hasNoDisplayableEvents">
                             <img data-bind="attr: { src: '../wp/wp-content/themes/neuf-old-style/img/pig.png' }" class="table-image">
                         </div>
                     </td>
