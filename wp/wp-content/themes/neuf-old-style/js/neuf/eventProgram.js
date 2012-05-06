@@ -65,6 +65,7 @@ $(document).ready(function () {
         });
 
 
+        ko.applyBindings(programModel);
         $('#load-spinner').hide();
         $('#content').fadeIn();
     }
@@ -117,8 +118,17 @@ $(document).ready(function () {
         }, this);
 
         this.hasNoDisplayableEvents = ko.computed(function () {
-            console.log(this.filteredEvents().length === 0);
-            return this.filteredEvents().length === 0;
+            var checkedEvents = this.programModel.checkedEvents();
+
+            if (checkedEvents.length == 0) {
+                return this.events().length == 0;
+            }
+            
+            var filtered = ko.utils.arrayFilter(this.events(), function (event) {
+                return _.contains(checkedEvents, event.eventType);
+            });
+
+            return filtered.length == 0;
         }, this);
     }
 
@@ -217,7 +227,7 @@ $(document).ready(function () {
         }
     };
 
-        ko.bindingHandlers.fadePig = {
+   ko.bindingHandlers.fadePig = {
         init: function(element, valueAccessor) {
             var value = valueAccessor();
             $(element).toggle(ko.utils.unwrapObservable(value));
@@ -228,7 +238,5 @@ $(document).ready(function () {
         }
     };
 
-
-    ko.applyBindings(programModel);
     getEvents(programModel);
 });
