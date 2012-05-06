@@ -169,9 +169,14 @@ $(document).ready(function () {
     programModel.checkedEvents = ko.observableArray();
     programModel.eventTypes = eventTypes;
 
-    
+    if (Date.today().is().sunday()) {
+        startDate = Date.today().add(1).day();
+    }
+    else {
+        startDate = Date.today();
+    }
     for (var i = 0; i < 5; i = i + 1) {
-        var week = Date.today().add(i).weeks();
+        var week = new Date(startDate).add(i).weeks();
 
         //Make sure the week Date object is set to the monday of the current week
         if (!week.is().monday()) {
@@ -183,11 +188,11 @@ $(document).ready(function () {
         var weekDays = ko.observableArray();
         for (var j = 0; j < 6; j = j + 1) { //Ignore sundays
             var thisDay;
-            if (Date.today().is().monday()) {
-                thisDay = Date.today().add(i).weeks().add(j).days();
+            if (new Date(startDate).is().monday()) {
+                thisDay = new Date(startDate).add(i).weeks().add(j).days();
             }
             else {
-                thisDay = Date.today().previous().monday().add(i).weeks().add(j).days()
+                thisDay = new Date(startDate).previous().monday().add(i).weeks().add(j).days()
             }
             var dayId = dateToId(thisDay);
             var day = new Day(dayId, neuf.util.capitalize(thisDay.toString("dddd d/M")), [], programModel);
