@@ -75,7 +75,7 @@ $(document).ready(function () {
         this.title = rawEvent.title;
         this.author = rawEvent.author;
         this.content = rawEvent.content;
-        this.uri = rawEvent.uri;
+        this.url = rawEvent.url;
         this.startTime = new Date(parseInt(rawEvent.custom_fields._neuf_events_starttime[0]) * 1000);
         this.time = this.startTime.toString("HH:mm");
         this.endTime = new Date(parseInt(rawEvent.custom_fields._neuf_events_endtime[0]) * 1000);
@@ -104,18 +104,6 @@ $(document).ready(function () {
         this.dateAsHeader = dateAsHeader;
         this.events = ko.observableArray(events);
         this.programModel = programModel;
-
-        this.filteredEvents = ko.computed(function () {
-            var checkedEvents = this.programModel.checkedEvents();
-
-            if (checkedEvents.length == 0) {
-                return this.events();
-            }
-
-            return ko.utils.arrayFilter(this.events(), function (event) {
-                return _.contains(checkedEvents, event.eventType);
-            });
-        }, this);
 
         this.hasNoDisplayableEvents = ko.computed(function () {
             var checkedEvents = this.programModel.checkedEvents();
@@ -217,17 +205,6 @@ $(document).ready(function () {
     programModel.days = days;
 
     ko.bindingHandlers.fadeElement = {
-        init: function(element, valueAccessor) {
-            var value = valueAccessor();
-            $(element).toggle(ko.utils.unwrapObservable(value));
-        },
-        update: function(element, valueAccessor) {
-            var value = valueAccessor();
-            ko.utils.unwrapObservable(value) ? $(element).slideDown() : $(element).slideUp();
-        }
-    };
-
-   ko.bindingHandlers.fadePig = {
         init: function(element, valueAccessor) {
             var value = valueAccessor();
             $(element).toggle(ko.utils.unwrapObservable(value));

@@ -71,11 +71,11 @@ wp_enqueue_script('eventProgram');
                                  <div class="event" data-bind="fadeElement: visible">
                                     <img data-bind="attr: { src: thumbnailURI }">
                                     <span data-bind="text: time"></span>
-                                    <a data-bind="attr: { href: uri, title: title }, text: title"></a>
+                                    <a data-bind="attr: { href: url, title: title }, text: title"></a>
                                 </div>
                             </div>
                         </div>
-                        <div data-bind="fadePig: hasNoDisplayableEvents">
+                        <div data-bind="fadeElement: hasNoDisplayableEvents">
                             <img data-bind="attr: { src: '../wp/wp-content/themes/neuf-old-style/img/pig.png' }" class="table-image">
                         </div>
                     </td>
