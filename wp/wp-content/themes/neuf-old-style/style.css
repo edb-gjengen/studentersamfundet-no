@@ -59,8 +59,7 @@ body.dns {
 }
 header#site-header,
 footer#site-footer {
-	background-color:#E99835;
-	background-color:hsl(33,80%,56%);
+	background-color:#000000;
 }
 header#site-header {
 	height:90px;
@@ -72,16 +71,28 @@ header#site-header {
 header#site-header .site-title {
 	z-index:999;
 	width:570px;
-	height:67px;
-	margin-top:11px;
+	height:100px;
 }
-header#site-header .site-title a {
-	background: url('img/logo-web.png') no-repeat;
-	display:block;
-	width:100%;
+header#site-header .site-title .betong {
+	background: url('img/betong_140px.png') no-repeat;
+	display:inline-block;
+	width:340px;
 	height:100%;
 	margin-top:0px;
 	text-indent:-9999px;
+        position:relative;
+        left:-14px;
+}
+header#site-header .site-title .dns {
+	background: url('img/dns_black.png') no-repeat;
+	display:inline-block;
+	width:222px;
+	height:100%;
+	margin-top:0px;
+	text-indent:-9999px;
+        position: relative;
+        top: 72px;
+        left: 0px;
 }
 #facebook-followers {
 	float:right;
@@ -116,7 +127,7 @@ header#site-header .site-title a {
 	border-right:1px solid rgb(255,255,225);
 	position:relative;
 }
-#menu .aapningstider li,
+#menu .social-icons li,
 #menu .sub-menu li {
 	border-right:none;
 	position: relative;
@@ -141,50 +152,20 @@ header#site-header .site-title a {
 }
 #menu li ul {
 }
-#menu .aapningstider li ul {
+#menu .social-icons li ul {
 	border-right:none;
 	min-width: 100%;
 }
-
-#menu .aapningstider li ul li {
-	padding:0 5%;
+#menu .social-icons {
+        margin: 0;
 }
-
-#menu .aapningstider {
-	margin:0;
-}
-
-#menu .aapningstider table {
-	text-align:left;
-	font-family:Arial,sans-serif;
-	font-size:12px;
-	font-weight:normal;
-	text-transform:none;
-	color:#fff;
-}
-#menu .aapningstider td.right {
-	padding-left: 10px;
-	text-align: right;
-}
-
-/*
-#menu .aapningstider > li {
-	background:transparent url('img/arrow-down.png') no-repeat center right;
-	padding-right:15px;
-}
-*/
-
-#menu .aapningstider > li:hover,
-#menu li:hover ul {
-	background:rgb(88,89,91);
-}
-
-#menu .aapningstider > li:hover ul table {
-	border-top:1px solid white;
-}
-#menu .aapningstider #bokkafeen_tider a {
-	padding: 0px;
-}
+#menu #facebook-icon {
+       padding-right: 8px;
+       padding-left: 8px;
+}/*
+#menu #twitter-icon {
+       padding-left: 4px;
+}*/
 
 /* Header slutt */
 
@@ -203,7 +184,7 @@ header#site-header .site-title a {
 
 .single-event .entry-meta {
 	display:inline-block;
-	border-bottom:1px solid #ff9e29;
+	border-bottom:1px solid #000000;
 	padding-bottom:15px;
 	margin-top:40px;
 }
@@ -216,7 +197,7 @@ header#site-header .site-title a {
 #student-media > *
 {
 	padding-top:15px;
-	border-top:1px solid #ff9e29;
+	border-top:1px solid #000000;
 }
 
 #student-media #nova-player {
@@ -313,7 +294,7 @@ header#site-header .site-title a {
 	padding-top: 25px;
 	clear: both;
 	overflow: auto;
-	color: #000;
+	color: #a0a0a0;
 }
 #site-footer a {
 	color:#ffffff;
@@ -340,7 +321,7 @@ header#site-header .site-title a {
 }
 .fb-like-box {
     overflow:hidden;
-    height:170px;
+    height:155px;
 }
 
 /* Footer slutt */
@@ -356,7 +337,7 @@ body, input, textarea,
 	color:#333333;
 }
 #digest_events h2 a {
-	color:#FF9E29;
+	color:#000000;
 }
 
 body, input, textarea {
@@ -404,7 +385,7 @@ h1,h2,h3,h4,h5,h6 {
 a,a:visited,
 h1,h2,h3,h4,h5,h6
 {
-	color: #ff9e29;
+	color: #E99835;
 	text-decoration:none;
 }
 
@@ -498,7 +479,7 @@ h6 {
 	display:inline-block;
 	width: 16px;
 	height: 16px;
-	background-color: #ff9e29;
+	background-color: #000000;
 	border-radius:8px;
 	vertical-align:middle;
 }
@@ -615,7 +596,7 @@ a.btn {
 }
 
 .btn:hover {
-	background-color: #FF9E29;
+	background-color: #000000;
 }
 
 .btn:hover {
@@ -631,7 +612,7 @@ a.btn {
 #featured article .event-type:before,
 #featured article.type-post h1:before {
 	content:'';
-	background:#ff9e29;
+	background:#000000;
 	border-radius:50%;
 	width:50px;
 	height:50px;
@@ -712,7 +693,7 @@ a.btn {
 	font-style:normal;
 	font-size:35px;
 	line-height:60px;
-	color:#ff9e29;
+	color:#000000;
 }
 
 #featured article h1 {
@@ -790,7 +771,7 @@ a.btn {
 }
 #featured #slidernav a span.circle {
 	content:'';
-	background:#ff9e29;
+	background: #E99835;
 	border-radius:50%;
 	width:15px;
 	height:15px;
@@ -825,7 +806,7 @@ a.btn {
 }
 .home #digest_news .post a.permalink:before {
 	content: '';
-	background: #FF9E29;
+	background: #000000;
 	border-radius: 50%;
 	width: 12px;
 	height: 12px;
@@ -897,7 +878,7 @@ a.btn {
 
 .archive #content article {
 	padding-bottom:25px;
-	border-bottom:1px solid #E99835;
+	border-bottom:1px solid #000000;
 	margin-bottom:25px;
 }
 

@@ -33,8 +33,9 @@
 	
 					<div id="access"><a href="#content">Gå direkte til innholdet</a></div>
 	
-					<div class="site-title grid_6">
-						<span><a href="<?php bloginfo('url') ?>/" title="<?php bloginfo('name') ?>" rel="home"><?php bloginfo('name') ?></a></span>
+					<div class="site-title grid_7">
+						<a href="<?php bloginfo('url') ?>/" title="<?php bloginfo('name') ?>" rel="home" class="betong"><?php bloginfo('name') ?></a>
+						<a href="http://studentersamfundet.no/" title="Det Norske Studentersamfund" class="dns">Det Norske Studentersamfund</a></span>
 					</div>
 
 <?php get_template_part( 'menu' ); ?>

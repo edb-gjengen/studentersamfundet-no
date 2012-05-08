@@ -8,14 +8,13 @@
                 <p>
                     Studentene i Oslo har sitt naturlige tilholdssted p&aring; Det Norske Studentersamfund, i hyggelige lokaler p&aring; Chateau Neuf &oslash;verst p&aring; Majorstuen. Her er det &aring;pent alle dager unntatt s&oslash;ndag, og enten man &oslash;nsker en tur i baren, p&aring; kaf&eacute;, p&aring; debatt, p&aring; konsert, teater eller kino, har man muligheten p&aring; Det Norske Studentersamfund.
                 </p>
-                    <span class="links"><a href="<?php bloginfo('url'); ?>/kart/">Kart</a> | <a href="<?php bloginfo('url'); ?>/kontakt/">Kontakt</a></span>
             </div> <!-- #footer-about -->
 
             <div id="fb-like-box" class="grid_4">
-                <div class="fb-like-box" data-href="https://www.facebook.com/betongoslo" data-width="315" data-height="285" data-show-faces="true" data-stream="false" data-header="false" data-border-color="#e89735"></div>
+                <div class="fb-like-box" data-href="https://www.facebook.com/betongoslo" data-width="315" data-height="350" data-show-faces="true" data-stream="false" data-header="false" data-colorscheme="dark" data-border-color="#ffffff"></div>
             </div>
             <div id="flickr-box" class="grid_4 omega">
-                <h2><a href='http://www.flickr.com/photos/studentenesfotoklubb/tags/betong'>Bilder fra flickr</a></h2>
+                <h2><a href='http://www.flickr.com/photos/studentenesfotoklubb/tags/betong' target="_blank">Bilder fra flickr</a></h2>
                 <div id="flickr-images">
                     <ul id="flickr_feed"></ul>
                 </div>

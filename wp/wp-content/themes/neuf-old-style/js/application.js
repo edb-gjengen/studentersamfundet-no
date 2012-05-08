@@ -19,7 +19,7 @@ $(document).ready( function() {
      * $url = "http://api.flickr.com/services/feeds/groups_pool.gne?format=json&id=" . $groupid;
      * $url = "http://api.flickr.com/services/feeds/groups_pool.gne?id=1292860@N21&lang=en-us&format=json";
      */
-    var flickr_feed_url = 'http://api.flickr.com/services/feeds/groups_pool.gne?format=json&id=1292860@N21&jsoncallback=?';
+    var flickr_feed_url = 'http://api.flickr.com/services/feeds/photos_public.gne?id=48351899@N07&tags=betong&format=json&jsoncallback=?';
     $.getJSON(flickr_feed_url, function(result) {
         var html = "";
 
