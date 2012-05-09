@@ -111,7 +111,7 @@ table {
 		}
 
 		#info {
-			background:rgba(1,1,1,0.3);
+			background:rgba(256,256,256,0.3);
 			position:absolute;
 			bottom:0;
 			width:100%;
