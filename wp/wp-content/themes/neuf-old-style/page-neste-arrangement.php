@@ -38,7 +38,7 @@ if ( $events->have_posts() ) :
 ?>
 <?php while ( $events->have_posts() ) : $events->the_post(); ?>
 <?php
-	$bg = wp_get_attachment_image_src( get_post_thumbnail_id() );
+	$bg = wp_get_attachment_image_src( get_post_thumbnail_id() , 'full' );
 	$bg = $bg[0];
 ?>
 
@@ -111,7 +111,7 @@ table {
 		}
 
 		#info {
-			background:rgba(0,0,0,0.3);
+			background:rgba(1,1,1,0.3);
 			position:absolute;
 			bottom:0;
 			width:100%;
