@@ -32,20 +32,25 @@ $args['offset']	= get_query_var( 'page' ) - 1 >= 0 ? get_query_var( 'page' ) - 1
 
 $events = new WP_Query( $args );
 
-if ( $events->have_posts() ) :
-	$event_daycounter = 1;
-	$newday = true;
-?>
-<?php while ( $events->have_posts() ) : $events->the_post(); ?>
-<?php
-	$bg = wp_get_attachment_image_src( get_post_thumbnail_id() , 'full' );
-	$bg = $bg[0];
-?>
+if ($events->have_posts() ) : while ( $events->have_posts() ) : $events->the_post();
 
+$bg = wp_get_attachment_image_src( get_post_thumbnail_id() , 'extra-large' );
+$bg = $bg[0];
+
+
+$event_array = get_the_terms( $post->ID , 'event_type' );
+foreach ( $event_array as $event_type ) {
+	$post->event_types[] = $event_type->name;
+	$post->post_classes[] = 'event-type-' . $event_type->slug;
+}
+$post->event_types_comma = implode( ', ' , $post->event_types );
+
+?>
 <!doctype html>
 <html>
 <head>
 	<title>Snart på Studentersamfundet</title>
+	<link href='http://fonts.googleapis.com/css?family=Arvo:700,400italic' rel='stylesheet' type='text/css'>
 	<style media="screen" type="text/css">
 /**
  * reset
@@ -97,37 +102,63 @@ table {
 /**
  * styles
  */
-		html,body,#event {
-			width:100%;
-			height:100%;
-			position:relative;
-		}
+html,body,#event {
+	width:100%;
+	height:100%;
+	position:relative;
+	overflow:hidden;
+}
 
-		#event {
-			width:100%;
-			height:100%;
-			background-size:cover;
-			background-image:url('<?php echo $bg; ?>');
-		}
+#event {
+	width:100%;
+	height:100%;
+	background-size:cover;
+	background-image:url('<?php echo $bg; ?>');
+	background-position:center;
+	background-attachment:static;
+	color:white;
+	text-shadow:black 0 0 14px;
+	font-family:Arial,Helvetica,sans;
+}
 
-		#info {
-			background:rgba(256,256,256,0.3);
-			position:absolute;
-			bottom:0;
-			width:100%;
-text-align:center;
-		}
+#title,#timeplace,#price {
+	position:absolute;
+	bottom:0;
+	padding-bottom:30px;
+}
+#title {
+	width:100%;
+	text-align:center;
+}
+#timeplace {
+	left:30px;
+}
+#price{
+	right:30px;
+}
+h1 {
+	max-width:60%;
+	margin:auto;
+	font-size:32px;
+	font-family:Arvo;
+}
 		
 	</style>
 </head>
 <body>
 
 	<div id="event">
-		<div id="info">
+		<div id="title">
+			<small id="eventtypes"><?php echo( $post->event_types_comma ); ?></small>
 			<h1><?php the_title(); ?></h1>
+		</div>
+		<div id="timeplace">
 			<p id="loc"><?php echo( $post->neuf_event_venue = get_post_meta(get_the_ID(), '_neuf_events_venue',true) ); ?></p>
-			<p id="time"><?php echo( ucfirst( date_i18n( 'l G.i' , $post->neuf_event_venue = get_post_meta(get_the_ID(), '_neuf_events_starttime',true) ) ) ); ?></p>
-		</div> <!-- #info -->
+			<p id="time"><?php echo( ucfirst( date_i18n( 'l \k\l G.i' , $post->neuf_event_venue = get_post_meta(get_the_ID(), '_neuf_events_starttime',true) ) ) ); ?></p>
+		</div>
+		<div id="price">
+			<p><?php echo ($price = neuf_get_price( $post )) ? $price : "Gratis"; ?></p>
+		</div>
 	</div> <!-- #event -->
 
 

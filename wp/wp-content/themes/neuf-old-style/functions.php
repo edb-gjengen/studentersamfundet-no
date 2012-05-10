@@ -10,6 +10,7 @@ add_image_size( 'four-column-thumb' , 370 , 150 , true );
 add_image_size( 'six-column-promo' , 570 , 322 , true );
 add_image_size( 'six-column-slim' , 570 , 161 , true );
 add_image_size( 'association-thumb' , 270 , 250, false );
+add_image_size( 'extra-large' , 1600 , 1600 , false);
 
 /**
  * Register navigation menus.
