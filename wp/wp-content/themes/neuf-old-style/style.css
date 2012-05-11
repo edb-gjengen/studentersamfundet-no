@@ -806,7 +806,7 @@ a.btn {
 }
 .home #digest_news .post a.permalink:before {
 	content: '';
-	background: #000000;
+	background: #E99835;
 	border-radius: 50%;
 	width: 12px;
 	height: 12px;

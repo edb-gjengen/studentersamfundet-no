@@ -28,10 +28,6 @@ wp_enqueue_script('program');
 <section id="content" class="container_12 hidden" role="main">
     <div class="grid_12">
         <h1 class="entry-title"><?php the_title(); ?></h1>
-
-        <?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
-            <div><?php the_content(); ?></div>
-        <?php endwhile; endif; ?>
     </div>
 	
 	<a id='image-dir' style="display:none;" href="<?php bloginfo('template_directory'); ?>/img/">You will hopefully not see this.</a>
@@ -59,9 +55,9 @@ wp_enqueue_script('program');
 /* From now and into the future */
 $meta_query = array(
 	'key'     => '_neuf_events_starttime',
-	'value'   => date( 'U' , strtotime( '-8 hours' )),  // start
+	'value'   => date( 'U' , strtotime( '16 hours' )),  // start
 	'type'    => 'numeric',
-	'compare' => '>'
+	'compare' => '<'
 );
 
 $args = array(
@@ -70,7 +66,7 @@ $args = array(
 	'posts_per_page' => 50,
 	'orderby'        => 'meta_value_num',
 	'meta_key'       => '_neuf_events_starttime',
-	'order'          => 'ASC'
+	'order'          => 'DESC'
 );
 
 $events = new WP_Query( $args );
@@ -186,9 +182,9 @@ if ( $events->have_posts() ) :
 <?php
 $meta_query = array(
 	'key'     => '_neuf_events_starttime',
-	'value'   => date( 'U' , strtotime( '-8 hours' )),  // start
+	'value'   => date( 'U' , strtotime( '16 hours' )),  // start
 	'type' => 'numeric',
-	'compare' => '>'
+	'compare' => '<'
 );
 
 $args = array(
@@ -197,7 +193,7 @@ $args = array(
 	'posts_per_page' => 150,
 	'orderby'        => 'meta_value_num',
 	'meta_key'       => '_neuf_events_starttime',
-	'order'          => 'ASC'
+	'order'          => 'DESC'
 );
 
 $events = new WP_Query( $args );
