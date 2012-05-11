@@ -4,9 +4,9 @@
         <div class="grid_12">
 
             <div id="footer-about" class="grid_4 alpha">
-                <h2>Det Norske Studentersamfund</h2>
+                <h2>Konsertforeningen Betong</h2>
                 <p>
-                    Studentene i Oslo har sitt naturlige tilholdssted p&aring; Det Norske Studentersamfund, i hyggelige lokaler p&aring; Chateau Neuf &oslash;verst p&aring; Majorstuen. Her er det &aring;pent alle dager unntatt s&oslash;ndag, og enten man &oslash;nsker en tur i baren, p&aring; kaf&eacute;, p&aring; debatt, p&aring; konsert, teater eller kino, har man muligheten p&aring; Det Norske Studentersamfund.
+                Konsertforeningen Betong er ansvarlige for konsertdriften på Det Norske Studentersamfund i Oslo, også kjent som Chateau Neuf. Vi disponerer konsertscenene Betong og Klubbscenen, to av byens største og beste av sitt slag. Tidligere har blant annet White Stripes, Ramones, Pearl Jam, Frank Zappa, Xzibit og Sigur Rós gjestet Det Norske Studentersamfund.
                 </p>
             </div> <!-- #footer-about -->
 

@@ -21,13 +21,14 @@
 
 	<body <?php neuf_body_class(); ?>>
             <div id="fb-root"></div>
-                <script>(function(d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) return;
-                    js = d.createElement(s); js.id = id;
-                    js.src = "//connect.facebook.net/nb_NO/all.js#xfbml=1&appId=220213643760";
-                    fjs.parentNode.insertBefore(js, fjs);
-                    }(document, 'script', 'facebook-jssdk'));</script>
+            <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/nb_NO/all.js#xfbml=1&appId=220213643760";
+                fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+                <div id="site-topbar"><a href="http://studentersamfundet.no/" title="Det Norske Studentersamfund" class="topbar-logo">Det Norske Studentersamfund</a></div>
 		<header id="site-header">
 			<div class="container_12" style="margin-left:auto;margin-right:auto">
 	
@@ -35,7 +36,7 @@
 	
 					<div class="site-title grid_7">
 						<a href="<?php bloginfo('url') ?>/" title="<?php bloginfo('name') ?>" rel="home" class="betong"><?php bloginfo('name') ?></a>
-						<a href="http://studentersamfundet.no/" title="Det Norske Studentersamfund" class="dns">Det Norske Studentersamfund</a></span>
+						</span>
 					</div>
 
 <?php get_template_part( 'menu' ); ?>
