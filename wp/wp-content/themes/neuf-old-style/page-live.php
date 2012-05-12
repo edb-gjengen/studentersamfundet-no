@@ -8,7 +8,7 @@
 
         <div id="flowplayer" class="grid_8" style="background-color:black; color:white;margin-bottom:20px;">
             <!-- Stream URL -->
-            <a href="http://porter.streaming.neuf.no:8800/live/" style="width:792px;height:576px;display:block;" id="player"></a> 
+            <a href="http://porter.streaming.neuf.no:8800/live/" style="width:792px;height:432px;display:block;" id="player"></a> 
             <script src="<?php bloginfo('stylesheet_directory'); ?>/flowplayer-3.2.6.min.js"></script>
             <script type="text/javascript"> 
                     $(function(){
