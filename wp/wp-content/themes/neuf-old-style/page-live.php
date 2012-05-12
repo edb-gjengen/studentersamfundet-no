@@ -6,12 +6,13 @@
     <div class="grid_12"><h1><?php the_title(); ?></h1><?php the_content(); ?></div>
 <?php endwhile; ?>
 
-        <div id="flowplayer" class="grid_8" style="background-color:black; color:white;">
+        <div id="flowplayer" class="grid_8" style="background-color:black; color:white;margin-bottom:20px;">
             <!-- Stream URL -->
-            <a href="http://amiga.neuf.no:8800/Chomsky_2011_Vimeo-SD-med.mp4" style="width:792px;height:576px;display:block;" id="player"></a> 
+            <a href="http://porter.streaming.neuf.no:8800/live/" style="width:792px;height:576px;display:block;" id="player"></a> 
+            <script src="<?php bloginfo('stylesheet_directory'); ?>/flowplayer-3.2.6.min.js"></script>
             <script type="text/javascript"> 
                     $(function(){
-                        flowplayer("player", "flowplayer-3.2.7.swf");
+                        flowplayer("player", "<?php bloginfo('stylesheet_directory');?>/flowplayer-3.2.7.swf");
                     });
             </script> 
         </div> 
