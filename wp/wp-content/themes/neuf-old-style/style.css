@@ -301,12 +301,8 @@ header#site-header .site-title a {
 }
 
 #kolofon {
-	padding-top: 20px;
+	padding-top: 25px;
 	padding-bottom: 10px;
-	padding-left: 15px;
-	padding-right: 15px;
-	clear:both;
-	overflow:auto;
 }
 #site-footer {
 	margin-top: 20px;
