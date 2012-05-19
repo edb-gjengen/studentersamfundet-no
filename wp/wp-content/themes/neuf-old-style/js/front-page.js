@@ -10,9 +10,14 @@ function addTwitter() {
         jQuery.each(results, function(i) {
 			if (count-- > 0) {
 	            var id = results[i].id_str;
-   	         	/* relative tweet time */
+                var time = results[i].created_at.slice(4) /* without weekday */
+                /* relative tweet time */
+                moment.lang('en'); // parse english month name
+                var when = moment(time, "MMM DD HH:mm:ss Z YYYY");
+                moment.lang('nb'); // format in norwegian locale
+                var rel_when = when.fromNow();
    	        	/* Format tweet */
-   	        	jQuery('#twitter_feed').append('<p><span class="tweet_text">' + results[i].text + '</span><br /><a href="' + tweet_url + id + '">*</a> &bull; <a href="'+ reply_url + id +'">svar</a> &bull; <a href="'+ retweet_url + id +'">retweet</a></p>');
+   	        	jQuery('#twitter_feed').append('<p><span class="tweet_text">' + results[i].text + '</span><br /><a href="' + tweet_url + id + '">' + rel_when +'</a> &bull; <a href="'+ reply_url + id +'">svar</a> &bull; <a href="'+ retweet_url + id +'">retweet</a></p>');
 			}
         });
 
