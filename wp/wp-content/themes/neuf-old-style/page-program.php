@@ -145,7 +145,7 @@ if ( $events->have_posts() ) :
 				the_post_thumbnail ('two-column-thumb' );
 			}
 			?>
-			<p <?php echo $event_type_class;?>><?php echo date_i18n( 'H.i:' , get_post_meta( $post->ID , '_neuf_events_starttime' , true ) ); ?> <a href="<?php the_permalink(); ?>" title="Permanent lenke til <?php the_title(); ?>" <?php neuf_post_class(); ?>><?php echo the_title(); ?></a></p>
+			<p <?php echo $event_type_class;?>><?php echo date_i18n( 'H.i:' , get_post_meta( $post->ID , '_neuf_events_starttime' , true ) ); ?> <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" <?php neuf_post_class(); ?>><?php echo the_title(); ?></a></p>
 			<?php
 			$first_event = false;
 			continue;
@@ -170,7 +170,7 @@ if ( $events->have_posts() ) :
 			} ?>
 		<?php } else { ?>
 		<?php } ?>
-		<p <?php echo $event_type_class;?>><?php echo date_i18n( 'H.i:' , get_post_meta( $post->ID , '_neuf_events_starttime' , true ) ); ?> <a href="<?php the_permalink(); ?>" title="Permanent lenke til <?php the_title(); ?>" <?php neuf_post_class(); ?>><?php echo the_title(); ?></a></p>
+		<p <?php echo $event_type_class;?>><?php echo date_i18n( 'H.i:' , get_post_meta( $post->ID , '_neuf_events_starttime' , true ) ); ?> <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" <?php neuf_post_class(); ?>><?php echo the_title(); ?></a></p>
 		<?php
 		$first_week = false;
 		?>
@@ -261,7 +261,7 @@ if ( $events->have_posts() ) :
 		<?php }	?>
 			<tr class="day<?php echo $alt; ?>">
 				<td><?php echo $datel; ?></td>
-				<td><a href="<?php the_permalink(); ?>" title="Permanent lenke til <?php the_title(); ?>"><?php echo the_title(); ?></a></td>
+				<td><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php echo the_title(); ?></a></td>
 				<td><?php echo $price; ?></td>
 				<td <?php echo $event_type_class; ?>><?php echo $event_type_real; ?></td>
 				<td><?php echo $venue; ?></td>
