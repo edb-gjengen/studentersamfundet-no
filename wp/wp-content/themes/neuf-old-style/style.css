@@ -832,6 +832,11 @@ a.btn {
 	display: inline-block;
 	margin-right:7px;
 }
+.home #digest_news .when {
+    font-size:0.9em;
+    color:#aaa;
+}
+
 
 /* Program */
 
