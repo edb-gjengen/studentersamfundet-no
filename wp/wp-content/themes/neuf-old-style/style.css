@@ -138,13 +138,14 @@ header#site-header .site-title a {
 	z-index:9;
 }
 #menu li ul {
-	width:100%;
+	width: 150px;
 }
 #menu .aapningstider li ul {
 	border-right:none;
+	width: 166px;
 }
 
-#menu li ul li {
+#menu .aapningstider li ul li {
 	padding:0 5%;
 }
 
@@ -216,6 +217,11 @@ header#site-header .site-title a {
 	padding-top:15px;
 	border-top:1px solid #ff9e29;
 }
+
+#student-media #nova-player {
+	height:110px;
+}
+
 #student-media #nova-player h2 {
 	width:252px;
 	height:86px;
@@ -252,6 +258,25 @@ header#site-header .site-title a {
 	border-top:13px solid transparent;
 	border-bottom:13px solid transparent;
 	border-left:26px solid #673337;
+}
+
+#student-media #twitter_feed_title img  {
+	display:inline-block;
+	width:80px;
+	height:80px;
+}
+
+#student-media #twitter_feed_title a  {
+	display:inline-block;
+	vertical-align:top;
+}
+
+#student-media #twitter_feed_title_name {
+	display:inline-block;
+}
+
+#student-media #twitter_feed_title_name a {
+	display:block;
 }
 
 /* Hoveddel slutt */
@@ -766,6 +791,8 @@ img {
 	display:block;
 	margin:auto;
 	text-align:center;
+        font-size: 12px;
+        color: #666;
 }
 
 .category-chooser-item > label > img,
@@ -852,3 +879,45 @@ img {
 	margin-bottom: 15px;
 }
 
+/* Buttons */
+.btn {
+    font-family: Arial, sans-serif;
+    color: #666;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 8px 15px;
+    border: none;
+    background: #e6e6e6 url('img/gradient.png') repeat-x bottom left;
+    margin: 30px 5px 20px 0;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 1);
+    border: 1px solid #bfbfbf;
+    display: inline-block;
+    text-decoration: none;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    text-align: center;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    -moz-border-radius-topright: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -webkit-border-top-right-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+}
+
+a.btn :visited,
+a.btn {
+    color: #666666;
+}
+
+.btn:hover {
+    background-color: #FF9E29;
+}
+
+.btn:hover {
+    color: #ffffff;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+    border-color: #cc7f21;
+    border-bottom-color: #a6671b;
+}
