@@ -1,6 +1,7 @@
 <?php 
 get_header(); 
 wp_enqueue_script('program');
+wp_enqueue_script('eventProgram');
 ?>
 
 <!-- Category chooser: -->
@@ -24,6 +25,11 @@ wp_enqueue_script('program');
         display: none;
     }
 
+    .event-program-6days {
+        padding-top:15px;
+        border-top:1px solid #ff9e29;
+    }
+
 </style>
 
 <div align="center" id="load-spinner">
@@ -37,7 +43,7 @@ wp_enqueue_script('program');
 	
 	<a id='image-dir' style="display:none;" href="<?php bloginfo('template_directory'); ?>/img/">You will hopefully not see this.</a>
 	<form id="program-category-chooser" class="grid_10"></form>
-	<div id="program-style-selector" class="grid_2 hidden">
+	<div id="program-style-selector" class="grid_2">
 		<div class="program-style-selector-item">
 			<img class="view-mode tiles" src="<?php bloginfo('template_directory');?>/img/tilesvisning.png" onclick='showTiles();toggleActive("tiles");' title="Vis program i et rutenett"/>
 			<span>Rutenett</span>
@@ -48,7 +54,7 @@ wp_enqueue_script('program');
 		</div>
 	</div>
 
-    <div id="program-calendar">
+    <div id="program-calendar" class="grid_12 hidden">
         <form class="event-picker" data-bind="foreach: eventTypes">
             <div class="category-chooser-item">
                 <input class="program-category-chooser hidden" type="checkbox" data-bind="value: name, checked: checked, attr: { id: id }">
@@ -62,7 +68,7 @@ wp_enqueue_script('program');
 
         <table class="grid_12">
             <tbody data-bind="foreach: weeks">
-                <tr class="program-6days" data-bind="foreach: days">
+                <tr class="event-program-6days" data-bind="foreach: days">
                     <td class="cell day grid_2">
                         <div>
                             <h2 data-bind="text: dateAsHeader"></h2>

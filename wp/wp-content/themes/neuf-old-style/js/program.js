@@ -262,7 +262,7 @@ $(window).load(function(){
 	}
 
 	/* Only now can we really show them*/
-	/*$("#program-style-selector").removeClass('hidden');*/
+	$("#program-style-selector").removeClass('hidden');
 	$("#program_tiles").removeAttr('style');
 	$("#program_list").removeAttr('style');
 
