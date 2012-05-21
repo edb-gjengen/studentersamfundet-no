@@ -40,7 +40,7 @@ function toggleActive(mode) {
 }
 
 function showTiles() {
-	tiles = $("#program_tiles");
+	tiles = $("#program-calendar");
 	list = $("#program_list");
 
 	tiles.removeClass("hidden");
@@ -48,7 +48,7 @@ function showTiles() {
 }
 
 function showList() {
-	tiles = $("#program_tiles");
+	tiles = $("#program-calendar");
 	list = $("#program_list");
 
 	tiles.addClass("hidden");
@@ -263,7 +263,7 @@ $(window).load(function(){
 
 	/* Only now can we really show them*/
 	$("#program-style-selector").removeClass('hidden');
-	$("#program_tiles").removeAttr('style');
+	$("#program-calendar").removeAttr('style');
 	$("#program_list").removeAttr('style');
 
 	$("#load-spinner").addClass('hidden');
@@ -289,7 +289,7 @@ $(window).unload(function() {
 	}
 
 	/* Find what view the user was using last (tiles/list): */
-	var tiles = $("#program_tiles");
+	var tiles = $("#program-calendar");
 	var hasUsedList = tiles.hasClass('hidden');
 	sessionStorage.setItem('useList', hasUsedList);
 	sessionStorage.setItem('useTiles', !hasUsedList);
