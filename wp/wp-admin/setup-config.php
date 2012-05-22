@@ -44,10 +44,13 @@ define('WP_DEBUG', false);
 require_once(ABSPATH . WPINC . '/load.php');
 require_once(ABSPATH . WPINC . '/version.php');
 wp_check_php_mysql_versions();
+wp_unregister_GLOBALS();
 
 require_once(ABSPATH . WPINC . '/compat.php');
 require_once(ABSPATH . WPINC . '/functions.php');
 require_once(ABSPATH . WPINC . '/class-wp-error.php');
+require_once(ABSPATH . WPINC . '/formatting.php');
+wp_magic_quotes();
 
 if (!file_exists(ABSPATH . 'wp-config-sample.php'))
 	wp_die('Sorry, I need a wp-config-sample.php file to work from. Please re-upload this file from your WordPress installation.');
@@ -160,7 +163,7 @@ switch($step) {
 
 	// Validate $prefix: it can only contain letters, numbers and underscores
 	if ( preg_match( '|[^a-z0-9_]|i', $prefix ) )
-		wp_die( /*WP_I18N_BAD_PREFIX*/'<strong>ERROR</strong>: "Table Prefix" can only contain numbers, letters, and underscores.'/*/WP_I18N_BAD_PREFIX*/ );
+		wp_die( /*WP_I18N_BAD_PREFIX*/'<strong>FEIL</strong>: "Table Prefix" kan bare inneholde bokstaver, tall og understrek.'/*/WP_I18N_BAD_PREFIX*/ );
 
 	// Test the db connection.
 	/**#@+

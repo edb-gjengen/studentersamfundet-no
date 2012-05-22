@@ -10,9 +10,14 @@ function addTwitter() {
         jQuery.each(results, function(i) {
 			if (count-- > 0) {
 	            var id = results[i].id_str;
-   	         	/* relative tweet time */
+                var time = results[i].created_at.slice(4) /* without weekday */
+                /* relative tweet time */
+                moment.lang('en'); // parse english month name
+                var when = moment(time, "MMM DD HH:mm:ss Z YYYY");
+                moment.lang('nb'); // format in norwegian locale
+                var rel_when = when.fromNow();
    	        	/* Format tweet */
-   	        	jQuery('#twitter_feed').append('<p><span class="tweet_text">' + results[i].text + '</span><br /><a href="' + tweet_url + id + '">*</a> &bull; <a href="'+ reply_url + id +'">svar</a> &bull; <a href="'+ retweet_url + id +'">retweet</a></p>');
+   	        	jQuery('#twitter_feed').append('<p><span class="tweet_text">' + results[i].text + '</span><br /><a href="' + tweet_url + id + '">' + rel_when +'</a> &bull; <a href="'+ reply_url + id +'">svar</a> &bull; <a href="'+ retweet_url + id +'">retweet</a></p>');
 			}
         });
 
@@ -25,6 +30,34 @@ function addTwitter() {
         });
     });
 
+}
+function addVimeo() {
+    var username = 'ostvn';
+    var feed_url = "http://vimeo.com/api/v2/" + username + "/videos.json?callback=?";
+
+    $.getJSON(feed_url, function(videos) {
+        var latest = videos[0];
+        var latest_video = '<iframe src="http://player.vimeo.com/video/' + latest['id'] + '?title=0&amp;byline=0&amp;portrait=0" width="570" height="321" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen>\n</iframe>';
+        var description = '<h2><a href="http://ostv.no/">OSTV</a></h2>\n<h3>' + latest['title'] + '</h3>\n<p>' + truncate(latest['description'], 40) + '</p>';
+
+        $("#ostv-latest-description").html(description);
+        $("#ostv-latest-video").html(latest_video);
+    });
+}
+
+/**
+ * Truncate text down to length words.
+ * If text is truncated, then "[..]" is appended.
+ */
+function truncate(text, length) {
+	org_length = text.length;
+	text = text.split(" "); // word boundary
+	text = text.slice(0, length);
+	text = text.join(" ");
+    if(org_length != text.length) {
+        return text + " [...]";
+    }
+    return text;
 }
 
 $(document).ready(function(){
@@ -59,5 +92,6 @@ $(document).ready(function(){
             },
     });
 
-	addTwitter();	
+    addTwitter();	
+    addVimeo();
 });
