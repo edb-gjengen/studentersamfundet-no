@@ -58,7 +58,7 @@ wp_enqueue_script('eventProgram');
 	</div>
 
     <div id="program-calendar" style="display:none;">
-        <form class="event-picker grid_4 pull_2" data-bind="foreach: eventTypes">
+        <form class="event-picker grid_10 pull_2" data-bind="foreach: eventTypes">
             <div class="category-chooser-item">
                 <input class="program-category-chooser hidden" type="checkbox" data-bind="value: name, checked: checked, attr: { id: id }">
                 <label data-bind="attr: { for: id }">
@@ -257,7 +257,7 @@ if ( $events->have_posts() ) :
 
 ?>
 <div id="program_list" class="program" style="display:none;">
-    <form id="program-category-chooser" class="grid_4 pull_2"></form>
+    <form id="program-category-chooser" class="grid_10 pull_2"></form>
 
     <div class="grid_12">
         <table class="table">
