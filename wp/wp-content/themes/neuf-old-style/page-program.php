@@ -1,6 +1,7 @@
 <?php 
 get_header(); 
 wp_enqueue_script('program');
+wp_enqueue_script('eventProgram');
 ?>
 
 <!-- Category chooser: -->
@@ -19,6 +20,20 @@ wp_enqueue_script('program');
     .table-image {
         opacity: 0.1;
     }
+
+    .event:not(:first-child) > img {
+        display: none;
+    }
+
+    .event-program-6days {
+        padding-top:15px;
+        border-top:1px solid #ff9e29;
+    }
+
+    .float-right {
+        float: right;
+    }
+
 </style>
 
 <div align="center" id="load-spinner">
@@ -31,8 +46,7 @@ wp_enqueue_script('program');
     </div>
 	
 	<a id='image-dir' style="display:none;" href="<?php bloginfo('template_directory'); ?>/img/">You will hopefully not see this.</a>
-	<form id="program-category-chooser" class="grid_10"></form>
-	<div id="program-style-selector" class="grid_2 hidden">
+	<div id="program-style-selector" class="grid_2 push_10">
 		<div class="program-style-selector-item">
 			<img class="view-mode tiles" src="<?php bloginfo('template_directory');?>/img/tilesvisning.png" onclick='showTiles();toggleActive("tiles");' title="Vis program i et rutenett"/>
 			<span>Rutenett</span>
@@ -42,6 +56,41 @@ wp_enqueue_script('program');
 			<span>Liste</span>
 		</div>
 	</div>
+
+    <div id="program-calendar" style="display:none;">
+        <form class="event-picker grid_10 pull_2" data-bind="foreach: eventTypes">
+            <div class="category-chooser-item">
+                <input class="program-category-chooser hidden" type="checkbox" data-bind="value: name, checked: checked, attr: { id: id }">
+                <label data-bind="attr: { for: id }">
+                    <img class="category-chooser-item-img"
+                         data-bind="attr: { src: icon, id: id + '_img' }, css: { checked: shouldDisplayAsChecked }">
+                    <span class="category-chooser-item-label" data-bind="text: name"></span>
+                </label>
+            </div>
+        </form>
+
+        <table class="grid_12">
+            <tbody data-bind="foreach: weeks">
+                <tr class="event-program-6days" data-bind="foreach: days">
+                    <td class="cell day grid_2">
+                        <div>
+                            <h2 data-bind="text: dateAsHeader"></h2>
+                            <div data-bind="foreach: events">
+                                 <div class="event" data-bind="fadeElement: visible">
+                                    <img data-bind="attr: { src: thumbnailURI }">
+                                    <span data-bind="text: time"></span>
+                                    <a data-bind="attr: { href: url, title: title }, text: title"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-bind="fadeElement: hasNoDisplayableEvents">
+                            <img data-bind="attr: { src: '../wp/wp-content/themes/neuf-old-style/img/pig.png' }" class="table-image">
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 <?php
 /* Events with starttime including 8 hours up until 30 days from now. */
 //$meta_query = array(
@@ -85,6 +134,7 @@ if ( $events->have_posts() ) :
 	/* All posts */
 	?>
 	<div id="program_tiles" class="grid_12" style="display:none;">
+
 		<div class="program-6days">
 	<?php while ( $events->have_posts() ) : $events->the_post();
 		/* set previous day */
@@ -206,70 +256,74 @@ if ( $events->have_posts() ) :
 	/* All posts */
 
 ?>
-<div id="program_list" class="program grid_12" style="display:none;">
-	<table class="table">
-		<tbody>
-		<?php while ( $events->have_posts() ) : $events->the_post();
-		$date = get_post_meta( $post->ID , '_neuf_events_starttime' , true );
+<div id="program_list" class="program" style="display:none;">
+    <form id="program-category-chooser" class="grid_10 pull_2"></form>
 
-		$previous_month = $current_month;
-		$current_month = date_i18n( 'F' , $date);
-		$newmonth = $previous_month != $current_month;
+    <div class="grid_12">
+        <table class="table">
+            <tbody>
+            <?php while ( $events->have_posts() ) : $events->the_post();
+            $date = get_post_meta( $post->ID , '_neuf_events_starttime' , true );
 
-		$datel = date_i18n( 'l j/n' , $date);
-		($price = neuf_get_price( $post )) ? : $price = '-';
-		$venue = get_post_meta( $post->ID , '_neuf_events_venue' , true );
-		$ticket = get_post_meta( $post->ID , '_neuf_events_bs_url' , true );
-                $ticket = $ticket ? '<a href="'.$ticket.'">Kjøp billett</a>' : '';
-		/* event type class */
-		$event_array = get_the_terms( $post->ID , 'event_type' );
-		$event_types = array();
-		$event_types_real = array();
-		foreach ( $event_array as $event_type ) {
-			if ($event_type->parent === "0") {
-				$event_types[] = $event_type->name;
-			} else {
-				$id = (int)$event_type->parent;
-				$parent = get_term( $id, 'event_type' );
-				$event_types[] = $parent->name;
-			}
-			$event_types_real[] = $event_type->name;
-		}
-		$event_type_real = $event_types_real ? "".implode(", ", $event_types_real) : "";
-		$event_type_class = $event_types ? "class=\"".implode(" ", $event_types)."\"" : "";
-		
-		/* set current day */
-		$previous_day = $current_day;
-		$current_day = date_i18n( 'Y-m-d' , $date);
-		$newday = $previous_day != $current_day;
+            $previous_month = $current_month;
+            $current_month = date_i18n( 'F' , $date);
+            $newmonth = $previous_month != $current_month;
 
-		/* everything is everything is not everything if everything is nothing */
-		$alt = $alt == " alt" ? "" : " alt";
+            $datel = date_i18n( 'l j/n' , $date);
+            ($price = neuf_get_price( $post )) ? : $price = '-';
+            $venue = get_post_meta( $post->ID , '_neuf_events_venue' , true );
+            $ticket = get_post_meta( $post->ID , '_neuf_events_bs_url' , true );
+                    $ticket = $ticket ? '<a href="'.$ticket.'">Kjøp billett</a>' : '';
+            /* event type class */
+            $event_array = get_the_terms( $post->ID , 'event_type' );
+            $event_types = array();
+            $event_types_real = array();
+            foreach ( $event_array as $event_type ) {
+                if ($event_type->parent === "0") {
+                    $event_types[] = $event_type->name;
+                } else {
+                    $id = (int)$event_type->parent;
+                    $parent = get_term( $id, 'event_type' );
+                    $event_types[] = $parent->name;
+                }
+                $event_types_real[] = $event_type->name;
+            }
+            $event_type_real = $event_types_real ? "".implode(", ", $event_types_real) : "";
+            $event_type_class = $event_types ? "class=\"".implode(" ", $event_types)."\"" : "";
 
-		if($newmonth) { ?>
-			<tr class="month">
-				<td colspan="5"><h3><?php echo $current_month; ?></h3></td>
-			</tr>
-			<tr>
-				  <th class="date">Dato</th>
-				  <th>Arrangement</th>
-				  <th>CC</th>
-				  <th>Type</th>
-				  <th>Sted</th>
-				  <th>Billett</th>
-			</tr>
-		<?php }	?>
-			<tr class="day<?php echo $alt; ?>">
-				<td><?php echo $datel; ?></td>
-				<td><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php echo the_title(); ?></a></td>
-				<td><?php echo $price; ?></td>
-				<td <?php echo $event_type_class; ?>><?php echo $event_type_real; ?></td>
-				<td><?php echo $venue; ?></td>
-				<td><?php echo $ticket; ?></td>
-			</tr>
-		<?php endwhile; ?>
-		</tbody>
-	</table>
+            /* set current day */
+            $previous_day = $current_day;
+            $current_day = date_i18n( 'Y-m-d' , $date);
+            $newday = $previous_day != $current_day;
+
+            /* everything is everything is not everything if everything is nothing */
+            $alt = $alt == " alt" ? "" : " alt";
+
+            if($newmonth) { ?>
+                <tr class="month">
+                    <td colspan="5"><h3><?php echo $current_month; ?></h3></td>
+                </tr>
+                <tr>
+                      <th class="date">Dato</th>
+                      <th>Arrangement</th>
+                      <th>CC</th>
+                      <th>Type</th>
+                      <th>Sted</th>
+                      <th>Billett</th>
+                </tr>
+            <?php }	?>
+                <tr class="day<?php echo $alt; ?>">
+                    <td><?php echo $datel; ?></td>
+                    <td><a href="<?php the_permalink(); ?>" title="Permanent lenke til <?php the_title(); ?>"><?php echo the_title(); ?></a></td>
+                    <td><?php echo $price; ?></td>
+                    <td <?php echo $event_type_class; ?>><?php echo $event_type_real; ?></td>
+                    <td><?php echo $venue; ?></td>
+                    <td><?php echo $ticket; ?></td>
+                </tr>
+            <?php endwhile; ?>
+            </tbody>
+        </table>
+    </div>
 <?php endif; ?>
 </div>
 

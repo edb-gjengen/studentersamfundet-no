@@ -63,6 +63,9 @@ $(document).ready(function () {
             });
             programModel.eventTypes.push(eventType);
         });
+
+
+        ko.applyBindings(programModel);
         $('#load-spinner').hide();
         $('#content').fadeIn();
     }
@@ -72,18 +75,28 @@ $(document).ready(function () {
         this.title = rawEvent.title;
         this.author = rawEvent.author;
         this.content = rawEvent.content;
-        this.uri = rawEvent.uri;
+        this.url = rawEvent.url;
         this.startTime = new Date(parseInt(rawEvent.custom_fields._neuf_events_starttime[0]) * 1000);
         this.time = this.startTime.toString("HH:mm");
         this.endTime = new Date(parseInt(rawEvent.custom_fields._neuf_events_endtime[0]) * 1000);
         this.venue = rawEvent.custom_fields._neuf_events_venue[0];
         this.thumbnailURI = rawEvent.attachments.length > 0 ? rawEvent.attachments[0].images["two-column-thumb"].url : undefined;
         this.eventType = rawEvent.event;
+
+        this.visible = ko.computed(function () {
+            var checkedEvents = programModel.checkedEvents();
+
+            if (checkedEvents.length === 0) {
+                return true;
+            }
+
+            return _.contains(checkedEvents, this.eventType);
+        }, this);
     }
 
     var Week = function(id, days) {
         this.id = id;
-        this.days = days
+        this.days = days;
     }
 
     var Day = function (id, dateAsHeader, events, programModel) {
@@ -92,33 +105,60 @@ $(document).ready(function () {
         this.events = ko.observableArray(events);
         this.programModel = programModel;
 
-        var that = this;
-        this.filteredEvents = ko.computed(function () {
-            var checkedEvents = that.programModel.checkedEvents();
+        this.hasNoDisplayableEvents = ko.computed(function () {
+            var checkedEvents = this.programModel.checkedEvents();
 
             if (checkedEvents.length == 0) {
-                return that.events();
+                return this.events().length == 0;
             }
-
-            return ko.utils.arrayFilter(that.events(), function (event) {
+            
+            var filtered = ko.utils.arrayFilter(this.events(), function (event) {
                 return _.contains(checkedEvents, event.eventType);
             });
-        }, this);
 
-        this.hideElement = function(elem) {
-            if (elem.nodeType === 1) $(elem).slideUp(function() { $(elem).remove(); })
-        }
+            return filtered.length == 0;
+        }, this);
     }
 
     var EventType = function(name) {
         this.name = name;
         this.checked = ko.observable(false);
+        this.icon = imagePath(name);
+        this.id = "event_type_" + name;
+        this.shouldDisplayAsChecked = ko.computed(function () {
+            if (programModel.checkedEvents().length === 0) {
+                return true;
+            }
+
+            return this.checked();
+        }, this);
+    }
+
+    function imagePath(eventTypeName) {
+        var imageDir = "../wp/wp-content/themes/neuf-old-style/img/";
+        var imageMap = {
+            "default": imageDir+'tilesvisning.png',
+            "debatt": imageDir+'ikon_debatt-50x50.png',
+            "fest": imageDir+'ikon_fest-50x50.png',
+            "film": imageDir+'ikon_film-50x50.png',
+            "foredrag": imageDir+'ikon_foredrag-50x50.png',
+            "konsert": imageDir+'ikon_konsert-50x50.png',
+            "quiz": imageDir+'ikon_quiz-50x50.png',
+            "teater": imageDir+'ikon_teater-50x50.png'
+        }
+
+        if (_.has(imageMap, eventTypeName.toLowerCase())) {
+            return imageMap[eventTypeName.toLowerCase()];
+        }
+
+        return imageMap["default"];
     }
 
     //Fill view model with empty days that will be filled as events are fetched from the server
     var programModel = {};
 
     var days = {};
+    
     //Next five weeks
     var nextWeeks = ko.observableArray();
 
@@ -126,11 +166,17 @@ $(document).ready(function () {
 
     programModel.events = ko.observableArray();
     programModel.checkedEvents = ko.observableArray();
+    programModel.eventTypes = eventTypes;
 
+    if (Date.today().is().sunday()) {
+        startDate = Date.today().add(1).day();
+    }
+    else {
+        startDate = Date.today();
+    }
     for (var i = 0; i < 5; i = i + 1) {
-        var week = Date.today().add(i).weeks();
+        var week = new Date(startDate).add(i).weeks();
 
-        //Make sure the week Date object is set to the monday of the current week
         if (!week.is().monday()) {
             week = week.previous().monday();
         }
@@ -138,11 +184,11 @@ $(document).ready(function () {
         var weekDays = ko.observableArray();
         for (var j = 0; j < 6; j = j + 1) { //Ignore sundays
             var thisDay;
-            if (Date.today().is().monday()) {
-                thisDay = Date.today().add(i).weeks().add(j).days();
+            if (new Date(startDate).is().monday()) {
+                thisDay = new Date(startDate).add(i).weeks().add(j).days();
             }
             else {
-                thisDay = Date.today().previous().monday().add(i).weeks().add(j).days()
+                thisDay = new Date(startDate).previous().monday().add(i).weeks().add(j).days()
             }
             var dayId = dateToId(thisDay);
             var day = new Day(dayId, neuf.util.capitalize(thisDay.toString("dddd d/M")), [], programModel);
@@ -154,24 +200,18 @@ $(document).ready(function () {
     }
 
     programModel.weeks = nextWeeks;
-    programModel.eventTypes = eventTypes;
     programModel.days = days;
 
-    ko.bindingHandlers.fadeVisible = {
-        init: function (element, valueAccessor) {
-            // Initially set the element to be instantly visible/hidden depending on the value
-            console.log("init");
+    ko.bindingHandlers.fadeElement = {
+        init: function(element, valueAccessor) {
             var value = valueAccessor();
-            $(element).toggle(ko.utils.unwrapObservable(value)); // Use "unwrapObservable" so we can handle values that may or may not be observable
+            $(element).toggle(ko.utils.unwrapObservable(value));
         },
-        update: function (element, valueAccessor) {
-            // Whenever the value subsequently changes, slowly fade the element in or out
+        update: function(element, valueAccessor) {
             var value = valueAccessor();
-            ko.utils.unwrapObservable(value) ? $(element).fadeIn() : $(element).fadeOut();
-            console.log("teh");
+            ko.utils.unwrapObservable(value) ? $(element).slideDown() : $(element).slideUp();
         }
-    }
+    };
 
-    ko.applyBindings(programModel);
     getEvents(programModel);
 });
