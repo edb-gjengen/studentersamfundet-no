@@ -264,9 +264,6 @@ if ( $events->have_posts() ) :
             <tbody>
             <?php while ( $events->have_posts() ) : $events->the_post();
             $date = get_post_meta( $post->ID , '_neuf_events_starttime' , true );
-            if ($date > date( 'U' , strtotime( '+1 year' ))) {
-                continue;
-            }
 
             $previous_month = $current_month;
             $current_month = date_i18n( 'F' , $date);
