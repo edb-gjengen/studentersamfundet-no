@@ -232,9 +232,9 @@ if ( $events->have_posts() ) :
 <?php
 $meta_query = array(
 	'key'     => '_neuf_events_starttime',
-	'value'   => date( 'U' , strtotime( '-8 hours' )),  // start
+	'value'   => array(date( 'U' , strtotime( '-8 hours' )), date('U', strtotime( '+1 year'))),  // start
 	'type' => 'numeric',
-	'compare' => '>'
+	'compare' => 'BETWEEN'
 );
 
 $args = array(
