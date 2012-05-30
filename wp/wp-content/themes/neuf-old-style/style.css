@@ -687,6 +687,10 @@ a.btn {
 }
 
 #content .event-type-konsert .entry-meta-info:before,
+#content .event-type-pungrock .entry-meta-info:before,
+#content .event-type-south-of-heaven .entry-meta-info:before,
+#content .event-type-smalt-som-faen .entry-meta-info:before,
+#content .event-type-lillesalen-konsertserie .entry-meta-info:before,
 #content article.event-type-konsert h1:before,
 #content article.event-type-pungrock h1:before,
 #content article.event-type-south-of-heaven h1:before,
