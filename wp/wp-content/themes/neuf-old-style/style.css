@@ -205,7 +205,6 @@ header#site-header .site-title a {
 	display:inline-block;
 	border-bottom:1px solid #ff9e29;
 	padding-bottom:15px;
-	/*margin-top:40px;*/
 }
 
 #digest_news,
@@ -590,6 +589,8 @@ img {
 	margin-bottom:0;
 	font-size: 35px;
 	margin-bottom:40px;
+	font-weight: bold;
+	font-style: normal;
 }
 
 /* Buttons */
@@ -637,7 +638,19 @@ a.btn {
 
 /* Icons */
 
-.single-event .entry-meta h1:before,
+.single-event .entry-meta .entry-meta-info:before {
+	content:'';
+	background:#ff9e29;
+	border-radius:50%;
+	width:50px;
+	height:50px;
+	float: left;
+	position:relative;
+	top:10px;
+	margin-right:15px;
+}
+
+/*.single-event .entry-meta h1:before,*/
 #featured article .event-type:before,
 #featured article.type-post h1:before {
 	content:'';
@@ -721,12 +734,6 @@ a.btn {
 #featured article.type-post h1 {
 	font-family:Arvo,Georgia,serif;
 	font-size: 20px;
-	/*text-transform:uppercase;
-	font-weight:bold;
-	font-style:normal;
-	font-size:100%;
-	line-height:60px;
-	color:#ff9e29;*/
 	font-style: italic;
 }
 
