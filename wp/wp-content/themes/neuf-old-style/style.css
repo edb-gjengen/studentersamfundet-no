@@ -750,13 +750,26 @@ a.btn {
 	font-family:Arvo,Georgia,serif;
 	font-size: 20px;
 	font-style: italic;
+	font-weight: normal;
+	padding-left: 0px;
+	
+	/*padding-bottom: 25px;*/
+}
+
+.home #featured article.type-post h1 {
+	font-family:Arvo,Georgia,serif;
+	font-size: 22px;
+	font-style: normal;
+	font-weight: normal;
+	padding-left: 0px;
+	padding-bottom: 25px;
 }
 
 #featured article h1 {
 	font-size:22px;
 	letter-spacing:2px;
 	font-style:normal;
-	font-weight:bold;
+	font-weight:normal;
 	padding-left: 65px;
 }
 
