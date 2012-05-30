@@ -205,6 +205,7 @@ header#site-header .site-title a {
 	display:inline-block;
 	border-bottom:1px solid #ff9e29;
 	padding-bottom:15px;
+    width: 100%;
 }
 
 #digest_news,
@@ -588,7 +589,7 @@ img {
 .single-event .entry-title {
 	margin-bottom:0;
 	font-size: 35px;
-	margin-bottom:40px;
+	margin-bottom:45px;
 	font-weight: bold;
 	font-style: normal;
 }
@@ -651,7 +652,7 @@ a.btn {
 }
 
 /*.single-event .entry-meta h1:before,*/
-#featured article .event-type:before,
+#featured article.type-event h1:before,
 #featured article.type-post h1:before {
 	content:'';
 	background:#ff9e29;
@@ -660,53 +661,49 @@ a.btn {
 	height:50px;
 	display:inline-block;
 	position:relative;
-	top:30px;
+	top: 10px;
 	margin-right:15px;
 }
 
 #content .event-type-quiz .entry-meta-info:before,
-#content .event-type-quiz .event-type:before {
+#content article.event-type-quiz h1:before {
 	background:url('img/ikon_quiz-50x50.png');
 }
 
 #content .event-type-debatt .entry-meta-info:before,
 #content .event-type-onsdagsdebatten .entry-meta-info:before,
-#content .event-type-debatt .event-type:before,
-#content .event-type-onsdagsdebatten .event-type:before {
+#content article.event-type-debatt h1:before,
+#content article.event-type-onsdagsdebatten h1:before {
 	background:url('img/ikon_debatt-50x50.png');
 }
 
 #content .event-type-foredrag .entry-meta-info:before,
 #content .event-type-upop .entry-meta-info:before,
 #content .event-type-akademisk-vorspiel .entry-meta-info:before,
-#content .event-type-foredrag .event-type:before,
-#content .event-type-upop .event-type:before,
-#content .event-type-akademisk-vorspiel .event-type:before {
+#content article.event-type-foredrag h1:before,
+#content article.event-type-upop h1:before,
+#content article.event-type-akademisk-vorspiel h1:before {
 	background:url('img/ikon_foredrag-50x50.png');
 }
 
 #content .event-type-konsert .entry-meta-info:before,
-#content .event-type-konsert .event-type:before,
-#content .event-type-pungrock .event-type:before,
-#content .event-type-south-of-heaven .event-type:before,
-#content .event-type-smalt-som-faen .event-type:before,
-#content .event-type-lillesalen-konsertserie .event-type:before,
-#content .event-type-konsert .event-type:before,
-#content .event-type-konsert .event-type:before,
-#content .event-type-konsert .event-type:before,
-#content .event-type-konsert .event-type:before {
+#content article.event-type-konsert h1:before,
+#content article.event-type-pungrock h1:before,
+#content article.event-type-south-of-heaven h1:before,
+#content article.event-type-smalt-som-faen h1:before,
+#content article.event-type-lillesalen-konsertserie h1:before {
 	background:url('img/ikon_konsert-50x50.png');
 }
 
 #content .event-type-film .entry-meta-info:before,
 #content .event-type-filmrulltorsdag .entry-meta-info:before,
-#content .event-type-film .event-type:before,
-#content .event-type-filmrulltorsdag .event-type:before {
+#content article.event-type-film h1:before,
+#content article.event-type-filmrulltorsdag h1:before {
 	background:url('img/ikon_film-50x50.png');
 }
 
 #content .event-type-fest .entry-meta-info:before,
-#content .event-type-fest .event-type:before {
+#content article.event-type-fest h1:before {
 	background:url('img/ikon_fest-50x50.png');
 }
 
@@ -752,25 +749,32 @@ a.btn {
 	font-style: italic;
 	font-weight: normal;
 	padding-left: 0px;
-	
-	/*padding-bottom: 25px;*/
+	padding-bottom: 0px;
 }
 
 .home #featured article.type-post h1 {
 	font-family:Arvo,Georgia,serif;
-	font-size: 22px;
+	font-size: 35px;
 	font-style: normal;
 	font-weight: normal;
 	padding-left: 0px;
-	padding-bottom: 25px;
+	padding-bottom: 35px;
+}
+.home #featured article.type-event .type {
+	font-family:Arvo,Georgia,serif;
+	font-size: 20px;
+	font-style: italic;
+	font-weight: normal;
+	padding-left: 65px;
+	padding-bottom: 15px;
 }
 
 #featured article h1 {
-	font-size:22px;
+	font-size:35px;
 	letter-spacing:2px;
 	font-style:normal;
 	font-weight:normal;
-	padding-left: 65px;
+	margin-bottom:0;
 }
 
 #featured article .datetime,
