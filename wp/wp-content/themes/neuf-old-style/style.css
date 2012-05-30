@@ -205,7 +205,7 @@ header#site-header .site-title a {
 	display:inline-block;
 	border-bottom:1px solid #ff9e29;
 	padding-bottom:15px;
-	margin-top:40px;
+	/*margin-top:40px;*/
 }
 
 #digest_news,
@@ -588,6 +588,8 @@ img {
 
 .single-event .entry-title {
 	margin-bottom:0;
+	font-size: 35px;
+	margin-bottom:40px;
 }
 
 /* Buttons */
@@ -634,7 +636,8 @@ a.btn {
 }
 
 /* Icons */
-.single-event .event-type:before,
+
+.single-event .entry-meta h1:before,
 #featured article .event-type:before,
 #featured article.type-post h1:before {
 	content:'';
@@ -679,6 +682,9 @@ a.btn {
 	background:url('img/ikon_fest-50x50.png');
 }
 
+
+
+
 /* End icons */
 
 /**********
@@ -714,12 +720,14 @@ a.btn {
 #featured article .event-type,
 #featured article.type-post h1 {
 	font-family:Arvo,Georgia,serif;
-	text-transform:uppercase;
+	font-size: 20px;
+	/*text-transform:uppercase;
 	font-weight:bold;
 	font-style:normal;
-	font-size:35px;
+	font-size:100%;
 	line-height:60px;
-	color:#ff9e29;
+	color:#ff9e29;*/
+	font-style: italic;
 }
 
 #featured article h1 {
