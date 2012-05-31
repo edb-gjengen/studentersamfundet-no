@@ -1,6 +1,6 @@
 		<div id="digest_news" class="grid_8 hfeed">
 
-			<h2>Aktuelt</h2>
+			<h2 id="digest_news_headline">Aktuelt</h2>
 
 			<div class="grid_4 alpha">
 				<?php // The LOOP
@@ -30,7 +30,7 @@
 		</div> <!-- #articles -->
 
 		<div id="digest_events" class="grid_4">
-			<h2><a href="<?php bloginfo('url'); ?>/program/">Program</a></h2>
+			<h2 id="digest_events_headline"><a href="<?php bloginfo('url'); ?>/program/">Program</a></h2>
                         <table class="table">
 			<?php 
 				$meta_query = array(
