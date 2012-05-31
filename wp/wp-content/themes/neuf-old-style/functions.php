@@ -288,7 +288,7 @@ function neuf_get_attachment_count() {
  */
 function neuf_maybe_display_gallery() {
 	if ( 2 < neuf_get_attachment_count() )
-		echo do_shortcode( '[gallery]' );
+		echo do_shortcode( '[gallery link="file" size="four-column-thumb"]' );
 }
 
 function neuf_event_format_date($timestamp) {
