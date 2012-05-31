@@ -512,11 +512,11 @@ h6 {
 
 /* Quotes */
 .entry-content blockquote {
-	margin: 1em 2em;
 	font-style:italic;
 	background:#eeeeee;
 	margin:1em 2em;
-	padding:1px 19px;
+	padding:1.5em 1.5em 0;
+	overflow:hidden;
 }
 .entry-content blockquote blockquote {
 	border:1px solid #000000;
