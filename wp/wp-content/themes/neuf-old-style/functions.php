@@ -7,6 +7,7 @@ $content_width = 770;
 
 add_image_size( 'two-column-thumb'  , 170 ,  69 , true );
 add_image_size( 'four-column-thumb' , 370 , 150 , true );
+add_image_size( 'four-column-promo' , 370 , 322 , true );
 add_image_size( 'six-column-promo' , 570 , 322 , true );
 add_image_size( 'six-column-slim' , 570 , 161 , true );
 add_image_size( 'association-thumb' , 270 , 250, false );
@@ -288,7 +289,7 @@ function neuf_get_attachment_count() {
  */
 function neuf_maybe_display_gallery() {
 	if ( 2 < neuf_get_attachment_count() )
-		echo do_shortcode( '[gallery link="file" size="four-column-thumb"]' );
+		echo do_shortcode( '[gallery link="file" size="four-column-promo"]' );
 }
 
 function neuf_event_format_date($timestamp) {
