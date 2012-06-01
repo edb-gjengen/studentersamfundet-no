@@ -694,6 +694,8 @@ a.btn {
 
 #content .event-type-debatt .entry-meta-info:before,
 #content .event-type-onsdagsdebatten .entry-meta-info:before,
+#content .event-type-mote .entry-meta-info:before,
+#content article.event-type-mote h1:before,
 #content article.event-type-debatt h1:before,
 #content article.event-type-onsdagsdebatten h1:before {
 	background:url('img/ikon_debatt-50x50.png');
