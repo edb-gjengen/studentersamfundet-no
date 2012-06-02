@@ -22,10 +22,10 @@
                 new TWTR.Widget({
                   version: 2,
                   type: 'search',
-                  search: '#dnsmm',
+                  search: '#dnsgf',
                   interval: 30000,
-                  title: 'HashTag #dnsmm',
-                  subject: 'Medlemsmøte om profil',
+                  title: 'HashTag #dnsgf',
+                  subject: 'Generalforsamling våren 2012',
                   width: 370,
                   height: 400,
                   theme: {
