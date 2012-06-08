@@ -59,19 +59,18 @@ add_action( 'wp_enqueue_scripts' , 'neuf_enqueue_scripts' );
  * Denies uploads of images smaller (in pixels) than given width and height values.
  */
 function neuf_handle_upload_prefilter( $file ) {
-	$width  = 640;
-	$height = 480;
+
+	$minimum = array( 'width' => 640, 'height' => 480);
 
 	$img = getimagesize( $file['tmp_name'] );
-	$minimum = array( 'width' => $width , 'height' => $height );
 	$width = $img[0];
-	$height =$img[1];
+	$height = $img[1];
 
 	if ( $width < $minimum['width'] )
 		return array( "error" => "Image dimensions are too small. Minimum width is {$minimum['width']}px. Uploaded image width is $width px" );
 
 	elseif ($height <  $minimum['height'])
-		return array( "error" => "Image dimensions are too small. Minimum height is {$minimum['height']}px. Uploaded image width is $width px" );
+		return array( "error" => "Image dimensions are too small. Minimum height is {$minimum['height']}px. Uploaded image height is $height px" );
 	else
 		return $file; 
 }
