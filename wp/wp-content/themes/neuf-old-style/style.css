@@ -219,6 +219,11 @@ header#site-header .site-title a {
 	border-top:1px solid #ff9e29;
 }
 
+#digest_news,
+#digest_events {
+	padding-bottom:15px;
+}
+
 #student-media #nova-player {
         padding-top: 15px;
 	height:110px;
@@ -662,7 +667,7 @@ a.btn {
 }
 #digest_news_headline,
 #digest_events_headline {
-	margin-bottom:0.6em;
+	margin:0.3em 0 0.6em;
 }
 
 #digest_news_headline:before {
@@ -725,6 +730,8 @@ a.btn {
 
 #content .event-type-film .entry-meta-info:before,
 #content .event-type-filmrulltorsdag .entry-meta-info:before,
+#content .event-type-tidsbilde .entry-meta-info:before,
+#content article.event-type-tidsbilde h1:before,
 #content article.event-type-film h1:before,
 #content article.event-type-filmrulltorsdag h1:before {
 	background:url('img/ikon_film-50x50.png');
@@ -774,8 +781,7 @@ a.btn {
 }
 
 .single-event .event-type,
-#featured article .event-type,
-#featured article.type-post h1 {
+#featured article .event-type {
 	font-family:Arvo,Georgia,serif;
 	font-size: 20px;
 	font-style: italic;
@@ -784,29 +790,25 @@ a.btn {
 	padding-bottom: 0px;
 }
 
-.home #featured article.type-post h1 {
-	font-family:Arvo,Georgia,serif;
-	font-size: 35px;
-	font-style: normal;
-	font-weight: normal;
-	padding-left: 0px;
-	padding-bottom: 35px;
-}
 .home #featured article.type-event .type {
 	font-family:Arvo,Georgia,serif;
 	font-size: 20px;
 	font-style: italic;
 	font-weight: normal;
-	padding-left: 65px;
-	padding-bottom: 15px;
+	padding-left: 67px;
+	margin-bottom: -20px;
 }
 
 #featured article h1 {
+	font-family:Arvo,Georgia,serif;
 	font-size:35px;
 	letter-spacing:2px;
 	font-style:normal;
 	font-weight:normal;
 	margin-bottom:0;
+	padding-left:63px;
+	padding-bottom:35px;
+	text-indent:-63px;
 }
 
 #featured article .datetime,
