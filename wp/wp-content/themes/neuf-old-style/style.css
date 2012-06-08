@@ -219,6 +219,11 @@ header#site-header .site-title a {
 	border-top:1px solid #ff9e29;
 }
 
+#digest_news,
+#digest_events {
+	padding-bottom:15px;
+}
+
 #student-media #nova-player {
         padding-top: 15px;
 	height:110px;
@@ -535,9 +540,6 @@ h6 {
 .table th {
 	text-align: left;
 }
-.table .date {
-	width:100px;
-}
 .table tr:nth-child(even) td,
 .table tr.alt td {
 	background-color: #F9F9F9;
@@ -553,17 +555,6 @@ h6 {
 	line-height: 18px;
 	text-align: left;
 	border-top: 1px solid #DDD;
-}
-.table tr.month, .table tr.month td {
-	border: none;
-}
-
-.table tr.month td {
-	padding-top:25px;
-}
-
-.table tr.month:first-child td {
-	padding-top:0px
 }
 
 /* Forms */
@@ -662,7 +653,7 @@ a.btn {
 }
 #digest_news_headline,
 #digest_events_headline {
-	margin-bottom:0.6em;
+	margin:0.3em 0 0.6em;
 }
 
 #digest_news_headline:before {
@@ -725,6 +716,8 @@ a.btn {
 
 #content .event-type-film .entry-meta-info:before,
 #content .event-type-filmrulltorsdag .entry-meta-info:before,
+#content .event-type-tidsbilde .entry-meta-info:before,
+#content article.event-type-tidsbilde h1:before,
 #content article.event-type-film h1:before,
 #content article.event-type-filmrulltorsdag h1:before {
 	background:url('img/ikon_film-50x50.png');
@@ -774,8 +767,7 @@ a.btn {
 }
 
 .single-event .event-type,
-#featured article .event-type,
-#featured article.type-post h1 {
+#featured article .event-type {
 	font-family:Arvo,Georgia,serif;
 	font-size: 20px;
 	font-style: italic;
@@ -784,29 +776,25 @@ a.btn {
 	padding-bottom: 0px;
 }
 
-.home #featured article.type-post h1 {
-	font-family:Arvo,Georgia,serif;
-	font-size: 35px;
-	font-style: normal;
-	font-weight: normal;
-	padding-left: 0px;
-	padding-bottom: 35px;
-}
 .home #featured article.type-event .type {
 	font-family:Arvo,Georgia,serif;
 	font-size: 20px;
 	font-style: italic;
 	font-weight: normal;
-	padding-left: 65px;
-	padding-bottom: 15px;
+	padding-left: 67px;
+	margin-bottom: -20px;
 }
 
 #featured article h1 {
+	font-family:Arvo,Georgia,serif;
 	font-size:35px;
 	letter-spacing:2px;
 	font-style:normal;
 	font-weight:normal;
 	margin-bottom:0;
+	padding-left:63px;
+	padding-bottom:35px;
+	text-indent:-63px;
 }
 
 #featured article .datetime,
@@ -924,8 +912,22 @@ a.btn {
     color:#aaa;
 }
 
+/* Search template */
 
-/* Program */
+.search #content > .hentry .entry-title {
+	font-size: 24px;
+	margin-bottom: 0px;
+}
+
+.search #content > .hentry .entry-byline {
+	padding-left: 20px;
+	font-size: 12px;
+	font-style: italic;
+}
+
+/* End search template */
+
+/* Program template */
 
 /* Icons */
 .page-program .view-mode:hover {
@@ -965,62 +967,45 @@ a.btn {
 	margin:auto;
 }
 
-.category-chooser-item label > img {
+.page-program .category-chooser-item label > img {
     opacity:0.4;
     filter:alpha(opacity=40); /* For IE8 and earlier */
 }
 
-.category-chooser-item label > img:hover {
+.page-program .category-chooser-item label > img:hover {
     opacity:0.6;
     filter:alpha(opacity=60); /* For IE8 and earlier */
 }
 
-.category-chooser-item label > img.checked {
+.page-program .category-chooser-item label > img.checked {
     opacity:1.0;
     filter:alpha(opacity=100); /* For IE8 and earlier */
 }
 
-.category-chooser-item label > img.checked:hover {
+.page-program .category-chooser-item label > img.checked:hover {
     opacity:0.8;
     filter:alpha(opacity=80); /* For IE8 and earlier */
 }
 
 /* table */
-.table {
-	width:100%;
-	border-collapse:collapse;
-	border-spacing: 0;
-        margin-bottom: 20px;
-}
-.table th {
-	text-align: left;
-}
-.table .date {
+.page-program .table .date {
 	width:100px;
 }
-.table tr:nth-child(even) td,
-.table tr.alt td {
-	background-color: #F9F9F9;
-}
-.table tr.month td {
+.page-program .table tr.month td {
 	background-color: #FFF;
 }
-.table th, .table td {
-	padding-left:0px;
-	padding-right:0px;
-	padding-top: 8px;
-	padding-bottom: 8px;
-	line-height: 18px;
-	text-align: left;
-	border-top: 1px solid #DDD;
-}
-.table tr.month, .table tr.month td {
+.page-program .table tr.month, 
+.page-program .table tr.month td {
 	border: none;
 }
 
-.table tr.month td {
+.page-program .table tr.month td {
 	padding-top:25px;
 }
+
+/* End program template */
+
+/* Archive templates */
 
 .archive #content article {
 	padding-bottom:25px;
