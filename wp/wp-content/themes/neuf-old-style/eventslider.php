@@ -56,7 +56,6 @@ $news = new WP_Query( 'type=post' );
 			<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
 				<a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">
 					<header class="grid_6">
-						<h1><?php the_title(); ?></h1>
 						<?php
 							$event_array = get_the_terms( $post->ID , 'event_type' );
 							foreach ( $event_array as $event_type )
@@ -64,6 +63,7 @@ $news = new WP_Query( 'type=post' );
 							$html = '<div class="type">' . implode( ', ' , $post->event_types ) . '</div>';
 							echo $html;
 						?>
+						<h1><?php the_title(); ?></h1>
 						<div class="datetime"><?php echo ucfirst( date_i18n( 'l j. F' , get_post_meta(get_the_ID() , '_neuf_events_starttime' , true ) ) ); ?></div>
 						<div class="price"><?php echo ($price = neuf_get_price( $post )) ? $price : "Gratis"; ?></div>
 						<div class="venue"><?php echo get_post_meta(get_the_ID(), '_neuf_events_venue',true);?></div>

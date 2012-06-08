@@ -190,17 +190,6 @@ header#site-header .site-title a {
 
 /* Hoveddel */
 
-#content > .hentry .entry-title {
-	font-size: 24px;
-	margin-bottom: 0px;
-}
-
-#content > .hentry .entry-byline {
-	padding-left: 20px;
-	font-size: 12px;
-	font-style: italic;
-}
-
 #content > .hentry .entry-content {
 	margin-top:15px;
 	margin-bottom:15px;
@@ -551,9 +540,6 @@ h6 {
 .table th {
 	text-align: left;
 }
-.table .date {
-	width:100px;
-}
 .table tr:nth-child(even) td,
 .table tr.alt td {
 	background-color: #F9F9F9;
@@ -569,17 +555,6 @@ h6 {
 	line-height: 18px;
 	text-align: left;
 	border-top: 1px solid #DDD;
-}
-.table tr.month, .table tr.month td {
-	border: none;
-}
-
-.table tr.month td {
-	padding-top:25px;
-}
-
-.table tr.month:first-child td {
-	padding-top:0px
 }
 
 /* Forms */
@@ -937,8 +912,22 @@ a.btn {
     color:#aaa;
 }
 
+/* Search template */
 
-/* Program */
+#content > .hentry .entry-title {
+	font-size: 24px;
+	margin-bottom: 0px;
+}
+
+#content > .hentry .entry-byline {
+	padding-left: 20px;
+	font-size: 12px;
+	font-style: italic;
+}
+
+/* End search template */
+
+/* Program template */
 
 /* Icons */
 .page-program .view-mode:hover {
@@ -978,62 +967,45 @@ a.btn {
 	margin:auto;
 }
 
-.category-chooser-item label > img {
+.page-program .category-chooser-item label > img {
     opacity:0.4;
     filter:alpha(opacity=40); /* For IE8 and earlier */
 }
 
-.category-chooser-item label > img:hover {
+.page-program .category-chooser-item label > img:hover {
     opacity:0.6;
     filter:alpha(opacity=60); /* For IE8 and earlier */
 }
 
-.category-chooser-item label > img.checked {
+.page-program .category-chooser-item label > img.checked {
     opacity:1.0;
     filter:alpha(opacity=100); /* For IE8 and earlier */
 }
 
-.category-chooser-item label > img.checked:hover {
+.page-program .category-chooser-item label > img.checked:hover {
     opacity:0.8;
     filter:alpha(opacity=80); /* For IE8 and earlier */
 }
 
 /* table */
-.table {
-	width:100%;
-	border-collapse:collapse;
-	border-spacing: 0;
-        margin-bottom: 20px;
-}
-.table th {
-	text-align: left;
-}
-.table .date {
+.page-program .table .date {
 	width:100px;
 }
-.table tr:nth-child(even) td,
-.table tr.alt td {
-	background-color: #F9F9F9;
-}
-.table tr.month td {
+.page-program .table tr.month td {
 	background-color: #FFF;
 }
-.table th, .table td {
-	padding-left:0px;
-	padding-right:0px;
-	padding-top: 8px;
-	padding-bottom: 8px;
-	line-height: 18px;
-	text-align: left;
-	border-top: 1px solid #DDD;
-}
-.table tr.month, .table tr.month td {
+.page-program .table tr.month, 
+.page-program .table tr.month td {
 	border: none;
 }
 
-.table tr.month td {
+.page-program .table tr.month td {
 	padding-top:25px;
 }
+
+/* End program template */
+
+/* Archive templates */
 
 .archive #content article {
 	padding-bottom:25px;
