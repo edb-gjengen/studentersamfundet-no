@@ -914,12 +914,12 @@ a.btn {
 
 /* Search template */
 
-#content > .hentry .entry-title {
+.search #content > .hentry .entry-title {
 	font-size: 24px;
 	margin-bottom: 0px;
 }
 
-#content > .hentry .entry-byline {
+.search #content > .hentry .entry-byline {
 	padding-left: 20px;
 	font-size: 12px;
 	font-style: italic;
