@@ -190,6 +190,17 @@ header#site-header .site-title a {
 
 /* Hoveddel */
 
+#content > .hentry .entry-title {
+	font-size: 24px;
+	margin-bottom: 0px;
+}
+
+#content > .hentry .entry-byline {
+	padding-left: 20px;
+	font-size: 12px;
+	font-style: italic;
+}
+
 #content > .hentry .entry-content {
 	margin-top:15px;
 	margin-bottom:15px;
