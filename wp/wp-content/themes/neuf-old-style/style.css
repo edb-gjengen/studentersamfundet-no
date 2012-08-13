@@ -697,9 +697,11 @@ a.btn {
 #content .event-type-foredrag .entry-meta-info:before,
 #content .event-type-upop .entry-meta-info:before,
 #content .event-type-akademisk-vorspiel .entry-meta-info:before,
+#content .event-type-forfatteraften .entry-meta-info:before,
 #content article.event-type-foredrag h1:before,
 #content article.event-type-upop h1:before,
-#content article.event-type-akademisk-vorspiel h1:before {
+#content article.event-type-akademisk-vorspiel h1:before,
+#content article.event-type-forfatteraften h1:before {
 	background:url('img/ikon_foredrag-50x50.png');
 }
 
@@ -708,11 +710,15 @@ a.btn {
 #content .event-type-south-of-heaven .entry-meta-info:before,
 #content .event-type-smalt-som-faen .entry-meta-info:before,
 #content .event-type-lillesalen-konsertserie .entry-meta-info:before,
+#content .event-type-annen-etasje-konsertserie .entry-meta-info:before,
+#content .event-type-vin-vinyl .entry-meta-info:before,
 #content article.event-type-konsert h1:before,
 #content article.event-type-pungrock h1:before,
 #content article.event-type-south-of-heaven h1:before,
 #content article.event-type-smalt-som-faen h1:before,
-#content article.event-type-lillesalen-konsertserie h1:before {
+#content article.event-type-lillesalen-konsertserie h1:before,
+#content article.event-type-vin-vinyl h1:before,
+#content article.event-type-annen-etasje-konsertserie h1:before {
 	background:url('img/ikon_konsert-50x50.png');
 }
 
@@ -728,6 +734,11 @@ a.btn {
 #content .event-type-fest .entry-meta-info:before,
 #content article.event-type-fest h1:before {
 	background:url('img/ikon_fest-50x50.png');
+}
+
+#content .event-type-teater .entry-meta-info:before,
+#content article.event-type-teater h1:before {
+	background:url('img/ikon_teater-50x50.png');
 }
 
 #content article.type-post h1:before {
