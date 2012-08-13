@@ -125,6 +125,7 @@ html,body,#event {
 	position:absolute;
 	bottom:0;
 	padding-bottom:30px;
+	font-size:32px;
 }
 #title {
 	width:100%;
@@ -139,7 +140,7 @@ html,body,#event {
 h1 {
 	max-width:60%;
 	margin:auto;
-	font-size:32px;
+	font-size:64px;
 	font-family:Arvo;
 }
 		
