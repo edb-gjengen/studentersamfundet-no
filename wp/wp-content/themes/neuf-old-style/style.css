@@ -745,6 +745,13 @@ a.btn {
 	background:url('img/ikon_nyheter-50x50.png');
 }
 
+#program-6days .time {
+	color:#ff9e29;
+}
+#program-6days .event-type {
+	color:#aaa;
+	font-size:0.9em;
+}
 
 
 

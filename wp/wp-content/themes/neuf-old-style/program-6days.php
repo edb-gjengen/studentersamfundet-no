@@ -31,7 +31,15 @@ if ( $events->have_posts() ) :
 
 		<div class="day day-<?php echo $event_daycounter; ?> grid_2 alpha">
 
-		<?php while ( $events->have_posts() ) : $events->the_post(); ?>
+<?php 
+while ( $events->have_posts() ) : $events->the_post();
+	$event_array = get_the_terms( $post->ID , 'event_type' );
+	foreach ( $event_array as $event_type ) {
+		$post->event_types[] = $event_type->name;
+		$post->post_classes[] = 'event-type-' . $event_type->slug;
+	}
+
+?>
 
 	<?php
 		if ( isset( $event_current_day ) )
@@ -67,10 +75,10 @@ if ( $events->have_posts() ) :
 
 			<?php } ?>
 
-				<p><?php echo date_i18n( 'H.i:' , get_post_meta( $post->ID , '_neuf_events_starttime' , true ) ); ?> <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php echo the_title(); ?></a></p>
+				<p><span class="time"><?php echo date_i18n( 'H.i' , get_post_meta( $post->ID , '_neuf_events_starttime' , true ) ); ?></span> <span class="event-type"><?php echo( implode( ', ' , $post->event_types ) ); ?></span><br /><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php echo the_title(); ?></a></p>
 
 
-		<?php endwhile; // $events->have_posts(); ?>
+<?php endwhile; // $events->have_posts(); ?>
 
 			</div> <!-- .day -->
 
