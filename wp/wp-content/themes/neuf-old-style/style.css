@@ -786,7 +786,7 @@ a.btn {
 	position:relative;
 }
 
-.single-event .event-type,
+.single-event article .event-type,
 #featured article .event-type {
 	font-family:Arvo,Georgia,serif;
 	font-size: 20px;
