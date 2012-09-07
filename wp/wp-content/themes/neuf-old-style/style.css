@@ -804,6 +804,11 @@ a.btn {
 	padding-left: 67px;
 	margin-bottom: -20px;
 }
+.type-event .event-facebook img {
+    height: 20px;
+    position:relative;
+    top: 3px;
+}
 
 #featured article h1 {
 	font-family:Arvo,Georgia,serif;

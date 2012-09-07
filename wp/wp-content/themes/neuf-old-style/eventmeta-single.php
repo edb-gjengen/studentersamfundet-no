@@ -22,6 +22,9 @@ if ( 'Annet' != $post->neuf_event_venue ) {
                             </div>
                             <div>
                                 <span class="venue"><?php echo $post->neuf_event_venue; ?></span>
+                                <?php if(get_post_meta( get_the_ID() , '_neuf_events_fb_url', true )): ?><span class="meta-sep meta-sep-event-facebook"> - </span>
+                                <span class="event-facebook"><a href="<?php echo get_post_meta( get_the_ID() , '_neuf_events_fb_url', true ); ?>" title="Arrangementet på Facebook"><img src="<?php echo get_bloginfo('stylesheet_directory')."/img/facebook-icon.png";?>" /></a></span>
+                                <?php endif; ?>
                             </div>
 						</div>
 					</header> <!-- .entry-meta-->
