@@ -123,7 +123,6 @@ $(document).ready(function () {
     var EventType = function(name) {
         this.name = name;
         this.checked = ko.observable(false);
-        this.icon = imagePath(name);
         this.id = "event_type_" + name;
         this.shouldDisplayAsChecked = ko.computed(function () {
             if (programModel.checkedEvents().length === 0) {
@@ -132,26 +131,6 @@ $(document).ready(function () {
 
             return this.checked();
         }, this);
-    }
-
-    function imagePath(eventTypeName) {
-        var imageDir = "../wp/wp-content/themes/neuf-old-style/img/";
-        var imageMap = {
-            "default": imageDir+'tilesvisning.png',
-            "debatt": imageDir+'ikon_debatt-50x50.png',
-            "fest": imageDir+'ikon_fest-50x50.png',
-            "film": imageDir+'ikon_film-50x50.png',
-            "foredrag": imageDir+'ikon_foredrag-50x50.png',
-            "konsert": imageDir+'ikon_konsert-50x50.png',
-            "quiz": imageDir+'ikon_quiz-50x50.png',
-            "teater": imageDir+'ikon_teater-50x50.png'
-        }
-
-        if (_.has(imageMap, eventTypeName.toLowerCase())) {
-            return imageMap[eventTypeName.toLowerCase()];
-        }
-
-        return imageMap["default"];
     }
 
     //Fill view model with empty days that will be filled as events are fetched from the server

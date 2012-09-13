@@ -21,7 +21,7 @@ get_header();
 
     .event-program-6days {
         padding-top:15px;
-        border-top:1px solid #ff9e29;
+        /*border-top:1px solid #ff9e29;*/
     }
 
     .float-right {

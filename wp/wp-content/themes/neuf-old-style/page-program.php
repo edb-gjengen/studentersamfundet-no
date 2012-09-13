@@ -52,12 +52,10 @@ wp_enqueue_script('eventProgram');
 	<a id='image-dir' style="display:none;" href="<?php bloginfo('template_directory'); ?>/img/">You will hopefully not see this.</a>
 	<div id="program-style-selector" class="grid_2 push_10">
 		<div class="program-style-selector-item">
-			<img class="view-mode tiles" src="<?php bloginfo('template_directory');?>/img/tilesvisning.png" onclick='showTiles();toggleActive("tiles");' title="Vis program i et rutenett"/>
-			<span>Rutenett</span>
+			<a class="btn small view-mode tiles" onclick='showTiles();toggleActive("tiles");' title="Vis programmet i et rutenett">Rutenett</a>
 		</div>
 		<div class="program-style-selector-item">
-			<img class="view-mode list" src="<?php bloginfo('template_directory');?>/img/listevisning.png" onclick='showList();toggleActive("list");' title="Vis programmet som en liste" />
-			<span>Liste</span>
+			<a class="btn small view-mode list" onclick='showList();toggleActive("list");' title="Vis programmet som en liste">Liste</a>
 		</div>
 	</div>
 
@@ -66,9 +64,9 @@ wp_enqueue_script('eventProgram');
             <div class="category-chooser-item">
                 <input class="program-category-chooser hidden" type="checkbox" data-bind="value: name, checked: checked, attr: { id: id }">
                 <label data-bind="attr: { for: id }">
-                    <img class="category-chooser-item-img"
-                         data-bind="attr: { src: icon, id: id + '_img' }, css: { checked: shouldDisplayAsChecked }">
-                    <span class="category-chooser-item-label" data-bind="text: name"></span>
+                    <a class="btn"
+                         data-bind="text:name, css: { checked: shouldDisplayAsChecked }">
+                    <span class="category-chooser-item-label" data-bind="text: name"></span></a>
                 </label>
             </div>
         </form>

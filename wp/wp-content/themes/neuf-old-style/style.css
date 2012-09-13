@@ -636,12 +636,9 @@ img {
 	-moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
 	-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
 	text-align: center;
-	border-top-right-radius: 3px;
-	border-bottom-right-radius: 3px;
-	-moz-border-radius-topright: 3px;
-	-moz-border-radius-bottomright: 3px;
-	-webkit-border-top-right-radius: 3px;
-	-webkit-border-bottom-right-radius: 3px;
+	border-radius: 3px 3px 3px 3px;
+	-moz-border-radius3px 3px 3px 3px;
+	-webkit-border-top3px 3px 3px 3px;
 }
 
 a.btn :visited,
@@ -650,15 +647,21 @@ a.btn {
 }
 
 .btn:hover {
-	background-color: #000000;
+	background-color: #222222;
 }
 
 .btn:hover {
 	color: #ffffff;
 	text-decoration: none;
 	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-	border-color: #cc7f21;
-	border-bottom-color: #a6671b;
+	border-color: #444444;
+	border-bottom-color: #000000;
+}
+.small {
+	font-weight: bold;
+	font-size: 14px;
+	padding: 4px 10px;
+
 }
 
 /* Icons */
@@ -871,19 +874,26 @@ a.btn {
 
 /* Program template */
 
+h3.entry-title {
+        margin-bottom:0px;
+}
+
 /* Icons */
 .page-program .view-mode:hover {
 	cursor:pointer;
-	opacity:0.8;
-	filter:alpha(opacity=80); /* For IE8 and earlier */
 }
 .page-program .view-mode.marked {
-	opacity:1;
-	filter:alpha(opacity=100); /* For IE8 and earlier */
-}
-.page-program .view-mode {
 	opacity:0.4;
 	filter:alpha(opacity=40); /* For IE8 and earlier */
+}
+.page-program .view-mode.marked:hover {
+	opacity:0.2;
+	filter:alpha(opacity=20); /* For IE8 and earlier */
+        cursor: default;
+}
+.page-program .view-mode {
+	opacity:1;
+	filter:alpha(opacity=100); /* For IE8 and earlier */
 }
 .page-program .view-mode.list {
 	margin-left: 5px;
@@ -891,7 +901,6 @@ a.btn {
 
 .page-program .category-chooser-item, .program-style-selector-item {
 	display:inline-block;
-	margin:10px;
 }
 
 .page-program .category-chooser-item > label > span, 
@@ -909,22 +918,22 @@ a.btn {
 	margin:auto;
 }
 
-.page-program .category-chooser-item label > img {
+.page-program .category-chooser-item label > a {
     opacity:0.4;
     filter:alpha(opacity=40); /* For IE8 and earlier */
 }
 
-.page-program .category-chooser-item label > img:hover {
+.page-program .category-chooser-item label > a:hover {
     opacity:0.6;
     filter:alpha(opacity=60); /* For IE8 and earlier */
 }
 
-.page-program .category-chooser-item label > img.checked {
+.page-program .category-chooser-item label > a.checked {
     opacity:1.0;
     filter:alpha(opacity=100); /* For IE8 and earlier */
 }
 
-.page-program .category-chooser-item label > img.checked:hover {
+.page-program .category-chooser-item label > a.checked:hover {
     opacity:0.8;
     filter:alpha(opacity=80); /* For IE8 and earlier */
 }
