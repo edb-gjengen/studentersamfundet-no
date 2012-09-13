@@ -11,6 +11,8 @@
 				<div class="grid_6">
 
 					<h3 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                                          <div class="entry-meta byline"><span class="meta-prep meta-p rep-author">av </span><span class="author vcard"><?php the_author_link(); ?></span>, <span class="entry-date"><?php the_date('l d. M Y'); ?> kl <?php the_time ('H.i'); ?></span></div>
+
 
 					<div class="entry-content"><?php the_excerpt(); ?></div> <!-- .entry-content -->
 
@@ -18,7 +20,7 @@
 
 				<div class="grid_6">
 
-					<?php the_post_thumbnail( 'six-column-slim' , array( 'style' => 'display:block;margin:auto;' ) ); ?>
+					<?php the_post_thumbnail( 'six-column-slim'); ?>
 
 				</div> <!-- .grid_6 -->
 

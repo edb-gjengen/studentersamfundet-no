@@ -1,4 +1,4 @@
-				<nav id="menu" class="grid_5">
+				<nav id="menu" class="grid_6">
                     <ul class="social-icons">
                         <li><a id="facebook-icon" href="http://facebook.com/betongoslo" target="_blank"><img src="<?php bloginfo( 'stylesheet_directory' ); ?>/img/facebook.png" /></a></li>
                         <li><a id="twitter-icon" href="http://twitter.com/betongoslo" target="_blank"><img src="<?php bloginfo( 'stylesheet_directory' ); ?>/img/twitter.png" /></a></li>

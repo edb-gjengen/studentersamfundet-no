@@ -1,4 +1,4 @@
-/**
+/*
  * Theme Name:  Neuf Old Style
  * Theme URI:   http://studentersamfundet.no/
  * Description: Horisontal outline.
@@ -23,7 +23,7 @@
 }
 
 #content {
-	background: #ffffff;
+	background: transparent;
 	padding:0;
 	clear:both;
 	overflow:auto;
@@ -55,15 +55,15 @@
 
 /* Background */
 body {
-
+        /*background: #000000;*/
+/*
         background: url('img/background_concert.jpg') no-repeat center center;
         -moz-background-size: cover;
         background-size: cover;
         
-        /* IE Fix */
         -ms-filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(src='img/background_concert.jpg', sizingMethod='scale')";
         filter:progid: DXImageTransform.Microsoft.AlphaImageLoader(src='img/background_concert.jpg', sizingMethod='scale');
-
+*/
 }
 
 /* Header */
@@ -72,10 +72,10 @@ body.dns {
 }
 header#site-header,
 footer#site-footer {
-	/*background-color:#000000;*/
+	background-color:#000000;
 }
 header#site-header {
-	height:90px;
+	height:130px;
 	padding-top:25px;
 	padding-bottom:25px;
 	position:relative;
@@ -86,16 +86,26 @@ header#site-header .site-title {
 	z-index:999;
 	width:570px;
 	height:100px;
+        margin-top: 20px;
 }
 header#site-header .site-title .betong {
 	background: url('img/betong_75px.png') no-repeat;
 	display:inline-block;
 	width:340px;
 	height:100%;
-	margin-top:10px;
 	text-indent:-9999px;
         position:relative;
         left:-14px;
+}
+header#site-header .site-title .tagline {
+	width:340px;
+        position: relative;
+        top: -20px;
+        color: #e1e3e2;
+        font-family: Arvo,Georgia,serif;
+        font-size: 13px;
+        font-style: italic;
+        font-weight: normal;
 }
 #facebook-followers {
 	float:right;
@@ -103,7 +113,7 @@ header#site-header .site-title .betong {
 
 #menu {
 	height:25px;
-	margin-top:30px;
+	margin-top: 50px;
 }
 #menu a {
 	/* color:rgb(88,89,91); */
@@ -755,11 +765,13 @@ a.btn {
 	position:absolute;
 	top: 305px;
 	left: 500px;
+        z-index: 999;
 }
 #featured #nextLink {
 	position:absolute;
 	top: 305px;
 	left: 555px;
+        z-index: 999;
 }
 #featured:hover #prevLink,
 #featured:hover #nextLink {
@@ -773,10 +785,10 @@ a.btn {
 }
 
 #featured article header {
-	height:322px;
+	height:305px;
 }
 #featured {
-	height:322px;
+	height:305px;
 	margin-top:30px;
 	margin-bottom:30px;
 }
@@ -791,10 +803,11 @@ a.btn {
 	position:absolute;
 	top:305px;
 	left:15px;
+        z-index:999;
 }
 #featured #slidernav a span.circle {
 	content:'';
-	background: #E99835;
+	background: #BCBEC0;
 	border-radius:50%;
 	width:15px;
 	height:15px;
@@ -811,7 +824,7 @@ a.btn {
 	
 }
 #featured #slidernav a.activeSlide span.circle {
-	background: #BCBEC0;
+	background: #000;
 }
 #featured #slidernav a:focus {
 	outline: none;
@@ -957,4 +970,10 @@ a.btn {
 	display: table-row;
 	margin-bottom: 15px;
 }
-
+body #content .byline {
+        color: #aaa;
+}
+body #content .byline .author {
+    color: black;
+    font-weight: bold;
+}

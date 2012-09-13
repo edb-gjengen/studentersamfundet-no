@@ -34,9 +34,8 @@
 	
 					<div id="access"><a href="#content">Gå direkte til innholdet</a></div>
 	
-					<div class="site-title grid_7">
-						<a href="<?php bloginfo('url') ?>/" title="<?php bloginfo('name') ?>" rel="home" class="betong"><?php bloginfo('name') ?></a>
-						</span>
+					<div class="site-title grid_6">
+						<a href="<?php bloginfo('url') ?>/" title="<?php bloginfo('name') ?>" rel="home" class="betong"><?php bloginfo('name') ?></a><div class="tagline"><?php bloginfo('description'); ?></div>
 					</div>
 
 <?php get_template_part( 'menu' ); ?>
