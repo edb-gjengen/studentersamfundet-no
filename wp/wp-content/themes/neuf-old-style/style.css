@@ -933,9 +933,15 @@ a.btn {
 	display: inline-block;
 	margin-right:7px;
 }
-.home #digest_news .when {
+.home #digest_news .when,
+.archive a .event-date
+{
     font-size:0.9em;
     color:#aaa;
+}
+
+.archive #content header .description {
+	margin-bottom:2em;
 }
 
 /* Search template */
