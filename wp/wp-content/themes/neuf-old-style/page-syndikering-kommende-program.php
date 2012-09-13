@@ -40,11 +40,16 @@ print('<?xml version="1.0" encoding="UTF-8" ?>');
         <link>http://studentersamfundet.no/program/</link>
         <atom:link href="http://studentersamfundet.no/syndikering/kommende-program/" rel="self" type="application/rss+xml" />
 
-        <?php 
-        if( $events->have_posts() ) : while ( $events->have_posts() ) : $events->the_post();
-	?>
+<?php 
+if( $events->have_posts() ) : while ( $events->have_posts() ) : $events->the_post();
+	$event_array = get_the_terms( $post->ID , 'event_type' );
+	foreach ( $event_array as $event_type ) {
+		$post->event_types[] = $event_type->name;
+		$post->post_classes[] = 'event-type-' . $event_type->slug;
+	}
+?>
 	<item>
-            <title><?php echo( htmlspecialchars( get_the_title() ) ); ?></title>
+            <title><?php echo ( implode( ', ' , $post->event_types ) . ': ' . htmlspecialchars( get_the_title() ) ); ?></title>
             <description><?php echo("<![CDATA[" . get_the_excerpt() . "]]>"); ?></description>
 	    <link><?php the_permalink(); ?></link>
 	    <guid><?php the_permalink(); ?></guid>
@@ -52,7 +57,7 @@ print('<?xml version="1.0" encoding="UTF-8" ?>');
             <pubDate><?php echo ( date("D, d M Y H:i:s O", get_post_meta($post->ID, '_neuf_events_starttime', true ) ) ); ?></pubDate>
 	             
 	</item>
-        <?php endwhile; endif; ?>
+<?php endwhile; endif; ?>
 
     </channel>
 

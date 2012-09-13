@@ -11,7 +11,7 @@
                                                 echo $homepage ? '<div class="entry-meta byline">Nettside: <a href="'.$homepage.'">'.$homepage.'</a></div>' : '';
                                             ?>
                                         <?php else: ?>
-                                            <div class="entry-meta byline"><span class="meta-prep meta-prep-author">Av </span><span class="author vcard"><?php the_author_link(); ?></span><span class="meta-sep meta-sep-entry-date"> | </span><span class="meta-prep meta-prep-entry-date">Publisert: </span><span class="entry-date"><?php the_time('Y-m-d G:i l'); ?></span></div>
+										<div class="entry-meta byline"><span class="meta-prep meta-prep-author">av </span><span class="author vcard"><?php the_author_link(); ?></span>, <span class="entry-date"><?php the_date('l d. M Y'); ?> kl <?php the_time('G.i'); ?></span></div>
                                         <?php endif; ?>
 					<div class="entry-content"><?php the_content(); ?></div> <!-- .entry-content -->
 
@@ -21,7 +21,11 @@
 
 				<div class="grid_6">
 
-					<?php the_post_thumbnail( 'large' , array( 'style' => 'display:block;margin:auto;' ) ); ?>
+                    <?php if(has_post_thumbnail()) { ?>
+					<div class="wp-post-image-caption"><?php echo get_post( get_post_thumbnail_id() )->post_excerpt; ?>
+						<?php the_post_thumbnail( 'large' , array( 'style' => 'display:block;margin:auto;' ) ); ?>
+					</div>
+                    <?php } ?>
 
 				</div>
 

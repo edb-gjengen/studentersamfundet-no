@@ -2,113 +2,118 @@
 require( '../../../wp-load.php' );
 
 $meta_query = array(
-	'key'     => '_neuf_events_starttime',
-	'value'   => date( 'U' , strtotime( '-8 hours' ) ), 
-	'compare' => '>',
-	'type'    => 'numeric'
+    'relation' => 'AND',
+    array(
+        'key'     => '_neuf_events_starttime',
+        'value'   => date( 'U' , strtotime( '-8 hours' ) ), 
+        'compare' => '>',
+        'type'    => 'numeric'
+    ), 
+    array(
+        'key'     => '_neuf_events_promo_period',
+        'value'   => array( 'Month' , 'semester' ),
+        'compare' => 'IN',
+    )
 );
 
 $args = array(
-	'post_type'      => 'event',
-	'meta_query'     => array( $meta_query ),
-	'posts_per_page' => 4
+    'post_type'      => 'event',
+    'meta_query'     => $meta_query,
+    'posts_per_page' => 4
 );
+
+$top_events = new WP_Query( $args );
+
+$meta_query = array(
+    'key'     => '_neuf_events_starttime',
+    'value'   => array(date( 'U' , strtotime( '-8 hours' )), date( 'U' , strtotime( '+1 week' ))),
+    'type' => 'numeric',
+    'compare' => 'BETWEEN'
+);
+
+$args = array(
+    'post_type'      => 'event',
+    'meta_query'     => array($meta_query),
+    'posts_per_page' => 150,
+    'orderby'        => 'meta_value_num',
+    'meta_key'       => '_neuf_events_starttime',
+    'order'          => 'ASC'
+);
+
 $events = new WP_Query( $args );
-/*  */
-define('SITE_ROOT', 'http://studentersamfunnet.no/'); 
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="no" lang="no">
 
+$news = new WP_Query( 'type=post' );
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://ww=
+w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Ukesprogram for Det Norske Studentersamfund</title>
-    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-    <link href="<?php echo SITE_ROOT;?>css/weekprogrammail.css" rel="stylesheet" type="text/css" />
+        <title>Det Norske Studentersamfund - Nyhetsbrev</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+        <style type="text/css">
+        </style>
 </head>
-<body style="font-family: verdana, sans-serif; font-size: 11px; border: none; letter-spacing: 1px; border: none;">
-    <div id="all" style="width: 600px; border: none; margin: 0 auto;">
-
-<?php
-/* TODO : add edit mode with js */
-?>
-        <p>
-            <img src="<?php echo SITE_ROOT;?>bilder/bannermail.png" alt="Det Norske Studentersamfund" border="0" />
-        </p>
-
-<?php
-/* three top stories */
-?>
-    <table class="top">
-        <tr style="background: #fff;">
-            <?php $counter = 0;
-            while ($events->have_posts() && $counter < 3) : $events->the_post(); ?>
-
-            <td id="<?php the_ID(); ?>" style="vertical-align: center;">
-                <div>
-                    <h2 style="margin: 0px 3px; font-size: 14px;"><?php //echo $gig->name; ?></h2>
-                    <p style="margin: 0px 3px; font-style: italic;">
-                        <?php //echo strftime("%A %d. %B, %H:%M", strtotime($gig->time)); ?>
-                    </p>
-                </div>
-                <div style="margin-top: 5px; text-align: center; vertical-align: center; heigth: 250px;">
-                    <?php //if ($gig->picture): ?>
-                        <img src="<?php echo SITE_ROOT;?>imageResize.php?pic=bilder/program/DELETEME<?php //echo $gig->picture;?>&amp;maxwidth=170" alt="" />
-                    <?php //endif; ?>
-                </div>
-                <div>
-                    <p style="margin: 5px 3px 0;">
-                        <?php //echo $gig->intro; ?>
-                    </p>
-                    <p style="margin: 5px 3px;">
-                        <a href="<?php the_permalink(); ?>">Les mer&raquo;</a>
-                    </p>
-                </div>
-            </td>
-            <?php $counter++; ?>
-            <?php endwhile; ?>
-        </tr>
-    </table>
-
-    <div class="clear">&nbsp;</div>
-    <div id="middle-section">
-      <p id="middle-text">
-        <?php //echo $prog->pretext; ?>
-      </p>
-      <br />
-    </div>
-
-    <div id="concert-list">
-        <table>
-        <tr>
-
-<?php 
-/* TODO snipped week table with
-    - day as header
-    - 3 columns:
-        - event picture
-        - title with description and read more link.
-        - event type, venue, time, price
- */
-?>
-        </tr>
-        </table>
-    </div>
-		<div id="end-section">
-			<br />
-			<p id="end-text"><?php //echo $prog->posttext; ?></p>
-			<br />
-		</div>
-
-		<div id="sponsors" style="text-align: center; border-top: 1px solid black;">
-			<p>Vår samarbeidspartner:</p>
-			<a href="http://www.akademika.no"><img style="margin: 12px; border: none;" src="<?php echo SITE_ROOT; ?>bilder/sponsorer/akademika.png" alt="Akademika" /></a>
-		</div>
-		<div id="about" style="text-align: center; border-top: 1px solid black;">
-			<p>Det Norske Studentersamfund</p>
-			<p><a href="<?php echo SITE_ROOT; ?>">www.studentersamfundet.no</a></p>
-			<p>Chateau Neuf, Slemdalsveien 15, 0369 Oslo, tlf: 22 84 45 11</p>  
-		</div>
-	</div>
+<body rightmargin="0" topmargin="0" bottommargin="0" style="margin:0;" bgcolor="#ffffff" leftmargin="0">
+<table width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+    <tr>
+        <td width="50%">
+            <table width="640" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+                <tr>
+                    <td style="background-color:#e99835;"><img src="<?php bloginfo('template_directory'); ?>/img/logo-web.png" alt="Det Norske Studentersamfund" /></td>
+                </tr>
+                <tr>
+                <?php if ($news->have_posts()) : $news->the_post(); ?>
+                    <td id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
+                            <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">
+                                <b><?php the_title(); ?></b><br />
+                                <?php the_date(); ?>
+                                <?php the_excerpt(); ?>
+                                <?php the_post_thumbnail( 'newsletter-wide' ); ?>
+                            </a>
+                    </td>
+                <?php endif; // $news->have_posts() ?>
+                </tr>
+            </table>
+            <table width="640" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+                <tr>
+                <?php while ($top_events->have_posts()) : $top_events->the_post(); ?>
+                    <td width="33%" id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
+                            <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">
+                                <?php the_post_thumbnail('two-column-thumb'); ?><br />
+                                <b><?php the_title(); ?></b>
+                            </a>
+                    </td>
+                <?php endwhile; // $top_events->have_posts() ?>
+                </tr>
+            </table>
+            <table width="640" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+                <tr>
+                    <td colspan="6"><h2>Program denne uken</h2></td>
+                </tr>
+                <tr>
+                    <?php // TODO dynamic <b>mandag</b>, <b>tirsdag</b> ?>
+                    <td colspan="6"><h3>mandag</h3></td>
+                </tr>
+                <?php while ($events->have_posts()) : $events->the_post(); ?>
+                <tr id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
+                    <td>20.00</td>
+                    <td>
+                        <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+                    </td>
+                    <td>60/60</td>
+                    <td>Konsert</td>
+                    <td>Betong</td>
+                    <td><a href="#">Kjøp billett</a></td>
+                </tr>
+                <?php endwhile; // $events->have_posts() ?>
+            </table>
+            <table width="640" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+                <tr style="text-align:center;">
+                    <td><img src="<?php bloginfo('template_directory'); ?>/img/sponsors/logo_black_akademika.png" alt="Akademika" /></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
 </body>
 </html>

@@ -90,7 +90,7 @@ header#site-header .site-title .betong {
 
 #menu {
 	height:25px;
-	margin-top:35px;
+	margin-top:30px;
 }
 #menu a {
 	/* color:rgb(88,89,91); */
@@ -149,6 +149,26 @@ header#site-header .site-title .betong {
 #menu .social-icons {
         margin: 0;
 }
+#menu .aapningstider li ul li {
+	padding:0 5%;
+}
+
+#menu .aapningstider {
+	margin:0;
+}
+
+#menu .aapningstider table {
+	text-align:left;
+	font-family:Arial,sans-serif;
+	font-size:11px;
+	font-weight:normal;
+	text-transform:none;
+	color:#fff;
+}
+#menu .aapningstider td.right {
+	padding-left: 10px;
+	text-align: right;
+}
 #menu #facebook-icon {
        padding-right: 8px;
        padding-left: 8px;
@@ -193,7 +213,7 @@ header#site-header .site-title .betong {
 	display:inline-block;
 	border-bottom:1px solid #000000;
 	padding-bottom:15px;
-	margin-top:40px;
+    width: 100%;
 }
 
 #digest_news,
@@ -207,8 +227,14 @@ header#site-header .site-title .betong {
 	border-top:1px solid #000000;
 }
 
+#digest_news,
+#digest_events {
+	padding-bottom:15px;
+}
+
 #student-media #nova-player {
-	height:110px;
+	height:100px;
+	border-bottom:1px solid #FF9E29;
 }
 
 #student-media #nova-player h2 {
@@ -252,11 +278,13 @@ header#site-header .site-title .betong {
 #student-media #twitter_feed {
 	overflow:hidden;
 }
+#student-media #twitter_feed_title {
+    padding-top: 15px;
+}
 
 #student-media #twitter_feed_title img  {
 	display:inline-block;
-	width:80px;
-	height:80px;
+	width:70px;
 }
 
 #student-media #twitter_feed_title a  {
@@ -266,6 +294,9 @@ header#site-header .site-title .betong {
 
 #student-media #twitter_feed_title_name {
 	display:inline-block;
+}
+#student-media #twitter_feed_title_name h3 {
+        margin-bottom: 0px;
 }
 
 #student-media #twitter_feed_title_name a {
@@ -290,7 +321,7 @@ header#site-header .site-title .betong {
 
 #kolofon {
 	padding-top: 25px;
-	padding-bottom: 20px;
+	padding-bottom: 10px;
 }
 #site-footer {
 	margin-top: 20px;
@@ -391,10 +422,6 @@ h1,h2,h3,h4,h5,h6
 	color: #E99835;
 	text-decoration:none;
 }
-
-/*.entry-title {
-	font-size: 35px;
-}*/
 h1 {
 	font-size: 35px;
 	font-weight:bold;
@@ -422,12 +449,23 @@ h5 {
 h6 {
 	font-size:16px;
 }
+/* Single posts */
+.single-post h1.entry-title {
+	margin-bottom:0;
+}
+.single-post .byline {
+	color: #aaaaaa;
+}
+.single-post .byline .author {
+	color: #333;
+	font-weight: bold;
+}
 
 /* Menus */
 #menu {
 	font-family:Arvo,Georgia,serif;
 	font-weight:bold;
-	font-size:18px;
+	font-size:16px;
 	text-transform:uppercase;
 }
 
@@ -489,11 +527,11 @@ h6 {
 
 /* Quotes */
 .entry-content blockquote {
-	margin: 1em 2em;
 	font-style:italic;
 	background:#eeeeee;
 	margin:1em 2em;
-	padding:1px 19px;
+	padding:1.5em 1.5em 0;
+	overflow:hidden;
 }
 .entry-content blockquote blockquote {
 	border:1px solid #000000;
@@ -512,9 +550,6 @@ h6 {
 .table th {
 	text-align: left;
 }
-.table .date {
-	width:100px;
-}
 .table tr:nth-child(even) td,
 .table tr.alt td {
 	background-color: #F9F9F9;
@@ -530,17 +565,6 @@ h6 {
 	line-height: 18px;
 	text-align: left;
 	border-top: 1px solid #DDD;
-}
-.table tr.month, .table tr.month td {
-	border: none;
-}
-
-.table tr.month td {
-	padding-top:25px;
-}
-
-.table tr.month:first-child td {
-	padding-top:0px
 }
 
 /* Forms */
@@ -565,6 +589,10 @@ img {
 
 .single-event .entry-title {
 	margin-bottom:0;
+	font-size: 35px;
+	margin-bottom:45px;
+	font-weight: bold;
+	font-style: normal;
 }
 
 /* Buttons */
@@ -611,8 +639,43 @@ a.btn {
 }
 
 /* Icons */
-.single-event .event-type:before,
-#featured article .event-type:before,
+
+#digest_news_headline:before,
+#digest_events_headline:before,
+.single-event .entry-meta .entry-meta-info:before {
+	content:'';
+	background:#ff9e29;
+	border-radius:50%;
+	width:50px;
+	height:50px;
+	float: left;
+	position:relative;
+	top:10px;
+	margin-right:15px;
+}
+
+#digest_news_headline:before,
+#digest_events_headline:before {
+	width:35px;
+	height:35px;
+	top:-7px;
+	margin-right:10px;
+}
+#digest_news_headline,
+#digest_events_headline {
+	margin:0.3em 0 0.6em;
+}
+
+#digest_news_headline:before {
+	background:url('img/ikon_nyheter-35x35.png');
+}
+
+#digest_events #digest_events_headline:before {
+	background:url('img/ikon_tiles-35x35.png');
+}
+
+/*.single-event .entry-meta h1:before,*/
+#featured article.type-event h1:before,
 #featured article.type-post h1:before {
 	content:'';
 	background:#000000;
@@ -621,40 +684,84 @@ a.btn {
 	height:50px;
 	display:inline-block;
 	position:relative;
-	top:10px;
+	top: 10px;
 	margin-right:15px;
 }
-#content .event-type-quiz .event-type:before {
+
+#content .event-type-quiz .entry-meta-info:before,
+#content article.event-type-quiz h1:before {
 	background:url('img/ikon_quiz-50x50.png');
 }
-#content .event-type-debatt .event-type:before,
-#content .event-type-onsdagsdebatten .event-type:before {
+
+#content .event-type-debatt .entry-meta-info:before,
+#content .event-type-onsdagsdebatten .entry-meta-info:before,
+#content .event-type-mote .entry-meta-info:before,
+#content article.event-type-mote h1:before,
+#content article.event-type-debatt h1:before,
+#content article.event-type-onsdagsdebatten h1:before {
 	background:url('img/ikon_debatt-50x50.png');
 }
-#content .event-type-foredrag .event-type:before,
-#content .event-type-upop .event-type:before,
-#content .event-type-akademisk-vorspiel .event-type:before {
+
+#content .event-type-foredrag .entry-meta-info:before,
+#content .event-type-upop .entry-meta-info:before,
+#content .event-type-akademisk-vorspiel .entry-meta-info:before,
+#content .event-type-forfatteraften .entry-meta-info:before,
+#content article.event-type-foredrag h1:before,
+#content article.event-type-upop h1:before,
+#content article.event-type-akademisk-vorspiel h1:before,
+#content article.event-type-forfatteraften h1:before {
 	background:url('img/ikon_foredrag-50x50.png');
 }
-#content .event-type-konsert .event-type:before,
-#content .event-type-pungrock .event-type:before,
-#content .event-type-south-of-heaven .event-type:before,
-#content .event-type-smalt-som-faen .event-type:before,
-#content .event-type-lillesalen-konsertserie .event-type:before,
-#content .event-type-konsert .event-type:before,
-#content .event-type-konsert .event-type:before,
-#content .event-type-konsert .event-type:before,
-#content .event-type-konsert .event-type:before {
+
+#content .event-type-konsert .entry-meta-info:before,
+#content .event-type-pungrock .entry-meta-info:before,
+#content .event-type-south-of-heaven .entry-meta-info:before,
+#content .event-type-smalt-som-faen .entry-meta-info:before,
+#content .event-type-lillesalen-konsertserie .entry-meta-info:before,
+#content .event-type-annen-etasje-konsertserie .entry-meta-info:before,
+#content .event-type-vin-vinyl .entry-meta-info:before,
+#content article.event-type-konsert h1:before,
+#content article.event-type-pungrock h1:before,
+#content article.event-type-south-of-heaven h1:before,
+#content article.event-type-smalt-som-faen h1:before,
+#content article.event-type-lillesalen-konsertserie h1:before,
+#content article.event-type-vin-vinyl h1:before,
+#content article.event-type-annen-etasje-konsertserie h1:before {
 	background:url('img/ikon_konsert-50x50.png');
 }
-#content .event-type-film .event-type:before,
-#content .event-type-filmrulltorsdag .event-type:before {
+
+#content .event-type-film .entry-meta-info:before,
+#content .event-type-filmrulltorsdag .entry-meta-info:before,
+#content .event-type-tidsbilde .entry-meta-info:before,
+#content article.event-type-tidsbilde h1:before,
+#content article.event-type-film h1:before,
+#content article.event-type-filmrulltorsdag h1:before {
 	background:url('img/ikon_film-50x50.png');
 }
 
-#content .event-type-fest .event-type:before {
+#content .event-type-fest .entry-meta-info:before,
+#content article.event-type-fest h1:before {
 	background:url('img/ikon_fest-50x50.png');
 }
+
+#content .event-type-teater .entry-meta-info:before,
+#content article.event-type-teater h1:before {
+	background:url('img/ikon_teater-50x50.png');
+}
+
+#content article.type-post h1:before {
+	background:url('img/ikon_nyheter-50x50.png');
+}
+
+#program-6days .time {
+	color:#ff9e29;
+}
+#program-6days .event-type {
+	color:#aaa;
+	font-size:0.9em;
+}
+
+
 
 /* End icons */
 
@@ -687,23 +794,40 @@ a.btn {
 	position:relative;
 }
 
-.single-event .event-type,
-#featured article .event-type,
-#featured article.type-post h1 {
+.single-event article .event-type,
+#featured article .event-type {
 	font-family:Arvo,Georgia,serif;
-	text-transform:uppercase;
-	font-weight:bold;
-	font-style:normal;
-	font-size:35px;
-	line-height:60px;
-	color:#000000;
+	font-size: 20px;
+	font-style: italic;
+	font-weight: normal;
+	padding-left: 0px;
+	padding-bottom: 0px;
+}
+
+.home #featured article.type-event .type {
+	font-family:Arvo,Georgia,serif;
+	font-size: 20px;
+	font-style: italic;
+	font-weight: normal;
+	padding-left: 67px;
+	margin-bottom: -20px;
+}
+.type-event .event-facebook img {
+    height: 20px;
+    position:relative;
+    top: 3px;
 }
 
 #featured article h1 {
-	font-size:22px;
+	font-family:Arvo,Georgia,serif;
+	font-size:35px;
 	letter-spacing:2px;
-	font-style:italic;
+	font-style:normal;
 	font-weight:normal;
+	margin-bottom:0;
+	padding-left:63px;
+	padding-bottom:35px;
+	text-indent:-63px;
 }
 
 #featured article .datetime,
@@ -816,8 +940,27 @@ a.btn {
 	display: inline-block;
 	margin-right:7px;
 }
+.home #digest_news .when {
+    font-size:0.9em;
+    color:#aaa;
+}
 
-/* Program */
+/* Search template */
+
+.search #content > .hentry .entry-title {
+	font-size: 24px;
+	margin-bottom: 0px;
+}
+
+.search #content > .hentry .entry-byline {
+	padding-left: 20px;
+	font-size: 12px;
+	font-style: italic;
+}
+
+/* End search template */
+
+/* Program template */
 
 /* Icons */
 .page-program .view-mode:hover {
@@ -857,27 +1000,45 @@ a.btn {
 	margin:auto;
 }
 
-.page-program .category-chooser-item > label > img.checked {
-	opacity:1.0;
-	filter:alpha(opacity=100); /* For IE8 and earlier */
+.page-program .category-chooser-item label > img {
+    opacity:0.4;
+    filter:alpha(opacity=40); /* For IE8 and earlier */
 }
 
-.page-program .category-chooser-item > label > img.unchecked {
-	opacity:0.4;
-	filter:alpha(opacity=40); /* For IE8 and earlier */
+.page-program .category-chooser-item label > img:hover {
+    opacity:0.6;
+    filter:alpha(opacity=60); /* For IE8 and earlier */
 }
 
-.page-program .category-chooser-item > label > img.checked:hover {
-	opacity:0.8;
-	filter:alpha(opacity=80); /* For IE8 and earlier */
+.page-program .category-chooser-item label > img.checked {
+    opacity:1.0;
+    filter:alpha(opacity=100); /* For IE8 and earlier */
 }
 
-.page-program .category-chooser-item > label > img.unchecked:hover {
-	opacity:0.6;
-	filter:alpha(opacity=60); /* For IE8 and earlier */
+.page-program .category-chooser-item label > img.checked:hover {
+    opacity:0.8;
+    filter:alpha(opacity=80); /* For IE8 and earlier */
 }
 
-/* Archives */
+/* table */
+.page-program .table .date {
+	width:100px;
+}
+.page-program .table tr.month td {
+	background-color: #FFF;
+}
+.page-program .table tr.month, 
+.page-program .table tr.month td {
+	border: none;
+}
+
+.page-program .table tr.month td {
+	padding-top:25px;
+}
+
+/* End program template */
+
+/* Archive templates */
 
 .archive #content article {
 	padding-bottom:25px;

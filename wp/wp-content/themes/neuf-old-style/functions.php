@@ -7,9 +7,12 @@ $content_width = 770;
 
 add_image_size( 'two-column-thumb'  , 170 ,  69 , true );
 add_image_size( 'four-column-thumb' , 370 , 150 , true );
+add_image_size( 'four-column-promo' , 370 , 322 , true );
 add_image_size( 'six-column-promo' , 570 , 322 , true );
 add_image_size( 'six-column-slim' , 570 , 161 , true );
 add_image_size( 'association-thumb' , 270 , 250, false );
+add_image_size( 'extra-large' , 1600 , 1600 , false);
+add_image_size( 'newsletter-wide' , 620, 80, false);
 
 /**
  * Register navigation menus.
@@ -31,12 +34,14 @@ function neuf_enqueue_scripts() {
 	wp_register_script( 'jquery'    , 'http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js' );
 	wp_register_script( 'program'   , get_template_directory_uri() . '/js/program.js', array( 'jquery' ) );
 	wp_register_script( 'cycle'     , get_template_directory_uri() . '/js/jquery.cycle.all.js', array( 'jquery' ), '0.9.8' );
-	wp_register_script( 'front-page', get_template_directory_uri() . '/js/front-page.js', array('cycle') );
+	wp_register_script( 'front-page', get_template_directory_uri() . '/js/front-page.js', array('cycle','moment-lang') );
 	wp_register_script( 'application', get_template_directory_uri() . '/js/application.js', array('jquery') );
     wp_register_script( 'underscore', get_template_directory_uri() . '/js/underscore.js');
     wp_register_script( 'knockout', get_template_directory_uri() . '/js/knockout-2.0.0.js');
     wp_register_script( 'util', get_template_directory_uri() . '/js/neuf/util/util.js' );
     wp_register_script( 'date.js', get_template_directory_uri() . '/js/neuf/util/date-nb-NO.js');
+    wp_register_script( 'moment', get_template_directory_uri() . '/js/moment.min.js');
+    wp_register_script( 'moment-lang', get_template_directory_uri() . '/js/lang/nb.js', array('moment'));
     wp_register_script( 'eventProgram', get_template_directory_uri() . '/js/neuf/eventProgram.js', array('jquery', 'underscore', 'knockout', 'date.js', 'util') );
 	wp_register_script( 'footer', get_template_directory_uri() . '/js/footer.js', array('jquery') );
 
@@ -55,19 +60,18 @@ add_action( 'wp_enqueue_scripts' , 'neuf_enqueue_scripts' );
  * Denies uploads of images smaller (in pixels) than given width and height values.
  */
 function neuf_handle_upload_prefilter( $file ) {
-	$width  = 640;
-	$height = 480;
+
+	$minimum = array( 'width' => 640, 'height' => 480);
 
 	$img = getimagesize( $file['tmp_name'] );
-	$minimum = array( 'width' => $width , 'height' => $height );
 	$width = $img[0];
-	$height =$img[1];
+	$height = $img[1];
 
 	if ( $width < $minimum['width'] )
 		return array( "error" => "Image dimensions are too small. Minimum width is {$minimum['width']}px. Uploaded image width is $width px" );
 
 	elseif ($height <  $minimum['height'])
-		return array( "error" => "Image dimensions are too small. Minimum height is {$minimum['height']}px. Uploaded image width is $width px" );
+		return array( "error" => "Image dimensions are too small. Minimum height is {$minimum['height']}px. Uploaded image height is $height px" );
 	else
 		return $file; 
 }
@@ -285,7 +289,7 @@ function neuf_get_attachment_count() {
  */
 function neuf_maybe_display_gallery() {
 	if ( 2 < neuf_get_attachment_count() )
-		echo do_shortcode( '[gallery]' );
+		echo do_shortcode( '[gallery link="file" size="four-column-promo"]' );
 }
 
 function neuf_event_format_date($timestamp) {
