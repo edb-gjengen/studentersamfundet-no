@@ -22,8 +22,9 @@
 				<div class="grid_6">
 
                     <?php if(has_post_thumbnail()) { ?>
-					<div class="wp-post-image-caption"><?php echo get_post( get_post_thumbnail_id() )->post_excerpt; ?>
+					<div class="wp-post-image-caption">
 						<?php the_post_thumbnail( 'large' , array( 'style' => 'display:block;margin:auto;' ) ); ?>
+						<p class="wp-caption-text gallery-caption"><?php echo get_post( get_post_thumbnail_id() )->post_excerpt; ?></p>
 					</div>
                     <?php } ?>
 
