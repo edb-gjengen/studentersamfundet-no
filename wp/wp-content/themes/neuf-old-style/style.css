@@ -23,7 +23,7 @@
 }
 
 #content {
-	background: transparent;
+	background: #ffffff;
 	padding:0;
 	clear:both;
 	overflow:auto;
@@ -53,13 +53,26 @@
 
 /* end layout */
 
+/* Background */
+body {
+
+        background: url('img/background_concert.jpg') no-repeat center center;
+        -moz-background-size: cover;
+        background-size: cover;
+        
+        /* IE Fix */
+        -ms-filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(src='img/background_concert.jpg', sizingMethod='scale')";
+        filter:progid: DXImageTransform.Microsoft.AlphaImageLoader(src='img/background_concert.jpg', sizingMethod='scale');
+
+}
+
 /* Header */
 body.dns {
 	background:#efefef;
 }
 header#site-header,
 footer#site-footer {
-	background-color:#000000;
+	/*background-color:#000000;*/
 }
 header#site-header {
 	height:90px;
@@ -419,7 +432,7 @@ h1,h2,h3,h4,h5,h6 {
 a,a:visited,
 h1,h2,h3,h4,h5,h6
 {
-	color: #E99835;
+	color: #000000;
 	text-decoration:none;
 }
 h1 {
@@ -640,119 +653,6 @@ a.btn {
 
 /* Icons */
 
-#digest_news_headline:before,
-#digest_events_headline:before,
-.single-event .entry-meta .entry-meta-info:before {
-	content:'';
-	background:#ff9e29;
-	border-radius:50%;
-	width:50px;
-	height:50px;
-	float: left;
-	position:relative;
-	top:10px;
-	margin-right:15px;
-}
-
-#digest_news_headline:before,
-#digest_events_headline:before {
-	width:35px;
-	height:35px;
-	top:-7px;
-	margin-right:10px;
-}
-#digest_news_headline,
-#digest_events_headline {
-	margin:0.3em 0 0.6em;
-}
-
-#digest_news_headline:before {
-	background:url('img/ikon_nyheter-35x35.png');
-}
-
-#digest_events #digest_events_headline:before {
-	background:url('img/ikon_tiles-35x35.png');
-}
-
-/*.single-event .entry-meta h1:before,*/
-#featured article.type-event h1:before,
-#featured article.type-post h1:before {
-	content:'';
-	background:#000000;
-	border-radius:50%;
-	width:50px;
-	height:50px;
-	display:inline-block;
-	position:relative;
-	top: 10px;
-	margin-right:15px;
-}
-
-#content .event-type-quiz .entry-meta-info:before,
-#content article.event-type-quiz h1:before {
-	background:url('img/ikon_quiz-50x50.png');
-}
-
-#content .event-type-debatt .entry-meta-info:before,
-#content .event-type-onsdagsdebatten .entry-meta-info:before,
-#content .event-type-mote .entry-meta-info:before,
-#content article.event-type-mote h1:before,
-#content article.event-type-debatt h1:before,
-#content article.event-type-onsdagsdebatten h1:before {
-	background:url('img/ikon_debatt-50x50.png');
-}
-
-#content .event-type-foredrag .entry-meta-info:before,
-#content .event-type-upop .entry-meta-info:before,
-#content .event-type-akademisk-vorspiel .entry-meta-info:before,
-#content .event-type-forfatteraften .entry-meta-info:before,
-#content article.event-type-foredrag h1:before,
-#content article.event-type-upop h1:before,
-#content article.event-type-akademisk-vorspiel h1:before,
-#content article.event-type-forfatteraften h1:before {
-	background:url('img/ikon_foredrag-50x50.png');
-}
-
-#content .event-type-konsert .entry-meta-info:before,
-#content .event-type-pungrock .entry-meta-info:before,
-#content .event-type-south-of-heaven .entry-meta-info:before,
-#content .event-type-smalt-som-faen .entry-meta-info:before,
-#content .event-type-lillesalen-konsertserie .entry-meta-info:before,
-#content .event-type-annen-etasje-konsertserie .entry-meta-info:before,
-#content .event-type-vin-vinyl .entry-meta-info:before,
-#content article.event-type-konsert h1:before,
-#content article.event-type-pungrock h1:before,
-#content article.event-type-south-of-heaven h1:before,
-#content article.event-type-smalt-som-faen h1:before,
-#content article.event-type-lillesalen-konsertserie h1:before,
-#content article.event-type-vin-vinyl h1:before,
-#content article.event-type-annen-etasje-konsertserie h1:before {
-	background:url('img/ikon_konsert-50x50.png');
-}
-
-#content .event-type-film .entry-meta-info:before,
-#content .event-type-filmrulltorsdag .entry-meta-info:before,
-#content .event-type-tidsbilde .entry-meta-info:before,
-#content article.event-type-tidsbilde h1:before,
-#content article.event-type-film h1:before,
-#content article.event-type-filmrulltorsdag h1:before {
-	background:url('img/ikon_film-50x50.png');
-}
-
-#content .event-type-fest .entry-meta-info:before,
-#content article.event-type-fest h1:before {
-	background:url('img/ikon_fest-50x50.png');
-}
-
-#content .event-type-teater .entry-meta-info:before,
-#content article.event-type-teater h1:before {
-	background:url('img/ikon_teater-50x50.png');
-}
-
-#content article.type-post h1:before {
-	background:url('img/ikon_nyheter-50x50.png');
-}
-
 #program-6days .time {
 	color:#ff9e29;
 }
@@ -809,8 +709,6 @@ a.btn {
 	font-size: 20px;
 	font-style: italic;
 	font-weight: normal;
-	padding-left: 67px;
-	margin-bottom: -20px;
 }
 .type-event .event-facebook img {
     height: 20px;
@@ -820,14 +718,12 @@ a.btn {
 
 #featured article h1 {
 	font-family:Arvo,Georgia,serif;
-	font-size:35px;
+	font-size:34px;
 	letter-spacing:2px;
 	font-style:normal;
 	font-weight:normal;
 	margin-bottom:0;
-	padding-left:63px;
 	padding-bottom:35px;
-	text-indent:-63px;
 }
 
 #featured article .datetime,
@@ -857,12 +753,12 @@ a.btn {
 }
 #featured #prevLink {
 	position:absolute;
-	top: 324px;
+	top: 305px;
 	left: 500px;
 }
 #featured #nextLink {
 	position:absolute;
-	top: 324px;
+	top: 305px;
 	left: 555px;
 }
 #featured:hover #prevLink,
@@ -893,7 +789,7 @@ a.btn {
 
 #featured #slidernav {
 	position:absolute;
-	top:322px;
+	top:305px;
 	left:15px;
 }
 #featured #slidernav a span.circle {
@@ -933,7 +829,7 @@ a.btn {
 }
 .home #digest_news .post a.permalink:before {
 	content: '';
-	background: #E99835;
+	background: #000000;
 	border-radius: 50%;
 	width: 12px;
 	height: 12px;
