@@ -1,18 +1,19 @@
 <?php
 add_theme_support( 'menus' );
-add_theme_support( 'post-thumbnails');
+add_theme_support( 'post-thumbnails' );
 add_theme_support( 'automatic-feed-links' );
 
 $content_width = 770;
 
-add_image_size( 'two-column-thumb'  , 170 ,  69 , true );
-add_image_size( 'four-column-thumb' , 370 , 150 , true );
-add_image_size( 'four-column-promo' , 370 , 322 , true );
-add_image_size( 'six-column-promo' , 570 , 322 , true );
-add_image_size( 'six-column-slim' , 570 , 161 , true );
-add_image_size( 'association-thumb' , 270 , 250, false );
-add_image_size( 'extra-large' , 1600 , 1600 , false);
-add_image_size( 'newsletter-wide' , 620, 80, false);
+add_image_size( 'two-column-thumb'  , 170 ,  69 ,  true );
+add_image_size( 'two-column-promo'  , 170 , 105 ,  true );
+add_image_size( 'four-column-thumb' , 370 , 150 ,  true );
+add_image_size( 'four-column-promo' , 370 , 322 ,  true );
+add_image_size( 'six-column-promo'  , 570 , 322 ,  true );
+add_image_size( 'six-column-slim'   , 570 , 161 ,  true );
+add_image_size( 'association-thumb' , 270 , 250 , false );
+add_image_size( 'extra-large'       ,1600 ,1600 , false );
+add_image_size( 'newsletter-wide'   , 620 ,   80, false );
 
 /**
  * Register navigation menus.
@@ -379,12 +380,13 @@ function neuf_page_title() {
 	} elseif (is_tax()) {
 		    global $taxonomy;
 			$content .= '<h1 class="page-title">';
-			$tax = get_taxonomy($taxonomy);
-			$content .= $tax->labels->name . ' ';
-			$content .= __('Arkiv:', 'neuf');
-			$content .= ' <span>';
+			//$tax = get_taxonomy($taxonomy);
+			//$content .= $tax->labels->name . ' ';
+			//$content .= __('Arkiv:', 'neuf');
+			//$content .= ' <span>';
 			$content .= neuf_get_term_name();
-			$content .= '</span></h1>';
+			//$content .= '</span>';
+			$content .= '</h1>';
 	}	elseif (is_day()) {
 			$content .= '<h1 class="page-title">';
 			$content .= sprintf(__('Innhold fra dagen <span>%s</span>', 'neuf'), get_the_time(get_option('date_format')));
@@ -446,4 +448,58 @@ function neuf_get_term_name() {
 	return $term->name;
 }
 
+/**
+ * Loads posts and serves them through a template file.
+ *
+ * Used for infinite scrolling in event type template.
+ */
+function neuf_endless_scrolling() {
+	// Set up future posts
+	$meta_query = array(
+		'key'     => '_neuf_events_starttime',
+		'value'   => date( 'U' , strtotime( '-8 hours' ) ), 
+		'compare' => '>',
+		'type'    => 'numeric'
+	);
+
+	$tax_query = array (
+		'taxonomy' => 'event_type',
+		'field' => 'slug',
+		'terms' => $_POST['term']
+	);
+
+	$args = array(
+		'post_type'      => 'event',
+		'meta_query'     => array( $meta_query ),
+		'tax_query'      => array( $tax_query ),
+		'posts_per_page' => get_option('posts_per_page'),
+		'orderby'        => 'meta_value_num',
+		'meta_key'       => '_neuf_events_starttime',
+		'order'          => 'ASC',
+		'paged'          => $_POST['page']
+	);
+
+	$future = new WP_Query( $args );
+
+	if ( 'past' == $_POST['time_scope'] ) {
+		$meta_query['compare'] = '<=';
+		$args = array(
+			'post_type'      => 'event',
+			'meta_query'     => array( $meta_query ),
+			'tax_query'      => array( $tax_query ),
+			'posts_per_page' => 10,
+			'orderby'        => 'meta_value_num',
+			'meta_key'       => '_neuf_events_starttime',
+			'order'          => 'DESC',
+			'paged'          => $_POST['page']
+		);
+	}
+
+	query_posts( $args );
+	get_template_part( $_POST['template'] );
+
+	exit;
+}
+add_action( 'wp_ajax_infinite_scroll' , 'neuf_endless_scrolling' );
+add_action( 'wp_ajax_nopriv_infinite_scroll' , 'neuf_endless_scrolling' );
 ?>
