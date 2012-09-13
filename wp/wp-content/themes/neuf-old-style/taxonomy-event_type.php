@@ -3,7 +3,7 @@
 
 		<div id="content" class="container_12">
 
-			<header class="grid_12">
+			<header class="grid_6 suffix_6">
 				<?php neuf_page_title(); ?>
 				<p class="description"><?php echo( $term->description ); ?></p>
 			</header>
@@ -85,7 +85,7 @@ $past = new WP_Query( $args )
 
 	$(window).scroll(function() {
 		// If we reach the bottom of the #past-events section
-		if ( $(window).scrollTop() + $(window).height() > $('#site-header').height() + $('#past-events').height() - $('#site-footer').height() ) {
+		if ( $(window).scrollTop() + $(window).height() > $('#site-header').height() + $('#content > header').height() + $('#past-events').height() + 150 ) {
 			// And we're not already loading or have reached the end
 			if ( pastLoading || nextPastPage > pastTotal ) {
 				return false;
@@ -99,7 +99,7 @@ $past = new WP_Query( $args )
 		}
 
 		// If we reach the bottom of the #future-events section
-		if ( $(window).scrollTop() + $(window).height() > $('#site-header').height() + $('#future-events').height() - $('#site-footer').height() ) {
+		if ( $(window).scrollTop() + $(window).height() > $('#site-header').height() + $('#content > header').height() + $('#future-events').height() + 150 ) {
 			// And we're not already loading or have reached the end
 			if ( futureLoading || nextFuturePage > futureTotal ) {
 				return false;
