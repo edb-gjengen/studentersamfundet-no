@@ -358,7 +358,8 @@ header#site-header .site-title a {
 body, input, textarea,
 #program-3days a,
 #program-6days a,
-#digest_events a
+#digest_events a,
+article a .entry-content
 {
 	color:#333333;
 }
