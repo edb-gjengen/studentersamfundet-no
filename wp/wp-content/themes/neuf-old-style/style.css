@@ -401,7 +401,8 @@ h1 {
 }
 
 h1,h2,h3,h4,h5,h6,
-.single-event .entry-meta {
+.single-event .entry-meta,
+.archive.tax-event_type #tab-control ul li {
 	font-family: Arvo, Georgia, serif;
 	line-height:1.2;
 }
@@ -415,7 +416,8 @@ h1,h2,h3,h4,h5,h6
 	color: #ff9e29;
 	text-decoration:none;
 }
-h1 {
+h1,
+.archive.tax-event_type #tab-control ul li {
 	font-size: 35px;
 	font-weight:bold;
 	font-style:normal;
@@ -669,7 +671,9 @@ a.btn {
 
 /*.single-event .entry-meta h1:before,*/
 #featured article.type-event h1:before,
-#featured article.type-post h1:before {
+#featured article.type-post h1:before,
+.tax-event_type h1.page-title:before
+{
 	content:'';
 	background:#ff9e29;
 	border-radius:50%;
@@ -682,7 +686,9 @@ a.btn {
 }
 
 #content .event-type-quiz .entry-meta-info:before,
-#content article.event-type-quiz h1:before {
+#content article.event-type-quiz h1:before,
+.tax-event_type.term-quiz h1.page-title:before
+{
 	background:url('img/ikon_quiz-50x50.png');
 }
 
@@ -691,7 +697,11 @@ a.btn {
 #content .event-type-mote .entry-meta-info:before,
 #content article.event-type-mote h1:before,
 #content article.event-type-debatt h1:before,
-#content article.event-type-onsdagsdebatten h1:before {
+#content article.event-type-onsdagsdebatten h1:before,
+.tax-event_type.term-debatt h1.page-title:before,
+.tax-event_type.term-onsdagsdebatten h1.page-title:before,
+.tax-event_type.term-mote h1.page-title:before
+{
 	background:url('img/ikon_debatt-50x50.png');
 }
 
@@ -699,27 +709,43 @@ a.btn {
 #content .event-type-upop .entry-meta-info:before,
 #content .event-type-akademisk-vorspiel .entry-meta-info:before,
 #content .event-type-forfatteraften .entry-meta-info:before,
+#content .event-type-vin-vinyl .entry-meta-info:before,
 #content article.event-type-foredrag h1:before,
 #content article.event-type-upop h1:before,
 #content article.event-type-akademisk-vorspiel h1:before,
-#content article.event-type-forfatteraften h1:before {
+#content article.event-type-forfatteraften h1:before,
+#content article.event-type-vin-vinyl h1:before
+.tax-event_type.term-foredrag h1.page-title:before,
+.tax-event_type.term-upop h1.page-title:before,
+.tax-event_type.term-akademisk-vorspiel h1.page-title:before,
+.tax-event_type.term-forfatteraften h1.page-title:before,
+.tax-event_type.term-vin-vinyl h1.page-title:before
+{
 	background:url('img/ikon_foredrag-50x50.png');
 }
 
 #content .event-type-konsert .entry-meta-info:before,
 #content .event-type-pungrock .entry-meta-info:before,
-#content .event-type-south-of-heaven .entry-meta-info:before,
+#content .event-type-kaptein-pop .entry-meta-info:before,
 #content .event-type-smalt-som-faen .entry-meta-info:before,
+#content .event-type-south-of-heaven .entry-meta-info:before,
 #content .event-type-lillesalen-konsertserie .entry-meta-info:before,
 #content .event-type-annen-etasje-konsertserie .entry-meta-info:before,
-#content .event-type-vin-vinyl .entry-meta-info:before,
 #content article.event-type-konsert h1:before,
 #content article.event-type-pungrock h1:before,
-#content article.event-type-south-of-heaven h1:before,
+#content article.event-type-kaptein-pop h1:before,
 #content article.event-type-smalt-som-faen h1:before,
+#content article.event-type-south-of-heaven h1:before,
 #content article.event-type-lillesalen-konsertserie h1:before,
-#content article.event-type-vin-vinyl h1:before,
-#content article.event-type-annen-etasje-konsertserie h1:before {
+#content article.event-type-annen-etasje-konsertserie h1:before,
+.tax-event_type.term-konsert h1.page-title:before,
+.tax-event_type.term-pungrock h1.page-title:before,
+.tax-event_type.term-kaptein-pop h1.page-title:before,
+.tax-event_type.term-smalt-som-faen h1.page-title:before,
+.tax-event_type.term-south-of-heaven h1.page-title:before,
+.tax-event_type.term-lillesalen-konsertserie h1.page-title:before,
+.tax-event_type.term-annen-etasje-konsertserie h1.page-title:before
+{
 	background:url('img/ikon_konsert-50x50.png');
 }
 
@@ -728,17 +754,25 @@ a.btn {
 #content .event-type-tidsbilde .entry-meta-info:before,
 #content article.event-type-tidsbilde h1:before,
 #content article.event-type-film h1:before,
-#content article.event-type-filmrulltorsdag h1:before {
+#content article.event-type-filmrulltorsdag h1:before,
+.tax-event_type.term-tidsbilde h1.page-title:before,
+.tax-event_type.term-film h1.page-title:before,
+.tax-event_type.term-filmrulltorsdag h1.page-title:before
+{
 	background:url('img/ikon_film-50x50.png');
 }
 
 #content .event-type-fest .entry-meta-info:before,
-#content article.event-type-fest h1:before {
+#content article.event-type-fest h1:before,
+.tax-event_type.term-fest h1.page-title:before
+{
 	background:url('img/ikon_fest-50x50.png');
 }
 
 #content .event-type-teater .entry-meta-info:before,
-#content article.event-type-teater h1:before {
+#content article.event-type-teater h1:before,
+.tax-event_type.term-teater h1.page-title:before
+{
 	background:url('img/ikon_teater-50x50.png');
 }
 
@@ -940,10 +974,6 @@ a.btn {
     color:#aaa;
 }
 
-.archive #content header .description {
-	margin-bottom:2em;
-}
-
 /* Search template */
 
 .search #content > .hentry .entry-title {
@@ -1039,10 +1069,46 @@ a.btn {
 
 /* Archive templates */
 
-.archive #content article {
+.archive #content article,
+.archive #tab-control
+{
 	padding-bottom:25px;
 	border-bottom:1px solid #E99835;
 	margin-bottom:25px;
+}
+.archive #tab-control {
+	padding-bottom:15px;
+}
+.archive #tab-control a {
+	color:#ccc;
+}
+.archive #tab-control a:active,
+.archive #tab-control a:hover {
+	color:#aaa;
+	text-decoration:none;
+}
+.archive #tab-control .current a {
+	color:#ff9e29;
+}
+.archive #tab-control .current a:active,
+.archive #tab-control .current a:hover {
+	cursor:default;
+}
+
+.archive #content header .description {
+	margin-bottom:3em;
+}
+
+.archive.tax-event_type #tab-control ul {
+	list-style:none;
+	margin:0;
+}
+.archive.tax-event_type #tab-control ul li {
+	float:left;
+	margin-bottom:-0px;
+}
+.archive.tax-event_type #tab-control ul li:last-child {
+	float:right;
 }
 
 /* Foreningene/Associations */
@@ -1060,4 +1126,3 @@ a.btn {
 	display: table-row;
 	margin-bottom: 15px;
 }
-

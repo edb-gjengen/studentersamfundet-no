@@ -1,15 +1,17 @@
-<?php get_header(); ?>
-<?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); ?>
-
-		<div id="content" class="container_12">
-
-			<header class="grid_6 suffix_6">
-				<?php neuf_page_title(); ?>
-				<p class="description"><?php echo( $term->description ); ?></p>
-			</header>
-
 <?php
-// Set up future posts
+/**
+ * Event type presentation.
+ *
+ * By default, WordPress will fetch everything tagged with the event type. This
+ * can be events and posts, sorted by when they were published. For now, all we
+ * really want is the events, and we'd like to sort them by start time.
+ *
+ * First we set up queries to get future and past events.
+ * Then we present them.
+ * At last we set up tabs and endless browsing with some jQuery.
+ */ 
+
+// Set up query to fetch future posts
 $meta_query = array(
 	'key'     => '_neuf_events_starttime',
 	'value'   => date( 'U' , strtotime( '-8 hours' ) ), 
@@ -35,7 +37,7 @@ $args = array(
 
 $future = new WP_Query( $args );
 
-// set up past posts
+// Set up a slightly different query to fetch past events
 $meta_query['compare'] = '<=';
 $args = array(
 	'post_type'      => 'event',
@@ -47,33 +49,69 @@ $args = array(
 	'order'          => 'DESC'
 );
 
-$past = new WP_Query( $args )
+$past = new WP_Query( $args );
+
+$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+
+// OK, we got our WP_Queries how we need them.
+// Let's start theming.
 ?>
 
-			<section id="future-events" class="grid_6">
-				<header>
-					<h2><?php echo $term->name ?> i framtida</h2>
-				</header>
+<?php get_header(); ?>
 
-				<?php $wp_query = $future; ?>
+		<div id="content" class="container_12">
+
+			<header>
+				<div class="grid_6 suffix_6">
+					<?php neuf_page_title(); ?>
+					<p class="description"><?php echo( $term->description ); ?></p>
+				</div>
+				<nav id="tab-control" class="grid_12">
+					<ul>
+						<li><a href="#future-events">Kommende arangementer</a></li>
+						<li><a href="#past-events"><?php echo $term->name ?> i fortida</a></li>
+					</ul>
+				</nav>
+			</header>
+
+
+			<section id="future-events" class="grid_12">
+				<?php $wp_query = $future; // Use the future posts query as the main Loop query ?>
 				<?php get_template_part( 'loop', 'taxonomy-event_type' ); ?>
-
 			</section> <!-- #future-events -->
 
-			<section id="past-events" class="grid_6">
-				<header>
-					<h2><?php echo $term->name ?> i fortida</h2>
-				</header>
-
-				<?php $wp_query = $past; ?>
+			<section id="past-events" class="grid_12">
+				<?php $wp_query = $past; // Use the past query as the main Loop query ?>
 				<?php get_template_part( 'loop', 'taxonomy-event_type' ); ?>
-
 			</section> <!-- #future-events -->
 
-</div> <!-- #content -->
+		</div> <!-- #content -->
+
+<?php // That's it. Before we grab the footer, we're gonna fix tabs and endless scrolling: ?>
 
 <script type="text/javascript">
 
+// The first part should be pretty straightforward,
+// creating a giant tab box:
+
+$(document).ready(function(){
+	$('#content section').hide();
+	$('#content section:first').show().addClass('current');
+	$('#content nav ul li:first').addClass('current');
+
+	$('#content nav ul li a').click(function(){
+		$('#content nav ul li').removeClass('current');
+		$('#content section').hide().removeClass('current');
+		$(this).parent().addClass('current');
+		var tab = $(this).attr('href');
+		$(tab).show().addClass('current');
+
+		return false;
+	});
+});
+
+// Now to endless browsing. I've never written anything
+// like this before, so beware a little mess
 	var nextPastPage   = 2;
 	var nextFuturePage = 2;
 	var pastLoading   = false;
@@ -84,32 +122,38 @@ $past = new WP_Query( $args )
 	var futureLoader = "<img id='future-loader' alt='' src='<?php bloginfo('template_directory'); ?>/img/ajax-loader.gif' align='center' />";
 
 	$(window).scroll(function() {
-		// If we reach the bottom of the #past-events section
-		if ( $(window).scrollTop() + $(window).height() > $('#site-header').height() + $('#content > header').height() + $('#past-events').height() + 150 ) {
-			// And we're not already loading or have reached the end
-			if ( pastLoading || nextPastPage > pastTotal ) {
-				return false;
-			} else {
-				// load more posts
+		if (
+			// If we are viewing the past tab
+			$('#past-events').hasClass('current')
+			// and we reach the bottom of the #past-events section
+			&& $(window).scrollTop() + $(window).height() > $('#site-header').height() + $('#content > header').height() + $('#past-events').height() + 150
+			// and we're not already loading past posts 
+			&& ! pastLoading
+			// and we have not yet reached the end of the past posts
+			&& nextPastPage < pastTotal ) {
+
+				// load more past posts
 				pastLoading = true;
 				loadMorePastEvents(nextPastPage);
 				nextPastPage++;
 				console.log('loading more past events...');
-			}
 		}
 
-		// If we reach the bottom of the #future-events section
-		if ( $(window).scrollTop() + $(window).height() > $('#site-header').height() + $('#content > header').height() + $('#future-events').height() + 150 ) {
-			// And we're not already loading or have reached the end
-			if ( futureLoading || nextFuturePage > futureTotal ) {
-				return false;
-			} else {
+		if (
+			// If we are viewing the future tab
+			$('#future-events').hasClass('current')
+			// and we reach the bottom of the #future-events section
+			&& $(window).scrollTop() + $(window).height() > $('#site-header').height() + $('#content > header').height() + $('#future-events').height() + 150
+			// and we're not already loading future posts 
+			&& ! futureLoading
+			// and we have not yet reached the end of the future posts
+			&& nextFuturePage < futureTotal ) {
+
 				// load more posts
 				futureLoading = true;
 				loadMoreFutureEvents(nextFuturePage);
 				nextFuturePage++;
 				console.log('loading more future events...');
-			}
 		}
 	});
 
@@ -118,7 +162,7 @@ $past = new WP_Query( $args )
 			$('#past-events').append(pastLoader);
 		}
 		$.ajax({
-			url:"<?php bloginfo('wpurl'); ?>/wp-admin/admin-ajax.php",
+			url:"<?php bloginfo('wpurl'); ?>/wp-admin/admin-ajax.php", // grep for 'infinite scroll' in functions.php
 			type: 'POST',
 			data: "action=infinite_scroll&page=" + pageNumber + '&time_scope=past&term=<?php echo get_query_var('term'); ?>&template=loop-taxonomy-event_type',
 			success: function(html){
@@ -136,7 +180,7 @@ $past = new WP_Query( $args )
 			$('#future-events').append(futureLoader);
 		}
 		$.ajax({
-			url:"<?php bloginfo('wpurl'); ?>/wp-admin/admin-ajax.php",
+			url:"<?php bloginfo('wpurl'); ?>/wp-admin/admin-ajax.php", // grep for 'infinite scroll' in functions.php
 			type: 'POST',
 			data: "action=infinite_scroll&page=" + pageNumber + '&time_scope=future&term=<?php echo get_query_var('term'); ?>&template=loop-taxonomy-event_type',
 			success: function(html){
