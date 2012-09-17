@@ -41,6 +41,7 @@ $args = array(
 );
 
 $events = new WP_Query( $args );
+list($events_start, $events_end) = $events->query_vars['meta_query'][0]['value']);
 
 $news = new WP_Query( 'type=post' );
 
@@ -72,6 +73,7 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         }
         table {
             font-size: 0.9em;
+            margin-bottom: 10px;
         }
         th,td {
             border-top: 1px solid #DDD;
@@ -79,6 +81,12 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         }
         .header {
             font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #F9F9F9;
+        }
+        img, a img {
+            border: none;
         }
         </style>
 </head>
@@ -94,7 +102,7 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                 <tr id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?> style="vertical-align:bottom;">
                     <td>
                         <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><h2><?php the_title(); ?></h2></a>
-                        <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_post_thumbnail( 'newsletter-thumb', array('style' => 'display: inline-block;float:right;' ) ); ?></a>
+                        <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_post_thumbnail( 'newsletter-thumb', array('style' => 'display: inline-block;float:right;', 'title' => get_the_title() )); ?></a>
                         <div style="font-size:0.9em; color:#222;"><?php the_date(); ?></div>
                         <?php the_excerpt(); ?>
                     </td>
@@ -106,14 +114,14 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                 <?php while ($top_events->have_posts()) : $top_events->the_post(); ?>
                     <td width="33%" id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
                             <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">
-                                <?php the_post_thumbnail('newsletter-thumb'); ?><br />
+                                <?php the_post_thumbnail('newsletter-thumb', array('title' => get_the_title())); ?><br />
                                 <b><?php the_title(); ?></b>
                             </a>
                     </td>
                 <?php endwhile; // $top_events->have_posts() ?>
                 </tr>
             </table>
-            <h2><a href="<?php bloginfo('url'); ?>/program/">Program denne uken</a></h2>
+            <h2><a href="<?php bloginfo('url'); ?>/program/" title="Les hele programmet på studentersamfundet.no">Program denne uken</a><?php ?> </h2>
             <table width="640" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
                 <?php
                 $current_day = "";
@@ -138,7 +146,8 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                         $event_types_real[] = $event_type->name;
                     }
                     $event_type_real = $event_types_real ? "".implode(", ", $event_types_real) : "";
-
+                    $facebook = get_post_meta( get_the_ID() , '_neuf_events_fb_url', true );
+                    $facebook_icon = $facebook ? '<a href="'.$facebook.'" title="Arrangementet på Facebook"><img src="'.get_bloginfo('stylesheet_directory').'/img/facebook-icon.png" width="13px" height="13px" /></a>' : "";
                     if($newday) { ?>
                         <tr>
                             <td colspan="6" style="border-top: 0px;"><h3><?php echo $current_day; ?></h3></td>
@@ -165,14 +174,14 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                         </td>
                         <td><?php echo $price; ?></td>
                         <td><?php echo $event_type_real; ?></td>
-                        <td><?php echo $venue; ?></td>
+                        <td><?php echo $venue . $facebook_icon; ?></td>
                         <td><?php echo $ticket; ?></td>
                     </tr>
                 <?php endwhile; // $events->have_posts() ?>
             </table>
             <table width="640" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
                 <tr style="text-align:center;">
-                    <td><img src="<?php bloginfo('template_directory'); ?>/img/sponsors/logo_black_akademika.png" alt="Akademika" /></td>
+                    <td style="border:0px;"><img src="<?php bloginfo('template_directory'); ?>/img/sponsors/logo_black_akademika.png" alt="Akademika" /></td>
                 </tr>
             </table>
         </td>
