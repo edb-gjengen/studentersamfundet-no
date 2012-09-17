@@ -1,12 +1,12 @@
 <?php 
 get_header(); 
-wp_enqueue_script('program');
-wp_enqueue_script('eventProgram');
+//wp_enqueue_script('program');
+//wp_enqueue_script('eventProgram');
 ?>
 
 <!-- Category chooser: -->
 <style>
-    .hidden {
+    /*.hidden {
         display:none;
     }
 
@@ -32,13 +32,13 @@ wp_enqueue_script('eventProgram');
 
     .float-right {
         float: right;
-    }
+    }*/
 
 </style>
 
-<div align="center" id="load-spinner">
+<!--<div align="center" id="load-spinner">
     <img style="margin: 10px 0px 10px 0px;"align="center" src="<?php bloginfo('stylesheet_directory'); ?>/img/ajax-loader.gif">
-</div>
+</div>-->
 
 <section id="content" class="container_12 hidden" role="main">
     <div class="grid_12">
@@ -49,7 +49,7 @@ wp_enqueue_script('eventProgram');
         <?php endwhile; endif; ?>
     </div>
 	
-	<a id='image-dir' style="display:none;" href="<?php bloginfo('template_directory'); ?>/img/">You will hopefully not see this.</a>
+	<!--<a id='image-dir' style="display:none;" href="<?php bloginfo('template_directory'); ?>/img/">You will hopefully not see this.</a>
 	<div id="program-style-selector" class="grid_2 push_10">
 		<div class="program-style-selector-item">
 			<a class="btn small view-mode tiles" onclick='showTiles();toggleActive("tiles");' title="Vis programmet i et rutenett">Rutenett</a>
@@ -64,7 +64,7 @@ wp_enqueue_script('eventProgram');
             <div class="category-chooser-item">
                 <input class="program-category-chooser hidden" type="checkbox" data-bind="value: name, checked: checked, attr: { id: id }">
                 <label data-bind="attr: { for: id }">
-                    <a class="btn"
+                    <a class="btn small"
                          data-bind="text:name, css: { checked: shouldDisplayAsChecked }">
                     <span class="category-chooser-item-label" data-bind="text: name"></span></a>
                 </label>
@@ -92,7 +92,7 @@ wp_enqueue_script('eventProgram');
                 </tr>
             </tbody>
         </table>
-    </div>
+    </div>-->
 <?php
 /* Events with starttime including 8 hours up until 30 days from now. */
 //$meta_query = array(
@@ -258,7 +258,7 @@ if ( $events->have_posts() ) :
 	/* All posts */
 
 ?>
-<div id="program_list" class="program" style="display:none;">
+<div id="program_list" class="program">
     <form id="program-category-chooser" class="grid_10 pull_2"></form>
 
     <div class="grid_12">
