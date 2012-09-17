@@ -68,7 +68,7 @@ $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' 
 				</div>
 				<nav id="tab-control" class="grid_12">
 					<ul>
-						<li><a href="#future-events">Kommende arangementer</a></li>
+						<li><a href="#future-events">Kommende arrangementer</a></li>
 						<li><a href="#past-events"><?php echo $term->name ?> i fortida</a></li>
 					</ul>
 				</nav>
