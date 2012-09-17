@@ -43,6 +43,8 @@ $args = array(
 $events = new WP_Query( $args );
 
 $news = new WP_Query( 'type=post' );
+
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://ww=
 w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -51,6 +53,33 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         <title>Det Norske Studentersamfund - Nyhetsbrev</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
         <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+        }
+        a,a:visited,h1,h2,h3 {
+            color: #FF9E29;
+            text-decoration: none;
+        }
+        a:hover{
+            text-decoration: underline;
+
+        }
+        h1,h2,h3 {
+            margin:0;
+        }
+        p {
+            display:inline;
+        }
+        table {
+            font-size: 0.9em;
+        }
+        th,td {
+            border-top: 1px solid #DDD;
+            padding: 4px;
+        }
+        .header {
+            font-weight: bold;
+        }
         </style>
 </head>
 <body rightmargin="0" topmargin="0" bottommargin="0" style="margin:0;" bgcolor="#ffffff" leftmargin="0">
@@ -59,52 +88,86 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         <td width="50%">
             <table width="640" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
                 <tr>
-                    <td style="background-color:#e99835;"><img src="<?php bloginfo('template_directory'); ?>/img/logo-web.png" alt="Det Norske Studentersamfund" /></td>
+                    <td colspan="4" style="background-color:#e99835;"><img src="<?php bloginfo('template_directory'); ?>/img/logo-web.png" alt="Det Norske Studentersamfund" /></td>
                 </tr>
-                <tr>
                 <?php if ($news->have_posts()) : $news->the_post(); ?>
-                    <td id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
-                            <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">
-                                <b><?php the_title(); ?></b><br />
-                                <?php the_date(); ?>
-                                <?php the_excerpt(); ?>
-                                <?php the_post_thumbnail( 'newsletter-wide' ); ?>
-                            </a>
+                <tr id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?> style="vertical-align:bottom;">
+                    <td>
+                        <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><h2><?php the_title(); ?></h2></a>
+                        <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_post_thumbnail( 'newsletter-thumb', array('style' => 'display: inline-block;float:right;' ) ); ?></a>
+                        <div style="font-size:0.9em; color:#222;"><?php the_date(); ?></div>
+                        <?php the_excerpt(); ?>
                     </td>
                 <?php endif; // $news->have_posts() ?>
                 </tr>
             </table>
             <table width="640" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
-                <tr>
+                <tr style="vertical-align:top;">
                 <?php while ($top_events->have_posts()) : $top_events->the_post(); ?>
                     <td width="33%" id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
                             <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">
-                                <?php the_post_thumbnail('two-column-thumb'); ?><br />
+                                <?php the_post_thumbnail('newsletter-thumb'); ?><br />
                                 <b><?php the_title(); ?></b>
                             </a>
                     </td>
                 <?php endwhile; // $top_events->have_posts() ?>
                 </tr>
             </table>
+            <h2><a href="<?php bloginfo('url'); ?>/program/">Program denne uken</a></h2>
             <table width="640" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
-                <tr>
-                    <td colspan="6"><h2>Program denne uken</h2></td>
-                </tr>
-                <tr>
-                    <?php // TODO dynamic <b>mandag</b>, <b>tirsdag</b> ?>
-                    <td colspan="6"><h3>mandag</h3></td>
-                </tr>
-                <?php while ($events->have_posts()) : $events->the_post(); ?>
-                <tr id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
-                    <td>20.00</td>
-                    <td>
-                        <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a>
-                    </td>
-                    <td>60/60</td>
-                    <td>Konsert</td>
-                    <td>Betong</td>
-                    <td><a href="#">Kjøp billett</a></td>
-                </tr>
+                <?php
+                $current_day = "";
+                $first = true;       
+                while ($events->have_posts()) : $events->the_post();
+                    $date = get_post_meta( $post->ID , '_neuf_events_starttime' , true );
+                    $previous_day = $current_day;
+                    /* set current day */
+                    $current_day = date_i18n( 'l' , $date);
+                    $newday = $previous_day != $current_day;
+                    ($price = neuf_get_price( $post )) ? : $price = '-';
+                    $venue = get_post_meta( $post->ID , '_neuf_events_venue' , true );
+                    $ticket = get_post_meta( $post->ID , '_neuf_events_bs_url' , true );
+                    $ticket = $ticket ? '<a href="'.$ticket.'">Kjøp billett</a>' : '';
+                    $starttime = date_i18n( 'H:i' , $date);
+
+                    /* event type class */
+                    $event_array = get_the_terms( $post->ID , 'event_type' );
+                    $event_types = array();
+                    $event_types_real = array();
+                    foreach ( $event_array as $event_type ) {
+                        $event_types_real[] = $event_type->name;
+                    }
+                    $event_type_real = $event_types_real ? "".implode(", ", $event_types_real) : "";
+
+                    if($newday) { ?>
+                        <tr>
+                            <td colspan="6" style="border-top: 0px;"><h3><?php echo $current_day; ?></h3></td>
+                        </tr>
+
+                    <?php }
+                    if($first) { ?>
+                        <tr class="header">
+                            <td>Dato</td>
+                            <td>Arrangement</td>
+                            <td>CC</td>
+                            <td>Type</td>
+                            <td>Sted</td>
+                            <td>Billett</td>
+                        </tr>
+                    <?php
+                        $first = false;
+                    }?>
+
+                    <tr id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
+                        <td><?php echo $starttime; ?></td>
+                        <td>
+                            <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+                        </td>
+                        <td><?php echo $price; ?></td>
+                        <td><?php echo $event_type_real; ?></td>
+                        <td><?php echo $venue; ?></td>
+                        <td><?php echo $ticket; ?></td>
+                    </tr>
                 <?php endwhile; // $events->have_posts() ?>
             </table>
             <table width="640" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
