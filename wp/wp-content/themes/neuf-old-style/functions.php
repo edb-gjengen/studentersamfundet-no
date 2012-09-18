@@ -6,7 +6,6 @@ add_theme_support( 'automatic-feed-links' );
 $content_width = 770;
 
 add_image_size( 'two-column-thumb'  , 170 ,  69 ,  true );
-add_image_size( 'two-column-promo'  , 170 , 105 ,  true );
 add_image_size( 'four-column-thumb' , 370 , 150 ,  true );
 add_image_size( 'four-column-promo' , 370 , 322 ,  true );
 add_image_size( 'six-column-promo'  , 570 , 322 ,  true );
@@ -14,7 +13,8 @@ add_image_size( 'six-column-slim'   , 570 , 161 ,  true );
 add_image_size( 'association-thumb' , 270 , 250 , false );
 add_image_size( 'extra-large'       , 1600 ,1600 , false );
 add_image_size( 'newsletter-wide'   , 620 , 80, false );
-add_image_size( 'newsletter-thumb'  , 160 , 95, false );
+add_image_size( 'newsletter-half'   , 320 , 190, false );
+add_image_size( 'newsletter-third'  , 213 , 126, false );
 
 /**
  * Register navigation menus.
