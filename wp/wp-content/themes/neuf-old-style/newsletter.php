@@ -118,6 +118,16 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                 <tr style="vertical-align:top;">
                 <?php $counter = 1; ?>
                 <?php while ($top_events->have_posts()) : $top_events->the_post(); ?>
+                    <?php $date = get_post_meta( $post->ID , '_neuf_events_starttime' , true );
+                    $previous_day = $current_day;
+                    /* set current day */
+                    $current_day = date_i18n( 'l' , $date);
+                    ($price = neuf_get_price( $post )) ? : $price = '-';
+                    $venue = get_post_meta( $post->ID , '_neuf_events_venue' , true );
+                    $ticket = get_post_meta( $post->ID , '_neuf_events_bs_url' , true );
+                    $ticket = $ticket ? '<a href="'.$ticket.'">Kjøp billett</a>' : '';
+                    $starttime = date_i18n( 'j. F' , $date);
+                    ?>
                     <?php if($counter % 3 == 0)  { ?>
                         <tr style="vertical-align:top;">
                     <?php } ?>
@@ -126,8 +136,7 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                                 <?php the_post_thumbnail('newsletter-half', array('title' => get_the_title())); ?><br />
                                 <div style="margin-top:4px;font-weight:bold;"><?php the_title(); ?></div></a>
 				<p style="margin-top:4px; margin-bottom:4px;"><?php the_excerpt(); ?></p>
-			<p style="margin-top:4px; margin-bottom:4px;font-weight:bold;">12. oktober 150,- / 200,- Betong</p>
-                            </a>
+                                <p style="margin-top:4px; margin-bottom:4px;font-weight:bold;"><?php echo "$starttime $price $venue"; ?></p>
                     </td>
                     <?php if($counter % 2 == 0)  { ?>
                         </tr>
