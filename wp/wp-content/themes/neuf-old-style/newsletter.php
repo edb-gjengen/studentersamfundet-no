@@ -68,9 +68,10 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         h1,h2,h3 {
             margin:0;
         }
-        p {
-            display:inline;
-        }
+	p {
+		-webkit-margin-before: 0px;
+		-webkit-margin-after: 0px;
+	}
         table {
             font-size: 0.9em;
             margin-bottom: 10px;
@@ -112,24 +113,27 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                 <?php endif; // $news->have_posts() ?>
                 </tr>
             </table>
+	    <h2>Det skjer på Studentersamfundet!</h2>
             <table width="640" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
                 <tr style="vertical-align:top;">
-                <?php $counter = 0; ?>
+                <?php $counter = 1; ?>
                 <?php while ($top_events->have_posts()) : $top_events->the_post(); ?>
-                    <?php if($counter % 2 == 0)  { ?>
+                    <?php if($counter % 3 == 0)  { ?>
                         <tr style="vertical-align:top;">
                     <?php } ?>
                     <td width="50%" id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
                             <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">
                                 <?php the_post_thumbnail('newsletter-half', array('title' => get_the_title())); ?><br />
-                                <b><?php the_title(); ?></b>
+                                <div style="margin-top:4px;font-weight:bold;"><?php the_title(); ?></div></a>
+				<p style="margin-top:4px; margin-bottom:4px;"><?php the_excerpt(); ?></p>
+			<p style="margin-top:4px; margin-bottom:4px;font-weight:bold;">12. oktober 150,- / 200,- Betong</p>
                             </a>
                     </td>
                     <?php if($counter % 2 == 0)  { ?>
                         </tr>
                     <?php } ?>
                 <?php 
-                $counter++;
+                $counter += 1;
                 endwhile; // $top_events->have_posts() ?>
                 </tr>
             </table>
