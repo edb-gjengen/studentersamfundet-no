@@ -152,16 +152,28 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                 $current_day = "";
                 $first = true;       
                 while ($events->have_posts()) : $events->the_post();
+                    if($first) { ?>
+                        <tr class="header">
+                            <td>Tid</td>
+                            <td>Konsept</td>
+                            <td>Arrangement</td>
+                            <td>Sted</td>
+                            <td>CC</td>
+                            <td>Billett</td>
+                        </tr>
+                    <?php
+                        $first = false;
+                    }
                     $date = get_post_meta( $post->ID , '_neuf_events_starttime' , true );
                     $previous_day = $current_day;
                     /* set current day */
-                    $current_day = date_i18n( 'l' , $date);
+                    $current_day = ucfirst( date_i18n( 'l j. F' , $date) );
                     $newday = $previous_day != $current_day;
                     ($price = neuf_get_price( $post )) ? : $price = '-';
                     $venue = get_post_meta( $post->ID , '_neuf_events_venue' , true );
                     $ticket = get_post_meta( $post->ID , '_neuf_events_bs_url' , true );
                     $ticket = $ticket ? '<a href="'.$ticket.'">Kjøp billett</a>' : '';
-                    $starttime = date_i18n( 'H:i' , $date);
+                    $starttime = date_i18n( 'H.i' , $date);
 
                     /* event type class */
                     $event_array = get_the_terms( $post->ID , 'event_type' );
@@ -179,27 +191,16 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                         </tr>
 
                     <?php }
-                    if($first) { ?>
-                        <tr class="header">
-                            <td>Dato</td>
-                            <td>Arrangement</td>
-                            <td>CC</td>
-                            <td>Type</td>
-                            <td>Sted</td>
-                            <td>Billett</td>
-                        </tr>
-                    <?php
-                        $first = false;
-                    }?>
+?>
 
                     <tr id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
                         <td><?php echo $starttime; ?></td>
+                        <td><?php echo $event_type_real; ?></td>
                         <td>
                             <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a>
                         </td>
-                        <td><?php echo $price; ?></td>
-                        <td><?php echo $event_type_real; ?></td>
                         <td><?php echo $venue . $facebook_icon; ?></td>
+                        <td><?php echo $price; ?></td>
                         <td><?php echo $ticket; ?></td>
                     </tr>
                 <?php endwhile; // $events->have_posts() ?>
