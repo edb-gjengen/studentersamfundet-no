@@ -41,7 +41,7 @@ $args = array(
 );
 
 $events = new WP_Query( $args );
-list($events_start, $events_end) = $events->query_vars['meta_query'][0]['value']);
+//list($events_start, $events_end) = $events->query_vars['meta_query'][0]['value']);
 
 $news = new WP_Query( 'type=post' );
 
@@ -57,7 +57,7 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         body {
             font-family: Arial, sans-serif;
         }
-        a,a:visited,h1,h2,h3 {
+        a,a:visited,h1,h2 {
             color: #FF9E29;
             text-decoration: none;
         }
@@ -77,7 +77,10 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         }
         th,td {
             border-top: 1px solid #DDD;
-            padding: 4px;
+            padding-left: 4px;
+            padding-right: 4px;
+            padding-top: 8px;
+            padding-bottom: 8px;
         }
         .header {
             font-weight: bold;
@@ -102,7 +105,7 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                 <tr id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?> style="vertical-align:bottom;">
                     <td>
                         <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><h2><?php the_title(); ?></h2></a>
-                        <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_post_thumbnail( 'newsletter-thumb', array('style' => 'display: inline-block;float:right;', 'title' => get_the_title() )); ?></a>
+                        <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_post_thumbnail( 'newsletter-third', array('style' => 'display: inline-block;float:right;', 'title' => get_the_title() )); ?></a>
                         <div style="font-size:0.9em; color:#222;"><?php the_date(); ?></div>
                         <?php the_excerpt(); ?>
                     </td>
@@ -111,14 +114,23 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
             </table>
             <table width="640" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
                 <tr style="vertical-align:top;">
+                <?php $counter = 0; ?>
                 <?php while ($top_events->have_posts()) : $top_events->the_post(); ?>
-                    <td width="33%" id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
+                    <?php if($counter % 2 == 0)  { ?>
+                        <tr style="vertical-align:top;">
+                    <?php } ?>
+                    <td width="50%" id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
                             <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">
-                                <?php the_post_thumbnail('newsletter-thumb', array('title' => get_the_title())); ?><br />
+                                <?php the_post_thumbnail('newsletter-half', array('title' => get_the_title())); ?><br />
                                 <b><?php the_title(); ?></b>
                             </a>
                     </td>
-                <?php endwhile; // $top_events->have_posts() ?>
+                    <?php if($counter % 2 == 0)  { ?>
+                        </tr>
+                    <?php } ?>
+                <?php 
+                $counter++;
+                endwhile; // $top_events->have_posts() ?>
                 </tr>
             </table>
             <h2><a href="<?php bloginfo('url'); ?>/program/" title="Les hele programmet på studentersamfundet.no">Program denne uken</a><?php ?> </h2>
@@ -179,7 +191,7 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                     </tr>
                 <?php endwhile; // $events->have_posts() ?>
             </table>
-            <table width="640" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+            <table width="640" cellspacing="0" cellpadding="0" bgcolor="#ffffff" style="margin-top:20px;">
                 <tr style="text-align:center;">
                     <td style="border:0px;"><img src="<?php bloginfo('template_directory'); ?>/img/sponsors/logo_black_akademika.png" alt="Akademika" /></td>
                 </tr>
