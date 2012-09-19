@@ -63,6 +63,11 @@ $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' 
 
 			<header>
 				<div class="grid_6 suffix_6">
+<?php if ( $term->parent ) {
+	$term_parent = get_term( $term->parent, $term->taxonomy );
+?>
+					<span class="parent"><a href="<?php echo get_term_link( $term_parent->slug, 'event_type' ); ?>"><?php echo $term_parent->name; ?></a></span>
+<?php } ?>
 					<?php neuf_page_title(); ?>
 					<p class="description"><?php echo( $term->description ); ?></p>
 				</div>
