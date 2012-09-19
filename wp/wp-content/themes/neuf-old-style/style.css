@@ -387,11 +387,16 @@ header#site-header .site-title .tagline {
  * Typography
  */
 body, input, textarea,
+{
+    color: #333;
+
+}
 #program-3days a,
 #program-6days a,
 #digest_events a
 {
-	color:#333333;
+    color: #000;
+
 }
 #digest_events h2 a {
 	color:#000000;
@@ -438,9 +443,12 @@ h1,h2,h3,h4,h5,h6,
 h1,h2,h3,h4,h5,h6 {
 	margin-bottom:0.5em;
 }
-
-a,a:visited,
-h1,h2,h3,h4,h5,h6
+a,a:visited {
+    color: #E99835;
+    
+	text-decoration:none;
+}
+h1,h2,h3,h4,h5,h6,h2 a
 {
 	color: #000000;
 	text-decoration:none;

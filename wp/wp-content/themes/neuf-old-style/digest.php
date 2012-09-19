@@ -1,6 +1,6 @@
 		<div id="digest_news" class="grid_12 hfeed">
 
-			<h2 id="digest_news_headline">Aktuelt</h2>
+			<h2 id="digest_news_headline"><a href="/aktuelt/">Aktuelt</a></h2>
 
 				<?php // The LOOP
 					$digest_news = new WP_Query( 'posts_per_page=3' );
