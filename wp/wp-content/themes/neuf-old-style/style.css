@@ -359,7 +359,9 @@ body, input, textarea,
 #program-3days a,
 #program-6days a,
 #digest_events a,
-article a .entry-content
+article a .entry-content,
+article.event .event-type a,
+.tax-event_type .parent a
 {
 	color:#333333;
 }
@@ -783,9 +785,10 @@ a.btn {
 #program-6days .time {
 	color:#ff9e29;
 }
-#program-6days .event-type {
+#program-6days .event-type,
+#program-6days .event-type a {
 	color:#aaa;
-	font-size:0.9em;
+	font-size:13px;
 }
 
 
@@ -831,13 +834,16 @@ a.btn {
 	padding-bottom: 0px;
 }
 
-.home #featured article.type-event .type {
+.home #featured article.type-event .type,
+.archive .parent
+{
 	font-family:Arvo,Georgia,serif;
 	font-size: 20px;
 	font-style: italic;
 	font-weight: normal;
 	padding-left: 67px;
-	margin-bottom: -20px;
+	position:relative;
+	top:20px;
 }
 .type-event .event-facebook img {
     height: 20px;

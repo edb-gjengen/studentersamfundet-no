@@ -1,16 +1,22 @@
-					<header class="entry-meta">
 <?php
 $post->neuf_event_venue = get_post_meta(get_the_ID(), '_neuf_events_venue',true);
 $ticket = get_post_meta(get_the_id(), '_neuf_events_bs_url',true);
-if ( 'Annet' != $post->neuf_event_venue ) {
+
+$date_format = 'l j. F';
+if ( 
+	0 > get_post_meta(get_the_ID() , '_neuf_events_starttime' , true ) - strtotime('U - 1 week') // event is more than a week old
+	|| date( 'Y' , get_post_meta(get_the_ID() , '_neuf_events_starttime' , true ) ) != date( 'Y') // event is not this year
+) {
+	$date_format = 'l j. F Y';
+} 
 ?>
-<?php } ?>
+					<header class="entry-meta">
 						<h1 class="entry-title"><?php the_title(); ?></h1>
 
 						<div class="entry-meta-info">
 
                             <div>
-                                <span class="event-date"><?php echo ucfirst( date_i18n( 'l j. F' , get_post_meta(get_the_ID() , '_neuf_events_starttime' , true ) ) ); ?></span>
+                                <span class="event-date"><?php echo ucfirst( date_i18n( $date_format , get_post_meta(get_the_ID() , '_neuf_events_starttime' , true ) ) ); ?></span>
                             </div>
                             <div>
                                 <span class="meta-prep meta-prep-event-time"><?php _e( 'Kl:' , 'neuf' ); ?></span>
