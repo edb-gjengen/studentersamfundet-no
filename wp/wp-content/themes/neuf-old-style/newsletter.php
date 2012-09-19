@@ -41,7 +41,8 @@ $args = array(
 );
 
 $events = new WP_Query( $args );
-//list($events_start, $events_end) = $events->query_vars['meta_query'][0]['value']);
+
+list($events_start, $events_end) = $events->query_vars['meta_query'][0]['value'];
 
 $news = new WP_Query( 'type=post' );
 
@@ -68,13 +69,15 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         h1,h2,h3 {
             margin:0;
         }
-	p {
-		-webkit-margin-before: 0px;
-		-webkit-margin-after: 0px;
-	}
+        p {
+            -webkit-margin-before: 0px;
+            -webkit-margin-after: 0px;
+        }
         table {
-            font-size: 0.9em;
             margin-bottom: 10px;
+        }
+        table.program {
+            font-size: 0.8em;
         }
         th,td {
             border-top: 1px solid #DDD;
@@ -86,7 +89,7 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         .header {
             font-weight: bold;
         }
-        tr:nth-child(even) {
+        .table-striped tr:nth-child(even) {
             background-color: #F9F9F9;
         }
         img, a img {
@@ -113,7 +116,7 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                 <?php endif; // $news->have_posts() ?>
                 </tr>
             </table>
-	    <h2>Det skjer på Studentersamfundet!</h2>
+	    <h2>Det skjer på Studentersamfundet</h2>
             <table width="640" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
                 <tr style="vertical-align:top;">
                 <?php $counter = 1; ?>
@@ -146,8 +149,8 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                 endwhile; // $top_events->have_posts() ?>
                 </tr>
             </table>
-            <h2><a href="<?php bloginfo('url'); ?>/program/" title="Les hele programmet på studentersamfundet.no">Program denne uken</a><?php ?> </h2>
-            <table width="640" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+            <h2><a href="<?php bloginfo('url'); ?>/program/" title="Les hele programmet på studentersamfundet.no">Program denne uken</a></h2>
+            <table width="640" cellspacing="0" cellpadding="0" bgcolor="#ffffff" class="table-striped program">
                 <?php
                 $current_day = "";
                 $first = true;       
@@ -155,13 +158,13 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                     $date = get_post_meta( $post->ID , '_neuf_events_starttime' , true );
                     $previous_day = $current_day;
                     /* set current day */
-                    $current_day = date_i18n( 'l' , $date);
+                    $current_day = ucfirst( date_i18n( 'l j. F' , $date) );
                     $newday = $previous_day != $current_day;
                     ($price = neuf_get_price( $post )) ? : $price = '-';
                     $venue = get_post_meta( $post->ID , '_neuf_events_venue' , true );
                     $ticket = get_post_meta( $post->ID , '_neuf_events_bs_url' , true );
                     $ticket = $ticket ? '<a href="'.$ticket.'">Kjøp billett</a>' : '';
-                    $starttime = date_i18n( 'H:i' , $date);
+                    $starttime = date_i18n( 'H.i' , $date);
 
                     /* event type class */
                     $event_array = get_the_terms( $post->ID , 'event_type' );
@@ -172,7 +175,7 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                     }
                     $event_type_real = $event_types_real ? "".implode(", ", $event_types_real) : "";
                     $facebook = get_post_meta( get_the_ID() , '_neuf_events_fb_url', true );
-                    $facebook_icon = $facebook ? '<a href="'.$facebook.'" title="Arrangementet på Facebook"><img src="'.get_bloginfo('stylesheet_directory').'/img/facebook-icon.png" width="13px" height="13px" /></a>' : "";
+                    $facebook_icon = $facebook ? ' <a href="'.$facebook.'" title="Arrangementet på Facebook"><img src="'.get_bloginfo('stylesheet_directory').'/img/facebook-icon.png" width="13px" height="13px" style="position:relative;top:2px;" /></a>' : "";
                     if($newday) { ?>
                         <tr>
                             <td colspan="6" style="border-top: 0px;"><h3><?php echo $current_day; ?></h3></td>
@@ -181,11 +184,11 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                     <?php }
                     if($first) { ?>
                         <tr class="header">
-                            <td>Dato</td>
-                            <td>Arrangement</td>
-                            <td>CC</td>
-                            <td>Type</td>
+                            <td>Tid</td>
+                            <td>Konsept</td>
+                            <td style="width:250px">Arrangement</td>
                             <td>Sted</td>
+                            <td>CC</td>
                             <td>Billett</td>
                         </tr>
                     <?php
@@ -194,12 +197,12 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
                     <tr id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
                         <td><?php echo $starttime; ?></td>
-                        <td>
+                        <td><?php echo $event_type_real; ?></td>
+                        <td style="width:250px">
                             <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a>
                         </td>
-                        <td><?php echo $price; ?></td>
-                        <td><?php echo $event_type_real; ?></td>
                         <td><?php echo $venue . $facebook_icon; ?></td>
+                        <td><?php echo $price; ?></td>
                         <td><?php echo $ticket; ?></td>
                     </tr>
                 <?php endwhile; // $events->have_posts() ?>
