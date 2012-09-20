@@ -221,12 +221,13 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                 <tr style="text-align:center;">
                     <td style="border:0px;"><img src="<?php bloginfo('template_directory'); ?>/img/sponsors/logo_black_akademika.png" alt="Akademika" /></td>
                 </tr>
-		<tr style="text-align:center;">
-			<td style="border=0px;">
-				Det Norske studentersamfund<br />
-				<a href="http://studentersamfundet.no">studentersamfundet.no</a>
-				Chateau Neuf, Slemdalsveien 15, 0369 Oslo, tlf: 22 84 45 11
-				Ønsker du ikke lenger å  motta e-post, <a href="http://www.mailit.no/box.php?funcml=unsub2&nl=7&mi=5547&email=t%40studentersamfundet.no">klikk her</a>.
+		<tr style="text-align:center;margin-top:5px;">
+			<td style="borderr:0px;font-size:13px;color:ddd;">
+				Det Norske Studentersamfund<br />
+				<a href="http://studentersamfundet.no">studentersamfundet.no</a><br /><br />
+				Chateau Neuf, Slemdalsveien 15, 0369 Oslo, tlf: 22 84 45 11<br /><br />
+
+				Du får nyhetsbrev av oss fordi du har takket ja til det på nettsidene våre.
 		</tr>
             </table>
         </td>
