@@ -110,7 +110,7 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                     <td>
                         <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><h2><?php the_title(); ?></h2></a>
                         <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_post_thumbnail( 'newsletter-third', array('style' => 'display: inline-block;float:right;', 'title' => get_the_title() )); ?></a>
-                        <div style="font-size:0.9em; color:#222;"><?php the_date(); ?></div>
+                        <div style="font-size:13px; color:#aaa;"><?php the_date(); ?></div>
                         <?php the_excerpt(); ?>
                     </td>
                 <?php endif; // $news->have_posts() ?>
@@ -130,6 +130,15 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                     $ticket = get_post_meta( $post->ID , '_neuf_events_bs_url' , true );
                     $ticket = $ticket ? '<a href="'.$ticket.'">Kjøp billett</a>' : '';
                     $starttime = date_i18n( 'j. F' , $date);
+
+                    /* event type class */
+                    $event_array = get_the_terms( $post->ID , 'event_type' );
+                    $event_types = array();
+                    $event_types_real = array();
+                    foreach ( $event_array as $event_type ) {
+                        $event_types_real[] = $event_type->name;
+                    }
+                    $event_type_real = $event_types_real ? "".implode(", ", $event_types_real) : "";
                     ?>
                     <?php if($counter % 3 == 0)  { ?>
                         <tr style="vertical-align:top;">
@@ -137,7 +146,8 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                     <td width="50%" id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
                             <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">
                                 <?php the_post_thumbnail('newsletter-half', array('title' => get_the_title())); ?><br />
-                                <div style="margin-top:4px;font-weight:bold;"><?php the_title(); ?></div></a>
+				<p style="font-size:13px;color:#aaa;margin-top:4px;margin-bottom:0px;"><?php echo $event_type_real; ?></p>
+                                <div style="margin-top:0px;font-weight:bold;"><?php the_title(); ?></div></a>
 				<p style="margin-top:4px; margin-bottom:4px;"><?php the_excerpt(); ?></p>
                                 <p style="margin-top:4px; margin-bottom:4px;font-weight:bold;"><?php echo "$starttime $price $venue"; ?></p>
                     </td>
