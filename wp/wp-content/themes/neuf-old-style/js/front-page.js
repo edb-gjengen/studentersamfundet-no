@@ -33,11 +33,11 @@ function addTwitter() {
 }
 function addVimeo() {
     var username = 'ostvn';
-    var feed_url = "http://vimeo.com/api/v2/" + username + "/videos.json?callback=?";
+    var feed_url = "https://vimeo.com/api/v2/" + username + "/videos.json?callback=?";
 
     $.getJSON(feed_url, function(videos) {
         var latest = videos[0];
-        var latest_video = '<iframe src="http://player.vimeo.com/video/' + latest['id'] + '?title=0&amp;byline=0&amp;portrait=0" width="570" height="321" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen>\n</iframe>';
+        var latest_video = '<iframe src="https://player.vimeo.com/video/' + latest['id'] + '?title=0&amp;byline=0&amp;portrait=0" width="570" height="321" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen>\n</iframe>';
         var description = '<h2><a href="http://ostv.no/">OSTV</a></h2>\n<h3>' + latest['title'] + '</h3>\n<p>' + truncate(latest['description'], 40) + '</p>';
 
         $("#ostv-latest-description").html(description);
