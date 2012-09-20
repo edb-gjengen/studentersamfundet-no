@@ -11,7 +11,7 @@ $meta_query = array(
     ), 
     array(
         'key'     => '_neuf_events_promo_period',
-        'value'   => array( 'Month' , 'semester' ),
+        'value'   => array( 'Month' , 'Måned' , 'Semester' ),
         'compare' => 'IN',
     )
 );
