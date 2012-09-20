@@ -53,7 +53,7 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
         <title>Det Norske Studentersamfund - Nyhetsbrev</title>
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
         <style type="text/css">
         body {
             font-family: Arial, sans-serif;
@@ -105,6 +105,11 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                 <tr>
                     <td colspan="4" style="background-color:#e99835;"><img src="<?php bloginfo('template_directory'); ?>/img/logo-web.png" alt="Det Norske Studentersamfund" /></td>
                 </tr>
+		<tr>
+			<td colspan="4" style="font-size:11px;font-style:italic;text-align:center;">
+				Kan du ikke se dette nyhetsbrevet skikkelig? <a href="http://studentersamfundet.no/wp/wp-content/themes/neuf-old-style/newsletter.php">Vis det i nettleseren i stedet.</a>
+			</td>
+		</tr>
                 <?php if ($news->have_posts()) : $news->the_post(); ?>
                 <tr id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?> style="vertical-align:bottom;">
                     <td>
