@@ -1,4 +1,4 @@
-		<?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
+<?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 
 <?php
 	$event_array = get_the_terms( $post->ID , 'event_type' );
@@ -28,6 +28,8 @@
 
 					<?php the_post_thumbnail( 'large' , array( 'style' => 'display:block;margin:auto;' ) ); ?>
 					<p class="wp-caption-text gallery-caption"><?php echo get_post( get_post_thumbnail_id() )->post_excerpt; ?></p>
+
+					<?php get_template_part( 'newsletter' , 'signup-form' ); ?>
 
 				</div>
 

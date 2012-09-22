@@ -564,40 +564,19 @@ h6 {
 	border-top: 1px solid #DDD;
 }
 
-/* Forms */
+/* Forms and buttons */
 label {
 	cursor:pointer;
 }
 
-/* Images */
-img {
-	max-width:100%;
-	height:auto;
-}
-.entry-content img {
-	margin: 0 0 10px;
-}
-.entry-content img.alignright {
-	margin: 0 0 10px 10px;
-}
-.entry-content img.alignleft {
-	margin: 0 10px 10px 0;
-}
-
-.single-event .entry-title {
-	margin-bottom:0;
-	font-size: 35px;
-	margin-bottom:45px;
-	font-weight: bold;
-	font-style: normal;
-}
-
-/* Buttons */
+input[type="button"],
+input[type="submit"],
 .btn {
 	font-family: Arial, sans-serif;
 	color: #666;
 	font-weight: bold;
 	font-size: 20px;
+	line-height:21px;
 	padding: 8px 15px;
 	border: none;
 	background: #e6e6e6 url('img/gradient.png') repeat-x bottom left;
@@ -623,16 +602,55 @@ a.btn {
 	color: #666666;
 }
 
+input[type="button"]:hover,
+input[type="submit"]:hover,
 .btn:hover {
 	background-color: #FF9E29;
-}
-
-.btn:hover {
 	color: #ffffff;
 	text-decoration: none;
 	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 	border-color: #cc7f21;
 	border-bottom-color: #a6671b;
+}
+
+.btn#newsletter-ok {
+	margin-top:0;
+	margin-bottom:0;
+}
+
+input[type="text"] {
+	font-size: 18px;
+	line-height: 21px;
+	padding: 8px;
+	border: 1px solid #CCC;
+	background: #EEE;
+}
+
+input[type="text"]:active {
+	background:#fff;
+}
+
+/* Images */
+img {
+	max-width:100%;
+	height:auto;
+}
+.entry-content img {
+	margin: 0 0 10px;
+}
+.entry-content img.alignright {
+	margin: 0 0 10px 10px;
+}
+.entry-content img.alignleft {
+	margin: 0 10px 10px 0;
+}
+
+.single-event .entry-title {
+	margin-bottom:0;
+	font-size: 35px;
+	margin-bottom:45px;
+	font-weight: bold;
+	font-style: normal;
 }
 
 /* Icons */
@@ -765,8 +783,17 @@ a.btn {
 }
 
 #content .event-type-fest .entry-meta-info:before,
+#content .event-type-klubb .entry-meta-info:before,
+#content .event-type-helhus .entry-meta-info:before,
+#content .event-type-tidsmaskin .entry-meta-info:before,
 #content article.event-type-fest h1:before,
+#content article.event-type-klubb h1:before,
+#content article.event-type-helhus h1:before,
+#content article.event-type-tidsmaskin h1:before,
 .tax-event_type.term-fest h1.page-title:before
+.tax-event_type.term-klubb h1.page-title:before
+.tax-event_type.term-helhus h1.page-title:before
+.tax-event_type.term-tidsmaskin h1.page-title:before
 {
 	background:url('img/ikon_fest-50x50.png');
 }
@@ -822,6 +849,10 @@ a.btn {
  ***********************************/
 #featured {
 	position:relative;
+}
+
+.single-event #newsletter-signup-form {
+	margin-top:2em;
 }
 
 .single-event article .event-type,
