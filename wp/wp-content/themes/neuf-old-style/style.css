@@ -601,7 +601,10 @@ a.btn {
 
 input[type="button"]:hover,
 input[type="submit"]:hover,
-.btn:hover {
+.btn:hover,
+input[type="button"]:focus,
+input[type="submit"]:focus,
+.btn:focus {
 	background-color: #FF9E29;
 	color: #ffffff;
 	text-decoration: none;
