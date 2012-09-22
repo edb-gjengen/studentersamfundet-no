@@ -589,12 +589,9 @@ input[type="submit"],
 	-moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
 	-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.5) inset;
 	text-align: center;
-	border-top-right-radius: 3px;
-	border-bottom-right-radius: 3px;
-	-moz-border-radius-topright: 3px;
-	-moz-border-radius-bottomright: 3px;
-	-webkit-border-top-right-radius: 3px;
-	-webkit-border-bottom-right-radius: 3px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
 }
 
 a.btn :visited,
@@ -624,9 +621,16 @@ input[type="text"] {
 	padding: 8px;
 	border: 1px solid #CCC;
 	background: #EEE;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
 }
 
 input[type="text"]:active {
+	background:#ff9e29;
+}
+
+input[type="text"]:focus {
 	background:#fff;
 }
 
