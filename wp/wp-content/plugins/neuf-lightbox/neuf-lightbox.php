@@ -101,7 +101,7 @@ function neuf_post_gallery( $deprecated, $attr ) {
 		</style>
 		<!-- see gallery_shortcode() in wp-includes/media.php misund! -->";
 	$size_class = sanitize_html_class( $size );
-	$gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class} grid_12'><h1 class=''>Bilder</h1>";
+	$gallery_div = is_single() ? "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class} grid_12'><h1 class=''>Bilder</h1>"  : "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class} grid_12'><h1 class=''>Bilder fra <a href='" . get_permalink() . "'>" . get_the_title() . "</a></h1>";
 	$output = apply_filters( 'gallery_style', $gallery_style . "\n\t\t" . $gallery_div );
 
 	$i = 0;
