@@ -27,7 +27,7 @@ $args = array(
 
 $events = new WP_Query( $args );
 
-$news = new WP_Query( 'type=post' );
+$news = new WP_Query( 'type=post&posts_per_page=2' );
 ?>
 <?php if ($events->have_posts()) : ?>
 	<section id="featured" class="clearfix">
@@ -36,7 +36,7 @@ $news = new WP_Query( 'type=post' );
 		<div id="slidernav"></div>
 		<div id="slider"> 
 		<?php
-		if ($news->have_posts()) : $news->the_post(); ?>
+		if ($news->have_posts()) : while ($news->have_posts()) : $news->the_post(); ?>
 			<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
 				<a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">
 					<header class="grid_6">
@@ -49,7 +49,7 @@ $news = new WP_Query( 'type=post' );
 				</a>
 			</article> <!-- #post-<?php the_ID(); ?> -->
 
-		<?php endif; // $news->have_posts() ?>
+		<?php endwhile; endif; // $news->have_posts() ?>
 
 		<?php $counter = 0;
 		while ($events->have_posts() && $counter < 4) : $events->the_post(); ?>
