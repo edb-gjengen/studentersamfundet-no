@@ -17,6 +17,8 @@
 					<?php the_post_thumbnail( 'large' , array( 'style' => 'display:block;margin:auto;' ) ); ?>
 					<p class="wp-caption-text gallery-caption"><?php echo get_post( get_post_thumbnail_id() )->post_excerpt; ?></p>
 
+					<?php get_template_part( 'newsletter' , 'signup-form' ); ?>
+
 				</div>
 
 				<?php neuf_maybe_display_gallery(); ?>
