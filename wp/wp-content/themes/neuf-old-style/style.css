@@ -741,7 +741,7 @@ img {
 #content article.event-type-upop h1:before,
 #content article.event-type-akademisk-vorspiel h1:before,
 #content article.event-type-forfatteraften h1:before,
-#content article.event-type-vin-vinyl h1:before
+#content article.event-type-vin-vinyl h1:before,
 .tax-event_type.term-foredrag h1.page-title:before,
 .tax-event_type.term-upop h1.page-title:before,
 .tax-event_type.term-akademisk-vorspiel h1.page-title:before,
@@ -797,9 +797,9 @@ img {
 #content article.event-type-klubb h1:before,
 #content article.event-type-helhus h1:before,
 #content article.event-type-tidsmaskin h1:before,
-.tax-event_type.term-fest h1.page-title:before
-.tax-event_type.term-klubb h1.page-title:before
-.tax-event_type.term-helhus h1.page-title:before
+.tax-event_type.term-fest h1.page-title:before,
+.tax-event_type.term-klubb h1.page-title:before,
+.tax-event_type.term-helhus h1.page-title:before,
 .tax-event_type.term-tidsmaskin h1.page-title:before
 {
 	background:url('img/ikon_fest-50x50.png');

@@ -1,4 +1,8 @@
-<?php 
+<?php
+/**
+ * Template Name: Newsletter
+ */
+
 require( '../../../wp-load.php' );
 
 $meta_query = array(
@@ -44,7 +48,7 @@ $events = new WP_Query( $args );
 
 list($events_start, $events_end) = $events->query_vars['meta_query'][0]['value'];
 
-$news = new WP_Query( 'type=post' );
+$news = new WP_Query( 'type=post&posts_per_page=2' );
 
 
 ?>
@@ -107,10 +111,10 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                 </tr>
 		<tr>
 			<td colspan="4" style="font-size:11px;font-style:italic;text-align:center;">
-				Kan du ikke se dette nyhetsbrevet skikkelig? <a href="http://studentersamfundet.no/wp/wp-content/themes/neuf-old-style/newsletter.php">Vis det i nettleseren i stedet.</a>
+				Kan du ikke se dette nyhetsbrevet skikkelig? <a href="http://studentersamfundet.no/nyhetsbrev/">Vis det i nettleseren i stedet.</a>
 			</td>
 		</tr>
-                <?php if ($news->have_posts()) : $news->the_post(); ?>
+                <?php if ($news->have_posts()) : while ($news->have_posts()) : $news->the_post(); ?>
                 <tr id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?> style="vertical-align:bottom;">
                     <td>
                         <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>"><h2><?php the_title(); ?></h2></a>
@@ -118,8 +122,8 @@ w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                         <div style="font-size:13px; color:#aaa;"><?php the_date(); ?></div>
                         <?php the_excerpt(); ?>
                     </td>
-                <?php endif; // $news->have_posts() ?>
                 </tr>
+                <?php endwhile; endif; // $news->have_posts() ?>
             </table>
 	    <h2>Det skjer på Studentersamfundet</h2>
             <table width="640" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
