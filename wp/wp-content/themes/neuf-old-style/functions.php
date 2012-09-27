@@ -12,7 +12,6 @@ add_image_size( 'six-column-promo'  , 570 , 322 ,  true );
 add_image_size( 'six-column-slim'   , 570 , 161 ,  true );
 add_image_size( 'association-thumb' , 270 , 250 , false );
 add_image_size( 'extra-large'       , 1600 ,1600 , false );
-add_image_size( 'newsletter-wide'   , 620 , 80, true);
 add_image_size( 'newsletter-half'   , 320 , 190, true);
 add_image_size( 'newsletter-third'  , 213 , 126, true);
 
