@@ -95,14 +95,14 @@ $news = new WP_Query( 'type=post&posts_per_page=2' );
 		</tr>
 		<tr>
 			<td colspan="4" style="font-size:11px;font-style:italic;text-align:center;">
-				Kan du ikke se dette nyhetsbrevet skikkelig? <a href="http://studentersamfundet.no/nyhetsbrev/" style="color:#FF9E29;text-decoration:none;">Vis det i nettleseren i stedet.</a>
+				Kan du ikke se dette nyhetsbrevet skikkelig? <a href="http://studentersamfundet.no/nyhetsbrev/?utm_source=newsletter&utm_medium=email&utm_campaign=newsletter" style="color:#FF9E29;text-decoration:none;">Vis det i nettleseren i stedet.</a>
 			</td>
 		</tr>
 		<?php if ($news->have_posts()) : while ($news->have_posts()) : $news->the_post(); ?>
 		<tr id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?> style="vertical-align:bottom;">
 		    <td>
-			<h2><a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>" style="color:#FF9E29;text-decoration:none;font-size:20px;"><?php the_title(); ?></a></h2>
-			<a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>" style="color:#FF9E29;text-decoration:none;"><?php the_post_thumbnail( 'newsletter-third', array('style' => 'display: inline-block;float:right;', 'title' => get_the_title() )); ?></a>
+			<h2><a class="permalink blocklink" href="<?php the_permalink(); ?>?utm_source=newsletter&utm_medium=email&utm_campaign=newsletter" rel="bookmark" title="<?php the_title(); ?>" style="color:#FF9E29;text-decoration:none;font-size:20px;"><?php the_title(); ?></a></h2>
+			<a class="permalink blocklink" href="<?php the_permalink(); ?>?utm_source=newsletter&utm_medium=email&utm_campaign=newsletter" rel="bookmark" title="<?php the_title(); ?>" style="color:#FF9E29;text-decoration:none;"><?php the_post_thumbnail( 'newsletter-third', array('style' => 'display: inline-block;float:right;', 'title' => get_the_title() )); ?></a>
 			<div style="font-size:13px; color:#aaa;"><?php the_date(); ?></div>
 			<?php the_excerpt(); ?>
 		    </td>
@@ -141,11 +141,11 @@ $event_type_real = $event_types_real ? "".implode(", ", $event_types_real) : "";
 			<tr style="vertical-align:top;">
 		    <?php } ?>
 		    <td>
-			    <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>" style="color:#FF9E29;text-decoration:none;">
+			    <a class="permalink blocklink" href="<?php the_permalink(); ?>?utm_source=newsletter&utm_medium=email&utm_campaign=newsletter" rel="bookmark" title="<?php the_title(); ?>" style="color:#FF9E29;text-decoration:none;">
 				<?php the_post_thumbnail('newsletter-half', array('title' => get_the_title())); ?>
 	</a><br>
 				<p style="font-size:13px;color:#aaa;margin-top:4px;margin-bottom:0px;"><?php echo $event_type_real; ?></p>
-				<h2 style="margin-top:0px;font-size:20px;font-weight:bold;"><a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>" style="color:#FF9E29;text-decoration:none;"><?php the_title(); ?></a></h2>
+				<h2 style="margin-top:0px;font-size:20px;font-weight:bold;"><a class="permalink blocklink" href="<?php the_permalink(); ?>?utm_source=newsletter&utm_medium=email&utm_campaign=newsletter" rel="bookmark" title="<?php the_title(); ?>" style="color:#FF9E29;text-decoration:none;"><?php the_title(); ?></a></h2>
 				<div style="margin-top:4px; margin-bottom:4px;"><?php the_excerpt(); ?></div>
 				<p style="margin-top:4px; margin-bottom:4px;font-weight:bold;"><?php echo "$starttime $price $venue"; ?></p>
 		    </td>
@@ -159,7 +159,7 @@ endwhile; // $top_events->have_posts() ?>
 	    <table width="640" cellspacing="0" cellpadding="0" class="table-striped program" style="margin:auto;margin-bottom:10px;background:#ffffff;">
 		<tr style="vertical-align:top;">
 			<td colspan="6">
-			    <h2><a href="<?php bloginfo('url'); ?>/program/" title="Les hele programmet på studentersamfundet.no" style="color:#FF9E29;font-size:20px;text-decoration:none;">Program denne uken</a></h2>
+			    <h2><a href="<?php bloginfo('url'); ?>/program/?utm_source=newsletter&utm_medium=email&utm_campaign=newsletter" title="Les hele programmet på studentersamfundet.no" style="color:#FF9E29;font-size:20px;text-decoration:none;">Program denne uken</a></h2>
 			</td>
 		</tr>
 <?php
@@ -218,7 +218,7 @@ if($first) { ?>
 			<td style="border-top: 1px solid #DDD;padding:8px 4px;"><?php echo $starttime; ?></td>
 			<td style="border-top: 1px solid #DDD;padding:8px 4px;"><?php echo $event_type_real; ?></td>
 			<td style="border-top: 1px solid #DDD;padding:8px 4px;width:250px">
-			    <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>" style="color:#FF9E29;text-decoration:none;"><?php the_title(); ?></a>
+			    <a class="permalink blocklink" href="<?php the_permalink(); ?>?utm_source=newsletter&utm_medium=email&utm_campaign=newsletter" rel="bookmark" title="<?php the_title(); ?>" style="color:#FF9E29;text-decoration:none;"><?php the_title(); ?></a>
 			</td>
 			<td style="border-top: 1px solid #DDD;padding:8px 4px;"><?php echo $venue . $facebook_icon; ?></td>
 			<td style="border-top: 1px solid #DDD;padding:8px 4px;"><?php echo $price; ?></td>
@@ -233,7 +233,7 @@ if($first) { ?>
 		<tr style="text-align:center;margin-top:5px;">
 			<td style="padding:8px 4px;border:0px;font-size:13px;">
 				Det Norske Studentersamfund<br>
-				<a href="http://studentersamfundet.no" style="color:#FF9E29;text-decoration:none;">studentersamfundet.no</a><br><br>
+				<a href="http://studentersamfundet.no/?utm_source=newsletter&utm_medium=email&utm_campaign=newsletter" style="color:#FF9E29;text-decoration:none;">studentersamfundet.no</a><br><br>
 				Chateau Neuf, Slemdalsveien 15, 0369 Oslo, tlf: 22 84 45 11<br><br>
 
 				Du får nyhetsbrev av oss fordi du har takket ja til det på nettsidene våre.
