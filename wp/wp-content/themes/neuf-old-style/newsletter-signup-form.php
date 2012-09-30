@@ -3,7 +3,8 @@
 						method="post"
 						action="http://www.mailit.no/box.php"
 						target="subscription"
-						onsubmit="window.open('','subscription','width=400,height=120');"
+						onsubmit="window.open('','subscription','width=400,height=120'); $.get('http://neuf-stats.appspot.com/newsletter?server=<?php echo $_SERVER['SERVER_NAME'];?>&url=<?php echo $_SERVER['REQUEST_URI'];?>');"
+
 					>
 					<h3>Hold deg oppdatert</h3>
 					    <p>Nyhetsbrevet vårt sendes ut én gang i uka, og inneholder program og eksklusive konkurranser.</p>
