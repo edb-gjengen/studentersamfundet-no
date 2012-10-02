@@ -20,5 +20,5 @@
 					</article> <!-- .post -->
 
 				<?php endwhile; else: ?>
-					<p>Ingen flere arrangementer.</p>
+					<p>Det er ikke mer å vise.</p>
 				<?php endif; ?>

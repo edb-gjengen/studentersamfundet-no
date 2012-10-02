@@ -45,7 +45,6 @@ if( $events->have_posts() ) : while ( $events->have_posts() ) : $events->the_pos
 	$event_array = get_the_terms( $post->ID , 'event_type' );
 	foreach ( $event_array as $event_type ) {
 		$post->event_types[] = $event_type->name;
-		$post->post_classes[] = 'event-type-' . $event_type->slug;
 	}
 ?>
 	<item>

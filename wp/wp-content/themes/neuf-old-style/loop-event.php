@@ -4,7 +4,6 @@
 	$event_array = get_the_terms( $post->ID , 'event_type' );
 	foreach ( $event_array as $event_type ) {
 		$post->event_types[] = '<a href="' . get_term_link( $event_type->slug , 'event_type') . '">' . $event_type->name . '</a>';
-		$post->post_classes[] = 'event-type-' . $event_type->slug;
 	}
 ?>
 
