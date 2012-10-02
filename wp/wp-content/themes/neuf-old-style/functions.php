@@ -87,7 +87,7 @@ add_filter( 'wp_handle_upload_prefilter' , 'neuf_handle_upload_prefilter' );
  * ii) a class 'alt' to every other post.
  */
 function neuf_post_class( $classes = '' ) {
-	global $neuf_pagewide_post_count;
+	global $post, $neuf_pagewide_post_count;
 
 	if ( $classes )
 		$classes = array ( $classes );
@@ -97,6 +97,16 @@ function neuf_post_class( $classes = '' ) {
 	if ( 0 == $neuf_pagewide_post_count % 2 )
 		$classes[] = 'alt';
 
+	// If this is an event
+	if ( 'event' == get_post_type() ) {
+		// Add event-type-slug for all ancestors of all event_types
+		// (the event-types themselves are taken care of elsewhere, so skip the first level)
+		$event_array = get_the_terms( $post->ID , 'event_type' );
+		foreach ( $event_array as $event_type )
+			while ( $event_type = get_term_by( 'id' , $event_type->parent, 'event_type' ) )
+				$classes[] = 'event-type-' . $event_type->slug ; 
+	}
+
 	$classes =  join( ' ' , $classes );
 
 	post_class( $classes );
@@ -104,17 +114,17 @@ function neuf_post_class( $classes = '' ) {
 
 /* Gets nicely the regular and member price nicely formated */
 function neuf_get_price( $neuf_event ) {
-		$price_regular = get_post_meta( $neuf_event->ID , '_neuf_events_price_regular' , true );
-		$price_member = get_post_meta( $neuf_event->ID , '_neuf_events_price_member' , true );
-		if ( $price_regular ) {
-			if ( $price_member )
-				$cc = "$price_regular,- / $price_member,-";
-			else
-				$cc = "$price_regular,-";
-		} else
-			$cc = '';
+	$price_regular = get_post_meta( $neuf_event->ID , '_neuf_events_price_regular' , true );
+	$price_member = get_post_meta( $neuf_event->ID , '_neuf_events_price_member' , true );
+	if ( $price_regular ) {
+		if ( $price_member )
+			$cc = "$price_regular,- / $price_member,-";
+		else
+			$cc = "$price_regular,-";
+	} else
+		$cc = '';
 
-		return $cc;
+	return $cc;
 }
 
 /**
@@ -122,15 +132,25 @@ function neuf_get_price( $neuf_event ) {
  *
  * Adds these classes:
  * i) For pages, adds 'page-slug'
+ * ii) For event_type taxonomy archive pages, adds 'event-type-slug'
  */
 function neuf_body_class( $classes = '' ) {
 	global $post;
 
-	if ( $classes )
-		$classes .= ' ';
+	$classes = array( $classes );
 
 	if ( is_page() )
-		$classes .= 'page-' . $post->post_name ;
+		$classes[] = 'page-' . $post->post_name;
+
+	// If this is an event_type taxonomy archive page
+	if ( is_tax( 'event_type' ) ) {
+		$event_type = get_term_by( 'slug' , get_query_var('event_type') , 'event_type' );
+		$classes[] = 'event-type-' . $event_type->slug;
+		while ( $event_type = get_term_by( 'id' , $event_type->parent, 'event_type' ) )
+			$classes[] = 'event-type-' . $event_type->slug ; 
+	}
+
+	$classes = implode( $classes, ' ' );
 
 	body_class( $classes );
 }
@@ -208,43 +228,6 @@ function neuf_doctitle() {
 } // end neuf_doctitle
 
 /**
- * Should return true if the file displaying the current page is defined as part of the given section.
- *
- * @todo Do we need this in a WordPress theme? misund 2012-12-18
- */
-function is_in_section($section) {
-	switch ($section) {
-	case 'program':
-		if ( in_array(get_requested_file(),array('prog','konsepter','konsept','booking','vis')) )
-			return true;
-		break;
-	case 'foreninger':
-		if ( in_array(get_requested_file(),array('foreninger')) )
-			return true;
-		break;
-	case 'forum':
-		if ( substr($_SERVER['REQUEST_URI'],1,5) == 'forum' )
-			return true;
-		break;
-	case 'inside':
-		if ( substr($_SERVER['REQUEST_URI'],1,6) == 'inside' || in_array(get_requested_file(),array('aktive')) )
-			return true;
-		break;
-	case 'nyheter':
-		if ( in_array(get_requested_file(),array('nyheter','nyhet')) )
-			return true;
-		break;
-	case 'forside':
-		if ( !( is_in_section('program') || is_in_section('foreninger') || is_in_section('medlem') || is_in_section('forum') || is_in_section('inside') || is_in_section('nyheter') ) )
-			return true;
-		break;
-	default:
-		return false;
-	}
-}
-
-
-/**
  * Display social sharing buttons
  */
 function display_social_sharing_buttons() { ?>
@@ -262,7 +245,7 @@ function display_social_sharing_buttons() { ?>
 /**
  * Count attachments to a post.
  *
- * Stolen from misund's blog theme.
+ * Stolen from misund's personal blog theme.
  *
  * @author misund
  */
@@ -452,6 +435,8 @@ function neuf_get_term_name() {
  * Loads posts and serves them through a template file.
  *
  * Used for infinite scrolling in event type template.
+ *
+ * @author misund
  */
 function neuf_endless_scrolling() {
 	// Set up future posts

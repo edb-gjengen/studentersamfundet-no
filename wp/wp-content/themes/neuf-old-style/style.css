@@ -664,9 +664,10 @@ img {
 
 #digest_news_headline:before,
 #digest_events_headline:before,
+article.type-event .entry-title:before,
 .single-event .entry-meta .entry-meta-info:before {
 	content:'';
-	background:#ff9e29;
+	/*background:#ff9e29;*/
 	border-radius:50%;
 	width:50px;
 	height:50px;
@@ -674,6 +675,9 @@ img {
 	position:relative;
 	top:10px;
 	margin-right:15px;
+}
+.single article.type-event .entry-title:before {
+	display:none;
 }
 
 #digest_news_headline:before,
@@ -702,7 +706,6 @@ img {
 .tax-event_type h1.page-title:before
 {
 	content:'';
-	background:#ff9e29;
 	border-radius:50%;
 	width:50px;
 	height:50px;
@@ -712,102 +715,62 @@ img {
 	margin-right:15px;
 }
 
-#content .event-type-quiz .entry-meta-info:before,
-#content article.event-type-quiz h1:before,
-.tax-event_type.term-quiz h1.page-title:before
+
+.event-type-annet .page-title:before,
+.event-type-annet .entry-title:before,
+.event-type-annet .entry-meta-info:before
 {
-	background:url('img/ikon_quiz-50x50.png');
+	background-image:url('img/ikon_quiz-50x50.png');
 }
 
-#content .event-type-debatt .entry-meta-info:before,
-#content .event-type-onsdagsdebatten .entry-meta-info:before,
-#content .event-type-mote .entry-meta-info:before,
-#content article.event-type-mote h1:before,
-#content article.event-type-debatt h1:before,
-#content article.event-type-onsdagsdebatten h1:before,
-.tax-event_type.term-debatt h1.page-title:before,
-.tax-event_type.term-onsdagsdebatten h1.page-title:before,
-.tax-event_type.term-mote h1.page-title:before
+.event-type-quiz .page-title:before,
+.event-type-quiz .entry-title:before,
+.event-type-quiz .entry-meta-info:before
 {
-	background:url('img/ikon_debatt-50x50.png');
+	background-image:url('img/ikon_quiz-50x50.png');
 }
 
-#content .event-type-foredrag .entry-meta-info:before,
-#content .event-type-upop .entry-meta-info:before,
-#content .event-type-akademisk-vorspiel .entry-meta-info:before,
-#content .event-type-forfatteraften .entry-meta-info:before,
-#content .event-type-vin-vinyl .entry-meta-info:before,
-#content article.event-type-foredrag h1:before,
-#content article.event-type-upop h1:before,
-#content article.event-type-akademisk-vorspiel h1:before,
-#content article.event-type-forfatteraften h1:before,
-#content article.event-type-vin-vinyl h1:before,
-.tax-event_type.term-foredrag h1.page-title:before,
-.tax-event_type.term-upop h1.page-title:before,
-.tax-event_type.term-akademisk-vorspiel h1.page-title:before,
-.tax-event_type.term-forfatteraften h1.page-title:before,
-.tax-event_type.term-vin-vinyl h1.page-title:before
+.event-type-mote .page-title:before,
+.event-type-mote .entry-title:before,
+.event-type-mote .entry-meta-info:before,
+.event-type-debatt .page-title:before,
+.event-type-debatt .entry-title:before,
+.event-type-debatt .entry-meta-info:before
+{
+	background-image:url('img/ikon_debatt-50x50.png') !important;
+}
+
+.event-type-foredrag .page-title:before,
+.event-type-foredrag .entry-title:before,
+.event-type-foredrag .entry-meta-info:before
 {
 	background:url('img/ikon_foredrag-50x50.png');
 }
 
-#content .event-type-konsert .entry-meta-info:before,
-#content .event-type-pungrock .entry-meta-info:before,
-#content .event-type-kaptein-pop .entry-meta-info:before,
-#content .event-type-smalt-som-faen .entry-meta-info:before,
-#content .event-type-south-of-heaven .entry-meta-info:before,
-#content .event-type-lillesalen-konsertserie .entry-meta-info:before,
-#content .event-type-annen-etasje-konsertserie .entry-meta-info:before,
-#content article.event-type-konsert h1:before,
-#content article.event-type-pungrock h1:before,
-#content article.event-type-kaptein-pop h1:before,
-#content article.event-type-smalt-som-faen h1:before,
-#content article.event-type-south-of-heaven h1:before,
-#content article.event-type-lillesalen-konsertserie h1:before,
-#content article.event-type-annen-etasje-konsertserie h1:before,
-.tax-event_type.term-konsert h1.page-title:before,
-.tax-event_type.term-pungrock h1.page-title:before,
-.tax-event_type.term-kaptein-pop h1.page-title:before,
-.tax-event_type.term-smalt-som-faen h1.page-title:before,
-.tax-event_type.term-south-of-heaven h1.page-title:before,
-.tax-event_type.term-lillesalen-konsertserie h1.page-title:before,
-.tax-event_type.term-annen-etasje-konsertserie h1.page-title:before
+.event-type-konsert .page-title:before,
+.event-type-konsert .entry-title:before,
+.event-type-konsert .entry-meta-info:before
 {
 	background:url('img/ikon_konsert-50x50.png');
 }
 
-#content .event-type-film .entry-meta-info:before,
-#content .event-type-filmrulltorsdag .entry-meta-info:before,
-#content .event-type-tidsbilde .entry-meta-info:before,
-#content article.event-type-tidsbilde h1:before,
-#content article.event-type-film h1:before,
-#content article.event-type-filmrulltorsdag h1:before,
-.tax-event_type.term-tidsbilde h1.page-title:before,
-.tax-event_type.term-film h1.page-title:before,
-.tax-event_type.term-filmrulltorsdag h1.page-title:before
+.event-type-film .page-title:before,
+.event-type-film .entry-title:before,
+.event-type-film .entry-meta-info:before
 {
 	background:url('img/ikon_film-50x50.png');
 }
 
-#content .event-type-fest .entry-meta-info:before,
-#content .event-type-klubb .entry-meta-info:before,
-#content .event-type-helhus .entry-meta-info:before,
-#content .event-type-tidsmaskin .entry-meta-info:before,
-#content article.event-type-fest h1:before,
-#content article.event-type-klubb h1:before,
-#content article.event-type-helhus h1:before,
-#content article.event-type-tidsmaskin h1:before,
-.tax-event_type.term-fest h1.page-title:before,
-.tax-event_type.term-klubb h1.page-title:before,
-.tax-event_type.term-helhus h1.page-title:before,
-.tax-event_type.term-tidsmaskin h1.page-title:before
+.event-type-fest .page-title:before,
+.event-type-fest .entry-title:before,
+.event-type-fest .entry-meta-info:before
 {
 	background:url('img/ikon_fest-50x50.png');
 }
 
-#content .event-type-teater .entry-meta-info:before,
-#content article.event-type-teater h1:before,
-.tax-event_type.term-teater h1.page-title:before
+.event-type-teater .page-title:before,
+.event-type-teater .entry-title:before,
+.event-type-teater .entry-meta-info:before
 {
 	background:url('img/ikon_teater-50x50.png');
 }
@@ -1113,7 +1076,7 @@ img {
 
 /* Archive templates */
 
-.archive #content article,
+#content article.slim,
 .archive #tab-control
 {
 	padding-bottom:25px;
