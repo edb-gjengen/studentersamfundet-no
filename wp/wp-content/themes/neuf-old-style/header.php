@@ -13,6 +13,7 @@
 		<link href="<?php bloginfo( 'stylesheet_url' ); ?>" rel="stylesheet" type="text/css" />
 		<link href='//fonts.googleapis.com/css?family=Arvo:700,400italic' rel='stylesheet' type='text/css'>
 		<?php wp_head(); ?>
+		<meta property="fb:app_id" content="23664032291" />
 		<!--[if lt IE 9]>
 			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
