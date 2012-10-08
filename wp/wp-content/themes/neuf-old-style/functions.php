@@ -487,4 +487,27 @@ function neuf_endless_scrolling() {
 }
 add_action( 'wp_ajax_infinite_scroll' , 'neuf_endless_scrolling' );
 add_action( 'wp_ajax_nopriv_infinite_scroll' , 'neuf_endless_scrolling' );
+
+
+/*
+ * Used in the defenition of an og:type meta-property.
+ * Adds to the opengraph plugin filter,
+ * to make it return 'article' for events and associations.
+ *
+ * @author nikolark
+ */
+function neuf_opengraph_default_type( $type ) {
+  if ( empty($type) ) {
+    if ( is_singular( array('post', 'page', 'aside', 'status', 'event', 'association') ) ) {
+      $type = 'article';
+    } else if ( is_author() ) {
+      $type = 'profile';
+    } else {
+      $type = 'blog';
+    }
+  }
+  return $type;
+}
+add_filter('opengraph_type', 'neuf_opengraph_default_type', 4);
+
 ?>

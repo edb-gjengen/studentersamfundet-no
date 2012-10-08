@@ -10,3 +10,6 @@
 [submodule "wp/wp-content/plugins/wp-json-api"]
 	path = wp/wp-content/plugins/wp-json-api
 	url = git://git.neuf.no/wp-json-api
+[submodule "wp/wp-content/plugins/opengraph"]
+	path = wp/wp-content/plugins/opengraph
+	url = git://github.com/willnorris/wordpress-opengraph.git
