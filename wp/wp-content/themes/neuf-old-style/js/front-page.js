@@ -1,6 +1,6 @@
 function addTwitter() {
     /* Twitter feed in footer. */
-    var feed = 'https://twitter.com/statuses/user_timeline/dns1813.json?count=10&include_rts=1&callback=?';
+    var feed = 'https://api.twitter.com/1/statuses/user_timeline.json?screen_name=dns1813&count=10&include_rts=1&callback=?';
     var retweet_url = 'http://twitter.com/intent/retweet?tweet_id=';
     var reply_url = 'http://twitter.com/intent/tweet?in_reply_to=';
     var tweet_url = 'https://twitter.com/dns1813/status/';
