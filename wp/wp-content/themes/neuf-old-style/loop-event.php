@@ -11,13 +11,13 @@
 
 				<div class="grid_6">
 					<?php
-						$html = '<div class="event-type">' . implode( ', ' , $post->event_types ) . '</div>';
+						$html = '<div class="event-type category">' . implode( ', ' , $post->event_types ) . '</div>';
 						echo $html;
 					?>
 
 <?php get_template_part( 'eventmeta' , 'single' ); ?>
 
-					<div class="entry-content"><?php the_content(); ?></div> <!-- .entry-content -->
+					<div class="entry-content description"><?php the_content(); ?></div> <!-- .entry-content.description -->
 
 					<?php display_social_sharing_buttons(); ?>
 
