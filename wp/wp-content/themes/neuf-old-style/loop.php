@@ -4,7 +4,11 @@
 						<a href="<?php the_permalink(); ?>">
 							<div class="grid_6 alpha">
 
+<?php if ( 'event' == get_post_type() ) { ?>
 								<span class="event-date"><?php echo ucfirst( date_i18n( 'l j. F Y' , (int) get_post_meta(get_the_ID() , '_neuf_events_starttime' , true ) ) ); ?></span>
+<?php } else { ?>
+								<span class="event-date"><?php echo( ucfirst( get_the_time( 'l j. F Y' ) ) ); ?></span>
+<?php } // end of post type test ?>
 								<h3 class="entry-title"><?php the_title(); ?></h3>
 
 								<div class="entry-content"><?php the_excerpt(); ?></div> <!-- .entry-content -->

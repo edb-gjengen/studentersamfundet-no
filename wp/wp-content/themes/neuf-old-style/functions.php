@@ -90,7 +90,7 @@ function neuf_post_class( $classes = '' ) {
 	global $post, $neuf_pagewide_post_count;
 
 	if ( $classes )
-		$classes = array ( $classes );
+		$classes = explode( ' ' , $classes );
 
 	$classes[] = 'p' . ++$neuf_pagewide_post_count;
 
@@ -99,6 +99,10 @@ function neuf_post_class( $classes = '' ) {
 
 	// If this is an event
 	if ( 'event' == get_post_type() ) {
+
+		// hCalendar, ref http://microformats.org/wiki/hcalendar
+		$classes[] = 'vevent';
+
 		// Add event-type-slug for all ancestors of all event_types
 		// (the event-types themselves are taken care of elsewhere, so skip the first level)
 		$event_array = get_the_terms( $post->ID , 'event_type' );
