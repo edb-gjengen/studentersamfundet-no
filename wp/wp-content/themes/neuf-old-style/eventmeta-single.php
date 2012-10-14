@@ -18,11 +18,11 @@ if (
 						<div class="entry-meta-info">
 
 							<div>
-								<time class="event-date dtstart" datetime="<?php echo date('c', $starttime); ?>"><?php echo ucfirst( date_i18n( $date_format , $starttime ) ); ?></span>
+								<time class="event-date dtstart" datetime="<?php echo date_i18n('Y-m-d\TH:i:sP', $starttime); ?>"><?php echo ucfirst( date_i18n( $date_format , $starttime ) ); ?></span>
 							</div>
 							<div>
 								<span class="meta-prep meta-prep-event-time"><?php _e( 'Kl:' , 'neuf' ); ?></span>
-								<time class="event-time dtstart" datetime="<?php echo date('G:i', $starttime); ?>"><?php echo date_i18n( 'G.i' , $starttime); ?></time> 
+								<time class="event-time dtstart" datetime="<?php echo date_i18n('Y-m-d\TH:i:sP', $starttime); ?>"><?php echo date_i18n( 'G.i' , $starttime); ?></time> 
 								<span class="meta-sep meta-sep-event-price"> - </span>
 								<span class="meta-prep meta-prep-price">CC: </span>
 								<span class="price"><?php echo ($price = neuf_get_price( $post )) ? $price : "Gratis"; ?></span>
