@@ -118,13 +118,13 @@ $news = new WP_Query( 'type=post&posts_per_page=2' );
 		<tr style="vertical-align:top;">
 		<?php $counter = 1; ?>
 		<?php while ($top_events->have_posts()) : $top_events->the_post(); ?>
-<?php $date = get_post_meta( $post->ID , '_neuf_events_starttime' , true );
+<?php $date = $post->neuf_events_starttime;
 $previous_day = $current_day;
 /* set current day */
 $current_day = date_i18n( 'l' , $date);
 ($price = neuf_get_price( $post )) ? : $price = '-';
-$venue = get_post_meta( $post->ID , '_neuf_events_venue' , true );
-$ticket = get_post_meta( $post->ID , '_neuf_events_bs_url' , true );
+$venue = $post->neuf_events_venue;
+$ticket = $post->neuf_events_ticket_url;
 $ticket = $ticket ? '<a href="'.$ticket.'" style="color:#FF9E29;text-decoration:none;">Kjøp billett</a>' : '';
 $starttime = date_i18n( 'j. F' , $date);
 
@@ -174,14 +174,14 @@ $current_day = "";
 $first = true;       
 $trcount = 0;
 while ($events->have_posts()) : $events->the_post();
-$date = get_post_meta( $post->ID , '_neuf_events_starttime' , true );
+$date = $post->neuf_events_starttime;
 $previous_day = $current_day;
 /* set current day */
 $current_day = ucfirst( date_i18n( 'l j. F' , $date) );
 $newday = $previous_day != $current_day;
 ($price = neuf_get_price( $post )) ? : $price = '-';
-$venue = get_post_meta( $post->ID , '_neuf_events_venue' , true );
-$ticket = get_post_meta( $post->ID , '_neuf_events_bs_url' , true );
+$venue = $post->neuf_events_venue;
+$ticket = $post->neuf_events_ticket_url;
 $ticket = $ticket ? '<a href="'.$ticket.'" style="color:#FF9E29;text-decoration:none;">Kjøp billett</a>' : '';
 $starttime = date_i18n( 'H.i' , $date);
 
@@ -193,7 +193,7 @@ foreach ( $event_array as $event_type ) {
 	$event_types_real[] = $event_type->name;
 }
 $event_type_real = $event_types_real ? "".implode(", ", $event_types_real) : "";
-$facebook = get_post_meta( get_the_ID() , '_neuf_events_fb_url', true );
+$facebook = $post->neuf_events_fb_url;
 $facebook_icon = $facebook ? ' <a href="'.$facebook.'" title="' . get_the_title() . ' på Facebook" style="color:#FF9E29;text-decoration:none;"><img src="'.get_bloginfo('stylesheet_directory').'/img/facebook-icon.png" width="13px" height="13px" style="position:relative;top:2px;" alt="' . get_the_title() . ' på Facebook"></a>' : "";
 if($newday) { ?>
 			<tr<?php maybe_color(); ?>>

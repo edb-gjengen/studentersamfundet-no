@@ -40,13 +40,9 @@ if ($events->have_posts()) {
 	while ($events->have_posts()) {
 		$events->the_post(); 
 
-		$neuf_events_starttime = get_post_meta($post->ID, '_neuf_events_starttime', true);
-		$neuf_events_endtime = get_post_meta($post->ID, '_neuf_events_endtime', true);
-		$neuf_events_venue = get_post_meta($post->ID, '_neuf_events_venue', true);
-
-		if (!is_numeric($neuf_events_endtime)) {
-			$neuf_events_endtime = $neuf_events_starttime + 7200; //no end time? assume 2 hours
-		}
+		$neuf_events_starttime = $post->neuf_events_starttime;
+		$neuf_events_endtime = $post->neuf_events_endtime;
+		$neuf_events_venue = $post->neuf_events_venue;
 
 		$dtstart = date_i18n('Ymd\THis', (int) $neuf_events_starttime);
 		$dtend = date_i18n('Ymd\THis', (int) $neuf_events_endtime);

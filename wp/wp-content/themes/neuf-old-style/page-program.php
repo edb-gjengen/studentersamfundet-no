@@ -141,7 +141,7 @@ if ( $events->have_posts() ) :
 		$previous_day = $current_day;
 		$previous_week = $current_week;
 
-		$date = get_post_meta( $post->ID , '_neuf_events_starttime' , true );
+		$date = $post->neuf_events_starttime;
 		/* event type class */
 		$event_array = get_the_terms( $post->ID , 'event_type' );
 		$event_types = array();
@@ -190,12 +190,12 @@ if ( $events->have_posts() ) :
 		/* Only the first event */
 		if( $first_event ) { ?>
 			<div class="day day-1 grid_2<?php echo $day_gap; echo $alpha_or_omega; ?>">
-			<h2><?php echo ucfirst( date_i18n( 'l j/n' , get_post_meta( $post->ID , '_neuf_events_starttime' , true ) ) ); ?></h2>
+			<h2><?php echo ucfirst( date_i18n( 'l j/n' , $post->neuf_events_starttime ) ); ?></h2>
 			<?php if( has_post_thumbnail() ) {
 				the_post_thumbnail ('two-column-thumb' );
 			}
 			?>
-			<p <?php echo $event_type_class;?>><?php echo date_i18n( 'H.i:' , get_post_meta( $post->ID , '_neuf_events_starttime' , true ) ); ?> <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" <?php neuf_post_class(); ?>><?php echo the_title(); ?></a></p>
+			<p <?php echo $event_type_class;?>><?php echo date_i18n( 'H.i:' , $post->neuf_events_starttime ); ?> <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" <?php neuf_post_class(); ?>><?php echo the_title(); ?></a></p>
 			<?php
 			$first_event = false;
 			continue;
@@ -213,14 +213,14 @@ if ( $events->have_posts() ) :
 		<?php }
 		?>
 		<div class="day day-<?php echo $daycounter; ?> grid_2<?php echo $day_gap; echo $alpha_or_omega; ?>">
-			<h2><?php echo ucfirst( date_i18n( 'l j/n' , get_post_meta( $post->ID , '_neuf_events_starttime' , true ) ) ); ?></h2>
+			<h2><?php echo ucfirst( date_i18n( 'l j/n' , $post->neuf_events_starttime ) ); ?></h2>
 			<?php
 			if( has_post_thumbnail() ) {
 				the_post_thumbnail ('two-column-thumb' );
 			} ?>
 		<?php } else { ?>
 		<?php } ?>
-		<p <?php echo $event_type_class;?>><?php echo date_i18n( 'H.i:' , get_post_meta( $post->ID , '_neuf_events_starttime' , true ) ); ?> <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" <?php neuf_post_class(); ?>><?php echo the_title(); ?></a></p>
+		<p <?php echo $event_type_class;?>><?php echo date_i18n( 'H.i:' , $post->neuf_events_starttime ); ?> <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" <?php neuf_post_class(); ?>><?php echo the_title(); ?></a></p>
 		<?php
 		$first_week = false;
 		?>
@@ -263,7 +263,7 @@ if ( $events->have_posts() ) :
         <table class="table">
             <tbody>
             <?php while ( $events->have_posts() ) : $events->the_post();
-            $date = get_post_meta( $post->ID , '_neuf_events_starttime' , true );
+            $date = $post->neuf_events_starttime;
 
             $previous_month = $current_month;
             $current_month = date_i18n( 'F' , $date);
@@ -271,8 +271,8 @@ if ( $events->have_posts() ) :
 
             $datel = date_i18n( 'l j/n' , $date);
             ($price = neuf_get_price( $post )) ? : $price = '-';
-            $venue = get_post_meta( $post->ID , '_neuf_events_venue' , true );
-            $ticket = get_post_meta( $post->ID , '_neuf_events_bs_url' , true );
+            $venue = $post->neuf_events_venue;
+            $ticket = $post->neuf_events_ticket_url;
                     $ticket = $ticket ? '<a href="'.$ticket.'">Kjøp billett</a>' : '';
             /* event type class */
             $event_array = get_the_terms( $post->ID , 'event_type' );

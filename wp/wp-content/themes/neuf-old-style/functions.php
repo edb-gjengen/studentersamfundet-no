@@ -232,9 +232,11 @@ function neuf_doctitle() {
 } // end neuf_doctitle
 
 /**
- * Display social sharing buttons
+ * Display social sharing buttons.
  */
-function display_social_sharing_buttons() { ?>
+function display_social_sharing_buttons() {
+	global $post;
+?>
 		<div id="social-sharing">
 			<div class="share-twitter">
 				<a href="https://twitter.com/share" class="twitter-share-button" data-lang="no">Tweet</a>
@@ -243,6 +245,11 @@ function display_social_sharing_buttons() { ?>
 			<div class="share-facebook">
 				<div class="fb-like" data-send="true" data-layout="button_count" data-width="450" data-show-faces="true" data-action="recommend"></div>
 			</div> <!-- .share-facebook -->
+<?php if ( 'event' == get_post_type() ) { ?>
+			<div class="gcal">
+				<a href="<?php echo $post->neuf_events_gcal_url; ?>">Legg til i Google kalender</a>
+			</div> <!-- .gcal -->
+<?php } ?>
 		</div> <!-- #social-sharing -->
 <?php }
 

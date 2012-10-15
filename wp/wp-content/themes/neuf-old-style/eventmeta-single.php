@@ -1,12 +1,8 @@
 <?php
-$post->neuf_event_venue = get_post_meta(get_the_ID(), '_neuf_events_venue',true);
-$ticket = get_post_meta(get_the_id(), '_neuf_events_bs_url',true);
-$starttime = get_post_meta(get_the_ID() , '_neuf_events_starttime' , true );
-
 $date_format = 'l j. F';
 if ( 
-	0 > $starttime - strtotime('U - 1 week') // event is more than a week old
-	|| date( 'Y' , $starttime ) != date( 'Y') // event is not this year
+	0 > $post->neuf_events_starttime - strtotime('U - 1 week') // event is more than a week old
+	|| date( 'Y' , $post->neuf_events_starttime ) != date( 'Y') // event is not this year
 ) {
 	$date_format = 'l j. F Y';
 } 
@@ -16,22 +12,21 @@ if (
 						<h1 class="entry-title summary"><?php the_title(); ?></h1>
 
 						<div class="entry-meta-info">
-
 							<div>
-								<time class="event-date dtstart" datetime="<?php echo date_i18n('Y-m-d\TH:i:sP', $starttime); ?>"><?php echo ucfirst( date_i18n( $date_format , $starttime ) ); ?></span>
+								<time class="event-date dtstart" datetime="<?php echo date_i18n('Y-m-d\TH:i:sP', $post->neuf_events_starttime); ?>"><?php echo ucfirst( date_i18n( $date_format , $post->neuf_events_starttime ) ); ?></span>
 							</div>
 							<div>
 								<span class="meta-prep meta-prep-event-time"><?php _e( 'Kl:' , 'neuf' ); ?></span>
-								<time class="event-time dtstart" datetime="<?php echo date_i18n('Y-m-d\TH:i:sP', $starttime); ?>"><?php echo date_i18n( 'G.i' , $starttime); ?></time> 
+								<time class="event-time dtstart" datetime="<?php echo date_i18n('Y-m-d\TH:i:sP', $post->neuf_events_starttime); ?>"><?php echo date_i18n( 'G.i' , $post->neuf_events_starttime); ?></time> 
 								<span class="meta-sep meta-sep-event-price"> - </span>
 								<span class="meta-prep meta-prep-price">CC: </span>
 								<span class="price"><?php echo ($price = neuf_get_price( $post )) ? $price : "Gratis"; ?></span>
-								<span class="meta-prep meta-prep-price"><?php echo $ticket ? ' <a href="'.$ticket.'">Kjøp billett</a>' : ""; ?></span>
+								<span class="meta-prep meta-prep-price"><?php echo $post->neuf_events_ticket_url ? ' <a href="'.$post->neuf_events_ticket_url.'">Kjøp billett</a>' : ""; ?></span>
 							</div>
 							<div>
-								<span class="venue location"><?php echo $post->neuf_event_venue; ?></span>
-								<?php if(get_post_meta( get_the_ID() , '_neuf_events_fb_url', true )): ?><span class="meta-sep meta-sep-event-facebook"> - </span>
-								<span class="event-facebook"><a href="<?php echo get_post_meta( get_the_ID() , '_neuf_events_fb_url', true ); ?>" title="Arrangementet på Facebook"><img src="<?php echo get_bloginfo('stylesheet_directory')."/img/facebook-icon.png";?>" /></a></span>
+								<span class="venue location"><?php echo $post->neuf_events_venue; ?></span>
+								<?php if ( $post->neuf_events_fb_url ): ?><span class="meta-sep meta-sep-event-facebook"> - </span>
+								<span class="event-facebook"><a href="<?php echo $post->neuf_events_fb_url; ?>" title="Arrangementet på Facebook"><img src="<?php echo get_bloginfo('stylesheet_directory')."/img/facebook-icon.png";?>" /></a></span>
 								<?php endif; ?>
 							</div>
 						</div>

@@ -54,7 +54,7 @@
 			?>
 				<tr>
                                     <td id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
-					<?php $date = get_post_meta(get_the_ID(), '_neuf_events_starttime'); echo neuf_event_format_date($date[0]); ?> <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></td>
+					<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php echo ucfirst( date_i18n( 'l d/m: ' , $post->neuf_events_starttime ) ); the_title(); ?></a></td>
 				</tr>
 				<?php endwhile; endif; ?>
                     </table>
