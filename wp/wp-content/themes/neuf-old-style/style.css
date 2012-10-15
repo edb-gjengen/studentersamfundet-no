@@ -796,15 +796,17 @@ img {
 /**********
  * Social *
  **********/
-#social-sharing .share-facebook,
-#social-sharing .share-twitter
-{
+#social-sharing div {
 	display: inline-block;
 }
 
+#social-sharing .share-twitter {
+	position: relative;
+	top: 5px;
+}
 #social-sharing .share-facebook {
 	position: relative;
-	bottom: 3px;
+	top: 2px;
 }
 #facebook-followers {
 	float:right;

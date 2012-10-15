@@ -5,7 +5,7 @@
 							<div class="grid_6 alpha">
 
 <?php if ( 'event' == get_post_type() ) { ?>
-								<span class="event-date"><?php echo ucfirst( date_i18n( 'l j. F Y' , (int) get_post_meta(get_the_ID() , '_neuf_events_starttime' , true ) ) ); ?></span>
+								<span class="event-date"><?php echo ucfirst( date_i18n( 'l j. F Y' , (int) $post->neuf_events_starttime ) ); ?></span>
 <?php } else { ?>
 								<span class="event-date"><?php echo( ucfirst( get_the_time( 'l j. F Y' ) ) ); ?></span>
 <?php } // end of post type test ?>

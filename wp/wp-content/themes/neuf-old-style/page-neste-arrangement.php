@@ -154,8 +154,8 @@ h1 {
 			<h1><?php the_title(); ?></h1>
 		</div>
 		<div id="timeplace">
-			<p id="loc"><?php echo( $post->neuf_event_venue = get_post_meta(get_the_ID(), '_neuf_events_venue',true) ); ?></p>
-			<p id="time"><?php echo( ucfirst( date_i18n( 'l \k\l G.i' , $post->neuf_event_venue = get_post_meta(get_the_ID(), '_neuf_events_starttime',true) ) ) ); ?></p>
+			<p id="loc"><?php echo $post->neuf_events_venue; ?></p>
+			<p id="time"><?php echo( ucfirst( date_i18n( 'l \k\l G.i' , $post->neuf_events_starttime) ) ); ?></p>
 		</div>
 		<div id="price">
 			<p><?php echo ($price = neuf_get_price( $post )) ? $price : "Gratis"; ?></p>

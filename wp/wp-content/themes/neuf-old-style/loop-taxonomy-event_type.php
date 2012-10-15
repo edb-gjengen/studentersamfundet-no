@@ -4,7 +4,7 @@
 						<a href="<?php the_permalink(); ?>">
 							<div class="grid_6 alpha">
 
-								<span class="event-date"><?php echo ucfirst( date_i18n( 'l j. F Y' , (int) get_post_meta(get_the_ID() , '_neuf_events_starttime' , true ) ) ); ?></span>
+								<span class="event-date"><?php echo ucfirst( date_i18n( 'l j. F Y' , (int) $post->neuf_events_starttime ) ); ?></span>
 								<h3 class="entry-title"><?php the_title(); ?></h3>
 
 								<div class="entry-content"><?php the_excerpt(); ?></div> <!-- .entry-content -->

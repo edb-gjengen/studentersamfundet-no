@@ -64,9 +64,9 @@ $news = new WP_Query( 'type=post&posts_per_page=2' );
 							echo $html;
 						?>
 						<h1 class="entry-title"><?php the_title(); ?></h1>
-						<div class="datetime"><?php echo ucfirst( date_i18n( 'l j. F' , get_post_meta(get_the_ID() , '_neuf_events_starttime' , true ) ) ); ?></div>
+						<div class="datetime"><?php echo ucfirst( date_i18n( 'l j. F' , $post->neuf_events_starttime ) ); ?></div>
 						<div class="price"><?php echo ($price = neuf_get_price( $post )) ? $price : "Gratis"; ?></div>
-						<div class="venue"><?php echo get_post_meta(get_the_ID(), '_neuf_events_venue',true);?></div>
+						<div class="venue"><?php echo $post->neuf_events_venue; ?></div>
 						<?php the_excerpt(); ?>
 					</header>
 					<div class="grid_6">

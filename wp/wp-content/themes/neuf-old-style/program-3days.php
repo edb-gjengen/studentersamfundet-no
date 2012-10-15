@@ -37,7 +37,7 @@ if ( $events->have_posts() ) :
 		if ( isset( $event_current_day ) )
 			$event_previous_day = $event_current_day;
 
-		$event_current_day = date_i18n( 'Y-m-d' , get_post_meta( $post->ID , '_neuf_events_starttime' , true ) );
+		$event_current_day = date_i18n( 'Y-m-d' , $post->neuf_events_starttime );
 
 		if ( isset( $event_previous_day ) &&  $event_previous_day != $event_current_day ) {
 			// New day
@@ -58,7 +58,7 @@ if ( $events->have_posts() ) :
 					$event_daycounter++;
 			?>
 
-				<h2><?php echo ucfirst( date_i18n( 'l j/n' , get_post_meta( $post->ID , '_neuf_events_starttime' , true ) ) ); ?></h2>
+				<h2><?php echo ucfirst( date_i18n( 'l j/n' , $post->neuf_events_starttime ) ); ?></h2>
 
 				<?php
 				if( $newday && has_post_thumbnail() ) { ?>
@@ -68,7 +68,7 @@ if ( $events->have_posts() ) :
                                 }
                             } ?>
 
-				<p><?php echo date_i18n( 'H.i:' , get_post_meta( $post->ID , '_neuf_events_starttime' , true ) ); ?> <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php echo the_title(); ?></a></p>
+				<p><?php echo date_i18n( 'H.i:' , $post->neuf_events_starttime ); ?> <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php echo the_title(); ?></a></p>
 
 
 		<?php endwhile; // $events->have_posts(); ?>
