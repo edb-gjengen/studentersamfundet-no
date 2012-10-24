@@ -9,8 +9,6 @@
 
 $tweet_index= get_query_var('page') ? get_query_var('page') -1 : 0;
 $tweet_rpp = $tweet_index + 1;
-
-$_webkit_scale = "1.5";
 ?>
 
 <?php get_template_part( 'header' , 'infoscreen' ); ?>
@@ -35,11 +33,6 @@ $_webkit_scale = "1.5";
 			left:50%;
 			margin-left:-500px;
 			margin-top:-200px;
-			transform: scale(<?php echo $_webkit_scale; ?>);
-			-ms-transform: scale(<?php echo $_webkit_scale; ?>); /* IE 9 */
-			-webkit-transform: scale(<?php echo $_webkit_scale; ?>); /* Safari and Chrome */
-			-o-transform: scale(<?php echo $_webkit_scale; ?>); /* Opera */
-			-moz-transform: scale(<?php echo $_webkit_scale; ?>); /* Firefox */)))))
 		}
 		.profile_image,
 		.tweet
