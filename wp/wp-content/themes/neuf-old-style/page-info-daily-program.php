@@ -106,7 +106,7 @@ get_template_part('header', 'infoscreen');
 	}
 ?>
 
-	<li <?php post_class(); ?>>
+	<li <?php neuf_post_class(); ?>>
 		<div class="starttime"><?php echo( date_i18n('H.i',$post->neuf_events_starttime) ); ?></div>
 		<div class="event-type category"><?php echo( implode( ', ' , $post->event_types ) ); ?></div>
 		<div class="entry-title"><?php the_title(); ?></div>
