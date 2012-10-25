@@ -85,6 +85,10 @@ get_template_part('header', 'infoscreen');
 		margin-bottom:70px;
 		height:100%; */
 	}
+	.type-event .entry-title:before {
+		top:-20px;
+		left:-10px;
+	}
 	</style>
 </head>
 <body>
