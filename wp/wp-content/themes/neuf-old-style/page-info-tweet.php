@@ -31,7 +31,7 @@ $tweet_rpp = $tweet_index + 1;
 			position:absolute;
 			top:50%;
 			left:50%;
-			margin-left:-500px;
+			margin-left:-450px;
 			margin-top:-200px;
 		}
 		.profile_image,
@@ -52,7 +52,7 @@ $tweet_rpp = $tweet_index + 1;
 
 		.tweet {
 			padding: 24px 48px;
-			font-size:24px;
+			font-size:35px;
 			line-height:1.5em;
 			color:#fff;
 			width:650px;
