@@ -17,6 +17,7 @@ $tweet_rpp = $tweet_index + 1;
 
 		body {
 			background:#e99835;
+			overflow: hidden;
 		}
 
 		.spam {
