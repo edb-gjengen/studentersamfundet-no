@@ -26,6 +26,46 @@ function neuf_register_nav_menus() {
 add_action( 'init' , 'neuf_register_nav_menus' );
 
 /**
+ * Register custom taxonomy for post templates.
+ *
+ * By doing this, we are able to use custom templates for posts, almost like for pages.
+ */
+function neuf_register_theme_taxonomies() {
+	  // Add new taxonomy, NOT hierarchical (like tags)
+	$labels = array(
+		'name' => _x( 'Custom post templates', 'taxonomy general name' ),
+		'singular_name' => _x( 'Post template', 'taxonomy singular name' ),
+		'search_items' =>  __( '' ),
+		'popular_items' => __( 'Popular Templates' ),
+		'all_items' => __( 'All Post Templates' ),
+		'parent_item' => null,
+		'parent_item_colon' => null,
+		'edit_item' => __( 'Edit Post Template' ), 
+		'update_item' => __( 'Update Post Template' ),
+		'add_new_item' => __( 'Add New Post Template' ),
+		'new_item_name' => __( 'New Post Template' ),
+		'separate_items_with_commas' => __( 'Separate post templates with commas' ),
+		'add_or_remove_items' => __( 'Add or remove post templates' ),
+		'choose_from_most_used' => __( 'Choose from the most used post templates' ),
+		'menu_name' => __( 'Post Templates' ),
+	); 
+
+	register_taxonomy('post_template','post',array(
+		'hierarchical' => true,
+		'labels' => $labels,
+		'public' => false,
+		'show_ui' => true,
+		'show_in_nav_menus' => false,
+		'show_tagcloud' => true,
+		'update_count_callback' => '_update_post_term_count',
+		'query_var' => false,
+		//'rewrite' => array( 'slug' => 'writer' ),
+		'rewrite' => false,
+	));
+}
+add_action( 'init' , 'neuf_register_theme_taxonomies' , 0 );
+
+/**
  * Enqueue various scripts we use.
  */
 function neuf_enqueue_scripts() {
