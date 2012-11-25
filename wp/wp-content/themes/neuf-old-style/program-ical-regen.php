@@ -47,8 +47,7 @@ if ($events->have_posts()) {
 
 		$dtstart = date_i18n('Ymd\THis', (int) $neuf_events_starttime);
 		$dtend = date_i18n('Ymd\THis', (int) $neuf_events_endtime);
-        $description = strip_tags(get_the_content());
-		$description = html_entity_decode($description);
+		$description = strip_tags(get_the_content());
 
 		$vevent = & $v->newComponent("vevent");
 		$vevent->setProperty("dtstart",		$dtstart);
