@@ -548,17 +548,11 @@ add_action( 'wp_ajax_nopriv_infinite_scroll' , 'neuf_endless_scrolling' );
  * @author nikolark
  */
 function neuf_opengraph_default_type( $type ) {
-  if ( empty($type) ) {
-    if ( is_singular( array('post', 'page', 'aside', 'status', 'event', 'association') ) ) {
-      $type = 'article';
-    } else if ( is_author() ) {
-      $type = 'profile';
-    } else {
-      $type = 'blog';
-    }
-  }
-  return $type;
+	if ( is_singular( array('event', 'association') ) ) {
+		$type = 'article';
+	}
+	return $type;
 }
-add_filter('opengraph_type', 'neuf_opengraph_default_type', 4);
+add_filter('opengraph_type', 'neuf_opengraph_default_type');
 
 ?>
