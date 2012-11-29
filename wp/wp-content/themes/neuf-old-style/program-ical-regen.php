@@ -1,5 +1,6 @@
 <?php
-require_once('../../../wp-load.php');
+$SCRIPT_PATH = realpath(dirname(__FILE__).'/../../../');
+require_once($SCRIPT_PATH.'/wp-load.php');
 require_once('iCalcreator.class.php');
 //http://kigkonsult.se/iCalcreator/
 
