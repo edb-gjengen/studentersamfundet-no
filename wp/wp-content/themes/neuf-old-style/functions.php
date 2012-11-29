@@ -540,7 +540,7 @@ add_action( 'wp_ajax_infinite_scroll' , 'neuf_endless_scrolling' );
 add_action( 'wp_ajax_nopriv_infinite_scroll' , 'neuf_endless_scrolling' );
 
 
-/*
+/**
  * Used in the defenition of an og:type meta-property.
  * Adds to the opengraph plugin filter,
  * to make it return 'article' for events and associations.
@@ -561,4 +561,15 @@ function neuf_opengraph_default_type( $type ) {
 }
 add_filter('opengraph_type', 'neuf_opengraph_default_type', 4);
 
+/**
+ * Add Soundcloud to the oEmbed whitelist.
+ *
+ * Soundcloud will be included by default starting from WordPress 3.5, as per ticket 15734. If we are using > 3.5, this function can safely be removed.
+ *
+ * @author misund
+ */
+function add_oembed_soundcloud() {
+	wp_oembed_add_provider( 'http://soundcloud.com/*', 'http://soundcloud.com/oembed' );
+}
+add_action('init','add_oembed_soundcloud');
 ?>
