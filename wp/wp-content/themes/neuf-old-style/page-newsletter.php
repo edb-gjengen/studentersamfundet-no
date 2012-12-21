@@ -100,7 +100,7 @@ $news = new WP_Query( "type=post&posts_per_page=$articles" );
 		</tr>
 		<tr>
 			<td colspan="4" style="font-size:11px;font-style:italic;text-align:center;">
-				Kan du ikke se dette nyhetsbrevet skikkelig? <a href="http://studentersamfundet.no/nyhetsbrev/?utm_source=newsletter&utm_medium=email&utm_campaign=newsletter" style="color:#FF9E29;text-decoration:none;">Vis det i nettleseren i stedet.</a>
+            Kan du ikke se dette nyhetsbrevet skikkelig? <a href="http://studentersamfundet.no/nyhetsbrev/?utm_source=newsletter&utm_medium=email&utm_campaign=newsletter&articles=<?php echo $articles; ?>" style="color:#FF9E29;text-decoration:none;">Vis det i nettleseren i stedet.</a>
 			</td>
 		</tr>
 		<?php if ($news->have_posts()) : while ($news->have_posts()) : $news->the_post(); ?>
