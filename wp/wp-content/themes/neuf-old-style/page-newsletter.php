@@ -2,6 +2,11 @@
 /**
  * Template Name: Newsletter
  */
+$articles = 2;
+
+if(array_key_exists("articles", $_GET) && is_numeric($_GET['articles'])) {
+	$articles = $_GET['articles'];
+}
 
 $meta_query = array(
 	'relation' => 'AND',
@@ -46,7 +51,7 @@ $events = new WP_Query( $args );
 
 list($events_start, $events_end) = $events->query_vars['meta_query'][0]['value'];
 
-$news = new WP_Query( 'type=post&posts_per_page=1' );
+$news = new WP_Query( "type=post&posts_per_page=$articles" );
 
 
 ?>
