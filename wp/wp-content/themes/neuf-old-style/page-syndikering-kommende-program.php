@@ -43,6 +43,7 @@ print('<?xml version="1.0" encoding="UTF-8" ?>');
 <?php 
 if( $events->have_posts() ) : while ( $events->have_posts() ) : $events->the_post();
 	$event_array = get_the_terms( $post->ID , 'event_type' );
+	$post->event_types = array();
 	foreach ( $event_array as $event_type ) {
 		$post->event_types[] = $event_type->name;
 	}
