@@ -58,6 +58,7 @@ $news = new WP_Query( 'type=post&posts_per_page=2' );
 					<header class="grid_6">
 						<?php
 							$event_array = get_the_terms( $post->ID , 'event_type' );
+							$post->event_types = array();
 							foreach ( $event_array as $event_type )
 								$post->event_types[] = $event_type->name;
 							$html = '<div class="type">' . implode( ', ' , $post->event_types ) . '</div>';
