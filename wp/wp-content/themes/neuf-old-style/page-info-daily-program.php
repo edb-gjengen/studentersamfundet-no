@@ -105,6 +105,7 @@ get_template_part('header', 'infoscreen');
 <?php while ( $events->have_posts() ) : $events->the_post();
 
 	$event_array = get_the_terms( $post->ID , 'event_type' );
+	$post->event_types = array();
 	foreach ( $event_array as $event_type ) {
 		$post->event_types[] =  $event_type->name;
 	}
