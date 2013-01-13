@@ -22,10 +22,10 @@
                 new TWTR.Widget({
                   version: 2,
                   type: 'search',
-                  search: '#dnsgf',
+                  search: '#høyesterett',
                   interval: 30000,
-                  title: 'HashTag #dnsgf',
-                  subject: 'Generalforsamling våren 2012',
+                  title: 'Hashtag #høyesterett',
+                  subject: 'Høyesteretts politiske funksjoner',
                   width: 370,
                   height: 400,
                   theme: {

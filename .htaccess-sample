@@ -1,5 +1,6 @@
 #  
-# Rewriting old permalinks.
+# Rewriting permalinks from 2003-2012.
+#
 # By prefixing the old news ID, we can separate them from event IDs
 # which overlapped in the old DB.
 #
@@ -8,16 +9,29 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
-    # LOL syntax
+
+    # News articles
     RewriteCond %{QUERY_STRING} ID=(\d{1})$
-    RewriteRule nyhet.php$ /?p=1000%1 [R=301,L]
+    RewriteRule ^nyhet\.php$ /?p=1000%1 [R=301,L]
     RewriteCond %{QUERY_STRING} ID=(\d{2})$
-    RewriteRule nyhet.php$ /?p=100%1 [R=301,L]
+    RewriteRule ^nyhet\.php$ /?p=100%1 [R=301,L]
     RewriteCond %{QUERY_STRING} ID=(\d{3})$
-    RewriteRule nyhet.php$ /?p=10%1 [R=301,L]
+    RewriteRule ^nyhet\.php$ /?p=10%1 [R=301,L]
     RewriteCond %{QUERY_STRING} ID=(\d{4})$
-    RewriteRule nyhet.php$ /?p=1%1 [R=301,L]
+    RewriteRule ^nyhet\.php$ /?p=1%1 [R=301,L]
+    RewriteRule ^nyheter\.php /aktuelt/ [R=301,L]
+
+    # Now events
+    RewriteCond %{QUERY_STRING} ID=(\d{1,4})$
+    RewriteRule ^vis\.php$ /?p=%1 [R=301,L]
+    RewriteRule ^prog\.php$ /program/ [R=301,L]
+
+    # Previously static pages
+    RewriteRule ^lokaler\.php$ http://viteboka.studentersamfundet.no/Lokaler [R=301,L]
+    RewriteRule ^historie\.php$ http://viteboka.studentersamfundet.no/Historie [R=301,L]
+    RewriteRule ^blimed\.php$ http://studentersamfundet.no/bli-med/ [R=301,L]
 </IfModule>
+
 # Wordpress stuff
 <IfModule mod_rewrite.c>
 RewriteEngine On
