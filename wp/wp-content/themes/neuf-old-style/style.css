@@ -72,11 +72,11 @@ header#site-header {
 header#site-header .site-title {
 	z-index:999;
 	width:570px;
-	height:67px;
-	margin-top:11px;
+	height:72px;
+	margin-top:6px;
 }
 header#site-header .site-title a {
-	background: url('img/logo-web.png') no-repeat;
+	background: url('img/dns-logo-web.png') no-repeat;
 	display:block;
 	width:100%;
 	height:100%;
