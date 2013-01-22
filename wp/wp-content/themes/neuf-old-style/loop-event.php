@@ -26,8 +26,12 @@
 
 				<div class="grid_6">
 
+					<?php if ( has_post_thumbnail() ) { ?>					
+
 					<?php the_post_thumbnail( 'large' , array( 'style' => 'display:block;margin:auto;' ) ); ?>
 					<p class="wp-caption-text gallery-caption"><?php echo get_post( get_post_thumbnail_id() )->post_excerpt; ?></p>
+
+					<?php } // end if has post humbnail ?>
 
 					<?php get_template_part( 'newsletter' , 'signup-form' ); ?>
 
