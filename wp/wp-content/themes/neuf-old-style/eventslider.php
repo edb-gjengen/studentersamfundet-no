@@ -1,42 +1,60 @@
 <?php
 /**
- * Fetch events from today and onwards.
+ * Fetch promoted events from today and onwards.
  *
  * Ref: http://codex.wordpress.org/Class_Reference/WP_Query#Custom_Field_Parameters
  */
-$meta_query = array(
-	'relation' => 'AND',
-	array(
-		'key'     => '_neuf_events_starttime',
-		'value'   => date( 'U' , strtotime( '-8 hours' ) ), 
-		'compare' => '>',
-		'type'    => 'numeric'
-	), 
-	array(
-		'key'     => '_neuf_events_promo_period',
-		'value'   => array( 'Month', 'Måned' , 'Semester' ),
-		'compare' => 'IN',
-	)
-);
-
-$args = array(
-	'post_type'      => 'event',
-	'meta_query'     => $meta_query,
-	'posts_per_page' => 4
-);
-
-$events = new WP_Query( $args );
 
 $news = new WP_Query( 'type=post&posts_per_page=2' );
+
+$querystr = "
+	SELECT $wpdb->posts.*
+	FROM $wpdb->posts
+		JOIN $wpdb->postmeta postmeta1 ON $wpdb->posts.ID = postmeta1.post_id
+		JOIN $wpdb->postmeta postmeta2 ON $wpdb->posts.ID = postmeta2.post_id
+	
+	WHERE $wpdb->posts.post_type = 'event'
+	AND $wpdb->posts.post_status = 'publish'
+	AND postmeta1.meta_key = '_neuf_events_starttime'
+	AND postmeta1.meta_value > UNIX_TIMESTAMP( NOW() )
+
+	# Get promoted posts week, month or semester posts
+	AND (
+		(
+			postmeta2.meta_key = '_neuf_events_promo_period'
+			AND postmeta2.meta_value = 'Uke'
+			AND postmeta1.meta_value < UNIX_TIMESTAMP( NOW() ) + 7 * 86400
+			# Avoid NOW() to enable the MySQL cache. Set it in PHP?
+		)
+		OR (
+			postmeta2.meta_key = '_neuf_events_promo_period'
+			AND postmeta2.meta_value = 'Måned'
+			AND postmeta1.meta_value < UNIX_TIMESTAMP( NOW() ) + 31 * 86400
+			# Avoid NOW() to enable the MySQL cache.
+		)
+		OR (
+			postmeta2.meta_key = '_neuf_events_promo_period'
+			AND postmeta2.meta_value = 'Semester'
+			AND postmeta1.meta_value < UNIX_TIMESTAMP( NOW() ) + 182 * 86400
+			# Avoid NOW() to enable the MySQL cache.
+		)
+	)
+
+	ORDER BY postmeta1.meta_value ASC
+	";
+
+$sliderevents = $wpdb->get_results($querystr, OBJECT);
+
+if ( $sliderevents ) :
+	global $post;
 ?>
-<?php if ($events->have_posts()) : ?>
 	<section id="featured" class="clearfix">
 		<a href="#" id="prevLink">Forrige</a>
 		<a href="#" id="nextLink">Neste</a>
 		<div id="slidernav"></div>
 		<div id="slider"> 
 		<?php
-		if ($news->have_posts()) : while ($news->have_posts()) : $news->the_post(); ?>
+		while ($news->have_posts()) : $news->the_post(); ?>
 			<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
 				<a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">
 					<header class="grid_6">
@@ -49,10 +67,10 @@ $news = new WP_Query( 'type=post&posts_per_page=2' );
 				</a>
 			</article> <!-- #post-<?php the_ID(); ?> -->
 
-		<?php endwhile; endif; // $news->have_posts() ?>
+		<?php endwhile; // $news->have_posts() ?>
 
-		<?php $counter = 0;
-		while ($events->have_posts() && $counter < 4) : $events->the_post(); ?>
+<?php
+		foreach ( $sliderevents as $post ) : setup_postdata( $post ); ?>
 			<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
 				<a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">
 					<header class="grid_6">
@@ -78,7 +96,7 @@ $news = new WP_Query( 'type=post&posts_per_page=2' );
 
 		<?php
 		$counter++;
-		endwhile; // $events->have_posts()
+		endforeach; // $sliderevents as $post
 		?>
 
 	    </div>
