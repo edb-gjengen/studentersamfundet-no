@@ -5,7 +5,7 @@
  * Ref: http://codex.wordpress.org/Class_Reference/WP_Query#Custom_Field_Parameters
  */
 
-$news = new WP_Query( 'type=post&posts_per_page=2' );
+$news = new WP_Query( 'type=post&posts_per_page=1' );
 
 $querystr = "
 	SELECT $wpdb->posts.*
