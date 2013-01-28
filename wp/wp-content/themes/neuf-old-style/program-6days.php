@@ -35,6 +35,7 @@ if ( $events->have_posts() ) :
 while ( $events->have_posts() ) : $events->the_post();
 	$event_array = get_the_terms( $post->ID , 'event_type' );
 	$post->event_types = array();
+	$post->post_classes = array();
 	foreach ( $event_array as $event_type ) {
 		$post->event_types[] = '<a href="' . get_term_link( $event_type->slug , 'event_type') . '">' . $event_type->name . '</a>';
 		$post->post_classes[] = 'event-type-' . $event_type->slug;
@@ -76,7 +77,7 @@ while ( $events->have_posts() ) : $events->the_post();
 
 			<?php } ?>
 
-				<p><span class="time"><?php echo date_i18n( 'H.i' , $post->neuf_events_starttime ); ?></span> <span class="event-type"><?php echo( implode( ', ' , $post->event_types ) ); ?></span><br /><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php echo the_title(); ?></a></p>
+				<p><span class="time"><?php echo date_i18n( 'H.i' , $post->neuf_events_starttime ); ?></span> <span class="event-type <?php echo implode( ' ' , $post->post_classes); ?>"><?php echo( implode( ', ' , $post->event_types ) ); ?></span><br /><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php echo the_title(); ?></a></p>
 
 
 <?php endwhile; // $events->have_posts(); ?>
