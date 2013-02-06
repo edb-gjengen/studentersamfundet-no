@@ -705,7 +705,9 @@ img {
 /*.single-event .entry-meta h1:before,*/
 #featured article.type-event h1:before,
 #featured article.type-post h1:before,
-.tax-event_type h1.page-title:before
+.tax-event_type h1.page-title:before,
+.single-post #content article.type-post h1:before,
+.blog .page-title:before
 {
 	content:'';
 	border-radius:50%;
@@ -778,7 +780,9 @@ img {
 	background:url('img/ikon_teater-50x50.png');
 }
 
-#content article.type-post h1:before {
+.single-post #content article.type-post h1:before,
+.blog .page-title:before
+{
 	background:url('img/ikon_nyheter-50x50.png');
 }
 
