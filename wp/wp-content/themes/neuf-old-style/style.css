@@ -780,6 +780,7 @@ img {
 	background:url('img/ikon_teater-50x50.png');
 }
 
+#featured article.type-post h1:before,
 .single-post #content article.type-post h1:before,
 .blog .page-title:before
 {
