@@ -251,6 +251,12 @@ function neuf_doctitle() {
 				'separator' => $separator,
 				'content'   => $content
 			);
+		} else if ( is_single() && 'event' == get_post_type() ) {
+			$elements = array(
+				'content'   => $content,
+				'separator' => 'på',
+				'site_name' => 'Studentersamfundet'
+			);
 		} else {
 			$elements = array(
 				'content'   => $content,
