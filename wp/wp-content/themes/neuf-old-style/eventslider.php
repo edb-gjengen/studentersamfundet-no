@@ -22,20 +22,20 @@ $querystr = "
 	AND (
 		(
 			postmeta2.meta_key = '_neuf_events_promo_period'
-			AND postmeta2.meta_value = 'Uke'
+			AND postmeta2.meta_value = '" . __( 'Week' , 'neuf_event' ) . "'
 			AND postmeta1.meta_value < UNIX_TIMESTAMP( NOW() ) + 7 * 86400
 			# Avoid NOW() to enable the MySQL cache. Set it in PHP?
 		)
 		OR (
 			postmeta2.meta_key = '_neuf_events_promo_period'
-			AND postmeta2.meta_value = 'Måned'
+			AND postmeta2.meta_value = '" . __( 'Month' , 'neuf_event' ) . "'
 			AND postmeta1.meta_value < UNIX_TIMESTAMP( NOW() ) + 31 * 86400
 			# Avoid NOW() to enable the MySQL cache.
 		)
 		OR (
 			postmeta2.meta_key = '_neuf_events_promo_period'
-			AND postmeta2.meta_value = 'Semester'
-			AND postmeta1.meta_value < UNIX_TIMESTAMP( NOW() ) + 182 * 86400
+			AND postmeta2.meta_value = '" . __( 'Semester' , 'neuf_event' ) . "'
+			AND postmeta1.meta_value < UNIX_TIMESTAMP( NOW() ) + 120 * 86400
 			# Avoid NOW() to enable the MySQL cache.
 		)
 	)
