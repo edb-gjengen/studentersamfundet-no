@@ -96,7 +96,7 @@ $news = new WP_Query( "type=post&posts_per_page=$articles" );
 	<td>
 	    <table width="640" cellspacing="0" cellpadding="0" style="margin:auto;margin-bottom:10px;background:#ffffff;">
 		<tr style="background-color:#e99835; padding:5px;">
-		    <td colspan="4"><img src="<?php bloginfo('template_directory'); ?>/img/logo-web.png" alt="Det Norske Studentersamfund"></td>
+		    <td colspan="4"><img src="<?php bloginfo('template_directory'); ?>/img/dns-logo-web.png" alt="Det Norske Studentersamfund" style="margin-left: 25px;"></td>
 		</tr>
 		<tr>
 			<td colspan="4" style="font-size:11px;font-style:italic;text-align:center;">
