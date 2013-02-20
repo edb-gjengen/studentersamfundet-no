@@ -8,28 +8,43 @@ if(array_key_exists("articles", $_GET) && is_numeric($_GET['articles'])) {
 	$articles = $_GET['articles'];
 }
 
-$meta_query = array(
-	'relation' => 'AND',
-	array(
-		'key'     => '_neuf_events_starttime',
-		'value'   => date( 'U' , strtotime( '-8 hours' ) ), 
-		'compare' => '>',
-		'type'    => 'numeric'
-	), 
-	array(
-		'key'     => '_neuf_events_promo_period',
-		'value'   => array( 'Month' , 'Måned' , 'Semester' ),
-		'compare' => 'IN',
+$querystr = "
+	SELECT $wpdb->posts.*
+	FROM $wpdb->posts
+		JOIN $wpdb->postmeta postmeta1 ON $wpdb->posts.ID = postmeta1.post_id
+		JOIN $wpdb->postmeta postmeta2 ON $wpdb->posts.ID = postmeta2.post_id
+	
+	WHERE $wpdb->posts.post_type = 'event'
+	AND $wpdb->posts.post_status = 'publish'
+	AND postmeta1.meta_key = '_neuf_events_starttime'
+	AND postmeta1.meta_value > UNIX_TIMESTAMP( NOW() )
+
+	# Get promoted posts week, month or semester posts
+	AND (
+		(
+			postmeta2.meta_key = '_neuf_events_promo_period'
+			AND postmeta2.meta_value = '" . __( 'Week' , 'neuf_event' ) . "'
+			AND postmeta1.meta_value < UNIX_TIMESTAMP( NOW() ) + 7 * 86400
+			# Avoid NOW() to enable the MySQL cache. Set it in PHP?
+		)
+		OR (
+			postmeta2.meta_key = '_neuf_events_promo_period'
+			AND postmeta2.meta_value = '" . __( 'Month' , 'neuf_event' ) . "'
+			AND postmeta1.meta_value < UNIX_TIMESTAMP( NOW() ) + 31 * 86400
+			# Avoid NOW() to enable the MySQL cache.
+		)
+		OR (
+			postmeta2.meta_key = '_neuf_events_promo_period'
+			AND postmeta2.meta_value = '" . __( 'Semester' , 'neuf_event' ) . "'
+			AND postmeta1.meta_value < UNIX_TIMESTAMP( NOW() ) + 120 * 86400
+			# Avoid NOW() to enable the MySQL cache.
+		)
 	)
-);
 
-$args = array(
-	'post_type'      => 'event',
-	'meta_query'     => $meta_query,
-	'posts_per_page' => 4
-);
+	ORDER BY postmeta1.meta_value ASC
+	";
 
-$top_events = new WP_Query( $args );
+$top_events = $wpdb->get_results($querystr, OBJECT);
 
 $meta_query = array(
 	'key'     => '_neuf_events_starttime',
@@ -122,7 +137,8 @@ $news = new WP_Query( "type=post&posts_per_page=$articles" );
 		</tr>
 		<tr style="vertical-align:top;">
 		<?php $counter = 1; ?>
-		<?php while ($top_events->have_posts()) : $top_events->the_post(); ?>
+
+		<?php if ($top_events) : global $post; foreach ($top_events as $post) : setup_postdata($post); ?>
 <?php $date = $post->neuf_events_starttime;
 $previous_day = $current_day;
 /* set current day */
@@ -159,7 +175,9 @@ $event_type_real = $event_types_real ? "".implode(", ", $event_types_real) : "";
 		    <?php } ?>
 <?php 
 $counter += 1;
-endwhile; // $top_events->have_posts() ?>
+endforeach; // $top_events->have_posts()
+endif; // $top_events->have_posts()
+?>
 	    </table>
 	    <table width="640" cellspacing="0" cellpadding="0" class="table-striped program" style="margin:auto;margin-bottom:10px;background:#ffffff;">
 		<tr style="vertical-align:top;">
