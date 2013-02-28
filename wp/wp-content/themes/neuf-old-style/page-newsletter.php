@@ -2,7 +2,7 @@
 /**
  * Template Name: Newsletter
  */
-$articles = 2;
+$articles = 1;
 
 if(array_key_exists("articles", $_GET) && is_numeric($_GET['articles'])) {
 	$articles = $_GET['articles'];
