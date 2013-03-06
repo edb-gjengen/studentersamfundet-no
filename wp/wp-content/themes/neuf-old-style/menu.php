@@ -27,3 +27,9 @@
 					<?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'container' => 'false' ) ); ?>
 
 				</nav> <!-- #menu -->
+
+				<nav id="secondary-menu"> 
+
+					<?php wp_nav_menu( array( 'theme_location' => 'secondary-menu', 'container' => 'false' ) ); ?>
+
+				</nav> <!-- #secondary-menu -->

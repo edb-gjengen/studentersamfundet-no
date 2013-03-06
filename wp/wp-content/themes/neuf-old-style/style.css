@@ -1,6 +1,6 @@
 /**
  * Theme Name:  Neuf Old Style
- * Theme URI:   http://git.neuf.no/?p=neuf-web.git;a=summary
+ * Theme URI:   http://git.neuf.no/?p=neuf-web.git
  * Description: Horisontal outline.
  * Author:	Just Thomas Misund,Robert Kolner,Nikolai Kristiansen
  * Author URI:  http://edb.neuf.no
@@ -185,6 +185,30 @@ header#site-header .site-title a {
 }
 #menu .aapningstider #bokkafeen_tider a {
 	padding: 0px;
+}
+/* Secondary menu*/
+#secondary-menu {
+    /* good friends with #main-menu */
+    position: relative;
+    top: -75px;
+    float: right;
+    margin-right: 18px;    
+}
+#secondary-menu ul {
+    display: inline;
+    list-style: none;
+}
+#secondary-menu li {
+    display: inherit;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+#secondary-menu li:first-child {
+    padding-right: 4px;
+    border-right: 1px solid white;
+}
+#secondary-menu a {
+    color: white;
 }
 
 /* Header slutt */

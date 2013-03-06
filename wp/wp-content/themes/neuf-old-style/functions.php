@@ -20,8 +20,11 @@ add_image_size( 'newsletter-third'  , 213 , 126, true);
  */
 function neuf_register_nav_menus() {
 	register_nav_menus(
-		array( 'main-menu' => __( 'Hovedmeny' ) )
-	);
+        array(
+            'main-menu' => __( 'Hovedmeny' ),
+            'secondary-menu' => __( 'Sekundærmeny' ),
+        )
+    );
 }
 add_action( 'init' , 'neuf_register_nav_menus' );
 
