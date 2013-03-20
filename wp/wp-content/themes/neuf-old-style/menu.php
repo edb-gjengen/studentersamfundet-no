@@ -10,7 +10,11 @@
 												<td class="right">11.00 - 01.00</td>
 											</tr>
 											<tr>
-												<td>Tors - fre</td>
+												<td>Torsdag</td>
+												<td class="right">11.00 - 02.00</td>
+											</tr>
+											<tr>
+												<td>Fredag</td>
 												<td class="right">11.00 - 03.00</td>
 											</tr>
 											<tr>
