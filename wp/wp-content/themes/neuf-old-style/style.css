@@ -216,7 +216,7 @@ header#site-header .site-title a {
 }
 
 /* Flag for the english menu item */
-#secondary-menu li#menu-item-30969 {
+#secondary-menu li#menu-item-31594 {
 	display: inline-block;
 	width: 50px;
 	height: 25px;
@@ -224,6 +224,7 @@ header#site-header .site-title a {
 	background-size: cover;
 	overflow: hidden;
 	text-indent: -99999px;
+	vertical-align:text-bottom;
 }
 
 /* Header slutt */
