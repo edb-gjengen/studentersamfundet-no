@@ -218,8 +218,9 @@ header#site-header .site-title a {
 /* Flag for the english menu item */
 #secondary-menu li#menu-item-31594 a {
 	display: inline-block;
-	width: 50px;
-	height: 25px;
+	box-sizing: border-box;
+	width: 32px;
+	height: 16px;
 	background: url('img/uk.png');
 	background-size: cover;
 	overflow: hidden;
