@@ -14,6 +14,7 @@ $ure_roles = false; $ure_capabilitiesToSave = false;
 $ure_currentRole = false; $ure_currentRoleName = false;
 $ure_toldAboutBackup = false; $ure_apply_to_all = false; 
 $ure_userToEdit = false; $ure_fullCapabilities = false;
+$ure_show_deprecated_caps = false; $ure_caps_readable = false;
 
 // this array will be used to cashe users checked for Administrator role
 $ure_userToCheck = array();
@@ -120,17 +121,41 @@ function ure_showMessage($message) {
 
 
 function ure_getUserRoles() {
-  global $wp_roles;
+  global $wp_roles, $wpdb;
 
 	if (!isset( $wp_roles ) ) {
 		$wp_roles = new WP_Roles();
 	}
 
-	if ( function_exists('bbp_filter_blog_editable_roles') ) {  // bbPress plugin is active
-		$ure_roles = bbp_filter_blog_editable_roles( $wp_roles->roles );  // exclude bbPress roles
-		$bbp_full_caps = bbp_get_caps_for_role( bbp_get_keymaster_role() );
-		// add bbPress keymaster caps to Administrator role
-		$ure_roles['administrator']['capabilities'] = array_merge( $ure_roles[ 'administrator' ]['capabilities'], $bbp_full_caps );
+	if (function_exists('bbp_filter_blog_editable_roles') ) {  // bbPress plugin is active
+		$ure_roles = bbp_filter_blog_editable_roles( $wp_roles->roles );  // exclude bbPress roles	
+		$bbp_full_caps = bbp_get_caps_for_role( bbp_get_keymaster_role() );	
+		// exclude capabilities automatically added by bbPress bbp_dynamic_role_caps() and not bbPress related: read, level_0, all s2Member levels, e.g. access_s2member_level_0, etc.
+    $built_in_wp_caps = ure_getBuiltInWPCaps();
+    $bbp_only_caps = array();
+    foreach ($bbp_full_caps as $bbp_cap=>$val) {
+      if (isset( $built_in_wp_caps[ $bbp_cap ] ) || substr($bbp_cap, 0, 15)=='access_s2member' ) {
+        continue;
+      }
+      $bbp_only_caps[$bbp_cap] = $val;
+    }
+    // remove bbPress dynamically created capabilities from WordPress persistent roles in order to not save them to database with any role update
+		$cap_removed = false;	
+		foreach ($bbp_only_caps as $bbp_cap=>$val) {
+			foreach ($ure_roles as &$role) {
+				if (isset($role['capabilities'][$bbp_cap])) {
+					unset($role['capabilities'][$bbp_cap]);
+					$cap_removed = true;
+				}
+			}
+		}
+/*    
+		if ($cap_removed) {
+// save changes to database
+			$option_name = $wpdb->prefix.'user_roles';
+		  update_option($option_name, $ure_roles);
+		}
+ */
 	} else {
 		$ure_roles = $wp_roles->roles;
 	}
@@ -230,7 +255,7 @@ function ure_reset_user_roles() {
   $wp_roles->role_names = array();
   $wp_roles->use_db = true;
 	
-  require_once(ABSPATH . DIRECTORY_SEPARATOR .'wp-admin' . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'schema.php');
+  require_once(ABSPATH . '/wp-admin/includes/schema.php');
   populate_roles();
   $wp_roles->reinit();
 
@@ -347,10 +372,10 @@ function ure_makeRolesBackup() {
 
 // Save Roles to database
 function ure_saveRolesToDb() {
-  global $wpdb, $ure_roles, $ure_capabilitiesToSave, $ure_currentRole, $ure_currentRoleName;
+  global $wpdb, $ure_roles, $ure_capabilitiesToSave, $ure_currentRole;
 
   if (!isset($ure_roles[$ure_currentRole])) {
-    $ure_roles[$ure_currentRole]['name'] = $ure_currentRoleName;
+    return false;
   }
   $ure_roles[$ure_currentRole]['capabilities'] = $ure_capabilitiesToSave;
   $option_name = $wpdb->prefix.'user_roles';
@@ -393,7 +418,7 @@ function ure_direct_site_roles_update($blogIds) {
 
 
 function ure_updateRoles() {
-  global $wpdb, $ure_apply_to_all, $ure_roles, $ure_toldAboutBackup;
+  global $wpdb, $ure_apply_to_all, $ure_roles, $ure_toldAboutBackup, $ure_currentRole, $ure_currentRoleName;
   
   $ure_toldAboutBackup = false;
   if (is_multisite() && is_super_admin() && $ure_apply_to_all) {  // update Role for the all blogs/sites in the network (permitted to superadmin only)
@@ -413,11 +438,14 @@ function ure_updateRoles() {
         $ure_roles = ure_getUserRoles();
         if (!$ure_roles) {
           echo '<div class="error fade below-h2">'.URE_ERROR.'</div>';
+          switch_to_blog($old_blog);
+          $ure_roles = ure_getUserRoles();
           return false;
         }
-        if (!ure_saveRolesToDb()) {
-          return false;
-        }
+        if (!isset($ure_roles[$ure_currentRole])) { // add new role to this blog
+          $ure_roles[$ure_currentRole] = array( 'name' => $ure_currentRoleName, 'capabilities' => array('read'=>1) );
+        }        
+        ure_saveRolesToDb();
       }
       switch_to_blog($old_blog);
       $ure_roles = ure_getUserRoles();            
@@ -445,34 +473,44 @@ function ure_newRoleCreate(&$ure_currentRole) {
   
   $mess = '';
   $ure_currentRole = '';
-  if (isset($_GET['user_role']) && $_GET['user_role']) {
-    $user_role = utf8_decode(urldecode($_GET['user_role']));
+  if (isset($_POST['user_role_id']) && $_POST['user_role_id']) {
+    $user_role_id = utf8_decode($_POST['user_role_id']);
     // sanitize user input for security
-    $valid_name = preg_match('/[A-Za-z0-9_\-]*/', $user_role, $match);
-    if (!$valid_name || ($valid_name && ($match[0]!=$user_role))) { // some non-alphanumeric charactes found!
-      return __('Error: Role name must contain latin characters and digits only!', 'ure');
+    $valid_name = preg_match('/[A-Za-z0-9_\-]*/', $user_role_id, $match);
+    if (!$valid_name || ($valid_name && ($match[0]!=$user_role_id))) { // some non-alphanumeric charactes found!
+      return __('Error: Role ID must contain latin characters, digits, hyphens or underscore only!', 'ure');
     }  
-    if ($user_role) {
+        
+    if ($user_role_id) {      
+      $user_role_name = isset( $_POST['user_role_name']) ? $_POST['user_role_name'] : false;
+      if (!empty($user_role_name)) {
+        $user_role_name = sanitize_text_field( $user_role_name );      
+      } else {
+        $user_role_name = $user_role_id;  // as user role name is empty, use user role ID instead
+      }
+      
       if (!isset($wp_roles)) {
         $wp_roles = new WP_Roles();
       }
-      if (isset($wp_roles->roles[$user_role])) {      
-        return sprintf('Error! '.__('Role %s exists already', 'ure'), $user_role);
+      if ( isset( $wp_roles->roles[ $user_role_id ] ) ) {      
+        return sprintf( 'Error! '.__('Role %s exists already', 'ure'), $user_role_id );
       }
-      // add new role to the roles array
-      $ure_currentRole = strtolower($user_role);
-      $user_role_copy_from = isset($_GET['user_role_copy_from']) ? $_GET['user_role_copy_from'] : false;
-      if (!empty($user_role_copy_from) && $user_role_copy_from!='none' && $wp_roles->is_role($user_role_copy_from)) {
-        $role = $wp_roles->get_role($user_role_copy_from);
+      $user_role_id = strtolower($user_role_id);
+      $ure_currentRole = $user_role_id;
+      
+      $user_role_copy_from = isset($_POST['user_role_copy_from']) ? $_POST['user_role_copy_from'] : false;
+      if ( !empty($user_role_copy_from) && $user_role_copy_from!='none' && $wp_roles->is_role($user_role_copy_from) ) {
+        $role = $wp_roles->get_role( $user_role_copy_from );
         $capabilities = $role->capabilities;
       } else {
         $capabilities = array('read'=>1, 'level_0'=>1);
       }
-      $result = add_role($ure_currentRole, $user_role, $capabilities);
-      if (!isset($result) || !$result) {
+      // add new role to the roles array      
+      $result = add_role($user_role_id, $user_role_name, $capabilities);
+      if ( !isset($result) || empty($result) ) {
         $mess = 'Error! '.__('Error is encountered during new role create operation', 'ure');
       } else {
-        $mess = sprintf(__('Role %s is created successfully', 'ure'), $user_role);
+        $mess = sprintf(__('Role %s is created successfully', 'ure'), $user_role_name);
       }
     }
   }
@@ -527,7 +565,7 @@ function ure_getRolesCanDelete($ure_roles) {
       }
     }
     if ($canDelete) {
-      $ure_rolesCanDelete[$key] = $role['name'];
+      $ure_rolesCanDelete[$key] = $role['name'] .' ('. $key .')';
     }
   }
 
@@ -540,9 +578,9 @@ function ure_deleteRole() {
   global $wp_roles;
 
   $mess = '';
-  if (isset($_GET['user_role']) && $_GET['user_role']) {
-    $role = $_GET['user_role'];
-    //$result = remove_role($_GET['user_role']);
+  if (isset($_POST['user_role_id']) && $_POST['user_role_id']) {
+    $role = $_POST['user_role_id'];
+    //$result = remove_role($_POST['user_role']);
     // use this modified code from remove_role() directly as remove_role() returns nothing to check
     if (!isset($wp_roles)) {
       $wp_roles = new WP_Roles();
@@ -555,7 +593,7 @@ function ure_deleteRole() {
     } else {
       $result = false;
     }
-    if (!isset($result) || !$result) {
+    if (empty($result)) {
       $mess = 'Error! '.__('Error encountered during role delete operation', 'ure');
     } else {
       $mess = sprintf(__('Role %s is deleted successfully', 'ure'), $role);
@@ -575,19 +613,20 @@ function ure_changeDefaultRole() {
   if (!isset($wp_roles)) {
 		$wp_roles = new WP_Roles();
   }
-  if (isset($_GET['user_role']) && $_GET['user_role']) {
+  if ( !empty($_POST['user_role_id']) ) {
+    $user_role_id = $_POST['user_role_id'];
+    unset($_POST['user_role_id']);
     $errorMessage = 'Error! '.__('Error encountered during default role change operation', 'ure');
-    if (isset($wp_roles->role_objects[$_GET['user_role']])) {
-      $result = update_option('default_role', $_GET['user_role']);
-      if (!isset($result) || !$result) {
+    if ( isset($wp_roles->role_objects[$user_role_id]) && $user_role_id!=='administrator') {
+      $result = update_option( 'default_role', $user_role_id );
+      if (empty($result)) {
         $mess = $errorMessage;
       } else {
-        $mess = sprintf(__('Default role for new users is set to %s successfully', 'ure'), $wp_roles->role_names[$_GET['user_role']]);
+        $mess = sprintf( __('Default role for new users is set to %s successfully', 'ure'), $wp_roles->role_names[ $user_role_id ] );
       }
     } else {
       $mess = $errorMessage;
-    }
-    unset($_REQUEST['user_role']);
+    }    
   }
 
   return $mess;
@@ -729,19 +768,51 @@ class ure_TableSorter {
 
 
 function ure_updateUser($user) {
-  global $wpdb, $ure_capabilitiesToSave, $ure_currentRole;
+  global $wp_roles, $ure_capabilitiesToSave, $ure_roles;
 
-  $user->remove_all_caps();
-  if (count($user->roles)>0) {
-    $userRole = $user->roles[0];
-  } else {
-    $userRole = '';
-  }
-  $user->set_role($ure_currentRole);
-    
-  if (count($ure_capabilitiesToSave)>0) {
-    foreach ($ure_capabilitiesToSave as $key=>$value) {
-      $user->add_cap($key);
+	$primary_role = array_shift(array_values($user->roles));  // get 1st element from roles array as user primary role
+	if (empty($primary_role) || !isset($ure_roles[$primary_role])) {
+		$primary_role = '';
+	}
+	if (function_exists('bbp_filter_blog_editable_roles') ) {  // bbPress plugin is active
+		$bbp_user_role = bbp_get_user_role($user->ID);
+	} else {
+		$bbp_user_role = '';
+	}
+	
+	// revoke all roles and capabilities from this user
+  $user->roles = array();
+	$user->remove_all_caps();
+	
+	// restore primary role
+	if (!empty($primary_role)) {
+		$user->add_role($primary_role);
+	}
+	
+	// restore bbPress user role if she had one
+	if (!empty($bbp_user_role)) {
+		$user->add_role($bbp_user_role);
+	}
+	
+	// add other roles to user
+	foreach( $_POST as $key=>$value ) {
+		$result = preg_match( '/^wp_role_(.+)/', $key, $match);
+		if ($result === 1 ) {
+			$role = $match[ 1 ];
+			if ( isset( $wp_roles->roles[ $role ] ) ) {
+				$user->add_role($role);
+			}
+		}
+	}
+	
+	// add individual capabilities to user
+  if ( count( $ure_capabilitiesToSave ) > 0 ) {
+    foreach ( $ure_capabilitiesToSave as $key=>$value ) {
+			foreach( $user->roles as $role_id=>$role) {
+				if ( empty( $role['capabilities'][$key] ) ) {
+					$user->add_cap($key);
+				}
+			}
     }
   }
   $user->update_user_level_from_caps();
@@ -755,8 +826,8 @@ function ure_AddNewCapability() {
   global $wp_roles;
   
   $mess = '';
-  if (isset($_GET['new_user_capability']) && $_GET['new_user_capability']) {
-    $user_capability = utf8_decode(urldecode($_GET['new_user_capability']));
+  if (isset($_POST['capability_id']) && $_POST['capability_id']) {
+    $user_capability = $_POST['capability_id'];
     // sanitize user input for security
     $valid_name = preg_match('/[A-Za-z0-9_\-]*/', $user_capability, $match);
     if (!$valid_name || ($valid_name && ($match[0]!=$user_capability))) { // some non-alphanumeric charactes found!    
@@ -915,37 +986,34 @@ function ure_getCapsToRemoveHTML() {
 // end of getCapsToRemoveHTML()
 
 
-function ure_removeCapability() {
+function ure_deleteCapability() {
   global $wpdb, $wp_roles;
 
   $mess = '';
-  if (isset($_GET['removeusercapability']) && $_GET['removeusercapability']) {
-    $capability = $_GET['removeusercapability'];
+  if (!empty( $_POST['user_capability_id']) ) {
+    $capability_id = $_POST['user_capability_id'];
     $capsToRemove = ure_getCapsToRemove();    
-    if (!is_array($capsToRemove) || count($capsToRemove)==0 || !isset($capsToRemove[$capability])) {
-      return sprintf(__('Error! You do not have permission to delete this capability: %s!', 'ure'), $capability);
+    if (!is_array($capsToRemove) || count($capsToRemove)==0 || !isset($capsToRemove[$capability_id])) {
+      return sprintf(__('Error! You do not have permission to delete this capability: %s!', 'ure'), $capability_id);
     }
         
     // process users
     $usersId = $wpdb->get_col("SELECT $wpdb->users.ID FROM $wpdb->users");
     foreach ($usersId as $user_id) {
       $user = get_user_to_edit($user_id);
-      if (isset($user->roles[0]) && $user->roles[0] == 'administrator') {
-        continue;
-      }
-      if ($user->has_cap($capability)) {
-        $user->remove_cap($capability);
+      if ($user->has_cap($capability_id)) {
+        $user->remove_cap($capability_id);
       }
     }
 
     // process roles
     foreach ($wp_roles->role_objects as $wp_role) {
-      if ($wp_role->has_cap($capability)) {
-        $wp_role->remove_cap($capability);
+      if ($wp_role->has_cap($capability_id)) {
+        $wp_role->remove_cap($capability_id);
       }
     }
     
-    $mess = sprintf(__('Capability %s is removed successfully', 'ure'), $capability);
+    $mess = sprintf(__('Capability %s is removed successfully', 'ure'), $capability_id);
   }
 
   return $mess;
@@ -1042,5 +1110,214 @@ function ure_get_deprecated_caps() {
   
 }
 // end of get_deprecated_caps()
+
+/**
+ * output HTML-code for capabilities list
+ * @global boolean $ure_currentRole
+ * @global type $ure_show_deprecated_caps
+ * @global boolean $ure_roles
+ * @global boolean $ure_fullCapabilities
+ * @global type $ure_caps_readable
+ * @param boolean $core - if true, then show WordPress core capabilities, else custom (plugins and themes created)
+ * @param boolean $for_role - if true, it is role capabilities list, else - user specific capabilities list
+ */
+function ure_show_capabilities( $core=true, $for_role=true ) {
+	global $ure_currentRole, $ure_show_deprecated_caps, $ure_roles, $ure_fullCapabilities, $ure_caps_readable, $ure_userToEdit;
+	
+	$onclick_for_admin = '';
+	if (! ( is_multisite() && is_super_admin() ) ) {  // do not limit SuperAdmin for multi-site
+		if ( $core && 'administrator' == $ure_currentRole) {
+			$onclick_for_admin = 'onclick="turn_it_back(this)"';
+		}
+	}
+	
+	if ($core) {
+		$quant = count( ure_getBuiltInWPCaps() );
+		$deprecatedCaps = ure_get_deprecated_caps();	
+	} else {
+		$quant = count( $ure_fullCapabilities ) - count( ure_getBuiltInWPCaps() );	
+		$deprecatedCaps = array();
+	}
+	$quantInColumn = (int) $quant / 3;
+	$printed_quant = 0;
+  foreach( $ure_fullCapabilities as $capability) {    
+		if ($core) {
+			if ( !$capability['wp_core'] ) { // show WP built-in capabilities 1st
+				continue;
+			}		
+		} else {			
+			if ( $capability['wp_core'] ) { // show plugins and themes added capabilities
+				continue;
+			}
+		}
+    if (!$ure_show_deprecated_caps && isset($deprecatedCaps[$capability['inner']])) {
+      $hidden_class = 'class="hidden"';        
+    } else {
+      $hidden_class = '';      
+    }
+    if (isset($deprecatedCaps[$capability['inner']])) {
+      $labelStyle = 'style="color:#BBBBBB;"';  
+    } else {
+      $labelStyle = '';
+    }
+    $checked = ''; $disabled = '';
+		if ($for_role) {
+			if (isset($ure_roles[$ure_currentRole]['capabilities'][$capability['inner']]) &&
+							!empty($ure_roles[$ure_currentRole]['capabilities'][$capability['inner']])) {
+				$checked = 'checked="checked"';
+			}
+		} else {
+			if (user_can($ure_userToEdit->ID, $capability['inner'])) {
+				$checked = 'checked="checked"';
+				if (!isset($ure_userToEdit->caps[$capability['inner']])) {
+					$disabled = 'disabled="disabled"';
+				}
+			}
+		}
+		$cap_id = str_replace(' ', URE_SPACE_REPLACER, $capability['inner']);    
+		echo '<input type="checkbox" name="'. $cap_id .'" id="' . $cap_id .'" value="'. $capability['inner'] .'" '. $hidden_class .' '. $checked .' '. $disabled .' '. $onclick_for_admin .' />';
+		if ( empty( $hidden_class ) ) {
+			if ( $ure_caps_readable ) {
+				$capInd = 'human';
+				$capIndAlt = 'inner';
+			} else {
+				$capInd = 'inner';
+				$capIndAlt = 'human';
+			}
+			echo '<label for="'. $cap_id .'" title="'. $capability[$capIndAlt] .'" '. $labelStyle .' > '. $capability[$capInd] .'</label> '. ure_capability_help_link($capability['inner']) .'<br/>';			
+			$printed_quant++;  
+			if ($printed_quant>=$quantInColumn) {
+				$printed_quant = 0;
+				echo '</td>
+					    <td style="vertical-align:top;">';
+			}
+		} // if ('hidden'
+  }	
+	
+}
+// end of ure_show_capabilities()
+
+
+/**
+ * Returns list of user roles, except 1st one, and bbPress assigned as they are shown by WordPress and bbPress theirselves.
+ * 
+ * @param type $user WP_User from wp-includes/capabilities.php
+ * @return array
+ */
+function ure_other_user_roles($user) {
+
+	global $wp_roles;
+	
+	if ( !is_array($user->roles) || count($user->roles)<=1 ) {
+		return '';
+	}
+
+	// get bbPress assigned user role
+	if ( function_exists('bbp_filter_blog_editable_roles') ) {
+		$bb_press_role = bbp_get_user_role( $user->ID );		
+	} else {
+		$bb_press_role = '';
+	}
+
+	$roles = array();
+	foreach ($user->roles as $key=>$value) {
+		if ( !empty( $bb_press_role ) && $bb_press_role===$value ) {
+			// exclude bbPress assigned role
+			continue;
+		}			
+		$roles[] = $value;		
+	}
+	array_shift($roles); // exclude primary role which is shown by WordPress itself
+			
+	return $roles;
+	 
+}
+// end of ure_other_user_roles()
+	
+
+/**
+ * Returns list of user roles, except 1st one, and bbPress assigned as they are shown by WordPress and bbPress theirselves.
+ * 
+ * @param type $roles user roles list
+ * @return string
+ */
+function ure_other_user_roles_text($roles) {
+	global $wp_roles;
+	
+	if ( is_array($roles) && count( $roles ) > 0 ) {
+		$role_names = array();
+		foreach ($roles as $role) {
+			$role_names[] = $wp_roles->roles[$role]['name'];
+		}
+		$output = implode(', ', $role_names);
+	} else {
+		$output = '';
+	}
+  
+ return $output; 
+	
+}
+// end of ure_other_user_roles_text()
+
+
+// output HTML code to create URE toolbar
+function ure_toolbar($ure_currentRole, $ure_object, $roleDeleteHTML='', $capabilityRemoveHTML='') {
+
+	?>	
+<div id="ure_toolbar" >
+   <button id="ure_select_all" class="ure_toolbar_button">Select All</button>
+<?php 
+	if ('administrator' != $ure_currentRole ) {
+?>   
+   <button id="ure_unselect_all" class="ure_toolbar_button">Unselect All</button> 
+   <button id="ure_reverse_selection" class="ure_toolbar_button">Reverse</button> 
+<?php
+  }
+	if ($ure_object == 'role') {
+    
+?>
+   
+   <hr />
+   <div id="ure_update">
+    <button id="ure_update_role" class="ure_toolbar_button button-primary">Update</button> 
+   </div>
+   <hr />
+   <button id="ure_add_role" class="ure_toolbar_button">Add New Role</button>   
+   <button id="ure_add_capability" class="ure_toolbar_button">Add New Capability</button>
+<?php   
+if (!empty($roleDeleteHTML)) {
+?>  
+   <button id="ure_delete_role" class="ure_toolbar_button">Delete Role</button>
+<?php
+}
+if (!empty($capabilityRemoveHTML)) {
+?>
+   <button id="ure_delete_capability" class="ure_toolbar_button">Delete Capability</button>
+<?php
+}
+?>
+   <hr />
+   <button id="ure_default_role" class="ure_toolbar_button">Default Role</button>
+   <hr />
+   <div id="ure_service_tools">
+      <button id="ure_reset_roles" class="ure_toolbar_button" title="Reset Roles to its original state">Reset</button> 
+   </div>
+<?php    
+      } else {
+?>
+   
+   <hr />
+	 <div id="ure_update_user">
+    <button id="ure_update_role" class="ure_toolbar_button button-primary">Update</button> 
+	 </div>	 
+<?php	 
+			}
+?>
+   
+</div>  
+<?php
+	
+}
+// end of ure_toolbar()
 
 ?>
