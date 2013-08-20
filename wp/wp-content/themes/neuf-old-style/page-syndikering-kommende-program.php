@@ -54,7 +54,7 @@ if( $events->have_posts() ) : while ( $events->have_posts() ) : $events->the_pos
 	    <link><?php the_permalink(); ?></link>
 	    <guid><?php the_permalink(); ?></guid>
             <content:encoded><?php echo("<![CDATA[" . get_the_content() . "]]>"); ?></content:encoded>
-            <pubDate><?php echo ( date("D, d M Y H:i:s O", $post->neuf_events_starttime ) ); ?></pubDate>
+            <pubDate><?php echo ( date_i18n("D, d M Y H:i:s O", $post->neuf_events_starttime ) ); ?></pubDate>
 	             
 	</item>
 <?php endwhile; endif; ?>
