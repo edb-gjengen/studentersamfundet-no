@@ -2,34 +2,49 @@
 /**
  * Template Name: Mailchimp Newsletter
  */
-$articles = 2;
+$articles = 1;
 
 if(array_key_exists("articles", $_GET) && is_numeric($_GET['articles'])) {
 	$articles = $_GET['articles'];
 }
 
-$meta_query = array(
-	'relation' => 'AND',
-	array(
-		'key'     => '_neuf_events_starttime',
-		'value'   => date( 'U' , strtotime( '-8 hours' ) ), 
-		'compare' => '>',
-		'type'    => 'numeric'
-	), 
-	array(
-		'key'     => '_neuf_events_promo_period',
-		'value'   => array( 'Month' , 'Måned' , 'Semester' ),
-		'compare' => 'IN',
+$querystr = "
+	SELECT $wpdb->posts.*
+	FROM $wpdb->posts
+		JOIN $wpdb->postmeta postmeta1 ON $wpdb->posts.ID = postmeta1.post_id
+		JOIN $wpdb->postmeta postmeta2 ON $wpdb->posts.ID = postmeta2.post_id
+	
+	WHERE $wpdb->posts.post_type = 'event'
+	AND $wpdb->posts.post_status = 'publish'
+	AND postmeta1.meta_key = '_neuf_events_starttime'
+	AND postmeta1.meta_value > UNIX_TIMESTAMP( NOW() )
+
+	# Get promoted posts week, month or semester posts
+	AND (
+		(
+			postmeta2.meta_key = '_neuf_events_promo_period'
+			AND postmeta2.meta_value = '" . __( 'Week' , 'neuf_event' ) . "'
+			AND postmeta1.meta_value < UNIX_TIMESTAMP( NOW() ) + 7 * 86400
+			# Avoid NOW() to enable the MySQL cache. Set it in PHP?
+		)
+		OR (
+			postmeta2.meta_key = '_neuf_events_promo_period'
+			AND postmeta2.meta_value = '" . __( 'Month' , 'neuf_event' ) . "'
+			AND postmeta1.meta_value < UNIX_TIMESTAMP( NOW() ) + 31 * 86400
+			# Avoid NOW() to enable the MySQL cache.
+		)
+		OR (
+			postmeta2.meta_key = '_neuf_events_promo_period'
+			AND postmeta2.meta_value = '" . __( 'Semester' , 'neuf_event' ) . "'
+			AND postmeta1.meta_value < UNIX_TIMESTAMP( NOW() ) + 120 * 86400
+			# Avoid NOW() to enable the MySQL cache.
+		)
 	)
-);
 
-$args = array(
-	'post_type'      => 'event',
-	'meta_query'     => $meta_query,
-	'posts_per_page' => 4
-);
+	ORDER BY postmeta1.meta_value ASC
+	";
 
-$top_events = new WP_Query( $args );
+$top_events = $wpdb->get_results($querystr, OBJECT);
 
 $meta_query = array(
 	'key'     => '_neuf_events_starttime',
@@ -96,14 +111,17 @@ $news = new WP_Query( "type=post&posts_per_page=$articles" );
 	<td>
 	    <table width="640" cellspacing="0" cellpadding="0" style="margin:auto;margin-bottom:10px;background:#ffffff;">
 		<tr style="background-color:#e99835; padding:5px;">
-		    <td colspan="4"><img src="<?php bloginfo('template_directory'); ?>/img/logo-web.png" alt="Det Norske Studentersamfund"></td>
+		    <td colspan="4"><img src="<?php bloginfo('template_directory'); ?>/img/dns-logo-web.png" alt="Det Norske Studentersamfund" style="margin-left: 25px;"></td>
 		</tr>
 		<tr>
 			<td colspan="4" style="font-size:11px;font-style:italic;text-align:center;">
-            Kan du ikke se dette nyhetsbrevet skikkelig? <a href="http://studentersamfundet.no/nyhetsbrev/&articles=<?php echo $articles; ?>" style="color:#FF9E29;text-decoration:none;">Vis det i nettleseren i stedet.</a>
+            Kan du ikke se dette nyhetsbrevet skikkelig? <a href="http://studentersamfundet.no/nyhetsbrev/?articles=<?php echo $articles; ?>" style="color:#FF9E29;text-decoration:none;">Vis det i nettleseren i stedet.</a>
 			</td>
 		</tr>
-		<?php if ($news->have_posts()) : while ($news->have_posts()) : $news->the_post(); ?>
+        <?php
+
+        $current_day = "";
+         if ($news->have_posts()) : while ($news->have_posts()) : $news->the_post(); ?>
 		<tr id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?> style="vertical-align:bottom;">
 		    <td>
 			<h2><a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>" style="color:#FF9E29;text-decoration:none;font-size:20px;"><?php the_title(); ?></a></h2>
@@ -122,7 +140,8 @@ $news = new WP_Query( "type=post&posts_per_page=$articles" );
 		</tr>
 		<tr style="vertical-align:top;">
 		<?php $counter = 1; ?>
-		<?php while ($top_events->have_posts()) : $top_events->the_post(); ?>
+
+		<?php if ($top_events) : global $post; foreach ($top_events as $post) : setup_postdata($post); ?>
 <?php $date = $post->neuf_events_starttime;
 $previous_day = $current_day;
 /* set current day */
@@ -159,7 +178,9 @@ $event_type_real = $event_types_real ? "".implode(", ", $event_types_real) : "";
 		    <?php } ?>
 <?php 
 $counter += 1;
-endwhile; // $top_events->have_posts() ?>
+endforeach; // $top_events->have_posts()
+endif; // $top_events->have_posts()
+?>
 	    </table>
 	    <table width="640" cellspacing="0" cellpadding="0" class="table-striped program" style="margin:auto;margin-bottom:10px;background:#ffffff;">
 		<tr style="vertical-align:top;">
@@ -233,23 +254,29 @@ if($first) { ?>
 	    </table>
 	    <table width="640" cellspacing="0" cellpadding="0" style="margin:auto;margin-top:20px;margin-bottom:10px;background:#ffffff;">
 		<tr style="text-align:center;">
-		    <td style="border:0px;"><img src="<?php bloginfo('template_directory'); ?>/img/sponsors/logo_black_akademika.png" alt="Akademika"></td>
+		    <td style="border:0px;"><img src="<?php bloginfo('template_directory'); ?>/img/sponsors/logo_red_akademika.png" alt="Akademika"></td>
 		</tr>
 		<tr style="text-align:center;margin-top:5px;">
 			<td style="padding:8px 4px;border:0px;font-size:13px;">
 				Det Norske Studentersamfund<br>
-				<a href="http://studentersamfundet.no/" style="color:#FF9E29;text-decoration:none;">studentersamfundet.no</a><br><br>
-				Chateau Neuf, Slemdalsveien 15, 0369 Oslo, tlf: 22 84 45 11<br><br>
-
-				Du får nyhetsbrev av oss fordi du har takket ja til det på nettsidene våre. <a href="*|UNSUB|*">Meld meg av denne listen</a>.
+				<a href="*|LIST:URL|*" target="_blank" style="color:#FF9E29;text-decoration:none;">studentersamfundet.no</a><br><br>
+                *|LIST:ADDRESS|*<br><br>
+                *|LIST:DESCRIPTION|*<br>
+                <a href="*|UNSUB|*">Meld meg av denne listen</a>.
 		</td></tr>
-   		<tr style="text-align:center;margin-top:5px;">
-    		<td>*|REWARDS|*</td>
-    	</tr> 
-		</tr>
 	    </table>
 	</td>
     </tr>
 </table>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
