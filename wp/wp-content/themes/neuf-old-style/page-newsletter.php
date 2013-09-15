@@ -118,7 +118,10 @@ $news = new WP_Query( "type=post&posts_per_page=$articles" );
             Kan du ikke se dette nyhetsbrevet skikkelig? <a href="http://studentersamfundet.no/nyhetsbrev/?utm_source=newsletter&utm_medium=email&utm_campaign=newsletter&articles=<?php echo $articles; ?>" style="color:#FF9E29;text-decoration:none;">Vis det i nettleseren i stedet.</a>
 			</td>
 		</tr>
-		<?php if ($news->have_posts()) : while ($news->have_posts()) : $news->the_post(); ?>
+        <?php
+
+        $current_day = "";
+         if ($news->have_posts()) : while ($news->have_posts()) : $news->the_post(); ?>
 		<tr id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?> style="vertical-align:bottom;">
 		    <td>
 			<h2><a class="permalink blocklink" href="<?php the_permalink(); ?>?utm_source=newsletter&utm_medium=email&utm_campaign=newsletter" rel="bookmark" title="<?php the_title(); ?>" style="color:#FF9E29;text-decoration:none;font-size:20px;"><?php the_title(); ?></a></h2>
@@ -251,7 +254,7 @@ if($first) { ?>
 	    </table>
 	    <table width="640" cellspacing="0" cellpadding="0" style="margin:auto;margin-top:20px;margin-bottom:10px;background:#ffffff;">
 		<tr style="text-align:center;">
-		    <td style="border:0px;"><img src="<?php bloginfo('template_directory'); ?>/img/sponsors/logo_black_akademika.png" alt="Akademika"></td>
+		    <td style="border:0px;"><img src="<?php bloginfo('template_directory'); ?>/img/sponsors/logo_red_akademika.png" alt="Akademika"></td>
 		</tr>
 		<tr style="text-align:center;margin-top:5px;">
 			<td style="padding:8px 4px;border:0px;font-size:13px;">
