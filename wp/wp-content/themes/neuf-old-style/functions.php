@@ -296,7 +296,7 @@ function display_social_sharing_buttons() {
 			</div> <!-- .share-facebook -->
 <?php if ( 'event' == get_post_type() ) { ?>
 			<div class="gcal">
-				<a href="<?php echo $post->neuf_events_gcal_url; ?>">Legg til i Google kalender</a>
+				<i class="icon-calendar"></i> <a href="<?php echo $post->neuf_events_gcal_url; ?>">Legg til i Google kalender</a>
 			</div> <!-- .gcal -->
 <?php } ?>
 		</div> <!-- #social-sharing -->
