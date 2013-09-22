@@ -1,16 +1,4 @@
 $(document).ready( function() {
-    /* Urlize */
-    jQuery.fn.urlize = function( base ) {
-        var x = this.html();
-        list = x.match( /\b(http:\/\/|www\.|http:\/\/www\.)[^ ]{2,100}\b/g );
-        if ( list ) {
-            for ( i = 0; i < list.length; i++ ) {
-                x = x.replace( list[i], "<a target='_blank' href='" + list[i] + "'>"+ list[i] + "</a>" );
-            }
-            this.html(x);
-        }
-    };
-
     /* Flickr */
     var flickr_limit = 10;
     /*
@@ -31,7 +19,7 @@ $(document).ready( function() {
             html += '" alt="'; html += item.title + '" />';
             html += '</a></li>';
 
-            if(parseInt(i) == flickr_limit - 1) {
+            if(parseInt(i, 10) == flickr_limit - 1) {
                 return false;
             }
             return true;
