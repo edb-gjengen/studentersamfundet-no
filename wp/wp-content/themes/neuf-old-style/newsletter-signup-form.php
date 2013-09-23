@@ -1,28 +1,17 @@
-					<form id="newsletter-signup-form" 
-						name="newletter-signup-form"
-						method="post"
-						action="http://www.mailit.no/box.php"
-						target="subscription"
-						onsubmit="window.open('','subscription','width=400,height=120'); $.get('http://neuf-stats.appspot.com/newsletter?server=<?php echo $_SERVER['SERVER_NAME'];?>&url=<?php echo $_SERVER['REQUEST_URI'];?>');"
-
-					>
-					<h3>Hold deg oppdatert</h3>
-					    <p>Nyhetsbrevet vårt sendes ut én gang i uka, og inneholder program og eksklusive konkurranser.</p>
-					    <p>Meld deg på her:
-						<input  type="text"
-							name="email"
-							id="email"
-							value="Din e-post"
-							size="20"
-							onblur="if('' == this.value) this.value='Din e-post';"
-							onfocus="if('Din e-post' == this.value) this.value = '';"
-						><?php /*
-						<input type="radio"  name="funcml"                value="add" checked="checked">Abonnér<br />
-						<input type="radio"  name="funcml"                value="unsub2">Meld deg av<br>
-						 */ ?>
-						<input type="hidden" name="funcml"                value="add" checked="checked" />
-						<input type="hidden" name="p" id="p"              value="26" />
-						<input type="hidden" name="nlbox[1]"              value="7" />
-						<input type="submit" name="Ok" id="newsletter-ok" value="Abonnér!"  class="btn" />
-					    </p>
-					</form>
+<!-- Begin MailChimp Signup Form -->
+<div id="mc_embed_signup" class="newsletter-form">
+    <form action="http://studentersamfundet.us6.list-manage.com/subscribe/post?u=094f98d9217069d64cecb0c57&amp;id=bef4852918" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+        <h3>Hold deg oppdatert</h3>
+        <p>Nyhetsbrevet vårt sendes ut én gang i uka, og inneholder program og eksklusive konkurranser.</p>
+        <div class="mc-field-group">
+            <label for="mce-EMAIL">Meld deg på her:</label>
+            <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Din e-post">
+            <input type="submit" value="Abonnér!" name="subscribe" id="mc-embedded-subscribe" class="btn">
+        </div>
+        <div id="mce-responses">
+            <div class="response" id="mce-error-response" style="display:none"></div>
+            <div class="response" id="mce-success-response" style="display:none"></div>
+        </div>
+    </form>
+</div>
+<!--End mc_embed_signup-->

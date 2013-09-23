@@ -656,12 +656,14 @@ input[type="submit"]:focus,
 	cursor:pointer;
 }
 
-.btn#newsletter-ok {
+.newsletter-form .btn {
 	margin-top:0;
 	margin-bottom:0;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="email"]
+{
 	font-size: 18px;
 	line-height: 21px;
 	padding: 8px;
@@ -672,11 +674,14 @@ input[type="text"] {
 	-webkit-border-radius: 3px;
 }
 
-input[type="text"]:active {
+input[type="text"]:active,
+input[type="email"]:active
+{
 	background:#ff9e29;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="email"]:focus {
 	background:#fff;
 }
 
@@ -875,7 +880,7 @@ img {
 	position:relative;
 }
 
-#newsletter-signup-form {
+.newsletter-form {
 	margin-top:2em;
 }
 
