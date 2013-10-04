@@ -113,11 +113,11 @@ $news = new WP_Query( "type=post&posts_per_page=$articles" );
 		<tr style="background-color:#e99835; padding:5px;">
 		    <td colspan="4"><img src="<?php bloginfo('template_directory'); ?>/img/dns-logo-web.png" alt="Det Norske Studentersamfund" style="margin-left: 25px;"></td>
 		</tr>
-		<tr>
+        *| IFNOT:ARCHIVE_PAGE |*<tr>
 			<td colspan="4" style="font-size:11px;font-style:italic;text-align:center;">
-            Kan du ikke se dette nyhetsbrevet skikkelig? <a href="http://studentersamfundet.no/nyhetsbrev/?articles=<?php echo $articles; ?>" style="color:#FF9E29;text-decoration:none;">Vis det i nettleseren i stedet.</a>
+            Kan du ikke se dette nyhetsbrevet skikkelig? <a href="*|ARCHIVE|*" style="color:#FF9E29;text-decoration:none;">Vis det i nettleseren i stedet.</a>
 			</td>
-		</tr>
+		</tr>*| END:IF |*
         <?php
 
         $current_day = "";
