@@ -81,7 +81,7 @@ function neuf_enqueue_scripts() {
 	wp_register_script( 'front-page', get_template_directory_uri() . '/js/front-page.js', array('cycle','moment-lang') );
 	wp_register_script( 'application', get_template_directory_uri() . '/js/application.js', array('jquery') );
 	wp_register_script( 'underscore', get_template_directory_uri() . '/js/underscore.js');
-	wp_register_script( 'knockout', get_template_directory_uri() . '/js/knockout-2.0.0.js');
+	wp_register_script( 'knockout', get_template_directory_uri() . '/js/knockout-2.3.0.js');
 	wp_register_script( 'util', get_template_directory_uri() . '/js/neuf/util/util.js' );
 	wp_register_script( 'date.js', get_template_directory_uri() . '/js/neuf/util/date-nb-NO.js');
 	wp_register_script( 'moment', get_template_directory_uri() . '/js/moment.min.js');
