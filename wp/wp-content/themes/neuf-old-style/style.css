@@ -922,6 +922,9 @@ img {
 	padding-bottom:35px;
 	text-indent:-63px;
 }
+#featured article h1.long {
+    font-size: 30px
+}
 
 #featured article .datetime,
 #featured article .price,
