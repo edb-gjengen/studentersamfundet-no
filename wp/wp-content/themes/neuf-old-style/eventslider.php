@@ -70,6 +70,7 @@ if ( $sliderevents ) :
 		<?php endwhile; // $news->have_posts() ?>
 
 <?php
+		$counter = 0;
 		foreach ( $sliderevents as $post ) : setup_postdata( $post ); ?>
 			<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
 				<a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">
@@ -82,7 +83,7 @@ if ( $sliderevents ) :
 							$html = '<div class="type">' . implode( ', ' , $post->event_types ) . '</div>';
 							echo $html;
 						?>
-						<h1 class="entry-title"><?php the_title(); ?></h1>
+						<h1 class="entry-title<?php echo neuf_title_class(); ?>"><?php the_title(); ?></h1>
 						<div class="datetime"><?php echo ucfirst( date_i18n( 'l j. F' , $post->neuf_events_starttime ) ); ?></div>
 						<div class="price"><?php echo ($price = neuf_get_price( $post )) ? $price : "Gratis"; ?></div>
 						<div class="venue"><?php echo $post->neuf_events_venue; ?></div>

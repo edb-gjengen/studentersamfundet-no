@@ -158,6 +158,14 @@ function neuf_post_class( $classes = '' ) {
 
 	post_class( $classes );
 }
+/**
+ * Adds CSS class for event titles
+ */
+function neuf_title_class() {
+    $length = strlen(get_the_title());
+    $class = $length >= 60 ? " long" : "";
+    return $class;
+}
 
 /* Gets nicely the regular and member price nicely formated */
 function neuf_get_price( $neuf_event ) {
