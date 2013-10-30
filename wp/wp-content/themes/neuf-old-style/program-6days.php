@@ -70,7 +70,9 @@ while ( $events->have_posts() ) : $events->the_post();
 
 				<?php
 				if( $newday && has_post_thumbnail() ) {
+					echo '<a href="' . get_permalink() . '" title="' . get_the_title() . '">';
 					the_post_thumbnail ('two-column-thumb' );
+					echo '</a>';
 					$newday = false;
 				}
 				?>
