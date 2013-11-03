@@ -8,46 +8,35 @@
 
         <div id="flowplayer" class="grid_8" style="background-color:black; color:white;margin-bottom:20px;">
             <!-- Stream URL -->
-            <a href="http://porter.streaming.neuf.no:8800/live/" style="width:792px;height:432px;display:block;" id="player"></a> 
+            <div id="player" style="width:900px;height:576px;"></div> 
             <script src="<?php bloginfo('stylesheet_directory'); ?>/flowplayer-3.2.6.min.js"></script>
             <script type="text/javascript"> 
-                    $(function(){
-                        flowplayer("player", "<?php bloginfo('stylesheet_directory');?>/flowplayer-3.2.7.swf");
-                    });
+            $(function(){
+                flowplayer(
+                    "player",
+                    "<?php bloginfo('stylesheet_directory');?>/js/flowplayer/flowplayer-3.2.15.swf",
+                    {
+                        clip: {
+                            url: 'genfors_nov13',
+                            live: true,
+                            // configure clip to use neuf as our provider, it uses our rtmp plugin
+                            provider: 'neuf'
+                        },
+                     plugins: {
+                        // here is our rtmp plugin configuration
+                        neuf: {
+                            url: "<?php bloginfo('stylesheet_directory');?>/js/flowplayer/flowplayer.rtmp-3.2.12.swf",
+                     
+                            // netConnectionUrl defines where the streams are found
+                            netConnectionUrl: 'rtmp://gemini.neuf.no/live'
+                        }
+                    }
+                });
+            });
             </script> 
         </div> 
         <div id="twitter-widget" class="grid_4">
-            <script src="http://widgets.twimg.com/j/2/widget.js"></script>
-            <script>
-                new TWTR.Widget({
-                  version: 2,
-                  type: 'search',
-                  search: '#høyesterett',
-                  interval: 30000,
-                  title: 'Hashtag #høyesterett',
-                  subject: 'Høyesteretts politiske funksjoner',
-                  width: 370,
-                  height: 400,
-                  theme: {
-                    shell: {
-                      background: '#8ec1da',
-                      color: '#ffffff'
-                    },
-                    tweets: {
-                      background: '#ffffff',
-                      color: '#444444',
-                      links: '#1985b5'
-                    }
-                  },
-                  features: {
-                    scrollbar: false,
-                    loop: false,
-                    live: true,
-                    behavior: 'default'
-                  }
-                }).render().start();
-                </script>
-		</div> <!-- #twitter-widget -->
+		<!-- TODO -->
 	</div>
 </div>
 <?php get_footer(); ?>
