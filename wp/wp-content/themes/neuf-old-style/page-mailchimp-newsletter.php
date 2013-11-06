@@ -254,7 +254,9 @@ if($first) { ?>
 	    </table>
 	    <table width="640" cellspacing="0" cellpadding="0" style="margin:auto;margin-top:20px;margin-bottom:10px;background:#ffffff;">
 		<tr style="text-align:center;">
-		    <td style="border:0px;"><img src="<?php bloginfo('template_directory'); ?>/img/sponsors/logo_red_akademika.png" alt="Akademika"></td>
+            <td style="border:0px;">
+                <img src="<?php bloginfo('template_directory'); ?>/img/sponsors/logo_red_akademika.png" alt="Akademika"><br/><br />
+                <img src="<?php bloginfo('template_directory'); ?>/img/sponsors/logo_black_uio.png" alt="UiO" width="60px" height="60px"> </td>
 		</tr>
 		<tr style="text-align:center;margin-top:5px;">
 			<td style="padding:8px 4px;border:0px;font-size:13px;">
