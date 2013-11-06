@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2013-10-22 23:52:14+0000\n"
+"PO-Revision-Date: 2013-10-30 09:22:43+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,7 +12,7 @@ msgstr ""
 
 #: wp-admin/about.php:79
 msgid "This site <strong>is not</strong> able to apply these updates automatically."
-msgstr ""
+msgstr "Dette nettstedet <strong>er ikke</strong> i stand til å foreta disse oppdateringene automatisk."
 
 #: wp-admin/includes/class-wp-upgrader.php:1374
 #: wp-admin/includes/update-core.php:664 wp-admin/includes/update-core.php:732

@@ -66,7 +66,7 @@ $events = new WP_Query( $args );
 
 list($events_start, $events_end) = $events->query_vars['meta_query'][0]['value'];
 
-$news = new WP_Query( "type=post&posts_per_page=$articles" );
+$news = new WP_Query( "type=post&posts_per_page=$articles&ignore_sticky_posts=true" );
 
 
 ?>
