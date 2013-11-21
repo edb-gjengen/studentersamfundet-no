@@ -20,7 +20,7 @@ if (
 								<time class="event-time dtstart" datetime="<?php echo date_i18n('Y-m-d\TH:i:sP', $post->neuf_events_starttime); ?>"><?php echo date_i18n( 'G.i' , $post->neuf_events_starttime); ?></time> 
 								<span class="meta-sep meta-sep-event-price"> - </span>
 								<span class="meta-prep meta-prep-price">CC: </span>
-								<span class="price"><?php echo ($price = neuf_get_price( $post )) ? $price : "Gratis"; ?></span>
+								<span class="price"><?php echo ($price = neuf_format_price( $post )) ? $price : "Gratis"; ?></span>
 								<span class="meta-prep meta-prep-price"><?php echo $post->neuf_events_ticket_url ? ' <a href="'.$post->neuf_events_ticket_url.'">Kjøp billett</a>' : ""; ?></span>
 							</div>
 							<div>

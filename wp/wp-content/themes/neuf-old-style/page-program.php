@@ -270,7 +270,7 @@ if ( $events->have_posts() ) :
             $newmonth = $previous_month != $current_month;
 
             $datel = date_i18n( 'l j/n' , $date);
-            ($price = neuf_get_price( $post )) ? : $price = '-';
+            ($price = neuf_format_price( $post )) ? : $price = '-';
             $venue = $post->neuf_events_venue;
             $ticket = $post->neuf_events_ticket_url;
                     $ticket = $ticket ? '<a href="'.$ticket.'">Kjøp billett</a>' : '';

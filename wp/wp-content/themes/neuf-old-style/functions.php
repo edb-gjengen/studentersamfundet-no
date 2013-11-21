@@ -167,17 +167,24 @@ function neuf_title_class() {
     return $class;
 }
 
-/* Gets nicely the regular and member price nicely formated */
-function neuf_get_price( $neuf_event ) {
+/* Formats the regular and member price nicely */
+function neuf_format_price( $neuf_event ) {
 	$price_regular = get_post_meta( $neuf_event->ID , '_neuf_events_price_regular' , true );
 	$price_member = get_post_meta( $neuf_event->ID , '_neuf_events_price_member' , true );
+    $cc = "";
+
 	if ( $price_regular ) {
-		if ( $price_member )
-			$cc = "$price_regular,- / $price_member,-";
-		else
-			$cc = "$price_regular,-";
-	} else
-		$cc = '';
+        $cc .= $price_regular;
+        if( is_numeric($price_regular) ) {
+            $cc .= ",-";
+        }
+    }
+    if ( $price_member ) {
+        $cc .= " / $price_member";
+        if( is_numeric($price_member) ) {
+            $cc .= ",-";
+        }
+    }
 
 	return $cc;
 }
