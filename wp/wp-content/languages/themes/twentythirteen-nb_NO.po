@@ -2,13 +2,17 @@
 # This file is distributed under the same license as the Twenty Thirteen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2013-07-25 11:12:28+0000\n"
+"PO-Revision-Date: 2013-11-21 22:20:20+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: GlotPress/0.1\n"
 "Project-Id-Version: Twenty Thirteen\n"
+
+#: 404.php:16
+msgid "Not Found"
+msgstr "Ikke funnet"
 
 msgid "The 2013 theme for WordPress takes us back to the blog, featuring a full range of post formats, each displayed beautifully in their own unique way. Design details abound, starting with a vibrant color scheme and matching header images, beautiful typography and icons, and a flexible layout that looks great on any device, big or small."
 msgstr "2013-temaet for WordPress tar oss tilbake til bloggen, med alle mulige innleggsformater, og hvert eneste format vises på sin unike måte. Twenty Thirteen har drøssevis av designdetaljer, som fargeskjema og matchende toppbilder, flott typografi, ikoner og et fleksibelt oppsett som ser fantastisk ut på både data, nettbrett og mobil."
@@ -43,10 +47,6 @@ msgstr "Full oppløsning"
 #: inc/back-compat.php:41 inc/back-compat.php:53 inc/back-compat.php:68
 msgid "Twenty Thirteen requires at least WordPress version 3.6. You are running version %s. Please upgrade and try again."
 msgstr "Twenty Thirteen krever WordPress versjon 3.6. Du kjører versjon %s. Vennligst oppgrader og prøv igjen."
-
-#: 404.php:16
-msgid "Not found"
-msgstr "Ikke funnet"
 
 #: 404.php:21
 msgid "This is somewhat embarrassing, isn&rsquo;t it?"
