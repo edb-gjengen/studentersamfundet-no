@@ -12,7 +12,7 @@ if ( 'Annetsteds' != $post->neuf_events_venue ) {
 							<span class="meta-sep meta-sep-event-price"> - </span>
 							<span class="meta-prep meta-prep-price">CC: </span>
                                                         <span class="meta-prep meta-prep-ticket"><?php echo $ticket ? ' <a href="'.$ticket.'">Kjøp billett</a>' : ""; ?></span>
-							<span class="price"><?php echo ($price = neuf_get_price( $post )) ? $price : "Gratis"; ?></span>
+							<span class="price"><?php echo ($price = neuf_format_price( $post )) ? $price : "Gratis"; ?></span>
 						</div> <!-- .time-price -->
 					</div> <!-- .entry-meta-->
 
