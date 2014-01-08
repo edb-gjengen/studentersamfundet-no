@@ -43,7 +43,7 @@
 
 	<div id="kolofon" class="grid_12">
 
-            <span>Det Norske Studentersamfund | Slemdalsveien 15, 0369 Oslo | Ansvarlig redaktør: <a href="mailto:sofie.rustoy@studentersamfundet.no">Sofie Rustøy</a> | Webdesign av <a href="http://edb.neuf.no">EDB-gjengen</a> og Designerne i <a href="http://studentersamfundet.no/association/kommunikasjonsavdelingen/">KAK</a>.</span>
+            <span>Det Norske Studentersamfund | Slemdalsveien 15, 0369 Oslo | Ansvarlig redaktør: <a href="mailto:andrew.mccalman@studentersamfundet.no">Andrew McCalman</a> | Webdesign av <a href="http://edb.neuf.no">EDB-gjengen</a> og Designerne i <a href="http://studentersamfundet.no/association/kommunikasjonsavdelingen/">KAK</a>.</span>
 
 	</div> <!-- #kolofon -->
 
