@@ -184,9 +184,9 @@ $(window).load(function(){
 
 	/* Find all categories used by events: */
 	var categories = {};
-
 	$(".day p").each(function() {
 		var classes = $(this).attr("class").split(" ");
+        console.log(classes);
 
 		for (var id in classes) {
 			categories[classes[id]] = true;

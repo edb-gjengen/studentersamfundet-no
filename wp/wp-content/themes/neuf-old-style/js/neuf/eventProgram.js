@@ -25,7 +25,7 @@ $(document).ready(function () {
     }
 
     function dateToId(date) {
-        return date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate()
+        return date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
     }
 
     function weekToId(date) {
@@ -47,7 +47,9 @@ $(document).ready(function () {
 
         var eventTypes = [];
         _.each(events, function(event) {
-            eventTypes.push(event.eventType);
+            _.each(event.eventTypeParents, function(type) {
+                eventTypes.push(type);
+            });
         });
 
         _.each(_.uniq(eventTypes), function(eventTypeName) {
@@ -81,7 +83,7 @@ $(document).ready(function () {
         this.endTime = new Date(parseInt(rawEvent.custom_fields._neuf_events_endtime[0]) * 1000);
         this.venue = rawEvent.custom_fields._neuf_events_venue[0];
         this.thumbnailURI = rawEvent.attachments.length > 0 ? rawEvent.attachments[0].images["two-column-thumb"].url : undefined;
-        this.eventType = rawEvent.event;
+        this.eventTypeParents = rawEvent.event_type_parents;
 
         this.visible = ko.computed(function () {
             var checkedEvents = programModel.checkedEvents();
@@ -89,15 +91,15 @@ $(document).ready(function () {
             if (checkedEvents.length === 0) {
                 return true;
             }
-
-            return _.contains(checkedEvents, this.eventType);
+            /* At least 1 element in common */
+            return _.intersection(checkedEvents, this.eventTypeParents).length > 0;
         }, this);
-    }
+    };
 
     var Week = function(id, days) {
         this.id = id;
         this.days = days;
-    }
+    };
 
     var Day = function (id, dateAsHeader, events, programModel) {
         this.id = id;
@@ -108,17 +110,25 @@ $(document).ready(function () {
         this.hasNoDisplayableEvents = ko.computed(function () {
             var checkedEvents = this.programModel.checkedEvents();
 
-            if (checkedEvents.length == 0) {
-                return this.events().length == 0;
+            if (checkedEvents.length === 0) {
+                return this.events().length === 0;
             }
             
             var filtered = ko.utils.arrayFilter(this.events(), function (event) {
-                return _.contains(checkedEvents, event.eventType);
+                var num_in_categories = 0;
+                _.each(event.eventTypeParents, function(eventType) {
+
+                    if( _.contains(checkedEvents, eventType) ) {
+                        num_in_categories += 1;
+                    }
+                });
+                return num_in_categories !== 0;
+
             });
 
-            return filtered.length == 0;
+            return filtered.length === 0;
         }, this);
-    }
+    };
 
     var EventType = function(name) {
         this.name = name;
@@ -132,7 +142,7 @@ $(document).ready(function () {
 
             return this.checked();
         }, this);
-    }
+    };
 
     function imagePath(eventTypeName) {
         var imageDir = "../wp/wp-content/themes/neuf-old-style/img/";
@@ -145,7 +155,7 @@ $(document).ready(function () {
             "konsert": imageDir+'ikon_konsert-50x50.png',
             "quiz": imageDir+'ikon_quiz-50x50.png',
             "teater": imageDir+'ikon_teater-50x50.png'
-        }
+        };
 
         if (_.has(imageMap, eventTypeName.toLowerCase())) {
             return imageMap[eventTypeName.toLowerCase()];
@@ -188,7 +198,7 @@ $(document).ready(function () {
                 thisDay = new Date(startDate).add(i).weeks().add(j).days();
             }
             else {
-                thisDay = new Date(startDate).previous().monday().add(i).weeks().add(j).days()
+                thisDay = new Date(startDate).previous().monday().add(i).weeks().add(j).days();
             }
             var dayId = dateToId(thisDay);
             var day = new Day(dayId, neuf.util.capitalize(thisDay.toString("dddd d/M")), [], programModel);

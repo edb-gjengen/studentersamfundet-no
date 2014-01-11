@@ -92,16 +92,7 @@ wp_enqueue_script('eventProgram');
         </table>
     </div>
 <?php
-/* Events with starttime including 8 hours up until 30 days from now. */
-//$meta_query = array(
-//	'key'     => '_neuf_events_starttime',
-//	'value'   => array(
-//		date( 'U' , strtotime( '-8 hours' )),  // start
-//		date( 'U' , strtotime( '+1 month' ))),  // end
-//	'type'    => 'numeric',
-//	'compare' => 'between'
-//);
-/* From now and into the future */
+/* Events from now and into the future */
 $meta_query = array(
 	'key'     => '_neuf_events_starttime',
 	'value'   => date( 'U' , strtotime( '-8 hours' )),  // start
@@ -146,7 +137,7 @@ if ( $events->have_posts() ) :
 		$event_array = get_the_terms( $post->ID , 'event_type' );
 		$event_types = array();
 		foreach ( $event_array as $event_type ) {
-			if ($event_type->parent === "0") {
+			if ($event_type->parent === 0) {
 				$event_types[] = $event_type->name;
 			} else {
 				$id = (int)$event_type->parent;
@@ -279,7 +270,7 @@ if ( $events->have_posts() ) :
             $event_types = array();
             $event_types_real = array();
             foreach ( $event_array as $event_type ) {
-                if ($event_type->parent === "0") {
+                if ($event_type->parent === 0) {
                     $event_types[] = $event_type->name;
                 } else {
                     $id = (int)$event_type->parent;
