@@ -86,7 +86,8 @@ class JSON_API_Response {
       } else {
         echo '<pre>';
       }
-      echo $this->prettify($json);
+      echo $json;
+      //echo $this->prettify($json);
     } else if (!empty($_REQUEST[$status_redirect])) {
       wp_redirect($_REQUEST[$status_redirect]);
     } else if ($json_api->query->redirect) {
