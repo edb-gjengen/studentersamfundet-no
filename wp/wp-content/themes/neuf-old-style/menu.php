@@ -15,7 +15,7 @@
 											</tr>
 											<tr>
 												<td>Fredag</td>
-												<td class="right">14.00 - 01.00</td>
+												<td class="right">14.00 - 03.00</td>
 											</tr>
 											<tr>
 												<td>Lørdag</td>
