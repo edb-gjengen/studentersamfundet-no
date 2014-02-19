@@ -105,7 +105,7 @@ $(document).ready(function(){
 	if ( keyword == window.location.hash ) {
 	    $('#content nav ul li').removeClass('current');
 	    $('#content section').hide().removeClass('current');
-	    $('a[href="' + keyword + '-events"]').parent().addClass('current');
+	    $('a[href="' + keyword + '"]').parent().addClass('current');
 	    $(keyword + '-events').show().addClass('current');
 	} else {
 	    // Didn't read a tab from url hash, display first tab
