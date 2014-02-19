@@ -73,8 +73,8 @@ $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' 
 				</div>
 				<nav id="tab-control" class="grid_12">
 					<ul>
-						<li><a href="#future-events">Kommende arrangementer</a></li>
-						<li><a href="#past-events"><?php echo $term->name ?> i fortida</a></li>
+						<li><a href="#future">Kommende arrangementer</a></li>
+						<li><a href="#past"><?php echo $term->name ?> i fortida</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -100,19 +100,31 @@ $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' 
 // creating a giant tab box:
 
 $(document).ready(function(){
-	$('#content section').hide();
-	$('#content section:first').show().addClass('current');
-	$('#content nav ul li:first').addClass('current');
+	// Allow linking directly to a tab
+	var keyword = '#' + 'past';
+	if ( keyword == window.location.hash ) {
+	    $('#content nav ul li').removeClass('current');
+	    $('#content section').hide().removeClass('current');
+	    $('a[href="' + keyword + '-events"]').parent().addClass('current');
+	    $(keyword + '-events').show().addClass('current');
+	} else {
+	    // Didn't read a tab from url hash, display first tab
+	    $('#content section').hide();
+	    $('#content section:first').show().addClass('current');
+	    $('#content nav ul li:first').addClass('current');
+	}
 
+	// Change tabs when someone clicks on them
 	$('#content nav ul li a').click(function(){
 		$('#content nav ul li').removeClass('current');
 		$('#content section').hide().removeClass('current');
 		$(this).parent().addClass('current');
-		var tab = $(this).attr('href');
+		var tab = $(this).attr('href') + '-events' ;
 		$(tab).show().addClass('current');
 
 		return false;
 	});
+
 });
 
 // Now to endless browsing. I've never written anything
