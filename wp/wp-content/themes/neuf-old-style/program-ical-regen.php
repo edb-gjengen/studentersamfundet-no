@@ -53,7 +53,7 @@ if ($events->have_posts()) {
 		$vevent->setProperty("dtstart",		$dtstart);
 		$vevent->setProperty("dtend",		$dtend);
 		$vevent->setProperty("location",		$neuf_events_venue);
-		$vevent->setProperty("summary",		get_the_title());
+		$vevent->setProperty("summary",		html_entity_decode(get_the_title()));
 		$vevent->setProperty("description",	$description);
 	}
 }
