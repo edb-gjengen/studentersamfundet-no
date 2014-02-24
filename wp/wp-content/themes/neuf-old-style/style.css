@@ -1060,6 +1060,19 @@ img {
 
 /* Program template */
 
+/* Add to calendar link */
+.page-program .entry-title {
+    display: inline-block;
+}
+.page-program #content .add-calendar{
+    color: #999;
+    margin-bottom: 1em;
+    display: inline-block;
+    font-size: 12px;
+    margin-left: 10px;
+    font-size: 12px;
+}
+
 /* Icons */
 .page-program .view-mode:hover {
 	cursor:pointer;
@@ -1077,10 +1090,12 @@ img {
 .page-program .view-mode.list {
 	margin-left: 5px;
 }
-
 .page-program .category-chooser-item, .program-style-selector-item {
 	display:inline-block;
 	margin:10px;
+}
+.page-program .category-chooser-item:first-child {
+    margin-left: 0;
 }
 
 .page-program .category-chooser-item > label > span, 
