@@ -54,7 +54,7 @@ if ($events->have_posts()) {
 		$vevent->setProperty("dtend",		$dtend);
 		$vevent->setProperty("location",		$neuf_events_venue);
 		$vevent->setProperty("summary",		html_entity_decode(get_the_title()));
-		$vevent->setProperty("description",	$description);
+		$vevent->setProperty("description",	html_entity_decode($description));
 	}
 }
 
