@@ -337,6 +337,47 @@ header#site-header .site-title a {
 	display:block;
 }
 
+#flickr-box {
+    border-top: 1px solid #ff9e29;
+    padding-top: 15px;
+}
+#flickr-images {
+    margin-bottom: 15px;
+}
+#flickr-images > ul {
+	list-style-type:none;
+	margin:0;
+    line-height: 0;
+}
+#flickr-images > ul > li {
+	display:inline-block;
+    position: relative;
+    width: 128px;
+}
+#flickr-images .flickr-title {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    opacity: 0;
+    background-color: rgba(0,0,0, 0.5);
+    line-height: 2;
+    text-align: center;
+    width: 128px;
+    overflow: hidden;
+    transition: opacity 0.1s;
+    -webkit-transition: opacity 0.1s; /* Safari */
+    font-size: 0.9em;
+}
+#flickr-images li:hover .flickr-title {
+    opacity: 1;
+}
+
+#fb-like-box {
+    padding-top: 50px;
+    border-top: 1px solid #ff9e29;
+    text-align: center;
+}
+
 /* Hoveddel slutt */
 
 /* Footer */
@@ -344,8 +385,8 @@ header#site-header .site-title a {
 #sponsors .sponsor {
 	text-align: center;
 	display: table-cell;
-	height: 120px;
-	width: 400px;
+	height: 180px;
+	width: 256px;
 	vertical-align: middle;
 }
 #sponsors .sponsor img {
@@ -376,20 +417,6 @@ header#site-header .site-title a {
 	text-transform: uppercase;
 	font-style: normal;
 	font-size: 16px;
-}
-
-#flickr-images > ul {
-	list-style-type:none;
-	margin:0;
-}
-#flickr-images > ul > li {
-	display:block;
-	float:left;
-	width:74px;
-}
-.fb-like-box {
-	overflow:hidden;
-	height:170px;
 }
 
 /* Footer slutt */
@@ -860,13 +887,6 @@ img {
 #social-sharing .share-facebook {
 	position: relative;
 	top: 6px;
-}
-#facebook-followers {
-	float:right;
-
-}
-#facebook-followers iframe {
-	height:260px !important;
 }
 #social-sharing .gcal {
     padding-left: 20px;
