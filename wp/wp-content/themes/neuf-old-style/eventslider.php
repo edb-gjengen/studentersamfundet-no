@@ -53,11 +53,19 @@ if ( $sliderevents ) :
 		<a href="#" id="nextLink">Neste</a>
 		<div id="slidernav"></div>
 		<div id="slider"> 
-		<?php
-		while ($news->have_posts()) : $news->the_post(); ?>
+		<?php while ($news->have_posts()) : $news->the_post(); ?>
 			<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
 				<a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>">
 					<header class="grid_6">
+<?php
+					$tag_names = array();
+					$tags = get_the_tags();
+					foreach ( $tags as $tag )
+					    $tag_names[] = $tag->name;
+
+					if ( $tag_names )
+					    echo( '<span class="tags">' . implode( $tag_names , ', ') . '</span>' );
+?>
 						<h1 class="entry-title"><?php the_title(); ?></h1>
 						<?php the_excerpt(); ?>
 					</header>
