@@ -431,6 +431,7 @@ body, input, textarea,
 #digest_events a,
 article a .entry-content,
 article.event .event-type a,
+article .tags a,
 .tax-event_type .parent a
 {
 	color:#333333;
@@ -916,6 +917,7 @@ img {
 }
 
 .home #featured article.type-event .type,
+.single .tags,
 .archive .parent
 {
 	font-family:Arvo,Georgia,serif;

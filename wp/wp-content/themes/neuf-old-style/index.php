@@ -6,7 +6,9 @@
 				<?php neuf_page_title(); ?>
 			</header>
 
-			<?php get_template_part('loop'); ?>
+			<section class="articles grid_12">
+			    <?php get_template_part('loop'); ?>
+			</section>
 
 		</div><!-- #content -->
 

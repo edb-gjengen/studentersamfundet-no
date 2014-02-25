@@ -3,7 +3,8 @@
 			<article <?php neuf_post_class(); ?>>
 
 				<div class="grid_6">
-
+					
+					<?php the_tags( '<span class="tags">' , ', ' , '</span>' ); ?>
 					<h1 class="entry-title"><?php the_title(); ?></h1>
                                         <?php if( get_post_type() == 'association' ): ?>
                                         <?php
