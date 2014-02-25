@@ -253,11 +253,11 @@ function neuf_doctitle() {
 
 	} elseif ( is_category() ) {
 		$content = __( 'Arkiv for kategorien' , 'neuf-web' );
-		$content .= ' ' . single_cat_title( "" , false );;
+		$content .= ' ' . single_cat_title( "" , false );
 
 	} elseif ( is_tag() ) { 
 		$content = __( 'Arkiv for stikkordet' , 'neuf-web' );
-		$content .= ' ' . neuf-web_tag_query();
+		$content .= ' ' . single_tag_title( '' , false );
 
 	} elseif ( is_404() ) { 
 		$content = __( 'Ikke funnet', 'neuf-web' ); 
