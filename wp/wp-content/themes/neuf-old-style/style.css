@@ -376,6 +376,7 @@ header#site-header .site-title a {
     padding-top: 50px;
     border-top: 1px solid #ff9e29;
     text-align: center;
+    overflow: hidden
 }
 
 /* Hoveddel slutt */
