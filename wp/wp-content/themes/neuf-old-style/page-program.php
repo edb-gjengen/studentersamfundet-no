@@ -43,7 +43,7 @@ wp_enqueue_script('eventProgram');
 <section id="content" class="container_12 hidden" role="main">
     <div class="grid_12">
         <h1 class="entry-title"><?php the_title(); ?></h1>
-        <a href="http://www.google.com/calendar/render?cid=http%3A%2F%2Fstudentersamfundet.no%2Fical" class="add-calendar"><i class="icon-calendar"></i> Legg til i Google Calendar</a>
+        <a href="webcal://studentersamfundet.no/ical" class="add-calendar"><i class="icon-calendar"></i> Legg til i kalender</a>
     </div>
 	
 	<a id='image-dir' style="display:none;" href="<?php bloginfo('template_directory'); ?>/img/">You will hopefully not see this.</a>
