@@ -884,11 +884,12 @@ img {
 
 #social-sharing .share-twitter {
 	position: relative;
-	top: 5px;
+	top: 6px;
 }
 #social-sharing .share-facebook {
 	position: relative;
 	top: 6px;
+    overflow: hidden;
 }
 #social-sharing .gcal {
     padding-left: 20px;
