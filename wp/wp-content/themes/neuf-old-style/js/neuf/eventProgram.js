@@ -78,11 +78,11 @@ $(document).ready(function () {
         this.author = rawEvent.author;
         this.content = rawEvent.content;
         this.url = rawEvent.url;
-        this.startTime = new Date(parseInt(rawEvent.custom_fields._neuf_events_starttime[0]) * 1000);
+        this.startTime = new Date(parseInt(rawEvent.custom_fields._neuf_events_starttime[0], 10) * 1000);
         this.time = this.startTime.toString("HH:mm");
-        this.endTime = new Date(parseInt(rawEvent.custom_fields._neuf_events_endtime[0]) * 1000);
+        this.endTime = new Date(parseInt(rawEvent.custom_fields._neuf_events_endtime[0], 10) * 1000);
         this.venue = rawEvent.custom_fields._neuf_events_venue[0];
-        this.thumbnailURI = rawEvent.attachments.length > 0 ? rawEvent.attachments[0].images["two-column-thumb"].url : undefined;
+        this.thumbnailURI = typeof rawEvent.thumbnail_images !== 'undefined' ? rawEvent.thumbnail_images["two-column-thumb"].url : undefined;
         this.eventTypeParents = rawEvent.event_type_parents;
 
         this.visible = ko.computed(function () {
