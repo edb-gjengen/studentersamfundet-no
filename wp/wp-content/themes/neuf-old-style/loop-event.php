@@ -11,10 +11,7 @@
 			<article <?php neuf_post_class(); ?>>
 
 				<div class="grid_6">
-					<?php
-						$html = '<div class="event-type category">' . implode( ', ' , $post->event_types ) . '</div>';
-						echo $html;
-					?>
+					<div class="event-type category"><?php echo( implode( ', ' , $post->event_types ) ); ?></div>
 
 <?php get_template_part( 'eventmeta' , 'single' ); ?>
 
@@ -32,6 +29,8 @@
 					<p class="wp-caption-text gallery-caption"><?php echo get_post( get_post_thumbnail_id() )->post_excerpt; ?></p>
 
 					<?php } // end if has post humbnail ?>
+
+					<?php get_template_part( 'audioplayer', 'event' ); ?>
 
 					<?php get_template_part( 'newsletter' , 'signup-form' ); ?>
 
