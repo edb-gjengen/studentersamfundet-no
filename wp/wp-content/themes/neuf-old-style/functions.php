@@ -573,3 +573,43 @@ function neuf_endless_scrolling() {
 }
 add_action( 'wp_ajax_infinite_scroll' , 'neuf_endless_scrolling' );
 add_action( 'wp_ajax_nopriv_infinite_scroll' , 'neuf_endless_scrolling' );
+
+/* Customize theme options */
+
+/* Ref: http://ottopress.com/2012/making-a-custom-control-for-the-theme-customizer/ 
+ */
+if (class_exists('WP_Customize_Control')) {
+    class Customize_Textarea_Control extends WP_Customize_Control {
+        public $type = 'textarea';
+     
+        public function render_content() {
+            ?>
+            <label>
+            <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+            <textarea rows="5" style="width:100%;" <?php $this->link(); ?>><?php echo esc_textarea( $this->value() ); ?></textarea>
+            </label>
+            <?php
+        }
+    }
+}
+
+function neuf_customize_register( $wp_customize ) {
+   //All our sections, settings, and controls will be added here
+
+    /* Header Section */
+    $wp_customize->add_section( 'neuf_header_section' , array(
+        'title'      => __( 'Header (opening hours)', 'neuf-web' ),
+        'priority'   => 30,
+    ) );
+    $wp_customize->add_setting( 'header_opening_hours' , array(
+        'default'     => '',
+    ) );
+    $wp_customize->add_control(
+        new Customize_Textarea_Control( $wp_customize, 'header_opening_hours', array(
+            'label'    => __( 'Opening hours drop down', 'neuf-web' ),
+            'section'  => 'neuf_header_section',
+            'settings' => 'header_opening_hours',
+        ) )
+    );
+}
+add_action( 'customize_register', 'neuf_customize_register' );

@@ -1,39 +1,24 @@
-				<nav id="menu" class="grid_6">
-					<ul class="aapningstider">
-						<li><a href="/aapningstider/">Åpningstider &#9662;</a>
-							<ul>
-								<li>
-									<table>
-										<tbody>
-											<tr>
-												<td>Man - ons</td>
-												<td class="right">14.00 - 00.00</td>
-											</tr>
-											<tr>
-												<td>Torsdag</td>
-												<td class="right">14.00 - 00.00</td>
-											</tr>
-											<tr>
-												<td>Fredag</td>
-												<td class="right">14.00 - 03.00</td>
-											</tr>
-											<tr>
-												<td>Lørdag</td>
-												<td class="right">15.00 - 00.00</td>
-											</tr>
-										</tbody>
-									</table>
-								</li>
-							</ul>
-						</li>
-					</ul> <!-- .aapningstider -->
+<?php $opening_hours = get_theme_mod( 'header_opening_hours',""); ?>
+<nav id="menu" class="grid_6">
+    <?php if($opening_hours != false) { ?>
+    <ul class="aapningstider">
+        <li><a href="/aapningstider/">Åpningstider &#9662;</a>
+            <ul>
+                <li>
+                    <!-- wp-admin/ -> Theme -> Customize -> Header opening hours -->
+                    <?php echo $opening_hours; ?>
+                </li>
+            </ul>
+        </li>
+    </ul> <!-- .aapningstider -->
+    <?php  } ?>
 
-					<?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'container' => 'false' ) ); ?>
+    <?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'container' => 'false' ) ); ?>
 
-				</nav> <!-- #menu -->
+</nav> <!-- #menu -->
 
-				<nav id="secondary-menu"> 
+<nav id="secondary-menu"> 
 
-					<?php wp_nav_menu( array( 'theme_location' => 'secondary-menu', 'container' => 'false' ) ); ?>
+    <?php wp_nav_menu( array( 'theme_location' => 'secondary-menu', 'container' => 'false' ) ); ?>
 
-				</nav> <!-- #secondary-menu -->
+</nav> <!-- #secondary-menu -->
