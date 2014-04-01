@@ -126,7 +126,7 @@ $news = new WP_Query( "type=post&posts_per_page=$articles" );
 		    <td>
 			<h2><a class="permalink blocklink" href="<?php the_permalink(); ?>?utm_source=newsletter&utm_medium=email&utm_campaign=newsletter" rel="bookmark" title="<?php the_title(); ?>" style="color:#FF9E29;text-decoration:none;font-size:20px;"><?php the_title(); ?></a></h2>
 			<a class="permalink blocklink" href="<?php the_permalink(); ?>?utm_source=newsletter&utm_medium=email&utm_campaign=newsletter" rel="bookmark" title="<?php the_title(); ?>" style="color:#FF9E29;text-decoration:none;"><?php the_post_thumbnail( 'newsletter-third', array('style' => 'display: inline-block;float:right;', 'title' => get_the_title() )); ?></a>
-			<div style="font-size:13px; color:#aaa;"><?php the_date(); ?></div>
+			<div style="font-size:13px; color:#aaa;"><?php echo get_the_date(); ?></div>
 			<?php the_excerpt(); ?>
 		    </td>
 		</tr>
