@@ -14,8 +14,6 @@
  * @package WordPress
  */
 
-define('WP_CACHE', false);
-
 // ** MySQL-innstillinger - Dette får du fra din nettjener ** //
 /** Navnet på WordPress-databasen */
 define('DB_NAME', 'database_name_here');
