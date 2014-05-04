@@ -1,3 +1,11 @@
+function getURLParameter(name) {
+	var uri = (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1];
+	if(uri === null) {
+		return null;
+	}
+	return decodeURIComponent(uri);
+}
+
 function intersection(a1, a2) {
 	return a1.filter(function(n) {
 		if (a2.indexOf(n) == -1)
@@ -63,7 +71,7 @@ function events_update(checkboxes) {
 	var days = $(day_selector);
 
 	days.children("p, td:nth-child(4)").each(function() {
-		var classes = $(this).attr('class').replace('hidden', '').split(' ');	
+		var classes = $(this).attr('class').replace('hidden', '').split(' ');
 		var visible_classes = intersection(checkboxes, classes);
 		
 		if (visible_classes.length < 1) {
@@ -201,6 +209,17 @@ $(window).load(function(){
 
 	/* Restore checkbox status from cache: */
 	var cached_checked_boxes = sessionStorage.checked_boxes;
+
+	/* Get category (taxonomy event_type) from URL and override cached state if set */
+	// FIXME update URL with selection (pushstate)
+	// FIXME take multiple event types
+	var event_type = getURLParameter('event_type');
+	if( event_type !== null ) {
+		event_type = event_type.charAt(0).toUpperCase() + event_type.substr(1); // ucfirst
+		if( $.inArray(event_type, sorted_categories) !== -1 ) {
+			cached_checked_boxes = event_type;
+		}
+	}
 
 	/* Get available images: */
 	var image_map = getImages();
