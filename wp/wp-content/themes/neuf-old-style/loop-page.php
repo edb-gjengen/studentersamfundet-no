@@ -21,8 +21,6 @@
 
 				</div>
 
-				<?php neuf_maybe_display_gallery(); ?>
-
 			</div> <!-- .hentry -->
 
 		<?php endwhile; endif; ?>
