@@ -3,7 +3,7 @@ Contributors: shinephp
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=vladimir%40shinephp%2ecom&lc=RU&item_name=ShinePHP%2ecom&item_number=User%20Role%20Editor%20WordPress%20plugin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: user, role, editor, security, access, permission, capability
 Requires at least: 3.5
-Tested up to: 3.9
+Tested up to: 3.9.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -69,11 +69,12 @@ To read more about 'User Role Editor' visit [this page](http://www.shinephp.com/
 * Catalan: [Efraim Bayarri](http://replicantsfactory.com/);
 * Hebrew: [atar4u](http://atar4u.com)
 * Korean: [Taek Yoon](http://www.ajinsys.com)
+* Persian: Morteza
+* Russian: [Vladimir Garagulya](http://role-editor.com)
 * Spanish: [Dario Ferrer](http://darioferrer.com/);
 * Turkish: [Muhammed YILDIRIM](http://ben.muhammed.im);
 
-
-Information for translators: All translations are outdated a little and need update.
+Information for translators: All translations (except Russian) are outdated and need update for new added text.
 
 Dear plugin User!
 If you wish to help me with this plugin translation I very appreciate it. Please send your language .po and .mo files to vladimir[at-sign]shinephp.com email. Do not forget include you site link in order I can show it with greetings for the translation help at shinephp.com, plugin settings page and in this readme.txt file.
@@ -82,6 +83,17 @@ Share with me new ideas about plugin further development and link to your site w
 
 
 == Changelog ==
+= 4.14.1 =
+* 11.06.2014
+* MySQL query optimizing to reduce memory consumption. Thanks to [SebastiaanO](http://wordpress.org/support/topic/allowed-memory-size-exhausted-fixed).
+* Extra WordPress nonce field was removed from the post at main role editor page to exclude nonce duplication.
+* Minor code enhancements.
+* Fixes for some missed translations.
+
+= 4.14 =
+* 16.05.2014
+* Persian translation was added. Thanks to Morteza.
+
 = 4.12 =
 * 22.04.2014
 * Bug was fixed. It had prevented bulk move users without role (--No role for this site--) to the selected role in case such users were shown more than at one WordPress Users page.
