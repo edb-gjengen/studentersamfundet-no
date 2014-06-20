@@ -99,7 +99,7 @@ msgstr "Skriftstørrelse"
 msgid "Split table cell"
 msgstr "Del opp tabellcelle"
 
-#: wp-includes/media-template.php:210 wp-includes/media.php:2817
+#: wp-includes/media-template.php:210 wp-includes/media.php:2818
 msgid "Suggested image dimensions:"
 msgstr "Anbefalte bildedimensjoner:"
 
@@ -119,52 +119,52 @@ msgstr "Tittel-attributt for bilde"
 msgid "Image CSS Class"
 msgstr "CSS-klasse for bilde"
 
-#: wp-includes/media.php:1421
+#: wp-includes/media.php:1422
 msgid "Artist"
 msgstr "Artist"
 
-#: wp-includes/media.php:1422
+#: wp-includes/media.php:1423
 msgid "Album"
 msgstr "Album"
 
-#: wp-includes/media.php:1426
+#: wp-includes/media.php:1427
 msgid "Genre"
 msgstr "Sjanger"
 
-#: wp-includes/media.php:1427
+#: wp-includes/media.php:1428
 msgid "Year"
 msgstr "År"
 
-#: wp-includes/media.php:1428
+#: wp-includes/media.php:1429
 msgctxt "video or audio"
 msgid "Length"
 msgstr "Lengde"
 
-#: wp-includes/media.php:2818
+#: wp-includes/media.php:2819
 msgid "There has been an error cropping your image."
 msgstr "Det oppsto en feil i beskjæringen av bildet."
 
-#: wp-includes/media.php:2837
+#: wp-includes/media.php:2838
 msgid "Edit Audio Playlist"
 msgstr "Rediger spillelisten med lydfiler"
 
-#: wp-includes/media.php:2838
+#: wp-includes/media.php:2839
 msgid "&#8592; Cancel Audio Playlist"
 msgstr "&#8592; Avbryt spilleliste med lydfiler"
 
-#: wp-includes/media.php:2839
+#: wp-includes/media.php:2840
 msgid "Insert audio playlist"
 msgstr "Sett inn spillelisten med lydfiler"
 
-#: wp-includes/media.php:2840
+#: wp-includes/media.php:2841
 msgid "Update audio playlist"
 msgstr "Oppdater spilleliste med lydfiler"
 
-#: wp-includes/media.php:2841
+#: wp-includes/media.php:2842
 msgid "Add to audio playlist"
 msgstr "Legg til i spilleliste med lydfiler"
 
-#: wp-includes/media.php:2842
+#: wp-includes/media.php:2843
 msgid "Add to Audio Playlist"
 msgstr "Legg til i spillelisten med lydfiler"
 
@@ -227,7 +227,7 @@ msgstr "Automatisk"
 msgid "Move to another area&hellip;"
 msgstr "Flytt til et annet område&hellip;"
 
-#: wp-includes/media.php:2816
+#: wp-includes/media.php:2817
 msgid "Cropping&hellip;"
 msgstr "Beskjæring&hellip;"
 
@@ -482,7 +482,7 @@ msgstr "Format"
 msgid "Add alternate sources for maximum HTML5 playback:"
 msgstr "Legg til flere kilder for maksimal HTML5-avspilling:"
 
-#: wp-includes/media.php:2805
+#: wp-includes/media.php:2806
 msgid "Image Details"
 msgstr "Bildedetaljer"
 
@@ -491,7 +491,7 @@ msgstr "Bildedetaljer"
 msgid "An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href=\"https://wordpress.org/support/\">support forums</a>."
 msgstr "En uventet feil skjedde. Noe er kanskje galt med WordPress.org eller denne serverkonfigurasjonen. Hvis problemene fortsetter, vennligst prøv <a href=\"https://wordpress.org/support/\">supportforumene</a>."
 
-#: wp-includes/media.php:2762
+#: wp-includes/media.php:2763
 msgid "Back"
 msgstr "Tilbake"
 
@@ -548,112 +548,112 @@ msgstr "Poster-bilde"
 msgid "There are no associated subtitles."
 msgstr "Det er ingen assosierte undertekster."
 
-#: wp-includes/media.php:2778
+#: wp-includes/media.php:2779
 msgid "Create a new playlist"
 msgstr "Lag ny spilleliste"
 
-#: wp-includes/media.php:2779
+#: wp-includes/media.php:2780
 msgid "Create a new video playlist"
 msgstr "Lag en ny spilleliste med video"
 
-#: wp-includes/media.php:2806
+#: wp-includes/media.php:2807
 msgid "Replace Image"
 msgstr "Bytt bilde"
 
-#: wp-includes/media.php:2807 wp-includes/media.php:2824
-#: wp-includes/media.php:2830
+#: wp-includes/media.php:2808 wp-includes/media.php:2825
+#: wp-includes/media.php:2831
 msgid "Cancel Edit"
 msgstr "Avbryt redigering"
 
-#: wp-includes/media.php:2811
+#: wp-includes/media.php:2812
 msgid "Choose Image"
 msgstr "Velg bilde"
 
-#: wp-includes/media.php:2812
+#: wp-includes/media.php:2813
 msgid "Select and Crop"
 msgstr "Velg og beskjær"
 
-#: wp-includes/media.php:2813
+#: wp-includes/media.php:2814
 msgid "Skip Cropping"
 msgstr "Avbryt beskjæringen"
 
-#: wp-includes/media.php:2814
+#: wp-includes/media.php:2815
 msgid "Crop Image"
 msgstr "Beskjær bilde"
 
-#: wp-includes/media.php:2815
+#: wp-includes/media.php:2816
 msgid "Crop your image"
 msgstr "Beskjær bildet ditt"
 
-#: wp-includes/media.php:2821
+#: wp-includes/media.php:2822
 msgid "Audio Details"
 msgstr "Lydbeskrivelse"
 
-#: wp-includes/media.php:2822
+#: wp-includes/media.php:2823
 msgid "Replace Audio"
 msgstr "Erstatt lyd"
 
-#: wp-includes/media.php:2823
+#: wp-includes/media.php:2824
 msgid "Add Audio Source"
 msgstr "Legg til lydkilde"
 
-#: wp-includes/media.php:2827
+#: wp-includes/media.php:2828
 msgid "Video Details"
 msgstr "Videobeskrivelse"
 
-#: wp-includes/media.php:2828
+#: wp-includes/media.php:2829
 msgid "Replace Video"
 msgstr "Erstatt video"
 
-#: wp-includes/media.php:2829
+#: wp-includes/media.php:2830
 msgid "Add Video Source"
 msgstr "Legg til videokilde"
 
-#: wp-includes/media.php:2831
+#: wp-includes/media.php:2832
 msgid "Select Poster Image"
 msgstr "Velg poster-bilde"
 
-#: wp-includes/media.php:2832
+#: wp-includes/media.php:2833
 msgid "Add Subtitles"
 msgstr "Legg til undertekster"
 
-#: wp-includes/media.php:2835
+#: wp-includes/media.php:2836
 msgid "Drag and drop to reorder tracks."
 msgstr "Dra og slipp for å bytte om på sporene."
 
-#: wp-includes/media.php:2836
+#: wp-includes/media.php:2837
 msgid "Create Audio Playlist"
 msgstr "Lag lyd-spilleliste"
 
-#: wp-includes/media.php:2845
+#: wp-includes/media.php:2846
 msgid "Drag and drop to reorder videos."
 msgstr "Dra og slipp for å omorganisere videoer."
 
-#: wp-includes/media.php:2846
+#: wp-includes/media.php:2847
 msgid "Create Video Playlist"
 msgstr "Lag video-spilleliste"
 
-#: wp-includes/media.php:2847
+#: wp-includes/media.php:2848
 msgid "Edit Video Playlist"
 msgstr "Rediger video-spilleliste"
 
-#: wp-includes/media.php:2848
+#: wp-includes/media.php:2849
 msgid "&#8592; Cancel Video Playlist"
 msgstr "&#8592; Avbryt videospilleliste"
 
-#: wp-includes/media.php:2849
+#: wp-includes/media.php:2850
 msgid "Insert video playlist"
 msgstr "Sett inn video-spilleliste"
 
-#: wp-includes/media.php:2850
+#: wp-includes/media.php:2851
 msgid "Update video playlist"
 msgstr "Oppdater video-spilleliste"
 
-#: wp-includes/media.php:2851
+#: wp-includes/media.php:2852
 msgid "Add to video playlist"
 msgstr "Legg til i videospilleliste"
 
-#: wp-includes/media.php:2852
+#: wp-includes/media.php:2853
 msgid "Add to Video Playlist"
 msgstr "Legg til i videospilleliste"
 
@@ -923,7 +923,7 @@ msgstr "Sideskille"
 msgid "Paste as text"
 msgstr "Lim inn som tekst"
 
-#: wp-includes/media-template.php:657 wp-includes/media.php:2760
+#: wp-includes/media-template.php:657 wp-includes/media.php:2761
 msgid "Replace"
 msgstr "Erstatt"
 
@@ -1375,15 +1375,15 @@ msgstr "Tilfeldig rekkefølge"
 msgid "Caption this image&hellip;"
 msgstr "Gi bildetekst til dette bildet&hellip;"
 
-#: wp-includes/media.php:2767
+#: wp-includes/media.php:2768
 msgid "%d selected"
 msgstr "%d er valgt"
 
-#: wp-includes/media.php:2788
+#: wp-includes/media.php:2789
 msgid "Insert from URL"
 msgstr "Sett inn fra URL"
 
-#: wp-includes/media.php:2791
+#: wp-includes/media.php:2792
 msgid "Set Featured Image"
 msgstr "Bestem fremhevet bilde"
 
@@ -1393,19 +1393,19 @@ msgid "Random"
 msgstr "Tilfeldig"
 
 #: wp-includes/media-template.php:1005 wp-includes/media-template.php:1049
-#: wp-includes/media.php:2782
+#: wp-includes/media.php:2783
 msgid "No items found."
 msgstr "Fant ikke noe."
 
-#: wp-includes/media.php:2801
+#: wp-includes/media.php:2802
 msgid "Add to Gallery"
 msgstr "Legg til i galleri"
 
-#: wp-includes/media.php:2802
+#: wp-includes/media.php:2803
 msgid "Reverse order"
 msgstr "Omvendt rekkefølge"
 
-#: wp-includes/media.php:2792
+#: wp-includes/media.php:2793
 msgid "Set featured image"
 msgstr "Bestem fremhevet bilde"
 
@@ -1418,7 +1418,7 @@ msgstr "Fjern markering"
 msgid "Sorry, that file cannot be edited."
 msgstr "Beklager, den filen kan ikke redigeres."
 
-#: wp-includes/media.php:2785
+#: wp-includes/media.php:2786
 msgid ""
 "You are about to permanently delete this item.\n"
 "  'Cancel' to stop, 'OK' to delete."
@@ -1446,7 +1446,7 @@ msgstr "Avvis feil"
 msgid "Error"
 msgstr "Feil"
 
-#: wp-includes/media.php:2343
+#: wp-includes/media.php:2344
 msgid "No editor could be selected."
 msgstr "Ingen redigerer kunne velges."
 
@@ -1488,19 +1488,19 @@ msgid_plural "Video <span class=\"count\">(%s)</span>"
 msgstr[0] "Video <span class=\"count\">(%s)</span>"
 msgstr[1] "Video <span class=\"count\">(%s)</span>"
 
-#: wp-includes/media.php:2783
+#: wp-includes/media.php:2784
 msgid "Insert into page"
 msgstr "Sett inn på side"
 
-#: wp-includes/media.php:2784
+#: wp-includes/media.php:2785
 msgid "Uploaded to this page"
 msgstr "Lastet opp til denne siden"
 
-#: wp-includes/media.php:2781
+#: wp-includes/media.php:2782
 msgid "All media items"
 msgstr "Alle mediefiler"
 
-#: wp-includes/media.php:2784
+#: wp-includes/media.php:2785
 msgid "Uploaded to this post"
 msgstr "Lastet opp til dette innlegget"
 
@@ -1508,7 +1508,7 @@ msgstr "Lastet opp til dette innlegget"
 msgid "Audio"
 msgstr "Lyd"
 
-#: wp-includes/media.php:2780
+#: wp-includes/media.php:2781
 msgid "&#8592; Return to library"
 msgstr "&#8592; Tilbake til bibliotek"
 
@@ -1529,12 +1529,12 @@ msgstr "Alt-tekst"
 msgid "Columns"
 msgstr "Kolonner"
 
-#: wp-includes/media.php:2768
+#: wp-includes/media.php:2769
 msgid "Drag and drop to reorder images."
 msgstr "Dra og slipp for å endre rekkefølgen på bildene."
 
 #: wp-includes/media-template.php:464 wp-includes/media-template.php:710
-#: wp-includes/media.php:2546
+#: wp-includes/media.php:2547
 msgid "Large"
 msgstr "Stor"
 
@@ -1546,11 +1546,11 @@ msgstr "Skjerminnstillinger for vedlegg"
 msgid "Gallery Settings"
 msgstr "Galleriinnstillinger"
 
-#: wp-includes/media.php:2772
+#: wp-includes/media.php:2773
 msgid "Upload Images"
 msgstr "Last opp bilder"
 
-#: wp-includes/media.php:2797
+#: wp-includes/media.php:2798
 msgid "&#8592; Cancel Gallery"
 msgstr "&#8592; Avbryt galleri"
 
@@ -1562,11 +1562,11 @@ msgstr "WordPress &rsaquo; Suksess"
 msgid "Drop files anywhere to upload"
 msgstr "Slipp filer hvor som helst for å laste opp"
 
-#: wp-includes/media.php:2771
+#: wp-includes/media.php:2772
 msgid "Upload Files"
 msgstr "Last opp filer"
 
-#: wp-includes/media.php:2798
+#: wp-includes/media.php:2799
 msgid "Insert gallery"
 msgstr "Sett inn galleri"
 
@@ -1574,11 +1574,11 @@ msgstr "Sett inn galleri"
 msgid "Drop files to upload"
 msgstr "Slipp filer for å laste opp"
 
-#: wp-includes/media.php:2775
+#: wp-includes/media.php:2776
 msgid "Media Library"
 msgstr "Mediebibliotek"
 
-#: wp-includes/media.php:2795
+#: wp-includes/media.php:2796
 msgid "Create Gallery"
 msgstr "Lag galleri"
 
@@ -1661,7 +1661,7 @@ msgstr "Beskriv lydfilen&hellip;"
 msgid "Describe this media file&hellip;"
 msgstr "Beskriv mediafilen&hellip;"
 
-#: wp-includes/media.php:2799
+#: wp-includes/media.php:2800
 msgid "Update gallery"
 msgstr "Oppdater galleri"
 
@@ -1733,19 +1733,19 @@ msgstr "Vis vedleggsside"
 msgid "Whoops, the provided date is invalid."
 msgstr "Beklager, den angitte datoen er ugyldig."
 
-#: wp-includes/media.php:2776
+#: wp-includes/media.php:2777
 msgid "Insert Media"
 msgstr "Sett inn media"
 
-#: wp-includes/media.php:2777
+#: wp-includes/media.php:2778
 msgid "Create a new gallery"
 msgstr "Lag et nytt galleri"
 
-#: wp-includes/media.php:2783
+#: wp-includes/media.php:2784
 msgid "Insert into post"
 msgstr "Sett inn i innlegg"
 
-#: wp-includes/media.php:2800
+#: wp-includes/media.php:2801
 msgid "Add to gallery"
 msgstr "Legg til i galleri"
 
@@ -2051,7 +2051,7 @@ msgstr "Last opp"
 #: wp-includes/media-template.php:261 wp-includes/media-template.php:816
 #: wp-includes/media-template.php:830 wp-includes/media-template.php:901
 #: wp-includes/media-template.php:913 wp-includes/media-template.php:934
-#: wp-includes/media-template.php:967 wp-includes/media.php:2761
+#: wp-includes/media-template.php:967 wp-includes/media.php:2762
 msgid "Remove"
 msgstr "Fjern"
 
@@ -2510,7 +2510,7 @@ msgstr "E-post"
 msgid "Users"
 msgstr "Brukere"
 
-#: wp-includes/class-wp-editor.php:1202 wp-includes/media.php:2759
+#: wp-includes/class-wp-editor.php:1202 wp-includes/media.php:2760
 #: wp-includes/script-loader.php:362 wp-includes/script-loader.php:452
 msgid "Update"
 msgstr "Oppdater"
@@ -4926,7 +4926,7 @@ msgstr "Stille"
 msgid "Insert More Tag"
 msgstr "Sett inn mer-skille"
 
-#: wp-includes/media.php:2796
+#: wp-includes/media.php:2797
 msgid "Edit Gallery"
 msgstr "Endre galleri"
 
@@ -6218,7 +6218,7 @@ msgstr "Legg igjen en kommentar til %s"
 msgid "Author"
 msgstr "Forfatter"
 
-#: wp-includes/class-wp-editor.php:1399 wp-includes/media.php:2754
+#: wp-includes/class-wp-editor.php:1399 wp-includes/media.php:2755
 msgid "URL"
 msgstr "URL"
 
@@ -6376,7 +6376,7 @@ msgid "Recent Comments"
 msgstr "Siste kommentarer"
 
 #: wp-includes/class-wp-editor.php:802 wp-includes/class-wp-editor.php:1437
-#: wp-includes/media.php:2758 wp-includes/script-loader.php:391
+#: wp-includes/media.php:2759 wp-includes/script-loader.php:391
 #: wp-includes/script-loader.php:442
 msgid "Cancel"
 msgstr "Avbryt"
@@ -6444,7 +6444,7 @@ msgid "Redo"
 msgstr "Gjør om"
 
 #: wp-includes/media-template.php:462 wp-includes/media-template.php:708
-#: wp-includes/media.php:2544
+#: wp-includes/media.php:2545
 msgid "Thumbnail"
 msgstr "Miniatyrbilde"
 
@@ -6460,7 +6460,7 @@ msgstr "Bildebilioteket GD er ikke installert."
 msgid "File &#8220;%s&#8221; is not an image."
 msgstr "Filen &laquo;%s&raquo; er ikke et bilde."
 
-#: wp-includes/media.php:2755
+#: wp-includes/media.php:2756
 msgid "Add Media"
 msgstr "Legg til media"
 
@@ -6487,12 +6487,12 @@ msgid "Right"
 msgstr "Høyre"
 
 #: wp-includes/media-template.php:463 wp-includes/media-template.php:709
-#: wp-includes/media.php:2545
+#: wp-includes/media.php:2546
 msgid "Medium"
 msgstr "Medium"
 
 #: wp-includes/media-template.php:465 wp-includes/media-template.php:711
-#: wp-includes/media.php:2547
+#: wp-includes/media.php:2548
 msgid "Full Size"
 msgstr "Full størrelse"
 
@@ -6509,7 +6509,7 @@ msgstr "Stille opp"
 msgid "Caption"
 msgstr "Bildetekst"
 
-#: wp-includes/media-template.php:316 wp-includes/media.php:2808
+#: wp-includes/media-template.php:316 wp-includes/media.php:2809
 msgid "Edit Image"
 msgstr "Rediger bilde"
 
@@ -6555,7 +6555,7 @@ msgid "Dismiss"
 msgstr "Lukk"
 
 #: wp-includes/admin-bar.php:716 wp-includes/class-wp-editor.php:1412
-#: wp-includes/media.php:2756
+#: wp-includes/media.php:2757
 msgid "Search"
 msgstr "Søk"
 
@@ -6594,7 +6594,7 @@ msgstr "Sider"
 msgid "Close"
 msgstr "Lukk"
 
-#: wp-includes/media.php:2757
+#: wp-includes/media.php:2758
 msgid "Select"
 msgstr "Velg"
 

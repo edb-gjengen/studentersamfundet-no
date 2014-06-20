@@ -10,11 +10,11 @@ msgstr ""
 "X-Generator: GlotPress/0.1\n"
 "Project-Id-Version: Administration\n"
 
-#: wp-admin/about.php:22
+#: wp-admin/about.php:27
 msgid "Thank you for updating! WordPress %s has lots of refinements we think you&#8217;ll love."
 msgstr "Takk for at du oppdaterer! WordPress %s har flere nye forbedringer som vi tror du vil like."
 
-#: wp-admin/about.php:51
+#: wp-admin/about.php:61
 msgid "With quicker access to crop and rotation tools, it&#8217;s now much easier to edit your images while editing posts. You can also scale images directly in the editor to find just the right fit."
 msgstr "Med kjappere tilgang til beskjærings- og roteringsverktøy, er det nå mye enklere å redigere dine bilder mens du redigerer innlegg. Du kan skalere bilder direkte i redigereren for å finne den rette plasseringen."
 
@@ -26,71 +26,71 @@ msgstr "WordPress-teamer vil hjelpe deg. Videresend denne e-posten til %s, og te
 msgid "If you reach out to us, we'll also ensure you'll never have this problem again."
 msgstr "Hvis du når ut til oss, vil vi også gjøre vårt ytterste for at du aldri skal måtte ha dette problemet igjen."
 
-#: wp-admin/about.php:40
+#: wp-admin/about.php:50
 msgid "A smoother media editing&nbsp;experience"
 msgstr "En bedre medieredigerings&shy;opplevelse"
 
-#: wp-admin/about.php:44
+#: wp-admin/about.php:54
 msgid "Improved visual editing"
 msgstr "Forbedret visuell redigering"
 
-#: wp-admin/about.php:45
+#: wp-admin/about.php:55
 msgid "The updated visual editor has improved speed, accessibility, and mobile support."
 msgstr "Den oppdaterte visuelle redigeringen har forbedret hastighet, tilgjengelighet og mobil støtte."
 
-#: wp-admin/about.php:46
+#: wp-admin/about.php:56
 msgid "You can paste into the visual editor from your word processor without wasting time to clean up messy styling. (Yeah, we&#8217;re talking about you, Microsoft Word.)"
 msgstr "Du kan lime inn i den visuelle redigeringen fra din ordbehandler uten å måtte rense rotete formatering. (Ja, vi snakker om deg, Microsoft Word.)"
 
-#: wp-admin/about.php:50
+#: wp-admin/about.php:60
 msgid "Edit images easily"
 msgstr "Rediger bilder – enkelt"
 
-#: wp-admin/about.php:55
+#: wp-admin/about.php:65
 msgid "Drag and drop your images"
 msgstr "Dra og slipp dine bilder"
 
-#: wp-admin/about.php:56
+#: wp-admin/about.php:66
 msgid "Uploading your images is easier than ever. Just grab them from your desktop and drop them onto the editor."
 msgstr "Å laste opp dine bilder er enklere enn noen gang. Bare dra dem fra nettleseren og slipp dem inn i redigereren."
 
-#: wp-admin/about.php:65
+#: wp-admin/about.php:75
 msgid "Gallery previews"
 msgstr "Forhåndsvisning av gallerier"
 
-#: wp-admin/about.php:66
+#: wp-admin/about.php:76
 msgid "Galleries display a beautiful grid of images right in the editor, just like they do in your published post."
 msgstr "Gallerier vises et vakkert rutenett av bildene rett i redigereren, akkurat som det vises i det publiserte innlegget."
 
-#: wp-admin/about.php:70
+#: wp-admin/about.php:169
 msgid "Do more with audio and video"
 msgstr "Gjør mer med lyd og video"
 
-#: wp-admin/about.php:71
+#: wp-admin/about.php:170
 msgid "Images have galleries; now we&#8217;ve added simple audio and video playlists, so you can showcase your music and clips."
 msgstr "Bilder har gallerier; nå har vi lagt til enkle lyd- og video-spillelister, så du kan vise frem din musikk og dine filmklipp."
 
-#: wp-admin/about.php:82
+#: wp-admin/about.php:190
 msgid "Live widget and header previews"
 msgstr "Live widget og header-forhåndsvisning"
 
-#: wp-admin/about.php:83
+#: wp-admin/about.php:191
 msgid "Add, edit, and rearrange your site&#8217;s widgets right in the theme customizer. No &#8220;save and surprise&#8221; &mdash; preview your changes live and only save them when you&#8217;re ready."
 msgstr "Legg til, rediger og flytt på ditt nettsteds widgeter rett i tematilpasseren. Ingen «lagringsoverraskelser» – forhåndsvis endringene live og lagre når du er klar."
 
-#: wp-admin/about.php:84
+#: wp-admin/about.php:192
 msgid "The improved header image tool also lets you upload, crop, and manage headers while customizing your theme."
 msgstr "Det forbedrede headerbilde-verktøyet lar deg også laste opp, beskjære, og administrere headere mens du tilpasser temaet."
 
-#: wp-admin/about.php:91
+#: wp-admin/about.php:199
 msgid "Browse Themes"
 msgstr "Bla i temaer"
 
-#: wp-admin/about.php:88
+#: wp-admin/about.php:196
 msgid "Stunning new theme browser"
 msgstr "Praktfull ny temautforsker"
 
-#: wp-admin/about.php:89
+#: wp-admin/about.php:197
 msgid "Looking for a new theme should be easy and fun. Lose yourself in the boundless supply of free WordPress.org themes with the beautiful new theme browser."
 msgstr "Å lete etter et nytt tema skal være enkelt og morsomt. Drøm deg bort i den grenseløse tilgangen av gratis WordPress.org-temaer med den nye temautforskeren."
 
@@ -106,43 +106,43 @@ msgstr "Legg til, rediger og lek med dine widgeter fra tematilpasseren."
 msgid "Preview your changes in real-time and only save them when you&#8217;re ready."
 msgstr "Forhåndsvis dine endringer i realtid og lagre dem når du er klar."
 
-#: wp-admin/about.php:104
+#: wp-admin/about.php:212
 msgid "Semantic Captions and Galleries"
 msgstr "Semantiske bildetekster og gallerier"
 
-#: wp-admin/about.php:105
+#: wp-admin/about.php:213
 msgid "Theme developers have new options for images and galleries that use intelligent HTML5 markup."
 msgstr "Temautviklere har nye valg for bilder og gallerier som bruker intelligent HTML5-oppmerking."
 
-#: wp-admin/about.php:107
+#: wp-admin/about.php:215
 msgid "Inline Code Documentation"
 msgstr "Bede kodedokumentasjon"
 
-#: wp-admin/about.php:108
+#: wp-admin/about.php:216
 msgid "Every action and filter hook in WordPress is now documented, along with expanded documentation for the media manager and customizer APIs."
 msgstr "Hver «action hook» og «filter hook» i WordPress er nå dokumentert, sammen med utvidet dokumentasjon for mediehåndtereren og tematilpasser-APIen."
 
-#: wp-admin/about.php:112
+#: wp-admin/about.php:220
 msgid "Updated libraries: TinyMCE&nbsp;4, jQuery&nbsp;1.11, Backbone&nbsp;1.1, Underscore&nbsp;1.6, Plupload&nbsp;2, MediaElement&nbsp;2.14, Masonry&nbsp;3."
 msgstr "Oppdaterte bibliotek: TinyMCE&nbsp;4, jQuery&nbsp;1.11, Backbone&nbsp;1.1, Underscore&nbsp;1.6, Plupload&nbsp;2, MediaElement&nbsp;2.14, Masonry&nbsp;3."
 
-#: wp-admin/about.php:114
+#: wp-admin/about.php:222
 msgid "Improved Database Layer"
 msgstr "Forbedret database-lag"
 
-#: wp-admin/about.php:115
+#: wp-admin/about.php:223
 msgid "Database connections are now more fault-resistant and have improved compatibility with PHP 5.5 and MySQL 5.6."
 msgstr "Databasetilkoblinger er nå mer beskyttet mot feil og har økt kompatibilitet med PHP 5.5 og MySQL 5.6."
 
-#: wp-admin/about.php:118
+#: wp-admin/about.php:226
 msgid "New Utility Functions"
 msgstr "Nye bruksfunksjoner"
 
-#: wp-admin/about.php:119
+#: wp-admin/about.php:227
 msgid "Identify a hook in progress with <code>doing_action()</code> and <code>doing_filter()</code>, and manipulate custom image sizes with <code>has_image_size()</code> and <code>remove_image_size()</code>."
 msgstr "Identifiser en hook som kjører med <code>doing_action()</code> og <code>doing_filter()</code>, og manipuler tilpassede bildestørrelser med <code>has_image_size()</code> og <code>remove_image_size()</code>."
 
-#: wp-admin/about.php:120
+#: wp-admin/about.php:228
 msgid "Plugins and themes registering custom image sizes can now register suggested cropping points. For example, prevent heads from being cropped out of photos with a top-center crop."
 msgstr "Utvidelser og temaer som registrerer tilpassede bildestørrelser kan nå registrere anbefalte beskjæringspunkter. For eksempel å forhindre at hoder blir beskåret ut av bilder med en beskjæring øverst i midten."
 
@@ -430,7 +430,7 @@ msgstr "På denne skjermen kan du oppdatere til siste versjon av WordPress, i ti
 msgid "<strong>Themes and Plugins</strong> &mdash; To update individual themes or plugins from this screen, use the checkboxes to make your selection, then <strong>click on the appropriate &#8220;Update&#8221; button</strong>. To update all of your themes or plugins at once, you can check the box at the top of the section to select all before clicking the update button."
 msgstr "<strong>Temaer og utvidelser</strong> &mdash; For å oppdatere individuelle temaer eller utvidelser fra denne skjermen, bruk avkrysningsboksene for å gjøre ditt valg, så <strong>klikker du på den tilsvarende «Oppdater»-knappen</strong>. For å oppdatere alle temaer og utvidelser samtidig kan du huke av boksen i toppen av valgområdet for å velge alle før du trykker på knappen for oppdatering."
 
-#: wp-admin/about.php:20
+#: wp-admin/about.php:25
 msgid "Welcome to WordPress&nbsp;%s"
 msgstr "Velkommen til WordPress&nbsp;%s"
 
@@ -2332,7 +2332,7 @@ msgstr "Bruk som topptekst"
 msgid "Customize &#8220;%s&#8221;"
 msgstr "Tilpass temaet «%s»"
 
-#: wp-admin/about.php:12
+#: wp-admin/about.php:16
 msgid "About"
 msgstr "Om"
 
@@ -3160,23 +3160,23 @@ msgstr "Medvirkende utviklere"
 msgid "Show Toolbar when viewing site"
 msgstr "Vis verktøylinjen når du ser på nettstedet"
 
-#: wp-admin/about.php:157
+#: wp-admin/about.php:265
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "<strong>Versjon %1$s</strong> tettet et sikkerhetshull og rettet %2$s programfeil."
 msgstr[1] "<strong>Versjon %1$s</strong> tettet et sikkerhetshull og rettet %2$s programfeil."
 
-#: wp-admin/about.php:164
+#: wp-admin/about.php:272
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "For mer informasjon, se <a href=\"%s\">versjonsmerknadene</a>."
 
-#: wp-admin/about.php:161
+#: wp-admin/about.php:269
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "<strong>Versjon %1$s</strong> tettet noen sikkerhetshull og rettet %2$s programfeil."
 msgstr[1] "<strong>Versjon %1$s</strong> tettet noen sikkerhetshull og rettet %2$s programfeil."
 
-#: wp-admin/about.php:153
+#: wp-admin/about.php:261
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>Versjon %1$s</strong> rettet %2$s programfeil."
@@ -3186,29 +3186,29 @@ msgstr[1] "<strong>Versjon %1$s</strong> rettet %2$s programfeil."
 msgid "Welcome to your WordPress Dashboard! This is the screen you will see when you log in to your site, and gives you access to all the site management features of WordPress. You can get help for any screen by clicking the Help tab in the upper corner."
 msgstr "Velkommen til kontrollpanelet i WordPress. Dette er det skjermbildet vil du se hver gang du logger inn på nettstedet, og gir deg tilgang alle administrative funksjoner i WordPress. Du kan få mer informasjon om hvert enkelt skjermbilde om du klikker Hjelp-fanen i øvre høyre hjørne."
 
-#: wp-admin/about.php:146
+#: wp-admin/about.php:254
 msgid "Maintenance and Security Release"
 msgid_plural "Maintenance and Security Releases"
 msgstr[0] "Vedlikeholds- og sikkerhetsoppdatering"
 msgstr[1] "Vedlikeholds- og sikkerhetsoppdateringer"
 
-#: wp-admin/about.php:28 wp-admin/credits.php:91 wp-admin/freedoms.php:28
+#: wp-admin/about.php:33 wp-admin/credits.php:91 wp-admin/freedoms.php:28
 msgid "What&#8217;s New"
 msgstr "Hva er nytt"
 
-#: wp-admin/about.php:145
+#: wp-admin/about.php:253
 msgid "Security Release"
 msgid_plural "Security Releases"
 msgstr[0] "Sikkerhetsoppdatering"
 msgstr[1] "Sikkerhetsoppdateringer"
 
-#: wp-admin/about.php:144
+#: wp-admin/about.php:252
 msgid "Maintenance Release"
 msgid_plural "Maintenance Releases"
 msgstr[0] "Vedlikeholdsoppdatering"
 msgstr[1] "Vedlikeholdsoppdateringer"
 
-#: wp-admin/about.php:149
+#: wp-admin/about.php:257
 msgid "<strong>Version %1$s</strong> addressed a security issue."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues."
 msgstr[0] "<strong>Versjon %1$s</strong> tettet et sikkerhetshull"
@@ -3218,7 +3218,7 @@ msgstr[1] "<strong>Versjon %1$s</strong> tettet noen sikkerhetshull."
 msgid "This screen allows you to choose your default permalink structure. You can choose from common settings or create custom URL structures."
 msgstr "Dette skjermbildet lar deg velge strukturen på permalenkene dine. Du kan velge blant de vanligste eller opprette din egen URL-struktur."
 
-#: wp-admin/about.php:129
+#: wp-admin/about.php:237
 msgid "Return to Updates"
 msgstr "Tilbake til oppdateringer"
 
@@ -3518,11 +3518,11 @@ msgstr "Sannsynligvis direkte inkludering av wp-admin/includes/template.php for 
 msgid "Welcome to WordPress %s"
 msgstr "Velkommen til WordPress %s"
 
-#: wp-admin/about.php:133
+#: wp-admin/about.php:241
 msgid "Go to Dashboard &rarr; Home"
 msgstr "Gå til Kontrollpanel &rarr; Hjem"
 
-#: wp-admin/about.php:129
+#: wp-admin/about.php:237
 msgid "Return to Dashboard &rarr; Updates"
 msgstr "Tilbake til Kontrollpanel &rarr; Oppdateringer"
 
@@ -3534,7 +3534,7 @@ msgstr "WordPress er blitt til av et nettverk med ihuga entusiaster i hele verde
 msgid "Core Developers"
 msgstr "Kjerneutviklere"
 
-#: wp-admin/about.php:100
+#: wp-admin/about.php:208
 msgid "Under the Hood"
 msgstr "Under panseret"
 
@@ -3785,7 +3785,7 @@ msgstr "Bekreft slettingen"
 msgid "Deactivate"
 msgstr "Deaktiver"
 
-#: wp-admin/about.php:24 wp-admin/credits.php:87 wp-admin/freedoms.php:24
+#: wp-admin/about.php:29 wp-admin/credits.php:87 wp-admin/freedoms.php:24
 #: wp-admin/includes/class-wp-ms-themes-list-table.php:374
 #: wp-admin/includes/class-wp-plugins-list-table.php:493
 #: wp-admin/includes/update.php:166 wp-admin/includes/update.php:192
@@ -4102,7 +4102,7 @@ msgstr "Kjerneutvikler"
 msgid "Guest Committer"
 msgstr "Gjesteutvikler"
 
-#: wp-admin/about.php:111 wp-admin/credits.php:190
+#: wp-admin/about.php:219 wp-admin/credits.php:190
 msgid "External Libraries"
 msgstr "Eksterne programbibliotek"
 
@@ -4163,7 +4163,7 @@ msgstr "Utvidet kjerneteam"
 msgid "Want to see your name in lights on this page? <a href=\"%s\">Get involved in WordPress</a>."
 msgstr "Ønsker du å se navnet ditt her? <a href=\"%s\">Delta i utviklingen av WordPress</a>."
 
-#: wp-admin/about.php:30 wp-admin/credits.php:12 wp-admin/credits.php:93
+#: wp-admin/about.php:35 wp-admin/credits.php:12 wp-admin/credits.php:93
 #: wp-admin/freedoms.php:30
 msgid "Credits"
 msgstr "Takk til"
@@ -4233,7 +4233,7 @@ msgstr "Nettleseren din er ikke oppdatert!"
 msgid "Don&#8217;t you wish all software came with these freedoms? So do we! For more information, check out the <a href=\"http://www.fsf.org/\">Free Software Foundation</a>."
 msgstr "Skulle ikke du ønske at all programvare kom med samme frihet? Det mener vi! For nærmere opplysninger, sjekk <a href=\"http://www.fsf.org/\">Stiftelsen for fri programvare</a>."
 
-#: wp-admin/about.php:32 wp-admin/credits.php:95 wp-admin/freedoms.php:12
+#: wp-admin/about.php:37 wp-admin/credits.php:95 wp-admin/freedoms.php:12
 #: wp-admin/freedoms.php:32
 msgid "Freedoms"
 msgstr "Friheter"
@@ -6192,7 +6192,7 @@ msgid_plural "Must-Use <span class=\"count\">(%s)</span>"
 msgstr[0] "Må bruke <span class=\"count\">(%s)</span>"
 msgstr[1] "Må bruke <span class=\"count\">(%s)</span>"
 
-#: wp-admin/about.php:133
+#: wp-admin/about.php:241
 msgid "Go to Dashboard"
 msgstr "Gå til kontrollpanel"
 

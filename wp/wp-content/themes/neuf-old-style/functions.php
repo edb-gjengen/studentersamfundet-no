@@ -574,9 +574,8 @@ function neuf_endless_scrolling() {
 add_action( 'wp_ajax_infinite_scroll' , 'neuf_endless_scrolling' );
 add_action( 'wp_ajax_nopriv_infinite_scroll' , 'neuf_endless_scrolling' );
 
-/* Customize theme options */
-
-/* Ref: http://ottopress.com/2012/making-a-custom-control-for-the-theme-customizer/ 
+/* Customize theme options
+ * Ref: http://ottopress.com/2012/making-a-custom-control-for-the-theme-customizer/
  */
 if (class_exists('WP_Customize_Control')) {
     class Customize_Textarea_Control extends WP_Customize_Control {
