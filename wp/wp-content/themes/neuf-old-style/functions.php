@@ -612,3 +612,6 @@ function neuf_customize_register( $wp_customize ) {
     );
 }
 add_action( 'customize_register', 'neuf_customize_register' );
+
+// Remove ‘page analysis’ and annoying Yoast SEO columns
+add_filter( 'wpseo_use_page_analysis', '__return_false' );
