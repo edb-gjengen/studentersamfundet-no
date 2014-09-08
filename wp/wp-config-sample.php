@@ -62,16 +62,6 @@ define('NONCE_SALT',       'angi din unike nøkkel her');
 $table_prefix  = 'wp_';
 
 /**
- * WordPress-språk, forhåndsinnstilt til norsk (bokmål).
- *
- * Du kan endre denne linjen for å bruke WordPress på et annet språk. En tilsvarende MO-fil for
- * det valgte språket må installeres i wp-content/languages. For eksempel, installer
- * de.mo i wp-content/languages og sett WPLANG til 'de' for å aktivere språkstøtte
- * på tysk.
- */
-define('WPLANG', 'nb_NO');
-
-/**
  * For utviklere: WordPress-feilsøkingstilstand.
  *
  * Sett denne til "true" for å aktivere visning av meldinger under utvikling.
