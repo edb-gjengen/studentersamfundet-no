@@ -18,7 +18,9 @@
 </nav> <!-- #menu -->
 
 <nav id="secondary-menu"> 
-
     <?php wp_nav_menu( array( 'theme_location' => 'secondary-menu', 'container' => 'false' ) ); ?>
+    <form>
+    <input type="text" name="s" placeholder="Søk">
+    </form>
 
 </nav> <!-- #secondary-menu -->

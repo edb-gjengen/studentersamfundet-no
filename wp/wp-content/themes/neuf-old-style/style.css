@@ -194,6 +194,32 @@ header#site-header .site-title a {
 	float: right;
 	margin-right: 18px;
 }
+#secondary-menu form {
+	display: inline-block;
+}
+#secondary-menu input {
+	padding: 2px 4px;
+	font-size: 14px;
+	width: 100px;
+	background-color: transparent;
+	border: 1px solid white;
+	color: white;
+}
+#secondary-menu input::-moz-placeholder {
+	color: white;
+}
+#secondary-menu input:--moz-placeholder {
+	color: white;
+}
+#secondary-menu input:-ms-input-placeholder {
+	color: white;
+}
+#secondary-menu input::-webkit-input-placeholder {
+	color: white;
+}
+#secondary-menu input::placeholder {
+	color: white;
+}
 #secondary-menu ul {
 	display: inline;
 	list-style: none;
