@@ -1,6 +1,6 @@
 <!-- Begin MailChimp Signup Form -->
 <div id="mc_embed_signup" class="newsletter-form">
-    <form action="http://studentersamfundet.us6.list-manage.com/subscribe/post?u=094f98d9217069d64cecb0c57&amp;id=bef4852918" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <form action="https://studentersamfundet.us6.list-manage.com/subscribe/post?u=094f98d9217069d64cecb0c57&amp;id=bef4852918" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
         <h3>Hold deg oppdatert</h3>
         <p>Nyhetsbrevet vårt sendes ut én gang i uka, og inneholder program og eksklusive konkurranser.</p>
         <div class="mc-field-group">
