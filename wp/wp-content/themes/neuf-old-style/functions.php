@@ -358,7 +358,8 @@ function neuf_get_attachment_count() {
  * @author misund
  */
 function neuf_maybe_display_gallery() {
-	if ( 2 < neuf_get_attachment_count() )
+	global $post;
+	if ( 2 < neuf_get_attachment_count() && get_post_meta($post->ID, "no_auto_gallery", true) === "" )
 		echo do_shortcode( '[gallery link="file" size="four-column-promo"]' );
 }
 
