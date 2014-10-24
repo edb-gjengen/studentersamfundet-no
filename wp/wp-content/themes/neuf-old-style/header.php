@@ -7,8 +7,6 @@
 		<?php neuf_doctitle(); ?>
 
 		<link rel="icon" type="image/png" href="/favicon.ico" />
-		<?php // @todo Make sure our feeds work properly :) ?>
-		<link rel="alternate" type="application/rss+xml" href="<?php bloginfo('url'); ?>/feed/" title="Det Norske Studentersamfund (nyheter)" />
 		<link rel="alternate" type="application/rss+xml" href="https://studentersamfundet.no/syndikering/kommende-program/" title="Det Norske Studentersamfund (kommende program)" />
         <link rel="alternate" hreflang="nb" href="<?php bloginfo('url'); ?>">
 		<link href="<?php bloginfo( 'stylesheet_url' ); ?>" rel="stylesheet" type="text/css" />
