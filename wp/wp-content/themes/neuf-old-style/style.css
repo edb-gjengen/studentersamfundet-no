@@ -60,8 +60,9 @@ body.dns {
 }
 header#site-header,
 footer#site-footer {
-	background-color:#E99835;
-	background-color:hsl(33,80%,56%);
+	/*background-color:#E99835;
+	background-color:hsl(33,80%,56%);*/
+	background-color:rgb(245,130,32);
 }
 header#site-header {
 	height:90px;
