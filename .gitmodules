@@ -1,9 +1,9 @@
 [submodule "wp/wp-content/plugins/neuf-events"]
 	path = wp/wp-content/plugins/neuf-events
-	url = http://fairchild.neuf.no/edb/neuf-events.git
+	url = https://git.neuf.no/edb/neuf-events.git
 [submodule "wp/wp-content/plugins/wpdirauth"]
 	path = wp/wp-content/plugins/wpdirauth
-	url = http://fairchild.neuf.no/edb/wpdirauth.git
+	url = https://git.neuf.no/edb/wpdirauth.git
 [submodule "wp/wp-content/plugins/neuf-associations"]
 	path = wp/wp-content/plugins/neuf-associations
-	url = http://fairchild.neuf.no/edb/neuf-associations.git
+	url = https://git.neuf.no/edb/neuf-associations.git
