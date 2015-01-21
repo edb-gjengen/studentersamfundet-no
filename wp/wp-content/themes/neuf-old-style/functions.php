@@ -598,7 +598,7 @@ function neuf_customize_register( $wp_customize ) {
 
     /* Header Section */
     $wp_customize->add_section( 'neuf_header_section' , array(
-        'title'      => __( 'Header (opening hours)', 'neuf-web' ),
+        'title'      => __( 'Header (åpningstider)', 'neuf-web' ),
         'priority'   => 30,
     ) );
     $wp_customize->add_setting( 'header_opening_hours' , array(
@@ -606,9 +606,25 @@ function neuf_customize_register( $wp_customize ) {
     ) );
     $wp_customize->add_control(
         new Customize_Textarea_Control( $wp_customize, 'header_opening_hours', array(
-            'label'    => __( 'Opening hours drop down', 'neuf-web' ),
+            'label'    => __( 'Åpningstider i meny', 'neuf-web' ),
             'section'  => 'neuf_header_section',
             'settings' => 'header_opening_hours',
+        ) )
+    );
+
+    /* Footer Section */
+    $wp_customize->add_section( 'neuf_footer_section' , array(
+        'title'      => __( 'Footer (kolofon)', 'neuf-web' ),
+        'priority'   => 30,
+    ) );
+    $wp_customize->add_setting( 'footer_kolofon' , array(
+        'default'     => '',
+    ) );
+    $wp_customize->add_control(
+        new Customize_Textarea_Control( $wp_customize, 'footer_kolofon', array(
+            'label'    => __( 'Kolofon (adresse, redaktør, etc)', 'neuf-web' ),
+            'section'  => 'neuf_footer_section',
+            'settings' => 'footer_kolofon',
         ) )
     );
 }

@@ -1,3 +1,4 @@
+<?php $kolofon = get_theme_mod( 'footer_kolofon',""); ?>
 
 <footer id="site-footer">
 	<div class="container_12">
@@ -31,7 +32,7 @@
 
 	<div id="kolofon" class="grid_12">
 
-            <span>Det Norske Studentersamfund | Slemdalsveien 15, 0369 Oslo | Ansvarlig redaktør: <a href="mailto:andrew.mccalman@studentersamfundet.no">Andrew McCalman</a> | Webdesign av <a href="https://edb.neuf.no">EDB-gjengen</a> og Designerne i <a href="http://studentersamfundet.no/association/kommunikasjonsavdelingen/">KAK</a> | <a href="/wp/wp-admin/">Logg inn</a></span>
+        <span><?php echo $kolofon; ?></span>
 
 	</div> <!-- #kolofon -->
 
