@@ -60,12 +60,14 @@ if ( $sliderevents ) :
 <?php
 					$tag_names = array();
 					$tags = get_the_tags();
-					foreach ( $tags as $tag )
-					    $tag_names[] = $tag->name;
-
-					if ( $tag_names )
+					if( is_array($tags)) {
+						foreach ( $tags as $tag ) {
+						    $tag_names[] = $tag->name;
+						}
+					}
+					if ( $tag_names ) {
 					    echo( '<span class="tags">' . implode( $tag_names , ', ') . '</span>' );
-?>
+					} ?>
 						<h1 class="entry-title"><?php the_title(); ?></h1>
 						<?php the_excerpt(); ?>
 					</header>
