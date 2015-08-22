@@ -5,3 +5,4 @@ wp-config.php
 .sass-cache
 .htaccess
 stuff/
+node_modules
