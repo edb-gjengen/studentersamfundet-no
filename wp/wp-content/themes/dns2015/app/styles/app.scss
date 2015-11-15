@@ -1,0 +1,142 @@
+@import "normalize";
+@import "foundation/functions";
+
+/* We mostly use semantic classes */
+$include-html-classes: false;
+$include-html-global-classes: false;
+$block-grid-media-queries: false;
+$include-html-form-classes: true;
+$include-html-table-classes: true;
+$include-html-type-classes: true;
+
+/* Grid */
+$row-width: rem-calc(1200);
+
+/* Colors */
+$primary-color: rgb(245, 130, 32);
+$secondary-color: red; // what red
+$grey-color: #ccc;
+
+$body-bg: #fff;
+
+$header-font-family: 'Roboto', sans-serif;
+$header-font-weight: 800;
+
+@import "foundation/components/grid";
+@import "foundation/components/block-grid";
+@import "foundation/components/type";
+@import "foundation/components/buttons";
+@import "foundation/components/forms";
+@import "foundation/components/tables";
+
+@import "mixins";
+@import "buttons";
+
+/* Accessibility */
+.acc-jump {
+    display: none;
+}
+/* General */
+body {
+    background-color: $body-bg;
+    //background: url('../images/bg_top.jpg') no-repeat;
+    //background-size: 100%;
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    a, a:link {
+        color: $primary-color;
+    }
+    a:hover, a:focus {
+        color: lighten($primary-color, 10%);
+    }
+
+    h1, h2, h3, h4 {
+        margin: 0;
+        a, a:link {
+            color: #222;
+            text-decoration: none;
+        }
+        a:hover, a:focus {
+            color: #444;
+        }
+    }
+
+}
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+#content {
+    @include grid-row;
+}
+.container {
+    @include grid-column($columns: 12);
+}
+article.page,
+.single-post article,
+.single-association article,
+.single-event article {
+    margin: 0 auto;
+    max-width: rem-calc(800px);
+    background-color: white;
+    padding: 20px;
+
+    .entry-title {
+        margin-bottom: 20px;
+    }
+    .entry-content {
+
+        h1, h2, h3, h4, h5 {
+            font-family: $font-family-sans-serif;
+        }
+        font-size: rem-calc(18);
+        line-height: 1.55;
+        p {
+            margin-top: 0;
+            padding-top: 0;
+        }
+    }
+}
+.full-width-container article {
+    max-width: none;
+}
+.single-post article .entry-content {
+    font-family: $font-family-serif;
+}
+
+/* Associations */
+.associations-list {
+    @include block-grid($per-row: 2);
+}
+/* Program 6 days */
+.program-6days {
+    @media #{$small-only} {
+        display: none;
+    }
+}
+/* Page: Program */
+.page-template-page-program {
+    section {
+        background-color: white;
+        padding: 20px;
+    }
+    .table {
+        width: 100%;
+        border: 0;
+    }
+    .alt {
+        background-color: transparent;
+    }
+    .month td {
+        padding-top: 20px;
+    }
+}
+
+@import "header";
+@import "frontpage";
+@import "footer";

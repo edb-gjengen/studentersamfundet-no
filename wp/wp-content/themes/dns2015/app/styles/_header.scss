@@ -1,0 +1,114 @@
+/* Header, Menu */
+
+#site-header {
+    margin-bottom: rem-calc(20);
+    padding-top: rem-calc(16);
+    padding-bottom: rem-calc(10);
+    background-color: $primary-color;
+
+}
+.site-header-inner {
+    @include grid-row;
+}
+.site-brand {
+    @include grid-column(12, $collapse: true);
+
+    text-align: center;
+
+    @media #{$medium-up} {
+        text-align: left;
+    }
+
+    @media #{$medium-up} {
+        @include grid-column($columns:12);
+    }
+    @media #{$large-up} {
+        @include grid-column($columns:5);
+    }
+
+    a, a:link {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: black;
+    }
+    .blog-name {
+        font-weight: bold;
+        font-size: rem-calc(16);
+        display: inline-block;
+
+        @media #{$medium-up} {
+            padding-top: 20px;
+        }
+    }
+    .blog-description {
+        font-size: rem-calc(14);
+    }
+}
+.site-logo {
+    max-width: 80%;
+    display: block;
+    margin: 0 auto;
+    padding: 0 10px;
+    @media #{$medium-up} {
+        margin: 0;
+        float: left;
+        max-width: 400px;
+    }
+}
+#main-menu {
+    display: none;
+    @media #{$large-up} {
+        display: block;
+        @include grid-column($columns:7);
+    }
+}
+nav {
+    font-size: rem-calc(20);
+    a, a:link {
+        color: #fff;
+        font-family: $header-font-family;
+        font-weight: 500;
+        font-size: 1.5em;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 20px 10px;
+    }
+
+    ul {
+        @include block-grid;
+        position: relative;
+    }
+    a:hover + .sub-menu {
+        display: block;
+    }
+    .menu-item-has-children {
+        position: relative;
+    }
+    .sub-menu {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 64px;
+        z-index: 10;
+        margin-left: 0;
+        background-color: $primary-color;
+        box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 1px;
+
+        &:hover {
+            display: block;
+        }
+        li {
+            float: none;
+            padding: 0;
+        }
+        a {
+            display: block;
+            padding: 12px 22px;
+        }
+    }
+}
+/* TODO mobile menu */
