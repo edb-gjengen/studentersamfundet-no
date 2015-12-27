@@ -2,13 +2,9 @@
 
 <div id="content">
     <div class="container">
-        <?php
-        if(is_page()) {
-            get_template_part('loop', 'page');
-        } else {
-            get_template_part('loop');
-        }
-        ?>
+
+        <?php get_template_part('loop'); ?>
+
     </div>
 </div><!-- #content -->
 

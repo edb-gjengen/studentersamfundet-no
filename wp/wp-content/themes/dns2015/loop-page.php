@@ -6,9 +6,6 @@
         <p class="wp-caption-text gallery-caption"><?php echo get_post( get_post_thumbnail_id() )->post_excerpt; ?></p>
 
         <div class="entry-content"><?php the_content(); ?></div> <!-- .entry-content -->
-        <?php display_social_sharing_buttons(); ?>
-
-        <?php get_template_part( 'newsletter' , 'signup-form' ); ?>
 
 	</article> <!-- .hentry -->
 

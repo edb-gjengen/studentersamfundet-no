@@ -3,7 +3,7 @@ add_theme_support( 'menus' );
 add_theme_support( 'post-thumbnails' );
 add_theme_support( 'automatic-feed-links' );
 
-$content_width = 770;
+$content_width = 836;
 
 add_image_size( 'four-column', 370, 322, true );
 add_image_size( 'six-column', 570, 322, true );

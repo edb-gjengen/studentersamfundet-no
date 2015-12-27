@@ -10,6 +10,7 @@
         } else {
             get_template_part('loop', 'single' );
         }
+
         get_template_part( 'program' , '6days' );
         ?>
     </div>

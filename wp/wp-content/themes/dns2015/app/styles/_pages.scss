@@ -1,3 +1,28 @@
+/* General page styles */
+.page--sidebar-wrap {
+    display: none;
+    @media #{$medium-up} {
+        display: block;
+        @include grid-column($columns: 3);
+    }
+
+}
+
+.page--sidebar {
+    @include card;
+    padding: rem-calc(10);
+}
+.page--content {
+    @include grid-column($columns: 12);
+    @media #{$medium-up} {
+        @include grid-column($columns: 9);
+    }
+
+    article.page {
+        @include card;
+        padding: rem-calc(16);
+    }
+}
 
 /* Page: Program */
 .page-template-page-program {
