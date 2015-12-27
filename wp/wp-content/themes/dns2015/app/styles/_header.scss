@@ -47,10 +47,11 @@
     }
 }
 .site-logo {
-    max-width: 80%;
+    max-width: 70%;
     display: block;
     margin: 0 auto;
     padding: 0 10px;
+
     @media #{$medium-up} {
         margin: 0;
         float: left;

@@ -1,12 +1,12 @@
-#main-menu {
+#static-menu {
+    font-size: rem-calc(20);
     display: none;
+
     @media #{$large-up} {
         display: block;
         @include grid-column($columns:7);
     }
-}
-#main-menu {
-    font-size: rem-calc(20);
+
     a, a:link {
         color: #fff;
         font-family: $header-font-family;
@@ -52,6 +52,92 @@
         }
     }
 }
+
+#main-menu {
+    position: absolute;
+    top: 0;
+    right: -200px;
+    background-color: white;
+    width: 200px;
+    height: 100%;
+    transition: transform ease 0.21s, right ease 0.21s;
+    z-index: 1;
+
+    &.visible {
+        right: 0;
+    }
+
+    ul {
+        position: relative;
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        &:first-child {
+            margin-top: 36*2px;
+        }
+    }
+    a, a:link {
+        color: #333;
+        font-family: $header-font-family;
+        font-weight: 500;
+        font-size: 1.3em;
+        text-decoration: none;
+        display: block;
+        padding: 10px 16px;
+        border-left: 4px solid transparent;
+        border-bottom: 1px solid #efefef;
+        background-color: transparent;
+
+
+        &:hover {
+            border-left: 4px solid $primary-color;
+        }
+    }
+    /* if 3D transform support use it (less jank) */
+    .csstransforms3d .drawer-menu {
+        transform: translate3d(-100%, 0, 0);
+
+        &.visible {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+    .no-csstransforms3d .drawer-menu.visible {
+        right: -200px;
+    }
+}
+/* Menu toggle */
+.menu-toggle {
+    position: absolute;
+    top: 24px;
+    right: 16px;
+    display: inline-block;
+    z-index: 2;
+    padding: 12px 6px;
+
+    @media #{$medium-up} {
+        top: 32px;
+    }
+
+    svg {
+        width: 32px;
+        height: 24px;
+
+        g {
+            transition: fill ease-in-out 0.2s;
+        }
+    }
+
+    &.inverted svg g {
+        fill: $primary-color;
+    }
+}
+
+
 .secondary-navigation {
     li {
         padding-top: 4px;
@@ -72,4 +158,3 @@
         }
     }
 }
-/* TODO mobile menu */

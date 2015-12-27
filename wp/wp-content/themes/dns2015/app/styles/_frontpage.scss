@@ -29,7 +29,6 @@
     &--featured {
         @include grid-row;
         font-size: rem-calc(14);
-        height: 480px;
 
         @media #{$medium-up} {
             color: white;

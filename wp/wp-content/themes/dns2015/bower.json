@@ -12,15 +12,8 @@
       "ignore": true,
       "dependencies": null
     },
-    "bxslider": {
-      "main": [
-        "source/jquery.bxSlider.js"
-      ]
-    },
     "jquery-migrate": {
-      "main": [
-        "jquery-migrate.js"
-      ]
+      "main": "jquery-migrate.js"
     }
   }
 }

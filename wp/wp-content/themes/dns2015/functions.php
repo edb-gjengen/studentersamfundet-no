@@ -16,12 +16,11 @@ add_image_size( 'featured', 1200, 480, true);
  * Register navigation menus.
  */
 function neuf_register_nav_menus() {
-	register_nav_menus(
-        array(
-            'main-menu' => __( 'Hovedmeny' ),
-            'secondary-menu' => __( 'Sekundærmeny' ),
-        )
-    );
+    register_nav_menus(array(
+        'main-menu' => __('Hovedmeny'),
+        'static-menu' => __('Toppmeny'),
+        'secondary-menu' => __('Sekundærmeny'),
+    ));
 }
 add_action( 'init' , 'neuf_register_nav_menus' );
 

@@ -1,6 +1,57 @@
+function has3d() {
+    /* Ref: http://stackoverflow.com/questions/5661671/detecting-transform-translate3d-support */
+    if (!window.getComputedStyle) {
+        return false;
+    }
+
+    var el = document.createElement('p'),
+        has3d,
+        transforms = {
+            'webkitTransform':'-webkit-transform',
+            'OTransform':'-o-transform',
+            'msTransform':'-ms-transform',
+            'MozTransform':'-moz-transform',
+            'transform':'transform'
+        };
+
+    // Add it to the body to get the computed style.
+    document.body.insertBefore(el, null);
+
+    for (var t in transforms) {
+        if (el.style[t] !== undefined) {
+            el.style[t] = "translate3d(1px,1px,1px)";
+            has3d = window.getComputedStyle(el).getPropertyValue(transforms[t]);
+        }
+    }
+
+    document.body.removeChild(el);
+
+    return (has3d !== undefined && has3d.length > 0 && has3d !== "none");
+}
+
 $(document).ready( function() {
+    if(has3d()) {
+        $('html').addClass('csstransforms3d');
+    } else {
+        $('html').addClass('no-csstransforms3d');
+    }
+
+    /* Toggle main menu */
+    $(".menu-toggle").on('click', function(e) {
+        e.preventDefault();
+        $("#main-menu").toggleClass('visible');
+        $(".menu-toggle").toggleClass('inverted');
+    });
+
+    $(document).on('click', function(event) {
+        if (!$(event.target).closest('#main-menu, .menu-toggle').length) {
+            $("#main-menu").removeClass('visible');
+            $(".menu-toggle").removeClass('inverted');
+        }
+    });
+
     /* Flickr */
-    if($("#flickr_feed").length) {
+    if($("#flickr-feed").length) {
         var flickrLimit = 12;
         var flickrFeedURL = 'https://secure.flickr.com/services/feeds/groups_pool.gne?format=json&id=1292860@N21&jsoncallback=?';
         $.getJSON(flickrFeedURL, function(result) {
