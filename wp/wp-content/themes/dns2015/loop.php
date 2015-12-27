@@ -11,7 +11,7 @@
 				<h3 class="entry-title"><?php the_title(); ?></h3>
 				<div class="entry-content"><?php the_excerpt(); ?></div> <!-- .entry-content -->
 			</div>
-			<div><?php the_post_thumbnail( 'six-column-slim' , array( 'style' => 'display:block;margin:auto;' ) ); ?></div>
+			<div><?php the_post_thumbnail( 'six-column' , array( 'style' => 'display:block;margin:auto;' ) ); ?></div>
 		</a>
 	</article> <!-- .post -->
 

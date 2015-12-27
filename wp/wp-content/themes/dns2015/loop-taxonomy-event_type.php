@@ -10,7 +10,7 @@
 			</div>
 
 			<div class="grid_6 omega">
-				<?php the_post_thumbnail( 'six-column-slim' , array( 'style' => 'display:block;margin:auto;' ) ); ?>
+				<?php the_post_thumbnail( 'six-column' , array( 'style' => 'display:block;margin:auto;' ) ); ?>
 			</div>
 		</a>
 	</article> <!-- .post -->

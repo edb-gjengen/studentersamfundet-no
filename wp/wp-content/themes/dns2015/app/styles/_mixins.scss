@@ -1,14 +1,30 @@
 /* Mixins */
 @mixin outlined() {
     padding: .4em 0.4em;
-    border-radius: 4px;
-    border: 1px solid white;
-    box-shadow: rgba(0,0,0, 0.3) 1px 1px 1px;
+    border: 2px solid #ccc;
     &:hover, &:focus {
         color: white;
     }
 
     &:hover {
-        background: linear-gradient($primary-color, darken($primary-color, 10%) 95%);
+        background: $primary-color;
+        border-color: transparent;
     }
+}
+
+@mixin card($padding: rem-calc(10) 0) {
+    padding: $padding;
+    background-color: #fff;
+    border: 1px solid #eee;
+    box-shadow: rgba(0,0,0,0.14902) 0 1px 0 0, rgba(0,0,0,0.09804) 0 1px 2px 0;
+    border-radius: 2px;
+}
+
+@mixin card-z1($padding: rem-calc(10) 0) {
+    @include card($padding);
+    box-shadow: rgba(0,0,0,0.14902) 0 1px 0 0, rgba(0,0,0,0.09804) 0 1px 2px 0;
+}
+@mixin card-z2($padding: rem-calc(10) 0) {
+    @include card($padding);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }

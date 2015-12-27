@@ -11,36 +11,38 @@ footer {
 .footer-wrap {
     @include grid-row;
 }
-.footer--social-media {
-    @include grid-column($columns:12);
+.footer {
+    &--social-media {
+        @include grid-column($columns: 12);
 
-    @media #{$medium-up} {
-        @include grid-column($columns:6);
-    }
+        @media #{$medium-up} {
+            @include grid-column($columns: 6);
+        }
 
-    ul {
-        @include block-grid($per-row: 4);
-    }
-    .social-media-link {
-        display: block;
-        svg {
-            width: 50px;
-            height: 50px;
+        ul {
+            @include block-grid($per-row: 4);
+        }
+        .social-media-link {
+            display: block;
+            svg {
+                width: 50px;
+                height: 50px;
+            }
         }
     }
-}
-.footer--about {
-    @include grid-column($columns:12);
+    &--about {
+        @include grid-column($columns:12);
 
-    @media #{$medium-up} {
-        text-align: left;
-        @include grid-column($columns:6);
+        @media #{$medium-up} {
+            text-align: left;
+            @include grid-column($columns:6);
+        }
+
     }
-
-}
-.footer--kolofon {
-    background-color: #222;
-    padding-top: rem-calc(40);
-    padding-bottom: rem-calc(40);
-    @include grid-column($columns:12);
+    &--kolofon {
+        background-color: #222;
+        padding-top: rem-calc(40);
+        padding-bottom: rem-calc(40);
+        @include grid-column($columns:12);
+    }
 }

@@ -25,19 +25,4 @@ $(document).ready( function() {
         });
     }
 
-    /* Slideshow */
-    /* TODO Re-enable */
-    /*$('.front-page--featured-slideshow').bxSlider({
-        mode: 'fade',
-        useCSS: false,
-        touchEnabled: true,
-        pager: true,
-        buildPager: function(slideIndex) {
-            return '<a href="" data-slide-index="'+slideIndex+'" class="pager-item"><span class="circle">&nbsp;</span></a>';
-        },
-        nextText: '»',
-        prevText: '«',
-        speed: 450
-    });*/
-
 });
