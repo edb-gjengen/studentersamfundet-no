@@ -5,7 +5,7 @@
     <?php //get_template_part('program', '6days'); ?><!-- TODO: Featured events? -->
     <div class="front-page--wrapper">
         <div class="front-page--right">
-            <?php get_template_part('fp-program'); ?>
+            <?php get_template_part('fp-events'); ?>
         </div>
         <div class="front-page--left">
             <?php //get_template_part('fp-call-to-actions'); ?>

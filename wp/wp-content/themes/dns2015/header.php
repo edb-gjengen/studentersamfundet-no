@@ -2,7 +2,7 @@
 <html lang="no">
 <head>
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="robots" content="index,follow"/>
     <?php neuf_doctitle(); ?>
     <link rel="icon" type="image/png" href="/favicon.ico"/>
@@ -30,9 +30,12 @@
         </a>
     </div>
 
-    <?php get_template_part('menu'); ?>
+    <nav id="static-menu">
+        <?php wp_nav_menu( array( 'theme_location' => 'static-menu', 'container' => 'false' ) ); ?>
+    </nav><!-- #static-menu -->
 
     </div>
 </header>
 <!--  #site-header -->
 
+<?php get_template_part('menu'); ?>

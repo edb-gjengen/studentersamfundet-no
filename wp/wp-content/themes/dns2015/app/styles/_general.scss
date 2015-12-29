@@ -2,8 +2,6 @@
 /* General */
 body {
     background-color: $body-bg;
-    //background: url('../images/bg_top.jpg') no-repeat;
-    //background-size: 100%;
 
     img {
         max-width: 100%;
@@ -30,6 +28,8 @@ body {
 }
 html {
     box-sizing: border-box;
+}
+body {
     overflow-x: hidden;
 }
 *, *:before, *:after {
@@ -55,6 +55,14 @@ html {
 
 
 /* Posts */
+
+.entry-title,
+.entry-title a {
+    font-weight: 200;
+}
+.page h1.entry-title {
+    font-weight: 800;
+}
 article.page,
 .single-post article,
 .single-association article,

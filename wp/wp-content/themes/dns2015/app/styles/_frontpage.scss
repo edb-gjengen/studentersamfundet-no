@@ -29,6 +29,7 @@
     &--featured {
         @include grid-row;
         font-size: rem-calc(14);
+        margin-bottom: rem-calc(20);
 
         @media #{$medium-up} {
             color: white;
@@ -42,21 +43,28 @@
 
         a, a:link {
             text-decoration: none;
-            @media #{$medium-up} {
-                color: white;
-            }
         }
         article {
             position: relative;
+            @include card;
+            padding-top: 0;
+            border: 4px solid $primary-color;
         }
         @media #{$medium-up} {
             .entry-meta {
                 position: absolute;
-                bottom: 20px;
-                left: 32px;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: white;
+                color: #222;
+                padding: 10px;
             }
         }
         .entry-title {
+            font-size: rem-calc(20);
+            margin-bottom: rem-calc(8);
+
             @media #{$medium-up} {
                 font-size: rem-calc(30);
             }
@@ -83,7 +91,8 @@
                 background-color: white;
             }
             .entry-meta {
-                padding-top: rem-calc(16);
+                padding-top: rem-calc(10);
+                padding-bottom: rem-calc(10);
             }
             .event-price {
                 padding-bottom: rem-calc(16);
@@ -107,14 +116,11 @@
         article {
             @include grid-row;
             @include card;
+            padding: 0;
             margin-bottom: rem-calc(10);
         }
         .article-content {
             @include grid-column($columns: 12);
-
-            @media #{$medium-up} {
-                @include grid-column($columns: 7);
-            }
 
             padding-top: rem-calc(10);
             padding-bottom: rem-calc(20);
@@ -123,27 +129,31 @@
 
             h3 {
                 font-size: rem-calc(18);
-
+                @media #{$medium-up} {
+                    font-size: rem-calc(20);
+                }
             }
-            .entry-published-datetime {
-                color: #666;
-                display: block;
-                font-style: italic;
-                margin-top: 4px;
-                margin-bottom: 10px;
-            }
+        }
+        .entry-published-datetime {
+            display: block;
+            margin-top: 2px;
+            margin-bottom: 10px;
+            color: #666;
+            font-size: rem-calc(14);
+            font-family: $header-font-family;
+            font-weight: 200;
         }
         .article-image {
             @include grid-column($columns: 12, $collapse: true);
 
-            @media #{$medium-up} {
-                @include grid-column($columns: 5, $collapse: true);
-            }
+        }
+        .entry-summary {
+            line-height: 1.55;
         }
     }
 
-    /* Program/Events */
-    &--program {
+    /* Events / Program */
+    &--events {
         margin-top: rem-calc(20);
         @media #{$medium-up} { margin-top: 0; }
 

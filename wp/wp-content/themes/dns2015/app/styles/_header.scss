@@ -3,21 +3,15 @@
 #site-header {
     margin-bottom: rem-calc(20);
     padding-top: rem-calc(16);
-    padding-bottom: rem-calc(10);
+    padding-bottom: rem-calc(16);
     background-color: $primary-color;
-
 }
 .site-header-inner {
     @include grid-row;
 }
 .site-brand {
     @include grid-column(12, $collapse: true);
-
-    text-align: center;
-
-    @media #{$medium-up} {
-        text-align: left;
-    }
+    text-align: left;
 
     @media #{$medium-up} {
         @include grid-column($columns:12);
@@ -47,10 +41,10 @@
     }
 }
 .site-logo {
-    max-width: 70%;
+    width: 82%;
+    max-width: 340px;
     display: block;
-    margin: 0 auto;
-    padding: 0 10px;
+    padding: 0 24px;
 
     @media #{$medium-up} {
         margin: 0;
