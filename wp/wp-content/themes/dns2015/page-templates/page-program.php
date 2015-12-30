@@ -21,11 +21,11 @@ $args = array(
 ?>
 <?php get_header(); ?>
 <section id="content" role="main">
-    <div class="program--filter-wrap">
+    <!--<div class="program--filter-wrap">
         <section class="program--filter">
             TODO: Filters
         </section>
-    </div>
+    </div>-->
     <div class="program--list-wrap">
     <section class="program--list">
         <h1 class="entry-title"><?php the_title(); ?></h1>
@@ -69,7 +69,7 @@ if ( $events->have_posts() ) :
             $alt = $alt == " alt" ? "" : " alt"; ?>
 
             <?php if($newmonth): ?>
-                <h3 class="month"><?php echo $current_month; ?></h3>
+                <h3 class="month"><?php echo ucfirst($current_month); ?></h3>
                 <!--</tr>
                       <th class="date">Dato</th>
                       <th>Arrangement</th>

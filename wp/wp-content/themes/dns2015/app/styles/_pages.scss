@@ -30,15 +30,17 @@
 .program {
     &--filter-wrap {
         @include grid-column($columns: 12);
+        margin-bottom: rem-calc(20);
+
         @media #{$medium-up} {
             @include grid-column($columns: 3);
         }
     }
     &--list-wrap {
         @include grid-column($columns: 12);
-        @media #{$medium-up} {
-            @include grid-column($columns: 9);
-        }
+        //@media #{$medium-up} {
+        //    @include grid-column($columns: 9);
+        //}
     }
     &--filter {
         @include card;
@@ -51,7 +53,7 @@
 }
 .page-template-page-program {
     .alt {
-        background-color: transparent;
+        //background-color: #f4f4f4;
     }
     .month {
         padding-top: rem-calc(16);
@@ -61,22 +63,30 @@
         margin: 0;
         padding: 0;
         list-style: none;
-        line-height: 30px;
+        line-height: 32px;
     }
     .event-row {
-        margin-bottom: 10px;
+        margin-bottom: rem-calc(16);
     }
     .event-datetime-daynum {
         font-size: rem-calc(32);
-        display: inline-block;
-        width: rem-calc(44);
-        text-align: right;
-        margin-right: rem-calc(8);
+        margin-right: rem-calc(4);
+
+        @media #{$medium-up} {
+            display: inline-block;
+            margin-right: rem-calc(8);
+            width: rem-calc(44);
+            text-align: right;
+        }
     }
     .event-title {
-        font-size: rem-calc(30);
+        font-size: rem-calc(28);
         font-weight: 200;
         font-family: $header-font-family;
+
+        @media #{$medium-up} {
+            font-size: rem-calc(30);
+        }
     }
     .event-price {
         @include outlined;
@@ -101,7 +111,12 @@
         margin-bottom: 0;
     }
     .event-attributes {
-        margin-left: rem-calc(44+8+6)
+        padding-bottom: rem-calc(16);
+        border-bottom: 1px solid #ccc;
+
+        @media #{$medium-up} {
+            margin-left: rem-calc(58)
+        }
     }
 
 }

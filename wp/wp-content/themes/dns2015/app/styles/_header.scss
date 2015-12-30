@@ -10,7 +10,6 @@
     @include grid-row;
 }
 .site-brand {
-    @include grid-column(12, $collapse: true);
     text-align: left;
 
     @media #{$medium-up} {
@@ -21,8 +20,6 @@
     }
 
     a, a:link {
-        display: block;
-        width: 100%;
         height: 100%;
         text-decoration: none;
         color: black;
@@ -43,12 +40,9 @@
 .site-logo {
     width: 82%;
     max-width: 340px;
-    display: block;
     padding: 0 24px;
 
     @media #{$medium-up} {
-        margin: 0;
-        float: left;
         max-width: 400px;
     }
 }
