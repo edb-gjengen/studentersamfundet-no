@@ -18,12 +18,19 @@
 </head>
 
 <body <?php neuf_body_class(); ?>>
-<div id="fb-root"></div>
 <!-- Facebook -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/nb_NO/sdk.js#xfbml=1&version=v2.5&appId=220213643760";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 <header id="site-header">
     <div class="site-header-inner">
 
-    <div class="acc-jump"><a href="#content">Gå direkte til innholdet</a></div>
+    <div class="acc-jump"><a href="#content"><?php _e('Jump to content'); ?></a></div>
     <div class="site-brand">
         <a href="<?php bloginfo('url') ?>/" title="<?php bloginfo('name') ?>" rel="home">
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/dns_logo_white.png" class="site-logo" title="<?php bloginfo('name') ?>">
@@ -35,7 +42,6 @@
     </nav><!-- #static-menu -->
 
     </div>
-</header>
-<!--  #site-header -->
+</header><!-- #site-header -->
 
 <?php get_template_part('menu'); ?>

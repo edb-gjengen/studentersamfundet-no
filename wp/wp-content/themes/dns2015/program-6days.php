@@ -59,7 +59,7 @@ if ( $events->have_posts() ) :
             <?php
             if( $newday && has_post_thumbnail() ) {
                 echo '<a href="' . get_permalink() . '" title="' . get_the_title() . '">';
-                the_post_thumbnail ('two-column-thumb' );
+                the_post_thumbnail ('four-column' );
                 echo '</a>';
                 $newday = false;
             }

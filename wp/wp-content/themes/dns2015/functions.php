@@ -3,10 +3,10 @@ add_theme_support( 'menus' );
 add_theme_support( 'post-thumbnails' );
 add_theme_support( 'automatic-feed-links' );
 
-$content_width = 836;
+$content_width = 870;
 
-add_image_size( 'four-column', 370, 322, true );
-add_image_size( 'six-column', 570, 322, true );
+add_image_size( 'four-column', 393, 342, true );
+add_image_size( 'six-column', 608, 342, true );
 add_image_size( 'extra-large', 1600, 1600, false );
 add_image_size( 'newsletter-half', 320, 190, true);
 add_image_size( 'newsletter-third', 213, 126, true);
@@ -161,15 +161,9 @@ function neuf_format_price( $neuf_event ) {
 
 	if ( $price_regular ) {
         $cc .= $price_regular;
-        if( is_numeric($price_regular) ) {
-            $cc .= ",-";
-        }
     }
     if ( $price_member ) {
         $cc .= " / $price_member";
-        if( is_numeric($price_member) ) {
-            $cc .= ",-";
-        }
     }
 
 	return $cc;
@@ -293,7 +287,7 @@ function display_social_sharing_buttons() {
 				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 			</div> <!-- .share-twitter -->
 			<div class="share-facebook">
-				<div class="fb-like" data-send="true" data-layout="button_count" data-width="450" data-show-faces="true" data-action="recommend"></div>
+				<div class="fb-like" data-send="true" data-layout="button_count" data-show-faces="true" data-action="recommend"></div>
 			</div> <!-- .share-facebook -->
 <?php if ( 'event' == get_post_type() ) { ?>
 			<div class="gcal">
@@ -335,7 +329,7 @@ function neuf_get_attachment_count() {
 function neuf_maybe_display_gallery() {
 	global $post;
 	if ( 2 < neuf_get_attachment_count() && get_post_meta($post->ID, "no_auto_gallery", true) === "" )
-		echo do_shortcode( '[gallery link="file" size="four-column-promo"]' );
+		echo do_shortcode( '[gallery link="file" size="four-column"]' );
 }
 
 function neuf_event_format_date($timestamp) {

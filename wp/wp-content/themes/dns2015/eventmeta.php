@@ -9,7 +9,7 @@
 		<span class="event-time"><?php echo date_i18n( 'G.i' , $post->neuf_events_starttime ); ?></span>
 		<span class="meta-sep meta-sep-event-price"> - </span>
 		<span class="meta-prep meta-prep-price">CC: </span>
-									<span class="meta-prep meta-prep-ticket"><?php echo $ticket ? ' <a href="'.$ticket.'">Kjøp billett</a>' : ""; ?></span>
+		<span class="meta-prep meta-prep-ticket"><?php echo $ticket ? ' <a href="'.$ticket.'">Kjøp billett</a>' : ""; ?></span>
 		<span class="price"><?php echo ($price = neuf_format_price( $post )) ? $price : "Gratis"; ?></span>
 	</div> <!-- .time-price -->
 </div> <!-- .entry-meta-->

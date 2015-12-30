@@ -72,7 +72,7 @@ if( $sliderevents ):
 						<?php the_excerpt(); ?>
 					</header>
 					<div class="grid_6">
-						<?php the_post_thumbnail( 'six-column-promo' ); ?>
+						<?php the_post_thumbnail( 'six-column' ); ?>
 					</div>
 				</a>
 			</article> <!-- #post-<?php the_ID(); ?> -->
@@ -100,7 +100,7 @@ if( $sliderevents ):
 						<?php the_excerpt(); ?>
 					</header>
 					<div class="grid_6">
-						<?php the_post_thumbnail( 'six-column-promo' ); ?>
+						<?php the_post_thumbnail( 'six-column' ); ?>
 					</div>
 				</a>
 			</article> <!-- #post-<?php the_ID(); ?> -->

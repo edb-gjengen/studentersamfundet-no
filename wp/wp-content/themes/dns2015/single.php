@@ -7,11 +7,14 @@
             get_template_part('loop', 'post-full-width');
         } elseif( get_post_type() == 'event') {
             get_template_part( 'loop' , 'event' );
+        } elseif( get_post_type() == 'association') {
+            get_template_part( 'loop' , 'association' );
         } else {
             get_template_part('loop', 'single' );
         }
 
-        get_template_part( 'program' , '6days' );
+        /* Related content */
+//        get_template_part( 'program' , '6days' );
         ?>
     </div>
 </div> <!-- #content -->

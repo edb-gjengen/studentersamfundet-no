@@ -6,7 +6,7 @@
     if ( $fp_articles->have_posts() ) : while ( $fp_articles->have_posts() ) : $fp_articles->the_post(); ?>
 
 		<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>
-            <div class="article-image"><a class="permalink" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_post_thumbnail( 'six-column-promo' ); ?></a></div>
+            <div class="article-image"><a class="permalink" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_post_thumbnail( 'six-column' ); ?></a></div>
             <div class="article-content">
                 <h3 class="entry-title"><a class="permalink" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
                 <span class="entry-published-datetime"><?php echo get_the_date(); ?> <?php the_time(); ?></span>

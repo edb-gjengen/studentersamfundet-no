@@ -3,13 +3,11 @@
     <article <?php neuf_post_class(); ?>>
 
         <div>
-            <?php //the_tags('<span class="tags">', ', ', '</span>'); ?>
+            <?php the_tags('<span class="tags">', ', ', '</span>'); ?>
             <h1 class="entry-title"><?php the_title(); ?></h1>
-
-            <div class="entry-meta byline"><span class="meta-prep meta-prep-author">av </span><span
-                class="author vcard"><?php the_author_link(); ?></span>, <span
-                class="entry-date"><?php echo get_the_date('l d. M Y'); ?> kl <?php the_time('G.i'); ?></span>
-            </div>
+            <?php
+            $homepage = get_post_meta(get_the_ID(), '_neuf_associations_homepage', true);
+            echo $homepage ? '<div class="entry-meta byline">'. _('Web page') .': <a href="' . $homepage . '">' . $homepage . '</a></div>' : ''; ?>
 
             <?php if (has_post_thumbnail()): ?>
                 <div class="wp-post-image-caption">
@@ -19,11 +17,8 @@
             <?php endif; ?>
 
             <div class="entry-content"><?php the_content(); ?></div> <!-- .entry-content -->
-
-            <?php display_social_sharing_buttons(); ?>
         </div>
         <?php get_template_part('newsletter', 'signup-form'); ?>
-        <?php neuf_maybe_display_gallery(); ?>
 
     </article> <!-- .hentry -->
 

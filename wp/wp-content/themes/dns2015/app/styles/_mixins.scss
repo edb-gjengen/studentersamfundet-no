@@ -1,6 +1,6 @@
 /* Mixins */
-@mixin outlined() {
-    padding: .4em 0.4em;
+@mixin outlined($padding: rem-calc(6)) {
+    padding: $padding $padding $padding - rem-calc(1) $padding;
     border: 2px solid #ccc;
     &:hover, &:focus {
         color: white;

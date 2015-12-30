@@ -20,26 +20,90 @@
 
     article.page {
         @include card;
-        padding: rem-calc(16);
+    }
+    .entry-content {
+        font-family: $font-family-serif;
     }
 }
 
 /* Page: Program */
+.program {
+    &--filter-wrap {
+        @include grid-column($columns: 12);
+        @media #{$medium-up} {
+            @include grid-column($columns: 3);
+        }
+    }
+    &--list-wrap {
+        @include grid-column($columns: 12);
+        @media #{$medium-up} {
+            @include grid-column($columns: 9);
+        }
+    }
+    &--filter {
+        @include card;
+        padding: rem-calc(16);
+    }
+    &--list {
+        @include card;
+        padding: rem-calc(16);
+    }
+}
 .page-template-page-program {
-    section {
-        background-color: white;
-        padding: 20px;
-    }
-    .table {
-        width: 100%;
-        border: 0;
-    }
     .alt {
         background-color: transparent;
     }
-    .month td {
-        padding-top: 20px;
+    .month {
+        padding-top: rem-calc(16);
+        padding-bottom: rem-calc(4);
     }
+    ul, li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        line-height: 30px;
+    }
+    .event-row {
+        margin-bottom: 10px;
+    }
+    .event-datetime-daynum {
+        font-size: rem-calc(32);
+        display: inline-block;
+        width: rem-calc(44);
+        text-align: right;
+        margin-right: rem-calc(8);
+    }
+    .event-title {
+        font-size: rem-calc(30);
+        font-weight: 200;
+        font-family: $header-font-family;
+    }
+    .event-price {
+        @include outlined;
+    }
+    .event-venue {
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+    .event-type {
+        @include label();
+        a {
+            color: white;
+            &:hover {
+                color: rgba(white, 0.5);
+            }
+        }
+    }
+    .event-ticket {
+        @include button(rem-calc(8));
+        margin-bottom: 0;
+    }
+    .event-attributes {
+        margin-left: rem-calc(44+8+6)
+    }
+
 }
 
 
