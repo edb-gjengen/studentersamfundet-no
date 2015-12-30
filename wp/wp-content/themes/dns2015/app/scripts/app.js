@@ -30,6 +30,7 @@ function has3d() {
 }
 
 $(document).ready( function() {
+    /* Browser supports 3D transforms? */
     if(has3d()) {
         $('html').addClass('csstransforms3d');
     } else {
@@ -74,6 +75,13 @@ $(document).ready( function() {
             });
             $("#flickr_feed").html(html);
         });
+    }
+
+    /* If admin bar is present, hack in som suitable styles */
+    if( $('#wpadminbar').length ) {
+        // admin bar is 32px
+        $('.menu-toggle').css('top', '64px');
+        $('#main-menu').css('top', '32px');
     }
 
 });
