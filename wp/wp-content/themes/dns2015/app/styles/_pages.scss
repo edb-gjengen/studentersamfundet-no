@@ -38,17 +38,19 @@
     }
     &--list-wrap {
         @include grid-column($columns: 12);
-        //@media #{$medium-up} {
-        //    @include grid-column($columns: 9);
-        //}
+        @media #{$medium-up} {
+            @include grid-column($columns: 9);
+        }
     }
     &--filter {
         @include card;
         padding: rem-calc(16);
+        padding-top: rem-calc(10);
     }
     &--list {
         @include card;
         padding: rem-calc(16);
+        padding-top: rem-calc(10);
     }
 }
 .program--list {

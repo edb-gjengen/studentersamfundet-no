@@ -21,11 +21,6 @@ $args = array(
 ?>
 <?php get_header(); ?>
 <section id="content" role="main">
-    <!--<div class="program--filter-wrap">
-        <section class="program--filter">
-            TODO: Filters
-        </section>
-    </div>-->
     <div class="program--list-wrap">
     <section class="program--list">
         <h1 class="entry-title"><?php the_title(); ?></h1>
@@ -89,6 +84,12 @@ if ( $events->have_posts() ) :
 <?php endif; ?>
     </section><!-- .program--list -->
     </div><!-- .program--list-wrap -->
+    <div class="program--filter-wrap">
+        <section class="program--filter">
+            <a href="#">Free</a> / <a href="#">Need ticket</a><br>
+            TODO: event categories
+        </section>
+    </div>
 
 </section> <!-- #main_content -->
 
