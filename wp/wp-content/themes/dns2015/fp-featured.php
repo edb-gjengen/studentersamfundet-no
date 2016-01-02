@@ -24,7 +24,7 @@
                         <span class="event-venue"><?php echo $feat_post->neuf_events_venue; ?></span>
                     <?php endif; ?>
                 </div>
-                <?php if( $feat_post->type == 'event'): ?><div class="event-price"><?php echo ($price = neuf_format_price( $feat_post )) ? $price : "Gratis"; ?></div><?php endif; ?>
+                <?php if( $feat_post->type == 'event'): ?><div class="event-price"><?php echo neuf_format_price($feat_post); ?></div><?php endif; ?>
             </article>
         <?php endwhile; endif; ?>
     </div>

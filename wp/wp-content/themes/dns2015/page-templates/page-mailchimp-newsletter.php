@@ -146,7 +146,7 @@ $news = new WP_Query( "type=post&posts_per_page=$articles&ignore_sticky_posts=tr
 $previous_day = $current_day;
 /* set current day */
 $current_day = date_i18n( 'l' , $date);
-($price = neuf_format_price( $post )) ? : $price = '-';
+($price = neuf_format_price( $post )) !== _('Free') ? : $price = '-';
 $venue = $post->neuf_events_venue;
 $ticket = $post->neuf_events_ticket_url;
 $ticket = $ticket ? '<a href="'.$ticket.'" style="color:#FF9E29;text-decoration:none;">Kjøp billett</a>' : '';
@@ -205,7 +205,7 @@ $previous_day = $current_day;
 /* set current day */
 $current_day = ucfirst( date_i18n( 'l j. F' , $date) );
 $newday = $previous_day != $current_day;
-($price = neuf_format_price( $post )) ? : $price = '-';
+($price = neuf_format_price( $post )) !== _('Free') ? : $price = '-';
 $venue = $post->neuf_events_venue;
 $ticket = $post->neuf_events_ticket_url;
 $ticket = $ticket ? '<a href="'.$ticket.'" style="color:#FF9E29;text-decoration:none;">Kjøp billett</a>' : '';

@@ -30,46 +30,46 @@ add_action( 'init' , 'neuf_register_nav_menus' );
  * By doing this, we are able to use custom templates for posts, almost like for pages.
  */
 function neuf_register_theme_taxonomies() {
-	  // Add new taxonomy, NOT hierarchical (like tags)
-	$labels = array(
-		'name' => _x( 'Custom post templates', 'taxonomy general name' ),
-		'singular_name' => _x( 'Post template', 'taxonomy singular name' ),
-		'search_items' =>  __( '' ),
-		'popular_items' => __( 'Popular Templates' ),
-		'all_items' => __( 'All Post Templates' ),
-		'parent_item' => null,
-		'parent_item_colon' => null,
-		'edit_item' => __( 'Edit Post Template' ), 
-		'update_item' => __( 'Update Post Template' ),
-		'add_new_item' => __( 'Add New Post Template' ),
-		'new_item_name' => __( 'New Post Template' ),
-		'separate_items_with_commas' => __( 'Separate post templates with commas' ),
-		'add_or_remove_items' => __( 'Add or remove post templates' ),
-		'choose_from_most_used' => __( 'Choose from the most used post templates' ),
-		'menu_name' => __( 'Post Templates' ),
-	); 
+    // Add new taxonomy, NOT hierarchical (like tags)
+    $labels = array(
+        'name' => _x( 'Custom post templates', 'taxonomy general name' ),
+        'singular_name' => _x( 'Post template', 'taxonomy singular name' ),
+        'search_items' =>  __( '' ),
+        'popular_items' => __( 'Popular Templates' ),
+        'all_items' => __( 'All Post Templates' ),
+        'parent_item' => null,
+        'parent_item_colon' => null,
+        'edit_item' => __( 'Edit Post Template' ),
+        'update_item' => __( 'Update Post Template' ),
+        'add_new_item' => __( 'Add New Post Template' ),
+        'new_item_name' => __( 'New Post Template' ),
+        'separate_items_with_commas' => __( 'Separate post templates with commas' ),
+        'add_or_remove_items' => __( 'Add or remove post templates' ),
+        'choose_from_most_used' => __( 'Choose from the most used post templates' ),
+        'menu_name' => __( 'Post Templates' ),
+    );
 
-	register_taxonomy('post_template','post',array(
-		'hierarchical' => true,
-		'labels' => $labels,
-		'public' => false,
-		'show_ui' => true,
-		'show_in_nav_menus' => false,
-		'show_tagcloud' => true,
-		'update_count_callback' => '_update_post_term_count',
-		'query_var' => false,
-		//'rewrite' => array( 'slug' => 'writer' ),
-		'rewrite' => false,
-	));
+    register_taxonomy('post_template','post',array(
+        'hierarchical' => true,
+        'labels' => $labels,
+        'public' => false,
+        'show_ui' => true,
+        'show_in_nav_menus' => false,
+        'show_tagcloud' => true,
+        'update_count_callback' => '_update_post_term_count',
+        'query_var' => false,
+        //'rewrite' => array( 'slug' => 'writer' ),
+        'rewrite' => false,
+    ));
 }
 add_action( 'init' , 'neuf_register_theme_taxonomies' , 0 );
 
 /* Enqueue JavaScript */
 function neuf_enqueue_scripts() {
-	wp_deregister_script( 'jquery' );
-	wp_register_script('vendor', get_template_directory_uri() . '/dist/scripts/vendor.js');
-	wp_register_script('app', get_template_directory_uri() . '/dist/scripts/app.js', array('vendor'));
-	wp_enqueue_script( 'app' );
+    wp_deregister_script( 'jquery' );
+    wp_register_script('vendor', get_template_directory_uri() . '/dist/scripts/vendor.js');
+    wp_register_script('app', get_template_directory_uri() . '/dist/scripts/app.js', array('vendor'));
+    wp_enqueue_script( 'app' );
 }
 add_action( 'wp_enqueue_scripts' , 'neuf_enqueue_scripts' );
 
@@ -79,31 +79,31 @@ add_action( 'wp_enqueue_scripts' , 'neuf_enqueue_scripts' );
  * Denies uploads of images smaller (in pixels) than given width and height values.
  */
 function neuf_handle_upload_prefilter( $file ) {
-	/* Only check files with mime type image/* */
-	$is_not_image = strpos($file['type'], 'image/') !== 0;
-	if( $is_not_image ) {
-		return $file;
-	}
-	$errors = array();
-	$minimum = array( 'width' => 640, 'height' => 480);
+    /* Only check files with mime type image/* */
+    $is_not_image = strpos($file['type'], 'image/') !== 0;
+    if( $is_not_image ) {
+        return $file;
+    }
+    $errors = array();
+    $minimum = array( 'width' => 640, 'height' => 480);
 
-	$img = getimagesize( $file['tmp_name'] );
-	$width = $img[0];
-	$height = $img[1];
+    $img = getimagesize( $file['tmp_name'] );
+    $width = $img[0];
+    $height = $img[1];
 
 
-	if ( $width < $minimum['width'] ) {
-		$errors[] = "Minimum width is {$minimum['width']} px. Uploaded image width is $width px";
-	}
-	if ($height < $minimum['height']) {
-		$errors[] = "Minimum height is {$minimum['height']} px. Uploaded image height is $height px";
-	}
+    if ( $width < $minimum['width'] ) {
+        $errors[] = "Minimum width is {$minimum['width']} px. Uploaded image width is $width px";
+    }
+    if ($height < $minimum['height']) {
+        $errors[] = "Minimum height is {$minimum['height']} px. Uploaded image height is $height px";
+    }
 
-	if( count($errors) > 0 ) {
-		return array( "error" => "Image dimensions are too small: ".implode(", ", $errors).".");
-	}
+    if( count($errors) > 0 ) {
+        return array( "error" => "Image dimensions are too small: ".implode(", ", $errors).".");
+    }
 
-	return $file; 
+    return $file;
 }
 // Commenting out for testing purposes
 add_filter( 'wp_handle_upload_prefilter' , 'neuf_handle_upload_prefilter' );
@@ -116,33 +116,33 @@ add_filter( 'wp_handle_upload_prefilter' , 'neuf_handle_upload_prefilter' );
  * ii) a class 'alt' to every other post.
  */
 function neuf_post_class( $classes = '' ) {
-	global $post, $neuf_pagewide_post_count;
+    global $post, $neuf_pagewide_post_count;
 
-	if ( $classes )
-		$classes = explode( ' ' , $classes );
+    if ( $classes )
+        $classes = explode( ' ' , $classes );
 
-	$classes[] = 'p' . ++$neuf_pagewide_post_count;
+    $classes[] = 'p' . ++$neuf_pagewide_post_count;
 
-	if ( 0 == $neuf_pagewide_post_count % 2 )
-		$classes[] = 'alt';
+    if ( 0 == $neuf_pagewide_post_count % 2 )
+        $classes[] = 'alt';
 
-	// If this is an event
-	if ( 'event' == get_post_type() ) {
+    // If this is an event
+    if ( 'event' == get_post_type() ) {
 
-		// hCalendar, ref http://microformats.org/wiki/hcalendar
-		$classes[] = 'vevent';
+        // hCalendar, ref http://microformats.org/wiki/hcalendar
+        $classes[] = 'vevent';
 
-		// Add event-type-slug for all ancestors of all event_types
-		// (the event-types themselves are taken care of elsewhere, so skip the first level)
-		$event_array = get_the_terms( $post->ID , 'event_type' );
-		foreach ( $event_array as $event_type )
-			while ( $event_type = get_term_by( 'id' , $event_type->parent, 'event_type' ) )
-				$classes[] = 'event-type-' . $event_type->slug ; 
-	}
+        // Add event-type-slug for all ancestors of all event_types
+        // (the event-types themselves are taken care of elsewhere, so skip the first level)
+        $event_array = get_the_terms( $post->ID , 'event_type' );
+        foreach ( $event_array as $event_type )
+            while ( $event_type = get_term_by( 'id' , $event_type->parent, 'event_type' ) )
+                $classes[] = 'event-type-' . $event_type->slug ;
+    }
 
-	$classes =  join( ' ' , $classes );
+    $classes =  join( ' ' , $classes );
 
-	post_class( $classes );
+    post_class( $classes );
 }
 /**
  * Adds CSS class for event titles
@@ -155,18 +155,22 @@ function neuf_title_class() {
 
 /* Formats the regular and member price nicely */
 function neuf_format_price( $neuf_event ) {
-	$price_regular = get_post_meta( $neuf_event->ID , '_neuf_events_price_regular' , true );
-	$price_member = get_post_meta( $neuf_event->ID , '_neuf_events_price_member' , true );
+    $price_regular = get_post_meta( $neuf_event->ID , '_neuf_events_price_regular' , true );
+    $price_member = get_post_meta( $neuf_event->ID , '_neuf_events_price_member' , true );
     $cc = "";
 
-	if ( $price_regular ) {
+    if ( $price_regular ) {
         $cc .= $price_regular;
     }
     if ( $price_member ) {
         $cc .= " / $price_member";
     }
 
-	return $cc;
+    if($cc == '') {
+        return _('Free');
+    }
+
+    return $cc;
 }
 
 /**
@@ -177,24 +181,24 @@ function neuf_format_price( $neuf_event ) {
  * ii) For event_type taxonomy archive pages, adds 'event-type-slug'
  */
 function neuf_body_class( $classes = '' ) {
-	global $post;
+    global $post;
 
-	$classes = array( $classes );
+    $classes = array( $classes );
 
-	if ( is_page() )
-		$classes[] = 'page-' . $post->post_name;
+    if ( is_page() )
+        $classes[] = 'page-' . $post->post_name;
 
-	// If this is an event_type taxonomy archive page
-	if ( is_tax( 'event_type' ) ) {
-		$event_type = get_term_by( 'slug' , get_query_var('event_type') , 'event_type' );
-		$classes[] = 'event-type-' . $event_type->slug;
-		while ( $event_type = get_term_by( 'id' , $event_type->parent, 'event_type' ) )
-			$classes[] = 'event-type-' . $event_type->slug ; 
-	}
+    // If this is an event_type taxonomy archive page
+    if ( is_tax( 'event_type' ) ) {
+        $event_type = get_term_by( 'slug' , get_query_var('event_type') , 'event_type' );
+        $classes[] = 'event-type-' . $event_type->slug;
+        while ( $event_type = get_term_by( 'id' , $event_type->parent, 'event_type' ) )
+            $classes[] = 'event-type-' . $event_type->slug ;
+    }
 
-	$classes = implode( $classes, ' ' );
+    $classes = implode( $classes, ' ' );
 
-	body_class( $classes );
+    body_class( $classes );
 }
 
 
@@ -204,97 +208,97 @@ function neuf_body_class( $classes = '' ) {
  * Most of this borrowed from the Thematic theme framework.
  */
 function neuf_doctitle() {
-	$site_name = get_bloginfo( 'name' );
-	$separator = '|';
+    $site_name = get_bloginfo( 'name' );
+    $separator = '|';
 
-	if ( is_single() ) {
-		$content = single_post_title( '' , false );
+    if ( is_single() ) {
+        $content = single_post_title( '' , false );
 
-	} elseif ( is_home() || is_front_page() ) { 
-		$content = get_bloginfo( 'description' );
+    } elseif ( is_home() || is_front_page() ) {
+        $content = get_bloginfo( 'description' );
 
-	} elseif ( is_page() ) { 
-		$content = single_post_title( '' , false ); 
+    } elseif ( is_page() ) {
+        $content = single_post_title( '' , false );
 
-	} elseif ( is_search() ) { 
-		$content = __( 'S&oslashkeresultater for', 'neuf-web' ); 
-		$content .= ' ' . esc_html(stripslashes(get_search_query()));
+    } elseif ( is_search() ) {
+        $content = __( 'S&oslashkeresultater for', 'neuf-web' );
+        $content .= ' ' . esc_html(stripslashes(get_search_query()));
 
-	} elseif ( is_category() ) {
-		$content = __( 'Arkiv for kategorien' , 'neuf-web' );
-		$content .= ' ' . single_cat_title( "" , false );
+    } elseif ( is_category() ) {
+        $content = __( 'Arkiv for kategorien' , 'neuf-web' );
+        $content .= ' ' . single_cat_title( "" , false );
 
-	} elseif ( is_tag() ) { 
-		$content = __( 'Arkiv for stikkordet' , 'neuf-web' );
-		$content .= ' ' . single_tag_title( '' , false );
+    } elseif ( is_tag() ) {
+        $content = __( 'Arkiv for stikkordet' , 'neuf-web' );
+        $content .= ' ' . single_tag_title( '' , false );
 
-	} elseif ( is_404() ) { 
-		$content = __( 'Ikke funnet', 'neuf-web' ); 
+    } elseif ( is_404() ) {
+        $content = __( 'Ikke funnet', 'neuf-web' );
 
-	} else { 
-		$content = get_bloginfo( 'description' );
-	}
+    } else {
+        $content = get_bloginfo( 'description' );
+    }
 
-	if ( get_query_var( 'paged' ) ) {
-		$content .= ' ' .$separator. ' ';
-		$content .= 'side';
-		$content .= ' ';
-		$content .= get_query_var('paged');
-	}
+    if ( get_query_var( 'paged' ) ) {
+        $content .= ' ' .$separator. ' ';
+        $content .= 'side';
+        $content .= ' ';
+        $content .= get_query_var('paged');
+    }
 
-	if($content) {
-		if ( is_home() || is_front_page() ) {
-			$elements = array(
-				'site_name' => $site_name,
-				'separator' => $separator,
-				'content'   => $content
-			);
-		} else if ( is_single() && 'event' == get_post_type() ) {
-			$elements = array(
-				'content'   => $content,
-				'separator' => 'på',
-				'site_name' => 'Studentersamfundet'
-			);
-		} else {
-			$elements = array(
-				'content'   => $content,
-				'separator' => $separator,
-				'site_name' => $site_name
-			);
-		}  
-	} else {
-		$elements = array(
-			'site_name' => $site_name
-		);
-	}
+    if($content) {
+        if ( is_home() || is_front_page() ) {
+            $elements = array(
+                'site_name' => $site_name,
+                'separator' => $separator,
+                'content'   => $content
+            );
+        } else if ( is_single() && 'event' == get_post_type() ) {
+            $elements = array(
+                'content'   => $content,
+                'separator' => 'på',
+                'site_name' => 'Studentersamfundet'
+            );
+        } else {
+            $elements = array(
+                'content'   => $content,
+                'separator' => $separator,
+                'site_name' => $site_name
+            );
+        }
+    } else {
+        $elements = array(
+            'site_name' => $site_name
+        );
+    }
 
-	$doctitle = implode(' ', $elements);
+    $doctitle = implode(' ', $elements);
 
-	$doctitle = "\t" . "<title>" . $doctitle . "</title>" . "\n\n";
+    $doctitle = "\t" . "<title>" . $doctitle . "</title>" . "\n\n";
 
-	echo $doctitle;
+    echo $doctitle;
 } // end neuf_doctitle
 
 /**
  * Display social sharing buttons.
  */
 function display_social_sharing_buttons() {
-	global $post;
-?>
-		<div id="social-sharing">
-			<div class="share-twitter">
-				<a href="https://twitter.com/share" class="twitter-share-button" data-lang="no">Tweet</a>
-				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-			</div> <!-- .share-twitter -->
-			<div class="share-facebook">
-				<div class="fb-like" data-send="true" data-layout="button_count" data-show-faces="true" data-action="recommend"></div>
-			</div> <!-- .share-facebook -->
-<?php if ( 'event' == get_post_type() ) { ?>
-			<div class="gcal">
-				<i class="icon-calendar"></i> <a href="<?php echo $post->neuf_events_gcal_url; ?>">Legg til i Google kalender</a>
-			</div> <!-- .gcal -->
-<?php } ?>
-		</div> <!-- #social-sharing -->
+    global $post;
+    ?>
+    <div id="social-sharing">
+        <div class="share-twitter">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-lang="no">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div> <!-- .share-twitter -->
+        <div class="share-facebook">
+            <div class="fb-like" data-send="true" data-layout="button_count" data-show-faces="true" data-action="recommend"></div>
+        </div> <!-- .share-facebook -->
+        <?php if ( 'event' == get_post_type() ) { ?>
+            <div class="gcal">
+                <i class="icon-calendar"></i> <a href="<?php echo $post->neuf_events_gcal_url; ?>">Legg til i Google kalender</a>
+            </div> <!-- .gcal -->
+        <?php } ?>
+    </div> <!-- #social-sharing -->
 <?php }
 
 /**
@@ -305,16 +309,16 @@ function display_social_sharing_buttons() {
  * @author misund
  */
 function neuf_get_attachment_count() {
-	global $post;
+    global $post;
 
-	$attachments = get_children( array(
-		'post_parent' => $post->ID,
-		'post_type'   => 'any',
-		'numberposts' => -1,
-		'post_status' => 'any'
-	) );
+    $attachments = get_children( array(
+        'post_parent' => $post->ID,
+        'post_type'   => 'any',
+        'numberposts' => -1,
+        'post_status' => 'any'
+    ) );
 
-	return count( $attachments );
+    return count( $attachments );
 }
 
 /**
@@ -327,27 +331,9 @@ function neuf_get_attachment_count() {
  * @author misund
  */
 function neuf_maybe_display_gallery() {
-	global $post;
-	if ( 2 < neuf_get_attachment_count() && get_post_meta($post->ID, "no_auto_gallery", true) === "" )
-		echo do_shortcode( '[gallery link="file" size="four-column"]' );
-}
-
-function neuf_event_format_date($timestamp) {
-	return date_i18n('d/n', intval($timestamp));
-}
-
-/**
- * Takes 2 date strings in $format.
- * 
- * Returns the difference in days * 2, for use in
- * a grid based layout on the program page.
- */
-function neuf_event_day_gap_size($current_day,$previous_day) {
-	$format = '%Y-%m-%d';
-	$prev = new DateTime($previous_day);
-	$cur = new DateTime($current_day);
-	$diff = $prev->diff($cur)->d;
-	return ($diff - 1) * 2;
+    global $post;
+    if ( 2 < neuf_get_attachment_count() && get_post_meta($post->ID, "no_auto_gallery", true) === "" )
+        echo do_shortcode( '[gallery link="file" size="four-column"]' );
 }
 
 /**
@@ -355,21 +341,21 @@ function neuf_event_day_gap_size($current_day,$previous_day) {
  * If $text is truncated, then "[..]" is appended.
  */
 function trim_excerpt($text, $length) {
-	$org_length = strlen($text);
-	$text = explode(" ", $text); // word boundary
-	$text = array_slice($text, 0, $length);
-	$text = implode(" ", $text);
-	$shorter = $org_length != strlen($text) ? " [...]" : "";
-	return $text . $shorter;
+    $org_length = strlen($text);
+    $text = explode(" ", $text); // word boundary
+    $text = array_slice($text, 0, $length);
+    $text = implode(" ", $text);
+    $shorter = $org_length != strlen($text) ? " [...]" : "";
+    return $text . $shorter;
 }
 
 /**
  * Replaces the matching $pattern with $replacement in the string $subject.
  */
 function linkify($subject, $pattern, $link) {
-	$replacement = '<a href="'.$link.'">Les mer</a>';
-	$output = preg_replace($pattern, $replacement, $subject);
-	return $output;
+    $replacement = '<a href="'.$link.'">Les mer</a>';
+    $output = preg_replace($pattern, $replacement, $subject);
+    return $output;
 }
 
 /**
@@ -378,73 +364,73 @@ function linkify($subject, $pattern, $link) {
  * Original author: Ian Stewart (theme Thematic).
  */
 function neuf_page_title() {
-	
-	global $post;
-	
-	$content = '';
-	if (is_attachment()) {
-			$content .= '<h1 class="page-title"><a href="';
-			$content .= apply_filters('the_permalink',get_permalink($post->post_parent));
-			$content .= '" rev="attachment"><span class="meta-nav">Tilbake til </span>';
-			$content .= get_the_title($post->post_parent);
-			$content .= '</a></h1>';
-	} elseif (is_author()) {
-			$content .= '<h1 class="page-title author">';
-			$author = get_the_author_meta( 'display_name' );
-			$content .= __('Innhold skrevet av', 'neuf');
-			$content .= ' <span>';
-			$content .= $author;
-			$content .= '</span></h1>';
-	} elseif (is_category()) {
-			$content .= '<h1 class="page-title">';
-			$content .= __('Innhold i kategorien', 'neuf');
-			$content .= ' <span>';
-			$content .= single_cat_title('', FALSE);
-			$content .= '</span></h1>' . "\n";
-			$content .= '<div class="archive-meta">';
-			if ( !(''== category_description()) ) : $content .= apply_filters('archive_meta', category_description()); endif;
-			$content .= '</div>';
-	} elseif (is_search()) {
-			$content .= '<h1 class="page-title">';
-			$content .= __('S&oslash;keresultater for:', 'neuf');
-			$content .= ' <span id="search-terms">';
-			$content .= esc_html(stripslashes($_GET['s']));
-			$content .= '</span></h1>';
-	} elseif (is_tag()) {
-			$content .= '<h1 class="page-title">';
-			$content .= __('Innhold merket med', 'neuf');
-			$content .= ' <span>';
-			$content .= __(neuf_tag_query());
-			$content .= '</span></h1>';
-	} elseif (is_tax()) {
-		    global $taxonomy;
-			$content .= '<h1 class="page-title">';
-			//$tax = get_taxonomy($taxonomy);
-			//$content .= $tax->labels->name . ' ';
-			//$content .= __('Arkiv:', 'neuf');
-			//$content .= ' <span>';
-			$content .= neuf_get_term_name();
-			//$content .= '</span>';
-			$content .= '</h1>';
-	}	elseif (is_day()) {
-			$content .= '<h1 class="page-title">';
-			$content .= sprintf(__('Innhold fra dagen <span>%s</span>', 'neuf'), get_the_time(get_option('date_format')));
-			$content .= '</h1>';
-	} elseif (is_month()) {
-			$content .= '<h1 class="page-title">';
-			$content .= sprintf(__('Innhold fra m&aring;neden <span>%s</span>', 'neuf'), get_the_time('F Y'));
-			$content .= '</h1>';
-	} elseif (is_year()) {
-			$content .= '<h1 class="page-title">';
-			$content .= sprintf(__('Innhold fra &aring;ret <span>%s</span>', 'neuf'), get_the_time('Y'));
-			$content .= '</h1>';
-	} elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {
-			$content .= '<h1 class="page-title">';
-			$content .= __('Arkiv', 'neuf');
-			$content .= '</h1>';
-	}
-	$content .= "\n";
-	echo( $content );
+
+    global $post;
+
+    $content = '';
+    if (is_attachment()) {
+        $content .= '<h1 class="page-title"><a href="';
+        $content .= apply_filters('the_permalink',get_permalink($post->post_parent));
+        $content .= '" rev="attachment"><span class="meta-nav">Tilbake til </span>';
+        $content .= get_the_title($post->post_parent);
+        $content .= '</a></h1>';
+    } elseif (is_author()) {
+        $content .= '<h1 class="page-title author">';
+        $author = get_the_author_meta( 'display_name' );
+        $content .= __('Innhold skrevet av', 'neuf');
+        $content .= ' <span>';
+        $content .= $author;
+        $content .= '</span></h1>';
+    } elseif (is_category()) {
+        $content .= '<h1 class="page-title">';
+        $content .= __('Innhold i kategorien', 'neuf');
+        $content .= ' <span>';
+        $content .= single_cat_title('', FALSE);
+        $content .= '</span></h1>' . "\n";
+        $content .= '<div class="archive-meta">';
+        if ( !(''== category_description()) ) : $content .= apply_filters('archive_meta', category_description()); endif;
+        $content .= '</div>';
+    } elseif (is_search()) {
+        $content .= '<h1 class="page-title">';
+        $content .= __('S&oslash;keresultater for:', 'neuf');
+        $content .= ' <span id="search-terms">';
+        $content .= esc_html(stripslashes($_GET['s']));
+        $content .= '</span></h1>';
+    } elseif (is_tag()) {
+        $content .= '<h1 class="page-title">';
+        $content .= __('Innhold merket med', 'neuf');
+        $content .= ' <span>';
+        $content .= __(neuf_tag_query());
+        $content .= '</span></h1>';
+    } elseif (is_tax()) {
+        global $taxonomy;
+        $content .= '<h1 class="page-title">';
+        //$tax = get_taxonomy($taxonomy);
+        //$content .= $tax->labels->name . ' ';
+        //$content .= __('Arkiv:', 'neuf');
+        //$content .= ' <span>';
+        $content .= neuf_get_term_name();
+        //$content .= '</span>';
+        $content .= '</h1>';
+    }	elseif (is_day()) {
+        $content .= '<h1 class="page-title">';
+        $content .= sprintf(__('Innhold fra dagen <span>%s</span>', 'neuf'), get_the_time(get_option('date_format')));
+        $content .= '</h1>';
+    } elseif (is_month()) {
+        $content .= '<h1 class="page-title">';
+        $content .= sprintf(__('Innhold fra m&aring;neden <span>%s</span>', 'neuf'), get_the_time('F Y'));
+        $content .= '</h1>';
+    } elseif (is_year()) {
+        $content .= '<h1 class="page-title">';
+        $content .= sprintf(__('Innhold fra &aring;ret <span>%s</span>', 'neuf'), get_the_time('Y'));
+        $content .= '</h1>';
+    } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {
+        $content .= '<h1 class="page-title">';
+        $content .= __('Arkiv', 'neuf');
+        $content .= '</h1>';
+    }
+    $content .= "\n";
+    echo( $content );
 }
 
 /**
@@ -454,27 +440,27 @@ function neuf_page_title() {
  */
 
 function neuf_tag_query() {
-	$nice_tag_query = get_query_var('tag'); // tags in current query
-	$nice_tag_query = str_replace(' ', '+', $nice_tag_query); // get_query_var returns ' ' for AND, replace by +
-	$tag_slugs = preg_split('%[,+]%', $nice_tag_query, -1, PREG_SPLIT_NO_EMPTY); // create array of tag slugs
-	$tag_ops = preg_split('%[^,+]*%', $nice_tag_query, -1, PREG_SPLIT_NO_EMPTY); // create array of operators
+    $nice_tag_query = get_query_var('tag'); // tags in current query
+    $nice_tag_query = str_replace(' ', '+', $nice_tag_query); // get_query_var returns ' ' for AND, replace by +
+    $tag_slugs = preg_split('%[,+]%', $nice_tag_query, -1, PREG_SPLIT_NO_EMPTY); // create array of tag slugs
+    $tag_ops = preg_split('%[^,+]*%', $nice_tag_query, -1, PREG_SPLIT_NO_EMPTY); // create array of operators
 
-	$tag_ops_counter = 0;
-	$nice_tag_query = '';
+    $tag_ops_counter = 0;
+    $nice_tag_query = '';
 
-	foreach ($tag_slugs as $tag_slug) { 
-		$tag = get_term_by('slug', $tag_slug ,'post_tag');
-		// prettify tag operator, if any
-		if ($tag_ops[$tag_ops_counter] == ',') {
-			$tag_ops[$tag_ops_counter] = ', ';
-		} elseif ($tag_ops[$tag_ops_counter] == '+') {
-			$tag_ops[$tag_ops_counter] = ' + ';
-		}
-		// concatenate display name and prettified operators
-		$nice_tag_query = $nice_tag_query.$tag->name.$tag_ops[$tag_ops_counter];
-		$tag_ops_counter += 1;
-	}
-	 return $nice_tag_query;
+    foreach ($tag_slugs as $tag_slug) {
+        $tag = get_term_by('slug', $tag_slug ,'post_tag');
+        // prettify tag operator, if any
+        if ($tag_ops[$tag_ops_counter] == ',') {
+            $tag_ops[$tag_ops_counter] = ', ';
+        } elseif ($tag_ops[$tag_ops_counter] == '+') {
+            $tag_ops[$tag_ops_counter] = ' + ';
+        }
+        // concatenate display name and prettified operators
+        $nice_tag_query = $nice_tag_query.$tag->name.$tag_ops[$tag_ops_counter];
+        $tag_ops_counter += 1;
+    }
+    return $nice_tag_query;
 }
 
 /**
@@ -483,8 +469,8 @@ function neuf_tag_query() {
  * Original author: Justin Tadlock (theme Hybrid).
  */
 function neuf_get_term_name() {
-	$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); 
-	return $term->name;
+    $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+    return $term->name;
 }
 
 /**
@@ -495,51 +481,51 @@ function neuf_get_term_name() {
  * @author misund
  */
 function neuf_endless_scrolling() {
-	// Set up future posts
-	$meta_query = array(
-		'key'     => '_neuf_events_starttime',
-		'value'   => date( 'U' , strtotime( '-8 hours' ) ), 
-		'compare' => '>',
-		'type'    => 'numeric'
-	);
+    // Set up future posts
+    $meta_query = array(
+        'key'     => '_neuf_events_starttime',
+        'value'   => date( 'U' , strtotime( '-8 hours' ) ),
+        'compare' => '>',
+        'type'    => 'numeric'
+    );
 
-	$tax_query = array (
-		'taxonomy' => 'event_type',
-		'field' => 'slug',
-		'terms' => $_POST['term']
-	);
+    $tax_query = array (
+        'taxonomy' => 'event_type',
+        'field' => 'slug',
+        'terms' => $_POST['term']
+    );
 
-	$args = array(
-		'post_type'      => 'event',
-		'meta_query'     => array( $meta_query ),
-		'tax_query'      => array( $tax_query ),
-		'posts_per_page' => get_option('posts_per_page'),
-		'orderby'        => 'meta_value_num',
-		'meta_key'       => '_neuf_events_starttime',
-		'order'          => 'ASC',
-		'paged'          => $_POST['page']
-	);
+    $args = array(
+        'post_type'      => 'event',
+        'meta_query'     => array( $meta_query ),
+        'tax_query'      => array( $tax_query ),
+        'posts_per_page' => get_option('posts_per_page'),
+        'orderby'        => 'meta_value_num',
+        'meta_key'       => '_neuf_events_starttime',
+        'order'          => 'ASC',
+        'paged'          => $_POST['page']
+    );
 
-	$future = new WP_Query( $args );
+    $future = new WP_Query( $args );
 
-	if ( 'past' == $_POST['time_scope'] ) {
-		$meta_query['compare'] = '<=';
-		$args = array(
-			'post_type'      => 'event',
-			'meta_query'     => array( $meta_query ),
-			'tax_query'      => array( $tax_query ),
-			'posts_per_page' => 10,
-			'orderby'        => 'meta_value_num',
-			'meta_key'       => '_neuf_events_starttime',
-			'order'          => 'DESC',
-			'paged'          => $_POST['page']
-		);
-	}
+    if ( 'past' == $_POST['time_scope'] ) {
+        $meta_query['compare'] = '<=';
+        $args = array(
+            'post_type'      => 'event',
+            'meta_query'     => array( $meta_query ),
+            'tax_query'      => array( $tax_query ),
+            'posts_per_page' => 10,
+            'orderby'        => 'meta_value_num',
+            'meta_key'       => '_neuf_events_starttime',
+            'order'          => 'DESC',
+            'paged'          => $_POST['page']
+        );
+    }
 
-	query_posts( $args );
-	get_template_part( $_POST['template'] );
+    query_posts( $args );
+    get_template_part( $_POST['template'] );
 
-	exit;
+    exit;
 }
 add_action( 'wp_ajax_infinite_scroll' , 'neuf_endless_scrolling' );
 add_action( 'wp_ajax_nopriv_infinite_scroll' , 'neuf_endless_scrolling' );
@@ -550,12 +536,12 @@ add_action( 'wp_ajax_nopriv_infinite_scroll' , 'neuf_endless_scrolling' );
 if (class_exists('WP_Customize_Control')) {
     class Customize_Textarea_Control extends WP_Customize_Control {
         public $type = 'textarea';
-     
+
         public function render_content() {
             ?>
             <label>
-            <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-            <textarea rows="5" style="width:100%;" <?php $this->link(); ?>><?php echo esc_textarea( $this->value() ); ?></textarea>
+                <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+                <textarea rows="5" style="width:100%;" <?php $this->link(); ?>><?php echo esc_textarea( $this->value() ); ?></textarea>
             </label>
             <?php
         }
@@ -563,7 +549,7 @@ if (class_exists('WP_Customize_Control')) {
 }
 
 function neuf_customize_register( $wp_customize ) {
-   //All our sections, settings, and controls will be added here
+    //All our sections, settings, and controls will be added here
 
     /* Footer Section */
     $wp_customize->add_section( 'neuf_footer_section' , array(
@@ -591,9 +577,9 @@ remove_action( 'wp_head', 'feed_links_extra', 3 );
 
 
 function get_event_types($post) {
-	$event_array = get_the_terms( $post->ID , 'event_type' );
-	$post->event_types = array();
-	foreach ( $event_array as $event_type ) {
+    $event_array = get_the_terms( $post->ID , 'event_type' );
+    $post->event_types = array();
+    foreach ( $event_array as $event_type ) {
         $post->event_types[] = '<a href="' . get_term_link( $event_type->slug , 'event_type') . '">' . $event_type->name . '</a>';
     }
     return implode(', ' , $post->event_types );
@@ -612,5 +598,30 @@ function neuf_events_sticky_add_meta_box() {
         return;
     add_meta_box( 'neuf_events_sticky_meta', __( 'Sticky' ), 'neuf_events_sticky_meta', 'event', 'side', 'high' );
 }
+function neuf_get_site_schema() {
+    $schema_data = array(
+        "name" =>  get_bloginfo('name'),
+    );
+    return json_encode($schema_data, JSON_PRETTY_PRINT);
+}
 
+function neuf_event_get_schema($post) {
+    $location = array(
+        "@type" => "Place",
+        "sameAs" => get_bloginfo('url'),
+        "name" =>  get_bloginfo('name'),
+        "address" => "Chateau Neuf, Slemdalsveien 15, 0369 Oslo"
+    );
+    $date_format = 'Y-m-d\TH:i';  // "2013-09-14T21=>30" // FIXME: duration
+    $start_date = date_i18n($date_format, $post->neuf_events_starttime);
+    $schema_data = array(
+        "@context"=> "http://schema.org",
+        "@type"=> "Event",
+        "name"=> get_the_title($post),
+        "startDate" => $start_date,
+        "url" => get_permalink($post),
+        "location" => $location
+    );
+    return json_encode($schema_data, JSON_PRETTY_PRINT);
+}
 ?>

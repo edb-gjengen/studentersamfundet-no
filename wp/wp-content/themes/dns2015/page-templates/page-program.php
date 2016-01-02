@@ -44,40 +44,27 @@ if ( $events->have_posts() ) :
         <?php while ( $events->have_posts() ) : $events->the_post();
             $timestamp = $post->neuf_events_starttime;
 
+            /* Month */
             $previous_month = $current_month;
             $current_month = date_i18n( 'F' , $timestamp);
             $newmonth = $previous_month != $current_month;
-//            $timestamp_format = '<\b>j</\b>. l';
+
             $dt_daynum = date_i18n('j', $timestamp);
             $dt_day = date_i18n('l', $timestamp);
             $dt_iso8601 = date_i18n('c', $timestamp);
             $time = date_i18n('h:m', $timestamp);
-            ($price = neuf_format_price( $post )) ? : $price = 'Gratis';
-            $price_class =
+
+            $price = neuf_format_price($post);
             $venue = $post->neuf_events_venue;
             $ticket = $post->neuf_events_ticket_url;
-            /* event type class */
-            $event_array = get_the_terms( $post->ID , 'event_type' );
             $event_types = get_event_types($post);
 
-            /* set current day */
-            $previous_day = $current_day;
-            $current_day = date_i18n( 'Y-m-d' , $timestamp);
-            $newday = $previous_day != $current_day;
 
             /* everything is everything is not everything if everything is nothing */
             $alt = $alt == " alt" ? "" : " alt"; ?>
 
             <?php if($newmonth): ?>
                 <h3 class="month"><?php echo ucfirst($current_month); ?></h3>
-                <!--</tr>
-                      <th class="date">Dato</th>
-                      <th>Arrangement</th>
-                      <th>CC</th>
-                      <th>Type</th>
-                      <th>Sted</th>
-                      <th>Billett</th>
-                </tr>-->
             <?php endif; ?>
             <li class="event-row <?php echo $alt; ?>">
                 <div>
@@ -94,6 +81,9 @@ if ( $events->have_posts() ) :
                     <?php endif; ?>
                 </div>
             </li>
+            <script type="application/ld+json">
+                <?php echo neuf_event_get_schema($post); ?>
+            </script>
         <?php endwhile; ?>
     </ul>
 <?php endif; ?>

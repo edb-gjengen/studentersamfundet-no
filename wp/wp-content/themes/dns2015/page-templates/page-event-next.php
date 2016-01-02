@@ -161,7 +161,7 @@ h1 {
 			<p id="time"><?php echo( ucfirst( date_i18n( 'l \k\l G.i' , $post->neuf_events_starttime) ) ); ?></p>
 		</div>
 		<div id="price">
-			<p><?php echo ($price = neuf_format_price( $post )) ? $price : "Gratis"; ?></p>
+			<p><?php echo neuf_format_price($post); ?></p>
 		</div>
 	</div> <!-- #event -->
 

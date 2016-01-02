@@ -3,7 +3,7 @@
 
 		<div>
 			<div class="event-type category"><?php echo get_event_types($post); ?></div>
-			<?php get_template_part( 'eventmeta' , 'single' ); ?>
+			<?php get_template_part( 'event-meta' ); ?>
 
 			<?php if( has_post_thumbnail() ): ?>
 				<?php the_post_thumbnail( 'large' , array( 'style' => 'display:block;margin:auto;' ) ); ?>
@@ -21,6 +21,9 @@
 
 		<?php neuf_maybe_display_gallery(); ?>
 
+		<script type="application/ld+json">
+			<?php echo neuf_event_get_schema($post); ?>
+		</script>
 	</article> <!-- .post -->
 
 <?php endwhile; endif; ?>
