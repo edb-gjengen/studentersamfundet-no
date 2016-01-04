@@ -4,8 +4,7 @@
 .entry-title a {
     font-weight: 200;
 }
-.page h1.entry-title,
-.post h1.entry-title {
+.page h1.entry-title {
     font-weight: 800;
 }
 article.page,
@@ -18,7 +17,6 @@ article.page,
         @include card;
     }
     .entry-title {
-        //margin-bottom: 20px;
         padding: 0 rem-calc(16);
     }
     .entry-meta {
@@ -59,8 +57,7 @@ article.page,
     }
 }
 .single-post {
-    h1.entry-title {
-        font-weight: 200;
+    .entry-title {
         margin-bottom: 0;
     }
     .entry-meta {
@@ -85,7 +82,10 @@ article.page,
 /* Event (single) */
 .event {
     &--content {
-        @include grid-column($columns: 7);
+        @include grid-column($columns: 12);
+        @media #{$large-up} {
+            @include grid-column($columns: 7);
+        }
 
         .entry-title {
             margin-bottom: 4px;
@@ -93,12 +93,17 @@ article.page,
         }
     }
     &--sidebar {
-        @include grid-column($columns: 5);
+        @include grid-column($columns: 12);
         @include card;
+
+        @media #{$large-up} {
+            @include grid-column($columns: 5);
+        }
 
         h3 {
             font-size: rem-calc(18);
         }
+
         #social-sharing {
             padding-bottom: 0;
         }
