@@ -83,6 +83,8 @@ article.page,
 .event {
     &--content {
         @include grid-column($columns: 12);
+        margin-bottom: rem-calc(20);
+
         @media #{$large-up} {
             @include grid-column($columns: 7);
         }
@@ -91,10 +93,15 @@ article.page,
             margin-bottom: 4px;
             line-height: 1;
         }
+        .event--meta--type {
+            margin-left: rem-calc(16);
+        }
     }
     &--sidebar {
         @include grid-column($columns: 12);
-        @include card;
+        .inner {
+            @include card;
+        }
 
         @media #{$large-up} {
             @include grid-column($columns: 5);
@@ -112,7 +119,6 @@ article.page,
         padding: rem-calc(16);
         &--type {
             @include label;
-            margin-left: rem-calc(16px);
 
             a {
                 color: white;
@@ -141,6 +147,7 @@ article.page,
             display: inline-block;
             padding: 7px 8px 4px 8px;
             text-align: center;
+            margin-left: 4px;
             .time-inner {
                 font-size: rem-calc(28);
             }
@@ -158,19 +165,29 @@ article.page,
             margin-left: 4px;
             vertical-align: bottom;
             svg {
-                width: 40px;
-                height: 40px;
+                width: 30px;
+                height: 30px;
             }
             path {
                 fill: #3b5998;
             }
         }
-        &--venue svg {
-            width: 16px;
-            height: 16px;
+        &--venue {
+            margin-left: 4px;
+            svg {
+                width: 16px;
+                height: 16px;
+            }
         }
         &--ticket {
             @include button(rem-calc(8));
+            margin-left: 4px;
+            @media #{$small-only} {
+                display: block;
+                margin: 10px 0;
+                padding: 16px;
+            }
+
             color: white;
             &:link {
                 color: white;

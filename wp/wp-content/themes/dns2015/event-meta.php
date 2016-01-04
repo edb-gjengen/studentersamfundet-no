@@ -22,13 +22,12 @@ $datetime = date_i18n('Y-m-d\TH:i:s', $post->neuf_events_starttime);
         <span class="time-inner"><?php echo $time; ?></span>
     </span>
     <span class="event--meta--venue"><?php require(get_stylesheet_directory().'/dist/images/icons/location.svg'); ?><?php echo $post->neuf_events_venue; ?></span>
-
+    <?php if ( $post->neuf_events_fb_url ): ?>
+        <a href="<?php echo $post->neuf_events_fb_url; ?>" title="Arrangementet på Facebook" class="event--meta--facebook"><?php require(get_stylesheet_directory()."/dist/images/icons/facebook.svg");?></a>
+    <?php endif; ?>
     <?php if($ticket): ?>
         <a href="<?php echo $ticket; ?>" class="event--meta--ticket" title="<?php _e("Ticket"); ?>"><?php echo _('Buy ticket').' ('.$price.')'; ?></a>
     <?php else: ?>
         <span class="event--meta--price" title="<?php _e("Price"); ?>"><?php echo $price ?></span>
-    <?php endif; ?>
-    <?php if ( $post->neuf_events_fb_url ): ?>
-        <a href="<?php echo $post->neuf_events_fb_url; ?>" title="Arrangementet på Facebook" class="event--meta--facebook"><?php require(get_stylesheet_directory()."/dist/images/icons/facebook.svg");?></a>
     <?php endif; ?>
 </section> <!-- .entry--meta -->
