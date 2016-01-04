@@ -192,11 +192,8 @@
             }
             margin-bottom: -5px;  // FIXME: hack
         }
-        .event-types {
-            &:after {
-                padding-left: 4px;
-                content: '//';
-            }
+        .event--meta--type {
+            margin-left: 0;
         }
         .event-price {
             @include outlined;

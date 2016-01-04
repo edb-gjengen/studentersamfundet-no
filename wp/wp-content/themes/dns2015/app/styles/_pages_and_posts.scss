@@ -1,0 +1,315 @@
+
+/* Posts */
+.entry-title,
+.entry-title a {
+    font-weight: 200;
+}
+.page h1.entry-title,
+.post h1.entry-title {
+    font-weight: 800;
+}
+article.page,
+.single-post ,
+.single-association,
+.single-event {
+    article {
+        margin: 0 auto;
+        max-width: rem-calc(870px);
+        @include card;
+    }
+    .entry-title {
+        //margin-bottom: 20px;
+        padding: 0 rem-calc(16);
+    }
+    .entry-meta {
+        padding: 0 rem-calc(16);
+    }
+    .entry-content {
+        padding: rem-calc(16);
+
+        h1, h2, h3, h4, h5 {
+            font-family: $header-font-family;
+        }
+        p {
+            margin-top: 0;
+            padding-top: 0;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        p,
+        li {
+            font-size: rem-calc(18);
+            line-height: 1.55;
+        }
+        table {
+            font-family: $font-family-sans-serif;
+        }
+    }
+    .wp-caption-text {
+        padding: 0 rem-calc(16);
+        color: #666;
+        font-family: $header-font-family;
+        font-weight: 200;
+        margin-bottom: 0;
+        &:empty {
+            display: none;
+        }
+    }
+}
+.single-post {
+    h1.entry-title {
+        font-weight: 200;
+        margin-bottom: 0;
+    }
+    .entry-meta {
+        margin-bottom: rem-calc(10);
+        color: #666;
+        font-weight: 200;
+        font-family: $header-font-family;
+
+        .author {
+            color: black;
+            font-weight: normal;
+        }
+    }
+    .entry-content {
+        font-family: $font-family-serif;
+    }
+}
+.full-width-container article {
+    max-width: none;
+}
+
+/* Event (single) */
+.event {
+    &--content {
+        @include grid-column($columns: 7);
+
+        .entry-title {
+            margin-bottom: 4px;
+            line-height: 1;
+        }
+    }
+    &--sidebar {
+        @include grid-column($columns: 5);
+        @include card;
+
+        h3 {
+            font-size: rem-calc(18);
+        }
+        #social-sharing {
+            padding-bottom: 0;
+        }
+    }
+    &--meta {
+        padding: rem-calc(16);
+        &--type {
+            @include label;
+            margin-left: rem-calc(16px);
+
+            a {
+                color: white;
+                &:link { color: white; }
+                &:hover { color: rgba(white, 0.5); }
+            }
+        }
+        &--start {
+            display: inline-block;
+            text-align: center;
+            @include card-z1();
+            padding: 9px 8px 8px 8px;
+
+            &--weekday,
+            &--month {
+                font-weight: 200;
+                font-family: $header-font-family;
+                font-size: rem-calc(14);
+            }
+            &--day {
+                font-size: rem-calc(34);
+            }
+        }
+        &--start--time {
+            @include card-z1;
+            display: inline-block;
+            padding: 7px 8px 4px 8px;
+            text-align: center;
+            .time-inner {
+                font-size: rem-calc(28);
+            }
+            .time-at {
+                font-weight: 200;
+                font-family: $header-font-family;
+                font-size: rem-calc(14);
+            }
+        }
+        &--price {
+            @include outlined;
+        }
+        &--facebook {
+            display: inline-block;
+            margin-left: 4px;
+            vertical-align: bottom;
+            svg {
+                width: 40px;
+                height: 40px;
+            }
+            path {
+                fill: #3b5998;
+            }
+        }
+        &--venue svg {
+            width: 16px;
+            height: 16px;
+        }
+        &--ticket {
+            @include button(rem-calc(8));
+            color: white;
+            &:link {
+                color: white;
+            }
+            margin-bottom: 0;
+        }
+    }
+}
+/* Pages: General styles */
+.page--sidebar-wrap {
+    display: none;
+    @media #{$medium-up} {
+        display: block;
+        @include grid-column($columns: 3);
+    }
+
+}
+
+.page--sidebar {
+    @include card;
+    padding: rem-calc(10);
+}
+
+.page--content {
+    @include grid-column($columns: 12);
+    @media #{$medium-up} {
+        @include grid-column($columns: 9);
+    }
+
+    article.page {
+        @include card;
+    }
+    .entry-content {
+        font-family: $font-family-serif;
+    }
+}
+
+/* Page: Program */
+.program {
+    &--filter-wrap {
+        @include grid-column($columns: 12);
+        margin-bottom: rem-calc(20);
+
+        @media #{$medium-up} {
+            @include grid-column($columns: 3);
+        }
+    }
+    &--list-wrap {
+        @include grid-column($columns: 12);
+        margin-bottom: rem-calc(20);
+
+        @media #{$medium-up} {
+            @include grid-column($columns: 9);
+        }
+    }
+    &--filter {
+        @include card;
+        padding: rem-calc(16);
+        padding-top: rem-calc(10);
+    }
+    &--list {
+        @include card;
+        padding: rem-calc(16);
+        padding-top: rem-calc(10);
+    }
+}
+.program--list {
+    .alt {
+        //background-color: #f4f4f4;
+    }
+    .month {
+        padding-top: rem-calc(16);
+        padding-bottom: rem-calc(4);
+    }
+    ul, li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        line-height: 32px;
+    }
+    .event-row {
+        margin-bottom: rem-calc(16);
+    }
+    .event--meta--datetime-daynum {
+        font-size: rem-calc(32);
+        margin-right: rem-calc(4);
+
+        @media #{$medium-up} {
+            display: inline-block;
+            margin-right: rem-calc(8);
+            width: rem-calc(44);
+            text-align: right;
+        }
+    }
+    .event-title {
+        font-size: rem-calc(28);
+        font-weight: 200;
+        font-family: $header-font-family;
+
+        @media #{$medium-up} {
+            font-size: rem-calc(30);
+        }
+    }
+    .event-attributes {
+        padding-bottom: rem-calc(16);
+        border-bottom: 1px solid #ccc;
+
+        @media #{$medium-up} {
+            margin-left: rem-calc(58)
+        }
+    }
+
+}
+
+/* Page: Associations */
+.associations-list {
+    @include block-grid($per-row: 2);
+}
+
+/* Component: Program 6 days */
+.program-6days {
+    @media #{$small-only} {
+        display: none;
+    }
+}
+
+/* Social sharing */
+#social-sharing {
+    padding: rem-calc(16);
+}
+.share--title {
+    margin: 0 rem-calc(16);
+}
+.share-twitter,
+.share-facebook {
+    display: inline-block;
+}
+.share-facebook {
+    position: relative;
+    top: -4px;
+    padding-left: rem-calc(6);
+}
+
+/* Newsletter */
+.newsletter-signup-form {
+    padding: rem-calc(16);
+}

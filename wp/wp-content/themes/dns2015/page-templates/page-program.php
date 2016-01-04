@@ -63,16 +63,16 @@ if ( $events->have_posts() ) :
             <?php endif; ?>
             <li class="event-row <?php echo $alt; ?>">
                 <div>
-                    <span class="event-datetime-daynum" title="<?php echo $dt_iso8601; ?>"><?php echo $dt_daynum; ?>.</span>
+                    <span class="event--meta--datetime-daynum" title="<?php echo $dt_iso8601; ?>"><?php echo $dt_daynum; ?>.</span>
                     <span class="event-title" title="<?php _e("Event title"); ?>"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php echo the_title(); ?></a></span>
                 </div>
                 <div class="event-attributes">
-                    <span class="event-type" title="<?php _e("Event category"); ?>"><?php echo $event_types; ?></span>
-                    <span class="event-venue" title="<?php _e("Venue"); ?>"><?php require(get_stylesheet_directory().'/dist/images/icons/location.svg'); ?><?php echo $venue; ?></span>
+                    <span class="event--meta--type" title="<?php _e("Event category"); ?>"><?php echo $event_types; ?></span>
+                    <span class="event--meta--venue" title="<?php _e("Venue"); ?>"><?php require(get_stylesheet_directory().'/dist/images/icons/location.svg'); ?><?php echo $venue; ?></span>
                     <?php if($ticket): ?>
-                        <a href="<?php echo $ticket; ?>" class="event-ticket " title="<?php _e("Ticket"); ?>"><?php _e('Buy ticket'); echo ' ('.$price.')'; ?></a>
+                        <a href="<?php echo $ticket; ?>" class="event--meta--ticket" title="<?php _e("Ticket"); ?>"><?php _e('Buy ticket'); echo ' ('.$price.')'; ?></a>
                     <?php else: ?>
-                        <span class="event-price" title="<?php _e("Price"); ?>"><?php echo $price ?></span>
+                        <span class="event--meta--price" title="<?php _e("Price"); ?>"><?php echo $price ?></span>
                     <?php endif; ?>
                 </div>
             </li>
@@ -84,8 +84,10 @@ if ( $events->have_posts() ) :
 <?php endif; ?>
     </section><!-- .program--list -->
     </div><!-- .program--list-wrap -->
+
     <div class="program--filter-wrap">
         <section class="program--filter">
+            <h5><?php _e('Filter') ?></h5>
             <a href="#">Free</a> / <a href="#">Need ticket</a><br>
             TODO: event categories
         </section>

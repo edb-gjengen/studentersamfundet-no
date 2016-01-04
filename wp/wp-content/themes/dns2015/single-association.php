@@ -1,8 +1,12 @@
+<?php get_header(); ?>
+
+<div id="content">
+
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
     <article <?php neuf_post_class(); ?>>
 
-        <div>
+        <section class="association--content">
             <?php the_tags('<span class="tags">', ', ', '</span>'); ?>
             <h1 class="entry-title"><?php the_title(); ?></h1>
             <?php
@@ -17,9 +21,15 @@
             <?php endif; ?>
 
             <div class="entry-content"><?php the_content(); ?></div> <!-- .entry-content -->
-        </div>
-        <?php get_template_part('newsletter', 'signup-form'); ?>
+        </section>
+        <section class="association--sidebar">
+            <?php get_template_part('newsletter', 'signup-form'); ?>
+        </section>
 
     </article> <!-- .hentry -->
 
 <?php endwhile; endif; ?>
+
+</div> <!-- #content -->
+
+<?php get_footer(); ?>

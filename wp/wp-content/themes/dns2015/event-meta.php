@@ -1,38 +1,34 @@
 <?php
-$date_format = 'l j. F';
-if (
-    0 > $post->neuf_events_starttime - strtotime('U - 1 week') // event is more than a week old
-    || date( 'Y' , $post->neuf_events_starttime ) != date( 'Y') // event is not this year
-) {
-    $date_format = 'l j. F Y';
-}
-?>
-<section>
-    <!-- TODO:
-    - remove hcalendar
-    - combine price and ticket into button
-    - label style on event type
-    - date and time style like ticket
-    -->
-    <h1 class="entry-title summary"><?php the_title(); ?></h1>
+$ticket = $post->neuf_events_ticket_url;
+$price = neuf_format_price($post);
+$time = date_i18n('G.i', $post->neuf_events_starttime);
+$day = date_i18n('j');
+$weekday = date_i18n('l');
+$month = date_i18n('F');
+$year = neuf_event_format_starttime_year($post);
+$datetime = date_i18n('Y-m-d\TH:i:s', $post->neuf_events_starttime);
 
-    <div class="entry-meta">
-        <div>
-            <span class="event-date dtstart"><?php echo ucfirst( date_i18n( $date_format , $post->neuf_events_starttime ) ); ?></span>
-        </div>
-        <div>
-            <span class="meta-prep meta-prep-event-time"><?php _e( 'Kl:' , 'neuf' ); ?></span>
-            <time class="event-time dtstart" datetime="<?php echo date_i18n('Y-m-d\TH:i:sP', $post->neuf_events_starttime); ?>"><?php echo date_i18n( 'G.i' , $post->neuf_events_starttime); ?></time>
-            <span class="meta-sep meta-sep-event-price"> - </span>
-            <span class="meta-prep meta-prep-price">CC: </span>
-            <span class="price"><?php echo neuf_format_price($post); ?></span>
-            <span class="meta-prep meta-prep-price"><?php echo $post->neuf_events_ticket_url ? ' <a href="'.$post->neuf_events_ticket_url.'">Kjøp billett</a>' : ""; ?></span>
-        </div>
-        <div>
-            <span class="venue location"><?php echo $post->neuf_events_venue; ?></span>
-            <?php if ( $post->neuf_events_fb_url ): ?><span class="meta-sep meta-sep-event-facebook"> - </span>
-                <span class="event-facebook"><a href="<?php echo $post->neuf_events_fb_url; ?>" title="Arrangementet på Facebook"><?php require(get_stylesheet_directory()."/dist/images/icons/facebook.svg");?></a></span>
-            <?php endif; ?>
-        </div>
-    </div>
-</section> <!-- .entry-meta-->
+?>
+<section class="event--meta">
+
+    <span class="event--meta--start" title="<?php echo $datetime; ?>">
+        <span class="event--meta--start--weekday"><?php echo $weekday; ?></span><br>
+        <span class="event--meta--start--day"><?php echo $day; ?>.</span><br>
+        <span class="event--meta--start--year"><?php echo $year; ?></span>
+        <span class="event--meta--start--month"><?php echo $month; ?></span>
+    </span>
+    <span class="event--meta--start--time" title="<?php echo $datetime; ?>">
+        <span class="time-at"><?php _e('klokken'); ?></span><br>
+        <span class="time-inner"><?php echo $time; ?></span>
+    </span>
+    <span class="event--meta--venue"><?php require(get_stylesheet_directory().'/dist/images/icons/location.svg'); ?><?php echo $post->neuf_events_venue; ?></span>
+
+    <?php if($ticket): ?>
+        <a href="<?php echo $ticket; ?>" class="event--meta--ticket" title="<?php _e("Ticket"); ?>"><?php echo _('Buy ticket').' ('.$price.')'; ?></a>
+    <?php else: ?>
+        <span class="event--meta--price" title="<?php _e("Price"); ?>"><?php echo $price ?></span>
+    <?php endif; ?>
+    <?php if ( $post->neuf_events_fb_url ): ?>
+        <a href="<?php echo $post->neuf_events_fb_url; ?>" title="Arrangementet på Facebook" class="event--meta--facebook"><?php require(get_stylesheet_directory()."/dist/images/icons/facebook.svg");?></a>
+    <?php endif; ?>
+</section> <!-- .entry--meta -->

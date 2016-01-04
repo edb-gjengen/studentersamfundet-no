@@ -1,7 +1,5 @@
 <?php
 /**
- * Audio player.
- *
  * Displays an audio player for every audio attachment to the current post.
  */
 
@@ -17,12 +15,6 @@ $attachments = get_children(
     )
 );
 
-// Loop through each attachment
-foreach ( $attachments as $attachment ) {
-    echo "<p>Hei!</p>";
-
-// Display the audio player
-    print "<pre>";
-    the_attachment_link( $attachment->ID , false );
-    print "<pre>";
-}
+foreach ( $attachments as $attachment ): ?>
+    <pre><?php the_attachment_link( $attachment->ID , false ); ?></pre>
+<?php endforeach; ?>

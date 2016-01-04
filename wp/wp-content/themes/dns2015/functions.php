@@ -624,4 +624,14 @@ function neuf_event_get_schema($post) {
     );
     return json_encode($schema_data, JSON_PRETTY_PRINT);
 }
+
+function neuf_event_format_starttime_year($post) {
+    $more_than_a_week_old = $post->neuf_events_starttime - strtotime('U - 1 week') <= 0;
+    $this_year = date('Y', $post->neuf_events_starttime) == date('Y');
+
+    if ($more_than_a_week_old || !$this_year) {
+        return date_i18n('Y', $post->neuf_events_starttime);
+    }
+    return '';
+}
 ?>

@@ -1,4 +1,5 @@
 <?php
+// FIXME: cleanup
 /**
  * Displays a calendar for the coming week, starting with today.
  *

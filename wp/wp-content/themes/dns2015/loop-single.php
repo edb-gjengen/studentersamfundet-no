@@ -20,6 +20,7 @@
 
             <div class="entry-content"><?php the_content(); ?></div> <!-- .entry-content -->
 
+            <!-- TODO: sidebar -->
             <?php display_social_sharing_buttons(); ?>
         </div>
         <?php get_template_part('newsletter', 'signup-form'); ?>
