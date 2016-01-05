@@ -24,8 +24,8 @@
             <div class="event-content">
                 <h3 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
                 <span class="event--meta--type"><?php echo get_event_types($post); ?></span>
-                <span class="event-datetime"><?php echo ucfirst( date_i18n( 'l j. F' , $post->neuf_events_starttime ) ); ?></span>
-                <span class="event-price"><?php echo neuf_format_price($post); ?></span>
+                <span class="event--meta--datetime"><?php echo date_i18n( 'l j. F' , $post->neuf_events_starttime ); ?></span>
+                <span class="event--meta--price"><?php echo neuf_format_price($post); ?></span>
             </div>
 
         </article>

@@ -9,7 +9,7 @@
         </div>
         <div class="front-page--left">
             <?php //get_template_part('fp-call-to-actions'); ?>
-          <!--  <section class="front-page--newsletter"><?php get_template_part('newsletter-signup-form'); ?></section>-->
+          <!--  <section class="front-page--newsletter"><?php //get_template_part('newsletter-signup-form'); ?></section>-->
             <?php get_template_part('fp-articles'); ?>
         </div>
     </div>

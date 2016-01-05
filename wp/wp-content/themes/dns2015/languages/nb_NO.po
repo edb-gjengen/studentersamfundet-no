@@ -1,0 +1,317 @@
+# Copyright (C) 2016 EDB-gjengen
+# This file is distributed under the same license as the Det Norske Studentersamfundet 2015 package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Det Norske Studentersamfundet 2015 1.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/theme/dns2015\n"
+"POT-Creation-Date: 2016-01-05 22:12+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-01-05 22:22+0100\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.8.4\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: nb_NO\n"
+
+#: event-meta.php:21
+msgid "at"
+msgstr "klokken"
+
+#: event-meta.php:29 page-templates/page-program.php:73
+msgid "Ticket"
+msgstr "Billett"
+
+#: event-meta.php:29 page-templates/page-program.php:73
+msgid "Buy ticket"
+msgstr "Kjøp billett"
+
+#: event-meta.php:31 page-templates/page-program.php:75
+msgid "Price"
+msgstr "Pris"
+
+#: fp-articles.php:3
+msgid "Articles"
+msgstr "Artikler"
+
+#. Template Name of the plugin/theme
+#: fp-events.php:2
+msgid "Program"
+msgstr "Program"
+
+#: functions.php:21
+msgid "Main menu"
+msgstr "Hovedmeny"
+
+#: functions.php:22
+msgid "Top menu"
+msgstr "Toppmeny"
+
+#: functions.php:35
+msgctxt "taxonomy general name"
+msgid "Custom post templates"
+msgstr "Custom post templates"
+
+#: functions.php:36
+msgctxt "taxonomy singular name"
+msgid "Post template"
+msgstr "Post template"
+
+#: functions.php:38
+msgid "Popular Templates"
+msgstr "Popular Templates"
+
+#: functions.php:39
+msgid "All Post Templates"
+msgstr "All Post Templates"
+
+#: functions.php:42
+msgid "Edit Post Template"
+msgstr "Edit Post Template"
+
+#: functions.php:43
+msgid "Update Post Template"
+msgstr "Update Post Template"
+
+#: functions.php:44
+msgid "Add New Post Template"
+msgstr "Add New Post Template"
+
+#: functions.php:45
+msgid "New Post Template"
+msgstr "New Post Template"
+
+#: functions.php:46
+msgid "Separate post templates with commas"
+msgstr "Separate post templates with commas"
+
+#: functions.php:47
+msgid "Add or remove post templates"
+msgstr "Add or remove post templates"
+
+#: functions.php:48
+msgid "Choose from the most used post templates"
+msgstr "Choose from the most used post templates"
+
+#: functions.php:49
+msgid "Post Templates"
+msgstr "Post Templates"
+
+#: functions.php:96
+msgid "Minimum width is %s px. Uploaded image width is %s px"
+msgstr "Minimumsbredden er %s px. Opplastet bilde har bredde %s px"
+
+#: functions.php:99
+msgid "Minimum height is %s px. Uploaded image height is %s px"
+msgstr "Minimumshøyden er %s px. Opplastet bilde har høyde %s px"
+
+#: functions.php:103
+msgid "Image dimensions are too small"
+msgstr "Bildet har for lav oppløsning"
+
+#: functions.php:170 page-templates/page-mailchimp-newsletter.php:149
+#: page-templates/page-mailchimp-newsletter.php:208
+#: page-templates/page-newsletter.php:149
+#: page-templates/page-newsletter.php:208
+msgid "Free"
+msgstr "Gratis"
+
+#: functions.php:224
+msgid "Search Results for"
+msgstr "Søkeresultater for"
+
+#: functions.php:228
+msgid "Category Archives"
+msgstr "Innhold i kategorien"
+
+#: functions.php:232
+msgid "Tag Archives"
+msgstr "Innhold merket med"
+
+#: functions.php:236
+msgid "Not Found"
+msgstr "Ikke funnet"
+
+#: functions.php:259
+msgid "on"
+msgstr "på"
+
+#: functions.php:356
+msgid "Read more"
+msgstr "Les mer"
+
+#: functions.php:373
+msgid "Back to"
+msgstr "Tilbake til"
+
+#: functions.php:379
+msgid "Author Archives:"
+msgstr "Innhold skrevet av:"
+
+#: functions.php:384
+msgid "Category Archives:"
+msgstr "Innhold i kategorien:"
+
+#: functions.php:392
+msgid "Search Results for:"
+msgstr "Søkeresultater for"
+
+#: functions.php:397
+msgid "Tag Archives:"
+msgstr "Innhold merket med:"
+
+#: functions.php:409
+msgid "Archives:"
+msgstr "Arkivert innhold:"
+
+#: functions.php:414
+msgid "Daily Archives: %s"
+msgstr "Innhold fra dagen: %s"
+
+#: functions.php:418
+msgid "Monthly Archives: %s"
+msgstr "Innhold fra måneden %s"
+
+#: functions.php:422
+msgid "Yearly Archives: %s"
+msgstr "Innhold fra året: %s"
+
+#: functions.php:550
+msgid "Footer text"
+msgstr "Footer kolofon"
+
+#: functions.php:558
+msgid "Text (address, editor, etc)"
+msgstr "Kolofon (adresse, redaktør, etc)"
+
+#: functions.php:587
+msgid "Stick this to the front page"
+msgstr "Gjør denne klebrig på forsiden"
+
+#: functions.php:593
+msgid "Sticky"
+msgstr "Klebrig"
+
+#: functions.php:607
+msgid "Chateau Neuf, Slemdalsveien 15, 0369 Oslo"
+msgstr "Chateau Neuf, Slemdalsveien 15, 0369 Oslo"
+
+#: header.php:33
+msgid "Jump to content"
+msgstr "Gå direkte til innholdet"
+
+#: page-templates/page-mailchimp-newsletter.php:26
+#: page-templates/page-newsletter.php:26
+msgid "Week"
+msgstr "Uke"
+
+#: page-templates/page-mailchimp-newsletter.php:32
+#: page-templates/page-newsletter.php:32
+msgid "Month"
+msgstr "Måned"
+
+#: page-templates/page-mailchimp-newsletter.php:38
+#: page-templates/page-newsletter.php:38
+msgid "Semester"
+msgstr "Semester"
+
+#: page-templates/page-program.php:67
+msgid "Event title"
+msgstr "Arrangement"
+
+#: page-templates/page-program.php:70
+msgid "Event category"
+msgstr "Arrangementskategori"
+
+#: page-templates/page-program.php:71
+msgid "Venue"
+msgstr "Sted"
+
+#: page-templates/page-program.php:90
+msgid "Filter"
+msgstr "Filtrér"
+
+#: sidebar.php:3
+msgid "Pages"
+msgstr "Sider"
+
+#: sidebar.php:9
+msgid "Search"
+msgstr "Søk"
+
+#: single-association.php:14
+msgid "Web page"
+msgstr "Webside"
+
+#: single-event.php:29
+msgid "Share"
+msgstr "Del"
+
+#. Theme Name of the plugin/theme
+msgid "Det Norske Studentersamfundet 2015"
+msgstr "Det Norske Studentersamfundet 2015"
+
+#. Theme URI of the plugin/theme
+msgid "https://git.neuf.no/edb/studentersamfundet-no"
+msgstr "https://git.neuf.no/edb/studentersamfundet-no"
+
+#. Description of the plugin/theme
+msgid "Tema for DNS"
+msgstr "Tema for DNS"
+
+#. Author of the plugin/theme
+msgid "EDB-gjengen"
+msgstr "EDB-gjengen"
+
+#. Author URI of the plugin/theme
+msgid "http://edb.neuf.no"
+msgstr "http://edb.neuf.no"
+
+#. Template Name of the plugin/theme
+msgid "Associations"
+msgstr "Foreninger"
+
+#. Template Name of the plugin/theme
+msgid "Next event"
+msgstr "Neste arrangement"
+
+#. Template Name of the plugin/theme
+msgid "News feed"
+msgstr "Nyhetsfeed"
+
+#. Template Name of the plugin/theme
+msgid "UIO Program feed"
+msgstr "UIO Programfeed"
+
+#. Template Name of the plugin/theme
+msgid "Full width"
+msgstr "Full bredde"
+
+#. Template Name of the plugin/theme
+msgid "Ical"
+msgstr "Ical"
+
+#. Template Name of the plugin/theme
+msgid "Recently Updated Image Galleries"
+msgstr "Nylige oppdaterte bildegallerier"
+
+#. Template Name of the plugin/theme
+msgid "Infoscreen Daily Program"
+msgstr "Infoskjerm Daglig program"
+
+#. Template Name of the plugin/theme
+msgid "Infoscreen tweets"
+msgstr "Inforskjerm tvitringer"
+
+#. Template Name of the plugin/theme
+msgid "Live (streaming)"
+msgstr "Live (strømming)"
+
+#. Template Name of the plugin/theme
+msgid "Mailchimp Newsletter"
+msgstr "Mailchimp Nyhetsbrev"
+
+#. Template Name of the plugin/theme
+msgid "Newsletter"
+msgstr "Nyhetsbrev"

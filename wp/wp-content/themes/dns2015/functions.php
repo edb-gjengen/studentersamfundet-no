@@ -1,28 +1,33 @@
 <?php
-add_theme_support( 'menus' );
-add_theme_support( 'post-thumbnails' );
-add_theme_support( 'automatic-feed-links' );
+add_theme_support('menus');
+add_theme_support('post-thumbnails');
+add_theme_support('automatic-feed-links');
 
 $content_width = 870;
 
-add_image_size( 'four-column', 393, 342, true );
-add_image_size( 'six-column', 608, 342, true );
-add_image_size( 'extra-large', 1600, 1600, false );
-add_image_size( 'newsletter-half', 320, 190, true);
-add_image_size( 'newsletter-third', 213, 126, true);
-add_image_size( 'featured', 1200, 480, true);
+add_image_size('four-column', 393, 342, true);
+add_image_size('six-column', 608, 342, true);
+add_image_size('extra-large', 1600, 1600, false);
+add_image_size('newsletter-half', 320, 190, true);
+add_image_size('newsletter-third', 213, 126, true);
+add_image_size('featured', 1200, 480, true);
+add_image_size('large', 1280, 720, true);
 
 /**
  * Register navigation menus.
  */
 function neuf_register_nav_menus() {
     register_nav_menus(array(
-        'main-menu' => __('Hovedmeny'),
-        'static-menu' => __('Toppmeny'),
-        'secondary-menu' => __('Sekundærmeny'),
+        'main-menu' => __('Main menu'),
+        'static-menu' => __('Top menu'),
     ));
 }
 add_action( 'init' , 'neuf_register_nav_menus' );
+
+function neuf_theme_setup() {
+    load_theme_textdomain('neuf', get_template_directory().'/languages');
+}
+add_action( 'after_setup_theme', 'neuf_theme_setup');
 
 /**
  * Register custom taxonomy for post templates.
@@ -79,7 +84,7 @@ add_action( 'wp_enqueue_scripts' , 'neuf_enqueue_scripts' );
  * Denies uploads of images smaller (in pixels) than given width and height values.
  */
 function neuf_handle_upload_prefilter( $file ) {
-    /* Only check files with mime type image/* */
+    /* Only check files with mime type 'image/*' */
     $is_not_image = strpos($file['type'], 'image/') !== 0;
     if( $is_not_image ) {
         return $file;
@@ -93,14 +98,14 @@ function neuf_handle_upload_prefilter( $file ) {
 
 
     if ( $width < $minimum['width'] ) {
-        $errors[] = "Minimum width is {$minimum['width']} px. Uploaded image width is $width px";
+        $errors[] = sprintf(__("Minimum width is %s px. Uploaded image width is %s px", 'neuf'), $minimum['width'], $width);
     }
     if ($height < $minimum['height']) {
-        $errors[] = "Minimum height is {$minimum['height']} px. Uploaded image height is $height px";
+        $errors[] = sprintf(__("Minimum height is %s px. Uploaded image height is %s px", 'neuf'), $minimum['height'], $height);
     }
 
     if( count($errors) > 0 ) {
-        return array( "error" => "Image dimensions are too small: ".implode(", ", $errors).".");
+        return array( "error" => __("Image dimensions are too small", 'neuf'). ": ". implode(", ", $errors). ".");
     }
 
     return $file;
@@ -167,7 +172,7 @@ function neuf_format_price( $neuf_event ) {
     }
 
     if($cc == '') {
-        return _('Free');
+        return __('Free', 'neuf');
     }
 
     return $cc;
@@ -221,22 +226,22 @@ function neuf_doctitle() {
         $content = single_post_title( '' , false );
 
     } elseif ( is_search() ) {
-        $content = __( 'S&oslashkeresultater for', 'neuf-web' );
+        $content = __( 'Search Results for', 'neuf' );
         $content .= ' ' . esc_html(stripslashes(get_search_query()));
 
     } elseif ( is_category() ) {
-        $content = __( 'Arkiv for kategorien' , 'neuf-web' );
+        $content = __( 'Category Archives' , 'neuf' );
         $content .= ' ' . single_cat_title( "" , false );
 
     } elseif ( is_tag() ) {
-        $content = __( 'Arkiv for stikkordet' , 'neuf-web' );
+        $content = __( 'Tag Archives' , 'neuf' );
         $content .= ' ' . single_tag_title( '' , false );
 
     } elseif ( is_404() ) {
-        $content = __( 'Ikke funnet', 'neuf-web' );
+        $content = __( 'Not Found', 'neuf' );
 
     } else {
-        $content = get_bloginfo( 'description' );
+        $content = get_bloginfo( 'description' , 'display');
     }
 
     if ( get_query_var( 'paged' ) ) {
@@ -253,10 +258,10 @@ function neuf_doctitle() {
                 'separator' => $separator,
                 'content'   => $content
             );
-        } else if ( is_single() && 'event' == get_post_type() ) {
+        } else if ( is_single() && get_post_type() == 'event' ) {
             $elements = array(
                 'content'   => $content,
-                'separator' => 'på',
+                'separator' => __('on', 'neuf'),
                 'site_name' => 'Studentersamfundet'
             );
         } else {
@@ -353,7 +358,7 @@ function trim_excerpt($text, $length) {
  * Replaces the matching $pattern with $replacement in the string $subject.
  */
 function linkify($subject, $pattern, $link) {
-    $replacement = '<a href="'.$link.'">Les mer</a>';
+    $replacement = '<a href="'.$link.'">'. __('Read more', 'neuf') .'</a>';
     $output = preg_replace($pattern, $replacement, $subject);
     return $output;
 }
@@ -364,73 +369,67 @@ function linkify($subject, $pattern, $link) {
  * Original author: Ian Stewart (theme Thematic).
  */
 function neuf_page_title() {
-
     global $post;
 
-    $content = '';
+    $content = "";
     if (is_attachment()) {
-        $content .= '<h1 class="page-title"><a href="';
+        $content .= '<h2 class="page-title"><a href="';
         $content .= apply_filters('the_permalink',get_permalink($post->post_parent));
-        $content .= '" rev="attachment"><span class="meta-nav">Tilbake til </span>';
+        $content .= '" rev="attachment"><span class="meta-nav">'. __('Back to', 'neuf').' </span>';
         $content .= get_the_title($post->post_parent);
-        $content .= '</a></h1>';
+        $content .= '</a></h2>';
     } elseif (is_author()) {
         $content .= '<h1 class="page-title author">';
-        $author = get_the_author_meta( 'display_name' );
-        $content .= __('Innhold skrevet av', 'neuf');
-        $content .= ' <span>';
-        $content .= $author;
-        $content .= '</span></h1>';
+        $author = get_the_author_meta( 'display_name', $post->post_author );
+        $content .= __('Author Archives:', 'neuf');
+        $content .= ' <span>' . $author .'</span>';
+        $content .= '</h1>';
     } elseif (is_category()) {
         $content .= '<h1 class="page-title">';
-        $content .= __('Innhold i kategorien', 'neuf');
-        $content .= ' <span>';
-        $content .= single_cat_title('', FALSE);
-        $content .= '</span></h1>' . "\n";
+        $content .= __('Category Archives:', 'neuf');
+        $content .= ' <span>' . single_cat_title('', FALSE) .'</span>';
+        $content .= '</h1>' . "\n";
         $content .= '<div class="archive-meta">';
         if ( !(''== category_description()) ) : $content .= apply_filters('archive_meta', category_description()); endif;
         $content .= '</div>';
     } elseif (is_search()) {
         $content .= '<h1 class="page-title">';
-        $content .= __('S&oslash;keresultater for:', 'neuf');
-        $content .= ' <span id="search-terms">';
-        $content .= esc_html(stripslashes($_GET['s']));
-        $content .= '</span></h1>';
+        $content .= __('Search Results for:', 'neuf');
+        $content .= ' <span id="search-terms">' . get_search_query() .'</span>';
+        $content .= '</h1>';
     } elseif (is_tag()) {
         $content .= '<h1 class="page-title">';
-        $content .= __('Innhold merket med', 'neuf');
+        $content .= __('Tag Archives:', 'neuf');
         $content .= ' <span>';
-        $content .= __(neuf_tag_query());
+        $content .= single_tag_title( '', false );
         $content .= '</span></h1>';
     } elseif (is_tax()) {
-        global $taxonomy;
         $content .= '<h1 class="page-title">';
-        //$tax = get_taxonomy($taxonomy);
-        //$content .= $tax->labels->name . ' ';
-        //$content .= __('Arkiv:', 'neuf');
-        //$content .= ' <span>';
         $content .= neuf_get_term_name();
-        //$content .= '</span>';
         $content .= '</h1>';
-    }	elseif (is_day()) {
+    } elseif (is_post_type_archive()) {
         $content .= '<h1 class="page-title">';
-        $content .= sprintf(__('Innhold fra dagen <span>%s</span>', 'neuf'), get_the_time(get_option('date_format')));
+        $post_type_obj = get_post_type_object( get_post_type() );
+        $post_type_name = $post_type_obj->labels->singular_name;
+        $content .= __('Archives:', 'neuf');
+        $content .= ' <span>' . $post_type_name . '</span>';
+        $content .= '</h1>';
+    } elseif (is_day()) {
+        $content .= '<h1 class="page-title">';
+        $content .= sprintf( __('Daily Archives: %s', 'neuf'), '<span>' . get_the_time( get_option('date_format') ) ) . '</span>';
         $content .= '</h1>';
     } elseif (is_month()) {
         $content .= '<h1 class="page-title">';
-        $content .= sprintf(__('Innhold fra m&aring;neden <span>%s</span>', 'neuf'), get_the_time('F Y'));
+        $content .= sprintf( __('Monthly Archives: %s', 'neuf') , '<span>' . get_the_time('F Y') ) . '</span>';
         $content .= '</h1>';
     } elseif (is_year()) {
         $content .= '<h1 class="page-title">';
-        $content .= sprintf(__('Innhold fra &aring;ret <span>%s</span>', 'neuf'), get_the_time('Y'));
-        $content .= '</h1>';
-    } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {
-        $content .= '<h1 class="page-title">';
-        $content .= __('Arkiv', 'neuf');
+        $content .= sprintf( __('Yearly Archives: %s', 'neuf'), '<span>' . get_the_time('Y') ) . '</span>';
         $content .= '</h1>';
     }
     $content .= "\n";
     echo( $content );
+
 }
 
 /**
@@ -553,7 +552,7 @@ function neuf_customize_register( $wp_customize ) {
 
     /* Footer Section */
     $wp_customize->add_section( 'neuf_footer_section' , array(
-        'title'      => __( 'Footer (kolofon)', 'neuf-web' ),
+        'title'      => __( 'Footer text', 'neuf' ),
         'priority'   => 30,
     ) );
     $wp_customize->add_setting( 'footer_kolofon' , array(
@@ -561,7 +560,7 @@ function neuf_customize_register( $wp_customize ) {
     ) );
     $wp_customize->add_control(
         new Customize_Textarea_Control( $wp_customize, 'footer_kolofon', array(
-            'label'    => __( 'Kolofon (adresse, redaktør, etc)', 'neuf-web' ),
+            'label'    => __( 'Text (address, editor, etc)', 'neuf'),
             'section'  => 'neuf_footer_section',
             'settings' => 'footer_kolofon',
         ) )
@@ -590,7 +589,7 @@ function get_event_types($post) {
 add_action( 'admin_init', 'neuf_events_sticky_add_meta_box' );
 
 function neuf_events_sticky_meta() { ?>
-    <input id="super-sticky" name="sticky" type="checkbox" value="sticky" <?php checked( is_sticky() ); ?> /> <label for="super-sticky" class="selectit"><?php _e( 'Stick this to the front page' ) ?></label><?php
+    <input id="super-sticky" name="sticky" type="checkbox" value="sticky" <?php checked( is_sticky() ); ?> /> <label for="super-sticky" class="selectit"><?php _e( 'Stick this to the front page', 'neuf' ) ?></label><?php
 }
 
 function neuf_events_sticky_add_meta_box() {
@@ -610,7 +609,7 @@ function neuf_event_get_schema($post) {
         "@type" => "Place",
         "sameAs" => get_bloginfo('url'),
         "name" =>  get_bloginfo('name'),
-        "address" => "Chateau Neuf, Slemdalsveien 15, 0369 Oslo"
+        "address" => __("Chateau Neuf, Slemdalsveien 15, 0369 Oslo", 'neuf')
     );
     $date_format = 'Y-m-d\TH:i';  // "2013-09-14T21=>30" // FIXME: duration
     $start_date = date_i18n($date_format, $post->neuf_events_starttime);

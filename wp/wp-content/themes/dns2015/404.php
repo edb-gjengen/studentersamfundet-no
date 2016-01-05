@@ -3,7 +3,7 @@
 <div id="content">
     <div class="container">
 
-        <article <?php neuf_post_class(); ?>>
+        <article class="four-o-four">
             <h1 class="entry-title">404: Denne siden er på grisefest</h1>
             <div class="entry-content">
                 <p>Lykke til videre.</p>

@@ -18,7 +18,7 @@ $datetime = date_i18n('Y-m-d\TH:i:s', $post->neuf_events_starttime);
         <span class="event--meta--start--month"><?php echo $month; ?></span>
     </span>
     <span class="event--meta--start--time" title="<?php echo $datetime; ?>">
-        <span class="time-at"><?php _e('klokken'); ?></span><br>
+        <span class="time-at"><?php _e('at'); ?></span><br>
         <span class="time-inner"><?php echo $time; ?></span>
     </span>
     <span class="event--meta--venue"><?php require(get_stylesheet_directory().'/dist/images/icons/location.svg'); ?><?php echo $post->neuf_events_venue; ?></span>

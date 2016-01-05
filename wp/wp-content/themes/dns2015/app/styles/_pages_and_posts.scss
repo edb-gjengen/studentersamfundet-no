@@ -96,6 +96,9 @@ article.page,
         .event--meta--type {
             margin-left: rem-calc(16);
         }
+        .event--meta--price {
+            margin-top: 10px;
+        }
     }
     &--sidebar {
         @include grid-column($columns: 12);
@@ -115,85 +118,86 @@ article.page,
             padding-bottom: 0;
         }
     }
-    &--meta {
-        padding: rem-calc(16);
-        &--type {
-            @include label;
+}
+.event--meta {
+    padding: rem-calc(16);
+    &--type {
+        @include label();
 
-            a {
-                color: white;
-                &:link { color: white; }
-                &:hover { color: rgba(white, 0.5); }
-            }
-        }
-        &--start {
-            display: inline-block;
-            text-align: center;
-            @include card-z1();
-            padding: 9px 8px 8px 8px;
-
-            &--weekday,
-            &--month {
-                font-weight: 200;
-                font-family: $header-font-family;
-                font-size: rem-calc(14);
-            }
-            &--day {
-                font-size: rem-calc(34);
-            }
-        }
-        &--start--time {
-            @include card-z1;
-            display: inline-block;
-            padding: 7px 8px 4px 8px;
-            text-align: center;
-            margin-left: 4px;
-            .time-inner {
-                font-size: rem-calc(28);
-            }
-            .time-at {
-                font-weight: 200;
-                font-family: $header-font-family;
-                font-size: rem-calc(14);
-            }
-        }
-        &--price {
-            @include outlined;
-        }
-        &--facebook {
-            display: inline-block;
-            margin-left: 4px;
-            vertical-align: bottom;
-            svg {
-                width: 30px;
-                height: 30px;
-            }
-            path {
-                fill: #3b5998;
-            }
-        }
-        &--venue {
-            margin-left: 4px;
-            svg {
-                width: 16px;
-                height: 16px;
-            }
-        }
-        &--ticket {
-            @include button(rem-calc(8));
-            margin-left: 4px;
-            @media #{$small-only} {
-                display: block;
-                margin: 10px 0;
-                padding: 16px;
-            }
-
+        a {
             color: white;
-            &:link {
-                color: white;
-            }
-            margin-bottom: 0;
+            &:link { color: white; }
+            &:hover { color: rgba(white, 0.5); }
         }
+    }
+    &--start {
+        @include card-z1();
+        display: inline-block;
+        text-align: center;
+        padding: 9px 12px 8px;
+
+        &--weekday,
+        &--month {
+            font-weight: 200;
+            font-family: $header-font-family;
+            font-size: rem-calc(14);
+        }
+        &--day {
+            font-size: rem-calc(34);
+        }
+    }
+    &--start--time {
+        @include card-z1;
+        display: inline-block;
+        padding: 7px 8px 4px 8px;
+        text-align: center;
+        margin-left: 4px;
+        .time-inner {
+            font-size: rem-calc(28);
+        }
+        .time-at {
+            font-weight: 200;
+            font-family: $header-font-family;
+            font-size: rem-calc(14);
+        }
+    }
+    &--price {
+        @include outlined;
+        display: inline-block;
+    }
+    &--facebook {
+        display: inline-block;
+        margin-left: 4px;
+        vertical-align: bottom;
+        svg {
+            width: 30px;
+            height: 30px;
+        }
+        path {
+            fill: #3b5998;
+        }
+    }
+    &--venue {
+        margin-left: 4px;
+        svg {
+            width: 14px;
+            height: 14px;
+        }
+    }
+    &--ticket {
+        @include button(rem-calc(8));
+        margin-left: 4px;
+        @media #{$small-only} {
+            display: block;
+            margin: 10px 0;
+            padding: 16px;
+        }
+
+        color: white;
+        &:link {
+            color: white;
+        }
+        margin-bottom: 0;
     }
 }
 /* Pages: General styles */
@@ -305,6 +309,12 @@ article.page,
 /* Page: Associations */
 .associations-list {
     @include block-grid($per-row: 2);
+}
+
+/* Page: 404 */
+.four-o-four {
+    @include card;
+    padding: rem-calc(16);
 }
 
 /* Component: Program 6 days */
