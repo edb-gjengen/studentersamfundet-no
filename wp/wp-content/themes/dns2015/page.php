@@ -7,7 +7,7 @@
     </div>
 
     <div class="page--sidebar-wrap">
-        <?php get_template_part('sidebar'); ?>
+        <?php get_sidebar(); ?>
     </div>
 
 </div><!-- #content -->

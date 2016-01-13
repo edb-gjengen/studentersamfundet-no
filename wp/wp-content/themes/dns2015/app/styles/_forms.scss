@@ -1,0 +1,20 @@
+.searchform-wrap {
+    @include clearfix ;
+  
+    input[type=submit] {
+      @include button;
+      padding: 10px 8px 9px 8px;
+      margin: 0;
+      text-align: center;
+      border: none;
+      display: block;
+      float: left;
+      width: 25%;
+    }
+}
+input[type=search] {
+  width: 75%;
+  margin: 0;
+  display: block;
+  float: left;
+}

@@ -122,6 +122,20 @@
     .no-csstransforms3d .drawer-menu.visible {
         right: -200px;
     }
+
+    .page_item_has_children {
+        position: relative;
+        &::before {
+            content: '▾';
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            margin-top: -16px;
+        }
+        ul {
+            display: none;
+        }
+    }
 }
 /* Menu toggle */
 .menu-toggle {

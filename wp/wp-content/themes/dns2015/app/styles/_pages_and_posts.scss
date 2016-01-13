@@ -145,6 +145,11 @@ article.page,
         &--day {
             font-size: rem-calc(34);
         }
+        &--year {
+            display: inline-block;
+            padding-top: rem-calc(2);
+            font-size: rem-calc(22);
+        }
     }
     &--start--time {
         @include card-z1;
@@ -208,11 +213,6 @@ article.page,
         @include grid-column($columns: 3);
     }
 
-}
-
-.page--sidebar {
-    @include card;
-    padding: rem-calc(10);
 }
 
 .page--content {
@@ -324,6 +324,12 @@ article.page,
     }
 }
 
+/* Sidebar */
+.sidebar {
+    @include card;
+    padding: rem-calc(10);
+}
+
 /* Social sharing */
 #social-sharing {
     padding: rem-calc(16);
@@ -344,4 +350,71 @@ article.page,
 /* Newsletter */
 .newsletter-signup-form {
     padding: rem-calc(16);
+}
+/* Index template (archive, search, etc) */
+.index {
+    &--loop {
+        @include grid-column($columns: 8);
+
+        article {
+            @include card;
+            padding: rem-calc(16);
+            margin-bottom: rem-calc(10);
+            @include clearfix;
+        }
+        .entry-start {
+            @include grid-column($columns: 12);
+        }
+        .event-date,
+        .entry-date {
+            font-weight: 200;
+            font-family: $header-font-family;
+            color: #666;
+        }
+        .entry-content {
+            @include grid-column($columns: 8);
+        }
+        .entry-image {
+            @include grid-column($columns: 4);
+        }
+    }
+    &--sidebar {
+        @include grid-column($columns: 4);
+    }
+    &--no-content {
+        @include card;
+        padding: rem-calc(16);
+    }
+}
+
+/* Event category */
+.event-category {
+    &--sidebar {
+        @include grid-column($columns: 4);
+    }
+    &--content {
+        @include grid-column($columns: 8);
+    }
+    &--meta,
+    &--no-content,
+    article {
+        @include card;
+        @include clearfix;
+        margin-bottom: rem-calc(10);
+        padding: rem-calc(16);
+    }
+
+    /* Event */
+
+    .entry-start {
+        @include grid-column($columns: 8);
+    }
+    .event-date {
+        font-weight: 200;
+        font-family: $header-font-family;
+        color: #666;
+    }
+    .event-image {
+        @include grid-column($columns: 4);
+    }
 }

@@ -31,6 +31,20 @@ body {
         padding: 0;
     }
 
+    a.btn {
+        padding: rem-calc(10) rem-calc(18);
+        color: white;
+        &:link {
+            color: white;
+        }
+    }
+}
+.screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
 }
 html {
     box-sizing: border-box;

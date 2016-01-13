@@ -12,7 +12,7 @@
             <?php get_template_part( 'event-meta' ); ?>
 
             <?php if( has_post_thumbnail() ): ?>
-                <?php the_post_thumbnail( 'large' , array( 'style' => 'display:block;margin:auto;' ) ); ?>
+                <?php the_post_thumbnail( 'large' ); ?>
                 <p class="wp-caption-text gallery-caption"><?php echo get_post( get_post_thumbnail_id() )->post_excerpt; ?></p>
             <?php endif; ?>
 
@@ -26,7 +26,7 @@
 
     <section class="event--sidebar">
         <div class="inner">
-            <h5 class="share--title"><?php _e('Share'); ?></h5>
+            <h5 class="share--title"><?php _e('Share', 'neuf'); ?></h5>
             <?php display_social_sharing_buttons(); ?>
             <?php get_template_part( 'audioplayer', 'event' ); ?>
             <?php neuf_maybe_display_gallery(); ?>

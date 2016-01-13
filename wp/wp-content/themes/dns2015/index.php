@@ -1,11 +1,13 @@
 <?php get_header(); ?>
 
 <div id="content">
-    <div class="container">
-
+    <section class="index--loop">
+       <?php neuf_page_title(); ?>
         <?php get_template_part('loop'); ?>
-
-    </div>
+    </section>
+    <section class="index--sidebar">
+        <?php get_sidebar(); ?>
+    </section>
 </div><!-- #content -->
 
 <?php get_footer(); ?>

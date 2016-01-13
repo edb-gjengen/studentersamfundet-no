@@ -1,4 +1,4 @@
-function has3d() {
+function supports3d() {
     /* Ref: http://stackoverflow.com/questions/5661671/detecting-transform-translate3d-support */
     if (!window.getComputedStyle) {
         return false;
@@ -31,7 +31,7 @@ function has3d() {
 
 $(document).ready( function() {
     /* Browser supports 3D transforms? */
-    if(has3d()) {
+    if(supports3d()) {
         $('html').addClass('csstransforms3d');
     } else {
         $('html').addClass('no-csstransforms3d');
@@ -52,9 +52,11 @@ $(document).ready( function() {
     });
 
     /* Flickr */
+    // TODO: not in use
     if($("#flickr-feed").length) {
+        var flickrId = '1292860@N21';
         var flickrLimit = 12;
-        var flickrFeedURL = 'https://secure.flickr.com/services/feeds/groups_pool.gne?format=json&id=1292860@N21&jsoncallback=?';
+        var flickrFeedURL = 'https://secure.flickr.com/services/feeds/groups_pool.gne?format=json&id='+ flickrId +'&jsoncallback=?';
         $.getJSON(flickrFeedURL, function(result) {
             var html = "";
             var first = '';
@@ -73,7 +75,7 @@ $(document).ready( function() {
                 return parseInt(i, 10) != flickrLimit - 1;
 
             });
-            $("#flickr_feed").html(html);
+            $(".flickr-feed").html(html);
         });
     }
 
@@ -84,4 +86,48 @@ $(document).ready( function() {
         $('#main-menu').css('top', '32px');
     }
 
+    /* Event category: load more events
+     * FIXME: cleanup, rewrite with load more button */
+    $('.events--load-more').on('click', onLoadMoreEvents);
+    function onLoadMoreEvents(e) {
+        e.preventDefault();
+
+        var url = "<?php bloginfo('wpurl'); ?>/wp-admin/admin-ajax.php"; // grep for 'infinite scroll' in functions.php
+        var data = "action=infinite_scroll&page=" + pageNumber + '&time_scope=past&term=<?php echo get_query_var("term"); ?>&template=loop-taxonomy-event_type';
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: data,
+            success: function(html){
+                $('.events-active').append(html);
+            },
+            error: function() {
+                console.log("snufs :'(");
+            }
+        });
+    }
+    // Allow linking directly to a tab
+    //var keyword = '#' + 'past';
+    //if ( keyword == window.location.hash ) {
+    //    $('#content nav ul li').removeClass('current');
+    //    $('#content section').hide().removeClass('current');
+    //    $('a[href="' + keyword + '"]').parent().addClass('current');
+    //    $(keyword + '-events').show().addClass('current');
+    //} else {
+    //    // Didn't read a tab from url hash, display first tab
+    //    $('#content section').hide();
+    //    $('#content section:first').show().addClass('current');
+    //    $('#content nav ul li:first').addClass('current');
+    //}
+    //
+    //// Change tabs when someone clicks on them
+    //$('.change-tab').on('click', function(e){
+    //    e.preventDefault();
+    //
+    //    $('#content nav ul li').removeClass('current');
+    //    $('#content section').hide().removeClass('current');
+    //    $(this).parent().addClass('current');
+    //    var tab = $(this).attr('href') + '-events' ;
+    //    $(tab).show().addClass('current');
+    //});
 });

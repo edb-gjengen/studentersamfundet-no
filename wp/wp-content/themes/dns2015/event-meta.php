@@ -14,11 +14,11 @@ $datetime = date_i18n('Y-m-d\TH:i:s', $post->neuf_events_starttime);
     <span class="event--meta--start" title="<?php echo $datetime; ?>">
         <span class="event--meta--start--weekday"><?php echo $weekday; ?></span><br>
         <span class="event--meta--start--day"><?php echo $day; ?>.</span><br>
+        <span class="event--meta--start--month"><?php echo $month; ?></span><br>
         <span class="event--meta--start--year"><?php echo $year; ?></span>
-        <span class="event--meta--start--month"><?php echo $month; ?></span>
     </span>
     <span class="event--meta--start--time" title="<?php echo $datetime; ?>">
-        <span class="time-at"><?php _e('at'); ?></span><br>
+        <span class="time-at"><?php _e('at', 'neuf'); ?></span><br>
         <span class="time-inner"><?php echo $time; ?></span>
     </span>
     <span class="event--meta--venue"><?php require(get_stylesheet_directory().'/dist/images/icons/location.svg'); ?><?php echo $post->neuf_events_venue; ?></span>
@@ -26,8 +26,8 @@ $datetime = date_i18n('Y-m-d\TH:i:s', $post->neuf_events_starttime);
         <a href="<?php echo $post->neuf_events_fb_url; ?>" title="Arrangementet på Facebook" class="event--meta--facebook"><?php require(get_stylesheet_directory()."/dist/images/icons/facebook.svg");?></a>
     <?php endif; ?>
     <?php if($ticket): ?>
-        <a href="<?php echo $ticket; ?>" class="event--meta--ticket" title="<?php _e("Ticket"); ?>"><?php echo _('Buy ticket').' ('.$price.')'; ?></a>
+        <a href="<?php echo $ticket; ?>" class="event--meta--ticket" title="<?php _e("Ticket", 'neuf'); ?>"><?php echo _('Buy ticket', 'neuf').' ('.$price.')'; ?></a>
     <?php else: ?>
-        <span class="event--meta--price" title="<?php _e("Price"); ?>"><?php echo $price ?></span>
+        <span class="event--meta--price" title="<?php _e("Price", 'neuf'); ?>"><?php echo $price ?></span>
     <?php endif; ?>
 </section> <!-- .entry--meta -->

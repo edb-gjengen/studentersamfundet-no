@@ -2,6 +2,7 @@
 add_theme_support('menus');
 add_theme_support('post-thumbnails');
 add_theme_support('automatic-feed-links');
+add_theme_support('html5', array('search-form'));
 
 $content_width = 870;
 
@@ -395,7 +396,7 @@ function neuf_page_title() {
     } elseif (is_search()) {
         $content .= '<h1 class="page-title">';
         $content .= __('Search Results for:', 'neuf');
-        $content .= ' <span id="search-terms">' . get_search_query() .'</span>';
+        $content .= ' <span class="search-terms">' . get_search_query() .'</span>';
         $content .= '</h1>';
     } elseif (is_tag()) {
         $content .= '<h1 class="page-title">';
@@ -428,7 +429,7 @@ function neuf_page_title() {
         $content .= '</h1>';
     }
     $content .= "\n";
-    echo( $content );
+    echo ($content);
 
 }
 
