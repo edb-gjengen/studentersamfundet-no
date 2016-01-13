@@ -149,6 +149,10 @@ article.page,
             display: inline-block;
             padding-top: rem-calc(2);
             font-size: rem-calc(22);
+            
+            &:empty {
+                display: none;
+            }
         }
     }
     &--start--time {
