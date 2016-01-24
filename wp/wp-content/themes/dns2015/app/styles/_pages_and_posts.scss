@@ -122,7 +122,7 @@ article.page,
 .event--meta {
     padding: rem-calc(16);
     &--type {
-        @include label();
+        @include label($bg:darken($secondary-color, 8%));
 
         a {
             color: white;

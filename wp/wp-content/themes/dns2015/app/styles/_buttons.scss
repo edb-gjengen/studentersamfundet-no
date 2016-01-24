@@ -3,17 +3,4 @@
     @include button;
     font-size: rem-calc(14);
     padding: 0.75em 0;
-    /*background: linear-gradient(lighten($primary-color, 5%), darken($primary-color, 5%) 95%);
-    box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, .1),
-        inset 0 1px 0 rgba(255, 255,255, .3),
-        0 1px 3px rgba(0, 0, 0, .5),
-        0 0 1px rgba(0, 0, 0, .35);
-
-    &:hover {
-        background: linear-gradient(lighten($primary-color, 10%), darken($primary-color, 15%) 95%);
-    }
-    &:focus {
-        outline: none;
-    }*/
 }
