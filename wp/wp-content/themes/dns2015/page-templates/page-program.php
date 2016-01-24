@@ -53,6 +53,7 @@ if ( $events->have_posts() ) :
             $price = neuf_format_price($post);
             $venue = $post->neuf_events_venue;
             $ticket = $post->neuf_events_ticket_url;
+            $fb_url = $post->neuf_events_fb_url;
 
             $event_array = get_the_terms( $post->ID , 'event_type' );
             $get_term_id = function($term) {
@@ -77,6 +78,9 @@ if ( $events->have_posts() ) :
                 <div class="event-attributes">
                     <?php echo $event_types; ?>
                     <span class="event--meta--venue" title="<?php _e("Venue"); ?>"><?php require(get_stylesheet_directory().'/dist/images/icons/location.svg'); ?><?php echo $venue; ?></span>
+                    <?php if($fb_url): ?>
+                        <a href="<?php echo $fb_url; ?>" title="Arrangementet på Facebook" class="event--meta--facebook"><?php require(get_stylesheet_directory()."/dist/images/icons/facebook.svg");?></a>
+                    <?php endif; ?>
                     <?php if($ticket): ?>
                         <a href="<?php echo $ticket; ?>" class="event--meta--ticket" title="<?php _e("Ticket"); ?>"><?php _e('Buy ticket'); echo ' ('.$price.')'; ?></a>
                     <?php else: ?>
