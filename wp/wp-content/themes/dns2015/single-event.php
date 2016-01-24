@@ -25,7 +25,7 @@
     </section>
 
     <section class="event--sidebar">
-        <div class="inner">
+        <div class="sidebar">
             <h5 class="share--title"><?php _e('Share', 'neuf'); ?></h5>
             <?php display_social_sharing_buttons(); ?>
             <?php get_template_part( 'audioplayer', 'event' ); ?>

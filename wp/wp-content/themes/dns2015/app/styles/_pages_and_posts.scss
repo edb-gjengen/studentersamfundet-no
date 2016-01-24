@@ -75,6 +75,22 @@ article.page,
         font-family: $font-family-serif;
     }
 }
+.single-post--content {
+    @include grid-column($columns: 12);
+    margin-bottom: rem-calc(20);
+
+    @media #{$large-up} {
+        @include grid-column($columns: 8);
+    }
+}
+.single-post--sidebar {
+    @include grid-column($columns: 12);
+    margin-bottom: rem-calc(20);
+
+    @media #{$large-up} {
+        @include grid-column($columns: 4);
+    }
+}
 .full-width-container article {
     max-width: none;
 }
@@ -86,7 +102,7 @@ article.page,
         margin-bottom: rem-calc(20);
 
         @media #{$large-up} {
-            @include grid-column($columns: 7);
+            @include grid-column($columns: 8);
         }
 
         .entry-title {
@@ -102,20 +118,13 @@ article.page,
     }
     &--sidebar {
         @include grid-column($columns: 12);
-        .inner {
-            @include card;
-        }
 
         @media #{$large-up} {
-            @include grid-column($columns: 5);
+            @include grid-column($columns: 4);
         }
 
         h3 {
             font-size: rem-calc(18);
-        }
-
-        .social-sharing {
-            padding-bottom: 0;
         }
     }
 }
@@ -215,7 +224,7 @@ article.page,
     display: none;
     @media #{$medium-up} {
         display: block;
-        @include grid-column($columns: 3);
+        @include grid-column($columns: 4);
     }
 
 }
@@ -223,7 +232,7 @@ article.page,
 .page--content {
     @include grid-column($columns: 12);
     @media #{$medium-up} {
-        @include grid-column($columns: 9);
+        @include grid-column($columns: 8);
     }
 
     article.page {
@@ -375,15 +384,12 @@ article.page,
 /* Sidebar */
 .sidebar {
     @include card;
-    padding: rem-calc(10);
+    padding: rem-calc(16);
 }
 
 /* Social sharing */
-.share--title {
-    margin: 0 rem-calc(16);
-}
 .social-sharing {
-    padding: rem-calc(16);
+    margin-bottom: rem-calc(16);
 
     &--twitter,
     &--facebook {
@@ -399,11 +405,6 @@ article.page,
     }
 }
 
-
-/* Newsletter */
-.newsletter-signup-form {
-    padding: rem-calc(16);
-}
 /* Index template (archive, search, etc) */
 .index {
     &--loop {
