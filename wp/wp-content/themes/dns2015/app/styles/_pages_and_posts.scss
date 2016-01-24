@@ -93,7 +93,7 @@ article.page,
             margin-bottom: 4px;
             line-height: 1;
         }
-        .event--meta--type {
+        .event--meta--type:first-of-type {
             margin-left: rem-calc(16);
         }
         .event--meta--price {
@@ -124,6 +124,7 @@ article.page,
     &--type {
         @include label($bg:darken($secondary-color, 8%));
 
+        &,
         a {
             color: white;
             &:link { color: white; }
@@ -240,7 +241,7 @@ article.page,
         margin-bottom: rem-calc(20);
 
         @media #{$medium-up} {
-            @include grid-column($columns: 3);
+            @include grid-column($columns: 4);
         }
     }
     &--list-wrap {
@@ -248,13 +249,49 @@ article.page,
         margin-bottom: rem-calc(20);
 
         @media #{$medium-up} {
-            @include grid-column($columns: 9);
+            @include grid-column($columns: 8);
         }
     }
     &--filter {
         @include card;
         padding: rem-calc(16);
         padding-top: rem-calc(10);
+
+        &--form {
+            margin: 0;
+            list-style: none;
+            padding: 0;
+
+            label {
+                margin-bottom: rem-calc(10);
+            }
+            input[type="radio"] {
+                transform: scale(1.5);
+                margin-bottom: 0;
+
+                &:active,
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+        &--event-type {
+            display: block;
+            font-size: rem-calc(20);
+            padding: rem-calc(10);
+
+        }
+        &--reset-btn {
+            display: block;
+            width: 100%;
+            &:active,
+            &:focus {
+                outline: none;
+            }
+            &:disabled {
+                background: $grey-color;
+            }
+        }
     }
     &--list {
         @include card;
@@ -278,6 +315,9 @@ article.page,
     }
     .event-row {
         margin-bottom: rem-calc(16);
+        &.hidden {
+            display: none;
+        }
     }
     .event--meta--datetime-daynum {
         font-size: rem-calc(32);

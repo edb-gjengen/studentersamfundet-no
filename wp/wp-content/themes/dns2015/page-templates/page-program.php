@@ -28,6 +28,7 @@ $args = array(
 <?php
 
 $events = new WP_Query( $args );
+$event_types_ids = array();
 
 if ( $events->have_posts() ) :
     $first = true;
@@ -52,7 +53,14 @@ if ( $events->have_posts() ) :
             $price = neuf_format_price($post);
             $venue = $post->neuf_events_venue;
             $ticket = $post->neuf_events_ticket_url;
-            $event_types = get_event_types($post);
+
+            $event_array = get_the_terms( $post->ID , 'event_type' );
+            $get_term_id = function($term) {
+                return $term->term_id;
+            };
+//            $root_event_types = array_merge($root_event_types, $event_array);
+            $event_types_ids = array_merge($event_types_ids, array_map($get_term_id, $event_array));
+            $event_types = get_event_types_formatted($event_array);
 
 
             /* everything is everything is not everything if everything is nothing */
@@ -61,13 +69,13 @@ if ( $events->have_posts() ) :
             <?php if($newmonth): ?>
                 <h3 class="month"><?php echo ucfirst($current_month); ?></h3>
             <?php endif; ?>
-            <li class="event-row <?php echo $alt; ?>">
+            <li class="event-row<?php echo $alt; ?>">
                 <div>
                     <span class="event--meta--datetime-daynum" title="<?php echo $dt_iso8601; ?>"><?php echo $dt_daynum; ?>.</span>
                     <span class="event-title" title="<?php _e("Event title"); ?>"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php echo the_title(); ?></a></span>
                 </div>
                 <div class="event-attributes">
-                    <span class="event--meta--type" title="<?php _e("Event category"); ?>"><?php echo $event_types; ?></span>
+                    <?php echo $event_types; ?>
                     <span class="event--meta--venue" title="<?php _e("Venue"); ?>"><?php require(get_stylesheet_directory().'/dist/images/icons/location.svg'); ?><?php echo $venue; ?></span>
                     <?php if($ticket): ?>
                         <a href="<?php echo $ticket; ?>" class="event--meta--ticket" title="<?php _e("Ticket"); ?>"><?php _e('Buy ticket'); echo ' ('.$price.')'; ?></a>
@@ -88,8 +96,11 @@ if ( $events->have_posts() ) :
     <div class="program--filter-wrap">
         <section class="program--filter">
             <h5><?php _e('Filter') ?></h5>
-            <a href="#">Free</a> / <a href="#">Need ticket</a><br>
-            TODO: event categories
+            <!--<a href="#" data-filter-by-price="free">Free</a> / <a href="#" data-filter-by-price="not-free">Need ticket</a><br>-->
+            <form class="program--filter--form">
+                <?php echo get_root_event_types_formatted($event_types_ids, 'event--meta--type program--filter--event-type'); ?>
+                <button type="reset" class="btn program--filter--reset-btn" disabled><?php _e('Clear filter'); ?></button>
+            </form>
         </section>
     </div>
 

@@ -7,7 +7,7 @@
         <article id="content" <?php neuf_post_class(); ?>>
 
             <h1 class="entry-title"><?php the_title(); ?></h1>
-            <span class="event--meta--type"><?php echo get_event_types($post); ?></span>
+            <?php echo get_event_types_formatted(get_the_terms( $post->ID , 'event_type' )); ?>
 
             <?php get_template_part( 'event-meta' ); ?>
 

@@ -575,14 +575,51 @@ add_filter( 'wpseo_use_page_analysis', '__return_false' );
 /* Remove per post comment feeds */
 remove_action( 'wp_head', 'feed_links_extra', 3 );
 
-
-function get_event_types($post) {
-    $event_array = get_the_terms( $post->ID , 'event_type' );
-    $post->event_types = array();
+function get_event_types_formatted($event_array) {
+    $event_types = array();
     foreach ( $event_array as $event_type ) {
-        $post->event_types[] = '<a href="' . get_term_link( $event_type->slug , 'event_type') . '">' . $event_type->name . '</a>';
+        $term_link = get_term_link( $event_type->slug , 'event_type');
+        $root_term_id = get_root_event_type($event_type->term_id);
+        $event_types[] = '<a href="' . $term_link . '" class="event--meta--type" data-root-term-id="'. $root_term_id .'">' . $event_type->name . '</a>';
     }
-    return implode(', ' , $post->event_types );
+    return implode(' ' , $event_types );
+}
+
+function get_root_event_type($term_id) {
+    $ancestors = get_ancestors($term_id, 'event_type');
+    $root_id = end($ancestors);
+    // if $term_id has no ancestors, then $term_id is a root
+    return $root_id !== false ? $root_id : $term_id;
+}
+
+function get_root_event_types($term_ids) {
+    $term_ids = array_unique($term_ids);
+    $roots = array();
+    foreach( $term_ids as $term_id) {
+        $roots[] = get_root_event_type($term_id);
+    }
+    return array_unique($roots);
+}
+function terms_by_name($a, $b) {
+    return strnatcmp($a->name, $b->name);
+}
+function get_root_event_types_formatted($term_ids, $css_classes) {
+    $terms = get_terms('event_type', array(
+        'include' => get_root_event_types($term_ids)
+    ));
+
+    // Sort by name
+    usort($terms, 'terms_by_name');
+
+    // Format
+    $html = '';
+    foreach($terms as $term) {
+        $_id = $term->term_id;
+        $html .= '<label data-term-id="'. $_id .'" class="'. $css_classes.'" for="event-type-'. $_id .'">' .
+            '<input type="radio" name="event-type" id="event-type-'. $_id .'" value="'. $_id .'"> ' .
+            $term->name.'</label>';
+    }
+    return $html;
 }
 
 /* Sticky events

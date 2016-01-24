@@ -19,7 +19,7 @@
                 <div class="entry-meta">
                     <h2 class="entry-title<?php echo neuf_title_class(); ?>"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
                     <?php if( $feat_post->post_type == 'event'): ?>
-                        <span class="event--meta--type"><?php echo get_event_types($feat_post); ?></span>
+                        <?php echo get_event_types_formatted(get_the_terms( $feat_post->ID , 'event_type' )); ?>
                         <span class="event--meta--datetime"><?php echo date_i18n('l j. F' , $feat_post->neuf_events_starttime ); ?></span>
                         <span class="event--meta--venue"><?php require(get_stylesheet_directory().'/dist/images/icons/location.svg'); ?><?php echo $feat_post->neuf_events_venue; ?></span>
                         <span class="event--meta--price"><?php echo neuf_format_price($feat_post); ?></span>

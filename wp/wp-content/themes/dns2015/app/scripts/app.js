@@ -130,4 +130,22 @@ $(document).ready( function() {
     //    var tab = $(this).attr('href') + '-events' ;
     //    $(tab).show().addClass('current');
     //});
+
+    if( $('.page-template-page-program').length ) {
+        var $resetBtn = $('.program--filter--reset-btn');
+        var $eventRows = $('.event-row');
+
+        $('.program--filter--form').on('change', function(event) {
+            /* On input change: filter list of events */
+            var termId = $(event.target).val();
+            $eventRows.addClass('hidden');
+            $('[data-root-term-id="'+ termId +'"').parent().parent().removeClass('hidden');
+            $resetBtn.prop('disabled', false);
+
+        }).on('reset', function(event) {
+            /* On no filters, show all */
+            $eventRows.removeClass('hidden');
+            $resetBtn.prop('disabled', true);
+        });
+    }
 });
