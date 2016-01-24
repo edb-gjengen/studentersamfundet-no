@@ -114,7 +114,7 @@ article.page,
             font-size: rem-calc(18);
         }
 
-        #social-sharing {
+        .social-sharing {
             padding-bottom: 0;
         }
     }
@@ -379,21 +379,26 @@ article.page,
 }
 
 /* Social sharing */
-#social-sharing {
-    padding: rem-calc(16);
-}
 .share--title {
     margin: 0 rem-calc(16);
 }
-.share-twitter,
-.share-facebook {
-    display: inline-block;
+.social-sharing {
+    padding: rem-calc(16);
+
+    &--twitter,
+    &--facebook {
+        display: inline-block;
+    }
+    &--facebook {
+        position: relative;
+        top: -4px;
+        padding-left: rem-calc(6);
+    }
+    &--google-calendar {
+        padding-top: rem-calc(10);
+    }
 }
-.share-facebook {
-    position: relative;
-    top: -4px;
-    padding-left: rem-calc(6);
-}
+
 
 /* Newsletter */
 .newsletter-signup-form {

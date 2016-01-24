@@ -289,23 +289,23 @@ function neuf_doctitle() {
  * Display social sharing buttons.
  */
 function display_social_sharing_buttons() {
-    global $post;
-    ?>
-    <div id="social-sharing">
-        <div class="share-twitter">
+    global $post; ?>
+    <div class="social-sharing">
+        <div class="social-sharing--twitter">
             <a href="https://twitter.com/share" class="twitter-share-button" data-lang="no">Tweet</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-        </div> <!-- .share-twitter -->
-        <div class="share-facebook">
+        </div>
+        <div class="social-sharing--facebook">
             <div class="fb-like" data-send="true" data-layout="button_count" data-show-faces="true" data-action="recommend"></div>
-        </div> <!-- .share-facebook -->
-        <?php if ( 'event' == get_post_type() ) { ?>
-            <div class="gcal">
-                <i class="icon-calendar"></i> <a href="<?php echo $post->neuf_events_gcal_url; ?>">Legg til i Google kalender</a>
-            </div> <!-- .gcal -->
+        </div>
+        <?php if (  get_post_type() == 'event' ) { ?>
+            <div class="social-sharing--google-calendar">
+                <i class="icon-calendar"></i> <a href="<?php echo $post->neuf_events_gcal_url; ?>"><?php _e('Add to Google Calendar', 'neuf'); ?></a>
+            </div>
         <?php } ?>
     </div> <!-- #social-sharing -->
-<?php }
+<?php
+}
 
 /**
  * Count attachments to a post.
