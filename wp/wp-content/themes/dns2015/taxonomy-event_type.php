@@ -65,7 +65,6 @@ $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' 
 
         <?php neuf_page_title(); ?>
 
-        <!-- TODO: Toggle between future and present -->
         <section class="event-category--future-events">
             <?php $wp_query = $future; // Use the future posts query as the main Loop query ?>
             <?php get_template_part( 'loop', 'taxonomy-event_type' ); ?>
@@ -78,12 +77,11 @@ $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' 
     </section>
 
     <section class="event-category--sidebar">
-
         <aside class="event-category--meta">
-            <!-- TODO: move this into the get_sidebar() HTML -->
             <?php if ( $term->parent ):
                 $term_parent = get_term( $term->parent, $term->taxonomy );
                 ?>
+                <h3><?php _e('Description', 'neuf'); ?></h3>
                 <span class="event-category--description"><a href="<?php echo get_term_link( $term_parent->slug, 'event_type' ); ?>"><?php echo $term_parent->name; ?></a></span>
             <?php endif; ?>
             <p class="description"><?php echo( $term->description ); ?></p>
