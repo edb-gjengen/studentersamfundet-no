@@ -26,7 +26,7 @@ $datetime = date_i18n('Y-m-d\TH:i:s', $post->neuf_events_starttime);
         <a href="<?php echo $post->neuf_events_fb_url; ?>" title="Arrangementet på Facebook" class="event--meta--facebook"><?php require(get_stylesheet_directory()."/dist/images/icons/facebook.svg");?></a>
     <?php endif; ?>
     <?php if($ticket): ?>
-        <a href="<?php echo $ticket; ?>" class="event--meta--ticket" title="<?php _e("Ticket", 'neuf'); ?>"><?php echo _('Buy ticket', 'neuf').' ('.$price.')'; ?></a>
+        <a href="<?php echo $ticket; ?>" class="event--meta--ticket" title="<?php _e("Ticket", 'neuf'); ?>"><?php _e('Buy ticket', 'neuf'); ?> (<?php echo $price; ?>)</a>
     <?php else: ?>
         <span class="event--meta--price" title="<?php _e("Price", 'neuf'); ?>"><?php echo $price ?></span>
     <?php endif; ?>
