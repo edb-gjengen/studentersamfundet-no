@@ -465,10 +465,17 @@ article.page,
         @include card;
         @include clearfix;
         margin-bottom: rem-calc(10);
+    }
+    article {
         padding: rem-calc(16) 0;
     }
+    &--meta,
     &--no-content {
         padding: rem-calc(16);
+    }
+    &--description {
+        font-size: rem-calc(14);
+        margin-bottom: 0;
     }
 
     /* Event */

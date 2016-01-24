@@ -66,30 +66,31 @@ $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' 
         <?php neuf_page_title(); ?>
 
         <section class="event-category--future-events">
+            <nav class="event-category--tab-control">
+                <h3><?php _e('Upcoming events', 'neuf'); ?></h3>
+            </nav>
             <?php $wp_query = $future; // Use the future posts query as the main Loop query ?>
             <?php get_template_part( 'loop', 'taxonomy-event_type' ); ?>
         </section> <!-- #future-events -->
 
         <section class="event-category--past-events">
+            <h3><?php echo $term->name." "; _e('in the past', 'neuf');?></h3>
             <?php $wp_query = $past; // Use the past query as the main Loop query ?>
             <?php get_template_part( 'loop', 'taxonomy-event_type' ); ?>
         </section> <!-- #future-events -->
     </section>
 
     <section class="event-category--sidebar">
+        <?php if ( $term->parent || $term->description ): ?>
         <aside class="event-category--meta">
-            <?php if ( $term->parent ):
-                $term_parent = get_term( $term->parent, $term->taxonomy );
-                ?>
-                <h3><?php _e('Description', 'neuf'); ?></h3>
-                <span class="event-category--description"><a href="<?php echo get_term_link( $term_parent->slug, 'event_type' ); ?>"><?php echo $term_parent->name; ?></a></span>
+            <h5><?php _e('About', 'neuf'); echo " $term->name"; ?></h5>
+            <?php if($term->parent):
+                $term_parent = get_term( $term->parent, $term->taxonomy ); ?>
+                <span class="event--meta--type"><a href="<?php echo get_term_link( $term_parent->slug, 'event_type' ); ?>"><?php echo $term_parent->name; ?></a></span>
             <?php endif; ?>
-            <p class="description"><?php echo( $term->description ); ?></p>
-            <nav class="event-category--tab-control">
-                <a href="#future">Kommende arrangementer</a>
-                <a href="#past"><?php echo $term->name ?> i fortida</a>
-            </nav>
+            <p class="event-category--description"><?php echo( $term->description ); ?></p>
         </aside>
+        <?php endif; ?>
 
         <?php get_sidebar(); ?>
 

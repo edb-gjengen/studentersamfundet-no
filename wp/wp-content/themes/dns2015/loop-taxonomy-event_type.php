@@ -11,6 +11,6 @@
 
 <?php endwhile; else: ?>
     <section class="event-category--no-content">
-        <p><?php _e('No more events :-('); ?></p>
+        <p><?php _e('No events', 'neuf'); ?> :-(</p>
     </section>
 <?php endif; ?>
