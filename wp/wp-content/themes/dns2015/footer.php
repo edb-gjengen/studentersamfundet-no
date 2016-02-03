@@ -14,6 +14,7 @@
     </div>
     <div class="footer--kolofon">
         <span><?php echo get_theme_mod('footer_kolofon', 'Chateau Neuf - Det Norske Studentersamfund | Slemdalsveien 15, 0369 Oslo | Ansvarlig redaktør: Rein Amundsen'); ?></span>
+        <span><a href="<?php echo admin_url(); ?>"><?php _e('Log in'); ?></a></span>
     </div>
 </footer> <!-- #site-footer -->
 
