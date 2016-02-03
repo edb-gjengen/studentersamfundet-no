@@ -22,7 +22,7 @@ $associations = new WP_Query( $args );
                     <div class="associations--list--item--inner">
                         <h2 class="associations--list--item--title"><a href="<?php the_permalink(); ?>"> <?php echo $post->post_title; ?></a></h2>
                         <?php if( has_post_thumbnail() ): ?>
-                            <a href="<?php the_permalink(); ?>"><?php echo get_the_post_thumbnail( $post->ID, 'association-thumb' ); ?></a>
+                            <a href="<?php the_permalink(); ?>" class="associations--list--item--image-link"><?php echo get_the_post_thumbnail( $post->ID, 'association-thumb' ); ?></a>
                         <?php endif; ?>
                         <?php the_excerpt(); ?>
                     </div>

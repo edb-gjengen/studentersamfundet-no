@@ -368,7 +368,7 @@ article.page,
 .associations {
     @include grid-column(12);
 
-    &--list {
+        &--list {
         @include block-grid($per-row: 1);
 
         @media #{$medium-up} {
@@ -383,8 +383,17 @@ article.page,
             &--inner {
                 @include card;
                 padding: rem-calc(16);
+
+            }
+            &--image-link {
+                float: right;
             }
         }
+    }
+
+    .attachment-association-thumb {
+        width: auto;
+        height: 150px;
     }
 }
 
