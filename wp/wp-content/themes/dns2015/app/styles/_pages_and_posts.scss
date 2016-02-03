@@ -364,8 +364,28 @@ article.page,
 }
 
 /* Page: Associations */
-.associations-list {
-    @include block-grid($per-row: 2);
+
+.associations {
+    @include grid-column(12);
+
+    &--list {
+        @include block-grid($per-row: 1);
+
+        @media #{$medium-up} {
+            @include block-grid($per-row: 2);
+
+        }
+
+        &--item {
+            &--title {
+               font-weight: 200;
+            }
+            &--inner {
+                @include card;
+                padding: rem-calc(16);
+            }
+        }
+    }
 }
 
 /* Page: 404 */
