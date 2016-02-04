@@ -1,12 +1,13 @@
 <?php
+$timestamp = $post->neuf_events_starttime;
 $ticket = $post->neuf_events_ticket_url;
 $price = neuf_format_price($post);
-$time = date_i18n('G.i', $post->neuf_events_starttime);
-$day = date_i18n('j');
-$weekday = date_i18n('l');
-$month = date_i18n('F');
+$time = date_i18n('G.i', $timestamp);
+$day = date_i18n('j', $timestamp);
+$weekday = date_i18n('l', $timestamp);
+$month = date_i18n('F', $timestamp);
 $year = neuf_event_format_starttime_year($post);
-$datetime = date_i18n('Y-m-d\TH:i:s', $post->neuf_events_starttime);
+$datetime = date_i18n('Y-m-d H:i', $timestamp);
 
 ?>
 <section class="event--meta">
