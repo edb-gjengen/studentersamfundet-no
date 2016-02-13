@@ -440,7 +440,11 @@ article.page,
 /* Index template (archive, search, etc) */
 .index {
     &--loop {
-        @include grid-column($columns: 8);
+        @include grid-column($columns: 12);
+
+        @media #{$medium-up} {
+            @include grid-column($columns: 8);
+        }
 
         article {
             @include card;
@@ -476,7 +480,11 @@ article.page,
         }
     }
     &--sidebar {
-        @include grid-column($columns: 4);
+        @include grid-column($columns: 12);
+
+        @media #{$medium-up} {
+            @include grid-column($columns: 4);
+        }
     }
     &--no-content {
         @include card;
@@ -487,10 +495,18 @@ article.page,
 /* Event category */
 .event-category {
     &--sidebar {
-        @include grid-column($columns: 4);
+        @include grid-column($columns: 12);
+
+        @media #{$medium-up} {
+            @include grid-column($columns: 4);
+        }
     }
     &--content {
-        @include grid-column($columns: 8);
+        @include grid-column($columns: 12);
+
+        @media #{$medium-up} {
+            @include grid-column($columns: 8);
+        }
 
         p:last-child,
         p:last-of-type {
