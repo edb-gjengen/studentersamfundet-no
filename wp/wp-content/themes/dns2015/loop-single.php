@@ -5,9 +5,10 @@
                 <h1 class="entry-title"><?php the_title(); ?></h1>
 
                 <div class="entry-meta byline"><span class="meta-prep meta-prep-author">av </span><span
-                    class="author vcard"><?php the_author_link(); ?></span>, <span
-                    class="entry-date"><?php echo get_the_date('l d. M Y'); ?> kl <?php the_time('G.i'); ?></span>
+                    class="author vcard"><?php the_author_link(); ?></span>, <time
+                    class="entry-date published" datetime="<?php the_time('c'); ?>"><?php echo get_the_date('l d. M Y'); ?> kl <?php the_time('G.i'); ?></time>
                 </div>
+                <time class="updated microformat-invisible" datetime="<?php the_modified_date('c'); ?>"></time>
 
                 <?php if (has_post_thumbnail()): ?>
                     <div class="wp-post-image-caption">
