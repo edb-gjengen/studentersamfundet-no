@@ -8,7 +8,6 @@
     <link rel="icon" type="image/png" href="/favicon.ico"/>
     <link rel="alternate" type="application/rss+xml" href="https://studentersamfundet.no/syndikering/kommende-program/"
           title="Det Norske Studentersamfund (kommende program)"/>
-    <link href="<?php echo get_stylesheet_directory_uri(); ?>/dist/styles/app.css" rel="stylesheet" type="text/css"/>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,900,300,400italic,700italic' rel='stylesheet' type='text/css'>
 
     <meta property="fb:app_id" content="220213643760"/>

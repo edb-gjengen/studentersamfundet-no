@@ -73,9 +73,10 @@ add_action( 'init' , 'neuf_register_theme_taxonomies' , 0 );
 /* Enqueue JavaScript */
 function neuf_enqueue_scripts() {
     wp_deregister_script( 'jquery' );
-    wp_register_script('vendor', get_template_directory_uri() . '/dist/scripts/vendor.js');
-    wp_register_script('app', get_template_directory_uri() . '/dist/scripts/app.js', array('vendor'));
+    wp_register_script('vendor', get_template_directory_uri().'/dist/scripts/vendor.js', array(), filemtime(get_template_directory().'/dist/scripts/vendor.js' ));
+    wp_register_script('app', get_template_directory_uri().'/dist/scripts/app.js', array('vendor'), filemtime(get_template_directory().'/dist/scripts/app.js' ));
     wp_enqueue_script( 'app' );
+    wp_enqueue_style( 'app', get_stylesheet_directory_uri().'/dist/styles/app.css', array(), filemtime(get_template_directory().'/dist/styles/app.css' ));
 }
 add_action( 'wp_enqueue_scripts' , 'neuf_enqueue_scripts' );
 
