@@ -28,6 +28,10 @@
                 <span class="event--meta--price"><?php echo neuf_format_price($post); ?></span>
             </div>
 
+            <script type="application/ld+json">
+                <?php echo neuf_event_get_schema($post); ?>
+            </script>
+
         </article>
     <?php endwhile; endif; ?>
 </section>
