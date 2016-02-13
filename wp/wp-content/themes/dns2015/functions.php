@@ -639,14 +639,52 @@ function neuf_get_site_schema() {
     );
     return json_encode($schema_data, JSON_PRETTY_PRINT);
 }
+function neuf_event_get_prices_cleaned($post) {
+    $prices = array(
+        'regular' => $post->neuf_events_price_regular,
+        'member' => $post->neuf_events_price_member
+    );
+    foreach( $prices as $k=>$v ) {
+        if( in_array(strtolower($v), array('gratis', 'free')) ) {
+            $prices[$k] = 0;
+        }
+        if( !is_numeric($v) ) {
+            $prices[$k] = '';
+        }
+    }
+    return $prices;
+}
 
 function neuf_event_get_schema($post) {
+    $venue = $post->neuf_events_venue;
     $location = array(
         "@type" => "Place",
         "sameAs" => get_bloginfo('url'),
-        "name" =>  get_bloginfo('name'),
+        "name" => get_bloginfo('name').', '.$venue,
         "address" => __("Chateau Neuf, Slemdalsveien 15, 0369 Oslo", 'neuf')
     );
+    /* Ticket / Price */
+    $prices = neuf_event_get_prices_cleaned($post);
+
+    $ticket_url = $post->neuf_events_ticket_url;
+    $offer = array(
+        array(
+            "@type" => "Offer",
+            "price" => $prices['regular'],
+            "priceCurrency" => 'NOK',
+            "description" => __("Standard ticket price", 'neuf'),
+        ),
+        array(
+            "@type" => "Offer",
+            "price" => $prices['member'],
+            "priceCurrency" => 'NOK',
+            "description" => __("Ticket price for Members of DNS", 'neuf'),
+        )
+    );
+    if( $ticket_url ) {
+        $offer[0]['url'] = $ticket_url;
+        $offer[1]['url'] = $ticket_url;
+    }
     $date_format = 'Y-m-d\TH:i';  // "2013-09-14T21=>30" // FIXME: duration
     $start_date = date_i18n($date_format, $post->neuf_events_starttime);
     $schema_data = array(
@@ -655,7 +693,8 @@ function neuf_event_get_schema($post) {
         "name"=> get_the_title($post),
         "startDate" => $start_date,
         "url" => get_permalink($post),
-        "location" => $location
+        "location" => $location,
+        "offers" => $offer
     );
     return json_encode($schema_data, JSON_PRETTY_PRINT);
 }
