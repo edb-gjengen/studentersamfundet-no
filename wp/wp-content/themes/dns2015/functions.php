@@ -648,8 +648,9 @@ function neuf_event_get_prices_cleaned($post) {
         if( in_array(strtolower($v), array('gratis', 'free')) ) {
             $prices[$k] = 0;
         }
-        if( !is_numeric($v) ) {
-            $prices[$k] = '';
+        /* Default to free */
+        if( !is_numeric($v) || strlen(trim($v)) == 0) {
+            $prices[$k] = 0;
         }
     }
     return $prices;
@@ -667,24 +668,31 @@ function neuf_event_get_schema($post) {
     $prices = neuf_event_get_prices_cleaned($post);
 
     $ticket_url = $post->neuf_events_ticket_url;
-    $offer = array(
-        array(
-            "@type" => "Offer",
-            "price" => $prices['regular'],
-            "priceCurrency" => 'NOK',
-            "description" => __("Standard ticket price", 'neuf'),
-        ),
-        array(
-            "@type" => "Offer",
-            "price" => $prices['member'],
-            "priceCurrency" => 'NOK',
-            "description" => __("Ticket price for Members of DNS", 'neuf'),
-        )
-    );
-    if( $ticket_url ) {
-        $offer[0]['url'] = $ticket_url;
-        $offer[1]['url'] = $ticket_url;
+    $offers = array();
+    /* Only add offers if one has a price */
+    if( $prices['member'] != "0" || $prices['regular'] != "0") {
+        $offers = array(
+            array(
+                "@type" => "Offer",
+                "price" => $prices['regular'],
+                "priceCurrency" => 'NOK',
+                "description" => __("Standard ticket price", 'neuf'),
+            ),
+            array(
+                "@type" => "Offer",
+                "price" => $prices['member'],
+                "priceCurrency" => 'NOK',
+                "description" => __("Ticket price for Members of DNS", 'neuf'),
+            )
+        );
+        if( $ticket_url ) {
+            /* Every event has same ticket URL */
+            foreach( $offers as $offer ) {
+                $offer['url'] = $ticket_url;
+            }
+        }
     }
+
     $date_format = 'Y-m-d\TH:i';  // "2013-09-14T21=>30" // FIXME: duration
     $start_date = date_i18n($date_format, $post->neuf_events_starttime);
     $schema_data = array(
@@ -694,8 +702,12 @@ function neuf_event_get_schema($post) {
         "startDate" => $start_date,
         "url" => get_permalink($post),
         "location" => $location,
-        "offers" => $offer
     );
+
+    if($offers) {
+        $schema_data['offers'] = $offers;
+    }
+
     return json_encode($schema_data, JSON_PRETTY_PRINT);
 }
 
