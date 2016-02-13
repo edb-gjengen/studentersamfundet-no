@@ -44,6 +44,9 @@ article.page,
         table {
             font-family: $font-family-sans-serif;
         }
+        iframe {
+            max-width: 100%;
+        }
     }
     .wp-caption-text {
         padding: 0 rem-calc(16);
