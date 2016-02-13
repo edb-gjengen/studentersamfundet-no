@@ -1,6 +1,6 @@
 <?php
 $homepage = get_post_meta(get_the_ID(), '_neuf_associations_homepage', true);
-$homepage = $homepage ? '<div class="entry-meta web-page">'. _('Web page', 'neuf') .': <a href="' . $homepage . '">' . $homepage . '</a></div>' : '';
+$homepage = $homepage ? '<div class="entry-meta web-page">'. __('Web page', 'neuf') .': <a href="' . $homepage . '">' . $homepage . '</a></div>' : '';
 ?>
 <?php get_header(); ?>
 
