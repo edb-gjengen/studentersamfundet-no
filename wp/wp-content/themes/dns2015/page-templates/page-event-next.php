@@ -53,7 +53,7 @@ $post->event_types_comma = implode( ', ' , $post->event_types );
 <html>
 <head>
 	<title>Snart på Studentersamfundet</title>
-	<link href='http://fonts.googleapis.com/css?family=Arvo:700,400italic' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Arvo:700,400italic' rel='stylesheet' type='text/css'>
 	<style media="screen" type="text/css">
 /**
  * reset
