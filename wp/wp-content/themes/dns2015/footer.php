@@ -21,7 +21,7 @@
 <?php wp_footer(); ?>
 <!-- https://www.browser-update.org/ -->
 <script>
-    var $buoop = {c:2};
+    var $buoop = {vs:{i:9,f:25,o:12.1,s:7},c:2};
     function $buo_f(){
         var e = document.createElement("script");
         e.src = "//browser-update.org/update.min.js";
