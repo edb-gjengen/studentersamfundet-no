@@ -107,7 +107,8 @@ function neuf_handle_upload_prefilter( $file ) {
     }
 
     if( count($errors) > 0 ) {
-        return array( "error" => __("Image dimensions are too small", 'neuf'). ": ". implode(", ", $errors). ".");
+        $file['error'] = __("Image dimensions are too small", 'neuf'). ": ". implode(", ", $errors). ".";
+        return $file;
     }
 
     return $file;
