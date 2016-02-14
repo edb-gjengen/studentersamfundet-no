@@ -7,10 +7,9 @@ $homepage = $homepage ? '<div class="entry-meta web-page">'. __('Web page', 'neu
 <div id="content">
 
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+    <section class="association--content">
+        <article <?php neuf_post_class(); ?>>
 
-    <article <?php neuf_post_class(); ?>>
-
-        <section class="association--content">
             <?php the_tags('<span class="tags">', ', ', '</span>'); ?>
             <h1 class="entry-title"><?php the_title(); ?></h1>
             <span class="author microformat-invisible"><?php the_author_link(); ?></span>
@@ -24,12 +23,15 @@ $homepage = $homepage ? '<div class="entry-meta web-page">'. __('Web page', 'neu
             <?php endif; ?>
 
             <div class="entry-content"><?php the_content(); ?></div> <!-- .entry-content -->
-        </section>
-        <section class="association--sidebar">
-            <?php get_template_part('newsletter', 'signup-form'); ?>
-        </section>
+        </article> <!-- .hentry -->
+    </section>
 
-    </article> <!-- .hentry -->
+    <section class="association--sidebar">
+        <div class="sidebar">
+            <?php get_template_part('newsletter', 'signup-form'); ?>
+        </div>
+    </section>
+
 
 <?php endwhile; endif; ?>
 
