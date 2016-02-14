@@ -103,7 +103,7 @@ if ( $events->have_posts() ) :
             <!--<a href="#" data-filter-by-price="free">Free</a> / <a href="#" data-filter-by-price="not-free">Need ticket</a><br>-->
             <form class="program--filter--form">
                 <?php echo get_root_event_types_formatted($event_types_ids, 'event--meta--type program--filter--event-type'); ?>
-                <button type="reset" class="btn program--filter--reset-btn" disabled><?php _e('Clear filter'); ?></button>
+                <button type="reset" class="btn program--filter--reset-btn" disabled><?php _e('Clear filter', 'neuf'); ?></button>
             </form>
         </section>
     </div>
