@@ -24,6 +24,9 @@ article.page,
     }
     .entry-content {
         padding: rem-calc(16);
+        font-family: Georgia, "Times New Roman", "Bitstream Charter", Times, serif;
+        font-size: rem-calc(18);
+        line-height: 1.55;
 
         h1, h2, h3, h4, h5 {
             font-family: $header-font-family;
