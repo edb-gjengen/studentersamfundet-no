@@ -87,7 +87,6 @@ $news = new WP_Query( "type=post&posts_per_page=$articles" );
 	p {
 	    -webkit-margin-before: 0px;
 	    -webkit-margin-after: 0px;
-		 /*font-size:13px;*/
 	}
 	th,td {
 	    border-top: 1px solid #DDD;padding:8px 4px;
@@ -95,11 +94,6 @@ $news = new WP_Query( "type=post&posts_per_page=$articles" );
 	.header {
 	    font-weight: bold;
 	}
-/*
-	.table-striped tr:nth-child(even) {
-	    background-color: #F9F9F9;
-	}
-*/
 	img, a img {
 	    border: none;
 	}
@@ -110,8 +104,8 @@ $news = new WP_Query( "type=post&posts_per_page=$articles" );
     <tr>
 	<td>
 	    <table width="640" cellspacing="0" cellpadding="0" style="margin:auto;margin-bottom:10px;background:#ffffff;">
-		<tr style="background-color:#e99835; padding:5px;">
-		    <td colspan="4"><img src="<?php bloginfo('template_directory'); ?>/img/dns-logo-web.png" alt="Det Norske Studentersamfund" style="margin-left: 25px;"></td>
+		<tr style="background-color:#f58220; padding:5px;">
+		    <td colspan="4"><img src="<?php bloginfo('template_directory'); ?>/dist/images/dns_logo_white_newsletter.png" alt="Det Norske Studentersamfund" style="margin-left: 25px;"></td>
 		</tr>
 		<tr>
 			<td colspan="4" style="font-size:11px;font-style:italic;text-align:center;">
@@ -176,7 +170,7 @@ $event_type_real = $event_types_real ? "".implode(", ", $event_types_real) : "";
 		    <?php if($counter % 2 == 0)  { ?>
 			</tr>
 		    <?php } ?>
-<?php 
+<?php
 $counter += 1;
 endforeach; // $top_events->have_posts()
 endif; // $top_events->have_posts()
@@ -197,7 +191,7 @@ function maybe_color() {
 }
 
 $current_day = "";
-$first = true;       
+$first = true;
 $trcount = 0;
 while ($events->have_posts()) : $events->the_post();
 $date = $post->neuf_events_starttime;
@@ -220,7 +214,7 @@ foreach ( $event_array as $event_type ) {
 }
 $event_type_real = $event_types_real ? "".implode(", ", $event_types_real) : "";
 $facebook = $post->neuf_events_fb_url;
-$facebook_icon = $facebook ? ' <a href="'.$facebook.'" title="' . get_the_title() . ' på Facebook" style="color:#FF9E29;text-decoration:none;"><img src="'.get_bloginfo('stylesheet_directory').'/img/facebook-icon.png" width="13px" height="13px" style="position:relative;top:2px;" alt="' . get_the_title() . ' på Facebook"></a>' : "";
+$facebook_icon = $facebook ? ' <a href="'.$facebook.'" title="' . get_the_title() . ' på Facebook" style="color:#FF9E29;text-decoration:none;"><img src="'.get_bloginfo('stylesheet_directory').'/dist/images/icons/facebook.png" width="13px" height="13px" style="position:relative;top:2px;" alt="' . get_the_title() . ' på Facebook"></a>' : "";
 if($newday) { ?>
 			<tr<?php maybe_color(); ?>>
 			    <td colspan="6" style="border-top: 1px solid #DDD;padding:8px 4px;border-top: 0px;"><h3><?php echo $current_day; ?></h3></td>
@@ -253,9 +247,6 @@ if($first) { ?>
 		<?php endwhile; // $events->have_posts() ?>
 	    </table>
 	    <table width="640" cellspacing="0" cellpadding="0" style="margin:auto;margin-top:20px;margin-bottom:10px;background:#ffffff;">
-		<tr style="text-align:center;">
-		    <td style="border:0px;"><img src="<?php bloginfo('template_directory'); ?>/img/sponsors/logo_red_akademika.png" alt="Akademika"></td>
-		</tr>
 		<tr style="text-align:center;margin-top:5px;">
 			<td style="padding:8px 4px;border:0px;font-size:13px;">
 				Det Norske Studentersamfund<br>

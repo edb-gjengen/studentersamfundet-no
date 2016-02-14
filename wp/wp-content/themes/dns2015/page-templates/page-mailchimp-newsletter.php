@@ -87,7 +87,6 @@ $news = new WP_Query( "type=post&posts_per_page=$articles&ignore_sticky_posts=tr
 	p {
 	    -webkit-margin-before: 0px;
 	    -webkit-margin-after: 0px;
-		 /*font-size:13px;*/
 	}
 	th,td {
 	    border-top: 1px solid #DDD;padding:8px 4px;
@@ -95,11 +94,6 @@ $news = new WP_Query( "type=post&posts_per_page=$articles&ignore_sticky_posts=tr
 	.header {
 	    font-weight: bold;
 	}
-/*
-	.table-striped tr:nth-child(even) {
-	    background-color: #F9F9F9;
-	}
-*/
 	img, a img {
 	    border: none;
 	}
@@ -110,12 +104,12 @@ $news = new WP_Query( "type=post&posts_per_page=$articles&ignore_sticky_posts=tr
     <tr>
 	<td>
 	    <table width="640" cellspacing="0" cellpadding="0" style="margin:auto;margin-bottom:10px;background:#ffffff;">
-		<tr style="background-color:#e99835; padding:5px;">
-		    <td colspan="4"><img src="<?php bloginfo('template_directory'); ?>/img/dns-logo-web.png" alt="Det Norske Studentersamfund" style="margin-left: 25px;"></td>
+		<tr style="background-color:#f58220; padding:5px;">
+		    <td colspan="4"><img src="<?php bloginfo('template_directory'); ?>/dist/images/dns_logo_white_newsletter.png" alt="Det Norske Studentersamfund" style="margin-left: 25px;"></td>
 		</tr>
         *|IFNOT:ARCHIVE_PAGE|*<tr>
 			<td colspan="4" style="font-size:11px;font-style:italic;text-align:center;">
-            Kan du ikke se dette nyhetsbrevet skikkelig? <a href="*|ARCHIVE|*" style="color:#FF9E29;text-decoration:none;">Vis det i nettleseren i stedet.</a>
+            Kan du ikke se dette nyhetsbrevet skikkelig? <a href="*|ARCHIVE|*" style="color:#f58220;text-decoration:none;">Vis det i nettleseren i stedet.</a>
 			</td>
 		</tr>*|END:IF|*
         <?php
@@ -124,8 +118,8 @@ $news = new WP_Query( "type=post&posts_per_page=$articles&ignore_sticky_posts=tr
          if ($news->have_posts()) : while ($news->have_posts()) : $news->the_post(); ?>
 		<tr id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?> style="vertical-align:bottom;">
 		    <td>
-			<h2><a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>" style="color:#FF9E29;text-decoration:none;font-size:20px;"><?php the_title(); ?></a></h2>
-			<a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>" style="color:#FF9E29;text-decoration:none;"><?php the_post_thumbnail( 'newsletter-third', array('style' => 'display: inline-block;float:right;', 'title' => get_the_title() )); ?></a>
+			<h2><a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>" style="color:#f58220;text-decoration:none;font-size:20px;"><?php the_title(); ?></a></h2>
+			<a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>" style="color:#f58220;text-decoration:none;"><?php the_post_thumbnail( 'newsletter-third', array('style' => 'display: inline-block;float:right;', 'title' => get_the_title() )); ?></a>
 			<div style="font-size:13px; color:#aaa;"><?php echo get_the_date(); ?></div>
 			<?php the_excerpt(); ?>
 		    </td>
@@ -135,7 +129,7 @@ $news = new WP_Query( "type=post&posts_per_page=$articles&ignore_sticky_posts=tr
 	    <table width="640" cellspacing="0" cellpadding="0" style="margin:auto;margin-bottom:10px;background:#ffffff;">
 		<tr style="vertical-align:top;">
 			<td colspan="2">
-				<h2 style="color:#FF9E29;text-decoration:none;">Det skjer på Studentersamfundet</h2>
+				<h2 style="color:#f58220;text-decoration:none;">Det skjer på Studentersamfundet</h2>
 			</td>
 		</tr>
 		<tr style="vertical-align:top;">
@@ -149,7 +143,7 @@ $current_day = date_i18n( 'l' , $date);
 ($price = neuf_format_price( $post )) !== _('Free') ? : $price = '-';
 $venue = $post->neuf_events_venue;
 $ticket = $post->neuf_events_ticket_url;
-$ticket = $ticket ? '<a href="'.$ticket.'" style="color:#FF9E29;text-decoration:none;">Kjøp billett</a>' : '';
+$ticket = $ticket ? '<a href="'.$ticket.'" style="color:#f58220;text-decoration:none;">Kjøp billett</a>' : '';
 $starttime = date_i18n( 'j. F' , $date);
 
 /* event type class */
@@ -165,11 +159,11 @@ $event_type_real = $event_types_real ? "".implode(", ", $event_types_real) : "";
 			<tr style="vertical-align:top;">
 		    <?php } ?>
 		    <td>
-			    <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>" style="color:#FF9E29;text-decoration:none;">
+			    <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>" style="color:#f58220;text-decoration:none;">
 				<?php the_post_thumbnail('newsletter-half', array('title' => get_the_title())); ?>
 	</a><br>
 				<p style="font-size:13px;color:#aaa;margin-top:4px;margin-bottom:0px;"><?php echo $event_type_real; ?></p>
-				<h2 style="margin-top:0px;font-size:20px;font-weight:bold;"><a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>" style="color:#FF9E29;text-decoration:none;"><?php the_title(); ?></a></h2>
+				<h2 style="margin-top:0px;font-size:20px;font-weight:bold;"><a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>" style="color:#f58220;text-decoration:none;"><?php the_title(); ?></a></h2>
 				<div style="margin-top:4px; margin-bottom:4px;"><?php the_excerpt(); ?></div>
 				<p style="margin-top:4px; margin-bottom:4px;font-weight:bold;"><?php echo "$starttime $price $venue"; ?></p>
 		    </td>
@@ -185,7 +179,7 @@ endif; // $top_events->have_posts()
 	    <table width="640" cellspacing="0" cellpadding="0" class="table-striped program" style="margin:auto;margin-bottom:10px;background:#ffffff;">
 		<tr style="vertical-align:top;">
 			<td colspan="6">
-			    <h2><a href="<?php bloginfo('url'); ?>/program/" title="Les hele programmet på studentersamfundet.no" style="color:#FF9E29;font-size:20px;text-decoration:none;">Program denne uken</a></h2>
+			    <h2><a href="<?php bloginfo('url'); ?>/program/" title="Les hele programmet på studentersamfundet.no" style="color:#f58220;font-size:20px;text-decoration:none;">Program denne uken</a></h2>
 			</td>
 		</tr>
 <?php
@@ -208,7 +202,7 @@ $newday = $previous_day != $current_day;
 ($price = neuf_format_price( $post )) !== _('Free') ? : $price = '-';
 $venue = $post->neuf_events_venue;
 $ticket = $post->neuf_events_ticket_url;
-$ticket = $ticket ? '<a href="'.$ticket.'" style="color:#FF9E29;text-decoration:none;">Kjøp billett</a>' : '';
+$ticket = $ticket ? '<a href="'.$ticket.'" style="color:#f58220;text-decoration:none;">Kjøp billett</a>' : '';
 $starttime = date_i18n( 'H.i' , $date);
 
 /* event type class */
@@ -220,7 +214,7 @@ foreach ( $event_array as $event_type ) {
 }
 $event_type_real = $event_types_real ? "".implode(", ", $event_types_real) : "";
 $facebook = $post->neuf_events_fb_url;
-$facebook_icon = $facebook ? ' <a href="'.$facebook.'" title="' . get_the_title() . ' på Facebook" style="color:#FF9E29;text-decoration:none;"><img src="'.get_bloginfo('stylesheet_directory').'/img/facebook-icon.png" width="13px" height="13px" style="position:relative;top:2px;" alt="' . get_the_title() . ' på Facebook"></a>' : "";
+$facebook_icon = $facebook ? ' <a href="'.$facebook.'" title="' . get_the_title() . ' på Facebook" style="color:#f58220;text-decoration:none;"><img src="'.get_bloginfo('stylesheet_directory').'/dist/images/icons/facebook.png" width="13px" height="13px" style="position:relative;top:2px;" alt="' . get_the_title() . ' på Facebook"></a>' : "";
 if($newday) { ?>
 			<tr<?php maybe_color(); ?>>
 			    <td colspan="6" style="border-top: 1px solid #DDD;padding:8px 4px;border-top: 0px;"><h3><?php echo $current_day; ?></h3></td>
@@ -244,7 +238,7 @@ if($first) { ?>
 			<td style="border-top: 1px solid #DDD;padding:8px 4px;"><?php echo $starttime; ?></td>
 			<td style="border-top: 1px solid #DDD;padding:8px 4px;"><?php echo $event_type_real; ?></td>
 			<td style="border-top: 1px solid #DDD;padding:8px 4px;width:250px">
-			    <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>" style="color:#FF9E29;text-decoration:none;"><?php the_title(); ?></a>
+			    <a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>" style="color:#f58220;text-decoration:none;"><?php the_title(); ?></a>
 			</td>
 			<td style="border-top: 1px solid #DDD;padding:8px 4px;"><?php echo $venue . $facebook_icon; ?></td>
 			<td style="border-top: 1px solid #DDD;padding:8px 4px;"><?php echo $price; ?></td>
@@ -253,15 +247,10 @@ if($first) { ?>
 		<?php endwhile; // $events->have_posts() ?>
 	    </table>
 	    <table width="640" cellspacing="0" cellpadding="0" style="margin:auto;margin-top:20px;margin-bottom:10px;background:#ffffff;">
-		<tr style="text-align:center;">
-            <td style="border:0px;">
-                <img src="<?php bloginfo('template_directory'); ?>/img/sponsors/logo_red_akademika.png" alt="Akademika"><br/><br />
-                <img src="<?php bloginfo('template_directory'); ?>/img/sponsors/logo_black_uio.png" alt="UiO" width="60px" height="60px"> </td>
-		</tr>
 		<tr style="text-align:center;margin-top:5px;">
 			<td style="padding:8px 4px;border:0px;font-size:13px;">
 				Det Norske Studentersamfund<br>
-				<a href="*|LIST:URL|*" target="_blank" style="color:#FF9E29;text-decoration:none;">studentersamfundet.no</a><br><br>
+				<a href="*|LIST:URL|*" target="_blank" style="color:#f58220;text-decoration:none;">studentersamfundet.no</a><br><br>
                 *|LIST:ADDRESS|*<br><br>
                 *|LIST:DESCRIPTION|*<br>
                 <a href="*|UNSUB|*">Meld meg av denne listen</a>.
