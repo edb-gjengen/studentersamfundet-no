@@ -1,13 +1,29 @@
 <?php
 /**
- * Template Name: Mailchimp Newsletter
+ * Template Name: Newsletter (Mailchimp)
  */
+
 $articles = 1;
+$list_url = "*|LIST:URL|*";
+$list_address = "*|LIST:ADDRESS|*";
+$list_description = "*|LIST:DESCRIPTION|*";
+$unsubscribe_url = "*|UNSUB|*";
+$archive_url = "*|ARCHIVE|*";
+$merge_tags = true;
 
 if(array_key_exists("articles", $_GET) && is_numeric($_GET['articles'])) {
 	$articles = $_GET['articles'];
 }
 
+if(isset($_GET['disable_merge_tags'])) {
+    $list_url = get_bloginfo('url');
+    $list_address = "Chateau Neuf, Slemdalsveien 15, 0313 OSLO";
+    $list_description = "Du får nyhetsbrev av oss fordi du har takket ja på nettsidene våre.";
+    $unsubscribe_url = '';
+    $archive_url = "$list_url/nyhetsbrev/?utm_source=newsletter&utm_medium=email&utm_campaign=newsletter&articles=$articles";
+    $merge_tags = false;
+}
+/* FIXME: extract function */
 $querystr = "
 	SELECT $wpdb->posts.*
 	FROM $wpdb->posts
@@ -41,8 +57,7 @@ $querystr = "
 		)
 	)
 
-	ORDER BY postmeta1.meta_value ASC
-	";
+	ORDER BY postmeta1.meta_value ASC";
 
 $top_events = $wpdb->get_results($querystr, OBJECT);
 
@@ -107,15 +122,16 @@ $news = new WP_Query( "type=post&posts_per_page=$articles&ignore_sticky_posts=tr
 		<tr style="background-color:#f58220; padding:5px;">
 		    <td colspan="4"><img src="<?php bloginfo('template_directory'); ?>/dist/images/dns_logo_white_newsletter.png" alt="Det Norske Studentersamfund" style="margin-left: 25px;"></td>
 		</tr>
-        *|IFNOT:ARCHIVE_PAGE|*<tr>
+        <?php if( $merge_tags ): ?>*|IFNOT:ARCHIVE_PAGE|*<?php endif; ?>
+        <tr>
 			<td colspan="4" style="font-size:11px;font-style:italic;text-align:center;">
-            Kan du ikke se dette nyhetsbrevet skikkelig? <a href="*|ARCHIVE|*" style="color:#f58220;text-decoration:none;">Vis det i nettleseren i stedet.</a>
+            Kan du ikke se dette nyhetsbrevet skikkelig? <a href="<?php echo $archive_url; ?>" style="color:#f58220;text-decoration:none;">Vis det i nettleseren i stedet.</a>
 			</td>
-		</tr>*|END:IF|*
-        <?php
+		</tr>
+        <?php if( $merge_tags ): ?>*|END:IF|*<?php endif;
 
         $current_day = "";
-         if ($news->have_posts()) : while ($news->have_posts()) : $news->the_post(); ?>
+        if ($news->have_posts()) : while ($news->have_posts()) : $news->the_post(); ?>
 		<tr id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?> style="vertical-align:bottom;">
 		    <td>
 			<h2><a class="permalink blocklink" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>" style="color:#f58220;text-decoration:none;font-size:20px;"><?php the_title(); ?></a></h2>
@@ -207,7 +223,6 @@ $starttime = date_i18n( 'H.i' , $date);
 
 /* event type class */
 $event_array = get_the_terms( $post->ID , 'event_type' );
-$event_types = array();
 $event_types_real = array();
 foreach ( $event_array as $event_type ) {
 	$event_types_real[] = $event_type->name;
@@ -250,10 +265,12 @@ if($first) { ?>
 		<tr style="text-align:center;margin-top:5px;">
 			<td style="padding:8px 4px;border:0px;font-size:13px;">
 				Det Norske Studentersamfund<br>
-				<a href="*|LIST:URL|*" target="_blank" style="color:#f58220;text-decoration:none;">studentersamfundet.no</a><br><br>
-                *|LIST:ADDRESS|*<br><br>
-                *|LIST:DESCRIPTION|*<br>
-                <a href="*|UNSUB|*">Meld meg av denne listen</a>.
+				<a href="<?php echo $list_url; ?>" target="_blank" style="color:#f58220;text-decoration:none;">studentersamfundet.no</a><br><br>
+                <?php echo $list_address; ?><br><br>
+                <?php echo $list_description; ?><br>
+                <?php if( $merge_tags ): ?>
+                    <a href="<?php echo $unsubscribe_url; ?>">Meld meg av denne listen</a>.
+                <?php endif; ?>
 		</td></tr>
 	    </table>
 	</td>
