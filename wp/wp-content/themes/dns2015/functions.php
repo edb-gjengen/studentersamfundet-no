@@ -227,25 +227,29 @@ function neuf_doctitle() {
 
     } elseif ( is_search() ) {
         $content = __( 'Search Results for', 'neuf' );
-        $content .= ' ' . esc_html(stripslashes(get_search_query()));
+        $content .= ' '.esc_html(stripslashes(get_search_query()));
 
     } elseif ( is_category() ) {
         $content = __( 'Category Archives' , 'neuf' );
-        $content .= ' ' . single_cat_title( "" , false );
+        $content .= ' '.single_cat_title( "" , false );
 
     } elseif ( is_tag() ) {
         $content = __( 'Tag Archives' , 'neuf' );
-        $content .= ' ' . single_tag_title( '' , false );
+        $content .= ' '.single_tag_title( '' , false );
 
     } elseif ( is_404() ) {
         $content = __( 'Not Found', 'neuf' );
 
-    } else {
+    } elseif ( is_author()) {
+        $content = __('Author Archives', 'neuf');
+        $content .= ' '.get_the_author();
+    }
+    else {
         $content = get_bloginfo( 'description' , 'display');
     }
 
     if ( get_query_var( 'paged' ) ) {
-        $content .= ' ' .$separator. ' ';
+        $content .= " $separator ";
         $content .= 'side';
         $content .= ' ';
         $content .= get_query_var('paged');
@@ -278,11 +282,8 @@ function neuf_doctitle() {
     }
 
     $doctitle = implode(' ', $elements);
-
-    $doctitle = "\t" . "<title>" . $doctitle . "</title>" . "\n\n";
-
-    echo $doctitle;
-} // end neuf_doctitle
+    echo "<title>$doctitle</title>\n";
+}
 
 /**
  * Display social sharing buttons.
