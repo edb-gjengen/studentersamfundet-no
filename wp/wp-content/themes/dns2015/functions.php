@@ -722,4 +722,41 @@ function neuf_event_format_starttime_year($post) {
     }
     return '';
 }
+function get_top_events_query() {
+    global $wpdb;
+
+    return "SELECT $wpdb->posts.*
+        FROM $wpdb->posts
+            JOIN $wpdb->postmeta postmeta1 ON $wpdb->posts.ID = postmeta1.post_id
+            JOIN $wpdb->postmeta postmeta2 ON $wpdb->posts.ID = postmeta2.post_id
+
+        WHERE $wpdb->posts.post_type = 'event'
+        AND $wpdb->posts.post_status = 'publish'
+        AND postmeta1.meta_key = '_neuf_events_starttime'
+        AND postmeta1.meta_value > UNIX_TIMESTAMP( NOW() )
+
+        # Get promoted posts week, month or semester posts
+        AND (
+            (
+                postmeta2.meta_key = '_neuf_events_promo_period'
+                AND postmeta2.meta_value = '" . __('Week', 'neuf_event') . "'
+                AND postmeta1.meta_value < UNIX_TIMESTAMP( NOW() ) + 7 * 86400
+                # Avoid NOW() to enable the MySQL cache. Set it in PHP?
+            )
+            OR (
+                postmeta2.meta_key = '_neuf_events_promo_period'
+                AND postmeta2.meta_value = '" . __('Month', 'neuf_event') . "'
+                AND postmeta1.meta_value < UNIX_TIMESTAMP( NOW() ) + 31 * 86400
+                # Avoid NOW() to enable the MySQL cache.
+            )
+            OR (
+                postmeta2.meta_key = '_neuf_events_promo_period'
+                AND postmeta2.meta_value = '" . __('Semester', 'neuf_event') . "'
+                AND postmeta1.meta_value < UNIX_TIMESTAMP( NOW() ) + 120 * 86400
+                # Avoid NOW() to enable the MySQL cache.
+            )
+        )
+
+        ORDER BY postmeta1.meta_value ASC";
+}
 ?>
