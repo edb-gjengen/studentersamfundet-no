@@ -2,18 +2,14 @@
   "name": "dns2015",
   "private": true,
   "dependencies": {
-    "jquery": "latest",
-    "foundation": "latest",
-    "jquery-migrate": "~1.2.1"
+    "jquery": "2.2.0",
+    "foundation": "5.5.3"
   },
   "devDependencies": {},
   "overrides": {
     "foundation": {
       "ignore": true,
       "dependencies": null
-    },
-    "jquery-migrate": {
-      "main": "jquery-migrate.js"
     }
   }
 }
