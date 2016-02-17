@@ -12,8 +12,8 @@ $homepage = $homepage ? '<div class="entry-meta web-page">'. __('Web page', 'neu
 
             <?php the_tags('<span class="tags">', ', ', '</span>'); ?>
             <h1 class="entry-title"><?php the_title(); ?></h1>
-            <span class="author microformat-invisible"><?php the_author_link(); ?></span>
-            <time class="updated microformat-invisible" datetime="<?php the_modified_date('c'); ?>"></time>
+            <span class="vcard author microformat-invisible"><span class="fn"><?php the_author_link(); ?></span></span>
+            <time class="updated microformat-invisible" datetime="<?php the_modified_date('c'); ?>"><?php the_modified_date(); ?></time>
             <?php echo $homepage; ?>
             <?php if (has_post_thumbnail()): ?>
                 <div class="wp-post-image-caption">
