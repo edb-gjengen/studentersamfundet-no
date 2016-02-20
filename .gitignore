@@ -6,5 +6,6 @@ wp-config.php
 .htaccess
 stuff/
 .idea
+*.iml
 wp/wp-content/themes/dns2015/bower_components
 wp/wp-content/themes/dns2015/node_modules

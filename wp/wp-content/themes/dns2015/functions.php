@@ -604,10 +604,12 @@ function terms_by_name($a, $b) {
     return strnatcmp($a->name, $b->name);
 }
 function get_root_event_types_formatted($term_ids, $css_classes) {
+    if(count($term_ids) == 0) {
+        return '';
+    }
     $terms = get_terms('event_type', array(
         'include' => get_root_event_types($term_ids)
     ));
-
     // Sort by name
     usort($terms, 'terms_by_name');
 
@@ -689,8 +691,8 @@ function neuf_event_get_schema($post) {
         );
         if( $ticket_url ) {
             /* Every event has same ticket URL */
-            foreach( $offers as $offer ) {
-                $offer['url'] = $ticket_url;
+            foreach( $offers as $key=>$offer) {
+                $offers[$key]['url'] = $ticket_url;
             }
         }
     }
