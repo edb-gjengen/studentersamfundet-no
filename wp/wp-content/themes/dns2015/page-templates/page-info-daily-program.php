@@ -38,17 +38,31 @@ get_template_part('header', 'infoscreen');
 ?>
 
 	<style type="text/css">
-	#site-header #site-title,
-	#site-header #time {
-		color:#fff;
-		position:absolute;
-		top:50%;
-		left:70px;
-		margin:-0.9em 0 0 0;
+	body {background-color: #232323;}
+	#site-header {
+		background-color: transparent;
+		padding-top: 0;
 	}
-	#site-header #time {
-		left:auto;
-		right:70px;
+	.ribbon {
+		background-color: #f58220;
+		height: 36px;
+	}
+	#site-title {
+		color: #fff;
+	    margin-left: 70px;
+	    margin-top: 24px;
+	    margin-bottom: 16px;
+	}
+	#time {
+		right: 16px;
+		font-weight: bold;
+		font-size: 48px;
+		padding: 11px;
+		margin: 0px;
+		top: 46px;
+		margin-top: 5px;
+		color: white;
+    	position: absolute;
 	}
 	ul#events {
 		display:block;
@@ -60,30 +74,28 @@ get_template_part('header', 'infoscreen');
 		margin-bottom:35px;
 		position:relative;
 	}
-	.event-type,.entry-title,.starttime {
+	.event-type, .entry-title, .starttime {
 		font-family:Arvo,Arial,sans-serif;
 		font-style:italic;
 		font-size:20px;
 	}
 	.event-type {
-		margin-left:215px;
+		margin-left:155px;
+		color: white;
 	}
 	.entry-title {
-		margin-left:150px;
-		font-style:normal;
-		font-size:30px;
-		color:#ff9e29;
+		margin-left: 150px;
+	    font-style: normal;
+	    font-size: 70px;
+	    color: #ff9e29;
+	    line-height: 1;
 	}
-	.starttime{
-		font-size:40px;
-		display:block;
-		position:absolute;
-		top:50%;
-		margin-top:-20px;
-		/* float:left;
-		margin-right:70px;
-		margin-bottom:70px;
-		height:100%; */
+	.starttime {
+		font-size: 42px;
+	    display: block;
+	    position: absolute;
+	    margin-top: -7px;
+	    color: white;
 	}
 	.type-event .entry-title:before {
 		top:-20px;
@@ -94,6 +106,7 @@ get_template_part('header', 'infoscreen');
 <body>
 
 <header id="site-header">
+	<div class="ribbon"></div>
 	<h1 id="site-title"><?php echo ucfirst(date_i18n( 'l j. F' , $meta_from )); ?></h1>
 	<div id="time"><?php echo date_i18n('H.i'); ?></div>
 </header>
@@ -113,8 +126,8 @@ get_template_part('header', 'infoscreen');
 
 	<li <?php neuf_post_class(); ?>>
 		<div class="starttime"><?php echo( date_i18n('H.i',$post->neuf_events_starttime) ); ?></div>
-		<div class="event-type category"><?php echo( implode( ', ' , $post->event_types ) ); ?></div>
 		<div class="entry-title"><?php the_title(); ?></div>
+		<div class="event-type category"><?php echo( implode( ', ' , $post->event_types ) ); ?></div>
 	</li>
 
 <?php endwhile; ?>
