@@ -9,7 +9,9 @@
             <div class="article-image"><a class="permalink" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_post_thumbnail( 'six-column' ); ?></a></div>
             <div class="article-content">
                 <h3 class="entry-title"><a class="permalink" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
-                <span class="entry-published-datetime"><?php echo get_the_date(); ?> <?php the_time(); ?></span>
+                <span class="vcard author microformat-invisible"><span class="fn"><?php the_author_link(); ?></span></span>
+                <time class="entry-published-datetime published" datetime="<?php the_time('c'); ?>"><?php echo get_the_date(); ?> <?php the_time(); ?></time>
+                <time class="updated microformat-invisible" datetime="<?php the_modified_date('c'); ?>"><?php the_modified_date(); ?></time>
                 <span class="entry-summary"><?php echo linkify(trim_excerpt(get_the_excerpt(), 28), '/\[\.\.\.\]/', get_permalink()); ?></span>
             </div>
 		</article>
