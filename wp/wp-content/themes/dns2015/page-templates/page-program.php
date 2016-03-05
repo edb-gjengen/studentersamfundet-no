@@ -73,18 +73,18 @@ if ( $events->have_posts() ) :
             <li class="event-row<?php echo $alt; ?>">
                 <div>
                     <span class="event--meta--datetime-daynum" title="<?php echo $dt_iso8601; ?>"><?php echo $dt_daynum; ?>.</span>
-                    <span class="event-title" title="<?php _e("Event title"); ?>"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php echo the_title(); ?></a></span>
+                    <span class="event-title"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php echo the_title(); ?></a></span>
                 </div>
                 <div class="event-attributes">
                     <?php echo $event_types; ?>
-                    <span class="event--meta--venue" title="<?php _e("Venue"); ?>"><?php require(get_stylesheet_directory().'/dist/images/icons/location.svg'); ?><?php echo $venue; ?></span>
+                    <span class="event--meta--venue" title="<?php _e("Venue", "neuf"); ?>"><?php require(get_stylesheet_directory().'/dist/images/icons/location.svg'); ?><?php echo $venue; ?></span>
                     <?php if($fb_url): ?>
                         <a href="<?php echo $fb_url; ?>" title="Arrangementet på Facebook" class="event--meta--facebook"><?php require(get_stylesheet_directory()."/dist/images/icons/facebook.svg");?></a>
                     <?php endif; ?>
                     <?php if($ticket): ?>
-                        <a href="<?php echo $ticket; ?>" class="event--meta--ticket" title="<?php _e("Ticket"); ?>"><?php _e('Buy ticket'); echo ' ('.$price.')'; ?></a>
+                        <a href="<?php echo $ticket; ?>" class="event--meta--ticket" title="<?php _e("Ticket", "neuf"); ?>"><?php _e('Buy ticket', "neuf"); echo ' ('.$price.')'; ?></a>
                     <?php else: ?>
-                        <span class="event--meta--price" title="<?php _e("Price"); ?>"><?php echo $price ?></span>
+                        <span class="event--meta--price" title="<?php _e("Price", "neuf"); ?>"><?php echo $price ?></span>
                     <?php endif; ?>
                 </div>
             </li>

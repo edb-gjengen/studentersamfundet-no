@@ -666,7 +666,7 @@ function neuf_event_get_schema($post) {
         "@type" => "Place",
         "sameAs" => get_bloginfo('url'),
         "name" => get_bloginfo('name').', '.$venue,
-        "address" => __("Chateau Neuf, Slemdalsveien 15, 0369 Oslo", 'neuf')
+        "address" => __("Slemdalsveien 15, 0369 Oslo", 'neuf')
     );
     /* Ticket / Price */
     $prices = neuf_event_get_prices_cleaned($post);
