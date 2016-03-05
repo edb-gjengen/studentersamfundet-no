@@ -19,8 +19,11 @@ $grey-color: #ccc;
 
 $body-bg: #fafafa;
 
-$header-font-family: 'Roboto', sans-serif;
+$header-font-family: 'Roboto Condensed', sans-serif;
 $header-font-weight: 800;
+
+$body-font-family: 'Roboto', sans-serif;
+$font-family-sans-serif: $body-font-family;
 
 @import "foundation/components/grid";
 @import "foundation/components/block-grid";
