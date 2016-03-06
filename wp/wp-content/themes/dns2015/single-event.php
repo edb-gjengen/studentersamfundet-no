@@ -7,6 +7,9 @@
         <article id="content" <?php neuf_post_class(); ?>>
 
             <h1 class="entry-title"><?php the_title(); ?></h1>
+            <span class="vcard author microformat-invisible"><span class="fn"><?php the_author_link(); ?></span></span>
+            <time class="published microformat-invisible" datetime="<?php the_time('c'); ?>"><?php the_time('c'); ?></time>
+            <time class="updated microformat-invisible" datetime="<?php the_modified_date('c'); ?>"><?php the_modified_date('c'); ?></time>
             <?php echo get_event_types_formatted(get_the_terms( $post->ID , 'event_type' )); ?>
 
             <?php get_template_part( 'event-meta' ); ?>
