@@ -2,7 +2,7 @@
 
 	<h2><a href="<?php echo home_url('/aktuelt/'); ?>"><?php _e('Articles', 'neuf'); ?></a></h2>
     <?php
-    $fp_articles = new WP_Query( 'posts_per_page=4' );
+    $fp_articles = new WP_Query( array('posts_per_page' => 4, 'ignore_sticky_posts' => 1) );
     if ( $fp_articles->have_posts() ) : while ( $fp_articles->have_posts() ) : $fp_articles->the_post(); ?>
 
 		<article id="post-<?php the_ID(); ?>" <?php neuf_post_class(); ?>>

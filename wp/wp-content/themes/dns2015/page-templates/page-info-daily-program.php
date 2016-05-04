@@ -29,7 +29,8 @@ $args = array(
 	'posts_per_page' => 50,
 	'orderby'        => 'meta_value_num',
 	'meta_key'       => '_neuf_events_starttime',
-	'order'          => 'ASC'
+	'order'          => 'ASC',
+	'ignore_sticky_posts' => 1
 );
 
 $events = new WP_Query( $args );

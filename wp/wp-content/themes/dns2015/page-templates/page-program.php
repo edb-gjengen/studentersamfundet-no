@@ -16,7 +16,8 @@ $args = array(
     'posts_per_page' => 300,
     'orderby'        => 'meta_value_num',
     'meta_key'       => '_neuf_events_starttime',
-    'order'          => 'ASC'
+    'order'          => 'ASC',
+    'ignore_sticky_posts' => 1
 );
 ?>
 <?php get_header(); ?>

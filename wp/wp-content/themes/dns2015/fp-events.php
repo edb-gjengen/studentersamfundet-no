@@ -10,11 +10,12 @@
 
     $args = array(
         'post_type'      => 'event',
-        'meta_query'     => array( $meta_query ),
-        'posts_per_page' => 12,
-        'orderby'        => 'meta_value_num',
-        'meta_key'       => '_neuf_events_starttime',
-        'order'          => 'ASC'
+        'meta_query'          => array( $meta_query ),
+        'posts_per_page'      => 12,
+        'orderby'             => 'meta_value_num',
+        'meta_key'            => '_neuf_events_starttime',
+        'order'               => 'ASC',
+        'ignore_sticky_posts' => 1
     );
 
     $fp_events = new WP_Query( $args );
