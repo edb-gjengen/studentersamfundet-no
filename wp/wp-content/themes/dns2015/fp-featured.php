@@ -21,7 +21,9 @@
                     <?php if( $feat_post->post_type == 'event'): ?>
                         <?php echo get_event_types_formatted(get_the_terms( $feat_post->ID , 'event_type' )); ?>
                         <span class="event--meta--datetime"><?php echo date_i18n('l j. F' , $feat_post->neuf_events_starttime ); ?></span>
-                        <span class="event--meta--venue"><?php require(get_stylesheet_directory().'/dist/images/icons/location.svg'); ?><?php echo $feat_post->neuf_events_venue; ?></span>
+                        <?php if($post->neuf_events_fb_url): ?>
+                            <a href="<?php echo $post->neuf_events_fb_url; ?>" title="Arrangementet på Facebook" class="event--meta--facebook"><?php require(get_stylesheet_directory()."/dist/images/icons/facebook.svg");?></a>
+                        <?php endif; ?>
                         <span class="event--meta--price"><?php echo neuf_format_price($feat_post); ?></span>
                     <?php endif; ?>
                 </div>

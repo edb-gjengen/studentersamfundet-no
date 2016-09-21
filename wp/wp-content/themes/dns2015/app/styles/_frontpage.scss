@@ -76,6 +76,14 @@
             font-size: rem-calc(16);
             margin-bottom: 4px;
         }
+
+        .event--meta--facebook {
+            path { fill: #ccc; }
+            &:hover {
+                path { fill: #3b5998; }
+            }
+        }
+
         @media #{$medium-up} {
             .event-price {
                 @include outlined;
@@ -206,14 +214,9 @@
             position: relative;
             top: 3px;
 
-            path {
-                fill: #999;
-            }
+            path { fill: #ccc; }
             &:hover {
-
-                path {
-                    fill: #3b5998;
-                }
+                path { fill: #3b5998; }
             }
         }
     }
