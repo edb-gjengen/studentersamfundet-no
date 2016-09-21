@@ -74,6 +74,7 @@
         }
         .event--meta--type {
             font-size: rem-calc(16);
+            margin-bottom: 4px;
         }
         @media #{$medium-up} {
             .event-price {
@@ -194,12 +195,26 @@
         }
         .event--meta--type {
             margin-left: 0;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
         .event-price {
             @include outlined;
             font-weight: bold;
             float: right;
+        }
+        .event--meta--facebook {
+            position: relative;
+            top: 3px;
+
+            path {
+                fill: #999;
+            }
+            &:hover {
+
+                path {
+                    fill: #3b5998;
+                }
+            }
         }
     }
 }

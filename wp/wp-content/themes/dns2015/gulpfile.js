@@ -93,7 +93,7 @@ gulp.task('default', ['clean'], function () {
 gulp.task('serve', ['styles'], function () {
     //require('opn')('http://neuf-web.dev');
     browserSync.init({
-        proxy: 's-no.dev',  // your virtualhost
+        proxy: 'neuf-web.dev',  // your virtualhost
         host: 'localhost',
         notify: 'false'
     });

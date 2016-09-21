@@ -14,7 +14,11 @@
     </div>
     <div class="footer--kolofon">
         <span><?php echo get_theme_mod('footer_kolofon', 'Chateau Neuf - Det Norske Studentersamfund | Slemdalsveien 15, 0369 Oslo | Ansvarlig redaktør: Rein Amundsen'); ?></span>
-        <span><a href="<?php echo wp_login_url( get_permalink() ); ?>" title="<?php _e('Log in'); ?>"><?php _e('Log in'); ?></a></span>
+		<span><?php if( !is_user_logged_in() ): ?>
+			<a href="<?php echo wp_login_url(); ?>" title="<?php _e('Log in'); ?>"><?php _e('Log in'); ?></a>
+		<?php else: ?>
+			<a href="<?php echo wp_logout_url(); ?>"><?php _e('Log out');?></a>
+		<?php endif; ?></span>
     </div>
 </footer> <!-- #site-footer -->
 

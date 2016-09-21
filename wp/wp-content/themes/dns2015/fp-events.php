@@ -9,7 +9,7 @@
     );
 
     $args = array(
-        'post_type'      => 'event',
+        'post_type'           => 'event',
         'meta_query'          => array( $meta_query ),
         'posts_per_page'      => 12,
         'orderby'             => 'meta_value_num',
@@ -24,9 +24,12 @@
             <a href="<?php the_permalink(); ?>" class="event-image" title="<?php the_title(); ?>"><?php the_post_thumbnail( 'six-column' ); ?></a>
             <div class="event-content">
                 <h3 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h3>
-                <?php echo get_event_types_formatted(get_the_terms( $post->ID , 'event_type' )); ?>
+                <?php echo get_event_types_formatted(get_the_terms( $post->ID , 'event_type' )); ?><br>
                 <span class="event--meta--datetime"><?php echo date_i18n( 'l j. F' , $post->neuf_events_starttime ); ?></span>
-                <span class="event--meta--price"><?php echo neuf_format_price($post); ?></span>
+                <?php if($post->neuf_events_fb_url): ?>
+                    <a href="<?php echo $post->neuf_events_fb_url; ?>" title="Arrangementet på Facebook" class="event--meta--facebook"><?php require(get_stylesheet_directory()."/dist/images/icons/facebook.svg");?></a>
+                <?php endif; ?>
+                <span class="event--meta--price" title="Pris"><?php echo neuf_format_price($post); ?></span>
             </div>
 
             <script type="application/ld+json">
