@@ -138,7 +138,7 @@ article.page,
 .event--meta {
     padding: rem-calc(16);
     &--type {
-        @include label($bg:darken($secondary-color, 8%));
+        @include label($bg:darken($secondary-color, 8%), $text-size: rem-calc(12));
 
         &,
         a {
@@ -190,20 +190,28 @@ article.page,
     &--price {
         @include outlined;
         display: inline-block;
+        margin-left: 4px;
     }
     &--facebook {
         display: inline-block;
         margin-left: 4px;
         vertical-align: bottom;
+        position: relative;
+        top: 2px;
+
         svg {
             width: 30px;
             height: 30px;
         }
-        path {
-            fill: #3b5998;
+
+        path { fill: #ccc; }
+        &:hover {
+            path { fill: #3b5998; }
         }
     }
     &--venue {
+        position: relative;
+        top: 1px;
         margin-left: 4px;
         svg {
             width: 14px;

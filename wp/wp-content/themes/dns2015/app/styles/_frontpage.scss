@@ -77,13 +77,6 @@
             margin-bottom: 4px;
         }
 
-        .event--meta--facebook {
-            path { fill: #ccc; }
-            &:hover {
-                path { fill: #3b5998; }
-            }
-        }
-
         @media #{$medium-up} {
             .event-price {
                 @include outlined;
@@ -209,15 +202,6 @@
             @include outlined;
             font-weight: bold;
             float: right;
-        }
-        .event--meta--facebook {
-            position: relative;
-            top: 3px;
-
-            path { fill: #ccc; }
-            &:hover {
-                path { fill: #3b5998; }
-            }
         }
     }
 }
