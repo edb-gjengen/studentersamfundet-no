@@ -28,7 +28,7 @@ $homepage = $homepage ? '<div class="entry-meta web-page">'. __('Web page', 'neu
 
     <section class="association--sidebar">
         <div class="sidebar">
-            <?php get_template_part('newsletter', 'signup-form'); ?>
+            <?php // get_template_part('newsletter-signup-form'); ?>
         </div>
     </section>
 
