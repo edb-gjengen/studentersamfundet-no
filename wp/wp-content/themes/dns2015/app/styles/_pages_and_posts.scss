@@ -392,6 +392,7 @@ article.page,
             }
             &--inner {
                 @include card;
+                @include clearfix;
                 padding: rem-calc(16);
 
             }
