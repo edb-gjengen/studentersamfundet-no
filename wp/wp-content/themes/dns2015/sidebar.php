@@ -17,7 +17,7 @@
             'post_type' => 'association',
             'posts_per_page' => 50,
             'post__not_in' => array($post->ID),
-            'order_by' => 'title');
+            'orderby' => 'title');
         $associations = new WP_Query( $args );
         if( $associations->have_posts() ):
             ?>
