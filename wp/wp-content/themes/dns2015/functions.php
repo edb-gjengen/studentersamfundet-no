@@ -761,4 +761,22 @@ function get_top_events_query() {
 
         ORDER BY postmeta1.meta_value ASC";
 }
+
+/* Wrap iframes */
+function wrap_iframes($content) {
+    // match any iframes
+    $pattern = '~<iframe.*</iframe>~';
+    preg_match_all($pattern, $content, $matches);
+
+    foreach ($matches[0] as $match) {
+        // wrap matched iframe with div
+        $wrapped_frame = '<div class="iframe-wrap">' . $match . '</div>';
+
+        //replace original iframe with new in content
+        $content = str_replace($match, $wrapped_frame, $content);
+    }
+
+    return $content;
+}
+add_filter('the_content', 'wrap_iframes');
 ?>
