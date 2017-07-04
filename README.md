@@ -21,6 +21,8 @@
     cd wp/wp-content/plugins
     ln -s ../../plugins/neuf-associations
     ln -s ../../plugins/neuf-events
+    git submodule update --init
+    ln -s ../../plugins/wpdirauth-posixgroup
 
     wp core language install nb_NO
     wp core language activate nb_NO
@@ -30,11 +32,10 @@
     debug-bar
     disable-comments
     duplicate-post
-    json-api
+    json-api  # TODO: Remove
     redis-cache  # needs to install object-cache.php
     user-role-editor
     wordpress-seo
-    wpdirauth
 
     # own
     neuf-associations

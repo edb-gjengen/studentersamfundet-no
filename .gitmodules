@@ -1,9 +1,3 @@
-[submodule "wp/wp-content/plugins/neuf-events"]
-	path = wp/wp-content/plugins/neuf-events
-	url = https://git.neuf.no/edb/neuf-events.git
-[submodule "wp/wp-content/plugins/wpdirauth"]
-	path = wp/wp-content/plugins/wpdirauth
+[submodule "plugins/wpdirauth-posixgroup"]
+	path = plugins/wpdirauth-posixgroup
 	url = https://git.neuf.no/edb/wpdirauth.git
-[submodule "wp/wp-content/plugins/neuf-associations"]
-	path = wp/wp-content/plugins/neuf-associations
-	url = https://git.neuf.no/edb/neuf-associations.git
