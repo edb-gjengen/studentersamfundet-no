@@ -1,11 +1,10 @@
-wp/wp-content/uploads
+wp/
 wp-config.php
 *~
 *.swp
 .sass-cache
 .htaccess
 stuff/
-.idea
-*.iml
-wp/wp-content/themes/dns2015/bower_components
-wp/wp-content/themes/dns2015/node_modules
+.idea/
+dns2015/bower_components
+dns2015/node_modules

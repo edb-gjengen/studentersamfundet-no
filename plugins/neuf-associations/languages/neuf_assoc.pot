@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-01-20 20:37+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: neuf-associations-admin.php:6 neuf-associations-post-type.php:6
+msgid "Association"
+msgstr ""
+
+#: neuf-associations-admin.php:7
+msgid "Image"
+msgstr ""
+
+#: neuf-associations-admin.php:8 neuf-associations-admin.php:68
+msgid "Website"
+msgstr ""
+
+#: neuf-associations-admin.php:9 neuf-associations-admin.php:70
+msgid "Type"
+msgstr ""
+
+#: neuf-associations-admin.php:49
+msgid "Association details"
+msgstr ""
+
+#: neuf-associations-post-type.php:5
+msgid "Associations"
+msgstr ""
+
+#: neuf-associations-post-type.php:7 neuf-associations-post-type.php:8
+msgid "Add New"
+msgstr ""
+
+#: neuf-associations-post-type.php:9
+msgid "Edit Association"
+msgstr ""
+
+#: neuf-associations-post-type.php:10
+msgid "Add New Association"
+msgstr ""
+
+#: neuf-associations-post-type.php:11
+msgid "View Association"
+msgstr ""
+
+#: neuf-associations-post-type.php:12
+msgid "Search Associations"
+msgstr ""
+
+#: neuf-associations-post-type.php:13
+msgid "No associations found"
+msgstr ""
+
+#: neuf-associations-post-type.php:14
+msgid "No associations found in trash"
+msgstr ""

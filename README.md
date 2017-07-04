@@ -1,17 +1,47 @@
-# Installation
+## Install
+    # Get WP-CLI from http://wp-cli.org/
+    wp core download --path=wp
     cd wp
-    cp wp-config-sample.php wp-config.php
-    vim wp-config.php  # Update database settings
-    git submodule update --init
+    wp core config  # create db first
+    wp core install  # needs initial credentials
+    cd wp-content/themes
+    ln -s ../../../dns2015
+
+    # (in project root)
+    cd dns2015
+    npm install
+    bower install
+    gulp watch
+
+    # Install public plugins listed below
+    # (in project root)
+    cd wp
+    wp plugin install ...
     
-# Translations
-    # Download wordpress i18n tools, see https://codex.wordpress.org/I18n_for_WordPress_Developers#Using_the_i18n_tools
-    # Create a symlink from wp-content to TOOLS_DIR/src
-    ln -s $REPO_ROOT/wp/ src
-    # Create .pot-file
-    php tools/i18n/makepot.php wp-theme src/wp-content/themes/differ2015/ src/wp-content/themes/differ2015/languages/differ2015.pot
-    # Open .pot-file with POEdit and start translating
+    # symlink in own plugins
 
-## See also
+    wp core language install nb_NO
+    wp core language activate nb_NO
+    wp core language update
 
-https://edb.neuf.no/wiki/Studentersamfundet.no-web#Quick_start
+## Plugins
+    debug-bar
+    disable-comments
+    duplicate-post
+    json-api
+    redis-cache  # needs to install object-cache.php
+    user-role-editor
+    wordpress-seo
+    wpdirauth
+
+    # own
+    neuf-associations
+    neuf-events
+
+## Development tasks
+    fab build
+    fab watch
+    fab i18n
+
+## Deployment
+    fab deploy
