@@ -19,8 +19,8 @@ add_image_size('large', 1280, 720, true);
  */
 function neuf_register_nav_menus() {
     register_nav_menus(array(
-        'main-menu' => __('Main menu'),
-        'static-menu' => __('Top menu'),
+        'main-menu' => __('Main menu', 'neuf'),
+        'static-menu' => __('Top menu', 'neuf'),
     ));
 }
 add_action( 'init' , 'neuf_register_nav_menus' );
@@ -40,7 +40,7 @@ function neuf_register_theme_taxonomies() {
     $labels = array(
         'name' => _x( 'Custom post templates', 'taxonomy general name' ),
         'singular_name' => _x( 'Post template', 'taxonomy singular name' ),
-        'search_items' =>  __( '' ),
+        'search_items' =>  __( ''),
         'popular_items' => __( 'Popular Templates' ),
         'all_items' => __( 'All Post Templates' ),
         'parent_item' => null,

@@ -8,3 +8,4 @@ stuff/
 .idea/
 dns2015/bower_components
 dns2015/node_modules
+*.pyc

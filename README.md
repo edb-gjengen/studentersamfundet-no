@@ -7,18 +7,20 @@
     cd wp-content/themes
     ln -s ../../../dns2015
 
-    # (in project root)
-    cd dns2015
+    cd ../../../dns2015
+    npm install jshint
     npm install
     bower install
     gulp watch
 
     # Install public plugins listed below
-    # (in project root)
-    cd wp
+    cd ../wp
     wp plugin install ...
     
     # symlink in own plugins
+    cd wp/wp-content/plugins
+    ln -s ../../plugins/neuf-associations
+    ln -s ../../plugins/neuf-events
 
     wp core language install nb_NO
     wp core language activate nb_NO

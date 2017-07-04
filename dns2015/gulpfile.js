@@ -84,7 +84,7 @@ gulp.task('i18n', function() {
     return gulp.src('**/*.php')
         .pipe($.wpPot({
             domain: 'neuf',
-            package: 'EDB-gjengen'
+            package: 'Det Norske Studentersamfundet'
         } ))
         .pipe(gulp.dest('languages/dns2015.pot'));
 });
