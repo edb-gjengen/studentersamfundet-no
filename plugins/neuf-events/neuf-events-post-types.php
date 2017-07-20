@@ -44,12 +44,15 @@ function neuf_events_post_type() {
 			'rewrite'            => array(
 				'slug' => __( 'event', 'neuf_event' ),
 			),
+            'show_in_rest' => true,
+            'rest_base' => 'events',
+            'rest_controller_class' => 'WP_REST_Posts_Controller',
 		)
 	);
 }
 
 
-/* When the post is saved, save our custom data */ 
+/* When the post is saved, save our custom data */
 function neuf_events_save_post( $post_id, $post ) {
 	// verify this came from the our screen and with proper authorization,
 	// because save_post can be triggered at other times
@@ -115,53 +118,62 @@ function neuf_events_the_post( &$post ) {
 
 }
 
-/** Sample table view of events */
-function neuf_events_program() {
-	global $post, $wp_locale;
 
-	$events = new WP_Query( array(
-		'post_type' => 'event',
-		'posts_per_page' => -1,
-		'meta_key' => '_neuf_events_starttime',
-		'orderby' => 'meta_value',
-		'order' => 'ASC'
-	) );
+/** API: Add our custom fields to the events endpoint */
+add_filter('rest_prepare_event', 'api_add_custom_fields', 10, 3);
+function api_add_custom_fields($response, $post, $request) {
+    $custom_field_data = get_post_custom($post->ID);
+    $field_map = array(
+        '_neuf_events_venue' => 'venue',
+        '_neuf_events_fb_url' => 'facebook_url',
+        '_neuf_events_bs_url' => 'ticket_url',
+        '_neuf_events_price_regular' => 'price_regular',
+        '_neuf_events_price_member' => 'price_member',
+        '_neuf_events_starttime' => 'start_time',
+        '_neuf_events_endtime' => 'end_time'
 
-	if ( $events->have_posts() ) :
-		$date = "";
-	ob_start();
 
-	echo '<table class="event-table">';
+    );
+    foreach ($field_map as $src => $dst) {
+        $response->data[$dst] = $custom_field_data[$src][0];
+    }
 
-	while ( $events->have_posts() ) : $events->the_post();
-		$venue = get_post_meta( $post->ID, '_neuf_events_venue', true);
-		$price_regular = get_post_meta( $post->ID, '_neuf_events_price_regular', true);
-		$price_member = get_post_meta( $post->ID, '_neuf_events_price_member', true);
-		$time = get_post_meta( $post->ID, '_neuf_events_starttime', true);
-		?>
-			<tr>
-				<td class="day">
-					<?php echo date('l d. F', $time); ?>
-				</td>
-				<td class="time">
-					kl <?php echo date("H.i", $time); ?>
-				</td>
-				<td class="title">
-					<a href="<?php the_permalink();?>"><?php the_title();?></a>
-				</td>
-				<td class="place">
-					<?php echo $venue;?>
-				</td>
-			</tr>
-	<?php
-	endwhile;
+    $offset_in_seconds = get_option('gmt_offset') * 3600;
+    if( !$response->data['end_time'] ) {
+        // No endtime? Assume 2 hours
+        $response->data['end_time'] = $response->data['start_time'] + 7200;
+    }
+    $response->data['start_time'] = date("c", $response->data['start_time'] - $offset_in_seconds);
+    $response->data['end_time'] = date("c", $response->data['end_time'] - $offset_in_seconds);
 
-	echo '</table><!-- .event-table -->';
-	endif;
-
-	$html = ob_get_contents();
-	ob_end_clean();
-	return $html;
+    return $response;
 }
 
-?>
+/** API: Order by start time */
+add_filter('rest_event_query', 'api_change_query', 10, 2);
+function api_change_query($args, $request) {
+    $start_time_field = '_neuf_events_starttime';
+    $sligthly_in_the_past = date('U', strtotime('-8 hours'));
+
+    /* Order by start time */
+    $my_args = array(
+        'posts_per_page' => 300,
+        'orderby' => 'meta_value_num',
+        'meta_key' => $start_time_field,
+        'order' => 'ASC',
+        'ignore_sticky_posts' => true
+    );
+
+    /* Only show future events? */
+    $params = $request->get_params();
+    $future = $params['future'] ?? null;
+    if( $future ) {
+        $my_args['meta_query'] = array(
+            'key' => $start_time_field,
+            'value' => $sligthly_in_the_past,
+            'compare' => '>',
+            'type' => 'numeric'
+        );
+    }
+    return array_merge($args, $my_args);
+}

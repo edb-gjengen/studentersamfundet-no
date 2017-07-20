@@ -40,6 +40,7 @@
     # own
     neuf-associations
     neuf-events
+    wpdirauth-posixgroup
 
 ## Development tasks
     fab build

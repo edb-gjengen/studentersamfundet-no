@@ -28,12 +28,10 @@ add_action( 'the_post' , 'neuf_events_the_post' );
 /* Register taxonomies */
 add_action( 'init' , 'neuf_events_register_taxonomies', 1 );
 
-/* Register shortcode for sample table view of program. */
-add_shortcode( 'neuf-events-program' , 'neuf_events_program' );
-
 function neuf_events_i18n() {
 	load_plugin_textdomain( 'neuf_event', false, dirname( plugin_basename( __FILE__ ) ) .'/languages' );
 }
+
 /* JSON API controller */
 function add_events_controller($controllers) {
   $controllers[] = 'events';
@@ -45,6 +43,3 @@ function set_events_controller_path() {
   return WP_PLUGIN_DIR."/".dirname( plugin_basename( __FILE__ ))."/neuf-events-json-controller.php";
 }
 add_filter('json_api_events_controller_path', 'set_events_controller_path');
-
-
-?>
