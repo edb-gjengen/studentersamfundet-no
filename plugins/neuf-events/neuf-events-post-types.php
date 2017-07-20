@@ -146,6 +146,13 @@ function api_add_custom_fields($response, $post, $request) {
     $response->data['start_time'] = date("c", $response->data['start_time'] - $offset_in_seconds);
     $response->data['end_time'] = date("c", $response->data['end_time'] - $offset_in_seconds);
 
+    /* Add thumbnail in all sizes */
+    $sizes = get_intermediate_image_sizes();
+    $response->data['thumbnail'] = array();
+    foreach ($sizes as $size) {
+        $response->data['thumbnail'][$size] = get_the_post_thumbnail_url($post->ID, $size);
+    }
+
     return $response;
 }
 
