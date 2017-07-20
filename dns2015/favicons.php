@@ -2,8 +2,8 @@
 /* From http://faviconit.com/ */
 $path = '/wp-content/themes/dns2015/favicons/';
 ?>
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="icon" sizes="16x16 32x32 64x64" href="/favicon.ico">
+    <link rel="shortcut icon" href="<?php echo $path; ?>favicon.ico">
+    <link rel="icon" sizes="16x16 32x32 64x64" href="<?php echo $path; ?>favicon.ico">
     <!-- Go favicons go! -->
     <link rel="icon" type="image/png" sizes="196x196" href="<?php echo $path; ?>favicon-192.png">
     <link rel="icon" type="image/png" sizes="160x160" href="<?php echo $path; ?>favicon-160.png">
