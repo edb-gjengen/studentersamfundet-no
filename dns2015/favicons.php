@@ -1,6 +1,6 @@
 <?php
 /* From http://faviconit.com/ */
-$path = '/wp/wp-content/themes/dns2015/favicons/';
+$path = '/wp-content/themes/dns2015/favicons/';
 ?>
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="icon" sizes="16x16 32x32 64x64" href="/favicon.ico">
