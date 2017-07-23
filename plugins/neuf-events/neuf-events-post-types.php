@@ -153,6 +153,9 @@ function api_add_custom_fields($response, $post, $request) {
         $response->data['thumbnail'][$size] = get_the_post_thumbnail_url($post->ID, $size);
     }
 
+    /* Decode HTML titles */
+    $response->data['title']['decoded'] = html_entity_decode($response->data['title']['rendered'], ENT_QUOTES | ENT_XML1, 'UTF-8');
+
     return $response;
 }
 
@@ -164,7 +167,6 @@ function api_change_query($args, $request) {
 
     /* Order by start time */
     $my_args = array(
-        'posts_per_page' => 300,
         'orderby' => 'meta_value_num',
         'meta_key' => $start_time_field,
         'order' => 'ASC',
