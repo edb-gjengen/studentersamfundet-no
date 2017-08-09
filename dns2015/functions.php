@@ -784,6 +784,6 @@ add_filter('the_content', 'wrap_iframes');
 
 /* Custom password reset URL */
 function neuf_lostpassword_url( $pwd ) {
-    return 'https://brukerinfo.neuf.no/accounts/password/reset';
+    return 'https://galtinn.neuf.no/auth/password_reset/';
 }
 add_filter( 'lostpassword_url' , 'neuf_lostpassword_url');
