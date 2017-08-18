@@ -154,7 +154,7 @@ function api_add_custom_fields($response, $post, $request) {
     }
 
     /* Decode HTML titles */
-    $response->data['title']['decoded'] = html_entity_decode($response->data['title']['rendered'], ENT_QUOTES | ENT_XML1, 'UTF-8');
+    $response->data['title']['decoded'] = html_entity_decode($response->data['title']['rendered'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
 
     return $response;
 }
