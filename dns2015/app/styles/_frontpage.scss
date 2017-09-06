@@ -39,6 +39,9 @@
         /* Featured article/event */
         &--inner {
             @include grid-column($columns:12);
+						img {
+              width: 100%;
+						}
         }
 
         a, a:link {
