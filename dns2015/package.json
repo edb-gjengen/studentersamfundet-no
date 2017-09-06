@@ -2,7 +2,9 @@
   "name": "dns2015",
   "version": "0.0.1",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "jshint": "^2.9.5"
+  },
   "devDependencies": {
     "browser-sync": "^2.16.0",
     "del": "^2.2.2",
