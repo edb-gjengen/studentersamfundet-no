@@ -33,7 +33,7 @@
             <?php display_social_sharing_buttons(); ?>
             <?php get_template_part( 'audioplayer', 'event' ); ?>
             <?php neuf_maybe_display_gallery(); ?>
-            <?php get_template_part( 'party-newsletter-signup-form' ); ?>
+            <?php get_template_part('part-newsletter-signup-form'); ?>
         </div>
     </section>
 

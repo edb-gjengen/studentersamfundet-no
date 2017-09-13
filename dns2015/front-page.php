@@ -8,8 +8,8 @@
             <?php get_template_part('fp-events'); ?>
         </div>
         <div class="front-page--left">
-            <section class="front-page--newsletter"><?php get_template_part('part-newsletter-signup-form'); ?></section>
             <?php get_template_part('fp-articles'); ?>
+            <section class="front-page--newsletter"><?php get_template_part('part-newsletter-signup-form'); ?></section>
         </div>
     </div>
 </div> <!-- #content -->

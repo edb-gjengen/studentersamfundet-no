@@ -1,5 +1,9 @@
 <section class="newsletter-signup-form">
-    <h3>Hold deg oppdatert</h3>
+    <?php if(is_home()): ?>
+        <h3>Hold deg oppdatert</h3>
+    <?php else: ?>
+        <h5>Hold deg oppdatert</h5>
+    <?php endif; ?>
     <div id="mc_embed_signup" class="newsletter-form">
         <form action="https://studentersamfundet.us16.list-manage.com/subscribe/post?u=9ca671c5ee40f099470abf075&amp;id=54f01ef6a9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
             <div class="mc-field-group">
