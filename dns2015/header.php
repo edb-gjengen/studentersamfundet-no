@@ -7,7 +7,7 @@
     <?php neuf_doctitle(); ?>
     <?php get_template_part('favicons'); ?>
     <link rel="alternate" type="application/rss+xml" href="https://studentersamfundet.no/syndikering/kommende-program/" title="Det Norske Studentersamfund (kommende program)"/>
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,900,300,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:400,700,900,300,400i,700i' rel='stylesheet' type='text/css'>
 
     <meta property="fb:app_id" content="220213643760"/>
     <?php wp_head(); ?>
