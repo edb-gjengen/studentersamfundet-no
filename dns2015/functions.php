@@ -1,5 +1,5 @@
 <?php
-$DNS2015_VERSION = '1.0.0';
+$DNS2015_VERSION = '1.0.1';
 
 add_theme_support('menus');
 add_theme_support('post-thumbnails');

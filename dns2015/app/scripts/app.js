@@ -30,6 +30,9 @@ function supports3d() {
 }
 
 $(document).ready( function() {
+    var $menuToggle = $(".menu-toggle");
+    var $mainMenu = $("#main-menu");
+
     /* Browser supports 3D transforms? */
     if(supports3d()) {
         $('html').addClass('csstransforms3d');
@@ -38,18 +41,25 @@ $(document).ready( function() {
     }
 
     /* Toggle main menu */
-    $(".menu-toggle").on('click', function(e) {
+    $menuToggle.on('click', function(e) {
         e.preventDefault();
-        $("#main-menu").toggleClass('visible');
-        $(".menu-toggle").toggleClass('inverted');
+        $mainMenu.toggleClass('visible');
+        $menuToggle.toggleClass('inverted');
     });
 
     $(document).on('click', function(event) {
         if (!$(event.target).closest('#main-menu, .menu-toggle').length) {
-            $("#main-menu").removeClass('visible');
-            $(".menu-toggle").removeClass('inverted');
+            $mainMenu.removeClass('visible');
+            $menuToggle.removeClass('inverted');
         }
     });
+
+    /* If admin bar is present, hack in som suitable styles */
+    if( $('#wpadminbar').length ) {
+        // admin bar is 32px
+        $menuToggle.css('top', '64px');
+        $mainMenu.css('top', '32px');
+    }
 
     /* Flickr */
     // TODO: not in use
@@ -77,13 +87,6 @@ $(document).ready( function() {
             });
             $(".flickr-feed").html(html);
         });
-    }
-
-    /* If admin bar is present, hack in som suitable styles */
-    if( $('#wpadminbar').length ) {
-        // admin bar is 32px
-        $('.menu-toggle').css('top', '64px');
-        $('#main-menu').css('top', '32px');
     }
 
     /* Event category: load more events

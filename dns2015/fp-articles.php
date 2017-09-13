@@ -1,6 +1,6 @@
 <section class="front-page--articles hfeed">
 
-	<h2><a href="<?php echo home_url('/aktuelt/'); ?>"><?php _e('Articles', 'neuf'); ?></a></h2>
+	<h2><a href="<?php echo home_url('/aktuelt/'); ?>"><?php _e('News', 'neuf'); ?></a></h2>
     <?php
     $fp_articles = new WP_Query( array('posts_per_page' => 4, 'ignore_sticky_posts' => 1) );
     if ( $fp_articles->have_posts() ) : while ( $fp_articles->have_posts() ) : $fp_articles->the_post(); ?>
