@@ -1,7 +1,7 @@
 <section class="newsletter-signup-form">
     <h3>Hold deg oppdatert</h3>
     <div id="mc_embed_signup" class="newsletter-form">
-        <form action="https://studentersamfundet.us6.list-manage.com/subscribe/post?u=094f98d9217069d64cecb0c57&amp;id=bef4852918" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+        <form action="https://studentersamfundet.us16.list-manage.com/subscribe/post?u=9ca671c5ee40f099470abf075&amp;id=54f01ef6a9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
             <div class="mc-field-group">
                 <label for="mce-EMAIL">Meld deg på her:</label>
                 <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Din e-post">
@@ -11,7 +11,8 @@
                 <div class="response" id="mce-error-response" style="display:none"></div>
                 <div class="response" id="mce-success-response" style="display:none"></div>
             </div>
+            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_9ca671c5ee40f099470abf075_54f01ef6a9" tabindex="-1" value=""></div>
         </form>
     </div>
-    <em class="subtitle">Nyhetsbrevet vårt sendes ut én gang i uka, og inneholder program og eksklusive konkurranser.</em>
+    <em class="subtitle">Nyhetsbrevet inneholder kommende arrangementer.</em>
 </section>
