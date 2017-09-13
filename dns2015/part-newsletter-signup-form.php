@@ -1,5 +1,5 @@
 <section class="newsletter-signup-form">
-    <?php if(is_home()): ?>
+    <?php if(is_front_page()): ?>
         <h3>Hold deg oppdatert</h3>
     <?php else: ?>
         <h5>Hold deg oppdatert</h5>
