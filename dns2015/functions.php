@@ -126,32 +126,33 @@ add_filter( 'wp_handle_upload_prefilter' , 'neuf_handle_upload_prefilter' );
  * i) a class with a page-wide post count. The first post on this page is named .p1, the second p2 and so forth.
  * ii) a class 'alt' to every other post.
  */
-function neuf_post_class( $classes = '' ) {
+function neuf_post_class($classes = '') {
     global $post, $neuf_pagewide_post_count;
+    $classes_list = [];
 
     if ( $classes )
-        $classes = explode( ' ' , $classes );
+        $classes_list = explode(' ', $classes);
 
-    $classes[] = 'p' . ++$neuf_pagewide_post_count;
+    $classes_list[] = 'p' . ++$neuf_pagewide_post_count;
 
-    if ( 0 == $neuf_pagewide_post_count % 2 )
-        $classes[] = 'alt';
+    if (0 == $neuf_pagewide_post_count % 2)
+        $classes_list[] = 'alt';
 
     // If this is an event
-    if ( 'event' == get_post_type() ) {
-
+    if ('event' == get_post_type()) {
         // Add event-type-slug for all ancestors of all event_types
         // (the event-types themselves are taken care of elsewhere, so skip the first level)
         $event_array = get_the_terms( $post->ID , 'event_type' );
         foreach ( $event_array as $event_type )
             while ( $event_type = get_term_by( 'id' , $event_type->parent, 'event_type' ) )
-                $classes[] = 'event-type-' . $event_type->slug ;
+                $classes_list[] = 'event-type-' . $event_type->slug ;
     }
 
-    $classes =  join( ' ' , $classes );
+    $classes = join(' ', $classes_list);
 
     post_class( $classes );
 }
+
 /**
  * Adds CSS class for event titles
  */

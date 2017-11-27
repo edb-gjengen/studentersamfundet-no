@@ -1,0 +1,135 @@
+.program {
+    &--filter-wrap {
+        @include grid-column($columns: 12);
+        margin-bottom: rem-calc(20);
+
+        @media #{$medium-up} {
+            @include grid-column($columns: 4);
+        }
+    }
+
+    &--list-wrap {
+        @include grid-column($columns: 12);
+        margin-bottom: rem-calc(20);
+
+        @media #{$medium-up} {
+            @include grid-column($columns: 8);
+        }
+    }
+
+    &--filter {
+        @include card;
+        padding: rem-calc(16);
+        padding-top: rem-calc(10);
+
+        &--form {
+            margin: 0;
+            list-style: none;
+            padding: 0;
+
+            label {
+                margin-bottom: rem-calc(10);
+            }
+            input[type="radio"] {
+                transform: scale(1.5);
+                margin-bottom: 0;
+
+                &:active,
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+
+        &--event-type {
+            display: block;
+            font-size: rem-calc(20);
+            padding: rem-calc(10);
+
+        }
+
+        &--reset-btn {
+            display: block;
+            width: 100%;
+            &:active,
+            &:focus {
+                outline: none;
+            }
+            &:disabled {
+                background: $grey-color;
+            }
+        }
+    }
+
+    &--list {
+        @include card;
+        padding: rem-calc(16);
+        padding-top: rem-calc(10);
+    }
+}
+
+.program--list {
+    .alt {
+        //background-color: #f4f4f4;
+    }
+
+    .month {
+        padding-top: rem-calc(16);
+        padding-bottom: rem-calc(4);
+    }
+
+    ul, li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        line-height: 32px;
+    }
+
+    .event-row {
+        margin-bottom: rem-calc(16);
+        &.hidden {
+            display: none;
+        }
+    }
+
+    .event--meta--datetime-daynum {
+        font-size: rem-calc(32);
+        margin-right: rem-calc(4);
+
+        @media #{$medium-up} {
+            display: inline-block;
+            margin-right: rem-calc(8);
+            width: rem-calc(44);
+            text-align: right;
+        }
+    }
+
+    .event-title {
+        font-size: rem-calc(28);
+        font-weight: 200;
+        font-family: $header-font-family;
+
+        a {
+            //color: black;
+        }
+
+        @media #{$medium-up} {
+            font-size: rem-calc(30);
+        }
+    }
+
+    .event-attributes {
+        padding-bottom: rem-calc(16);
+        border-bottom: 1px solid #ccc;
+
+        @media #{$medium-up} {
+            margin-left: rem-calc(58)
+        }
+    }
+
+    .event--meta--price,
+    .event--meta--facebook {
+        line-height: 1;
+    }
+
+}

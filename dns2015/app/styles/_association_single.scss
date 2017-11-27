@@ -1,0 +1,22 @@
+.association {
+    &--sidebar {
+        @include grid-column($columns: 12);
+
+        @media #{$medium-up} {
+            @include grid-column($columns: 4);
+        }
+    }
+    &--content {
+        @include grid-column($columns: 12);
+        margin-bottom: rem-calc(20);
+
+        @media #{$medium-up} {
+            @include grid-column($columns: 8);
+        }
+
+        p:last-child,
+        p:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+}

@@ -1,0 +1,32 @@
+.associations {
+    @include grid-column(12);
+
+    &--list {
+        @include block-grid($per-row: 1);
+
+        @media #{$medium-up} {
+            @include block-grid($per-row: 2);
+
+        }
+
+        &--item {
+            &--title {
+                font-weight: 200;
+            }
+            &--inner {
+                @include card;
+                @include clearfix;
+                padding: rem-calc(16);
+
+            }
+            &--image-link {
+                float: right;
+            }
+        }
+    }
+
+    .attachment-association-thumb {
+        width: auto;
+        height: 150px;
+    }
+}

@@ -106,7 +106,7 @@ gulp.task('default', ['clean'], function () {
 
 gulp.task('serve', ['styles'], function () {
     browserSync.init({
-        proxy: 'neuf-web.dev',  // your virtualhost
+        proxy: 'neuf-www.nk',  // your virtualhost
         host: 'localhost',
         notify: 'false'
     });

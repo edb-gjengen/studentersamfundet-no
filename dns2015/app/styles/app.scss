@@ -41,6 +41,12 @@ $font-family-sans-serif: $body-font-family;
 @import "header";
 @import "menu";
 @import "footer";
+@import "forms";
+
 @import "frontpage";
 @import "pages_and_posts";
-@import "forms";
+@import "event_single";
+@import "association_single";
+@import "event_category";
+@import "pages/associations";
+@import "pages/program";

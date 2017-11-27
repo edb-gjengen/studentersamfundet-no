@@ -1,27 +1,32 @@
-
 /* Posts */
 .entry-title,
 .entry-title a {
     font-weight: 200;
 }
+
 .page h1.entry-title {
     font-weight: 800;
 }
+
 article.page,
 .single-post ,
 .single-association,
 .single-event {
+
     article {
         margin: 0 auto;
         max-width: rem-calc(870px);
         @include card;
     }
+
     .entry-title {
         padding: 0 rem-calc(16);
     }
+
     .entry-meta {
         padding: 0 rem-calc(16);
     }
+
     .entry-content {
         padding: rem-calc(16);
         font-family: $body-font-family;
@@ -31,6 +36,7 @@ article.page,
         h1, h2, h3, h4, h5 {
             font-family: $header-font-family;
         }
+
         p {
             margin-top: 0;
             padding-top: 0;
@@ -39,18 +45,22 @@ article.page,
                 margin-bottom: 0;
             }
         }
+
         p,
         li {
             font-family: $body-font-family;
             font-size: rem-calc(18);
             line-height: 1.55;
         }
+
         ul, ol {
             padding-left: rem-calc(16);
         }
+
         table {
             font-family: $font-family-sans-serif;
         }
+
         .iframe-wrap {
             float: none;
             clear: both;
@@ -59,18 +69,21 @@ article.page,
             padding-bottom: 56.25%;
             padding-top: 25px;
             height: 0;
-        }
-        .iframe-wrap iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+
+            iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
         }
     }
+
     .wp-caption {
         width: auto !important;
     }
+
     .wp-caption-text {
         padding: 0 rem-calc(16);
         color: #666;
@@ -82,10 +95,12 @@ article.page,
         }
     }
 }
+
 .single-post {
     .entry-title {
         margin-bottom: 0;
     }
+
     .entry-meta {
         margin-bottom: rem-calc(10);
         color: #666;
@@ -97,15 +112,17 @@ article.page,
             font-weight: normal;
         }
     }
-}
-.single-post--content {
-    @include grid-column($columns: 12);
-    margin-bottom: rem-calc(20);
 
-    @media #{$large-up} {
-        @include grid-column($columns: 8);
+    &--content {
+        @include grid-column($columns: 12);
+        margin-bottom: rem-calc(20);
+
+        @media #{$large-up} {
+            @include grid-column($columns: 8);
+        }
     }
 }
+
 .single-post--sidebar {
     @include grid-column($columns: 12);
     margin-bottom: rem-calc(20);
@@ -114,142 +131,11 @@ article.page,
         @include grid-column($columns: 4);
     }
 }
+
 .full-width-container article {
     max-width: none;
 }
 
-/* Event (single) */
-.event {
-    &--content {
-        @include grid-column($columns: 12);
-        margin-bottom: rem-calc(20);
-
-        @media #{$large-up} {
-            @include grid-column($columns: 8);
-        }
-
-        .entry-title {
-            margin-bottom: 4px;
-            line-height: 1;
-        }
-        .event--meta--type:first-of-type {
-            margin-left: rem-calc(16);
-        }
-        .event--meta--price {
-            margin-top: 10px;
-        }
-    }
-    &--sidebar {
-        @include grid-column($columns: 12);
-
-        @media #{$large-up} {
-            @include grid-column($columns: 4);
-        }
-
-        h3 {
-            font-size: rem-calc(18);
-        }
-    }
-}
-.event--meta {
-    padding: rem-calc(16);
-    &--type {
-        @include label($bg:darken($secondary-color, 8%), $text-size: rem-calc(12));
-
-        &,
-        a {
-            color: white;
-            &:link { color: white; }
-            &:hover { color: rgba(white, 0.5); }
-        }
-    }
-    &--start {
-        @include card-z1();
-        display: inline-block;
-        text-align: center;
-        padding: 9px 12px 8px;
-
-        &--weekday,
-        &--month {
-            font-weight: 200;
-            font-family: $header-font-family;
-            font-size: rem-calc(14);
-        }
-        &--day {
-            font-size: rem-calc(34);
-        }
-        &--year {
-            display: inline-block;
-            padding-top: rem-calc(2);
-            font-size: rem-calc(22);
-            
-            &:empty {
-                display: none;
-            }
-        }
-    }
-    &--start--time {
-        @include card-z1;
-        display: inline-block;
-        padding: 7px 8px 4px 8px;
-        text-align: center;
-        margin-left: 4px;
-        .time-inner {
-            font-size: rem-calc(28);
-        }
-        .time-at {
-            font-weight: 200;
-            font-family: $header-font-family;
-            font-size: rem-calc(14);
-        }
-    }
-    &--price {
-        @include outlined;
-        display: inline-block;
-        margin-left: 4px;
-    }
-    &--facebook {
-        display: inline-block;
-        margin-left: 4px;
-        vertical-align: bottom;
-        position: relative;
-        top: 2px;
-
-        svg {
-            width: 30px;
-            height: 30px;
-        }
-
-        path { fill: #ccc; }
-        &:hover {
-            path { fill: #3b5998; }
-        }
-    }
-    &--venue {
-        position: relative;
-        top: 1px;
-        margin-left: 4px;
-        svg {
-            width: 14px;
-            height: 14px;
-        }
-    }
-    &--ticket {
-        @include button(rem-calc(8));
-        margin-left: 4px;
-        @media #{$small-only} {
-            display: block;
-            margin: 10px 0;
-            padding: 16px;
-        }
-
-        color: white;
-        &:link {
-            color: white;
-        }
-        margin-bottom: 0;
-    }
-}
 /* Pages: General styles */
 .page--sidebar-wrap {
     display: none;
@@ -271,164 +157,6 @@ article.page,
     }
     .entry-content {
         font-family: $font-family-serif;
-    }
-}
-
-/* Page: Program */
-.program {
-    &--filter-wrap {
-        @include grid-column($columns: 12);
-        margin-bottom: rem-calc(20);
-
-        @media #{$medium-up} {
-            @include grid-column($columns: 4);
-        }
-    }
-    &--list-wrap {
-        @include grid-column($columns: 12);
-        margin-bottom: rem-calc(20);
-
-        @media #{$medium-up} {
-            @include grid-column($columns: 8);
-        }
-    }
-    &--filter {
-        @include card;
-        padding: rem-calc(16);
-        padding-top: rem-calc(10);
-
-        &--form {
-            margin: 0;
-            list-style: none;
-            padding: 0;
-
-            label {
-                margin-bottom: rem-calc(10);
-            }
-            input[type="radio"] {
-                transform: scale(1.5);
-                margin-bottom: 0;
-
-                &:active,
-                &:focus {
-                    outline: none;
-                }
-            }
-        }
-        &--event-type {
-            display: block;
-            font-size: rem-calc(20);
-            padding: rem-calc(10);
-
-        }
-        &--reset-btn {
-            display: block;
-            width: 100%;
-            &:active,
-            &:focus {
-                outline: none;
-            }
-            &:disabled {
-                background: $grey-color;
-            }
-        }
-    }
-    &--list {
-        @include card;
-        padding: rem-calc(16);
-        padding-top: rem-calc(10);
-    }
-}
-.program--list {
-    .alt {
-        //background-color: #f4f4f4;
-    }
-    .month {
-        padding-top: rem-calc(16);
-        padding-bottom: rem-calc(4);
-    }
-    ul, li {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        line-height: 32px;
-    }
-    .event-row {
-        margin-bottom: rem-calc(16);
-        &.hidden {
-            display: none;
-        }
-    }
-    .event--meta--datetime-daynum {
-        font-size: rem-calc(32);
-        margin-right: rem-calc(4);
-
-        @media #{$medium-up} {
-            display: inline-block;
-            margin-right: rem-calc(8);
-            width: rem-calc(44);
-            text-align: right;
-        }
-    }
-    .event-title {
-        font-size: rem-calc(28);
-        font-weight: 200;
-        font-family: $header-font-family;
-
-        a {
-            //color: black;
-        }
-
-        @media #{$medium-up} {
-            font-size: rem-calc(30);
-        }
-    }
-    .event-attributes {
-        padding-bottom: rem-calc(16);
-        border-bottom: 1px solid #ccc;
-
-        @media #{$medium-up} {
-            margin-left: rem-calc(58)
-        }
-    }
-    .event--meta--price,
-    .event--meta--facebook {
-        line-height: 1;
-    }
-
-}
-
-/* Page: Associations */
-.associations {
-    @include grid-column(12);
-
-        &--list {
-        @include block-grid($per-row: 1);
-
-        @media #{$medium-up} {
-            @include block-grid($per-row: 2);
-
-        }
-
-        &--item {
-            &--title {
-               font-weight: 200;
-            }
-            &--inner {
-                @include card;
-                @include clearfix;
-                padding: rem-calc(16);
-
-            }
-            &--image-link {
-                float: right;
-            }
-        }
-    }
-
-    .attachment-association-thumb {
-        width: auto;
-        height: 150px;
     }
 }
 
@@ -484,6 +212,7 @@ article.page,
             @include clearfix;
 
         }
+
         .entry-start {
             @include grid-column($columns: 12);
 
@@ -491,6 +220,7 @@ article.page,
                 padding: 0;
             }
         }
+
         .event-date,
         .entry-date {
             display: inline-block;
@@ -499,6 +229,7 @@ article.page,
             font-family: $header-font-family;
             color: #666;
         }
+
         .entry-content {
             @include grid-column($columns: 8);
 
@@ -507,10 +238,12 @@ article.page,
                 margin-bottom: 0;
             }
         }
+
         .entry-image {
             @include grid-column($columns: 4);
         }
     }
+
     &--sidebar {
         @include grid-column($columns: 12);
 
@@ -518,91 +251,9 @@ article.page,
             @include grid-column($columns: 4);
         }
     }
+
     &--no-content {
         @include card;
         padding: rem-calc(16);
-    }
-}
-
-/* Event category */
-.event-category {
-    &--sidebar {
-        @include grid-column($columns: 12);
-
-        @media #{$medium-up} {
-            @include grid-column($columns: 4);
-        }
-    }
-    &--content {
-        @include grid-column($columns: 12);
-
-        @media #{$medium-up} {
-            @include grid-column($columns: 8);
-        }
-
-        p:last-child,
-        p:last-of-type {
-            margin-bottom: 0;
-        }
-    }
-    &--meta,
-    &--no-content,
-    article {
-        @include card;
-        @include clearfix;
-        margin-bottom: rem-calc(10);
-    }
-    article {
-        padding: rem-calc(16) 0;
-    }
-    &--meta,
-    &--no-content {
-        padding: rem-calc(16);
-    }
-    &--description {
-        font-size: rem-calc(14);
-        margin-bottom: 0;
-    }
-
-    /* Event */
-    .entry-start {
-        @include grid-column($columns: 8);
-    }
-    .event-date {
-        display: inline-block;
-        margin-bottom: 10px;
-        font-weight: 200;
-        font-family: $header-font-family;
-        color: #666;
-    }
-    .event-image {
-        @include grid-column($columns: 4);
-    }
-    .event-title {
-        font-weight: 200;
-    }
-}
-
-/* Single Association: */
-.association {
-    &--sidebar {
-        @include grid-column($columns: 12);
-
-        @media #{$medium-up} {
-            @include grid-column($columns: 4);
-        }
-    }
-    &--content {
-        @include grid-column($columns: 12);
-        margin-bottom: rem-calc(20);
-
-        @media #{$medium-up} {
-            @include grid-column($columns: 8);
-        }
-
-        p:last-child,
-        p:last-of-type {
-            margin-bottom: 0;
-        }
     }
 }
