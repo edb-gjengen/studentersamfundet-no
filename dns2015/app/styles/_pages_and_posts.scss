@@ -61,6 +61,10 @@ article.page,
             font-family: $font-family-sans-serif;
         }
 
+        .table-wrap {
+            overflow-x: scroll;
+        }
+
         .iframe-wrap {
             float: none;
             clear: both;

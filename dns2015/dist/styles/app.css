@@ -2170,6 +2170,11 @@ article.page .entry-content,
   .single-association .entry-content table,
   .single-event .entry-content table {
     font-family: "Roboto", sans-serif; }
+  article.page .entry-content .table-wrap,
+  .single-post .entry-content .table-wrap,
+  .single-association .entry-content .table-wrap,
+  .single-event .entry-content .table-wrap {
+    overflow-x: scroll; }
   article.page .entry-content .iframe-wrap,
   .single-post .entry-content .iframe-wrap,
   .single-association .entry-content .iframe-wrap,
