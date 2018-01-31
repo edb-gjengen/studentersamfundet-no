@@ -100,7 +100,8 @@ article.page,
 
     }
 
-    .wp-caption-text {
+    .wp-caption-text,
+    .entry-content .wp-caption-text {
         color: #666;
         font-family: $header-font-family;
         font-size: rem-calc(14);
