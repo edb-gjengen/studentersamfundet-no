@@ -58,7 +58,8 @@ function fetch_events($from = '-6 months', $to = '+1 year') {
             'end' => $end,
             'locations' => [$location],
             'summary' => html_entity_decode(get_the_title()),
-            'description' => html_entity_decode($description)
+            'description' => html_entity_decode($description),
+            'uid' => 'dns-event-'.$post->ID,
         ]);
     }
 
@@ -74,7 +75,7 @@ function add_calendar_events($events, $calendar) {
         $calendar_event->setStart($event['start'])
             ->setSummary($event['summary'])
             ->setDescription($event['description'])
-            ->setUid('asdf');
+            ->setUid($event['uid']);
 
         try {
             $calendar_event->setEnd($event['end']);
