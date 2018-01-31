@@ -107,7 +107,7 @@ $custom_cal_headers = [
 ];
 
 $calendar = new Calendar();
-$calendar->setProdId('-//Chateau Neuf - Det Norske Studentersafund//Program for Chateau Neuf - Det Norske Studentersamfund//NB')
+$calendar->setProdId('-//Det Norske Studentersafund//Program for DNS//NB')
     ->setTimezone(new DateTimeZone($wp_timezone))
     ->setCustomHeaders($custom_cal_headers);
 
