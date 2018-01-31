@@ -86,14 +86,27 @@ article.page,
 
     .wp-caption {
         width: auto !important;
+        padding: rem-calc(8);
+
+        &.alignright {
+            float: right;
+        }
+        &.alignleft {
+            float: left;
+        }
+    }
+    .wp-post-image-caption {
+        padding: 0 rem-calc(16);
+
     }
 
     .wp-caption-text {
-        padding: 0 rem-calc(16);
         color: #666;
         font-family: $header-font-family;
+        font-size: rem-calc(14);
         font-weight: 200;
         margin-bottom: 0;
+
         &:empty {
             display: none;
         }
