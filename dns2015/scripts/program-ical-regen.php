@@ -1,6 +1,7 @@
 <?php
-$SCRIPT_PATH = realpath(dirname(__FILE__).'/../../../../');
-require_once($SCRIPT_PATH . '/wp-load.php');
+/** Usage with WP-CLI
+ *  wp --path=/path/to/wordpress eval-file program-ical-regen.php
+ */
 require_once('../inc/iCalcreator.class.php');
 //http://kigkonsult.se/iCalcreator/
 
@@ -59,4 +60,3 @@ if ($events->have_posts()) {
 }
 
 $v->saveCalendar();
-?>

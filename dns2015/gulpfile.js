@@ -93,7 +93,7 @@ gulp.task('i18n', function() {
 });
 
 gulp.task('clean', function (cb) {
-   return del(['.tmp', 'dist'], cb);
+   return del(['dist'], cb);
 });
 
 gulp.task('build', ['vendorscripts', 'distscripts', 'diststyles', 'images', 'fonts', 'extras'], function () {
