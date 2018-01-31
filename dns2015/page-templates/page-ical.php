@@ -72,10 +72,16 @@ function add_calendar_events($events, $calendar) {
     foreach ($events as $event) {
         $calendar_event = new CalendarEvent();
         $calendar_event->setStart($event['start'])
-            ->setEnd($event['end'])
             ->setSummary($event['summary'])
             ->setDescription($event['description'])
             ->setUid('asdf');
+
+        try {
+            $calendar_event->setEnd($event['end']);
+        } catch (\Jsvrcek\ICS\Exception\CalendarEventException $e) {
+            // Ignore bad end dates
+        }
+
         $calendar_locations = [];
         foreach ($event['locations'] as $location) {
             $cal_location = new Location();
