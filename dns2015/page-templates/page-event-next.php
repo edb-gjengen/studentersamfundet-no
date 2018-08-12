@@ -45,7 +45,6 @@ if ($events->have_posts()) : while ($events->have_posts()) : $events->the_post()
     $post->event_types = array();
     foreach ($event_array as $event_type) {
         $post->event_types[] = $event_type->name;
-        $post->post_classes[] = 'event-type-' . $event_type->slug;
     }
     $post->event_types_comma = implode(', ', $post->event_types);
 
