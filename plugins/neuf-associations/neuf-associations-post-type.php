@@ -22,6 +22,8 @@ function neuf_associations_post_type() {
 			'publicly_queryable' => true,
 			'query_var'          => 'association',
 			'show_ui'            => true,
+			'show_in_rest'       => true,
+			'rest_base'          => 'associations',
 			'capability_type'    => 'post',
 			'supports'           => array(
 				'title',
@@ -73,4 +75,21 @@ function neuf_associations_save_postdata( $post_id ) {
         update_post_meta($post_id, $key, $value);
     }
 }
-?>
+
+/** API: Add our custom fields to the events endpoint */
+add_filter('rest_prepare_association', 'neuf_associations_rest_custom_fields', 10, 3);
+function neuf_associations_rest_custom_fields($response, $post, $request) {
+    $custom_field_data = get_post_custom($post->ID);
+    $field_map = array(
+        '_neuf_associations_type' => 'association_type',
+        '_neuf_associations_homepage' => 'association_homepage',
+    );
+    foreach ($field_map as $src => $dst) {
+        $response->data[$dst] = $custom_field_data[$src][0];
+    }
+
+    /* Decode HTML titles */
+    // $response->data['title']['decoded'] = html_entity_decode($response->data['title']['rendered'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
+    return $response;
+}
