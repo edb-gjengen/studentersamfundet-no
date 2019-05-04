@@ -120,8 +120,8 @@ function neuf_events_the_post( &$post ) {
 
 
 /** API: Add our custom fields to the events endpoint */
-add_filter('rest_prepare_event', 'api_add_custom_fields', 10, 3);
-function api_add_custom_fields($response, $post, $request) {
+add_filter('rest_prepare_event', 'neuf_events_rest_custom_fields', 10, 3);
+function neuf_events_rest_custom_fields($response, $post, $request) {
     $custom_field_data = get_post_custom($post->ID);
     $field_map = array(
         '_neuf_events_venue' => 'venue',
