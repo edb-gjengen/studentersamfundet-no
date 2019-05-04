@@ -27,6 +27,8 @@ function neuf_events_register_taxonomies() {
 			'hierarchical' => true,
 			'labels'       => $labels,
 			'show_ui'      => true,
+			'show_in_rest' => true,
+			'rest_base'    => 'event_types',
 			'query_var'    => true,
 			'rewrite'      => array(
 				'slug'         => __( 'eventtype', 'neuf_event' ),
@@ -80,4 +82,3 @@ function neuf_events_set_default_object_terms( $post_id, $post ) {
     }
 }
 add_action( 'save_post', 'neuf_events_set_default_object_terms', 100, 2 );
-?>
