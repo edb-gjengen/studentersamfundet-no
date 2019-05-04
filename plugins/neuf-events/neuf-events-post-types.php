@@ -132,7 +132,10 @@ function neuf_events_rest_custom_fields($response, $post, $request)
 {
     $custom_field_data = get_post_custom($post->ID);
     $field_map = array(
+        // Deprecated text field
         '_neuf_events_venue' => 'venue',
+        // neuf-venues post ID
+        '_neuf_events_venue_id' => 'venue_id',
         '_neuf_events_fb_url' => 'facebook_url',
         '_neuf_events_bs_url' => 'ticket_url',
         '_neuf_events_price_regular' => 'price_regular',
@@ -146,12 +149,14 @@ function neuf_events_rest_custom_fields($response, $post, $request)
     }
 
     $offset_in_seconds = get_option('gmt_offset') * 3600;
-    if (!$response->data['end_time']) {
-        // No endtime? Assume 2 hours
-        $response->data['end_time'] = $response->data['start_time'] + 7200;
-    }
+    //if (!$response->data['end_time']) {
+    //    // No endtime? Assume 2 hours
+    //    $response->data['end_time'] = $response->data['start_time'] + 7200;
+    //}
     $response->data['start_time'] = date("c", $response->data['start_time'] - $offset_in_seconds);
-    $response->data['end_time'] = date("c", $response->data['end_time'] - $offset_in_seconds);
+    if ($response->data['end_time']) {
+        $response->data['end_time'] = date("c", $response->data['end_time'] - $offset_in_seconds);
+    }
 
     /* Add thumbnail in all sizes */
     $sizes = get_intermediate_image_sizes();
@@ -167,8 +172,8 @@ function neuf_events_rest_custom_fields($response, $post, $request)
 }
 
 /** API: Order by start time */
-add_filter('rest_event_query', 'api_change_query', 10, 2);
-function api_change_query($args, $request)
+add_filter('rest_event_query', 'neuf_events_api_change_query', 10, 2);
+function neuf_events_api_change_query($args, $request)
 {
     $start_time_field = '_neuf_events_starttime';
     $sligthly_in_the_past = date('U', strtotime('-8 hours'));
