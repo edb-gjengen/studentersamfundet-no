@@ -3,10 +3,12 @@
 /*
  * Custom events controller providing handy methods.
  */
-class JSON_API_Events_Controller {
+class JSON_API_Events_Controller
+{
 
     /* /?json=events.get_today */
-    public function get_today() {
+    public function get_today()
+    {
         global $json_api;
 
         /* Get query params */
@@ -14,20 +16,20 @@ class JSON_API_Events_Controller {
         $query = wp_parse_args($url['query']);
 
         $meta_query = array(
-            'key'     => '_neuf_events_starttime',
-            'value'   => array(date( 'U' , strtotime( '-8 hours' ) ), date( 'U' , strtotime( 'tomorrow' ) )), 
+            'key' => '_neuf_events_starttime',
+            'value' => array(date('U', strtotime('-8 hours')), date('U', strtotime('tomorrow'))),
             'compare' => 'BETWEEN',
-            'type'    => 'NUMERIC'
+            'type' => 'NUMERIC',
         );
 
         $defaults = array(
-            'post_type'           => 'event',
-            'meta_query'          => array( $meta_query ),
-            'posts_per_page'      => 300,
-            'orderby'             => 'meta_value_num',
-            'meta_key'            => '_neuf_events_starttime',
-            'order'               => 'ASC',
-            'ignore_sticky_posts' => true
+            'post_type' => 'event',
+            'meta_query' => array($meta_query),
+            'posts_per_page' => 300,
+            'orderby' => 'meta_value_num',
+            'meta_key' => '_neuf_events_starttime',
+            'order' => 'ASC',
+            'ignore_sticky_posts' => true,
         );
 
         // Defaults can easily be overwritten
@@ -49,7 +51,8 @@ class JSON_API_Events_Controller {
     }
 
     /* /?json=events.get_upcoming */
-    public function get_upcoming() {
+    public function get_upcoming()
+    {
         global $json_api;
 
         /* Get query params */
@@ -57,20 +60,20 @@ class JSON_API_Events_Controller {
         $query = wp_parse_args($url['query']);
 
         $meta_query = array(
-            'key'     => '_neuf_events_starttime',
-            'value'   => date( 'U' , strtotime( '-8 hours' ) ), 
+            'key' => '_neuf_events_starttime',
+            'value' => date('U', strtotime('-8 hours')),
             'compare' => '>',
-            'type'    => 'numeric'
+            'type' => 'numeric',
         );
 
         $defaults = array(
-            'post_type'           => 'event',
-            'meta_query'          => array( $meta_query ),
-            'posts_per_page'      => 300,
-            'orderby'             => 'meta_value_num',
-            'meta_key'            => '_neuf_events_starttime',
-            'order'               => 'ASC',
-            'ignore_sticky_posts' => true
+            'post_type' => 'event',
+            'meta_query' => array($meta_query),
+            'posts_per_page' => 300,
+            'orderby' => 'meta_value_num',
+            'meta_key' => '_neuf_events_starttime',
+            'order' => 'ASC',
+            'ignore_sticky_posts' => true,
         );
 
         // Defaults can easily be overwritten
@@ -90,38 +93,42 @@ class JSON_API_Events_Controller {
         $events = $this->add_parent_root_event_types($events);
         return $this->events_result($events);
     }
-    protected function events_result($events) {
+    protected function events_result($events)
+    {
         global $wp_query;
         return array(
             'count' => count($events),
             'count_total' => (int) $wp_query->found_posts,
             'pages' => $wp_query->max_num_pages,
-            'events' => $events
+            'events' => $events,
         );
     }
-    protected function is_root_event_type($term) {
+    protected function is_root_event_type($term)
+    {
         return $term->parent == 0;
 
     }
-    protected function get_parent_root($term) {
-        if( $this->is_root_event_type($term) ) {
+    protected function get_parent_root($term)
+    {
+        if ($this->is_root_event_type($term)) {
             return $term;
         }
         $parent_term = null;
-        foreach($this->event_types as $type) {
-            if($type->term_id == $term->parent) {
+        foreach ($this->event_types as $type) {
+            if ($type->term_id == $term->parent) {
                 $parent_term = $type;
                 break;
             }
         }
         return $this->get_parent_root($parent_term);
     }
-    protected function add_parent_root_event_types($events) {
+    protected function add_parent_root_event_types($events)
+    {
         // taxonomy tree
         $this->event_types = get_terms(array('event_type'));
         foreach ($events as $event) {
             $event_types = array();
-            foreach ( $event->taxonomy_event_type as $event_type ) {
+            foreach ($event->taxonomy_event_type as $event_type) {
                 $event_type = $this->get_parent_root($event_type);
                 /* Can be either JSON_API_Category or stdClass */
                 $name = get_class($event_type) === 'stdClass' ? $event_type->name : $event_type->title;
@@ -134,4 +141,3 @@ class JSON_API_Events_Controller {
     }
 
 }
-?>
