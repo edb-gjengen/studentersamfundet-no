@@ -70,7 +70,8 @@ function neuf_venues_save_post($post_id, $post)
         return $post_id;
     }
 
-    $tosave['_neuf_venues_floor'] = $_POST['_neuf_venues_floor'];
+    $v_show_on_booking_page = $_POST['_neuf_venues_show_on_booking_page'] === 'true' ? 'true' : 'false';
+    $tosave['_neuf_venues_show_on_booking_page'] = $v_show_on_booking_page;
 
     $fields = array(
         '_neuf_venues_floor',
@@ -110,7 +111,6 @@ function neuf_venues_the_post(&$post)
     if ('venue' != get_post_type()) {
         return;
     }
-
 }
 
 /** API: Add our custom fields to the events endpoint */
@@ -119,6 +119,7 @@ function neuf_venues_rest_custom_fields($response, $post, $request)
 {
     $custom_field_data = get_post_custom($post->ID);
     $field_map = array(
+        '_neuf_venues_show_on_booking_page' => 'show_on_booking_page',
         '_neuf_venues_floor' => 'floor',
         '_neuf_venues_capacity_legal' => 'capacity_legal',
         '_neuf_venues_capacity_standing' => 'capacity_standing',
