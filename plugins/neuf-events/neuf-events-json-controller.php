@@ -5,7 +5,6 @@
  */
 class JSON_API_Events_Controller
 {
-
     /* /?json=events.get_today */
     public function get_today()
     {
@@ -93,21 +92,23 @@ class JSON_API_Events_Controller
         $events = $this->add_parent_root_event_types($events);
         return $this->events_result($events);
     }
+
     protected function events_result($events)
     {
         global $wp_query;
         return array(
             'count' => count($events),
-            'count_total' => (int) $wp_query->found_posts,
+            'count_total' => (int)$wp_query->found_posts,
             'pages' => $wp_query->max_num_pages,
             'events' => $events,
         );
     }
+
     protected function is_root_event_type($term)
     {
         return $term->parent == 0;
-
     }
+
     protected function get_parent_root($term)
     {
         if ($this->is_root_event_type($term)) {
@@ -122,6 +123,7 @@ class JSON_API_Events_Controller
         }
         return $this->get_parent_root($parent_term);
     }
+
     protected function add_parent_root_event_types($events)
     {
         // taxonomy tree
@@ -139,5 +141,4 @@ class JSON_API_Events_Controller
 
         return $events;
     }
-
 }

@@ -113,23 +113,23 @@ function add_events_metaboxes()
 function neuf_event_details()
 {
     ?>
-	<div class="misc-pub-section">
-		<?php neuf_date_details();?>
-	</div>
-	<div class="misc-pub-section ">
-		<?php neuf_event_venue();?>
-	</div>
-	<div class="misc-pub-section ">
-		<?php neuf_event_div();?>
-	</div>
-	<div class="misc-pub-section misc-pub-section-last">
+    <div class="misc-pub-section">
+        <?php neuf_date_details(); ?>
+    </div>
+    <div class="misc-pub-section ">
+        <?php neuf_event_venue(); ?>
+    </div>
+    <div class="misc-pub-section ">
+        <?php neuf_event_div(); ?>
+    </div>
+    <div class="misc-pub-section misc-pub-section-last">
         <?php
-/* Only editor or superior can set the promo period */
-    if (current_user_can('publish_posts')) {
-        neuf_event_promoperiod();
-    }
-    ?>
-	</div>
+        /* Only editor or superior can set the promo period */
+        if (current_user_can('publish_posts')) {
+            neuf_event_promoperiod();
+        }
+        ?>
+    </div>
 <?php
 }
 /*
@@ -145,8 +145,8 @@ function neuf_date_details()
 
     wp_nonce_field('neuf_events_nonce', 'neuf_events_nonce');
     ?>
-		<label for="_neuf_events_starttime"><?php _e('Starts', 'neuf_event');?>:</label><input type="text" class="datepicker required" name="_neuf_events_starttime"  value="<?php echo $start ? date("Y-m-d H:i", $start) : "" ?>" /><br />
-		<label for="_neuf_events_endtime"><?php _e('Ends', 'neuf_event');?>:</label><input name="_neuf_events_endtime" type="text" class="datepicker" value="<?php echo $end ? date("Y-m-d H:i", $end) : "" ?>" /><br />
+    <label for="_neuf_events_starttime"><?php _e('Starts', 'neuf_event'); ?>:</label><input type="text" class="datepicker required" name="_neuf_events_starttime" value="<?php echo $start ? date("Y-m-d H:i", $start) : "" ?>" /><br />
+    <label for="_neuf_events_endtime"><?php _e('Ends', 'neuf_event'); ?>:</label><input name="_neuf_events_endtime" type="text" class="datepicker" value="<?php echo $end ? date("Y-m-d H:i", $end) : "" ?>" /><br />
 <?php
 }
 
@@ -155,33 +155,58 @@ function neuf_event_venue()
 {
     global $post;
 
-    $venues = array(
-        'Betong', 'Glassbaren', 'Betonghaven', 'Biblioteket', 'BokCaféen',
-        'Foajeen', 'Galleriet', 'Klubbscenen', 'Lillesalen',
-        'M&oslash;rkerommet', 'Teaterscenen', 'Storsalen', 'Hele huset',
-    );
-    $neuf_event_venue = get_post_meta($post->ID, '_neuf_events_venue', true);
-    _e('Venue:', 'neuf_event');
-    echo '<select name="_neuf_events_venue">';
+    $current_custom = get_post_meta($post->ID, '_neuf_events_venue', true);
+    $current_venue = get_post_meta($post->ID, '_neuf_events_venue_id', true);
 
-    $selected = false;
-    foreach ($venues as $venue) {
-        echo '<option value="' . $venue . '"';
-        if ($venue == $neuf_event_venue) {
-            echo ' selected="selected"';
-            $selected = true;
+    $venues = neuf_events_get_venue_map();
+
+    // If the custom venue name matches a registered venue,
+    // show the right venue as selected
+    if (empty($current_venue) && !empty($current_custom)) {
+        $found_venue_id = array_search($current_custom, $venues);
+        if ($found_venue_id) {
+            $current_venue = $found_venue_id;
+            $current_custom = '';
         }
-        echo '>' . $venue . '</option>';
     }
-    $other = __('Elsewhere', 'neuf_event');
-    if ($selected) {
-        echo ('<option value="' . $other . '">' . $other . '</option>');
+
+    _e('Venue:', 'neuf_event');
+    echo '<select name="_neuf_events_venue_id">';
+
+    $show_custom_input = false;
+    if (empty($current_venue) && !empty($current_custom)) {
+        echo '<option value="custom" selected="selected">Fritekst</option>';
+        $show_custom_input = true;
     } else {
-        echo ('<option value="' . $other . '" selected="selected">' . $other . '</option>');
+        echo '<option value="custom">Fritekst</option>';
+    }
+
+    $any = (!empty($current_custom) || !empty($current_venue));
+    if ($any) {
+        echo '<option value=""></option>';
+    } else {
+        echo '<option value="" selected="selected"></option>';
+    }
+
+    foreach ($venues as $venue_id => $venue_name) {
+        echo '<option value="' . $venue_id . '"';
+        if ($venue_id == $current_venue) {
+            echo ' selected="selected"';
+        }
+        echo '>' . $venue_name . '</option>';
     }
 
     echo '</select><br />';
+
+    ?>
+    <div id="_neuf_events_venue_container" style="<?php echo $show_custom_input ? '' : 'display:none'; ?>">
+        <label for="_neuf_events_venue"><?php _e("Custom venue:", 'neuf_event'); ?></label>
+        <input name="_neuf_events_venue" type="text" value="<?php echo $current_custom; ?>"></input><br />
+    </div>
+<?php
+
 }
+
 /* Promo period */
 function neuf_event_promoperiod()
 {
@@ -215,15 +240,15 @@ function neuf_event_div()
     $event_fb = get_post_meta($post->ID, '_neuf_events_fb_url', true);
 
     ?>
-        <label for="_neuf_events_price_regular"><?php _e("Price Regular", 'neuf_event');?></label>
-		<input name="_neuf_events_price_regular" type="text" value="<?php echo $event_price_regular; ?>"></input><br />
-        <label for="_neuf_events_price_member"><?php _e("Price Member", 'neuf_event');?></label>
-		<input name="_neuf_events_price_member" type="text" value="<?php echo $event_price_member; ?>"></input><br />
-		<label for="_neuf_events_bs_url"><?php _e("Billettservice address", 'neuf_event');?>:</label>
-		<input type="text" name="_neuf_events_bs_url" value="<?php echo $event_bs; ?>" /><br />
-		<label for="_neuf_events_fb_url"><?php _e("Facebook address", 'neuf_event');?>:</label>
-		<input type="text" name="_neuf_events_fb_url" value="<?php echo $event_fb; ?>" />
-	<?php
+    <label for="_neuf_events_price_regular"><?php _e("Price Regular", 'neuf_event'); ?></label>
+    <input name="_neuf_events_price_regular" type="text" value="<?php echo $event_price_regular; ?>"></input><br />
+    <label for="_neuf_events_price_member"><?php _e("Price Member", 'neuf_event'); ?></label>
+    <input name="_neuf_events_price_member" type="text" value="<?php echo $event_price_member; ?>"></input><br />
+    <label for="_neuf_events_bs_url"><?php _e("Billettservice address", 'neuf_event'); ?>:</label>
+    <input type="text" name="_neuf_events_bs_url" value="<?php echo $event_bs; ?>" /><br />
+    <label for="_neuf_events_fb_url"><?php _e("Facebook address", 'neuf_event'); ?>:</label>
+    <input type="text" name="_neuf_events_fb_url" value="<?php echo $event_fb; ?>" />
+<?php
 }
 
 /* Format a unix timestamp respecting the options set in Settings->General. */
@@ -261,7 +286,6 @@ function neuf_events_right_now_dashboard()
     $num = number_format_i18n($num_terms);
     $text = _n($taxonomy->labels->singular_name, $taxonomy->labels->name, intval($num_terms));
     if (current_user_can('manage_categories')) {
-
         $num = "<a href='edit-tags.php?taxonomy=$taxonomy->name'>$num</a>";
         $text = "<a href='edit-tags.php?taxonomy=$taxonomy->name'>$text</a>";
     }

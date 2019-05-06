@@ -24,7 +24,8 @@ function neuf_events_register_taxonomies()
         'event_type',
         array(
             'event',
-        ), array(
+        ),
+        array(
             'hierarchical' => true,
             'labels' => $labels,
             'show_ui' => true,
@@ -35,7 +36,8 @@ function neuf_events_register_taxonomies()
                 'slug' => __('eventtype', 'neuf_event'),
                 'hierarchical' => true,
             ),
-        ));
+        )
+    );
 }
 
 /**
@@ -52,7 +54,7 @@ function neuf_post_class_event_type($classes)
     global $post;
 
     if (is_object_in_taxonomy($post->post_type, 'event_type')) {
-        foreach ((array) get_the_terms($post->ID, 'event_type') as $event_type) {
+        foreach ((array)get_the_terms($post->ID, 'event_type') as $event_type) {
             if (empty($event_type->slug)) {
                 continue;
             }
@@ -77,7 +79,7 @@ function neuf_events_set_default_object_terms($post_id, $post)
         'event_type' => array('annet'),
     );
     $taxonomies = get_object_taxonomies($_POST['post_type']);
-    foreach ((array) $taxonomies as $taxonomy) {
+    foreach ((array)$taxonomies as $taxonomy) {
         $terms = wp_get_post_terms($post_id, $taxonomy);
         /* No tax terms assoc with post? */
         if (empty($terms) && array_key_exists($taxonomy, $defaults)) {

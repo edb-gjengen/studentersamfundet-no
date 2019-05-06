@@ -52,6 +52,20 @@ function neuf_events_post_type()
     );
 }
 
+/* Build array('venue ID' => 'venue name', ...) */
+function neuf_events_get_venue_map()
+{
+    $venues = array();
+    $venue_objects = get_posts(array(
+        'post_type' => 'venue',
+        'numberposts' => -1,
+    ));
+    foreach ($venue_objects as $venue) {
+        $venues[$venue->ID] = $venue->post_title;
+    }
+    return $venues;
+}
+
 /* When the post is saved, save our custom data */
 function neuf_events_save_post($post_id, $post)
 {
@@ -75,12 +89,50 @@ function neuf_events_save_post($post_id, $post)
     // Date strings are converted to unix time
     $tosave['_neuf_events_starttime'] = strtotime($_POST['_neuf_events_starttime']);
     $tosave['_neuf_events_endtime'] = strtotime($_POST['_neuf_events_endtime']);
-    $tosave['_neuf_events_price_regular'] = $_POST['_neuf_events_price_regular'];
-    $tosave['_neuf_events_price_member'] = $_POST['_neuf_events_price_member'];
-    $tosave['_neuf_events_bs_url'] = $_POST['_neuf_events_bs_url'];
-    $tosave['_neuf_events_fb_url'] = $_POST['_neuf_events_fb_url'];
-    $tosave['_neuf_events_venue'] = $_POST['_neuf_events_venue'];
-    $tosave['_neuf_events_promo_period'] = $_POST['_neuf_events_promo_period'];
+
+    // Venue fields
+    $venue_custom = $_POST['_neuf_events_venue'];
+    $venue_id = $_POST['_neuf_events_venue_id'];
+
+    $venues = neuf_events_get_venue_map();
+
+    // If the custom venue name matches a registered venue,
+    // use the opportunity to store the venue ID instead
+    if (empty($venue_id) && !empty($venue_custom)) {
+        $found_venue_id = array_search($venue_custom, $venues);
+        if ($found_venue_id) {
+            $venue_id = $found_venue_id;
+            $venue_custom = '';
+        }
+    }
+    // Validate venue ID
+    if (!empty($venue_id) && !array_key_exists($venue_id, $venues)) {
+        $venue_id = '';
+    }
+    // Strip custom venue if we have a valid venue ID
+    if (!empty($venue_id) && !empty($venue_custom)) {
+        $venue_custom = '';
+    }
+    // Fallback to elsewhere
+    if (empty($venue_id) && empty($venue_custom)) {
+        $venue_custom = 'Annetsteds';
+    }
+
+    $tosave['_neuf_events_venue'] = $venue_custom;
+    $tosave['_neuf_events_venue_id'] = $venue_id;
+
+    // Other fields are saved as-is
+    $fields = array(
+        '_neuf_events_price_regular',
+        '_neuf_events_price_member',
+        '_neuf_events_bs_url',
+        '_neuf_events_fb_url',
+        '_neuf_events_promo_period',
+    );
+
+    foreach ($fields as $field_name) {
+        $tosave[$field_name] = $_POST[$field_name];
+    }
 
     // Update or add post meta
     foreach ($tosave as $key => $value) {
@@ -123,7 +175,6 @@ function neuf_events_the_post(&$post)
     $post->neuf_events_gcal_url .= "&sprop=name:Det%20Norske%20Studentersamfund";
     $post->neuf_events_gcal_url .= "&dates=" . date('Ymd\THis\Z', $post->neuf_events_starttime - (get_option('gmt_offset') * 3600));
     $post->neuf_events_gcal_url .= "/" . date('Ymd\THis\Z', $post->neuf_events_starttime - (get_option('gmt_offset') * 3600));
-
 }
 
 /** API: Add our custom fields to the events endpoint */
@@ -132,7 +183,7 @@ function neuf_events_rest_custom_fields($response, $post, $request)
 {
     $custom_field_data = get_post_custom($post->ID);
     $field_map = array(
-        // Deprecated text field
+        // Text-only venue field
         '_neuf_events_venue' => 'venue',
         // neuf-venues post ID
         '_neuf_events_venue_id' => 'venue_id',
