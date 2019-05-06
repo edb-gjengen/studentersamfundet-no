@@ -16,6 +16,10 @@ require_once 'neuf-events-post-types.php';
 require_once 'neuf-events-admin.php';
 require_once 'neuf-events-taxonomies.php';
 
+if (defined('WP_CLI') && WP_CLI) {
+    require_once 'neuf-events-cli.php';
+}
+
 /* Register the translations */
 add_action('init', 'neuf_events_i18n', 0);
 

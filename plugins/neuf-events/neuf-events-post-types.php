@@ -66,6 +66,35 @@ function neuf_events_get_venue_map()
     return $venues;
 }
 
+function neuf_events_validate_venues($venue_id, $venue_custom)
+{
+    $venues = neuf_events_get_venue_map();
+
+    // If the custom venue name matches a registered venue,
+    // use the opportunity to store the venue ID instead
+    if (empty($venue_id) && !empty($venue_custom)) {
+        $found_venue_id = array_search($venue_custom, $venues);
+        if ($found_venue_id) {
+            $venue_id = $found_venue_id;
+            $venue_custom = '';
+        }
+    }
+    // Validate venue ID
+    if (!empty($venue_id) && !array_key_exists($venue_id, $venues)) {
+        $venue_id = '';
+    }
+    // Strip custom venue if we have a valid venue ID
+    if (!empty($venue_id) && !empty($venue_custom)) {
+        $venue_custom = '';
+    }
+    // Fallback to elsewhere
+    if (empty($venue_id) && empty($venue_custom)) {
+        $venue_custom = 'Annetsteds';
+    }
+
+    return array($venue_id, $venue_custom);
+}
+
 /* When the post is saved, save our custom data */
 function neuf_events_save_post($post_id, $post)
 {
@@ -91,32 +120,11 @@ function neuf_events_save_post($post_id, $post)
     $tosave['_neuf_events_endtime'] = strtotime($_POST['_neuf_events_endtime']);
 
     // Venue fields
-    $venue_custom = $_POST['_neuf_events_venue'];
-    $venue_id = $_POST['_neuf_events_venue_id'];
-
-    $venues = neuf_events_get_venue_map();
-
-    // If the custom venue name matches a registered venue,
-    // use the opportunity to store the venue ID instead
-    if (empty($venue_id) && !empty($venue_custom)) {
-        $found_venue_id = array_search($venue_custom, $venues);
-        if ($found_venue_id) {
-            $venue_id = $found_venue_id;
-            $venue_custom = '';
-        }
-    }
-    // Validate venue ID
-    if (!empty($venue_id) && !array_key_exists($venue_id, $venues)) {
-        $venue_id = '';
-    }
-    // Strip custom venue if we have a valid venue ID
-    if (!empty($venue_id) && !empty($venue_custom)) {
-        $venue_custom = '';
-    }
-    // Fallback to elsewhere
-    if (empty($venue_id) && empty($venue_custom)) {
-        $venue_custom = 'Annetsteds';
-    }
+    $validated_venues = neuf_events_validate_venues(
+        $_POST['_neuf_events_venue_id'],
+        $_POST['_neuf_events_venue']
+    );
+    [$venue_id, $venue_custom] = $validated_venues;
 
     $tosave['_neuf_events_venue'] = $venue_custom;
     $tosave['_neuf_events_venue_id'] = $venue_id;
