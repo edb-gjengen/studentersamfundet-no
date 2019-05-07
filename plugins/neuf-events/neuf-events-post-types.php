@@ -191,10 +191,6 @@ function neuf_events_rest_custom_fields($response, $post, $request)
 {
     $custom_field_data = get_post_custom($post->ID);
     $field_map = array(
-        // Text-only venue field
-        '_neuf_events_venue' => 'venue',
-        // neuf-venues post ID
-        '_neuf_events_venue_id' => 'venue_id',
         '_neuf_events_fb_url' => 'facebook_url',
         '_neuf_events_bs_url' => 'ticket_url',
         '_neuf_events_price_regular' => 'price_regular',
@@ -206,6 +202,25 @@ function neuf_events_rest_custom_fields($response, $post, $request)
     foreach ($field_map as $src => $dst) {
         $response->data[$dst] = $custom_field_data[$src][0];
     }
+
+    /* Handle venue fields */
+
+    /* Contains free text venue if a custom venue is set */
+    $venue = $custom_field_data['_neuf_events_venue'][0];
+    /* May point to a venue post ID */
+    $venue_id = $custom_field_data['_neuf_events_venue_id'][0];
+
+    if (!empty($venue_id)) {
+        /* We'll need to look up the venue name for backward compatibility */
+        /* TODO: can this be cached? neuf_events_get_venue_map does get_posts */
+        $venues = neuf_events_get_venue_map();
+        $venue = $venues[$venue_id];
+    } else if (empty($venue_id) && empty($venue)) {
+        $venue = 'Annetsteds';
+    }
+
+    $response->data['venue'] = $venue;
+    $response->data['venue_id'] = $venue_id;
 
     $offset_in_seconds = get_option('gmt_offset') * 3600;
     //if (!$response->data['end_time']) {
