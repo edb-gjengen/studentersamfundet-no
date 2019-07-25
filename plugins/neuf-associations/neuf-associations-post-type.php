@@ -42,6 +42,20 @@ function neuf_associations_post_type()
     );
 }
 
+/* Build array('association ID' => 'association name', ...) */
+function neuf_associations_get_association_map()
+{
+    $associations = array();
+    $association_objects = get_posts(array(
+        'post_type' => 'association',
+        'numberposts' => -1,
+    ));
+    foreach ($association_objects as $association) {
+        $associations[$association->ID] = $association->post_title;
+    }
+    return $associations;
+}
+
 /* When the post is saved, saves our custom data */
 function neuf_associations_save_postdata($post_id)
 {
