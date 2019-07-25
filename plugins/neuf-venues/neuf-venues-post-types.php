@@ -39,7 +39,9 @@ function neuf_venues_post_type()
                 'revisions',
                 'administrator',
                 'custom-fields',
+                'page-attributes',
             ),
+            'hierarchial' => false,
             'register_meta_box_cb' => 'add_venues_metaboxes',
             'rewrite' => array(
                 'slug' => __('venue', 'neuf_venue'),
