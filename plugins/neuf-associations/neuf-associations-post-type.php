@@ -25,6 +25,9 @@ function neuf_associations_post_type()
             'show_ui' => true,
             'show_in_rest' => true,
             'rest_base' => 'associations',
+            'show_in_graphql' => true,
+            'graphql_single_name' => 'association',
+            'graphql_plural_name' => 'associations',
             'capability_type' => 'post',
             'supports' => array(
                 'title',

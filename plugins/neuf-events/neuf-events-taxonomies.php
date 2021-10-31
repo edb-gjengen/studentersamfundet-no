@@ -47,6 +47,9 @@ function neuf_events_register_event_type_taxonomy()
                 'slug' => __('eventtype', 'neuf_event'),
                 'hierarchical' => true,
             ),
+            'show_in_graphql' => true,
+            'graphql_single_name' => 'eventType',
+            'graphql_plural_name' => 'eventTypes',
         )
     );
 }
@@ -85,6 +88,9 @@ function neuf_events_register_organizer_taxonomy()
             'rewrite' => array(
                 'slug' => __('organizer', 'neuf_event'),
             ),
+            'show_in_graphql' => true,
+            'graphql_single_name' => 'eventOrganizer',
+            'graphql_plural_name' => 'eventOrganizers',
         )
     );
 }

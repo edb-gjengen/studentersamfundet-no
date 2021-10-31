@@ -48,6 +48,9 @@ function neuf_venues_post_type()
             ),
             'show_in_rest' => true,
             'rest_base' => 'venues',
+            'show_in_graphql' => true,
+            'graphql_single_name' => 'venue',
+            'graphql_plural_name' => 'venues',
         )
     );
 }
