@@ -15,6 +15,7 @@ License: GPL v2 or later
 require_once 'neuf-events-post-types.php';
 require_once 'neuf-events-admin.php';
 require_once 'neuf-events-taxonomies.php';
+require_once 'neuf-events-graphql.php';
 
 if (defined('WP_CLI') && WP_CLI) {
     require_once 'neuf-events-cli.php';
