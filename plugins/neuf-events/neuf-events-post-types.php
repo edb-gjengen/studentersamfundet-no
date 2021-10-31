@@ -175,6 +175,12 @@ function neuf_events_the_post(&$post)
     $post->neuf_events_starttime = get_post_meta(get_the_ID(), '_neuf_events_starttime', true);
     $post->neuf_events_endtime = get_post_meta(get_the_ID(), '_neuf_events_endtime', true);
 
+    // we give a 70s date if the start time is somehow not numeric (i.e. null)
+    // this avoids a "PHP Warning:  A non-numeric value encountered" when manipulating
+    // the start time below
+    if (!is_numeric($post->neuf_events_starttime)) {
+        $post->neuf_events_starttime = 31337;
+    }
     $post->neuf_events_endtime = $post->neuf_events_endtime ? $post->neuf_events_endtime : $post->neuf_events_starttime + 7200; // No endtime? Assume 2 hours
 
     $post->neuf_events_gcal_url = "http://www.google.com/calendar/event?action=TEMPLATE";
